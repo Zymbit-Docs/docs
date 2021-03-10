@@ -31,8 +31,6 @@ jobs:
 
       - name: Hugo-ify the API docs
         uses: zymbit-docs/actions-hugoify-api-docs@master
-        with:
-          path: "./content/GENERATED/"
 
       # - name: Get updated API doc files
       #   id: get-doc-files
