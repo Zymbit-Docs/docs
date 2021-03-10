@@ -29,30 +29,35 @@ jobs:
       - name: Install npm dependencies
         run: npm install
 
-      - name: Get updated API doc files
-        id: get-doc-files
-        run: |
-          readarray -t FILE_LIST < <(ls -1A ./content/GENERATED/)
+      - name: Hugo-ify the API docs
+        uses: zymbit-docs/actions-hugoify-api-docs@master
+        with:
+          path: "./content/GENERATED/"
 
-          NEW_FILE_LIST=()
+      # - name: Get updated API doc files
+      #   id: get-doc-files
+      #   run: |
+      #     readarray -t FILE_LIST < <(ls -1A ./content/GENERATED/)
 
-          for api_file in "${FILE_LIST[@]}"; do
-            # Determine the location of the new file to generate.
-            NEW_FILE=${api_file#GENERATED_}
-            NEW_FILE_LIST+=(${NEW_FILE})
+      #     NEW_FILE_LIST=()
 
-            # Remove any old docs with the same name.
-            rm -f ./content/api/${NEW_FILE}
+      #     for api_file in "${FILE_LIST[@]}"; do
+      #       # Determine the location of the new file to generate.
+      #       NEW_FILE=${api_file#GENERATED_}
+      #       NEW_FILE_LIST+=(${NEW_FILE})
 
-            # Generate the frontmatter for the updated docs.
-            hugo new api/${NEW_FILE} --kind docs
-          done
+      #       # Remove any old docs with the same name.
+      #       rm -f ./content/api/${NEW_FILE}
 
-          echo "::set-output name=new-files::${NEW_FILE_LIST[@]}"
-      - name: Generate final doc files
-        run: |
-          NEW_FILES=(${{ steps.get-doc-files.outputs.new-files }})
+      #       # Generate the frontmatter for the updated docs.
+      #       hugo new api/${NEW_FILE} --kind docs
+      #     done
 
-          for api_file in "${NEW_FILES[@]}"; do
-            echo "New file: ${api_file}"
-          done
+      #     echo "::set-output name=new-files::${NEW_FILE_LIST[@]}"
+      # - name: Generate final doc files
+      #   run: |
+      #     NEW_FILES=(${{ steps.get-doc-files.outputs.new-files }})
+
+      #     for api_file in "${NEW_FILES[@]}"; do
+      #       sed '/^# .\+\n\n/d' ./content/GENERATED/GENERATED_${api_file}
+      #     done
