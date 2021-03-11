@@ -32,6 +32,9 @@ jobs:
       - name: Hugo-ify the API docs
         uses: zymbit-docs/actions-hugoify-api-docs@master
 
+      - name: Print current file tree
+        run: tree ./content/
+
       # - name: Get updated API doc files
       #   id: get-doc-files
       #   run: |
