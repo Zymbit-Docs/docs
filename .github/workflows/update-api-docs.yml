@@ -39,95 +39,37 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
 
-          # TEST_BRANCH_NAME="api-docs-update-TESTBRANCH-$(date -u +%s)"
-          # git checkout -b $TEST_BRANCH_NAME
-
-          # echo "TEST_BRANCH_NAME=${TEST_BRANCH_NAME}" >> $GITHUB_ENV
-
           git add ./content/api/
           git rm -r ./content/GENERATED/
-          # rm -rf ./content/GENERATED/
 
           LAST_COMMIT_MSG=$(git log -1 --grep="^docs" --format="%s" -- content/GENERATED/)
           LAST_HASH=$(expr "$LAST_COMMIT_MSG" : '.* \([0-9a-fA-F]*\)')
 
-          # echo "::set-output name=last-hash::${LAST_HASH}"
-
           GHA_HUGOIFY_LOG=$(cat .GHA-LOG)
-
-          # echo "::set-output name=last-hash::${GHA_HUGOIFY_LOG}"
-
-          echo -e "docs: update API docs to latest zkapputils \(${LAST_HASH}\)\n" > .NEW_COMMIT_MSG
+          echo -e "docs: update API docs to latest zkapputils (${LAST_HASH})\n" > .NEW_COMMIT_MSG
           echo -e "${GHA_HUGOIFY_LOG}\n" >> .NEW_COMMIT_MSG
           echo -e "NOTE: THIS COMMIT WAS AUTOMATICALLY GENERATED." >> .NEW_COMMIT_MSG
 
-          # echo "::set-output name=commit-message::docs: update API docs to latest zkapputils (${LAST_HASH})\n${GHA_HUGOIFY_LOG}\nNOTE: THIS COMMIT WAS AUTOMATICALLY GENERATED."
-
           git commit --file=.NEW_COMMIT_MSG
 
-          git log -1 --pretty=fuller
+          echo "::debug::Git log for commit:\n$(git log -1 --pretty=fuller)"
 
-          # NEW_COMMIT_MSG=$(cat .NEW_COMMIT_MSG)
-          # NEW_COMMIT_MSG="${NEW_COMMIT_MSG//'%'/'%25'}"
-          # NEW_COMMIT_MSG="${NEW_COMMIT_MSG//$'\n'/'%0A'}"
-          # NEW_COMMIT_MSG="${NEW_COMMIT_MSG//$'\r'/'%0D'}"
-          # echo "NEW_COMMIT_MSG=$(echo ${NEW_COMMIT_MSG})" >> $GITHUB_ENV
+          echo "::debug::Git status:\n$(git status)"
 
-          git status
-
-          # git push origin $TEST_BRANCH_NAME
+          git push origin api-docs-update
 
       - name: Create pull request
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         id: create-pr
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ github.token }}
-          # commit-message: ${{ env.NEW_COMMIT_MSG }}
-          committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
-          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
-          branch: api-docs-update
-          base: main
-          labels: |
-            api
-            automated pr
-          draft: true
-
-      - name: Check outputs
         run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
-        # run: |
-        #   echo "Generated commit message:"
-        #   echo -e ${{ env.NEW_COMMIT_MSG }}
-      # - name: Create pull request
-      #   uses: peter-evans/create-pull-request@v3
-      #   with:
-      #     token:
+          gh config set prompt disabled
 
-      # - name: Get updated API doc files
-      #   id: get-doc-files
-      #   run: |
-      #     readarray -t FILE_LIST < <(ls -1A ./content/GENERATED/)
+          echo "::debug::$(gh auth status)"
 
-      #     NEW_FILE_LIST=()
-
-      #     for api_file in "${FILE_LIST[@]}"; do
-      #       # Determine the location of the new file to generate.
-      #       NEW_FILE=${api_file#GENERATED_}
-      #       NEW_FILE_LIST+=(${NEW_FILE})
-
-      #       # Remove any old docs with the same name.
-      #       rm -f ./content/api/${NEW_FILE}
-
-      #       # Generate the frontmatter for the updated docs.
-      #       hugo new api/${NEW_FILE} --kind docs
-      #     done
-
-      #     echo "::set-output name=new-files::${NEW_FILE_LIST[@]}"
-      # - name: Generate final doc files
-      #   run: |
-      #     NEW_FILES=(${{ steps.get-doc-files.outputs.new-files }})
-
-      #     for api_file in "${NEW_FILES[@]}"; do
-      #       sed '/^# .\+\n\n/d' ./content/GENERATED/GENERATED_${api_file}
-      #     done
+          gh pr create \
+            --base main \
+            --draft \
+            --fill \
+            --head api-docs-update \
+            --label "api" --label "automated pr"
