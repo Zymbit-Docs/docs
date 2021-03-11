@@ -66,6 +66,8 @@ jobs:
       #     token:
 
 
+          git push origin $TEST_BRANCH_NAME
+
       # - name: Get updated API doc files
       #   id: get-doc-files
       #   run: |
