@@ -30,6 +30,7 @@ jobs:
       #   run: npm install
 
       - name: Hugo-ify the API docs
+        id: hugoify
         uses: zymbit-docs/actions-hugoify-api-docs@master
 
       - name: Commit processed files
@@ -40,7 +41,14 @@ jobs:
           git add ./content/api/
           git rm -r ./content/GENERATED/
 
-          git status
+          LAST_COMMIT_MSG=$(git log -1 --grep="^docs" --format="%s" -- content/GENERATED/)
+          LAST_HASH=$(expr "$LAST_COMMIT_MSG" : '.* \([0-9a-fA-F]*\)')
+
+          git commit -m "docs: update API docs to latest zkapputils (${LAST_HASH})" \
+            -m "${{ steps.hugoify.outputs.processingResults }}" \
+            -m "NOTE: THIS COMMIT WAS AUTOMATICALLY GENERATED."
+
+          git log -2
 
       # - name: Get updated API doc files
       #   id: get-doc-files
