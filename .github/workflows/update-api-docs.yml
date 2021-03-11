@@ -52,9 +52,9 @@ jobs:
 
           git commit --file=.NEW_COMMIT_MSG
 
-          echo "::debug::Git log for commit:\n$(git log -1 --pretty=fuller)"
+          echo -e "::debug::Git log for commit:\n$(git log -1 --pretty=fuller)"
 
-          echo "::debug::Git status:\n$(git status)"
+          echo -e "::debug::Git status:\n$(git status)"
 
           git push origin api-docs-update
 
@@ -65,7 +65,7 @@ jobs:
         run: |
           gh config set prompt disabled
 
-          echo "::debug::$(gh auth status)"
+          echo -e "::debug::GitHub CLI auth status:\n$(gh auth status)"
 
           gh pr create \
             --base main \
