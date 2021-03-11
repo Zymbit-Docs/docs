@@ -70,7 +70,7 @@ Flash the LED.
 
 * **Parameters**
 
-
+    
     * **on_ms** (`int`) – The amount of time in milliseconds that the LED will be on for.
 
 
@@ -130,7 +130,7 @@ Deposit random data in a file.
 
 * **Parameters**
 
-
+    
     * **file_path** (`str`) – The absolute path name for the destination file.
 
 
@@ -171,7 +171,7 @@ cloud server.
 
 * **Parameters**
 
-
+    
     * **src** (`Union`[`str`, `bytes`]) – The source (plaintext) data to lock.
 
     If a str is passed to this method, the value is assumed to be
@@ -237,7 +237,7 @@ cloud server.
 
 * **Parameters**
 
-
+    
     * **src** (`Union`[`str`, `bytes`]) – The source (ciphertext) data to verify and decrypt.
 
     If a str is passed to this method, the value is assumed to be
@@ -291,7 +291,7 @@ Generate a signature using the Zymkey’s ECDSA private key.
 
 * **Parameters**
 
-
+    
     * **src** (`str`) – The SHA256 digest of the data that will be used to generate the signature.
 
 
@@ -361,7 +361,7 @@ Flash the LED.
 
 * **Parameters**
 
-
+    
     * **on_ms** (`int`) – The amount of time in milliseconds that the LED will be on for.
 
 
@@ -421,7 +421,7 @@ Deposit random data in a file.
 
 * **Parameters**
 
-
+    
     * **file_path** (`str`) – The absolute path name for the destination file.
 
 
@@ -462,7 +462,7 @@ cloud server.
 
 * **Parameters**
 
-
+    
     * **src** (`Union`[`str`, `bytes`]) – The source (plaintext) data to lock.
 
     If a str is passed to this method, the value is assumed to be
@@ -528,7 +528,7 @@ cloud server.
 
 * **Parameters**
 
-
+    
     * **src** (`Union`[`str`, `bytes`]) – The source (ciphertext) data to verify and decrypt.
 
     If a str is passed to this method, the value is assumed to be
@@ -582,7 +582,7 @@ Generate a signature using the Zymkey’s ECDSA private key.
 
 * **Parameters**
 
-
+    
     * **src** (`str`) – The SHA256 digest of the data that will be used to generate the signature.
 
 
