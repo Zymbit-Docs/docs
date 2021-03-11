@@ -33,40 +33,76 @@ jobs:
         id: hugoify
         uses: zymbit-docs/actions-hugoify-api-docs@master
 
-      - name: Commit processed files
+      - name: Prepare processed files for commit
+        id: prepare-commit
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
 
-          TEST_BRANCH_NAME="api-docs-update-TESTBRANCH-$(date -u +%s)"
-          git checkout -b $TEST_BRANCH_NAME
+          # TEST_BRANCH_NAME="api-docs-update-TESTBRANCH-$(date -u +%s)"
+          # git checkout -b $TEST_BRANCH_NAME
+
+          # echo "TEST_BRANCH_NAME=${TEST_BRANCH_NAME}" >> $GITHUB_ENV
 
           git add ./content/api/
           git rm -r ./content/GENERATED/
+          # rm -rf ./content/GENERATED/
 
           LAST_COMMIT_MSG=$(git log -1 --grep="^docs" --format="%s" -- content/GENERATED/)
           LAST_HASH=$(expr "$LAST_COMMIT_MSG" : '.* \([0-9a-fA-F]*\)')
 
+          # echo "::set-output name=last-hash::${LAST_HASH}"
+
           GHA_HUGOIFY_LOG=$(cat .GHA-LOG)
-          echo -e "docs: update API docs to latest zkapputils (${LAST_HASH})\n" > .NEW_COMMIT_MSG
+
+          # echo "::set-output name=last-hash::${GHA_HUGOIFY_LOG}"
+
+          echo -e "docs: update API docs to latest zkapputils \(${LAST_HASH}\)\n" > .NEW_COMMIT_MSG
           echo -e "${GHA_HUGOIFY_LOG}\n" >> .NEW_COMMIT_MSG
           echo -e "NOTE: THIS COMMIT WAS AUTOMATICALLY GENERATED." >> .NEW_COMMIT_MSG
+
+          # echo "::set-output name=commit-message::docs: update API docs to latest zkapputils (${LAST_HASH})\n${GHA_HUGOIFY_LOG}\nNOTE: THIS COMMIT WAS AUTOMATICALLY GENERATED."
 
           git commit --file=.NEW_COMMIT_MSG
 
           git log -1 --pretty=fuller
 
+          # NEW_COMMIT_MSG=$(cat .NEW_COMMIT_MSG)
+          # NEW_COMMIT_MSG="${NEW_COMMIT_MSG//'%'/'%25'}"
+          # NEW_COMMIT_MSG="${NEW_COMMIT_MSG//$'\n'/'%0A'}"
+          # NEW_COMMIT_MSG="${NEW_COMMIT_MSG//$'\r'/'%0D'}"
+          # echo "NEW_COMMIT_MSG=$(echo ${NEW_COMMIT_MSG})" >> $GITHUB_ENV
+
           git status
 
           # git push origin $TEST_BRANCH_NAME
 
+      - name: Create pull request
+        id: create-pr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ github.token }}
+          # commit-message: ${{ env.NEW_COMMIT_MSG }}
+          committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          branch: api-docs-update
+          base: main
+          labels: |
+            api
+            automated pr
+          draft: true
+
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+        # run: |
+        #   echo "Generated commit message:"
+        #   echo -e ${{ env.NEW_COMMIT_MSG }}
       # - name: Create pull request
       #   uses: peter-evans/create-pull-request@v3
       #   with:
       #     token:
-
-
-          git push origin $TEST_BRANCH_NAME
 
       # - name: Get updated API doc files
       #   id: get-doc-files

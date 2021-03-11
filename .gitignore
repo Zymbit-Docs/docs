@@ -2,3 +2,7 @@ functions
 node_modules
 public
 resources
+
+# Utility files for CI purposes that should be ignored
+.GHA-LOG
+.NEW_COMMIT_MSG
