@@ -17,18 +17,6 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-      # - name: Setup Hugo
-      #   uses: peaceiris/actions-hugo@v2
-      #   with:
-      #     hugo-version: "0.79.1"
-      #     extended: true
-
-      # - name: Configure caching for npm
-      #   uses: c-hive/gha-npm-cache@v1
-
-      # - name: Install npm dependencies
-      #   run: npm install
-
       - name: Hugo-ify the API docs
         id: hugoify
         uses: zymbit-docs/actions-hugoify-api-docs@master
