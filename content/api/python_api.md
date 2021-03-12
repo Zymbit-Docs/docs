@@ -1,8 +1,8 @@
 ---
 title: Python API Documentation
 description: This is the official documentation for the official zkapputils Python API library.
-date: '2021-03-11T23:41:21'
-lastmod: '2021-03-11T23:41:21'
+date: '2021-03-12T00:46:15'
+lastmod: '2021-03-12T00:46:15'
 draft: false
 images: []
 type: docs
@@ -210,7 +210,7 @@ The Zymkey has two keys that can be used for locking/unlocking operations, desig
 
     bytearray
 
-# Undocumented Members
+## Undocumented Members
 
 This section of the demo contains all members within the zymkey module, including members that have not yet been documented.
 
@@ -457,4 +457,14 @@ The Zymkey has two keys that can be used for locking/unlocking operations, desig
 #### get_model_number()
 
 #### get_firmware_version()
+
+#### get_serial_number()
+
+#### set_battery_voltage_action(sleep=False, self_destruct=False)
+
+#### set_battery_voltage_threshold(threshold)
+
+#### set_cpu_temp_action(self_destruct=False)
+
+#### set_cpu_low_temp_threshold(threshold)
 
