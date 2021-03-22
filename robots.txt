@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zymbit-docs.github.io/sitemap.xml
+Sitemap: https://docs.zymbit.com/sitemap.xml
