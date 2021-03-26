@@ -1,4 +1,4 @@
-baseurl: "https://zymbit-docs.github.io/docs"
+baseurl: "https://docs.zymbit.com"
 disableAliases: true
 disableHugoGeneratorInject: true
 enableEmoji: true
