@@ -1,3 +1,37 @@
+---
+title: Cpp API Documentation
+description: This is the official documentation for the official zkapputils Cpp API library.
+date: '2021-03-26T19:41:21'
+lastmod: '2021-03-26T19:41:21'
+draft: false
+images: []
+type: docs
+layout: single
+weight: 0
+toc: true
+---
+
+<!--
+
+################################################################################
+
+WARNING: DO NOT EDIT THIS PAGE MANUALLY!
+
+################################################################################
+
+This template should only be used for automatically-generated API documentation.
+
+DO NOT edit the content of this page manually, as it will be overwritten
+the next time the API documentation is automatically updated.
+
+################################################################################
+
+WARNING: DO NOT EDIT THIS PAGE MANUALLY!
+
+################################################################################
+
+//-->
+
 # zkapputils C++ Documentation
 
 C++ interface to Zymkey Application Utilities Library.
