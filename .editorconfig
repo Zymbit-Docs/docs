@@ -16,3 +16,6 @@ indent_size = 2
 
 [*.{scss,html}]
 indent_size = 2
+
+[CNAME]
+insert_final_newline = false
