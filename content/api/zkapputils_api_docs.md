@@ -1,4 +1,36 @@
-# Intro to Zymkey Application Utilities {#mainpage}
+---
+title: Intro to Zymkey Application Utilities
+description: This is the official documentation for the official zkapputils Zkapputils API library.
+lastmod: '2021-03-26T21:10:24'
+draft: false
+images: []
+type: docs
+layout: single
+weight: 0
+toc: true
+---
+
+<!--
+
+################################################################################
+
+WARNING: DO NOT EDIT THIS PAGE MANUALLY!
+
+################################################################################
+
+This template should only be used for automatically-generated API documentation.
+
+DO NOT edit the content of this page manually, as it will be overwritten
+the next time the API documentation is automatically updated.
+
+################################################################################
+
+WARNING: DO NOT EDIT THIS PAGE MANUALLY!
+
+################################################################################
+
+//-->
+
 
 The Zymkey App Utils library provides an API which allows user space applications to incorporate Zymkey's cryptographic features, including:
 

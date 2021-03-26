@@ -1,8 +1,7 @@
 ---
 title: C API Documentation
 description: This is the official documentation for the official zkapputils C API library.
-date: '2021-03-26T19:41:21'
-lastmod: '2021-03-26T19:41:21'
+lastmod: '2021-03-26T21:10:24'
 draft: false
 images: []
 type: docs
@@ -32,7 +31,6 @@ WARNING: DO NOT EDIT THIS PAGE MANUALLY!
 
 //-->
 
-# zkapputils C Documentation
 
 C interface to Zymkey Application Utilities Library.
 
