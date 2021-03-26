@@ -1,7 +1,7 @@
 ---
 title: Intro to Zymkey Application Utilities
 description: This is the official documentation for the official zkapputils Zkapputils API library.
-lastmod: '2021-03-26T21:10:24'
+lastmod: '2021-03-26T21:30:06'
 draft: false
 images: []
 type: docs
