@@ -1,0 +1,19 @@
+extends: default
+
+rules:
+  document-start:
+    present: true
+  line-length:
+    max: 750
+    level: warning
+  indentation:
+    indent-sequences: true
+    spaces: consistent
+  empty-lines:
+    max: 1
+    level: warning
+  hyphens:
+    max-spaces-after: 1
+  colons:
+    max-spaces-before: 0
+    max-spaces-after: 10
