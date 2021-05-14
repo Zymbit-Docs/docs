@@ -1,4 +1,4 @@
-# Intro to Zymkey Application Utilities {#mainpage}
+# Welcome to Zymkey Application Utilities {#mainpage}
 
 The Zymkey App Utils library provides an API which allows user space applications to incorporate Zymkey's cryptographic features, including:
 
