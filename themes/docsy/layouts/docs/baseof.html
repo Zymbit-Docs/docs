@@ -10,19 +10,28 @@
     <div class="container-fluid td-outer">
       <div class="td-main">
         <div class="row flex-xl-nowrap">
-          <div class="col-12 col-md-4 col-xl-3 td-sidebar d-print-none">
+          <div class="col-12 col-md-4 col-xl-2 td-sidebar d-print-none">
             {{ partial "sidebar.html" . }}
           </div>
-          {{- if not (default false .Params.api_docs) -}}
-          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
-            {{ partial "toc.html" . }}
+          {{- if (default false .Params.api_docs) -}}
+          <div class="d-none d-xl-block col-xl-3 td-toc d-print-none" id="InlineTOC">
+            {{ .TableOfContents }}
           </div>
-          {{- end -}}
           <main class="col-12 col-md-8 col-xl-7 pl-md-5" role="main">
             {{ partial "version-banner.html" . }}
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
             {{ block "main" . }}{{ end }}
           </main>
+          {{- else -}}
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            {{ partial "toc.html" . }}
+          </div>
+          <main class="col-12 col-md-8 col-xl-8 pl-md-5" role="main">
+            {{ partial "version-banner.html" . }}
+            {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
+            {{ block "main" . }}{{ end }}
+          </main>
+          {{- end -}}
         </div>
       </div>
       {{ partial "footer.html" . }}

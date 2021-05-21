@@ -19,8 +19,14 @@ $h6-api-size: $font-size-base !default;
     }
 
     ul {
-      padding-left: 12px;
+      padding-left: 6px;
     }
+  }
+}
+
+nav#TableOfContents {
+  ul {
+    padding-left: 6px;
   }
 }
 
