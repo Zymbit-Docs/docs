@@ -1,4 +1,1 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://docs.zymbit.com/sitemap.xml
