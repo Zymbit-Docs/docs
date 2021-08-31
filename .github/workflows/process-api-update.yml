@@ -1,4 +1,4 @@
-name: process api docs update
+name: Process raw API docs update
 
 on:
   push:
@@ -9,17 +9,19 @@ on:
 
 jobs:
   check-unprocessed-docs:
+    name: Check for unprocessed raw XML-based API docs
     runs-on: ubuntu-20.04
     outputs:
       has_unprocessed: ${{ steps.check.outputs.has_unprocessed }}
 
     steps:
-      - name: Checkout the branch with updated API docs
+      - name: Checkout the branch with possible unprocessed XML-based API docs
         uses: actions/checkout@v2
         with:
           submodules: true
           fetch-depth: 0
-      - name: Check for unprocessed API docs files
+
+      - name: Check for unprocessed XML-based API docs files
         id: check
         run: |
           if [[ -d "./content/GENERATED/" ]]; then
@@ -33,86 +35,122 @@ jobs:
           fi
 
   prepare-hugo-environment:
+    name: Process raw XML-based API docs for Hugo
     runs-on: ubuntu-20.04
     needs: check-unprocessed-docs
     if: ${{ needs.check-unprocessed-docs.outputs.has_unprocessed == 'true' }}
+    outputs:
+      upstream_commit_hash: ${{ steps.prepare-commit.outputs.upstream_commit_hash }}
     steps:
-      - name: Checkout the branch with updated API docs
+      - name: Checkout the branch with unprocessed XML-based API docs
         uses: actions/checkout@v2
         with:
           submodules: true
           fetch-depth: 0
 
-      - name: Hugo-ify the API docs
+      - name: Process XML-based API docs for use with Hugo
         id: hugoify
         uses: zymbit-docs/actions-hugoify-api-docs@master
         with:
           outputPath: ./content/quickstart/api/
 
-      - name: Prepare processed files for commit
+      - name: Prepare processed API docs files for commit
         id: prepare-commit
         env:
           BRANCH: ${{ github.ref }}
         run: |
           BRANCH=${BRANCH##refs/heads/}
 
+          # We need to set a proper username and email before we can commit anything.
+          # In this case, we'll use the default username and email for GitHub Actions.
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
 
+          # Delete the old unprocessed API docs files from the branch. All of the files
+          # that should be processed with this action begin with `GENERATE_`.
           rm -r ./content/GENERATED/GENERATED_*
+
+          # Move the processed output to the API directory of the Hugo site.
           mv ./content/GENERATED/* ./content/quickstart/api/
+
+          # After we stage all of the new files that we have added to the API contents
+          # directory, we can remove any files git had in the `./content/GENERATED/` directory.
           git add ./content/quickstart/api/
           git rm -r ./content/GENERATED/
 
+          # Grab the short SHA hash of the commit that introduced the unprocessed XML-based
+          # API docs to the repo. We are going to use this in our automated commit message.
+          # If we manually pushed a change from the source repo, then we'll set
+          # the "hash" as `MANUALLY_PUSHED`. This step is intended to make it easy to
+          # match changes in the API docs with changes to the API library itself.
           LAST_COMMIT_MSG=$(git log -1 --grep="^docs" --format="%s" -- content/GENERATED/)
           LAST_HASH=$(expr "$LAST_COMMIT_MSG" : '.* \([0-9a-fA-F]*\)') || LAST_HASH="MANUALLY_PUSHED"
 
           echo -e "::debug::Value of LAST_HASH: ${LAST_HASH}"
 
-          # GHA_HUGOIFY_LOG=$(cat .GHA-LOG)
+          # Create a new commit message that we write to a temporary file.
           echo -e "docs: format latest zkapputils (${LAST_HASH}) docs\n" > .NEW_COMMIT_MSG
-          # echo -e "${GHA_HUGOIFY_LOG}\n" >> .NEW_COMMIT_MSG
           echo -e "NOTE: THIS COMMIT WAS AUTOMATICALLY GENERATED." >> .NEW_COMMIT_MSG
 
-          echo "UPSTREAM_COMMIT_HASH=${LAST_HASH}" >> $GITHUB_ENV
+          # In a future step, we will need the hash of the upstream commit that triggered
+          # this update, so we will write it to our job's environment variable.
+          # Docs: https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-an-environment-variable
+          # echo "UPSTREAM_COMMIT_HASH=${LAST_HASH}" >> $GITHUB_ENV
 
+          echo "::set-output name=upstream_commit_hash::${LAST_HASH}"
+
+          # Commit our staged files using the message we wrote to the temp file.
           git commit --file=.NEW_COMMIT_MSG
-
           echo -e "::debug::Git log for commit:\n$(git log -1 --pretty=fuller)"
-
           echo -e "::debug::Git status:\n$(git status)"
 
+          # Push our changes back to the branch where the unprocessed XML-based API
+          # docs were originally pushed.
           git push origin ${BRANCH}
 
-      - name: Install the latest GitHub CLI
-        if: ${{ github.ref == 'refs/heads/api-docs-update' }}
+  create-pull-request:
+    name: Create a pull request for changes in `api-docs-update`
+    runs-on: ubuntu-20.04
+    needs: prepare-hugo-environment
+
+    if: ${{ github.ref == 'refs/heads/api-docs-update' }}
+
+    env:
+      BRANCH: ${{ github.ref }}
+      UPSTREAM_COMMIT_HASH: ${{ needs.prepare-hugo-environment.outputs.upstream_commit_hash }}
+
+    steps:
+      - name: Install the latest GitHub CLI from apt repo
         run: |
           sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
           sudo apt-add-repository https://cli.github.com/packages
           sudo apt update
           sudo apt install -y gh
 
-      - name: Create pull request
-        if: ${{ github.ref == 'refs/heads/api-docs-update' }}
+      - name: Create PR for updated API docs branch
+        id: create-pr
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          UPSTREAM_COMMIT_HASH: ${{ env.UPSTREAM_COMMIT_HASH }}
-        id: create-pr
+          # UPSTREAM_COMMIT_HASH: ${{ env.UPSTREAM_COMMIT_HASH }}
         run: |
           gh config set prompt disabled
 
           echo -e "::debug::GitHub CLI auth status:\n$(gh auth status)"
 
-          # echo -e "The following files have been changed in this pull request:\n" > .NEW_PR_BODY
-          # cat .GHA-LOG >> .NEW_PR_BODY
+          # Create a basic pull request description that describes the changes.
           echo -e "This PR includes the following commits:\n" > .NEW_PR_BODY
           git log origin/main..HEAD --format='%s' --reverse >> .NEW_PR_BODY
           echo -e "\n NOTE: This pull request was automatically generated by a GitHub Action." >> .NEW_PR_BODY
 
+          # If we already have a pull request for this branch, we should just update
+          # the name of the pull request and add the new changes to the PR body.
           if gh pr list --state open | grep "api-docs-update" > /dev/null 2>&1; then
             gh pr edit api-docs-update \
               --title "Update API documentation to latest version (${UPSTREAM_COMMIT_HASH})" \
               --body "$(cat .NEW_PR_BODY)"
+
+          # If we don't yet have a pull request for this branch, we should use
+          # the GitHub CLI to create a new one.
           else
             gh pr create \
               --title "Update API documentation to latest version (${UPSTREAM_COMMIT_HASH})" \

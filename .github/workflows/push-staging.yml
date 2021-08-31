@@ -21,7 +21,7 @@ on:
       - gh-pages
   workflow_dispatch:
   workflow_run:
-    workflows: ["process api docs update"]
+    workflows: ["Process raw API docs update"]
     branches:
       - api-docs-update
       - api-docs-update**
