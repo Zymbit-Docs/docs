@@ -1,25 +1,37 @@
-name: push to staging
+name: Push branches to staging environment
 
 on:
   push:
     branches-ignore:
+      # We don't want to push to staging when there are changes to the main branch,
+      # because that branch will be deployed to the docs site.
       - main
+
+      # Don't trigger on pushes to `gh-pages` branch because that is an already-built static site.
       - gh-pages
+
+      # We don't want to trigger this when there are *pushes* to the `api-docs-update*`
+      # branches, as we need to do some pre-processing on these branches.
       - api-docs-update
       - api-docs-update**
     paths-ignore:
       - '.github/**'
   create:
+    # See the notes under `on.push.branches-ignore` for the rationale here.
     branches-ignore:
       - main
       - gh-pages
       - api-docs-update
       - api-docs-update**
   delete:
+    # See the notes under `on.push.branches-ignore` for the rationale here.
     branches-ignore:
       - main
       - gh-pages
   workflow_dispatch:
+
+  # After the `api-docs-update` branch is processed by the relevant workflow,
+  # THEN we should push the result to the staging environment.
   workflow_run:
     workflows: ["Process raw API docs update"]
     branches:
@@ -29,17 +41,8 @@ on:
       - completed
 
 jobs:
-  # debug_output:
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: Dump `github` context
-  #       env:
-  #         GITHUB_CONTEXT: ${{ toJSON(github) }}
-  #       run: |
-  #         echo "$GITHUB_CONTEXT" | jq 'del(. | .token)'
-
   get-trigger:
+    name: Determine how this workflow was triggered
     runs-on: ubuntu-latest
     outputs:
       workflow_trigger: ${{ steps.check-trigger.outputs.workflow_trigger }}
@@ -52,13 +55,20 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: |
+          # Check the GITHUB_CONTEXT env variable to determine the workflow trigger.
           TRIGGER_EVENT_NAME=$(echo "$GITHUB_CONTEXT" | jq --raw-output '.event_name')
           echo "::set-output name=workflow_trigger::$TRIGGER_EVENT_NAME"
 
           HEAD_BRANCH=''
+
+          # If this workflow was triggered by the completion of the API doc processing
+          # workflow, determine the branch that had the updates.
           if [[ "${TRIGGER_EVENT_NAME}" == "workflow_run" ]]; then
             HEAD_BRANCH=$(echo "$GITHUB_CONTEXT" | jq --raw-output --compact-output '.event.workflow_run.head_branch')
             echo "::set-output name=origin_triggered::false"
+
+          # If this workflow was triggered by a push to a branch, then we just have to work
+          # with the branch that triggered it.
           else
             echo "::set-output name=origin_triggered::true"
           fi
@@ -66,6 +76,7 @@ jobs:
 
 
   check-repo:
+    name: Check if already in a staging repo
     runs-on: ubuntu-latest
     outputs:
       is_staging: ${{ steps.check.outputs.is_staging }}
@@ -76,6 +87,7 @@ jobs:
         run: echo "::set-output name=is_staging::${{ contains(github.repository, '-staging') }}"
 
   mirror-branch:
+    name: Mirror the updated branch to staging site
     runs-on: ubuntu-latest
     needs: [check-repo, get-trigger]
     if: ${{ github.event_name != 'delete' && needs.check-repo.outputs.is_staging == 'false' }}
@@ -85,7 +97,7 @@ jobs:
       ORIGIN_BRANCH: ${{ needs.get-trigger.outputs.head_branch }}
 
     steps:
-      - name: load ssh private key
+      - name: Load deploy key for staging repo
         env:
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_DEPLOY_KEY }}
         run: |
@@ -118,8 +130,9 @@ jobs:
           fetch-depth: 0
           ref: ${{ needs.get-trigger.outputs.head_branch }}
 
-      - name: configure mirror
+      - name: Prepare commit for staging repo
         env:
+          # The URL of the staging repo should be set in the `MIRROR_REPO` environment var.
           MIRROR_REPO: ${{ secrets.MIRROR_REPO }}
         run: |
           if [[ "${ORIGIN_TRIGGERED}" == 'false' ]]; then
@@ -148,15 +161,17 @@ jobs:
           ./git-filter-repo --force --path ".github" --invert-paths
 
           # Replace the workflows on our current branch with the workflows
-          # from the `main` branch of the mirror. We do want these
+          # from the `main` branch of the staging repo. We do want these
           # to run whenever we push the new branch.
           cp -R ${GITHUB_WORKSPACE}/upstream-staging/.github .
           git add .github
-          git commit -m "add upstream workflows to branch"
+          # git commit -m "add `main` branch workflows to branch"
+          git commit --amend --no-edit
 
           git push --force staging ${BRANCH_REF}
 
   delete-branch:
+    name: Delete an obsolete branch from staging site
     runs-on: ubuntu-latest
     needs: check-repo
     env:
@@ -164,7 +179,7 @@ jobs:
     if: ${{ github.event_name == 'delete' && needs.check-repo.outputs.is_staging == 'false' }}
 
     steps:
-      - name: load ssh private key
+      - name: Load deploy key for staging repo
         env:
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_DEPLOY_KEY }}
         run: |
@@ -179,7 +194,7 @@ jobs:
       # Checkout repository under $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
 
-      - name: delete mirrored branch
+      - name: Delete branch from staging repo
         env:
           MIRROR_REPO: ${{ secrets.MIRROR_REPO }}
         run: |

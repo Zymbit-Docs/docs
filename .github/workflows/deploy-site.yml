@@ -1,29 +1,21 @@
-# This is a basic workflow to help you get started with Actions
+name: Deploy docs site via GitHub Pages
 
-name: deploy hugo site to github pages
-
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches:
       - main
     paths-ignore:
       - '.github/**'
-  # pull_request:
-  #   branches:
-  #     - main
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
   deploy:
+    name: Generate static docs site using Hugo
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repository under $GITHUB_WORKSPACE
-      - uses: actions/checkout@v2
+      - name: Checkout branch
+        uses: actions/checkout@v2
         with:
           submodules: true
           fetch-depth: 0
@@ -34,12 +26,13 @@ jobs:
           hugo-version: "0.79.1"
           extended: true
 
-      - uses: c-hive/gha-npm-cache@v1
+      - name: Configure npm caching
+        uses: c-hive/gha-npm-cache@v1
 
       - name: Install npm dependencies
         run: npm install
 
-      - name: Build static site
+      - name: Build static site with Hugo
         run: hugo --gc --minify
 
       - name: Set truncated SHA hash
