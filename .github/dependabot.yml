@@ -30,3 +30,5 @@ updates:
     schedule:
       interval: monthly
     open-pull-requests-limit: 3
+    ignore:
+      - dependency-name: themes/docsy/assets/vendor/bootstrap
