@@ -4,9 +4,11 @@ For more zymbit api documentation (Python/C/C++) visit: <a href=https://docs.zym
 import zymkey
 
 #Create a master seed and return the bip39 mnemonic
-master_key = bytearray(&quot;3xampleM@sterK3Y&quot;, 'utf-8')
+master_key_generator = bytearray(&quot;3xampleM@sterK3Y&quot;, 'utf-8')
 wallet_name = &quot;MyExampleWallet&quot;
-master_slot, bip39_mnemonic = zymkey.client.gen_wallet_master_seed(&quot;nistp256&quot;, master_key, wallet_name, True)
+#Use the bip39 recovery strategy to tell zymkey to return a mnemonic. Takes a base 64 encoded string for a bip39 passphrase. Can be empty string.
+use_bip39_recovery = zymkey.RecoveryStrategyBip39(&quot;aGk=&quot;)
+master_slot, bip39_mnemonic = zymkey.client.gen_wallet_master_seed(&quot;secp256k1&quot;, master_key_generator, wallet_name, use_bip39_recovery)
 print(&quot;Master Slot:%s\nBip39 mnemonic (write this down!):\n%s&quot; % (master_slot, bip39_mnemonic))
 
 #Generate a child key from the master seed
@@ -17,7 +19,7 @@ print(&quot;Child Slot:%s\nChild Public Key:%s&quot; % (child_slot, child_pub_ke
 
 #Get node address of the child key slot
 node_addr = zymkey.client.get_wallet_node_addr(child_slot)
-print(&quot;Node address:'%s' Wallet Name:'%s' Master Slot:'%s'&quot; % (node_addr[0], node_addr[1], node_addr[2]))
+print(&quot;Node index:'%s' Wallet Name:'%s' Master Slot:'%s'&quot; % (node_addr[0], node_addr[1], node_addr[2]))
 
 #Get the key slot of the child key using our previous master key slot and wallet name
 key_slot = zymkey.client.get_wallet_key_slot(node_addr[0],&quot;MyExampleWallet&quot;, master_slot)
@@ -27,18 +29,20 @@ print(&quot;Key Slot:%s&quot; % (key_slot,))
 zymkey.client.remove_key(master_slot)
 
 #Restore the master seed with our previous written down bip39 mnemonic!
-restored_seed_slot = zymkey.client.restore_wallet_master_seed_from_bip39_mnemonic(&quot;nistp256&quot;, bytearray(&quot;3xampleM@sterK3Y&quot;, 'utf-8'), &quot;MyExampleWallet&quot;, bip39_mnemonic)
+restored_seed_slot = zymkey.client.restore_wallet_master_seed_from_bip39_mnemonic(&quot;nistp256&quot;, bytearray(&quot;3xampleM@sterK3Y&quot;, 'utf-8'), &quot;MyExampleWallet&quot;, &quot;aGk=&quot;, bip39_mnemonic)
 print(&quot;Restored slot:%s&quot; % (restored_seed_slot,))
 
 #Clean up the example slots
 zymkey.client.remove_key(master_slot)
 zymkey.client.remove_key(child_slot)
-</code></pre><h2 id=creating-a-master-seed-new-wallet>Creating a master seed (new wallet)</h2><p>The hsm6 can have multiple master seeds be stored in its key store, allowing for management of a variety of keyrings to work with. Master seeds and its derivations are additionally backed by EC curve cryptography for an extra layer of encryption/security. The ec curves currently supported are nistp256, secp256r1, secp256k1. The bip39 mnemonic is a 24 word string that can be used to restore or recreate a previous generated master seed. Note that a wallet name is also unique! There can not be multiple wallets with the same name.</p><p><strong>Make sure to write the bip39 mnemonic and store it somewhere safe!</strong>
-<strong>The master seed is the key to its kingdom, so don&rsquo;t give it out to just anybody!</strong></p><blockquote><p><code>gen_wallet_master_seed(string ec_key_type, bytearray master_key, string wallet_name, bool return_bip39_str)</code></p><p><strong>Returns the allocated master seed slot and the bip39 mnemonic if the bool flag is set True</strong></p></blockquote><pre><code>#Create a master seed and return the bip39 mnemonic
-master_key = bytearray(&quot;3xampleM@sterK3Y&quot;, 'utf-8')
+</code></pre><h2 id=creating-a-master-seed-new-wallet>Creating a master seed (new wallet)</h2><p>The hsm6 can have multiple master seeds be stored in its key store, allowing for management of a variety of keyrings to work with. Master seeds and its derivations are additionally backed by EC curve cryptography for an extra layer of encryption/security. The ec curves currently supported are nistp256, secp256r1, secp256k1. The master_key_generator is used to generate the bip32 master seed, can be empty string. The RecoveryStrategy parameter dictates what recovery algorithm to return when generating the master seed. If the base RecoveryStrategy is used or none is specified, then no mnemonic will be returned. Current supported recovery strategies are none, bip39. This example generates a master seed with the RecoveryStrategyBip39. The bip39 mnemonic is a 24 word string that can be used to restore or recreate a previous generated master seed. Note that a wallet name is also unique! There can not be multiple wallets with the same name.</p><p><strong>Make sure to write the bip39 mnemonic and store it somewhere safe!</strong>
+<strong>The master seed is the key to its kingdom, so don&rsquo;t give it out to just anybody!</strong></p><blockquote><p><code>gen_wallet_master_seed (string ec_key_type, bytearray master_key_generator, string wallet_name, recovery_strategy=&lt;zymkey.RecoveryStrategy object>)</code></p><p><strong>Returns the allocated master seed slot and the bip39 mnemonic if the bool flag is set True</strong></p></blockquote><pre><code>#Create a master seed and return the bip39 mnemonic
+master_key_generator = bytearray(&quot;3xampleM@sterK3Y&quot;, 'utf-8')
 wallet_name = &quot;MyExampleWallet&quot;
-master_slot, bip39_mnemonic = zymkey.client.gen_wallet_master_seed(&quot;nistp256&quot;, master_key, wallet_name, True)
-print(&quot;Master Slot:%s\nBip39 mnemonic (write this down!):\n%s&quot; % (master_slot, bip39_mnemonic))
+#Use the bip39 recovery strategy to tell zymkey to return a mnemonic. Takes a base 64 encoded string for a bip39 passphrase. Can be empty string.
+use_bip39_recovery = zymkey.RecoveryStrategyBip39(&quot;aGk=&quot;)
+master_slot, bip39_mnemonic = zymkey.client.gen_wallet_master_seed(&quot;secp256k1&quot;, master_key_generator, wallet_name, use_bip39_recovery)
+print(&quot;Master Slot:%s\nBip39 mnemonic (write this down!):\n%s&quot; % (master_slot, bip39_mnemonic)
 </code></pre><h2 id=generating-a-child-key>Generating a child key</h2><p>Children key pairs are generated from <strong>both</strong> the slot and index of another key pair. Bip32 has two possible derivations <strong>hardened</strong> and <strong>non-hardened</strong>. Non-hardened key pairs can be linked back to its parent key pair with just its public key. Hardened key pairs can not be linked back to its parent key. So for best security practices, it&rsquo;s advised to generate hardened key pairs wherever possible.</p><blockquote><p><code>gen_wallet_child_key(int slot, int index, bool is_hardened)</code></p><p><strong>Returns allocated slot on success</strong></p></blockquote><pre><code>#Generate a child key from the master seed
 child_slot = zymkey.client.gen_wallet_child_key(master_slot, 3, True)
 child_pub_key = zymkey.client.get_public_key(child_slot)
@@ -54,11 +58,11 @@ print(&quot;Node address:'%s' Wallet Name:'%s' Master Slot:'%s'&quot; % (node_ad
 key_slot = zymkey.client.get_wallet_key_slot(node_addr[0],&quot;MyExampleWallet&quot;, master_slot)
 print(&quot;Key Slot:%s&quot; % (key_slot,))
 
-</code></pre><h1 id=restore-a-wallet-master-seed-from-a-bip39-mnemonic>Restore a wallet master seed from a BIP39 mnemonic</h1><p>With the Bip39 mnemonic sentence, master private key, and wallet name of a previously generated master seed, a user can restore a lost master seed or make a copy of the master seed on a different device.
-<strong>Keep in mind that this only restores the master seed, the children nodes will have to be manually generated again.</strong></p><blockquote><p><code>restore_wallet_master_seed_from_bip39_mnemonic(string ec_key_type, bytearray master_key, string wallet_name, string bip39_mnemonic)</code></p><p><strong>Returns the allocated key slot on success</strong></p></blockquote><pre><code>#Remove the master seed
+</code></pre><h1 id=restore-a-wallet-master-seed-from-a-bip39-mnemonic>Restore a wallet master seed from a BIP39 mnemonic</h1><p>With the Bip39 mnemonic sentence, bip39 passphrase, master generatorkey, and wallet name of a previously generated master seed, a user can restore a lost master seed or make a copy of the master seed on a different device.
+<strong>Keep in mind that this only restores the master seed, the children nodes will have to be manually generated again.</strong></p><blockquote><p><code>restore_wallet_master_seed_from_bip39_mnemonic(string ec_key_type, bytearray master_key, string wallet_name, string b64_bip39_passphrase, string bip39_mnemonic)</code></p><p><strong>Returns the allocated key slot on success</strong></p></blockquote><pre><code>#Remove the master seed
 zymkey.client.remove_key(master_slot)
 
 #Restore the master seed with our previous written down bip39 mnemonic!
-restored_seed_slot = zymkey.client.restore_wallet_master_seed_from_bip39_mnemonic(&quot;nistp256&quot;, bytearray(&quot;3xampleM@sterK3Y&quot;, 'utf-8'), &quot;MyExampleWallet&quot;, bip39_mnemonic)
+restored_seed_slot = zymkey.client.restore_wallet_master_seed_from_bip39_mnemonic(&quot;nistp256&quot;, bytearray(&quot;3xampleM@sterK3Y&quot;, 'utf-8'), &quot;MyExampleWallet&quot;, &quot;aGk=&quot;, bip39_mnemonic)
 print(&quot;Restored slot:%s&quot; % (restored_seed_slot,))
 </code></pre><h2 id=troubleshooting>Troubleshooting</h2><ul><li><a href=https://docs.zymbit.com/quickstart/faq/hsm6/#troubleshooting>HSM6 Troubleshooting FAQ</a></li><li><a href=https://community.zymbit.com/>Community Forum</a></li></ul><div class="text-muted mt-5 pt-3 border-top"></div></div></main></div></div><footer class="bg-dark py-5 row d-print-none"><div class="container-fluid mx-sm-5"><div class=row><div class="col-6 col-sm-4 text-xs-center order-sm-2"></div><div class="col-6 col-sm-4 text-right text-xs-center order-sm-3"></div><div class="col-12 col-sm-4 text-center py-2 order-sm-2"></div></div></div></footer></div><script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js integrity=sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js integrity=sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF crossorigin=anonymous></script><script src=/js/main.min.2ba2da7d2fe4be755f96e1f7760bcc4a769c4b9369d2356a8872050735635419.js integrity="sha256-K6LafS/kvnVfluH3dgvMSnacS5Np0jVqiHIFBzVjVBk=" crossorigin=anonymous></script></body></html>
