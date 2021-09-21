@@ -75,7 +75,7 @@ In this Getting Started Guide we describe how to install your Zymkey 4i to a Ras
 
 ## 0. Hardware & Connectors
 
-![Zymkey Hardware](../ZK4-top-bottom.png)
+![Zymkey Hardware](ZK4-top-bottom.png)
 
 ---
 
@@ -91,7 +91,7 @@ Use a **high quality 3V CR1025** coincell battery such as the [Panasonic - CR-10
 
 **IMPORTANT:** Note the correct polarity with **+ve  facing upwards!!**
 
-![Battery Install](../ZK4-battery-install.png)
+![Battery Install](ZK4-battery-install.png)
 
 
 ---
@@ -102,9 +102,9 @@ Use a **high quality 3V CR1025** coincell battery such as the [Panasonic - CR-10
 
 **IMPORTANT:** Installing your hardware correctly is important to avoid destroying your SBC or Zymkey. Be sure to follow the images below to ensure the first 10 GPIO pins are correctly aligned with the Zymkey header. Note: the coin cell battery should be facing up.
 
-<img src="../ZK4-hw-install-1.png" alt="Zymkey RPi Hardware Install" width="50%"><img src="../ZK4-hw-install-nvidia-1.png" alt="Zymkey Jetson Hardware Install" width="50%">
+<img src="ZK4-hw-install-1.png" alt="Zymkey RPi Hardware Install" width="50%"><img src="ZK4-hw-install-nvidia-1.png" alt="Zymkey Jetson Hardware Install" width="50%">
 
-<img src="../ZK4-hw-install-2.png" alt="Zymkey RPi Hardware Install 2" width="50%"><img src="../ZK4-hw-install-nvidia-2.png" alt="Zymkey Jetson Hardware Install 2" width="50%">
+<img src="ZK4-hw-install-2.png" alt="Zymkey RPi Hardware Install 2" width="50%"><img src="ZK4-hw-install-nvidia-2.png" alt="Zymkey Jetson Hardware Install 2" width="50%">
 
 
 Fit the Zymkey 4i with LED and battery holder facing upwards. Be sure the black connector is properly aligned with the first 10 GPIO pins and that pressed firmly down onto the header. If misaligned, this could cause damage to the Zymkey and/or your Raspberry Pi. Your Zymkey should fit relatively snug and maintain a tight interference fit around the pins.
@@ -112,7 +112,7 @@ Fit the Zymkey 4i with LED and battery holder facing upwards. Be sure the black 
 Zymkey occupies 10 pins on the GPIO header. It can also be used with other GPIO devices attached, or other i2c devices attached. See options later for correct address range and use of IO pins.
 
 
-![Zymkey Pinout](../ZK4-pinout.png)
+![Zymkey Pinout](ZK4-pinout.png)
 
 
 
@@ -129,7 +129,7 @@ Zymkey occupies 10 pins on the GPIO header. It can also be used with other GPIO 
 
 **Option (RPi):** Using Zymkey with another Pi Plate fitted.
 
-![Zymkey Pi Plate Fitted](../ZK4-pi-fitted.png)
+![Zymkey Pi Plate Fitted](ZK4-pi-fitted.png)
 
 
 
@@ -137,7 +137,7 @@ Zymkey occupies 10 pins on the GPIO header. It can also be used with other GPIO 
 
 Finally, power up the device and you will see a blue LED blinking rapidly and consistently (5 blinks per second)
 
-![Zymkey LED 5 per sec](../ZK-LED-power.gif)
+![Zymkey LED 5 per sec](ZK-LED-power.gif)
 
 
 ---
@@ -224,7 +224,7 @@ Zymkey supports two operating modes:
 When the software installation has completed, reboot your device. After the reboot has completed, the Pi/ Jetson will perform an operation that will temporarily bind the Zymkey to your SBC. Once the Zymkey is bound to the SBC, the Zymkey&#39;s blue LED should blink slowly - once every 3 seconds - to indicate that the binding is complete.
 
 
-![Zymkey LED once per 3 sec](../ZK-LED-bound.gif)
+![Zymkey LED once per 3 sec](ZK-LED-bound.gif)
 
 
 
@@ -281,21 +281,21 @@ Do not cut the Lock Tab yet!
 
 #### Cut using sharp diagonal cutter pliers {#cut-using-sharp-diagonal-cutter-pliers}
 
-![Zymkey Cut Tab 1](../ZK-cut-tab-1.png)
+![Zymkey Cut Tab 1](ZK-cut-tab-1.png)
 
 
 ---
 
 #### Cut along guide notches {#cut-along-guide-notches}
 
-![Zymkey Cut Tab 2](../ZK-cut-tab-2.png)
+![Zymkey Cut Tab 2](ZK-cut-tab-2.png)
 
 
 ---
 
 #### Finished cut should be flush to edge. {#finished-cut-should-be-flush-to-edge-}
 
-![Zymkey Cut Tab 3](../ZK-cut-tab-3.png)
+![Zymkey Cut Tab 3](ZK-cut-tab-3.png)
 
 
 #### Once you have successfully cut the lock tab and have rebooted your system, the blink pattern will change to 3 rapid blinks once every 3 seconds to indicate that Zymkey has bound to the host in production mode. {#once-you-have-successfully-cut-the-lock-tab-and-have-rebooted-your-system-the-blink-pattern-will-change-to-3-rapid-blinks-once-every-3-seconds-to-indicate-that-zymkey-has-bound-to-the-host-in-production-mode-}
