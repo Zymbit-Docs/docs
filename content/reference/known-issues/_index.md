@@ -1,5 +1,5 @@
 ---
-title: "Dev Team: Known Issues"
+title: "Known Issues"
 linkTitle: "Known Issues"
 icon: "fas fa-caret-right"
 description: ""
