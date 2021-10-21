@@ -1,5 +1,5 @@
 ---
-title: "Welcome to Zymbit Documentation"
+title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
 lastmod: 2020-10-06T08:47:36+00:00

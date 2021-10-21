@@ -43,3 +43,7 @@ editPage: true
 
 options:
   flexSearch: true
+
+ui:
+  sidebar_menu_foldable: true
+  ul_show: 1
