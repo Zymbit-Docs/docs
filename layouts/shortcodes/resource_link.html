@@ -25,17 +25,17 @@
 {{ end -}}
 
 <div class="resource-link">
-    <span class="block-label">Resources</span>
-    <a href="{{ $rel_url -}}">
-    {{ $link_text := $page_title -}}
-    {{ if $anchor_title -}}
-    <div class="parent-page-link">{{ $page_title -}}</div>
-    {{ $link_text = $anchor_title -}}
-    {{ end -}}
-    <h4 class="resource-link-title">{{ $link_text -}}</h4>
+<span class="block-label">Resources</span>
+<a href="{{ $rel_url -}}">
+{{ $link_text := $page_title -}}
+{{ if $anchor_title -}}
+<div class="parent-page-link">{{ $page_title -}}</div>
+{{ $link_text = $anchor_title -}}
+{{ end -}}
+<h4 class="resource-link-title">{{ $link_text -}}</h4>
 
-    <div class="resource-link-description">{{ .Inner | markdownify | safeHTML | truncate 250 -}}</div>
+<div class="resource-link-description">{{ .Inner | markdownify | safeHTML | truncate 250 -}}</div>
 
-    <span class="resource-link-read">Read article <i class="fas fa-chevron-double-right read-more-arrow"></i></span>
-    </a>
+<span class="resource-link-read">Read article <i class="fas fa-chevron-double-right read-more-arrow"></i></span>
+</a>
 </div>
