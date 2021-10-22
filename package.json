@@ -22,7 +22,7 @@
     "dev:build": "hugo --cleanDestinationDir",
     "dev:build:watch": "run-s \"dev:build -- --watch\"",
     "dev:build:poll": "run-s \"dev:build -- --watch --poll 10s\"",
-    "dev:webserver": "browser-sync start --no-open --server --watch --port 1313 --serveStatic public/",
+    "dev:webserver": "browser-sync start --no-open --server --watch --files public/ --port 1313 --serveStatic public/",
     "lint": "npm run -s lint:markdown",
     "lint:markdown": "markdownlint *.md content/**/*.md",
     "release": "standard-version",
