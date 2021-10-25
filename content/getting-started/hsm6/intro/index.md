@@ -1,6 +1,6 @@
 ---
-title : "Getting Started with HSM6"
-linkTitle: "HSM6"
+title: Getting Started with HSM6
+linkTitle: Intro
 description: ""
 date: ""
 lastmod: ""
