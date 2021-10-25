@@ -36,6 +36,7 @@ markup:
     extensions:
       linkify: false
       table: true
+      taskList: true
     renderer:
       unsafe: true
   highlight:

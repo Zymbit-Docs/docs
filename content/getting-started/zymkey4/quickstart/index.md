@@ -1,5 +1,6 @@
 ---
-title: Getting Started with Zymkey4
+title: Zymkey4 Quickstart
+linkTitle: Quickstart
 description: ""
 date: ""
 lastmod: ""
