@@ -254,7 +254,7 @@
 
     @include media-breakpoint-up(xl) {
         flex: 0 0 20%;
-        max-width: 20%;
+        max-width: calc(min(20%, 22rem));
     }
 
 
@@ -267,7 +267,7 @@
     transition: max-width 0.25s ease-in-out;
     &:hover {
         // width: max-content;
-        max-width: 24rem;
+        max-width: calc(max(25%, 24rem));
         // width: fit-content(24rem);
     }
 
