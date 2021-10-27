@@ -1,3 +1,5 @@
+*.sublime-workspace
+
 functions
 node_modules
 public

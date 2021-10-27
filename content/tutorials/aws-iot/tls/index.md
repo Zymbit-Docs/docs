@@ -6,8 +6,6 @@ date: ""
 lastmod: ""
 draft: false
 images: []
-type: "docs"
-layout: "single"
 toc: true
 ---
 

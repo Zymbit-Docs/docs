@@ -1,15 +1,14 @@
 ---
-title: "Welcome to Zymbit Documentation"
+title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
 lastmod: 2020-10-06T08:47:36+00:00
 draft: false
 images: []
-type: "docs"
-layout: "single"
 weight: -1000
+type: docs
+layout: single
+# url: "/"
 ---
-
------
 
 Welcome to Zymbit’s Documentation Site. Here, you will find all the resources you need to learn about and to use all Zymbit products.

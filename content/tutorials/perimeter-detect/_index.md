@@ -1,12 +1,11 @@
 ---
 title: "Perimeter Detect"
-icon: "fas fa-caret-right"
+icon: ""
 description: ""
 date: ""
 lastmod: ""
 draft: false
 images: []
-type: "docs"
 layout: "single"
 ---
 

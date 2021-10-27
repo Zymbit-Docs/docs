@@ -5,7 +5,6 @@ description: Python interface module to Zymkey Application Utilities Library.
 lastmod:
 draft: false
 images: []
-type: docs
 api_docs: true
 layout: single
 weight: 0
