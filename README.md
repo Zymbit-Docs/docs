@@ -71,3 +71,40 @@ npm run dev:webserver
 # than watching for file changes, you can replace `npm run dev:build:watch` with:
 npm run dev:build:poll
 ```
+
+## Theme development
+
+The theme used in this site is [Zymdocsy](https://github.com/Zymbit-Docs/zymdocsy), a fork of Google's Docsy theme for Hugo. However, rather than using git submodules as Docsy does, we use git-subtree to handle the theme as well as its vendored dependencies.
+
+> **NOTE:** As a subtree best-practice, any changes that affect both the `themes/zymdocsy` directory and source files elsewhere should be committed separately to keep Zymdocsy' history as clean as possible.
+
+You can split out the commits affecting Zymdocsy in this repo and push those changes to the `zymdocsy` remote:
+
+```bash
+git subtree push --prefix themes/zymdocsy \
+    --rejoin --squash -m "chore: push current zymdocsy theme to origin" \
+    git@github.com:Zymbit-Docs/zymdocsy.git main
+```
+
+If changes are made directly to the `zymdocsy` upstream repo (for example, `zymbit-docs/zymdocsy:main` is rebased on top of `google/docsy:master`), they can be merged back in to the repo with the opposite command:
+
+```bash
+git subtree pull --prefix themes/zymdocsy \
+    --squash -m "chore: update zymdocsy from upstream" \
+    git@github.com:Zymbit-Docs/zymdocsy.git main
+```
+
+Optionally, you can also add `zymdocsy` to your local repository as a remote, and then replace the GitHub URL in the above commands with the remote's name:
+
+```bash
+git remote add zymdocsy git@github.com:Zymbit-Docs/zymdocsy.git
+
+# Replace `git@github.com:Zymbit-Docs/zymdocsy.git` with `zymdocsy`:
+git subtree pull --prefix themes/zymdocsy \
+    --squash -m "chore: update zymdocsy from upstream" \
+    zymdocsy main
+```
+
+For a better understanding of `git-subtree`, review the `man` page and its associated examples: [git-subtree(1)](https://manpages.debian.org/testing/git-man/git-subtree.1.en.html)
+
+For a more thorough explanation of how git subtrees function in this repository, view the [reference document in the meta-docs](meta/admin/subtrees.md) directory.
