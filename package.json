@@ -40,7 +40,7 @@
     "clipboard": "^2.0",
     "eslint": "^8.0",
     "flexsearch": "^0.6",
-    "highlight.js": "^10.7",
+    "highlight.js": "^11.3",
     "hugo-bin": "^0.76.1",
     "hugo-extended": "^0.88.1-patch1",
     "instant.page": "^5.1",
