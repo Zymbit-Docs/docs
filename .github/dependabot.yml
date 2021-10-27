@@ -24,11 +24,3 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
-
-  - package-ecosystem: gitsubmodule
-    directory: "/"
-    schedule:
-      interval: monthly
-    open-pull-requests-limit: 3
-    ignore:
-      - dependency-name: themes/docsy/assets/vendor/bootstrap
