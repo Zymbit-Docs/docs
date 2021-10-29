@@ -1,5 +1,5 @@
 ---
-title: "FAQ & Troubleshooting"
+title: "GENERAL FAQ & Troubleshooting"
 linkTitle: "GENERAL"
 lastmod:
 draft: false
