@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting
+title: "Troubleshooting and FAQ"
 draft: false
 images: []
 layout: "single"
