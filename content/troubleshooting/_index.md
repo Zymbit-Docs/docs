@@ -1,8 +1,8 @@
 ---
-title: Troubleshooting
+title: "Troubleshooting and FAQ"
 draft: false
 images: []
 layout: "single"
-weight: 100
+weight: 20
 headless: true
 ---

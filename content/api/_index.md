@@ -6,8 +6,10 @@ description: ""
 date: ""
 lastmod: ""
 draft: false
+weight: 10
 images: []
-layout: "single"
+headless: true
+# layout: "single"
 ---
 
 

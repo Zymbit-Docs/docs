@@ -1,7 +1,7 @@
 ---
-title: "Technical Reference"
+title: "CAD Files"
 description: ""
 draft: false
 images: []
-weight: 1000
+weight: 20
 ---
