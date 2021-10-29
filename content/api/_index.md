@@ -8,7 +8,7 @@ lastmod: ""
 draft: false
 weight: 10
 images: []
-headless: true
+# headless: true
 # layout: "single"
 ---
 
