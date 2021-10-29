@@ -1,12 +1,12 @@
 ---
-title: Getting Started with HSM6
-linkTitle: Intro
+title: Getting Started with HSM4
+linkTitle: Quickstart
 description: ""
 date: ""
 lastmod: ""
 draft: false
 images: []
-weight: -660
+weight: -670
 toc: true
 ---
 
@@ -19,11 +19,11 @@ toc: true
     * **For Pi users:** if the Red Power LED on the Pi is not illuminated this means the supply voltage is inadequate.
     * More info [here](https://docs.zymbit.com/reference/power-quality/).
 ----------
-## 1. Install the HSM6
+## 1. Install the HSM4
 
 Fit your HSM onto the PiZero HAT (Hardware Attached on Top). The connector plugs into the pins on the board.
 
-![HSM6 Pi HAT Installation](HSM-install-to-hat.png)
+![HSM4 Pi HAT Installation](HSM-install-to-hat.png)
 
 ----------
 ## 2. Install Battery
@@ -35,7 +35,7 @@ Your PiZero HAT can be fitted with a **3V CR2032  coincell**. This battery shoul
 
 **IMPORTANT:** Note the correct polarity with **+ve  facing upwards !!**
 
-![HSM6 Battery Installation](HSM-battery-install.jpg)
+![HSM4 Battery Installation](HSM-battery-install.jpg)
  
 ##### **Optional Battery Connector (Alternative)**
 **Caution**: Ensure you select the right connector type-- Molex 51021-0200-B (1.25mm Pitch). You can purchase the battery [here](https://www.amazon.com/CR2032-Battery-51021-0200-B-1-25mm-Connector/dp/B07TS54R42/ref=b2b_nav_d_bia_2/133-6806428-1529144?_encoding=UTF8&pd_rd_i=B07TS54R42&pd_rd_r=d30b0d19-eeab-4b5c-a2ee-0ceef542a1a2&pd_rd_w=ZXBat&pd_rd_wg=U87Gu&pf_rd_p=4a93c781-cfc8-46bb-85fa-dc304a3c96a9&pf_rd_r=91SXE6T1J2V2ZYD7C6FD&psc=1&refRID=91SXE6T1J2V2ZYD7C6FD).
@@ -83,7 +83,7 @@ Would you like the ARM I2C interface to be enabled? select  (Yes), enter, enter
 
 Your I2C bus is now on and ready to talk to the HSM.
 
-The default I2C address for HSM is 0x30. If needed, you can [change the I2C Address](https://docs.zymbit.com/quickstart/faq/hsm6/#q-how-do-i-set-an-alternative-i2c-address) after following steps 5 and 6.
+The default I2C address for HSM is 0x30. If needed, you can [change the I2C Address](https://docs.zymbit.com/quickstart/faq/hsm4/#q-how-do-i-set-an-alternative-i2c-address) after following steps 5 and 6.
 
 ----------
 
@@ -107,9 +107,8 @@ When the software installation has completed, reboot. After rebooting, the Pi/ J
 Your HSM is now in Developer Mode. The binding is temporary and the HSM can be moved to another host device and the binding process repeated. Now is the time to prototype. Do all development work with the HSM in this mode. You can safely test the self-destruct features here. A self-destruct in this mode will stop all HSM functionality until the host is rebooted. Only in production mode will the HSM actually self-destruct.
 
 Before moving on to Production mode, ensure your application is running correctly. Explore our HSM resources for help: 
-
-* [Perimeter Detect](https://docs.zymbit.com/tutorials/perimeter-detect/hsm6)
-* [Encrypting your root file system](https://docs.zymbit.com/tutorials/encrypt-rfs/hsm6)
+* [Perimeter Detect](https://docs.zymbit.com/tutorials/perimeter-detect/hsm4)
+* [Encrypting your root file system](https://docs.zymbit.com/tutorials/encrypt-rfs/hsm4)
 * [Encrypting & decrypting sensor data on disk](https://docs.zymbit.com/tutorials/sensor-data/)
 * [Using the Real Time Clock](https://docs.zymbit.com/reference/real-time-clock/)
 * [Zymbit APIs](https://docs.zymbit.com/quickstart/api/).
@@ -307,16 +306,17 @@ After bind locking the HSM, if using the perimeter detect features, prime your p
 4.    If the Perimeter Detect Event returns clear, then you can ‘arm your system’ as you require by setting Set Perimeter Event Actions to “none”, “notify” or “selfdestruct” (You can only do this once!).
 5.  **Your system is now armed.**
 
+
 ## <span class="markdown-h2 include-toc">Additional Resources</span>
 
 <h3 id="troubleshooting">Troubleshooting</h3>
 <ul>
-<li><a href="https://docs.zymbit.com/quickstart/faq/hsm6/#troubleshooting">HSM6 Troubleshooting FAQ</a></li>
+<li><a href="https://docs.zymbit.com/quickstart/faq/hsm4/#troubleshooting">HSM4 Troubleshooting FAQ</a></li>
 <li><a href="https://community.zymbit.com/">Community Forum</a></li>
 </ul>
 
 <h3 id="perimeter-detect">Perimeter Detect</h3>
-<p>Refer to <a href="https://docs.zymbit.com/tutorials/perimeter-detect/hsm6">Using Perimeter Detect</a></p>
+<p>Refer to <a href="https://docs.zymbit.com/tutorials/perimeter-detect/hsm4">Using Perimeter Detect</a></p>
 
 <h3 id="api-documentation">API Documentation</h3>
 <p>API&#39;s are available for Python, C, C++
@@ -329,8 +329,7 @@ After bind locking the HSM, if using the perimeter detect features, prime your p
 <p>More Resources:</p>
 <ul>
 <li><a href="https://community.zymbit.com/">Community Forum</a></li>
-<li><a href="https://docs.zymbit.com/tutorials/encrypt-rfs/hsm6">LUKS filesystem encryption</a></li>
+<li><a href="https://docs.zymbit.com/tutorials/encrypt-rfs/hsm4">LUKS filesystem encryption</a></li>
 <li><a href="https://docs.zymbit.com/tutorials/sensor-data/">Encrypting &amp; decrypting sensor data on disk</a></li>
 <li><a href="https://docs.zymbit.com/reference/real-time-clock/">Real Time Clock</a></li>
 </ul>
-
