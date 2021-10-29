@@ -1,5 +1,5 @@
 ---
-title: "Zymkey4 FAQ & Troubleshooting"
+title: "ZYMKEY4 FAQ & Troubleshooting"
 linkTitle: "ZYMKEY4"
 lastmod:
 draft: false
