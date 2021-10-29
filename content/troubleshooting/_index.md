@@ -1,8 +1,7 @@
 ---
-title: "Troubleshooting and FAQ"
+title: "FAQ and Troubleshooting"
 draft: false
 images: []
-layout: "single"
 weight: 20
-headless: true
+# headless: true
 ---

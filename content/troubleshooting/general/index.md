@@ -1,6 +1,6 @@
 ---
-title: "FAQ & Troubleshooting"
-linkTitle: "GENERAL"
+title: "General FAQ & Troubleshooting"
+linkTitle: "General"
 lastmod:
 draft: false
 images: []
