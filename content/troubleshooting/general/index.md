@@ -4,12 +4,22 @@ linkTitle: "GENERAL"
 lastmod:
 draft: false
 images: []
-api_docs: true
-weight: 4
+# api_docs: true
+weight: 10
 toc: true
 ---
 
 -----
+
+### **Known Issues**
+
+
+#### HD Wallet
+Current Hierarchical Deterministic (HD) Wallet includes secp2561r1 (NIST P-256) and secp256k1 (ECC Koblitz P-256) support. ed25519 (Edwards Curve) is not currently supported (coming soon).
+
+#### CPU Scaling Governor
+<p><a href="https://docs.zymbit.com/reference/known-issues/cpu-scaling/">CPU Scaling Governor</a></p>
+
 
 ### **Products**
 
