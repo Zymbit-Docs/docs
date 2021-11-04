@@ -166,6 +166,6 @@ The quickest way to get started is to see the Zymkey's various features at work 
 
 Now you're ready to start developing with Zymkey4 and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
 
-{{< resource_link "getting-started/production-mode" >}}
+{{< resource_link "getting-started/zymkey4/production-mode" >}}
 To permanently bind the Zymkey to a host board, generates a unique Device ID by measuring certain attributes of the host and the Zymkey itself to associate the two devices.
 {{< /resource_link >}}
