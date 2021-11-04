@@ -19,7 +19,7 @@ Current Hierarchical Deterministic (HD) Wallet includes secp2561r1 (NIST P-256) 
 #### CPU Scaling Governor
 We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. This sometimes causes the zymkey to be put into a odd state or return failures from operations that get optimized out by the governor. The raspberry pi sets the **scaling governor** to be "**ondemand**" by default. We recommend switching this mode to "**performance**" to get the best out of the zymkey. Details:
 
-{{< resource_link "reference/known-issues/cpu-scaling/" >}}
+{{< resource_link "reference/cpu-scaling/" >}}
 How to set cpu governor to performance.
 {{< /resource_link >}}
 
