@@ -4,7 +4,6 @@ linkTitle: "General"
 lastmod:
 draft: false
 images: []
-# api_docs: true
 weight: 10
 toc: true
 ---
@@ -20,15 +19,17 @@ Current Hierarchical Deterministic (HD) Wallet includes secp2561r1 (NIST P-256) 
 #### CPU Scaling Governor
 We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. This sometimes causes the zymkey to be put into a odd state or return failures from operations that get optimized out by the governor. The raspberry pi sets the **scaling governor** to be "**ondemand**" by default. We recommend switching this mode to "**performance**" to get the best out of the zymkey. Details:
 
-<p><a href="https://docs.zymbit.com/reference/known-issues/cpu-scaling/">CPU Scaling Governor</a></p>
-
+{{< resource_link "reference/known-issues/cpu-scaling/" >}}
+How to set cpu governor to performance.
+{{< /resource_link >}}
 
 #### Unattended-upgrades
-When encrypting your rootfs, we highly recommend turning off unattended-upgrades prior to the encryption process. In some cases, primarily with Ubuntu 20.04, the update-initramfs process may fail and leave the system unable to boot.
+When encrypting your rootfs, we highly recommend turning off unattended-upgrades prior to the encryption process. In some cases primarily with Ubuntu 20.04, during an update/upgrade after encryption, the `update-initramfs` process may fail and leave the system unable to boot.
 
 To mitigate this issue, remove the service unattended-upgrades:
 
 `systemctl stop unattended-upgrades`
+
 `systemctl disable unattended-upgrades`
 
 
