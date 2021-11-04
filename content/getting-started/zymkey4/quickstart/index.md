@@ -126,7 +126,7 @@ The default I2C address for Zymkey is 0x30. If this conflicts with another devic
 {{% callout notice %}}
 The default mode for the cpu scaling governor is ondemand. There have been some issues with the interaction between the zymkey and the I2C bus, when the governor is set to ondemand. We highly recommend to switching the governor to performance to get the most out of the zymkey.
 
-{{< resource_link "reference/known-issues/cpu-scaling/" >}}
+{{< resource_link "reference/cpu-scaling/" >}}
 How to set cpu governor to performance.
 {{< /resource_link >}}
 
