@@ -23,7 +23,7 @@ AWS IoT requires an IoT device to register and activate a certificate with AWS b
 
 ## Prerequisites:
 
-* Follow the [Getting Started guide](https://docs.zymbit.com/quickstart/getting-started/) first.
+* Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first.
 
 ---
 
@@ -447,15 +447,15 @@ You can now test your JITR setup by doing a TLS connection with your AWS IoT end
 
 The TLS connection should go through, and you should see something like this in your command line:
 
-![curl|690x122](../jitr-curl.png)
+![curl|690x122](jitr-curl.png)
 
 On first connection TLS connection, the TLS handshake should finish, but you should receive empty response from server:
 
-![response_empty](../jitr-empty.png)
+![response_empty](jitr-empty.png)
 
 On second TLS connection, you will see that the certifiacte is registered and you will get a correct response:
 
-![response_forbidden](../jitr-forbidden.png)
+![response_forbidden](jitr-forbidden.png)
 
 You can also check under your certifiactes in your AWS IoT console to see that the new certifciacte is indeed registered. Getting a non-empty response indicates that the certificate is indeed registerd on you AWS account. However, even though the certificate is activated, it does not have a valid policy granting it permission to publish data to your AWS IoT account, which results in the **forbidden** response. Fortunately you can always **modify the jitr lambda function** to attach an **appropriate policy to the certificate upon registration/activation** if you wish to do so.
 
