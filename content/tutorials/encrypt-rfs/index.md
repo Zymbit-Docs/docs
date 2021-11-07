@@ -1,17 +1,15 @@
 ---
-title : "Encrypting Root File System with ZYMKEY4"
-linkTitle: "ZYMKEY4"
+title : "Encrypting Root File System with Zymbit Security Modules"
+linkTitle: "Encrypt Root File System"
 description: ""
 date: ""
 lastmod: ""
 draft: false
 images: []
-layout: "single"
-weight: -690
 toc: true
 ---
 
-![image1](../erfs1.png)
+![image1](erfs1.png)
 
 #### Prerequisites
 
@@ -24,7 +22,7 @@ Nvidia Jetson:
 
 ## **BACKGROUND** 
 
-To skip the background information and start encrypting your RFS, click [here](https://docs.zymbit.com/tutorials/encrypt-rfs/zymkey4/#how-to-encrypt).
+To skip the background information and start encrypting your RFS, click [here](https://docs.zymbit.com/tutorials/encrypt-rfs/index.md/#how-to-encrypt).
 
 ### WHY ENCRYPT?
 
@@ -62,9 +60,9 @@ dm-crypt has a single Master Key that is used to encrypt / decrypt data in/out o
 A more practical solution is to have a hierarchical  key management setup  in which users/services are given User Keys that are used to release the MasterKey.  User Keys can be easily changed and revoked, without having to re-encrypt the underlying data block.
 The management of such a hirearchical key managers is the role of LUKS.
 
-In this post we show how to use Zymkey to lock a User Key, that is subsequently used to unlock the Master Key and provide access to the Root File System. If you'd like to learn more about LUKS see the References at the bottom of this post.
+In this post we show how to use Zymbit Security Module to lock a User Key, that is subsequently used to unlock the Master Key and provide access to the Root File System. If you'd like to learn more about LUKS see the References at the bottom of this post.
 
-![image2](../erfs2.png)
+![image2](erfs2.png)
 
 --------
 
@@ -81,39 +79,39 @@ The natural inclination would be to encrypt the file system using LUKS on dm-cry
 
 
 
-### Securing LUKS User Key with Zymkey Security Module.
+### Securing LUKS User Key with Zymbit Security Module.
 
-![image1](../erfs1.png)
+![image1](erfs1.png)
 
 
 
-Zymkey provides a general "locking" service whereby a block of plaintext data is encrypted and signed.
+The Zymbit Security Module provides a general "locking" service whereby a block of plaintext data is encrypted and signed.
 
-When used with LUKS, the User Key is sent to the Zymkey to be locked (encrypted and signed) when the file system is created. When the system boots and needs to decrypt the root file system, the locked LUKS key is "unlocked" (signature verified and contents decrypted) and presented to dm-crypt. If the key was unlocked successfully, the boot process continues normally. Here is the boot sequence with a LUKS/dm-crypt filesystem where the key is protected by Zymkey:
+When used with LUKS, the User Key is sent to the Zymbit Security Module to be locked (encrypted and signed) when the file system is created. When the system boots and needs to decrypt the root file system, the locked LUKS key is "unlocked" (signature verified and contents decrypted) and presented to dm-crypt. If the key was unlocked successfully, the boot process continues normally. Here is the boot sequence with a LUKS/dm-crypt filesystem where the key is protected by Zymbit Security Module:
 
 1. The kernel initializes initramfs
-2. initramfs presents the locked LUKS key to Zymkey
-3. Zymkey validates the signature and decrypts the key*
+2. initramfs presents the locked LUKS key to Zymbit Security Module
+3. Zymbit Security Module validates the signature and decrypts the key*
 4. The decrypted key is presented to LUKS and the root file system is then decrypted
 
-*requires that Zymkey operational status is "secure"
+*requires that Zymbit Security Module operational status is "secure"
 
 
 ------
-_Zymkey Security Module fitted to Raspberry Pi and Jetson_
+_ZYMKEY4 fitted to Raspberry Pi and Jetson_
 
-<p><img src="../erfs3.png" alt="rpi" width="50%"><img src="../jetson3.png" alt="jetson" width="50%"></p>
+<p><img src="erfs3.png" alt="rpi" width="50%"><img src="jetson3.png" alt="jetson" width="50%"></p>
 
-**Zymkey Authenticates Host System Before Unlocking LUKS Key**
+**Zymbit Security Module Authenticates Host System Before Unlocking LUKS Key**
 
-One of the key features of Zymkey is to generate a unique Identity (ID) for the host system, based upon a fingerprint that measures specific system components. This fingerprinting process is used to "bind" together a specific Zymkey (root of trust, key store, crypto services), a specific host computer and a specific SD card. Once bound, these components form a permanent and immutable ID of the host system.
+One of the key features of Zymbit Security Module is to generate a unique Identity (ID) for the host system, based upon a fingerprint that measures specific system components. This fingerprinting process is used to "bind" together a specific Zymbit Security Module (root of trust, key store, crypto services), a specific host computer and a specific SD card. Once bound, these components form a permanent and immutable ID of the host system.
 
-Each time the host device boots, and at random intervals thereafter, the Zymkey rechecks the ID fingerprint. If any of the system components have changed the fingerprint changes and the system is deemed to have been compromised, authentication fails and all security services are shut down.
+Each time the host device boots, and at random intervals thereafter, the Zymbit Security Module rechecks the ID fingerprint. If any of the system components have changed the fingerprint changes and the system is deemed to have been compromised, authentication fails and all security services are shut down.
 
-Using this ID / Authentication feature, Zymkey can be used to protect LUKS User Keys in unattended applications, where it might be easy to remove and copy SD card content. (Zymkey also has other physical security features which are also used to lock/enable security services)
+Using this ID / Authentication feature, the Zymbit Security Module can be used to protect LUKS User Keys in unattended applications, where it might be easy to remove and copy SD card content. (The Zymbit Security Module also has other physical security features which are also used to lock/enable security services)
 
 
-![image4](../erfs4.png)
+![image4](erfs4.png)
 
 ----------
 
@@ -142,7 +140,7 @@ Converting the existing root file system on the SD card still requires an extern
 2. Copy the original root file system files to the external device to form a temporary file system
 3. Boot to the temporary file system. Once booted, the temporary file system will:
 * Create a LUKS key
-* Lock the LUKS key with Zymkey
+* Lock the LUKS key with Zymbit Security Module
 * Create a LUKS volume on the original root partition. The standard Jetson installation creates up to 14 partitions. In most cases, the new partition will be mmcblk0p13 or mmcblk0p15.
 * Create an ext4 partition on the LUKS volume on the original root partition
 * Untar the root file system tarball into the converted partition
@@ -182,7 +180,7 @@ The existing root file system can be migrated to an external LUKS encrypted USB 
 ### BUILDING YOUR LUKS ENCRYPTED RFS
 
 #### Prerequisites
-Make sure you have the ZYMKEY4 software suite already running and operational as well as bound. Instructions [here](https://docs.zymbit.com/getting-started/zymkey4).
+Make sure you have the Zymbit Security Module software suite already running and operational as well as bound. Instructions [here](https://docs.zymbit.com/getting-started).
 
 ##### NOTE for RPi users: For the CM4/IO Module with eMMC, additional steps are needed due to the fact that the USB 2.0 ports are disabled by default:
 1. Upgrade the bootloader version: Jan. 16 2021
@@ -241,7 +239,7 @@ The defaults for Jetson are:
 
 Please note that the new root file system should be at least a little larger in size than the original root partition
 
-Running this script takes around 30-40 minutes. The ZYMKEY4's LED flashes rapidly until the process has completed.
+Running this script takes around 30-40 minutes. The Zymbit Security Module's LED flashes rapidly until the process has completed.
 
 ----------
 ### INTEGRATING LUKS INTO VOLUME MANUFACTURING WORKFLOW
