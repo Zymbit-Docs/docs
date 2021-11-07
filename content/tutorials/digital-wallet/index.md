@@ -10,10 +10,10 @@ toc: true
 ---
 
 >All code snippets written in this article is written using python3.
-For more zymbit api documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/quickstart/api/)
+For more zymbit api documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
 
 ## **What is a digital wallet?**
-The digital wallet provided by the hsm6 is a BIP32/39/44 HD wallet, or Hierarchical Deterministic wallet. A HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
+The digital wallet provided by the HSM6 is a BIP32/39/44 HD wallet, or Hierarchical Deterministic wallet. A HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
 
 ![digital wallet graphic final](digital-wallet-graphic.png)
 
@@ -23,7 +23,7 @@ To make digital transactions, a user needs to have a public/private key pair. Th
 ## **Managing your digital wallet and security awareness**
 The master seed is where all new key pairs will be derived from. Each new child key pair is created based off a existing parent key pair in the wallet. If a child key pair ever becomes 'compromised', it can't be tracked up the parent nodes. However this does warrant security awareness, that it will compromise all children key pairs derived from the stolen key pair.
 
-**For security reasons, the user is expected to keep track of all the key pairs via either the node address on the wallet or the slot it was allocated to on the hsm6.**
+**For security reasons, the user is expected to keep track of all the key pairs via either the node address on the wallet or the slot it was allocated to on the HSM6.**
 >It's better to lose a branch than a whole tree, so keep your master seed safe and locked away!
 
 ## **Using Digital Wallet:**
@@ -69,7 +69,7 @@ zymkey.client.remove_key(child_slot)
 ```
 
 ## Creating a master seed (new wallet)
-The hsm6 can have multiple master seeds be stored in its key store, allowing for management of a variety of keyrings to work with. Master seeds and its derivations are additionally backed by EC curve cryptography for an extra layer of encryption/security. The ec curves currently supported are nistp256, secp256r1, secp256k1. The master_key_generator is used to generate the bip32 master seed, can be empty string. The RecoveryStrategy parameter dictates what recovery algorithm to return when generating the master seed. If the base RecoveryStrategy is used or none is specified, then no mnemonic will be returned. Current supported recovery strategies are none, bip39. This example generates a master seed with the RecoveryStrategyBip39. The bip39 mnemonic is a 24 word string that can be used to restore or recreate a previous generated master seed. Note that a wallet name is also unique! There can not be multiple wallets with the same name.
+The HSM6 can have multiple master seeds be stored in its key store, allowing for management of a variety of keyrings to work with. Master seeds and its derivations are additionally backed by EC curve cryptography for an extra layer of encryption/security. The ec curves currently supported are nistp256, secp256r1, secp256k1. The master_key_generator is used to generate the bip32 master seed, can be empty string. The RecoveryStrategy parameter dictates what recovery algorithm to return when generating the master seed. If the base RecoveryStrategy is used or none is specified, then no mnemonic will be returned. Current supported recovery strategies are none, bip39. This example generates a master seed with the RecoveryStrategyBip39. The bip39 mnemonic is a 24 word string that can be used to restore or recreate a previous generated master seed. Note that a wallet name is also unique! There can not be multiple wallets with the same name.
 
 **Make sure to write the bip39 mnemonic and store it somewhere safe!**
 **The master seed is the key to its kingdom, so don't give it out to just anybody!**
@@ -125,7 +125,7 @@ print("Node address:'%s' Wallet Name:'%s' Master Slot:'%s'" % (node_addr[0], nod
 ```
 
 ## Get a key slot from a wallet node address
-If the user knows the wallet node index string and either the master seed slot or the wallet name it belongs to, they can get the hsm6 key slot with this function. Both master seed slot and wallet name are optional arguments, but if neither are filled, then it will throw an exception.
+If the user knows the wallet node index string and either the master seed slot or the wallet name it belongs to, they can get the HSM6 key slot with this function. Both master seed slot and wallet name are optional arguments, but if neither are filled, then it will throw an exception.
 
 >`get_wallet_key_slot(string node_index, string wallet_name, int master_slot)`
 >
@@ -154,8 +154,8 @@ restored_seed_slot = zymkey.client.restore_wallet_master_seed_from_bip39_mnemoni
 print("Restored slot:%s" % (restored_seed_slot,))
 ```
 
-<h2 id="troubleshooting">Troubleshooting</h2>
-<ul>
-<li><a href="https://docs.zymbit.com/quickstart/faq/hsm6/#troubleshooting">HSM6 Troubleshooting FAQ</a></li>
-<li><a href="https://community.zymbit.com/">Community Forum</a></li>
-</ul>
+## Troubleshooting
+[HSM6 Troubleshooting](https://docs.zymbit.com/troubleshooting/hsm6/)  
+[Community](https://community.zymbit.com/)
+
+
