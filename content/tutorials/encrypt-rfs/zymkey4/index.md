@@ -1,5 +1,5 @@
 ---
-title : "Encrypting Root File System with Zymkey4"
+title : "Encrypting Root File System with ZYMKEY4"
 linkTitle: "ZYMKEY4"
 description: ""
 date: ""
@@ -182,7 +182,7 @@ The existing root file system can be migrated to an external LUKS encrypted USB 
 ### BUILDING YOUR LUKS ENCRYPTED RFS
 
 #### Prerequisites
-Make sure you have the Zymkey software suite already running and operational as well as insuring that your Zymkey is bound. Instructions [here](https://docs.zymbit.com/quickstart/getting-started/zymkey4).
+Make sure you have the ZYMKEY4 software suite already running and operational as well as bound. Instructions [here](https://docs.zymbit.com/getting-started/zymkey4).
 
 ##### NOTE for RPi users: For the CM4/IO Module with eMMC, additional steps are needed due to the fact that the USB 2.0 ports are disabled by default:
 1. Upgrade the bootloader version: Jan. 16 2021
@@ -241,7 +241,7 @@ The defaults for Jetson are:
 
 Please note that the new root file system should be at least a little larger in size than the original root partition
 
-Running this script takes around 30-40 minutes. The Zymkey's LED flashes rapidly until the process has completed.
+Running this script takes around 30-40 minutes. The ZYMKEY4's LED flashes rapidly until the process has completed.
 
 ----------
 ### INTEGRATING LUKS INTO VOLUME MANUFACTURING WORKFLOW
@@ -262,8 +262,6 @@ If you require support in developing a high volume manufacturing encryption work
 
 * [GitLab - LUKS and Cryptsetup - open-source disk encryption](https://gitlab.com/cryptsetup/cryptsetup)
 
-<h2 id="troubleshooting">TROUBLESHOOTING</h2>
-<ul>
-<li><a href="https://docs.zymbit.com/quickstart/faq/zymkey4/#troubleshooting">Zymkey Troubleshooting FAQ</a></li>
-<li><a href="https://community.zymbit.com/">Community Forum</a></li>
-</ul>
+## Troubleshooting
+[HSM6 Troubleshooting](https://docs.zymbit.com/troubleshooting/)  
+[Community](https://community.zymbit.com/)
