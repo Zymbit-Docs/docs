@@ -22,7 +22,7 @@ Nvidia Jetson:
 
 ## **BACKGROUND** 
 
-To skip the background information and start encrypting your RFS, click [here](https://docs.zymbit.com/tutorials/encrypt-rfs/index.md/#how-to-encrypt).
+To skip the background information and start encrypting your RFS, click [here](#how-to-encrypt).
 
 ### WHY ENCRYPT?
 
