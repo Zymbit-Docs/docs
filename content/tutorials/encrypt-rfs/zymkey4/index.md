@@ -263,5 +263,5 @@ If you require support in developing a high volume manufacturing encryption work
 * [GitLab - LUKS and Cryptsetup - open-source disk encryption](https://gitlab.com/cryptsetup/cryptsetup)
 
 ## Troubleshooting
-[HSM6 Troubleshooting](https://docs.zymbit.com/troubleshooting/)  
+[Troubleshooting](https://docs.zymbit.com/troubleshooting/)  
 [Community](https://community.zymbit.com/)
