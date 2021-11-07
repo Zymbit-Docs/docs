@@ -17,11 +17,11 @@ While Zymkey makes it trivial to verify data signed by A_Specific_Zymkey on the 
 import zymkey #encrypt data then sign data = bytearray('hello world!') encrypted_payload = zymkey.client.lock(data) payload_sig = zymkey.client.sign(encrypted_payload) #verify signature matches encrypted data try: if zymkey.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/tutorials/aws-iot/verify-sigs/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="tutorials">
-<meta property="article:modified_time" content="2021-10-18T23:30:10-04:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2021-11-07T14:19:14-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="How to Verify Signatures against Public Key on AWS and Other Devices">
 <meta itemprop=description content="Introduction While Zymkey makes it trivial to verify data signed by A_Specific_Zymkey on the same A_Specific_Zymkey, verifying the signature of data on other devices using the exportable public key requires a little more explanation. Below is a simple code snippet to show how to verify the signature of locked data using Zymkey&rsquo;s Python API.
 import zymkey #encrypt data then sign data = bytearray('hello world!') encrypted_payload = zymkey.client.lock(data) payload_sig = zymkey.client.sign(encrypted_payload) #verify signature matches encrypted data try: if zymkey.">
-<meta itemprop=dateModified content="2021-10-18T23:30:10-04:00">
+<meta itemprop=dateModified content="2021-11-07T14:19:14-08:00">
 <meta itemprop=wordCount content="2866"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
@@ -372,7 +372,7 @@ import zymkey #encrypt data then sign data = bytearray('hello world!') encrypted
 <p>All these examples will be done via Python using the Python-ECDSA library, a future post will extend all these functions to C/C++.</p>
 <h2 id=prerequisites>Prerequisites</h2>
 <ol>
-<li>Follow the <a href=https://docs.zymbit.com/quickstart/getting-started/>Getting Started guide</a> first, installing all baseline software.</li>
+<li>Follow the <a href=https://docs.zymbit.com/getting-started/>Getting Started guide</a> first, installing all baseline software.</li>
 <li>If you wish to try Signature validation on AWS, you need a <a href=https://docs.zymbit.com/tutorials/aws-iot/tls/>valid device certificate</a> attached to your AWS account.</li>
 <li>The device certificate needs to have a policy attached giving it permission to publish data.</li>
 </ol>

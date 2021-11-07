@@ -17,10 +17,10 @@ Overview …">
 <meta property="og:description" content="How to automatically generate a client certificate, register your own CA, and authenticate a device to establish a TLS connection to AWS IoT  Overview AWS IoT requires an IoT device to register and activate a certificate with AWS before communicating. For large scale deployments, AWS provides an automated process called Just-In-Time-Registration. This allows a user to register a Certificate Authority with AWS so that upon a device&rsquo;s first TLS connection to AWS servers, if the device certificate was signed by this Certificate Authority, the certificate will be quickly activated by a lambda-function and be ready to use.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/tutorials/aws-iot/jitr/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="tutorials">
-<meta property="article:modified_time" content="2021-10-18T23:30:10-04:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2021-11-07T14:19:14-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="AWS IoT - Just in Time Registration of Client Certificates using Lambda functions">
 <meta itemprop=description content="How to automatically generate a client certificate, register your own CA, and authenticate a device to establish a TLS connection to AWS IoT  Overview AWS IoT requires an IoT device to register and activate a certificate with AWS before communicating. For large scale deployments, AWS provides an automated process called Just-In-Time-Registration. This allows a user to register a Certificate Authority with AWS so that upon a device&rsquo;s first TLS connection to AWS servers, if the device certificate was signed by this Certificate Authority, the certificate will be quickly activated by a lambda-function and be ready to use.">
-<meta itemprop=dateModified content="2021-10-18T23:30:10-04:00">
+<meta itemprop=dateModified content="2021-11-07T14:19:14-08:00">
 <meta itemprop=wordCount content="2390"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
@@ -361,7 +361,7 @@ Overview …">
 <hr>
 <h2 id=prerequisites>Prerequisites:</h2>
 <ul>
-<li>Follow the <a href=https://docs.zymbit.com/quickstart/getting-started/>Getting Started guide</a> first.</li>
+<li>Follow the <a href=https://docs.zymbit.com/getting-started/>Getting Started guide</a> first.</li>
 </ul>
 <hr>
 <h2 id=programmatic-setup>Programmatic Setup</h2>
@@ -740,11 +740,11 @@ The creation of an AWS lambda function through python scripts is a little more i
 </li>
 </ol>
 <p>The TLS connection should go through, and you should see something like this in your command line:</p>
-<p><img src=../jitr-curl.png alt=curl|690x122></p>
+<p><img src=jitr-curl.png alt=curl|690x122></p>
 <p>On first connection TLS connection, the TLS handshake should finish, but you should receive empty response from server:</p>
-<p><img src=../jitr-empty.png alt=response_empty></p>
+<p><img src=jitr-empty.png alt=response_empty></p>
 <p>On second TLS connection, you will see that the certifiacte is registered and you will get a correct response:</p>
-<p><img src=../jitr-forbidden.png alt=response_forbidden></p>
+<p><img src=jitr-forbidden.png alt=response_forbidden></p>
 <p>You can also check under your certifiactes in your AWS IoT console to see that the new certifciacte is indeed registered. Getting a non-empty response indicates that the certificate is indeed registerd on you AWS account. However, even though the certificate is activated, it does not have a valid policy granting it permission to publish data to your AWS IoT account, which results in the <strong>forbidden</strong> response. Fortunately you can always <strong>modify the jitr lambda function</strong> to attach an <strong>appropriate policy to the certificate upon registration/activation</strong> if you wish to do so.</p>
 </details>
 </div>

@@ -17,12 +17,12 @@ If you are just getting started with HSM you may want to start by encrypting som
 Encrypting data on disk prevents a bad actor from imaging your SD card and gaining access to sensitive data that is being stored in the field.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/tutorials/sensor-data/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="tutorials">
-<meta property="article:modified_time" content="2021-10-18T23:30:10-04:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2021-11-07T14:19:14-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="Encrypting & Decrypting Sensor Data on Disk">
 <meta itemprop=description content="Why do this? If you are just getting started with HSM you may want to start by encrypting some data to disk. This would be useful if you are collecting data to be read/analyzed at later time; and you do not want to store your data ‘in the clear’.
 Encrypting data on disk prevents a bad actor from imaging your SD card and gaining access to sensitive data that is being stored in the field.">
-<meta itemprop=dateModified content="2021-10-18T23:30:10-04:00">
-<meta itemprop=wordCount content="823"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=dateModified content="2021-11-07T14:19:14-08:00">
+<meta itemprop=wordCount content="821"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="Encrypting & Decrypting Sensor Data on Disk">
@@ -310,6 +310,7 @@ Encrypting data on disk prevents a bad actor from imaging your SD card and gaini
 <li><a href=#what-you-will-need>What you will need</a></li>
 <li><a href=#locking-data>Locking Data</a></li>
 <li><a href=#unlocking-data>Unlocking Data</a></li>
+<li><a href=#troubleshooting>Troubleshooting</a></li>
 </ul>
 </nav></div>
 </aside><main class="col-12 col-md-8 col-xl-7 pl-md-5" role=main>
@@ -333,7 +334,7 @@ Encrypting data on disk prevents a bad actor from imaging your SD card and gaini
 <h2 id=encrypting-data-blobs>Encrypting Data Blobs</h2>
 <p>The process we describe here can also be used more generally to encrypt binary large objects, or ‘data blobs’</p>
 <h2 id=what-you-will-need>What you will need</h2>
-<p>If you have not already setup and bound your HSM please visit the <a href=https://docs.zymbit.com/quickstart/getting-started/>Getting Started</a> page.</p>
+<p>If you have not already setup and bound your HSM please visit the <a href=https://docs.zymbit.com/getting-started/>Getting Started</a> page.</p>
 <p>We will use temperature data from a DS18B20 OneWire probe. We will encrypt the data to disk using the HSM python package, and then decrypt in a different session. For the purpose of this tutorial I will not be going over the circuit setup and one-wire configuration. That is adequately covered <a href=https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware>here. </a> If you have questions however, we are happy to help!</p>
 <p>The process is very simple:</p>
 <ol>
@@ -475,10 +476,9 @@ decrypted_file.close()
 action=data, key=temperature, tags.unit=c, tags.sensor_id=ds18b20:280000061543fd,timestamp=2016-12-13 22:55:03, value= 19.6
 action=data, key=temperature, tags.unit=c, tags.sensor_id=ds18b20:28000006156310,timestamp=2016-12-13 22:55:04, value= 19.3
 action=data, key=temperature, tags.unit=c, tags.sensor_id=ds18b20:28000006e10735,
-</code></pre><h2 id=troubleshooting>TROUBLESHOOTING</h2>
-<ul>
-<li><a href=https://docs.zymbit.com/quickstart/faq/>Troubleshooting FAQ</a></li>
-<li><a href=https://community.zymbit.com/>Community Forum</a></li>
+</code></pre><h2 id=troubleshooting>Troubleshooting</h2>
+<p><a href=https://docs.zymbit.com/troubleshooting/>Troubleshooting</a><br>
+<a href=https://community.zymbit.com/>Community</a></p>
 </ul>
 </div>
 </main>
