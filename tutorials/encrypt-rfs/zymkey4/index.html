@@ -9,7 +9,7 @@
 <link rel=icon type=image/png href=/favicons/favicon-32x32.png sizes=32x32>
 <link rel=icon type=image/png href=/favicons/android-chrome-192x192.png sizes=192x192>
 <link rel=icon type=image/png href=/favicons/android-chrome-512x512.png sizes=512x512>
-<title>Encrypting Root File System with Zymkey4 | </title>
+<title>Encrypting Root File System with ZYMKEY4 | </title>
 <meta name=description content="
 Prerequisites
 Raspberry Pi:
@@ -20,24 +20,24 @@ Nvidia Jetson:
 
 Jetson Xavier NX or Nano
 Jetpack 4.4 …">
-<meta property="og:title" content="Encrypting Root File System with Zymkey4">
+<meta property="og:title" content="Encrypting Root File System with ZYMKEY4">
 <meta property="og:description" content="Prerequisites Raspberry Pi:
  Raspbian: Buster (32 or 64 bit); or Ubuntu 18 or 20 (32 or 64 bit)  Nvidia Jetson:
  Jetson Xavier NX or Nano Jetpack 4.4 or earlier  BACKGROUND To skip the background information and start encrypting your RFS, click here.
 WHY ENCRYPT? There are many reasons to encrypt the Root File System (RFS), from keeping WiFi credentials immutable to keeping proprietary software and sensitive data from being cloned.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/tutorials/encrypt-rfs/zymkey4/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="tutorials">
-<meta property="article:modified_time" content="2021-10-18T23:30:10-04:00"><meta property="og:site_name" content="Zymbit Documentation">
-<meta itemprop=name content="Encrypting Root File System with Zymkey4">
+<meta property="article:modified_time" content="2021-11-07T10:35:35-08:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta itemprop=name content="Encrypting Root File System with ZYMKEY4">
 <meta itemprop=description content="Prerequisites Raspberry Pi:
  Raspbian: Buster (32 or 64 bit); or Ubuntu 18 or 20 (32 or 64 bit)  Nvidia Jetson:
  Jetson Xavier NX or Nano Jetpack 4.4 or earlier  BACKGROUND To skip the background information and start encrypting your RFS, click here.
 WHY ENCRYPT? There are many reasons to encrypt the Root File System (RFS), from keeping WiFi credentials immutable to keeping proprietary software and sensitive data from being cloned.">
-<meta itemprop=dateModified content="2021-10-18T23:30:10-04:00">
-<meta itemprop=wordCount content="2080"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=dateModified content="2021-11-07T10:35:35-08:00">
+<meta itemprop=wordCount content="2073"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
-<meta name=twitter:title content="Encrypting Root File System with Zymkey4">
+<meta name=twitter:title content="Encrypting Root File System with ZYMKEY4">
 <meta name=twitter:description content="Prerequisites Raspberry Pi:
  Raspbian: Buster (32 or 64 bit); or Ubuntu 18 or 20 (32 or 64 bit)  Nvidia Jetson:
  Jetson Xavier NX or Nano Jetpack 4.4 or earlier  BACKGROUND To skip the background information and start encrypting your RFS, click here.
@@ -257,7 +257,7 @@ WHY ENCRYPT? There are many reasons to encrypt the Root File System (RFS), from 
 <ul class="pr-md-3 ul-3 foldable">
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-tutorialsencrypt-rfszymkey4-li>
 <input type=checkbox id=m-tutorialsencrypt-rfszymkey4-check checked>
-<label for=m-tutorialsencrypt-rfszymkey4-check><a href=/tutorials/encrypt-rfs/zymkey4/ title="Encrypting Root File System with Zymkey4" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-tutorialsencrypt-rfszymkey4><span class="td-sidebar-nav-active-item td-sidebar-link__page">ZYMKEY4</span></a></label>
+<label for=m-tutorialsencrypt-rfszymkey4-check><a href=/tutorials/encrypt-rfs/zymkey4/ title="Encrypting Root File System with ZYMKEY4" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-tutorialsencrypt-rfszymkey4><span class="td-sidebar-nav-active-item td-sidebar-link__page">ZYMKEY4</span></a></label>
 </li>
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsencrypt-rfshsm4-li>
 <input type=checkbox id=m-tutorialsencrypt-rfshsm4-check>
@@ -378,6 +378,7 @@ WHY ENCRYPT? There are many reasons to encrypt the Root File System (RFS), from 
 <li><a href=#references>REFERENCES</a></li>
 </ul>
 </li>
+<li><a href=#troubleshooting>Troubleshooting</a></li>
 </ul>
 </nav></div>
 </aside><main class="col-12 col-md-8 col-xl-7 pl-md-5" role=main>
@@ -395,7 +396,7 @@ WHY ENCRYPT? There are many reasons to encrypt the Root File System (RFS), from 
 </ol>
 </nav>
 <div class=td-content>
-<h1>Encrypting Root File System with Zymkey4</h1>
+<h1>Encrypting Root File System with ZYMKEY4</h1>
 <header class=article-meta>
 </header>
 <p><img src=../erfs1.png alt=image1></p>
@@ -525,7 +526,7 @@ The management of such a hirearchical key managers is the role of LUKS.</p>
 <h2 id=how-to-encrypt><strong>HOW TO ENCRYPT</strong></h2>
 <h3 id=building-your-luks-encrypted-rfs>BUILDING YOUR LUKS ENCRYPTED RFS</h3>
 <h4 id=prerequisites-1>Prerequisites</h4>
-<p>Make sure you have the Zymkey software suite already running and operational as well as insuring that your Zymkey is bound. Instructions <a href=https://docs.zymbit.com/quickstart/getting-started/zymkey4>here</a>.</p>
+<p>Make sure you have the ZYMKEY4 software suite already running and operational as well as bound. Instructions <a href=https://docs.zymbit.com/getting-started/zymkey4>here</a>.</p>
 <h5 id=note-for-rpi-users-for-the-cm4io-module-with-emmc-additional-steps-are-needed-due-to-the-fact-that-the-usb-20-ports-are-disabled-by-default>NOTE for RPi users: For the CM4/IO Module with eMMC, additional steps are needed due to the fact that the USB 2.0 ports are disabled by default:</h5>
 <ol>
 <li>Upgrade the bootloader version: Jan. 16 2021</li>
@@ -565,7 +566,7 @@ The defaults for Jetson are:</li>
 <li>Temporary root file system takes up entirety of new device</li>
 </ol>
 <p>Please note that the new root file system should be at least a little larger in size than the original root partition</p>
-<p>Running this script takes around 30-40 minutes. The Zymkey&rsquo;s LED flashes rapidly until the process has completed.</p>
+<p>Running this script takes around 30-40 minutes. The ZYMKEY4&rsquo;s LED flashes rapidly until the process has completed.</p>
 <hr>
 <h3 id=integrating-luks-into-volume-manufacturing-workflow>INTEGRATING LUKS INTO VOLUME MANUFACTURING WORKFLOW</h3>
 <p>The examples above are designed to help you get up and running with single and low volume applications.</p>
@@ -589,11 +590,9 @@ The defaults for Jetson are:</li>
 <p><a href=https://gitlab.com/cryptsetup/cryptsetup>GitLab - LUKS and Cryptsetup - open-source disk encryption</a></p>
 </li>
 </ul>
-<h2 id=troubleshooting>TROUBLESHOOTING</h2>
-<ul>
-<li><a href=https://docs.zymbit.com/quickstart/faq/zymkey4/#troubleshooting>Zymkey Troubleshooting FAQ</a></li>
-<li><a href=https://community.zymbit.com/>Community Forum</a></li>
-</ul>
+<h2 id=troubleshooting>Troubleshooting</h2>
+<p><a href=https://docs.zymbit.com/troubleshooting/>HSM6 Troubleshooting</a><br>
+<a href=https://community.zymbit.com/>Community</a></p>
 </div>
 </main>
 </div>
