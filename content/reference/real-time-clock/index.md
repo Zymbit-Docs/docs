@@ -12,11 +12,11 @@ toc: true
 
 ## Applicable Products
 
-The information included in this post applies to [Zymkey 4](https://docs.zymbit.com/quickstart/getting-started/zymkey4/), [HSM4](https://docs.zymbit.com/quickstart/getting-started/hsm4/), and [HSM6](https://docs.zymbit.com/quickstart/getting-started/hsm6/).
+The information included in this post applies to [ZYMKEY44](https://docs.zymbit.com/getting-started/zymkey4/), [HSM4](https://docs.zymbit.com/getting-started/hsm4/), and [HSM6](https://docs.zymbit.com/getting-started/hsm6/).
 
 ---
 
-Standard Zymkey and HSMs are supplied with a Real Time Clock (RTC). This capability can be useful for platforms which do not have a built-in RTC, such as Raspberry Pi, but rather depend on NTP for time-keeping.
+Standard ZYMKEY4 and HSMs are supplied with a Real Time Clock (RTC). This capability can be useful for platforms which do not have a built-in RTC, such as Raspberry Pi, but rather depend on NTP for time-keeping.
 
 Dependence on NTP may cause problems due to unscheduled power outages or unreliable WiFi connections. For example, if a deployed application that periodically collects sensor data experiences a power outage and is not able to restore a connection to any available networks upon boot up, the timestamps associated with any collected data would be incorrect. On Raspberry Pi, this will be approximate to the last valid timestamp when things were last running normally.
 
@@ -26,7 +26,7 @@ We can simulate this by disabling `ntp.service` comparing the system date to the
 
 Zymkey and HSM’s Real Time Clock is battery backed for reliable operation, which could be very valuable for significant power or network outages. Prior to starting NTP in the boot sequence, the Zymkey or HSM provides the current UTC timestamp to the host computer (e.g. Raspberry Pi). This means that, if access to a reliable network isn’t available, a reliable timestamp will be available for use by any running applications.
 
-With a bound Zymkey/ HSM installed and running `zkbootrtc.service ` on the same system as above (ntp disabled), we can see the clock restored based on the Zymkey/ HSM's RTC. You will notice this message at boot:
+With a bound Zymbit Security Module installed and running `zkbootrtc.service ` on the same system as above (ntp disabled), we can see the clock restored based on the Zymbit Security Module's RTC. You will notice this message at boot:
 
 > Feb 8 19:22:26 raspberrypi systemd[1]: Starting Restore System Clock from Zymkey…
 > Feb 9 18:58:48 raspberrypi systemd[1]: Started Restore System Clock from Zymkey.
@@ -41,7 +41,7 @@ In order for the RTC feature to be activated, the Zymkey/ HSM needs to have it�
 
 ## Accuracy of RTC
 
-Zymkeys and HSMs with integrated RTC are supplied with Standard Accuracy calibration. This is generally suitable for commercial applications that are not exposed to extreme temperature ranges and not disconnected from NTP for months on end. (see specs below)
+ZYMKEY4 and HSMs with integrated RTC are supplied with Standard Accuracy calibration. This is generally suitable for commercial applications that are not exposed to extreme temperature ranges and not disconnected from NTP for months on end. (see specs below)
 
 An optional High Accuracy RTC is available, providing additional stability over extended temperature ranges.
 
