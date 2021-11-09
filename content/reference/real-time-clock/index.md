@@ -12,7 +12,7 @@ toc: true
 
 ## Applicable Products
 
-The information included in this post applies to [ZYMKEY44](https://docs.zymbit.com/getting-started/zymkey4/), [HSM4](https://docs.zymbit.com/getting-started/hsm4/), and [HSM6](https://docs.zymbit.com/getting-started/hsm6/).
+The information included in this post applies to [ZYMKEY4](https://docs.zymbit.com/getting-started/zymkey4/), [HSM4](https://docs.zymbit.com/getting-started/hsm4/), and [HSM6](https://docs.zymbit.com/getting-started/hsm6/).
 
 ---
 
