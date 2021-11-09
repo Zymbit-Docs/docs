@@ -2,7 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=generator content="Hugo 0.89.1"><meta name=ROBOTS content="INDEX, FOLLOW">
+<meta name=generator content="Hugo 0.89.2"><meta name=ROBOTS content="INDEX, FOLLOW">
 <link rel="shortcut icon" href=/favicons/favicon.ico>
 <link rel=apple-touch-icon href=/favicons/apple-touch-icon.png sizes=180x180>
 <link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
@@ -11,27 +11,27 @@
 <link rel=icon type=image/png href=/favicons/android-chrome-512x512.png sizes=512x512>
 <title>Real Time Clock Operation | </title>
 <meta name=description content="Applicable Products
-The information included in this post applies to Zymkey 4, HSM4, and HSM6.
+The information included in this post applies to ZYMKEY4, HSM4, and HSM6.
 
-Standard Zymkey and HSMs are supplied with a Real Time …">
+Standard ZYMKEY4 and HSMs are supplied with a Real Time …">
 <meta property="og:title" content="Real Time Clock Operation">
-<meta property="og:description" content="Applicable Products The information included in this post applies to Zymkey 4, HSM4, and HSM6.
- Standard Zymkey and HSMs are supplied with a Real Time Clock (RTC). This capability can be useful for platforms which do not have a built-in RTC, such as Raspberry Pi, but rather depend on NTP for time-keeping.
+<meta property="og:description" content="Applicable Products The information included in this post applies to ZYMKEY4, HSM4, and HSM6.
+ Standard ZYMKEY4 and HSMs are supplied with a Real Time Clock (RTC). This capability can be useful for platforms which do not have a built-in RTC, such as Raspberry Pi, but rather depend on NTP for time-keeping.
 Dependence on NTP may cause problems due to unscheduled power outages or unreliable WiFi connections. For example, if a deployed application that periodically collects sensor data experiences a power outage and is not able to restore a connection to any available networks upon boot up, the timestamps associated with any collected data would be incorrect.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/reference/real-time-clock/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="reference">
-<meta property="article:modified_time" content="2021-10-28T23:30:17-07:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2021-11-08T16:16:43-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="Real Time Clock Operation">
-<meta itemprop=description content="Applicable Products The information included in this post applies to Zymkey 4, HSM4, and HSM6.
- Standard Zymkey and HSMs are supplied with a Real Time Clock (RTC). This capability can be useful for platforms which do not have a built-in RTC, such as Raspberry Pi, but rather depend on NTP for time-keeping.
+<meta itemprop=description content="Applicable Products The information included in this post applies to ZYMKEY4, HSM4, and HSM6.
+ Standard ZYMKEY4 and HSMs are supplied with a Real Time Clock (RTC). This capability can be useful for platforms which do not have a built-in RTC, such as Raspberry Pi, but rather depend on NTP for time-keeping.
 Dependence on NTP may cause problems due to unscheduled power outages or unreliable WiFi connections. For example, if a deployed application that periodically collects sensor data experiences a power outage and is not able to restore a connection to any available networks upon boot up, the timestamps associated with any collected data would be incorrect.">
-<meta itemprop=dateModified content="2021-10-28T23:30:17-07:00">
-<meta itemprop=wordCount content="468"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=dateModified content="2021-11-08T16:16:43-08:00">
+<meta itemprop=wordCount content="469"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="Real Time Clock Operation">
-<meta name=twitter:description content="Applicable Products The information included in this post applies to Zymkey 4, HSM4, and HSM6.
- Standard Zymkey and HSMs are supplied with a Real Time Clock (RTC). This capability can be useful for platforms which do not have a built-in RTC, such as Raspberry Pi, but rather depend on NTP for time-keeping.
+<meta name=twitter:description content="Applicable Products The information included in this post applies to ZYMKEY4, HSM4, and HSM6.
+ Standard ZYMKEY4 and HSMs are supplied with a Real Time Clock (RTC). This capability can be useful for platforms which do not have a built-in RTC, such as Raspberry Pi, but rather depend on NTP for time-keeping.
 Dependence on NTP may cause problems due to unscheduled power outages or unreliable WiFi connections. For example, if a deployed application that periodically collects sensor data experiences a power outage and is not able to restore a connection to any available networks upon boot up, the timestamps associated with any collected data would be incorrect.">
 <link rel=preload href=/scss/main.min.874b26b473cb7a1e419be33bf4a26faf0fd5ae3733989c5d2c9ab928a11b409d.css as=style>
 <link href=/scss/main.min.874b26b473cb7a1e419be33bf4a26faf0fd5ae3733989c5d2c9ab928a11b409d.css rel=stylesheet integrity>
@@ -324,14 +324,14 @@ Dependence on NTP may cause problems due to unscheduled power outages or unrelia
 <header class=article-meta>
 </header>
 <h2 id=applicable-products>Applicable Products</h2>
-<p>The information included in this post applies to <a href=https://docs.zymbit.com/quickstart/getting-started/zymkey4/>Zymkey 4</a>, <a href=https://docs.zymbit.com/quickstart/getting-started/hsm4/>HSM4</a>, and <a href=https://docs.zymbit.com/quickstart/getting-started/hsm6/>HSM6</a>.</p>
+<p>The information included in this post applies to <a href=https://docs.zymbit.com/getting-started/zymkey4/>ZYMKEY4</a>, <a href=https://docs.zymbit.com/getting-started/hsm4/>HSM4</a>, and <a href=https://docs.zymbit.com/getting-started/hsm6/>HSM6</a>.</p>
 <hr>
-<p>Standard Zymkey and HSMs are supplied with a Real Time Clock (RTC). This capability can be useful for platforms which do not have a built-in RTC, such as Raspberry Pi, but rather depend on NTP for time-keeping.</p>
+<p>Standard ZYMKEY4 and HSMs are supplied with a Real Time Clock (RTC). This capability can be useful for platforms which do not have a built-in RTC, such as Raspberry Pi, but rather depend on NTP for time-keeping.</p>
 <p>Dependence on NTP may cause problems due to unscheduled power outages or unreliable WiFi connections. For example, if a deployed application that periodically collects sensor data experiences a power outage and is not able to restore a connection to any available networks upon boot up, the timestamps associated with any collected data would be incorrect. On Raspberry Pi, this will be approximate to the last valid timestamp when things were last running normally.</p>
 <p>We can simulate this by disabling <code>ntp.service</code> comparing the system date to the <code>time.nist.gov</code> server. After only 12 hours, the system clock has drifted nearly 40 minutes!</p>
 <p><img src=rtc1.png alt=image|690x226></p>
 <p>Zymkey and HSM’s Real Time Clock is battery backed for reliable operation, which could be very valuable for significant power or network outages. Prior to starting NTP in the boot sequence, the Zymkey or HSM provides the current UTC timestamp to the host computer (e.g. Raspberry Pi). This means that, if access to a reliable network isn’t available, a reliable timestamp will be available for use by any running applications.</p>
-<p>With a bound Zymkey/ HSM installed and running <code>zkbootrtc.service </code> on the same system as above (ntp disabled), we can see the clock restored based on the Zymkey/ HSM&rsquo;s RTC. You will notice this message at boot:</p>
+<p>With a bound Zymbit Security Module installed and running <code>zkbootrtc.service </code> on the same system as above (ntp disabled), we can see the clock restored based on the Zymbit Security Module&rsquo;s RTC. You will notice this message at boot:</p>
 <blockquote>
 <p>Feb 8 19:22:26 raspberrypi systemd[1]: Starting Restore System Clock from Zymkey…
 Feb 9 18:58:48 raspberrypi systemd[1]: Started Restore System Clock from Zymkey.</p>
@@ -341,7 +341,7 @@ Feb 9 18:58:48 raspberrypi systemd[1]: Started Restore System Clock from Zymkey.
 <p>The time value is not settable directly by applications that are running on Pi. Instead RTC accuracy is monitored and maintained by the software suite.</p>
 <p>In order for the RTC feature to be activated, the Zymkey/ HSM needs to have it’s clock checked and set occasionally, which is done by the HSM software, but this means that NTP must be running so that the Pi time is synchronized to an accurate clock source. To make sure that NTP is active, on later raspbian distributions, you’ll need to run <code>sudo timedatectl set-ntp true</code> and then reboot. In the case where a new coin cell has been installed, it may take a few minutes after the reboot for the HSM time to be synchronized.</p>
 <h2 id=accuracy-of-rtc>Accuracy of RTC</h2>
-<p>Zymkeys and HSMs with integrated RTC are supplied with Standard Accuracy calibration. This is generally suitable for commercial applications that are not exposed to extreme temperature ranges and not disconnected from NTP for months on end. (see specs below)</p>
+<p>ZYMKEY4 and HSMs with integrated RTC are supplied with Standard Accuracy calibration. This is generally suitable for commercial applications that are not exposed to extreme temperature ranges and not disconnected from NTP for months on end. (see specs below)</p>
 <p>An optional High Accuracy RTC is available, providing additional stability over extended temperature ranges.</p>
 <p><img src=rtc3.png alt=image|498x400></p>
 </div>
