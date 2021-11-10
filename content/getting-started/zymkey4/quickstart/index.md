@@ -149,7 +149,13 @@ Download and install the necessary Zymbit services onto your device.
 
 `curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash`
 
-Then, grab a cup of coffee, because this will take between 4 and 20 minutes.
+{{< callout warning >}}
+We are working on pushing a repository to directly support the Raspberry PI OS Bullseye release (10/30/2021). In the meantime, the Zymbit Buster repo will work. Substitute the following curl command for our standard installation script to use the Zymbit Buster repo:
+
+`curl -G http://s3.amazonaws.com/zk-sw-repo/install_zk_sw_bullseye.sh | sudo bash`
+
+{{< /callout >}}
+
 
 ## Test the installation
 
