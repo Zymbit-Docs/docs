@@ -12,6 +12,10 @@ toc: true
 
 ### **Known Issues**
 
+#### Raspbian OS Bullseye Release
+We will have a repository to directly support the Bullseye release (10/30/2021) of the Raspbian OS up shortly. In the meantime, the Zymbit Buster repo will work. Substitute the following curl command for our standard installation script,
+
+`curl -G http://s3.amazonaws.com/zk-sw-repo/install_zk_sw_bullseye.sh | sudo bash`
 
 #### HD Wallet
 Current Hierarchical Deterministic (HD) Wallet includes secp2561r1 (NIST P-256) and secp256k1 (ECC Koblitz P-256) support. ed25519 (Edwards Curve) is not currently supported (coming soon).
