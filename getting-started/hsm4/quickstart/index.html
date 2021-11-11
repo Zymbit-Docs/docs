@@ -20,11 +20,11 @@ Other Linux distributions will work, but may …">
 <meta property="og:description" content="Prerequisites  Raspberry Pi 3 or 4, if using Raspberry Pi. Raspbian or Ubuntu/ Tegra is installed.  Other Linux distributions will work, but may require extra configuration. We will gladly provide guidance, but cannot guarantee support. For information see the Operating Systems Community Forum.   Adequate power supply is used (5V).  For Pi users: if the Red Power LED on the Pi is not illuminated this means the supply voltage is inadequate.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/getting-started/hsm4/quickstart/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="getting-started">
-<meta property="article:modified_time" content="2021-10-28T23:10:48-07:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2021-11-10T15:24:48-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="Getting Started with HSM4">
 <meta itemprop=description content="Prerequisites  Raspberry Pi 3 or 4, if using Raspberry Pi. Raspbian or Ubuntu/ Tegra is installed.  Other Linux distributions will work, but may require extra configuration. We will gladly provide guidance, but cannot guarantee support. For information see the Operating Systems Community Forum.   Adequate power supply is used (5V).  For Pi users: if the Red Power LED on the Pi is not illuminated this means the supply voltage is inadequate.">
-<meta itemprop=dateModified content="2021-10-28T23:10:48-07:00">
-<meta itemprop=wordCount content="1564"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=dateModified content="2021-11-10T15:24:48-08:00">
+<meta itemprop=wordCount content="1618"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="Getting Started with HSM4">
@@ -414,8 +414,18 @@ Would you like the ARM I2C interface to be enabled? select (Yes), enter, enter</
 Install curl: sudo apt install curl</p>
 <p>For a bare Raspbian system, first login to your Pi.</p>
 <p>Then download and install the necessary Zymbit services onto your Pi.
-<code>curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash</code>
-(grab a cup of coffee because this will take between 4 and 20 minutes).</p>
+<code>curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash</code></p>
+<div class="callout callout-warning">
+<div class=callout-heading>
+<i class="callout-icon fas fa-exclamation-triangle"></i>
+<span class=callout-title>Warning</span>
+</div>
+<div class=callout-body>
+<p><strong>Raspberry PI OS - Bullseye</strong> We are working on pushing a repository to directly support the Raspberry PI OS Bullseye release (10/30/2021). In the meantime, the Zymbit Buster repo will work. Substitute the following curl command for our standard installation script to use the Zymbit Buster repo:</p>
+<p><code>curl -G http://s3.amazonaws.com/zk-sw-repo/install_zk_sw_bullseye.sh | sudo bash</code></p>
+</div>
+</div>
+<p>(grab a cup of coffee because this will take between 4 and 20 minutes).</p>
 <hr>
 <h2 id=6-developer-mode-temporary-binding>6. Developer Mode (temporary binding)</h2>
 <p>When the software installation has completed, reboot. After rebooting, the Pi/ Jetson will temporarily bind the HSM to itself. Once bound, the blue LED should blink once every 3 seconds.</p>
