@@ -2,6 +2,8 @@
 title: "Power Quality Considerations"
 icon: ""
 description: ""
+aliases:
+    - /technical_reference/power-quality/
 date: ""
 lastmod: ""
 draft: false

@@ -2,6 +2,8 @@
 title: Getting Started with HSM4
 linkTitle: Quickstart
 description: ""
+aliases:
+    - /quickstart/getting-started/hsm4/
 date: ""
 lastmod: ""
 draft: false

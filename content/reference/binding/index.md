@@ -1,6 +1,8 @@
 ---
 title: Binding, Device ID, and Authentication
 description: ""
+aliases:
+    - /technical_reference/binding/
 date: ""
 lastmod: ""
 draft: false

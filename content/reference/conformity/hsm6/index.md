@@ -2,6 +2,8 @@
 title: "HSM6 Conformity Documents"
 toc_title: "HSM6"
 description: ""
+aliases:
+    - /technical_reference/conformity/hsm6/
 date: ""
 lastmod: ""
 draft: false
