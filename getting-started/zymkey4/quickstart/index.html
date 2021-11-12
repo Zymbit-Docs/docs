@@ -10,23 +10,23 @@
 <link rel=icon type=image/png href=/favicons/android-chrome-192x192.png sizes=192x192>
 <link rel=icon type=image/png href=/favicons/android-chrome-512x512.png sizes=512x512>
 <title>Zymkey4 Quickstart | </title>
-<meta name=description content="ZYMKEY4i is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the …">
+<meta name=description content="ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the …">
 <meta property="og:title" content="Zymkey4 Quickstart">
-<meta property="og:description" content="ZYMKEY4i is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the I2C bus and GPIO4 to communicate with the SBC CPU via an encrypted channel.
-In this Getting Started guide we describe how to install your Zymkey4i to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.">
+<meta property="og:description" content="ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the I2C bus and GPIO4 to communicate with the SBC CPU via an encrypted channel.
+In this Getting Started guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/getting-started/zymkey4/quickstart/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="getting-started">
-<meta property="article:modified_time" content="2021-11-10T15:22:25-08:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2021-11-12T07:31:50-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="Zymkey4 Quickstart">
-<meta itemprop=description content="ZYMKEY4i is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the I2C bus and GPIO4 to communicate with the SBC CPU via an encrypted channel.
-In this Getting Started guide we describe how to install your Zymkey4i to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.">
-<meta itemprop=dateModified content="2021-11-10T15:22:25-08:00">
+<meta itemprop=description content="ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the I2C bus and GPIO4 to communicate with the SBC CPU via an encrypted channel.
+In this Getting Started guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.">
+<meta itemprop=dateModified content="2021-11-12T07:31:50-08:00">
 <meta itemprop=wordCount content="1130"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="Zymkey4 Quickstart">
-<meta name=twitter:description content="ZYMKEY4i is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the I2C bus and GPIO4 to communicate with the SBC CPU via an encrypted channel.
-In this Getting Started guide we describe how to install your Zymkey4i to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.">
+<meta name=twitter:description content="ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the I2C bus and GPIO4 to communicate with the SBC CPU via an encrypted channel.
+In this Getting Started guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.">
 <link rel=preload href=/scss/main.min.874b26b473cb7a1e419be33bf4a26faf0fd5ae3733989c5d2c9ab928a11b409d.css as=style>
 <link href=/scss/main.min.874b26b473cb7a1e419be33bf4a26faf0fd5ae3733989c5d2c9ab928a11b409d.css rel=stylesheet integrity>
 <script src=https://code.jquery.com/jquery-3.5.1.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
@@ -344,8 +344,8 @@ In this Getting Started guide we describe how to install your Zymkey4i to a Rasp
 <h1>Zymkey4 Quickstart</h1>
 <header class=article-meta>
 </header>
-<p>ZYMKEY4i is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the I<sup>2</sup>C bus and <code>GPIO4</code> to communicate with the SBC CPU via an encrypted channel.</p>
-<p>In this <em>Getting Started</em> guide we describe how to install your Zymkey4i to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.</p>
+<p>ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the I<sup>2</sup>C bus and <code>GPIO4</code> to communicate with the SBC CPU via an encrypted channel.</p>
+<p>In this <em>Getting Started</em> guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.</p>
 <p>The Zymkey occupies 10 pins on the GPIO header. It can also be used with other GPIO devices attached, or other I<sup>2</sup>C devices attached. The correct address range and use of IO pins will be described in this guide as well.</p>
 <div class="card-deck mb-4">
 <div class="card mb-4">
@@ -410,16 +410,16 @@ Battery installation is not required for the Zymkey4 to function, but it is high
 <div class=callout-body>
 <p>Installing your hardware correctly is important to avoid destroying your SBC or Zymkey. Be sure to follow the instructions below carefully. In particular:</p>
 <ul>
-<li>Pay close attention to the images below to ensure the SBC&rsquo;s GPIO pins are <strong>properly aligned</strong> with the Zymkey4i&rsquo;s header.</li>
+<li>Pay close attention to the images below to ensure the SBC&rsquo;s GPIO pins are <strong>properly aligned</strong> with the ZYMKEY4&rsquo;s header.</li>
 <li>Ensure that your <strong>Raspberry Pi is powered down</strong> before proceeding.</li>
 <li>Ensure that the coincell battery (if installed) is installed with the positive side (marked with <code>+</code>) facing upward.</li>
 </ul>
 </div>
 </div>
 <h4 id=before-installing>Before installing</h4>
-<p>Power off your Raspberry Pi and disconnecting it from power entirely to ensure that neither the SBC or the Zymkey4i are damaged.</p>
+<p>Power off your Raspberry Pi and disconnecting it from power entirely to ensure that neither the SBC or the ZYMKEY4 are damaged.</p>
 <h4 id=attach-hardware>Attach hardware</h4>
-<p>Hold the Zymkey4i with the LED and battery holder facing upward. Then, carefully align the Zymkey&rsquo;s connector with the first 10 GPIO pins of the Raspberry Pi.</p>
+<p>Hold the ZYMKEY4 with the LED and battery holder facing upward. Then, carefully align the Zymkey&rsquo;s connector with the first 10 GPIO pins of the Raspberry Pi.</p>
 <p><img src=ZK4-hw-install-1.png alt="Alignment of the Zymkey on the Raspberry Pi GPIO header"></p>
 <p>Press down firmly on the Zymkey to connect it to the GPIO pins of the Raspberry Pi. The Zymkey should fit relatively snug and maintain a tight interference fit around the pins.</p>
 <p><img src=ZK4-hw-install-2.png alt="Alignment of the Zymkey on the Raspberry Pi GPIO header (side view)"></p>
