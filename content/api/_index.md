@@ -3,6 +3,8 @@ title: "API Documentation"
 linkTitle: "API"
 icon: ""
 description: ""
+aliases:
+    - /quickstart/api/
 date: ""
 lastmod: ""
 draft: false

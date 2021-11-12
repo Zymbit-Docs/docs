@@ -2,6 +2,8 @@
 title: Zymkey4 Quickstart
 linkTitle: Quickstart
 description: ""
+aliases:
+    - /quickstart/getting-started/zymkey4/
 date: ""
 lastmod: ""
 draft: false
@@ -10,9 +12,9 @@ weight: 1
 toc: true
 ---
 
-ZYMKEY4i is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the {{< term/i2c >}} bus and `GPIO4` to communicate with the SBC CPU via an encrypted channel.
+ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the {{< term/i2c >}} bus and `GPIO4` to communicate with the SBC CPU via an encrypted channel.
 
-In this *Getting Started* guide we describe how to install your Zymkey4i to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.
+In this *Getting Started* guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.
 
 <!-- TODO: Update link -->
 <!-- **[Learn about Linux OS support for Zymkey.](https://community.zymbit.com/c/operating-system/23)** -->
@@ -72,18 +74,18 @@ To maintain the real-time clock (RTC) and tamper detection features in the event
 {{< callout danger >}}
 Installing your hardware correctly is important to avoid destroying your SBC or Zymkey. Be sure to follow the instructions below carefully. In particular:
 
-* Pay close attention to the images below to ensure the SBC's GPIO pins are **properly aligned** with the Zymkey4i's header.
+* Pay close attention to the images below to ensure the SBC's GPIO pins are **properly aligned** with the ZYMKEY4's header.
 * Ensure that your **Raspberry Pi is powered down** before proceeding.
 * Ensure that the coincell battery (if installed) is installed with the positive side (marked with `+`) facing upward.
 {{< /callout >}}
 
 #### Before installing
 
-Power off your Raspberry Pi and disconnecting it from power entirely to ensure that neither the SBC or the Zymkey4i are damaged.
+Power off your Raspberry Pi and disconnecting it from power entirely to ensure that neither the SBC or the ZYMKEY4 are damaged.
 
 #### Attach hardware
 
-Hold the Zymkey4i with the LED and battery holder facing upward. Then, carefully align the Zymkey's connector with the first 10 GPIO pins of the Raspberry Pi.
+Hold the ZYMKEY4 with the LED and battery holder facing upward. Then, carefully align the Zymkey's connector with the first 10 GPIO pins of the Raspberry Pi.
 
 ![Alignment of the Zymkey on the Raspberry Pi GPIO header](ZK4-hw-install-1.png)
 
