@@ -2,6 +2,8 @@
 title: "Zymkey4 CAD Files"
 linkTitle: "ZYMKEY4"
 description: ""
+aliases:
+    - /technical_reference/cad/zymkey4/
 date: ""
 lastmod: ""
 draft: false

@@ -2,6 +2,8 @@
 title: "Zymkey4 Conformity Documents"
 toc_title: "Zymkey4"
 description: ""
+aliases:
+    - /technical_reference/conformity/zymkey4/
 date: ""
 lastmod: ""
 draft: false

@@ -2,6 +2,8 @@
 title: "HSM4 CAD Files"
 linkTitle: "HSM4"
 description: ""
+aliases:
+    - /technical_reference/cad/hsm4/
 date: ""
 lastmod: ""
 draft: false

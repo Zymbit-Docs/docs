@@ -2,6 +2,8 @@
 title: "Real Time Clock Operation"
 icon: ""
 description: ""
+aliases:
+    - /technical_reference/real-time-clock/
 date: ""
 lastmod: ""
 draft: false
