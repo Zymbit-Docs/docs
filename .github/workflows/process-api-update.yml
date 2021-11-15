@@ -52,7 +52,7 @@ jobs:
         id: hugoify
         uses: zymbit-docs/actions-hugoify-api-docs@master
         with:
-          outputPath: ./content/quickstart/api/
+          outputPath: ./content/api/
 
       - name: Prepare processed API docs files for commit
         id: prepare-commit
@@ -71,11 +71,11 @@ jobs:
           rm -r ./content/GENERATED/GENERATED_*
 
           # Move the processed output to the API directory of the Hugo site.
-          mv ./content/GENERATED/* ./content/quickstart/api/
+          mv ./content/GENERATED/* ./content/api/
 
           # After we stage all of the new files that we have added to the API contents
           # directory, we can remove any files git had in the `./content/GENERATED/` directory.
-          git add ./content/quickstart/api/
+          git add ./content/api/
           git rm -r ./content/GENERATED/
 
           # Grab the short SHA hash of the commit that introduced the unprocessed XML-based
