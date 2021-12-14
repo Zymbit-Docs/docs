@@ -45,7 +45,7 @@
     "flexsearch": "^0.6",
     "highlight.js": "^11.3",
     "hugo-bin": "^0.78.1",
-    "hugo-extended": "^0.89.0",
+    "hugo-extended": "^0.90.1",
     "instant.page": "^5.1",
     "lazysizes": "^5.3",
     "markdownlint-cli": "^0.30",
