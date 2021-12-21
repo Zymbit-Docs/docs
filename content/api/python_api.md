@@ -5,6 +5,7 @@ description: Python interface module to Zymkey Application Utilities Library.
 lastmod:
 draft: false
 images: []
+type: docs
 api_docs: true
 layout: single
 weight: 0
@@ -934,7 +935,7 @@ toc: true
 <ul>
 <li class="param-item">
 <span class="name">key_type</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the EC curve type that should be associated with the new key pair. (Curve25519 Not Supported)</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the EC curve type that should be associated with the new key pair.</span>
 </li>
 <li class="param-item">
 <span class="name">master_gen_key</span>
@@ -946,20 +947,139 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">recovery_strategy</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">RecoveryStrategy() class that defines what strategy to be used {None, Bip39, Slip39[not supported right now]}. Bip39Strategy-&gt;passphrase must be b64 encoded.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">RecoveryStrategy() class that defines what strategy to be used {None, Bip39, Slip39} are currently supported. RecoveryStrategy-&gt;passphrase must be b64 encoded.</span>
 </li>
 </ul>
 </div>
 <div class="returns">
 <h5>Returns</h5>
 <span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">a tuple with the slot and the BIP39 mnemonic if specified</span>
+<span class="return_value">the slot the master seed was generated in. 0 for starting slip39 sessions.</span>
 </div>
 </div>
 </div>
 <div class="method">
 
-#### <span><span class="name">gen\_wallet\_child\_key</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">parent\_key\_slot</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">hardened</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="genwalletchildkey-271a087b" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">set\_gen\_slip39\_group\_info</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">group\_index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">member\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">member\_threshold</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="setgenslip39groupinfo-56042b6f" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Configures the number of members and threshold for the group shares (model &gt;= HSM6).</p>
+<p>This method sets the number of members required for a group share once a slip39 session was opened via gen_wallet_master_seed().</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">group_index</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the index of the group share to set the amount of member count/threshold for.</span>
+</li>
+<li class="param-item">
+<span class="name">member_count</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The total number of members (mnemonics) in this group share.</span>
+</li>
+<li class="param-item">
+<span class="name">member_threshold</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The number of members (mnemonics) needed to reconstruct the group share.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 on successful configuration. non-zero for error.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">add\_gen\_slip39\_member\_pwd</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addgenslip39memberpwd-504b6969" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Generates a new mnemonic_str tied to a slip39 member (model &gt;= HSM6).</p>
+<p>This method generates a new member of a group share. Members can also be passphrase protected. Passphrases are not required to be unique. This function is meant to be called after configuring a group via set_gen_slip39_group_info().</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">passphrase</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the passphrase of the slip39 member and is associated with the mnemonic string generated. Can be empty string for no passphrase.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">A 24-word recovery phrase known as a mnemonic sentence. non-zero for error.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">cancel\_slip39\_session</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="cancelslip39session-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Cancels an active slip39 session (model &gt;= HSM6).</p>
+<p>This method cancels an ongoing slip39 session for both master seed generation and recovery.</p>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 on success. non-zero for error.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">gen\_oversight\_wallet</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">key\_type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pub\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">chain\_code</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">node\_addr</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="genoversightwallet-0dc54d8b" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Generates a supervisory bip32 wallet. (model &gt;= HSM6).</p>
+<p>This method generates a new supervisory Bip32 wallet. Meant for read-only transactions and supervising history.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">key_type</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the EC curve type that should be associated with the new key pair.</span>
+</li>
+<li class="param-item">
+<span class="name">pub_key</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The public key (bytearray) of the last hardened node of the node address.</span>
+</li>
+<li class="param-item">
+<span class="name">chain_code</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The chain code (bytearray) of the last hardened node of the node address.</span>
+</li>
+<li class="param-item">
+<span class="name">node_addr</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The bip32 node address used. (EX: &#8220;m/1852&#8217;/1815&#8217;/0&#8217;&#8221;).</span>
+</li>
+<li class="param-item">
+<span class="name">wallet_name</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The name of the wallet (string) that this master seed is attached to.</span>
+</li>
+<li class="param-item">
+<span class="name">variant</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Key type variant to generate from. Currently only &#8220;cardano&#8221; is supported for &#8220;ed25519&#8221;.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">the slot the oversight wallet was generated in.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">gen\_wallet\_child\_key</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">parent\_key\_slot</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">hardened</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_chain\_code</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="genwalletchildkey-673aebc4" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -981,6 +1101,51 @@ toc: true
 <span class="name">hardened</span>
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">If true, the key is a hardened key.</span>
 </li>
+<li class="param-item">
+<span class="name">return_chain_code</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">If true, returns the chain code for the key as well. (Must be from a hardened key).</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">the allocated slot on success, or a tuple containing the chain code as well.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">restore\_wallet\_master\_seed</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">key\_type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">master\_gen\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">recovery\_strategy</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">mnemonics</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="restorewalletmasterseed-59eb345a" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Restore a wallet&#8217;s master seed based on the recovery strategy object (model &gt;= HSM6).</p>
+<p>This method restores a wallet&#8217;s master seed based on a mnemonic string and a master generator key. This method can be used in the process of wallet duplication.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">key_type</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the EC curve type that should be associated with the new key pair.</span>
+</li>
+<li class="param-item">
+<span class="name">master_gen_key</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The master generator key used in the derivation of the child key.</span>
+</li>
+<li class="param-item">
+<span class="name">wallet_name</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Name of the new wallet to be generated.</span>
+</li>
+<li class="param-item">
+<span class="name">recovery_strategy</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">RecoveryStategy class object that provides the type of recovery and key variant required for restoration.</span>
+</li>
+<li class="param-item">
+<span class="name">mnemonics</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Mnemonic sentences required for restoration, number of mnemonics dependant on recovery strategy used. This field is not used for Slip39.</span>
+</li>
 </ul>
 </div>
 <div class="returns">
@@ -992,42 +1157,30 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">restore\_wallet\_master\_seed\_from\_bip39\_mnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">key\_type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">master\_gen\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">bip39\_passphrase</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">bip39\_mnemonic</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="restorewalletmasterseedfrombip39mnemonic-dd28a734" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">add\_restore\_slip39\_mnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">mnemonic\_sentence</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addrestoreslip39mnemonic-b27c5de4" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Restore a wallet&#8217;s master seed based on a BIP39 mnemonic string (model &gt;= HSM6).</p>
-<p>This method restores a wallet&#8217;s master seed based on a BIP39 mnemonic string and a master generator key. This method can be used in the process of wallet duplication.</p>
+<p>Feed a mnemonic string and the passphrase associated with it (model &gt;= HSM6).</p>
+<p>This method feeds in mnemonic sentences (shards) into the module. Meant to be called after starting a restore_wallet_master_seed() slip39 session. Will return -1 until the master seed is reconstructed properly.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
-<span class="name">key_type</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the EC curve type that should be associated with the new key pair. (Curve25519 Not Supported)</span>
+<span class="name">mnemonic_sentence</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">24-word recovery phrase associated with the slip39 member.</span>
 </li>
 <li class="param-item">
-<span class="name">master_gen_key</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The master generator key used in the derivation of the child key.</span>
-</li>
-<li class="param-item">
-<span class="name">wallet_name</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Name of the new wallet to be generated.</span>
-</li>
-<li class="param-item">
-<span class="name">bip39_passphrase</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Passphrase used to generate the bip39_mnemonic.</span>
-</li>
-<li class="param-item">
-<span class="name">bip39_mnemonic</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The BIP39 mnemonic string.</span>
+<span class="name">passphrase</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the passphrase of the slip39 member and is associated with the mnemonic string generated. Can be empty string for no passphrase.</span>
 </li>
 </ul>
 </div>
 <div class="returns">
 <h5>Returns</h5>
 <span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">the allocated slot on success</span>
+<span class="return_value">A -1 for no change in status. Otherwise returns the slot of the master seed successfully reconstructed from the last shard passed in.</span>
 </div>
 </div>
 </div>
@@ -1659,32 +1812,42 @@ toc: true
 </div>
 <div class="class">
 
-### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">zymkey.</span><span class="name">RecoveryStrategy</span></span>
+### <span><span class="annotation">class</span> <span class="addname">zymkey.</span><span class="name">RecoveryStrategy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="class-zymkey.-RecoveryStrategy-43bab539" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <p>The RecoveryStrategy class definition.</p>
 <p>This class specifies the recovery strategy used for wallet generation within Python. Base class strategy is to do no recovery.</p>
 <div class="method">
 
-#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="init-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init-43bab539" class="markdown-h4 signature include-toc"}
 
 <div class="body">
-<div class="description"></div>
+<div class="description">
 <p>Initialize an instance of RecoveryStrategy.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">variant</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Variant of the key type. Currently only &#8220;cardano&#8221; for ed25519 is supported.</span>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="class">
 
-### <span><span class="annotation">class</span> <span class="addname">zymkey.</span><span class="name">RecoveryStrategyBip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="class-zymkey.-RecoveryStrategyBip39-2eda8ac2" class="markdown-h3 signature include-toc"}
+### <span><span class="annotation">class</span> <span class="addname">zymkey.</span><span class="name">RecoveryStrategyBip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="class-zymkey.-RecoveryStrategyBip39-0e50d58c" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <p>The RecoveryStrategyBip39 class definition.</p>
 <p>This class specifies the Bip39 recovery strategy used for wallet generation within Python. Derived from RecoveryStrategy class.</p>
 <div class="method">
 
-#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init-2eda8ac2" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init-0e50d58c" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -1694,8 +1857,12 @@ toc: true
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
+<span class="name">variant</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Variant of the key type. Currently only &#8220;cardano&#8221; for ed25519 is supported.</span>
+</li>
+<li class="param-item">
 <span class="name">passphrase</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Passphrase used for bip39 generation. Can be empty string. Must be b64 encoded.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Passphrase used for bip39 generation. Can be empty string. Must be b64 encoded.</span>
 </li>
 </ul>
 </div>

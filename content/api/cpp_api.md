@@ -5,6 +5,7 @@ description: C++ interface to Zymkey Application Utilities Library.
 lastmod:
 draft: false
 images: []
+type: docs
 api_docs: true
 layout: single
 weight: 0
@@ -120,7 +121,15 @@ toc: true
 <h4 class="context-name">Public Functions</h4>
 <div class="method">
 
-#### <span><span class="name">recoveryStrategyBaseType</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="recoveryStrategyBaseType-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">recoveryStrategyBaseType</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">key\_variant</span> = <span class="default-val">""</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="recoveryStrategyBaseType-491058bc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">~recoveryStrategyBaseType</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="~recoveryStrategyBaseType-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description"></div>
@@ -129,6 +138,22 @@ toc: true
 <div class="method">
 
 #### <span><span class="annotation">inline</span> ZK_RECOVERY_STRATEGY<span class="name">getRecoveryStrategy</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span><span class="annotation">const</span> </span> {id="inline-getRecoveryStrategy-const-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="annotation">inline</span> void<span class="name">setVariant</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">key\_variant</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="inline-setVariant-dd9919a4" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="annotation">inline</span> std::string<span class="name">getVariant</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span><span class="annotation">const</span> </span> {id="inline-getVariant-const-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description"></div>
@@ -151,12 +176,12 @@ toc: true
 
 <div class="body">
 <span class="source-file">zkAppUtilsClass.h</span>
-<p>Class used for bip39 recovery strategy. Contains a b64 encoded passphrase to use.</p>
+<p>Class used for bip39 recovery strategy. User can set b64 encoded passphrase and key variant (only &#8220;cardano&#8221; is supported for ed25519 currently) for bip32 seed generation. It can also hold the mnemonic sentence from master seed generation.</p>
 <div class="context">
 <h4 class="context-name">Public Functions</h4>
 <div class="method">
 
-#### <span><span class="name">recoveryStrategyBip39</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="recoveryStrategyBip39-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">recoveryStrategyBip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">passphrase</span> = <span class="default-val">""</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">key\_variant</span> = <span class="default-val">""</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="recoveryStrategyBip39-c13364f3" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description"></div>
@@ -164,7 +189,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">recoveryStrategyBip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">passphrase</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="recoveryStrategyBip39-b6dabcc6" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">~recoveryStrategyBip39</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="~recoveryStrategyBip39-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description"></div>
@@ -208,7 +233,7 @@ toc: true
 <h4 class="context-name">Public Functions</h4>
 <div class="method">
 
-#### <span><span class="name">recoveryStrategySlip39</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="recoveryStrategySlip39-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">recoveryStrategySlip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_threshold</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">iteration\_exponent</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">passphrase</span> = <span class="default-val">""</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">key\_variant</span> = <span class="default-val">""</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="recoveryStrategySlip39-d36933f5" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description"></div>
@@ -216,7 +241,71 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">recoveryStrategySlip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">x</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">y</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::vector&lt;std::string&gt;</span> <span class="pointer-ref"></span> <span class="name">list\_passphrases</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="recoveryStrategySlip39-2a3a015a" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">~recoveryStrategySlip39</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="~recoveryStrategySlip39-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="annotation">inline</span> void<span class="name">setPassPhrase</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">passphrase</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="inline-setPassPhrase-b6dabcc6" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="annotation">inline</span> <span class="annotation">virtual</span> std::string<span class="name">getPassPhrase</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span><span class="annotation">const</span> </span> {id="inline-virtual-getPassPhrase-const-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="annotation">inline</span> void<span class="name">setGroupCount</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_count</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="inline-setGroupCount-05912c53" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="annotation">inline</span> int<span class="name">getGroupCount</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span><span class="annotation">const</span> </span> {id="inline-getGroupCount-const-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="annotation">inline</span> void<span class="name">setGroupThreshold</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_threshold</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="inline-setGroupThreshold-05912c53" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="annotation">inline</span> int<span class="name">getGroupThreshold</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span><span class="annotation">const</span> </span> {id="inline-getGroupThreshold-const-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="annotation">inline</span> void<span class="name">setIterationExponent</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">iteration\_exponent</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="inline-setIterationExponent-e672774c" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="annotation">inline</span> int<span class="name">getIterationExponent</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span><span class="annotation">const</span> </span> {id="inline-getIterationExponent-const-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description"></div>
@@ -227,21 +316,28 @@ toc: true
 <h4 class="context-name">Private Members</h4>
 <div class="struct-var">
 
-#### <span class="markdown-h4 signature include-toc"><span class="returns">int</span> <span class="name">m</span></span>
+#### <span class="markdown-h4 signature include-toc"><span class="returns">int</span> <span class="name">groupCount</span></span>
 
 <div class="body">
                                 </div>
 </div>
 <div class="struct-var">
 
-#### <span class="markdown-h4 signature include-toc"><span class="returns">int</span> <span class="name">n</span></span>
+#### <span class="markdown-h4 signature include-toc"><span class="returns">int</span> <span class="name">groupThreshold</span></span>
 
 <div class="body">
                                 </div>
 </div>
 <div class="struct-var">
 
-#### <span class="markdown-h4 signature include-toc"><span class="returns">std::vector&lt;std::string&gt;</span> <span class="name">listPassPhrases</span></span>
+#### <span class="markdown-h4 signature include-toc"><span class="returns">int</span> <span class="name">iterationExponent</span></span>
+
+<div class="body">
+                                </div>
+</div>
+<div class="struct-var">
+
+#### <span class="markdown-h4 signature include-toc"><span class="returns">std::string</span> <span class="name">passPhrase</span></span>
 
 <div class="body">
                                 </div>
@@ -1370,24 +1466,29 @@ toc: true
 <h4 class="context-name">Digital Wallet (BIP32/39/44)</h4>
 <div class="method">
 
-#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">genWalletMasterSeed</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">zkAppUtils::byteArray</span> <span class="pointer-ref">&amp;</span> <span class="name">master\_generator\_key</span> <span class="type">zkAppUtils::byteArray</span> = <span class="default-val"></span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">zkAppUtils::recoveryStrategyBaseType</span> <span class="pointer-ref">&amp;</span> <span class="name">recovery\_strategy</span> <span class="type">zkAppUtils::recoveryStrategyBaseType</span> = <span class="default-val"></span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">\*</span> <span class="name">mnemonic</span> = <span class="default-val">new std::string("")</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--genWalletMasterSeed-babfef8f" class="markdown-h4 signature include-toc"}
+#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">genWalletMasterSeed</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">zkAppUtils::recoveryStrategyBaseType</span> <span class="pointer-ref">&amp;</span> <span class="name">recovery\_strategy</span> <span class="type">zkAppUtils::recoveryStrategyBaseType</span> = <span class="default-val"></span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">zkAppUtils::byteArray</span> <span class="pointer-ref">&amp;</span> <span class="name">master\_generator\_key</span> <span class="type">zkAppUtils::byteArray</span> = <span class="default-val"></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--genWalletMasterSeed-32c4674a" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Generate a BIP39 master seed to start a new blockchain wallet. (model &gt;= HSM6).</p>
-<p>This function generates a new blockchain master seed for creating a new wallet per BIP39.</p>
+<p>Generate a BIP32 master seed to start a new blockchain wallet. (model &gt;= HSM6).</p>
+<p>This function generates a new blockchain master seed for creating a new wallet per BIP32.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">type</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>The type of key to generate (ZK_EC_KEY_TYPE). {ZK_NISTP256, ZK_SECP256R1 = ZK_NISTP256, ZK_SECP256K1}.</p>
+<p>The type of key to generate (ZK_EC_KEY_TYPE). {ZK_NISTP256, ZK_SECP256R1 = ZK_NISTP256, ZK_SECP256K1, ZK_ED25519, ZK_X25519}.</p>
 </span>
 </li>
 <li class="param-item">
 <span class="name">wallet_name</span><span class="param-desc-divider"> &#8212; </span><span class="description">
 <p>An ASCII string which contains the name of the wallet.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">mnemonics(output)</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>Allocated mnemonics if it was asked for, based on recovery strategy used.</p>
 </span>
 </li>
 <li class="param-item">
@@ -1397,12 +1498,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">recovery_strategy</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>The recovery strategy object for returning bip39 or slip39(latter not supported currently). Defaults to no recovery strategy.</p>
-</span>
-</li>
-<li class="param-item">
-<span class="name">(output)</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>Allocated mnemonic if it was asked for.</p>
+<p>The recovery strategy object for returning bip39 or slip39 (starts a slip39 session instead of a one shot). Also contains key variants and passphrases. Defaults to no recovery strategy.</p>
 </span>
 </li>
 </ul>
@@ -1417,11 +1513,165 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">genWalletChildKey</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">parent\_key\_slot</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">uint32\_t</span> <span class="pointer-ref"></span> <span class="name">index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">bool</span> <span class="pointer-ref"></span> <span class="name">is\_hardened</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--genWalletChildKey-7b498800" class="markdown-h4 signature include-toc"}
+#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">genWalletMasterSeed</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">zkAppUtils::recoveryStrategyBip39</span> <span class="pointer-ref">&amp;</span> <span class="name">recovery\_strategy</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">\*</span> <span class="name">mnemonic\_str</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">zkAppUtils::byteArray</span> <span class="pointer-ref">&amp;</span> <span class="name">master\_generator\_key</span> <span class="type">zkAppUtils::byteArray</span> = <span class="default-val"></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--genWalletMasterSeed-f45ab93f" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">genWalletMasterSeed</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">zkAppUtils::recoveryStrategySlip39</span> <span class="pointer-ref">&amp;</span> <span class="name">recovery\_strategy</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">zkAppUtils::byteArray</span> <span class="pointer-ref">&amp;</span> <span class="name">master\_generator\_key</span> <span class="type">zkAppUtils::byteArray</span> = <span class="default-val"></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--genWalletMasterSeed-4e2f9328" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">setGenSlip39GroupInfo</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">member\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">member\_threshold</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--setGenSlip39GroupInfo-55d3a8cf" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Generate child key from a parent key in a blockchain wallet . (model &gt;= HSM6).</p>
+<p>Set the active slip39 group and the amount of members needed. (model &gt;= HSM6).</p>
+<p>This function configures the active group to generate the number of shards requested for the active group.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">group_index</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>The index of the group to generate shards from. Index starts at 0.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">member_count</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>The total amount of member shards in this group to generate.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">member_threshold</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>The number of member shards needed to recreate this group in recovery.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_value">
+<p>0 if successful on configuring the active group, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">addGenSlip39Member</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref"></span> <span class="name">passphrase</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">\*</span> <span class="name">mnemonic\_str</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--addGenSlip39Member-a01b7d15" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Generate a new slip39 member shard. (model &gt;= HSM6).</p>
+<p>This function generates a new slip39 member shard. The shard can optionally have a password attached to it.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">passphrase</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>Password for the shard. Can be empty string.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">mnemonic_str</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(output) The mnemonic sentence of the shard.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_value">
+<p>0 if successful on configuring the active group, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">cancelSlip39Session</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="int--cancelSlip39Session-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Cancels the current active slip39 session (model &gt;= HSM6).</p>
+<p>This function cancels open active slip39 sessions. For both generation and restore slip39 sessions.</p>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_value">
+<p>0 if successful on configuring the active group, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">genOverSightWallet</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkAppUtils::byteArray</span> <span class="pointer-ref">&amp;</span> <span class="name">public\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkAppUtils::byteArray</span> <span class="pointer-ref">&amp;</span> <span class="name">chain\_code</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">node\_address</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">variant</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--genOverSightWallet-1c0b7c3c" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Generate a oversight wallet from the last hardened node of a wallet node address (model &gt;= HSM6).</p>
+<p>This function generates a new oversight wallet and are used to generate public keys in a deterministic way.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">type</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>The type of key to generate (ZK_EC_KEY_TYPE). {ZK_NISTP256, ZK_SECP256R1 = ZK_NISTP256, ZK_SECP256K1, ZK_ED25519, ZK_X25519}.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">public_key</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>The public_key of the last hardened node of the address.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">chain_code</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>The chain_code of the last hardened node of the address.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">node_address</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>The node_address being derived from.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">wallet_name</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>An ASCII string which contains the name of the wallet.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">variant</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>The key type variant to generate. Currently only &#8220;cardano&#8221; for ed25519 is supported.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_value">
+<p>The slot the oversight wallet was allocated to.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">genWalletChildKey</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">parent\_key\_slot</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">uint32\_t</span> <span class="pointer-ref"></span> <span class="name">index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">bool</span> <span class="pointer-ref"></span> <span class="name">is\_hardened</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">bool</span> <span class="pointer-ref"></span> <span class="name">return\_chain\_code</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkAppUtils::byteArray</span> <span class="pointer-ref">\*</span> <span class="name">chain\_code</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--genWalletChildKey-46b2c6b6" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Generate child key from a parent key in a wallet (model &gt;= HSM6).</p>
 <p>This function generates a new child key descendent from a specified parent key in a wallet.</p>
 </div>
 <div class="parameters">
@@ -1440,6 +1690,16 @@ toc: true
 <li class="param-item">
 <span class="name">is_hardened</span><span class="param-desc-divider"> &#8212; </span><span class="description">
 <p>If true, a hardened key is generated.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">return_chain_code</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>If true, exports the chain code. Must be exported from a hardened node.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">(output)</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>Allocated chain_code if it was asked for.</p>
 </span>
 </li>
 </ul>
@@ -1463,7 +1723,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">restoreWalletMasterSeedFromMnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkAppUtils::byteArray</span> <span class="pointer-ref">&amp;</span> <span class="name">master\_generator\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkAppUtils::recoveryStrategyBaseType</span> <span class="pointer-ref">&amp;</span> <span class="name">recovery\_strategy</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">mnemonic</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--restoreWalletMasterSeedFromMnemonic-d9a7dfc1" class="markdown-h4 signature include-toc"}
+#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">restoreWalletMasterSeedFromMnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkAppUtils::byteArray</span> <span class="pointer-ref">&amp;</span> <span class="name">master\_generator\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkAppUtils::recoveryStrategyBip39</span> <span class="pointer-ref">&amp;</span> <span class="name">recovery\_strategy</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">mnemonic\_str</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--restoreWalletMasterSeedFromMnemonic-d9a7dfc1" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -1490,12 +1750,12 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">recovery_strategy</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>The recovery strategy used.</p>
+<p>The recovery strategy used. Contains the passphrases and key variant to recover from.</p>
 </span>
 </li>
 <li class="param-item">
-<span class="name">mnemonic</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>The mnemonic string, null terminated and UTF-8 NFKD encoded from the BIP39 English dictionary.</p>
+<span class="name">mnemonic_str</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>The mnemonic sentence to recover the master seed with. (Not used for slip39).</p>
 </span>
 </li>
 </ul>
@@ -1513,6 +1773,46 @@ toc: true
 <h5>Returns</h5>
 <span class="return_value">
 <p>Allocated slot number if successful, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">restoreWalletMasterSeedFromMnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref">&amp;</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkAppUtils::byteArray</span> <span class="pointer-ref">&amp;</span> <span class="name">master\_generator\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkAppUtils::recoveryStrategySlip39</span> <span class="pointer-ref">&amp;</span> <span class="name">recovery\_strategy</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--restoreWalletMasterSeedFromMnemonic-8e4b44f3" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">addRestoreSlip39Mnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref"></span> <span class="name">passphrase</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref"></span> <span class="name">mnemonic\_sentence</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--addRestoreSlip39Mnemonic-7346ebf4" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Feed a slip39 shard to restore a master seed (model &gt;= HSM6).</p>
+<p>This function will feed a shard to the module until the conditions are met and a master seed is generated.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">passphrase</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>The passphrase that was attached to the shard.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">mnemonic_sentence</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(output) The twenty-four word sentence mnemonic shard.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_value">
+<p>allocated slot number when all shards required are fed in, less than 0 for no change.</p>
 </span>
 </div>
 </div>
