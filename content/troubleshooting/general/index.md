@@ -18,27 +18,29 @@ December 21, 2021
  - ZYMKEY4: 04.01.06e, no change
 
 #### Zymbit Host Side Code:
- - 1.1-21
- - 1.0.10
- - 1.1-22
- - 1.1-14
+ - libzk 1.1-21 (updated)
+ - libzymkeyssl 1.0.10
+ - zkapputilslib 1.1-22 (updated)
+ - zkbootrtc 1.1-14
  - zkifc 1.2-32 (updated)
  - zkpkcs 1.0-2
- - 1.0.14
+ - zksaapps 1.0.14
  - zku 1.0.29 (updated)
 
 ### New Features
-#### RaspberryPI OS Buster
-Support for RaspberryPI OS Bullseye (32 bit). All Zymbit modules.
+#### Raspberry PI OS Bullseye
+Added support for Raspberry PI OS Bullseye (32 bit). All Zymbit modules.
 
 #### HD Wallet Edwards Curve Support
 HSM6: HD Wallet added ED25519 (edwards curve) support, as well as a "Cardano" specific variant.
 
 #### HD Wallet - Oversight Wallet
-HSM6: Includes new feature of Oversight Wallet. (Need brief description)
+HSM6: Includes new feature of Oversight Wallet. An Oversight Wallet allows a manager or overseer to monitor transactions without the ability to actually complete transactions.
+
 
 #### HD Wallet - HD Wallet Shamir's Secret Sharing
-HSM6: Includes HD Wallet SLIP39 recovery, Shamir's Secret Sharing, of up to 14 groups, each capable of 14 members. (reference link)
+HSM6: Includes HD Wallet SLIP39 recovery, Shamir's Secret Sharing, of up to 14 groups, each capable of 14 members. Shamir's Secret Sharing is detailed here: 
+[Learn about SLIP-39](https://github.com/satoshilabs/slips/blob/master/slip-0039.md)
 
 -----
 
