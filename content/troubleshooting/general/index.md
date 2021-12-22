@@ -13,9 +13,9 @@ toc: true
 December 21, 2021 
 
 #### Firmware: 
- - HSM6 updated to 06.01.23. Firmware is not field upgradeable
- - HSM4: 04.01.07, no change 
- - ZYMKEY4: 04.01.06e, no change
+ - HSM6 updated to 06.01.23Rel. Firmware is not field upgradeable
+ - HSM4: 04.01.07RelHSM. No change 
+ - ZYMKEY4: 04.01.06RelE. No change
 
 #### Zymbit Host Side Code:
  - libzk 1.1-21 (updated)
@@ -31,7 +31,7 @@ December 21, 2021
 #### Raspberry PI OS Bullseye
 Added support for Raspberry PI OS Bullseye (32 bit). All Zymbit modules.
 
-#### HD Wallet Edwards Curve Support
+#### HD Wallet - Edwards Curve Support
 HSM6: HD Wallet added ED25519 (edwards curve) support, as well as a "Cardano" specific variant.
 
 #### HD Wallet - Oversight Wallet
