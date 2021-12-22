@@ -9,16 +9,40 @@ toc: true
 ---
 
 -----
+### **Current Release Information**
+December 21, 2021 
+
+#### Firmware: 
+ - HSM6 updated to 06.01.23. Firmware is not field upgradeable
+ - HSM4: 04.01.07, no change 
+ - ZYMKEY4: 04.01.06e, no change
+
+#### Zymbit Host Side Code:
+ - 1.1-21
+ - 1.0.10
+ - 1.1-22
+ - 1.1-14
+ - zkifc 1.2-32 (updated)
+ - zkpkcs 1.0-2
+ - 1.0.14
+ - zku 1.0.29 (updated)
+
+### New Features
+#### RaspberryPI OS Buster
+Support for RaspberryPI OS Bullseye (32 bit). All Zymbit modules.
+
+#### HD Wallet Edwards Curve Support
+HSM6: HD Wallet added ED25519 (edwards curve) support, as well as a "Cardano" specific variant.
+
+#### HD Wallet - Oversight Wallet
+HSM6: Includes new feature of Oversight Wallet. (Need brief description)
+
+#### HD Wallet - HD Wallet Shamir's Secret Sharing
+HSM6: Includes HD Wallet SLIP39 recovery, Shamir's Secret Sharing, of up to 14 groups, each capable of 14 members. (reference link)
+
+-----
 
 ### **Known Issues**
-
-#### Raspbian OS Bullseye Release
-We will have a repository to directly support the Bullseye release (10/30/2021) of the Raspbian OS up shortly. In the meantime, the Zymbit Buster repo will work. Substitute the following curl command for our standard installation script,
-
-`curl -G http://s3.amazonaws.com/zk-sw-repo/install_zk_sw_bullseye.sh | sudo bash`
-
-#### HD Wallet
-Current Hierarchical Deterministic (HD) Wallet includes secp2561r1 (NIST P-256) and secp256k1 (ECC Koblitz P-256) support. ed25519 (Edwards Curve) is not currently supported (coming soon).
 
 #### CPU Scaling Governor
 We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. This sometimes causes the zymkey to be put into a odd state or return failures from operations that get optimized out by the governor. The raspberry pi sets the **scaling governor** to be "**ondemand**" by default. We recommend switching this mode to "**performance**" to get the best out of the zymkey. Details:
