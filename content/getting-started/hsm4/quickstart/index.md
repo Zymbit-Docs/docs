@@ -332,10 +332,4 @@ After bind locking the HSM, if using the perimeter detect features, prime your p
 <p>The quickest way to get started is to see the various methods at work by running these scripts:
 <code>python /usr/local/share/zymkey/examples/zk_app_utils_test.py</code>
 <code>python /usr/local/share/zymkey/examples/zk_crypto_test.py</code></p>
-<p>More Resources:</p>
-<ul>
-<li><a href="https://community.zymbit.com/">Community Forum</a></li>
-<li><a href="https://docs.zymbit.com/tutorials/encrypt-rfs/hsm4">LUKS filesystem encryption</a></li>
-<li><a href="https://docs.zymbit.com/tutorials/sensor-data/">Encrypting &amp; decrypting sensor data on disk</a></li>
-<li><a href="https://docs.zymbit.com/reference/real-time-clock/">Real Time Clock</a></li>
-</ul>
+
