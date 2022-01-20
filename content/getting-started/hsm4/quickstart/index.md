@@ -78,9 +78,9 @@ For the Jetson, the Operating System - Tegra - is based on Ubuntu. The I2C bus i
 
 For Raspian-based operating systems, you must configure the state of the {{< term/i2c >}}.
 
-Log in to your Raspberry Pi and run sudo raspi-config.
-Navigate to Interfacing Options -> I2C -> Would you like the ARM I2C interface to be enabled?
-Select yes, and confirm this choice.
+Log in to your Raspberry Pi and run `sudo raspi-config`.  
+Navigate to Interfacing Options -> I2C -> Would you like the ARM I2C interface to be enabled?  
+Select yes, and confirm this choice.  
 Your {{< term/i2c >}} bus is now configured and ready to talk to the Zymkey. The default {{< term/i2c >}} address for the Zymkey is 0x30.
 
 {{< resource_link "troubleshooting/zymkey4/#q-how-do-i-set-an-alternative-i2c-address" >}} The default I2C address for Zymkey is 0x30. If this conflicts with another device in your system, you can reconfigure the Zymkey to use another address of your choice. {{< /resource_link >}}
@@ -126,8 +126,8 @@ Your HSM is now in Developer Mode. The binding is temporary and the HSM can be m
 Before moving on to Production mode, ensure your application is running correctly. 
 
 Explore our HSM resources for help: 
-* [Perimeter Detect](https://docs.zymbit.com/tutorials/perimeter-detect/hsm4)
-* [Encrypting your root file system](https://docs.zymbit.com/tutorials/encrypt-rfs/hsm4)
+* [Perimeter Detect](https://docs.zymbit.com/tutorials/perimeter-detect/hsm4/)
+* [Encrypting your root file system](https://docs.zymbit.com/tutorials/encrypt-rfs/)
 * [Encrypting & decrypting sensor data on disk](https://docs.zymbit.com/tutorials/sensor-data/)
 * [Using the Real Time Clock](https://docs.zymbit.com/reference/real-time-clock/)
 * [Zymbit APIs](https://docs.zymbit.com/quickstart/api/).
@@ -139,15 +139,15 @@ If you have any questions, feel free to create a new post in the Community and w
 
 When you are ready to deploy your system into the field we recommend that you permanently bind your HSM to a specific host device and SD card.
 
-##### **WARNING: THIS BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FOLLOWING:**
-* Your specific HSM will be locked to the specific host device and it is impossible to move or bind your HSM to another host. There are no factory resets, masterkeys or other forms of recovery. 
+{{< callout destructive >}} THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FOLLOWING:
 
-* If you are using the perimeter_detect features, the sequence in which you arm, disarm is very important in production mode. Be sure to follow the process steps below.
+Your specific HSM4 will be permanently locked to the specific host device.
+It will be impossible to move or bind your HSM4 to another device. There are no factory resets, masterkeys, or other forms of recovery.
+If you are using the Perimeter Detect features, then the sequence in which you arm and disarm this feature is very important. Be sure to carefully follow the process steps below.
+Once you have locked your HSM4 into production mode, Zymbit cannot guarantee its operation if you subsequently do a major distribution upgrade (e.g. Raspbian Buster to Bullseye). Contact Zymbit for more information.
+If you decide that you are not ready for permanent binding, leave the HSM4 in developer mode, but beware this makes it easier for a bad actor to replace the host with rogue hardware.
 
-
-* Once you have locked your HSM into production mode, Zymbit cannot guarantee its operation if you subsequently do a major distribution upgrade (e.g. Raspbian Jessie to Stretch). [Contact Zymbit for more information.](https://www.zymbit.com/contact-us/)
-
-* If you decide that you are not ready for permanent binding then leave it in developer mode, but beware this makes it easier for a bad actor to replace the host with rogue hardware.
+{{< /callout >}}
 
 ##### **Moving from Developer Mode to Production Mode**
 **Pre-binding Checklist**
