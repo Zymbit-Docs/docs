@@ -162,8 +162,12 @@ In production mode, Zymkey generates a unique Device ID by measuring certain att
 
 The quickest way to get started is to see the Zymkey's various features at work by running these test scripts that were installed with the client software:
 
-* `python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`
-* `python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
+`python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`  
+`python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
+
+The example scripts are missing in focal and bullseye distributions. You can get the example scripts from here:
+
+[Download example files](https://community.zymbit.com/t/installation-missing-files/1331/2?u=bob_of_zymbit)
 
 Now you're ready to start developing with Zymkey4 and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
 
