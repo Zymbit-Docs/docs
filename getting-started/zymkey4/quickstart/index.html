@@ -2,7 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=generator content="Hugo 0.91.1"><meta name=ROBOTS content="INDEX, FOLLOW">
+<meta name=generator content="Hugo 0.92.0"><meta name=ROBOTS content="INDEX, FOLLOW">
 <link rel="shortcut icon" href=/favicons/favicon.ico>
 <link rel=apple-touch-icon href=/favicons/apple-touch-icon.png sizes=180x180>
 <link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
@@ -16,12 +16,12 @@
 In this Getting Started guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/getting-started/zymkey4/quickstart/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="getting-started">
-<meta property="article:modified_time" content="2021-12-22T08:26:42-08:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2022-01-20T13:59:36-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="Zymkey4 Quickstart">
 <meta itemprop=description content="ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the I2C bus and GPIO4 to communicate with the SBC CPU via an encrypted channel.
 In this Getting Started guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.">
-<meta itemprop=dateModified content="2021-12-22T08:26:42-08:00">
-<meta itemprop=wordCount content="1076"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=dateModified content="2022-01-20T13:59:36-08:00">
+<meta itemprop=wordCount content="1097"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="Zymkey4 Quickstart">
@@ -500,10 +500,10 @@ Battery installation is not required for the Zymkey4 to function, but it is high
 </a>
 </div>
 <p>The quickest way to get started is to see the Zymkey&rsquo;s various features at work by running these test scripts that were installed with the client software:</p>
-<ul>
-<li><code>python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py</code></li>
-<li><code>python3 /usr/local/share/zymkey/examples/zk_crypto_test.py</code></li>
-</ul>
+<p><code>python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py</code><br>
+<code>python3 /usr/local/share/zymkey/examples/zk_crypto_test.py</code></p>
+<p>The example scripts are missing in focal and bullseye distributions. You can get the example scripts from here:</p>
+<p><a href="https://community.zymbit.com/t/installation-missing-files/1331/2?u=bob_of_zymbit">Download example files</a></p>
 <p>Now you&rsquo;re ready to start developing with Zymkey4 and Raspberry Pi. When it&rsquo;s time to deploy your project, read our guide on enabling Production Mode:</p>
 <div class=resource-link>
 <span class=block-label>Resources</span>
