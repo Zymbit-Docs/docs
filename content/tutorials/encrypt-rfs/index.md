@@ -1,6 +1,8 @@
 ---
 title : "Encrypting Root File System with Zymbit Security Modules"
 linkTitle: "Encrypt Root File System"
+aliases:
+    - /tutorials/encrypt-rfs/zymkey4/
 description: ""
 date: ""
 lastmod: ""
