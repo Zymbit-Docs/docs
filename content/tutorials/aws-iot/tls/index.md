@@ -223,7 +223,7 @@ You now have a valid certificate, `zymkey.crt` signed by the Certificate Authori
 
 **Manually**:
 
-1. From the **AWS IoT console** select **Secure**, then click CAs and then click **Register**
+1. From the **AWS IoT console** select **Secure**, then click **CA**s and then click **Register**
 2. Click **Register CA**
 3. Follow **Steps 1 through 3** on the next screen to create a verification certificate.
 4. When signing the verification certificate with your CA in **Step 4** run the following command:
@@ -233,7 +233,7 @@ You now have a valid certificate, `zymkey.crt` signed by the Certificate Authori
 
 5. **Step 5**: click **Select CA certificate** and point to the correct **.pem file**. If you use the OpenSSL generated SSL point to **CA_files/zk_ca.pem**
 6. **Step 6**: click **Select verification certificate** and point to **verificationCert.crt** which was created in Step 4.
-7. Select **Active CA certificate** and **Enable auto-registration of device certificates**
+7. Select **Activate CA certificate** and **Enable auto-registration of device certificates**
 8. Click **Register CA certificate** button.
 
 ---
@@ -313,10 +313,9 @@ Now that your **Certificate Authority** has been registered with AWS IoT, all th
 **Manually:**
 1. From the **AWS IoT Console** click **Secure**, then **Certificates** and then click the blue **Create** button
 2. Under **Use My Certificate** click the **Get Started** button
-3. If you registered your own CA, choose the **CA you registered** on the Select a CA screen, then click on the **Register CA** button
-4. Click **Next**
-5. Click **Select certificate** and navigate to the certificate that was signed by your CA. Its default name is `zymkey.crt`
-5. Make sure to check the **activate** circle on the certificate box, and finally click the blue **Register certificates** button.
+3. If you registered your own CA, choose the **CA you registered** on the Select a CA screen, then click **Next**
+5. Click **Select certificates** and navigate to the certificate that was signed by your CA. Its default name is `zymkey.crt`
+5. Make sure to check the **Activate all** circle on the certificate box, and finally click the blue **Register certificates** button.
 
 ---
 
@@ -362,7 +361,7 @@ You can now test that your certificate `zymkey.crt` has been registered correctl
 The first thing to do is to look for your AWS endpoint:
 1. From the **AWS IoT console screen**, click on **Settings** in the left hand bar.
 2. In the **Device data endpoint** section, copy the **Endpoint**.
-3. Replace **endpoint.iot.region** with the **Endpoint** you just copied in the following command. Now run the command, making sure to do it in the same directory where you keep your signed certificate, `zymkey.crt` and your CA cert/pem file, `AWS_CA.pem`, or `CA_files/zk_ca.pem`:
+3. Replace **endpoint.iot.region.amazonaws.com** with the **Endpoint** you just copied in the following command. Now run the command, making sure to do it in the same directory where you keep your signed certificate, `zymkey.crt` and your CA cert/pem file, `AWS_CA.pem`, or `CA_files/zk_ca.pem`:
 
        #replace endpoint iot region with the copied endpoint
 	   curl --tlsv1.2 --cacert AWS_CA.pem --cert zymkey.crt --key nonzymkey.key --engine zymkey_ssl --key-type ENG -v -X POST -d "{ \"hello\": \"world\"}" "https://endpoint.iot.region.amazonaws.com:8443/topics/hello/world"
