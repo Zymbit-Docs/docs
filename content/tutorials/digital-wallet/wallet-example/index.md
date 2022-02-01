@@ -1,6 +1,6 @@
 ---
-title: "Digital Wallet"
-icon: ""
+title: "Working with the Digital Wallet"
+icon: "Wallet Example"
 description: ""
 date: ""
 lastmod: ""

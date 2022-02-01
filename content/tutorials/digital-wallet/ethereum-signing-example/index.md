@@ -1,6 +1,6 @@
 ---
-title: "Ethereum Transaction Example"
-icon: ""
+title: "Sending a Web3 Ethereum Transaction Signed by the Zymbit Module"
+icon: "Ethereum Transaction Example"
 description: ""
 date: ""
 lastmod: ""

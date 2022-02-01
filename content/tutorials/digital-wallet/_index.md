@@ -1,6 +1,6 @@
 ---
-title: "Digital HD Wallet"
-linkTitle: "Working with HD Wallet"
+title: "Working with the Zymbit Module Digital HD Wallet"
+linkTitle: "Digital Wallet"
 icon: ""
 description: ""
 date: ""
