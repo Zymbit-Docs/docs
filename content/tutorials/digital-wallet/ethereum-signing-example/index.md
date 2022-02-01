@@ -29,10 +29,6 @@ toc: true
 * [**Ethereum Yellow Paper**](https://ethereum.github.io/yellowpaper/paper.pdf)
 * [**RLP (Recursive Length Prefix) Wiki**](https://eth.wiki/en/fundamentals/rlp)
 
-# Table of Contents
-
-[[_TOC_]]
-
 # Intro
 
 ### What is a cryptographic ECDSA signature? And Why is it important?
