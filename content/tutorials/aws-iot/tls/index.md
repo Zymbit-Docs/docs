@@ -3,7 +3,7 @@ title : "AWS IoT - TLS Client Certificate Authentication"
 linkTitle: "Transport Level Security"
 description: ""
 date: "2022-01-24"
-lastmod: ""
+lastmod: "2022-02-01"
 draft: false
 images: []
 toc: true
@@ -35,6 +35,11 @@ Lastly, we will show you how to test your setup. This is done with CURL to make 
 ----------
 
 ## Prerequisites 
+
+{{% callout notice %}}
+The following procedure was done with Raspberry PI OS Buster 32bit. The current version of cURL included in bullseye (7.74.0) seems to have an issue using the openssl engine import feature.
+{{% /callout %}}
+
 
 Install the necessary software packages and insure the Zymkey is bound to its host using the [Getting Started Guide](https://docs.zymbit.com/getting-started/). 
 
