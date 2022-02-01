@@ -47,7 +47,7 @@ Signatures are effectively a user's wax seal on an envelope.
 
 Signatures play a huge role at the low level in blockchain. All data must be signed before being transmitted to the blockchain.
 
-![Flowchart](uploads/b35fead9923e0c602bf11d23b4385f21/Flowchart.png)
+![Flowchart](eth_flow.png)
 
 ---
 
