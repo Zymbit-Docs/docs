@@ -371,6 +371,10 @@ The first thing to do is to look for your AWS endpoint:
        #replace endpoint iot region with the copied endpoint
 	   curl --tlsv1.2 --cacert AWS_CA.pem --cert zymkey.crt --key nonzymkey.key --engine zymkey_ssl --key-type ENG -v -X POST -d "{ \"hello\": \"world\"}" "https://endpoint.iot.region.amazonaws.com:8443/topics/hello/world"
 
+Optionally, you can set an environment variable specifying the slot to use. For the HSM6, you will need to specify the variable prior to running the curl command:
+
+           export ZK_SSL_SLOT=0
+
 You should see a successful TLS connection, but receive a **403 Forbidden Exception** from AWS. This is because the certificate you registered, `zymkey.crt` doesn't have the appropriate permissions to publish a message to the topic **hello/world**. We can fix this by adding a policy and attaching it to the certificate.
 
 ---
