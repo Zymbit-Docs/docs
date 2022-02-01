@@ -86,13 +86,15 @@ The quickest way to interact with the ethereum blockchain network is to use remo
 1. [Create an Infura Account](https://infura.io/) and log in.
 2. Create a new project this can be named anything you want.
 
-![image](uploads/83203cf0bab035ae9cf0d7a9131d3a29/image.png)
+![Infura Login](infura_login.png)
 
 3. Go to project settings and change the endpoints dropdown from Mainnet->Ropsten. Ropsten is the test network we will be testing our transaction on. Write down the web link to our test project for web3 to communicate with.
 
-<mark>MAKE THIS A WARNING WHEN MOVING TO GITHUB</mark> `It should be said that if you are developing in infura moving forward, make sure to not give out the project secret and project ID.`
+{{< callout warning >}}
+If you are developing in Infura moving forward, make sure to not give out the project secret and project ID!
+{{< /callout >}}
 
-![tempsnip](uploads/c497bea4f8e9ba2eeca44dd21d4c7f85/tempsnip.png)
+![Infura Project](infura_project.png)
 
 # Web3 Example
 
@@ -136,7 +138,11 @@ w3 = Web3(Web3.HTTPProvider('https://ropsten.infura.io/v3/9f06183d0529494792242b
 
 Ethereum network is based off the Koblitz curve "secp256k1", so individual accounts are generated from secp256k1 public/private key pairs. The private key in the key pair is used to sign/encrypt data to be sent to the network or other users.
 
-The public key in the key pair is used to verify the data owner's identity and decrypt the data received. The public key can not be reverse engineered to get the private key. It is safe to send out the public key to other users. **Never send another user a private key!** The Zymbit hardware wallet never exposes the private key.
+The public key in the key pair is used to verify the data owner's identity and decrypt the data received. The public key can not be reverse engineered to get the private key. It is safe to send out the public key to other users.
+
+{{< callout warning >}}
+**Never send another user a private key!** The Zymbit hardware wallet never exposes the private key.
+{{< /callout >}}
 
 Generate a secp256k1 key pair and export the public key from the slot to use later.
 
