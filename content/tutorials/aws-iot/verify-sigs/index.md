@@ -3,7 +3,7 @@ title: "How to Verify Signatures against Public Key on AWS and Other Devices"
 linkTitle: "Verify Signatures"
 description: ""
 date: ""
-lastmod: ""
+lastmod: "2022-02-01"
 draft: false
 images: []
 toc: true
@@ -11,30 +11,32 @@ toc: true
 
 ### Introduction 
 
-While Zymkey makes it trivial to verify data signed by A_Specific_Zymkey on the same A_Specific_Zymkey, verifying the signature of data on other devices using the exportable public key requires a little more explanation. Below is a simple code snippet to show how to verify the signature of locked data using Zymkey's Python API.
+While Zymkey makes it trivial to verify data signed on the same particular Zymkey, verifying the signature of data on other devices using the exportable public key requires a little more explanation. Below is a simple code snippet to show how to verify the signature of data using Zymkey's Python API.
 ```python
+#!/usr/bin/python3
+
 import zymkey
 
-#encrypt data then sign
-data = bytearray('hello world!')
-encrypted_payload = zymkey.client.lock(data)
-payload_sig = zymkey.client.sign(encrypted_payload)
+# sign data
 
-#verify signature matches encrypted data
+data = 'hello world!'
+payload_sig = zymkey.client.sign(data)
+
+# verify signature matches encrypted data
 try:
 	if zymkey.client.verify(encrypted_payload, payload_sig):
-		print('Signature signed correctly by Zymkey and matches encrypted payload.')
+		print('Signature signed correctly by Zymkey and matches payload.')
 except Exception as e:
 	print('Signature invalid. Data not signed by Zymkey private key.')
 ```
 
-Since the IoT environment is all about communication among many devices, we will demonstrate how to verify A_Specific_Zymkey's ECDSA signature on other devices not bound to A_Specific_Zymkey using the public key corresponding to the signing device's private key (stored securely in A_Specific_Zymkey).
+Since the IoT environment is all about communication among many devices, we will demonstrate how to verify a Zymbit module's ECDSA signature on other devices not bound to that specific Zymbit module using the public key corresponding to the signing device's private key (stored securely on the Zymbit module).
 
-After showing how to do just signature verification, I will demonstrate how this can be used in a practical situation by collecting temperature data from a sensor, encrypting the data and signing it. I will then package the data in JSON format, a standard format for data communication over the internet using strings. This data will then be published to AWS IoT, where it will be routed, via a Rule, to a lambda function that will validate the data based on the public key. **From there a user can rout their data to any service they desire, this post will just demonstrate how to validate the signatures of all data sent to AWS before they are proccessed by another service**. 
+After showing how to do signature verification, we will demonstrate how this can be used in a practical situation by collecting temperature data from a sensor, and signing the data. We will then package the data in JSON format, a standard format for data communication over the internet using strings. This data will then be published to AWS IoT, where it will be routed, via a Rule, to a lambda function that will validate the data based on the public key. **From there you can route the data to any service you desire. This post will demonstrate how to validate the signatures of all data sent to AWS before processing by another service**. 
 
-Futhermore, all data published to AWS will be authenticated against a Zymkey device certificate which validates against Zymkey's private key without exporting said key. We will do this by making HTTPS requests to AWS IoT using PyCurl. This serves as client authentication when connecting to AWS IoT; AWS IoT enforces this policy to make sure the device publishing data is an authorized one. 
+All data published to AWS will be authenticated against a Zymkey device certificate which validates against the Zymbit module's private key without exporting said key. We will do this by making HTTPS requests to AWS IoT using PyCurl. This serves as client authentication when connecting to AWS IoT; AWS IoT enforces this policy to make sure the device publishing data is an authorized one. 
 
-All these examples will be done via Python using the Python-ECDSA library, a future post will extend all these functions to C/C++.
+All these examples will be done via Python using the Python-ECDSA library.
 
 ## Prerequisites
 
