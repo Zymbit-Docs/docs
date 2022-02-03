@@ -2,8 +2,8 @@
 title: "How to Verify Signatures against Public Key on AWS and Other Devices"
 linkTitle: "Verify Signatures"
 description: ""
-date: ""
-lastmod: "2022-02-02"
+date: "2022-02-01"
+lastmod: "2022-02-04"
 draft: false
 images: []
 toc: true
@@ -202,9 +202,14 @@ the data into JSON format, and sign and send to send to AWS IoT.
 The function `read_temp()` will return an array containing random values for
 `temp_c` and `temp_f`.
 
+{{% callout notice %}}
+If you wish to use an actual DS18B20 OneWire probe to collect temperature data,
+you can follow the instructions at this link. 
 {{< resource_link "https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware" >}}
-If you wish to use an actual DS18B20 OneWire probe to collect temperature data, you can follow the instructions in this link. Add in the following code and substitute for the `read_temp()` function.
+Using a DS18B20 OneWire Probe to Collect Temperature Data
+{{< /resource_link >}}
 
+Add in the following code and substitute for the `read_temp()` function.
 This code collects Temperature data from the probe. It reads from a file that the probes deposit temperature data to. The function `read_temp()` will return an array containing `temp_c` and `temp_f`, whenever you need to read temperature from the probes. Substitute this next snippet of code if you are using a real probe.
 
 ```python
@@ -229,9 +234,9 @@ def read_temp():
             temp_f = temp_c * 9.0 / 5.0 + 32.0
             return temp_c, temp_f
 ```
-{{< /resource_link >}}
+{{% /callout %}}
 
-
+**Collect data in JSON format, sign, and prepare for AWS**
 ```python
 #!/usr/bin/python3
 
