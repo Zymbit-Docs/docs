@@ -13,7 +13,7 @@ toc: true
 
 While all Zymbit modules make it trivial to verify data signed on the device with that module, verifying
 the signature of data on other devices using the exportable public key requires a little more explanation.
-Below is a simple code snippet to show how to verify the signature of data using Zymkey's Python API.
+Below is a simple code snippet to show how to verify the signature of data using Zymbit's Python API.
 
 ```python
 #!/usr/bin/python3
@@ -41,12 +41,12 @@ situation by collecting temperature data from a sensor and signing the data. We 
 data in JSON format - a standard format for data communication over the internet using strings.
 This data will then be published to AWS IoT, where it will be routed via a Rule to a Lambda Function.
 The Lambda Function will validate the data based on the public key.
-**From there you can route the data to any service you desire.**
+From there you can route the data to any service you desire.
 
 This post will demonstrate how to validate the signatures of all data sent to AWS before processing by
 another service. All data published to AWS will be authenticated against a device certificate which
 validates against the Zymbit module's private key without exporting said key. We will do this by making
-HTTPS requests to AWS IoT using PyCurl. This serves as client authentication when connecting to AWS IoT.  
+HTTPS requests to AWS IoT using PyCurl. This serves as client authentication when connecting to AWS IoT.
 All these examples will be done via Python using the Python-ECDSA library.
 
 ## Prerequisites
@@ -70,9 +70,9 @@ installed simply by running the following command:
 Below is a simple Python program demonstrating how to verify a Zymbit module signature with a
 public key hosted on a device bound to that Zymbit module. The data passed to the ECDSA verifying
 function is in bytearray format. The function is validating against the default signing hash
-function Zymbit module uses, **sha256**, and returns a boolean indicating whether the signature
+function Zymbit module uses, `sha256`, and returns a boolean indicating whether the signature
 matches the public key and data. The public key for Zymkey is exported as bytearray using the
-API function **get_public_key()**.
+API function `get_public_key()`.
 
 ```python
 #!/usr/bin/python3
@@ -99,17 +99,59 @@ if __name__ == "__main__":
         print('Signature matches data and public key pair.')
     else:
         print('Signature is invalid; it does not correspond to the public key.')
-
-
 ```
 
 #### Signature Verification on Another Device
 
-This next Python program will simulate signature verification on another device that receives
-the data in JSON format. The public key is hard coded into the program for the sake of a simple
-demonstration, but public key exchange between devices is up to the discretion of the user. The
-data payload and signature will be passed in a JSON string in the format of a hex string.
+This next section will simulate signature verification on another device that receives
+data in JSON format that has been signed with a Zymbit module. The public key is hard coded
+into the program for the sake of a simple demonstration, but public key exchange between
+devices is up to the discretion of the user.
+
+The data payload and signature is passed in a JSON string in the format of a hex string.
 Hex strings are simply representations of the underlying bytes in a human readable format.
+The JSON data is represented below as the variable **received_payload**. For this example,
+we are using **received_payload** data generated with the following example code on your
+device with the Zymbit module.
+
+**Export Public Key and Generate Example JSON Data for Validation**
+
+```python
+#!/usr/bin/python3
+
+import json
+import zymkey
+import binascii
+
+
+if __name__ == "__main__":
+
+    # Get public key to give to remote
+    pub_key = zymkey.client.get_public_key()
+    print("Public key:")
+    print(pub_key.hex())
+
+    # Create data then sign data
+    data = 'hello world'
+    data_bytes = bytearray(data, 'utf-8')
+    signature = zymkey.client.sign(data)
+
+    # Store data in a python dictionary that represents JSON. Data is originally in bytearray form
+    # but will be converted to hex_string
+    json_dictionary = {
+        'data': data_bytes.hex(),
+        'signature': signature.hex()
+    }
+
+    
+    # Convert python dictionary to JSON string format
+    received_payload = json.dumps(json_dictionary)
+    print("\nJSON string:")
+    print(received_payload)
+
+```
+
+**Python Code to Verify Signature with Data Generated above**
 
 ```python
 #!/usr/bin/python3
@@ -118,69 +160,40 @@ import json
 import zymkey
 import hashlib
 import ecdsa
+import binascii
 
 def verify_ecdsa_signature(data, sig, pub_key):
     vk = ecdsa.VerifyingKey.from_string(pub_key, ecdsa.NIST256p)
     return vk.verify(sig, data, hashfunc=hashlib.sha256)
 
-''' 
-The variable received_payload will be the JSON string sent over to this device from the Zymkey.
-It contains:
-    1.the encrypted data and
-    2.the signature for this data.
-Here is how it will be formatted:
-    "{
-        'data': 'hex_string of data',
-        'signature': 'hex_string of signature;
-    }"
-'''
 
 if __name__ == "__main__":
-    # Zymkey public key in hex string format. Converted to byte_array, public key storage/exchange
-    # up to user. 
-    pub_key = bytearray.fromhex('9929a80b1d2e1543992dc767f394d1859bc33e9b241203f53473d859e1506f7ee5593b53a7fe7014aecc1f14886e1440e6bde27571c596a7ae3d1573e4122d90')
+    # Zymkey public key in hex string format. Converted to byte_array, public key storage/exchange up to user. 
+    pub_key = bytearray.fromhex('6cd0b8b14963f6712877eb50a3f5afa9c0e39483e560f58eb795e634df53f399ba370dbceb71ea87cba5e2fca4f23ef73b8e683a9946758829f76521e7a19e5a')
+
+    ''' 
+    The variable received_payload will be the JSON string sent over to this device from the Zymkey.
+    It contains 1.the data and 2.the signature for this data. See next code example to create an example.
+    Here is how it will be formatted:
+        "{
+            'data': 'hex_string of data',
+            'signature': 'hex_string of signature;
+        }"
+    '''
+    received_payload = '{ "data": "68656c6c6f20776f726c64", "signature": "28953e99dcc7f7ebf2771acae9e996e45997a212f7deba04a5974d1db6651fc8c50f11a5e5ad24ef25bdf0dafbdb736513f618184505f469f126c7dd4557cade" }'
 
     #Converting JSON string to Python dictionary for easier manipulation
     payload_pydict = json.loads(received_payload)
 
-    #Getting the hex_strings from the new Python dictionary
-    encrypted_payload = payload_pydict['data']
+    # Getting the hex_strings from the new Python dictionary
+    payload = payload_pydict['data']
     payload_sig = payload_pydict['signature']
 
     #Validating signature against public key and data, converting all hex_strings to bytearrays.
-    if verify_ecdsa_signature(data=bytearray.fromhex(encrypted_payload), sig=bytearray.fromhex(payload_sig), pub_key=pub_key):
+    if verify_ecdsa_signature(data=bytearray.fromhex(payload), sig=bytearray.fromhex(payload_sig), pub_key=pub_key):
         print('Signature matches data and public key pair.')
     else:
         print('Signature is invalid; it does not correspond to the public key.')
-```
-
-#### Generating JSON Data for Validation
-
-The above code shows how to validate JSON strings where the data is being represented as hex strings.
-The JSON is represented above as the variable **received_payload**; I will show how to generate such
-JSON data that you can send over to be validated.
-
-```python
-#!/usr/bin/python3
-
-import zymkey
-import binascii
-import json
-
-def create_signed_json():
-    # Create data, encrypt then sign encrypted data
-    data = bytearray('hello world~')
-    encrypted_payload = zymkey.client.lock(data)
-    signature = zymkey.client.sign(encrypted_payload)
-
-    # Store data in a python dictionary that represents JSON.
-    # Data is originally in bytearray form, but will be converted to hex_string
-    json_dictioanry = {'data': binascii.hexlify(encrypted_payload), 'signature': binascii.hexlify(signature)}
-    
-    # Convert python dictionary to JSON string format
-    received_payload = json.dumps(json_dictionary)
-    return received_payload
-     
 ```
 
 ### Validation of Encrypted Sensor Signature on AWS
