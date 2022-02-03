@@ -121,7 +121,6 @@ device with the Zymbit module.
 
 import json
 import zymkey
-import binascii
 
 
 if __name__ == "__main__":
@@ -151,7 +150,8 @@ if __name__ == "__main__":
 
 ```
 
-**Python Code to Verify Signature with Data Generated above**
+**Python Code to Verify Signature with Data Generated above**  
+Either substitute in your `pub_key` and `JSON data` from the previous example or use as is.
 
 ```python
 #!/usr/bin/python3
@@ -160,7 +160,6 @@ import json
 import zymkey
 import hashlib
 import ecdsa
-import binascii
 
 def verify_ecdsa_signature(data, sig, pub_key):
     vk = ecdsa.VerifyingKey.from_string(pub_key, ecdsa.NIST256p)
@@ -182,14 +181,14 @@ if __name__ == "__main__":
     '''
     received_payload = '{ "data": "68656c6c6f20776f726c64", "signature": "28953e99dcc7f7ebf2771acae9e996e45997a212f7deba04a5974d1db6651fc8c50f11a5e5ad24ef25bdf0dafbdb736513f618184505f469f126c7dd4557cade" }'
 
-    #Converting JSON string to Python dictionary for easier manipulation
+    # Converting JSON string to Python dictionary for easier manipulation
     payload_pydict = json.loads(received_payload)
 
     # Getting the hex_strings from the new Python dictionary
     payload = payload_pydict['data']
     payload_sig = payload_pydict['signature']
 
-    #Validating signature against public key and data, converting all hex_strings to bytearrays.
+    # Validating signature against public key and data, converting all hex_strings to bytearrays.
     if verify_ecdsa_signature(data=bytearray.fromhex(payload), sig=bytearray.fromhex(payload_sig), pub_key=pub_key):
         print('Signature matches data and public key pair.')
     else:
@@ -205,14 +204,15 @@ That is adequately covered
 [here](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware).
  
 If you don't wish to use a real temperature probe, you can always generate random values as
-temperature data to test.
+temperature data to test. 
 
 #### Collecting Temperature Data
 
-Here's the code to collect Temperature data from the probe. It is just a simple program that reads
-from a file thtat the probes deposit temperature data to. **Simply use the function read_temp()
-which will return an array containing temp_c and temp_f, whenever you need to read temperature
-from the probes.**
+Here's the code to collect Temperature data from the probe. It reads from a file that the probes
+deposit temperature data to. The function `read_temp()` will return an array containing
+`temp_c` and `temp_f`, whenever you need to read temperature from the probes.
+The signing example that follows generates random values in `read_temp(). Substitute this next
+snippet of code if you are using a real probe.
 
 ```python
 #!/usr/bin/python3
@@ -238,16 +238,17 @@ def read_temp():
 
 #### Signing Temperature Data and Packaging in JSON
 
-Next we will show how to read the temperature data and package it in JSON format, so that we can
-send it up to AWS IoT. **Note that the above code also needs to be appended to this so that
-the read_temp function is defined.**
+Next we will show how to take the temperature data and package it in JSON format, to
+send it up to AWS IoT. As mentioned, if you are using a real probe, append the above to use
+in place of the `read_temp()` function.
 
 ```python
 #!/usr/bin/python3
 
-import zymkey
-import binascii
 import json
+import random
+import time
+import zymkey
 
 '''
 Note that JSON data needs to be in this format:
@@ -258,21 +259,28 @@ Note that JSON data needs to be in this format:
 If you wish to use a different JSON format, you can always modify the lambda function.
 '''
 
-while True:
-    temp = read_temp()
-    temp_F = temp[1], temp_C = temp[0]
-    deviceID = 1, myIP= '169.231.116.56'
-	
-    #Package the data in Python dictionary, then convert to JSON string.
-    data = {'temp_F': temp_F, 'temp_C': temp_C, 'deviceIP': myIP, 'deviceID': deviceID}
-	
-    #Encrypt the underlying bytes for the string and then sign it.
-    encrypted_data = zymkey.client.lock(bytearray(json.dumps(data)))
-    signature = zymkey.client.sign(encrypted_data)
+def read_temp():
+    temp_c = float(random.randint(0,100))
+    temp_f = temp_c * 9.0 / 5.0 + 32.0
+    return temp_c, temp_f
 
-    #Make a new dictionary to hold the hex_strings of the encrypted data and signture, and then turn into JSON
-    json_data = json.dumps({'data': binascii.hexlify(encrypted_data), 'signature': binascii.hexlify(signature)})
-	
+
+while True:
+    temp_C, temp_F = read_temp()
+    deviceID = 1
+    myIP= '192.168.100.100'
+
+    # Package the data in Python dictionary, then convert to JSON string.
+    data = {'temp_F': temp_F, 'temp_C': temp_C, 'deviceIP': myIP, 'deviceID': deviceID}
+
+    # sign the JSON string
+    json_str = json.dumps(data)
+    json_str_bytes = bytearray(json_str, 'utf-8')
+    signature = zymkey.client.sign(json_str)
+
+    # Make a new dictionary to hold the hex_strings of the data and signature, and then turn into JSON
+    json_data = json.dumps({'data': json_str_bytes.hex(), 'signature': signature.hex()})
+    print(json_data)
     #10 seconds before reading temperature again
     time.sleep(10)
 ```
@@ -469,7 +477,6 @@ the JSON string we need.
 #!/usr/bin/python3
 
 import zymkey
-import binascii
 import json
 
 data = bytearray('hello world~')
