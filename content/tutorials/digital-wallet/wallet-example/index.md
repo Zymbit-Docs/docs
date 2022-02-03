@@ -1,6 +1,5 @@
 ---
-title: "Working with the Digital Wallet"
-icon: "Wallet Example"
+title: "Working with the BIP32/39/44 Digital Wallet"
 description: ""
 date: ""
 lastmod: ""
