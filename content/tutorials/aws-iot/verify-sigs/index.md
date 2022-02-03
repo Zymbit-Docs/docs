@@ -195,24 +195,17 @@ if __name__ == "__main__":
         print('Signature is invalid; it does not correspond to the public key.')
 ```
 
-### Validation of Encrypted Sensor Signature on AWS
+### Validation of Sensor Data Signature on AWS
 
-This example will be using a DS18B20 OneWire probe to collect temperature data.
+This example will generate randomly simulated temperature sensor data, package
+the data into JSON format, and sign and send to send to AWS IoT.
+The function `read_temp()` will return an array containing random values for
+`temp_c` and `temp_f`.
 
-For the purpose of this tutorial I will not be going over the circuit setup and one-wire configuration.
-That is adequately covered
-[here](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware).
- 
-If you don't wish to use a real temperature probe, you can always generate random values as
-temperature data to test. 
+{{< resource_link "https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware" >}}
+If you wish to use an actual DS18B20 OneWire probe to collect temperature data, you can follow the instructions in this link. Add in the following code and substitute for the `read_temp()` function.
 
-#### Collecting Temperature Data
-
-Here's the code to collect Temperature data from the probe. It reads from a file that the probes
-deposit temperature data to. The function `read_temp()` will return an array containing
-`temp_c` and `temp_f`, whenever you need to read temperature from the probes.
-The signing example that follows generates random values in `read_temp(). Substitute this next
-snippet of code if you are using a real probe.
+This code collects Temperature data from the probe. It reads from a file that the probes deposit temperature data to. The function `read_temp()` will return an array containing `temp_c` and `temp_f`, whenever you need to read temperature from the probes. Substitute this next snippet of code if you are using a real probe.
 
 ```python
 #!/usr/bin/python3
@@ -224,6 +217,7 @@ device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
 
 def read_temp():
+    # Supplies random temperature in Celsius and Farenheit for this example.
     lines = read_temp_raw()
     while lines[0].strip()[-3:] != 'YES':
         time.sleep(0.2)
@@ -235,12 +229,8 @@ def read_temp():
             temp_f = temp_c * 9.0 / 5.0 + 32.0
             return temp_c, temp_f
 ```
+{{< /resource_link >}}
 
-#### Signing Temperature Data and Packaging in JSON
-
-Next we will show how to take the temperature data and package it in JSON format, to
-send it up to AWS IoT. As mentioned, if you are using a real probe, append the above to use
-in place of the `read_temp()` function.
 
 ```python
 #!/usr/bin/python3
