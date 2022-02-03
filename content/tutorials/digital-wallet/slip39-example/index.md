@@ -1,5 +1,6 @@
 ---
 title: "SLIP39 and Sharding Wallet Recovery Example"
+linkTitle: "SLIP39 and Sharding"
 description: ""
 date: ""
 lastmod: ""

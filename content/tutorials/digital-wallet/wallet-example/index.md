@@ -1,5 +1,6 @@
 ---
 title: "Working with the BIP32/39/44 Digital Wallet"
+linkTitle: "BIP32/39/44 Wallet"
 description: ""
 date: ""
 lastmod: ""
