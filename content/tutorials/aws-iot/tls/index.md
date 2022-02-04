@@ -404,7 +404,7 @@ Here's the **403 exception** you should receive:
 Here we will attach a Policy to your Zymkey certificate that allows it to publish data to any topic on AWS IoT.
 
 1. From the **AWS IoT** console click on **Secure** and then **Policies**. Click the blue **Create a policy** button.
-2. Give your Policy an approriate name.
+2. Give your Policy an appropriate name.
 3. Under **Action**, write the following:
 	
 		iot:Connect, iot:Publish
@@ -431,8 +431,8 @@ Here we will attach a Policy to your Zymkey certificate that allows it to publis
 
 Now the previous command should work and **{"hello": "world"}** should be published to the **hello/world** topic on your AWS IoT endpoint.
 
-1. On the **AWS IoT console** and the **left hand bar**, click on the **Test** option.
-2. In the **Subscribe to a topic** tab, in the **Topic filter** box, type in **hello/world**. Click the **Subscribe** button
+1. On the **AWS IoT console** and the **left hand bar**, click on the **Test** option, and then the **MQTT test client** option. 
+2. In the **Subscribe to a topic** tab, in the **Subscription topic** box, type in **hello/world**. Click the **Subscribe** button
 3. Test your TLS connection with the following **CURL** command pointing to the **CA cert/pem file** and your **Zymkey certificate**:
 	
 		#replace endpoint.iot.region with the appropriate values

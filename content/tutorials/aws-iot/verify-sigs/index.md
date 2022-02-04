@@ -2,8 +2,8 @@
 title: "How to Verify Signatures against Public Key on AWS and Other Devices"
 linkTitle: "Verify Signatures"
 description: ""
-date: "2022-02-01"
-lastmod: "2022-02-04"
+date: ""
+lastmod: "2022-02-05"
 draft: false
 images: []
 toc: true
@@ -209,7 +209,7 @@ you can follow the instructions at this link.
 Using a DS18B20 OneWire Probe to Collect Temperature Data
 {{< /resource_link >}}
 
-Add in the following code and substitute for the `read_temp()` function.
+Add this code and substitute for the `read_temp()` function in the example below.
 This code collects Temperature data from the probe. It reads from a file that the probes deposit temperature data to. The function `read_temp()` will return an array containing `temp_c` and `temp_f`, whenever you need to read temperature from the probes. Substitute this next snippet of code if you are using a real probe.
 
 ```python
@@ -233,10 +233,12 @@ def read_temp():
             temp_c = float(temp_string) / 1000.0
             temp_f = temp_c * 9.0 / 5.0 + 32.0
             return temp_c, temp_f
-```
+```  
+
 {{% /callout %}}
 
-**Collect data in JSON format, sign, and prepare for AWS**
+**Collect data in JSON format, sign, and prepare for AWS**  
+
 ```python
 #!/usr/bin/python3
 
@@ -255,6 +257,7 @@ If you wish to use a different JSON format, you can always modify the lambda fun
 '''
 
 def read_temp():
+    # this provides simulated random data for the example
     temp_c = float(random.randint(0,100))
     temp_f = temp_c * 9.0 / 5.0 + 32.0
     return temp_c, temp_f
@@ -276,98 +279,108 @@ while True:
     # Make a new dictionary to hold the hex_strings of the data and signature, and then turn into JSON
     json_data = json.dumps({'data': json_str_bytes.hex(), 'signature': signature.hex()})
     print(json_data)
-    #10 seconds before reading temperature again
+    # 10 seconds before reading temperature again
     time.sleep(10)
 ```
+
 #### Sending Encrypted Temperature Data to AWS
 
-Because AWS' sdk doesn't support TLS connection over OpenSSL engines, which is required since
-we don't keep the private key in the file system, we will be using CURL to make HTTPS requests
-to AWS using Zymkey's embedded private key. We will be using PyCurl to do this programatically.
+The AWS SDK doesn't support TLS connections over OpenSSL engines. Therefore, since
+we keep the private key in the Zymbit module and not the file system, we will use CURL to make HTTPS requests
+to AWS with the Zymbit module's embedded private key. We will be using PyCurl to do this programatically.
 
 **Installing PyCurl**
 
-PyCurl is simply a wrapper on the libssl library for C/C++. So they must be installed and
-configured with OpenSSL, you can do this with the following commands.
+PyCurl is simply a wrapper on the libssl library for C/C++. Install and
+configure libssl library along with PyCurl:
 
     sudo apt-get install libcurl4-openssl-dev
-	
     sudo apt-get install libssl-dev
-	
     sudo pip install pycurl
 
-**Registering Zymkey device Certificate**
+**Registering Zymbit module device Certificate**
 
 Connecting to and Publishing data to AWS IoT requries you to present a valid certificate that
-has been regsitered with your AWS account. You can find how how to do this by following my
-[post here](https://docs.zymbit.com/tutorials/aws-iot/tls/). Make sure that the certificate
+has been regsitered with your AWS account. Instructions for that process is outlined
+[here](https://docs.zymbit.com/tutorials/aws-iot/tls/). Make sure that the certificate
 has a policy attached to allow data publication on AWS, if you follow the post completely this
 should be done.
 
-You don't need to specifically use your Zymkey public/private key pair for the device
-certificate, but it would be a good idea to do so to implement an extra layer of private
-key security.
-
 **Publishing data to AWS IoT**
 
-The following code will publish data to AWS IoT using PyCurl. It does the same thing as publishing
-data using CURL in my post on publishing data to AWS IoT, but let's you use Python to automate data
-publication. 
-
-**Make sure to find and change your AWS IoT endpoint in the following code, information on how
+Next we will publish the temperature data signed and saved from the last section to AWS IoT using PyCurl.
+**Make sure to find and change your AWS IoT endpoint in the following code. Information on how
 to do this can be found in the tutorial linked above.** 
 
 ```python
-#!/usr/bin/python3
+!/usr/bin/python3
 
 import json
-import ecdsa
-import hashlib
 import pycurl
+import random
+import time
+import zymkey
 	
+
+def read_temp():
+
+    temp_c = float(random.randint(0,100))
+    temp_f = temp_c * 9.0 / 5.0 + 32.0
+    return temp_c, temp_f
+
+
 def ZK_AWS_Publish(url, post_field, CA_Path, Cert_Path,):
-    #Setting Curl to use zymkey_ssl engine
+
     c = pycurl.Curl()
+
+    # Set Curl to use zymkey_ssl engine
     c.setopt(c.SSLENGINE, "zymkey_ssl")
-    c.setopt(c.SSLENGINE_DEFAULT, 1L)
     c.setopt(c.SSLVERSION, c.SSLVERSION_TLSv1_2)
 	
-    #Settings certificates for HTTPS connection
-    c.setopt(c.SSLENGINE, "zymkey_ssl")
-    c.setopt(c.SSLCERTTYPE, "PEM")
+    # Set certificates for HTTPS connection
     c.setopt(c.SSLCERT, Cert_Path)
-    c.setopt(c.CAINFO, CA_Path
+    c.setopt(c.CAINFO, CA_Path)
 	
-    #setting endpoint and HTTPS type, here it is a POST
+    # Set endpoint and HTTPS type, here it is a POST
     c.setopt(c.URL, url)
     c.setopt(c.POSTFIELDS, post_field)
     
-    #Telling Curl to do client and host authentication
+    # Tell Curl to do client and host authentication
     c.setopt(c.SSL_VERIFYPEER, 1)
     c.setopt(c.SSL_VERIFYHOST, 2)
     
-    #Turn on Verbose output and set key as placeholder, not actually a real file.
+    # Turn on Verbose output and set key as placeholder, not actually a real file.
     c.setopt(c.VERBOSE, 1)
     c.setopt(c.SSLKEYTYPE, "ENG")	
     c.setopt(c.SSLKEY, "nonzymkey.key")
-    )
 
     c.perform()
+    c.close()
 
-if name == '__main__':
-    '''
-    Add the above two snippets of Python code so that we have temperature data formatted
-    into JSON format. Then we will simply submit a HTTPS POST request to AWS IoT endpoint
-    publishing the JSON string.
-    '''
-		
-    '''
-    json_data which is being published is the JSON string created in the previous code.
-    Also make sure to point to correct certificate paths, they can be either absolute or relative.
-    '''
-		
-    AWS_ENDPOINT = 'https://ar21wpwmha9rv.iot.us-west-2.amazonaws.com:8443/topics/pub_key_validate?qos=1'
-    ZK_AWS_Publish(url=AWS_ENDPOINT, post_field=json_data, CA_Path='/home/pi/Desktop/AWS_CA.pem', Cert_Path='/home/pi/Desktop/zymkey.crt')
+
+if __name__ == '__main__':
+    while True:
+
+        temp_C, temp_F = read_temp()
+        deviceID = 1
+        myIP= '192.168.100.100'
+        
+        # Package the data in Python dictionary, then convert to JSON string.
+        data = {'temp_F': temp_F, 'temp_C': temp_C, 'deviceIP': myIP, 'deviceID': deviceID}
+        
+        # sign the JSON string
+        json_str = json.dumps(data)
+        json_str_bytes = bytearray(json_str, 'utf-8')
+        signature = zymkey.client.sign(json_str)
+        
+        # Make a new dictionary to hold the hex_strings of the data and signature, and then turn into JSON
+        json_data = json.dumps({'data': json_str_bytes.hex(), 'signature': signature.hex()})
+        
+        # make sure and substitute you AWS endpoint as well as the paths to your certificate
+        AWS_ENDPOINT = 'https://a2yw4olqxcxr50-ats.iot.us-west-1.amazonaws.com:8443/topics/pub_key_validate?qos=1'
+        ZK_AWS_Publish(url=AWS_ENDPOINT, post_field=json_data, CA_Path='/home/pi/verify-sig/AWS_CA.pem', Cert_Path='/home/pi/verify-sig/zymkey.crt')
+
+        time.sleep(10)
 ```
 
 #### Checking Data is being published to AWS IoT
@@ -375,10 +388,10 @@ if name == '__main__':
 If all the previous steps have been done correctly, then you should be able to see the JSON string
 you published on the AWS IoT console. It will be published to the topic **pub_key_validate**. This
 is encoded in the endpoint link you can see in the code. The topic can be changed to whatever
-you want. **Here's how to check the data from the AWS IoT console** .
+you want. **Here's how to check the data from the AWS IoT console**:  
 
 1. From the **AWS console**, select **AWS IoT**.
-2. On the **left hand bar**, select **Test**.
+2. On the **left hand bar**, select **Test**. If MQTT Test is shown choose that.
 3. Under **subscription topic**, write **pub_key_validate** and hit **subscribe**.
 4. You should see your data being shown as it is being published.
 
