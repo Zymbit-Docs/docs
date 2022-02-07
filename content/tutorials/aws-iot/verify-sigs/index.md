@@ -323,14 +323,12 @@ import zymkey
 	
 
 def read_temp():
-
     temp_c = float(random.randint(0,100))
     temp_f = temp_c * 9.0 / 5.0 + 32.0
     return temp_c, temp_f
 
 
 def ZK_AWS_Publish(url, post_field, CA_Path, Cert_Path,):
-
     c = pycurl.Curl()
 
     # Set Curl to use zymkey_ssl engine
@@ -377,7 +375,7 @@ if __name__ == '__main__':
         json_data = json.dumps({'data': json_str_bytes.hex(), 'signature': signature.hex()})
         
         # make sure and substitute you AWS endpoint as well as the paths to your certificate
-        AWS_ENDPOINT = 'https://a2yw4olqxcxr50-ats.iot.us-west-1.amazonaws.com:8443/topics/pub_key_validate?qos=1'
+        AWS_ENDPOINT = 'https://<endpoint>.amazonaws.com:8443/topics/pub_key_validate?qos=1'
         ZK_AWS_Publish(url=AWS_ENDPOINT, post_field=json_data, CA_Path='/home/pi/verify-sig/AWS_CA.pem', Cert_Path='/home/pi/verify-sig/zymkey.crt')
 
         time.sleep(10)
@@ -398,13 +396,12 @@ you want. **Here's how to check the data from the AWS IoT console**:
 #### Verifying Signature of Encrypted Data with Zymkey Public Key on AWS
 
 **Signature Verification Lambda function**
-Below is the AWS Lambda function that will validate Zymkey signatures. An AWS Lambda function is
-simply code that will run on the cloud based on a configured trigger. For this demonstration,
-the trigger will be data published to a specific topic, pub_key_validate, on AWS IoT. From there
-the lambda function can validate signatures and talk with any other AWS service.
+An AWS Lambda function is code that runs on the cloud based on a configured trigger.
+For this demonstration, the trigger will be data published to a specific topic, `pub_key_validate`,
+on AWS IoT. From there the lambda function can validate signatures and talk with any other AWS service.
 
-The function is written in terms of a lambda_handler. The **event** that it gets passed is simply
-the JSON string published to AWS IoT, the Python lambda context automatically converts **event** from
+The function is written in terms of a **lambda_handler**. The **event** that it gets passed is 
+the JSON string published to AWS IoT. The Python lambda context automatically converts **event** from
 a JSON string to Python dictionary.
 
 ```python
@@ -435,14 +432,14 @@ def lambda_handler(event, context):
 
 **Setting up Lambda function on AWS**
 
-The lambda function is the python code that actually validates your Zymkey signature. The data in
+The lambda function is the python code that actually validates your Zymbit module signature. The data in
 JSON format will be published to AWS IoT, and then routed to the lambda function. This is triggered
 by an IoT rule. This basic lambda function will take the JSON string, validate the data using the
 Python-ECDSA package, and then print and log its success status.
 
-**To set up the lambda function on AWS, we must first package the code with the ECDSA package, since
+To set up the lambda function on AWS, we must first package the code with the ECDSA package, since
 it is not part of the Python STL. To do this we zip up the lambda code with the ECDSA package in the
-build directory.** 
+build directory. 
 
 **Packaging function with Python-ECDSA**
 
