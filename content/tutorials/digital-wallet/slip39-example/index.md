@@ -13,7 +13,7 @@ toc: true
 >All code snippets written in this article are written using python3. 
 For more zymbit api documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
 
-Updated: {{ .lastmod }}
+Updated: {{ $.Params.lastmod }}
 
 #### Zymbit Modules that support this feature:
 
