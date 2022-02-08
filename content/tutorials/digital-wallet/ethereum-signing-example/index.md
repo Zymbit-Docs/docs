@@ -35,41 +35,35 @@ The private keys stored in our modules are never exportable and are always hidde
 * [**Ethereum Yellow Paper**](https://ethereum.github.io/yellowpaper/paper.pdf)
 * [**RLP (Recursive Length Prefix) Wiki**](https://eth.wiki/en/fundamentals/rlp)
 
-## Prerequisites
+### Prerequisites
 
-#### Zymbit Modules that support this feature:
+* Zymbit Modules that support this feature:
+    * [HSM6](https://www.zymbit.com/hsm6/)
+    * [SCM \[Early Access\]](https://www.zymbit.com/secure-compute-platform/)
 
-* [**HSM6**](https://www.zymbit.com/hsm6/)
-* [**SCM \[Early Access\]**](https://www.zymbit.com/secure-compute-platform/)
+* Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software.
 
-#### Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software. 
+* All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
 
-#### All code snippets written in this article are written using Python3. For more Zymbit API documentation
-(Python/C/C++) visit:</span> [HSM6 API Documentation](https://docs.zymbit.com/api/)
 
-#### Python libraries
+* Python libraries used in this example:
 
-#####    Python libraries used in this example:
-
-* This library is used for rlp encoding
-
+    * This library is used for rlp encoding
     ```plaintext
     apt install pandoc
     ```
 
-* This library is used for Crypto.Hash() functions. In this example we will be using keccak hashes.
-    
+    * This library is used for Crypto.Hash() functions. In this example we will be using keccak hashes.
     ```plaintext
     pip3 install pycryptodome
     ```
 
-* Of course we install web3 for easy-to-use blockchain development.
-
+    * Web3 for easy-to-use blockchain development.
     ```plaintext
     pip3 install web3
     ```
 
-## Setting up Infura project
+### Setting up Infura project
 
 The quickest way to interact with the ethereum blockchain network is to use remote providers like: [**Infura**](https://infura.io/), [**Alchemy**](https://www.alchemy.com/), or [**QuickNode.**](https://www.quicknode.com/) For this example, we will use Infura to interact with our web3 code.
 
@@ -86,9 +80,9 @@ If you are developing in Infura moving forward, make sure to not give out the pr
 
 ![Infura Project](infura_project.png)
 
-# Web3 Example
+### Web3 Example
 
-### Import the python libs we need:
+#### Import the python libs we need:
 
 * Import zymkey to open up a zymkey instance, so we can communicate to our zymbit products for key generation and ecdsa signatures.
 * Import binascii for simple hexlify() and unhexlify() functions.
@@ -106,11 +100,7 @@ from Crypto.Hash import keccak
 from web3 import Web3
 ```
 
-### 
-
----
-
-### Open a Web3 instance:
+#### Open a Web3 instance:
 
 Using the endpoint link from our Infura project, open a Web3 instance object.
 
@@ -120,11 +110,8 @@ Using the endpoint link from our Infura project, open a Web3 instance object.
 w3 = Web3(Web3.HTTPProvider('https://ropsten.infura.io/v3/9f06183d0529494792242beb59be4ad3'))
 ```
 
-### 
 
----
-
-### Generating a secp256k1 key pair to be our sender:
+#### Generating a secp256k1 key pair to be our sender:
 
 Ethereum network is based off the Koblitz curve "secp256k1", so individual accounts are generated from secp256k1 public/private key pairs. The private key in the key pair is used to sign/encrypt data to be sent to the network or other users.
 
@@ -144,11 +131,8 @@ pub_key = zymkey.client.get_public_key(zymkey_pub_key_slot)
 print("zymkey secp256k1 public key:\n%s" % pub_key)
 ```
 
-### 
 
----
-
-### Generate our Ethereum public address/account from our secp256k1 public key
+#### Generate our Ethereum public address/account from our secp256k1 public key
 
 The next step covers generating an Ethereum public address. An Ethereum address is akin to a user's account number on the Ethereum network and will be used to identify your transactions. Ethereum addresses look like this: '0x15C25E6EB5dE729d7e310d059e59659cCB86E6f6'.
 
@@ -214,11 +198,8 @@ Great! Now we have the ethereum public address of our sender. The sender will be
 >
 > You can do this here: [**Ropsten Faucet**](https://faucet.egorfine.com/)
 
-### 
 
----
-
-### Creating our transaction classes and making them rlp.serializable()
+#### Creating our transaction classes and making them rlp.serializable()
 
 RLP (Recursive Length Prefix) is a encoding method to compress binary and arrays of data. RLP is the official encoding method used on the ethereum network. So to abide by the standard we need to create a transaction class object, which have attributes that are rlp serializable. Thankfully the rlp library(pandoc) we installed earlier, lets us do this easily by subclassing rlp.serializable.
 
@@ -288,11 +269,7 @@ class SignedTransactionType1559(rlp.Serializable):
     ]
 ```
 
-### 
-
----
-
-### Create our example transaction to send
+#### Create our example transaction to send
 
 Now we can create our example transaction to send out on the ropsten test network:
 
@@ -311,13 +288,8 @@ chain_id = 3
 transaction_legacy = TransactionLegacy(nonce = nonce, gasPrice = 500000, gasLimit = 800000, to = binascii.unhexlify(receiver_addr.replace('0x', '')), value = 5, data = b'hello', v = chain_id, r = 0, s = 0)
 transaction_1559 = RawTransactionType1559(chainId = chain_id, nonce = nonce, maxPriorityFeePerGas = 150000, maxFeePerGas = 150000, gas = 210000,
                                           to = binascii.unhexlify(receiver_addr.replace('0x', '')), value = 10, data = b'world', accessList = [])
-```
 
-### 
-
----
-
-### Preparing our transaction to be signed by the zymbit hardware
+#### Preparing our transaction to be signed by the zymbit hardware
 
 So the two steps to prepare our transaction for signing:
 
@@ -357,11 +329,7 @@ keccak_hash.update(encoded_transaction)
 print("keccak_hash:\n%s" % keccak_hash.hexdigest())
 ```
 
-### 
-
----
-
-### The Magic. Signing the transaction data with a private key stored on the zymbit module.
+#### The Magic. Signing the transaction data with a private key stored on the zymbit module.
 
 Now lets sign this keccak hashed transaction with the private secp256k1 key we generated.
 
@@ -405,11 +373,7 @@ print ("V:\n%s" % v)
 print ("Y Parity:\n%s" % y_parity)
 ```
 
-### 
-
----
-
-### Adding our signature to our transaction class
+#### Adding our signature to our transaction class
 
 Transaction Legacy's signature elements are:
 
@@ -436,11 +400,7 @@ signed_transaction_1559 = SignedTransactionType1559(transaction_1559.chainId, tr
                                                transaction_1559.to, transaction_1559.value, transaction_1559.data, transaction_1559.accessList, y_parity, r, s)
 ```
 
-### 
-
----
-
-### One Last Step before send off. RLP encode our signed transaction.
+#### One Last Step before send off. RLP encode our signed transaction.
 
 Same as the rlp encoding step before.
 
@@ -459,11 +419,7 @@ We can also validate that this transaction can be broadcasted, by pasting that e
 
 ![image](uploads/1a691d16a15eafe283dc2dbf5b987fd9/image.png)
 
-### 
-
----
-
-### Liftoff! Send your transaction
+#### Liftoff! Send your transaction
 
 Broadcast the transaction through our web3 instance.
 
@@ -485,13 +441,8 @@ If successfully broadcasted, you should get a broadcast hash receipt back. You c
 >
 > You can do this here: [**Ropsten Faucet**](https://faucet.egorfine.com/)
 
-## 
 
----
-
-# Thanks For Reading! Full Example Code Below
-
-#### TLDR; Full Example Code
+### Full Example Code
 
 ```plaintext
 #!/usr/bin/python3

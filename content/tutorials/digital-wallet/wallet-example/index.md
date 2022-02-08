@@ -10,22 +10,31 @@ images: []
 toc: true
 ---
 
->All code snippets written in this article are written using python3.
-For more zymbit api documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
-
-## **What is a digital wallet?**
+## What is a digital wallet?
 The digital wallet provided by the HSM6 is a BIP32/39/44 HD wallet, or Hierarchical Deterministic wallet. A HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
 
 ![Zymbit hardware wallet](Zymbit-hardware-wallet-graphic-1c.png)
 
-## **Why use a digital wallet?**
+## Why use a digital wallet?
 To make digital transactions, a user needs to have a public/private key pair. The public key is an address used for receiving incoming goods, while the private key is used for sending those goods. Losing this key pair will be disastrous, as this will effectively give someone access to the assets in that key pair. This is why for additional security it's best practice to change addresses (keys) for every transaction. HD wallets automatically derive new addresses to use, thus eliminating the problem for the user to generate hundreds of keys on their own.
 
-## **Managing your digital wallet and security awareness**
+## Managing your digital wallet and security awareness
 The master seed is where all new key pairs will be derived from. Each new child key pair is created based off a existing parent key pair in the wallet. If a child key pair ever becomes 'compromised', it can't be tracked up the parent nodes. However this does warrant security awareness, that it will compromise all children key pairs derived from the stolen key pair.
 
-**For security reasons, the user is expected to keep track of all the key pairs via either the node address on the wallet or the slot it was allocated to on the HSM6.**
->It's better to lose a branch than a whole tree, so keep your master seed safe and locked away!
+{{< callout warning >}}
+For security reasons, the user is expected to keep track of all the key pairs via either the node address on the wallet or the slot it was allocated to on the HSM6. It's better to lose a *branch* than a whole *tree*, so keep your master seed safe and locked away!
+{{< /callout >}}
+
+### Prerequisites
+
+* Zymbit Modules that support this feature:
+    * [HSM6](https://www.zymbit.com/hsm6/)
+    * [SCM \[Early Access\]](https://www.zymbit.com/secure-compute-platform/)
+
+*  Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software.
+
+* All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
+
 
 ## **Using Digital Wallet:**
 Example code snippet to show how to use digital wallet Zymbit API

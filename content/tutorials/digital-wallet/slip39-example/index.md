@@ -41,23 +41,22 @@ Unfortunately while SLIP39 is more secure than bip39, many wallets have not yet 
 
 This means that to recover a wallet using SLIP39, a user can only recover wallet keys using hardware wallets like HSM6/SCM that support this feature.
 
-### Useful Resources:
+#### Useful Resources:
 
-* [**SLIP39**](https://github.com/satoshilabs/slips/blob/master/slip-0039.md)
+* [SLIP39](https://github.com/satoshilabs/slips/blob/master/slip-0039.md)
 
-## Prerequisites
+### Prerequisites
 
 * Zymbit Modules that support this feature:
-
-    * [**HSM6**](https://www.zymbit.com/hsm6/)
-    * [**SCM \[Early Access\]**](https://www.zymbit.com/secure-compute-platform/)
+    * [HSM6](https://www.zymbit.com/hsm6/)
+    * [SCM \[Early Access\]](https://www.zymbit.com/secure-compute-platform/)
 
 *  Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software. 
 
 * All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
 
 
-# Generating our master seed with SLIP39 recovery
+## Generating our master seed with SLIP39 recovery
 
 
 ### Opening a master seed SLIP39 generating session
