@@ -3,58 +3,64 @@ title: "SLIP39 and Shamir's Sharding Wallet Recovery Example"
 linkTitle: "SLIP39 and Sharding"
 description: ""
 date: "2022-02-04"
-lastmod: "2022-02-07"
+lastmod: "2022-02-08"
 draft: false
 weight: 60
 images: []
 toc: true
 ---
 
->All code snippets written in this article are written using python3. 
-For more zymbit api documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
+Updated: 2022-02-08
 
-Updated: {{ $.Params.lastmod }}
+<!-- TODO Remove this permanently? ## Intro
 
-#### Zymbit Modules that support this feature:
+We are excited to present the third hardware wallet in the world to support Shamir's Backup/SLIP39!
+-->
 
-* [**HSM6**](https://www.zymbit.com/hsm6/)
-* [**SCM \[Early Access\]**](https://www.zymbit.com/secure-compute-platform/)
+## What is SLIP39 and Shamir's Backup?
 
-#### Useful Resources:
+An algorithm created by Adi Shamir coined Shamir's Secret Sharing, provides a new way of backing up and recovering our private keys. This algorithm was proposed by SatoshiLabs to be accepted as new backup method for wallet keys and thus named **SLIP39**.
 
-* [**Slip39**](https://github.com/satoshilabs/slips/blob/master/slip-0039.md)
-
-# Intro
-
-We are excited to present the third hardware wallet in the world to support Shamir's Backup/Slip39!
-
-### What is SLIP39 and Shamir's Backup?
-
-An algorithm created by Adi Shamir coined Shamir's Secret Sharing, provides a new way of backing up and recovering our private keys. This algorithm was proposed by SatoshiLabs to be accepted as new backup method for wallet keys and thus named **Slip39**.
-
-### Why use Slip39 recovery?
+## Why use SLIP39 recovery?
 
 If you are familiar with current wallets like MetaMask and Ledger, then you will notice that most of these wallets implement a backup strategy using Bip39. Bip39 is a 12 or 24 word unique sentence that can recreate private keys backed by this strategy . But this is only one shard, and puts responsibility on the owner to keep this one shard from falling into the wrong hands.
 
-Slip39 allows the owner to backup their wallets with multiple shards using a committee-like approach. For example, we can generate 10 shards and require that 6 of these shards need to be present to recover a wallet. If the owner loses one shard to a thief then it becomes less of a concern as the thief would still need 5 other shards to get into the wallet. Furthermore the owner can store these 10 shards however he wants: give a shard to a friend, store a shard in safe, bury a shard in the backyard, etc.
+SLIP39 allows the owner to backup their wallets with multiple shards using a committee-like approach. For example, we can generate 10 shards and require that 6 of these shards need to be present to recover a wallet. If the owner loses one shard to a thief then it becomes less of a concern as the thief would still need 5 other shards to get into the wallet. Furthermore the owner can store these 10 shards however he wants: give a shard to a friend, store a shard in safe, bury a shard in the backyard, etc.
 
 ### Max number of shards?
 
-Slip39 generate groups and each of these groups can contain its own system of member shards.
+SLIP39 generate groups and each of these groups can contain its own system of member shards.
 
 HSM6 only supports up to 14 groups \* 14 members per group = 196 shards total
 
 SCM supports up to 16 groups \* 16 members per group = 256 shards total
 
-### One con to using Slip39
+### One con to using SLIP39
 
-Unfortunately while slip39 is more secure than bip39, many wallets have not yet adopted this backup strategy at the time of writing this tutorial.
+Unfortunately while SLIP39 is more secure than bip39, many wallets have not yet adopted this backup strategy at the time of writing this tutorial.
 
-This means that to recover a wallet using slip39, a user can only recover wallet keys using hardware wallets like HSM6/SCM that support this feature.
+This means that to recover a wallet using SLIP39, a user can only recover wallet keys using hardware wallets like HSM6/SCM that support this feature.
 
-# Generating our master seed with slip39 recovery
+### Useful Resources:
 
-### Opening a master seed slip39 generating session
+* [**SLIP39**](https://github.com/satoshilabs/slips/blob/master/slip-0039.md)
+
+## Prerequisites
+
+* Zymbit Modules that support this feature:
+
+    * [**HSM6**](https://www.zymbit.com/hsm6/)
+    * [**SCM \[Early Access\]**](https://www.zymbit.com/secure-compute-platform/)
+
+*  Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software. 
+
+* All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
+
+
+# Generating our master seed with SLIP39 recovery
+
+
+### Opening a master seed SLIP39 generating session
 
 ---
 
@@ -75,28 +81,28 @@ passphrase is the password for generating/recovering the master generator key.
 use_slip39_recovery = zymkey.RecoveryStrategySlip39(group_count = 3, group_threshold = 2, iteration_exponent = 0, variant = "", passphrase = "")
 ```
 
-Now we start our shard generating slip39 session.
+Now we start our shard generating SLIP39 session.
 
 ```plaintext
 #The master seed will not be generated until all groups are created. So the slot will not be returned until all shards are generated.
-#Opens a Slip39 session successfully on return code 0
-print("Starting slip39 shard generating session...")
+#Opens a SLIP39 session successfully on return code 0
+print("Starting SLIP39 shard generating session...")
 return_code = zymkey.client.gen_wallet_master_seed("secp256k1", "", "MyExampleWallet", use_slip39_recovery)
 print("Done! Return Code:%i" % (return_code))
 ```
 
-A return code of 0 means we successfully started an active slip39 session.
+A return code of 0 means we successfully started an active SLIP39 session.
 
-### Important! Side Note. Cancelling active slip39 sessions
+### Important! Side Note. Cancelling active SLIP39 sessions
 
 ---
 
-While a slip39 session is active for both generation or recovery, other wallet generation functions are locked up. This means we can't generate other keys while a slip39 session.
+While a SLIP39 session is active for both generation or recovery, other wallet generation functions are locked up. This means we can't generate other keys while a SLIP39 session.
 
-If anything ever goes wrong in the slip39 process, we can cancel an active slip39 session at any time.
+If anything ever goes wrong in the SLIP39 process, we can cancel an active SLIP39 session at any time.
 
 ```plaintext
-#cancel an active slip39 session (Generation/Recovery)
+#cancel an active SLIP39 session (Generation/Recovery)
 zymkey.client.cancel_slip39_session()
 ```
 
@@ -147,7 +153,7 @@ for i in range(3):
     print("Shard #%i , Mnemonic sentence(Password: %s):\n%s" % (i+1, group_1_pwd_list[i], group_1_shard_dict[group_1_pwd_list[i]]))
 ```
 
-For our third group we will have only one shard. To show that we do not have to always shard up our groups into multiple shards. Since this is the last group in the slip39 session, the master seed key's slot number will be returned on the last shard generated by add_gen_slip39_member_pwd() instead of -1.
+For our third group we will have only one shard. To show that we do not have to always shard up our groups into multiple shards. Since this is the last group in the SLIP39 session, the master seed key's slot number will be returned on the last shard generated by add_gen_slip39_member_pwd() instead of -1.
 
 > NOTE! although this shard may look like a bip39 mnemonic sentence. They are NOT interchangeable.
 
@@ -164,7 +170,7 @@ master_seed_slot, last_shard = zymkey.client.add_gen_slip39_member_pwd()
 print("Shard #%i , Mnemonic sentence:\n%s" % (1, last_shard))
 ```
 
-Cool! We successfully generated a master seed key pair with a slip39 backup strategy.
+Cool! We successfully generated a master seed key pair with a SLIP39 backup strategy.
 
 For security we can't export the master seed public key, but we can generate a child key and look at its public key.
 
@@ -175,9 +181,9 @@ child_pub_key = zymkey.client.get_public_key(child_slot)
 print("Child Public Key: %s" % (child_pub_key))
 ```
 
-Our next step is to verify we can recover this key pair with the slip39 shards we just generated. Then we can compare the children public keys to see if we truly recovered the correct master key pair.
+Our next step is to verify we can recover this key pair with the SLIP39 shards we just generated. Then we can compare the children public keys to see if we truly recovered the correct master key pair.
 
-# Recovering our master key with slip39 shards
+# Recovering our master key with SLIP39 shards
 
 First we need to "lose" our master key pair. So lets remove the master key (This will also delete any children keys generated from the master key pair).
 
@@ -189,23 +195,23 @@ zymkey.client.remove_key(master_seed_slot)
 print("Done!")
 ```
 
-### Opening a recovery slip39 session
+### Opening a recovery SLIP39 session
 
 ---
 
-Now let's start our slip39 recovery session. This must take in the same curve, master key passphrase, wallet name, and recovery strategy. This session will return a -1, but this is not an error. We return -1s to be ambiguous on how far along the recovery process we are. If there truly was an error, restore_wallet_master_seed() will return an exception instead.
+Now let's start our SLIP39 recovery session. This must take in the same curve, master key passphrase, wallet name, and recovery strategy. This session will return a -1, but this is not an error. We return -1s to be ambiguous on how far along the recovery process we are. If there truly was an error, restore_wallet_master_seed() will return an exception instead.
 
 ```plaintext
 # Per Above example we need to restore two of the three groups in order to get our master seed back
 # Let's restore with group 0 and group 1
 
-# Open a restore slip39 session, recovery_strategy will be the same as above
+# Open a restore SLIP39 session, recovery_strategy will be the same as above
 # Return code will be -1, but this is due to security reasons. To not let users know how far along the recovery process is.
 # It will instead throw an exception if it fails.
-print("\nStarting slip39 shard restoring session...")
+print("\nStarting SLIP39 shard restoring session...")
 return_code = zymkey.client.restore_wallet_master_seed("secp256k1", "", "MyExampleWallet", use_slip39_recovery)
 print("Done! Return Code:%i" % (return_code))
-```
+```return
 
 Remember from the earlier example we created 3 groups and require only 2 of these groups to be reconstructed to recover our key.
 
@@ -220,7 +226,7 @@ These three ways will all recover the master key.
 | Group1 + Group2 | 3 + 1 | 4 |
 | Group2 + Group0 | 1 + 2 | 3 |
 
-Now lets recover the master key using the group combination of Group0 + Group1. Shards are fed in one at a time and can be fed out of order as well. The module will auto reconstruct any groups as it gets more shards fed in. Will return -1 until it successfully recreates all groups needed to generate the master key. If a incorrect shard is fed in, then it will still return -1. Remember we can always call cancel_slip39_session to stop our active slip39 session, if a incorrect shard is fed in.
+Now lets recover the master key using the group combination of Group0 + Group1. Shards are fed in one at a time and can be fed out of order as well. The module will auto reconstruct any groups as it gets more shards fed in. Will return -1 until it successfully recreates all groups needed to generate the master key. If a incorrect shard is fed in, then it will still return -1. Remember we can always call cancel_slip39_session to stop our active SLIP39 session, if a incorrect shard is fed in.
 
 ```plaintext
 # Now we will feed in our shards. These will be fed in one at a time, and can be fed in any order.
@@ -270,11 +276,11 @@ import zymkey
 
 wallet_name = "MyExampleWallet"
 # --------------------------------------Create a master seed using shamir's backup-----------------------------------------------------------------------
-# Use the slip39 recovery strategy to tell zymkey to open a slip39 shard generating session.
+# Use the SLIP39 recovery strategy to tell zymkey to open a SLIP39 shard generating session.
 # The recovery strategy will detail the number of Groups to track (group_count) and number of groups needed to recover the master seed (group_threshold)
 # iteration_exponent dictates how many hashes are done at cryptographic layer.
 # The master seed will not be generated until all groups are created. So the slot will not be returned until all shards are generated.
-# Opens a Slip39 session successfully on return code 0
+# Opens a SLIP39 session successfully on return code 0
 use_slip39_recovery = zymkey.RecoveryStrategySlip39(group_count = 3, group_threshold = 2, iteration_exponent = 0, variant = "", passphrase = "")
 print("Starting slip39 shard generating session...")
 return_code = zymkey.client.gen_wallet_master_seed("secp256k1", "", wallet_name, use_slip39_recovery)
@@ -332,10 +338,10 @@ print("Done!")
 # Per Above example we need to restore two of the three groups in order to get our master seed back
 # Let's restore with group 0 and group 1
 
-# Open a restore slip39 session, recovery_strategy will be the same as above
+# Open a restore SLIP39 session, recovery_strategy will be the same as above
 # Return code will be -1, but this is due to security reasons. To not let users know how far along the recovery process is.
 # It will instead throw an exception if it fails.
-print("\nStarting slip39 shard restoring session...")
+print("\nStarting SLIP39 shard restoring session...")
 return_code = zymkey.client.restore_wallet_master_seed("secp256k1", "", wallet_name, use_slip39_recovery)
 print("Done! Return Code:%i" % (return_code))
 
