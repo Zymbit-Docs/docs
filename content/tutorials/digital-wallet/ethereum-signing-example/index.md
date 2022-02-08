@@ -80,7 +80,7 @@ If you are developing in Infura moving forward, make sure to not give out the pr
 
 ![Infura Project](infura_project.png)
 
-### Web3 Example
+## Web3 Example
 
 #### Import the python libs we need:
 

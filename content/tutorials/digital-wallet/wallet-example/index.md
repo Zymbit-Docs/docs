@@ -12,18 +12,35 @@ toc: true
 Updated: 2022-02-08
 
 ## What is a digital wallet?
-The digital wallet provided by the Zymbit HSM6 is a BIP32/39/44 HD wallet, or Hierarchical Deterministic wallet. A HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
+
+The digital wallet provided by the Zymbit HSM6 and the SCM (early release) is a BIP32/39/44 HD wallet, or Hierarchical Deterministic
+wallet. A HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the
+first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into
+a 512 bit seed. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
+
+The HSM6 and SCM modules also support SLIP39 (Shamir's Secret Sharing) wallet recovery. A separate tutorial for SLIP39 recovery
+can be found [here](tutorial/digital-wallet/slip39-example).
 
 ![Zymbit hardware wallet](Zymbit-hardware-wallet-graphic-1c.png)
 
 ## Why use a digital wallet?
-To make digital transactions, a user needs to have a public/private key pair. The public key is an address used for receiving incoming goods, while the private key is used for sending those goods. Losing this key pair will be disastrous, as this will effectively give someone access to the assets in that key pair. This is why for additional security it's best practice to change addresses (keys) for every transaction. HD wallets automatically derive new addresses to use, thus eliminating the problem for the user to generate hundreds of keys on their own.
+
+To make digital transactions, a user needs to have a public/private key pair. The public key is an address used for receiving incoming
+goods, while the private key is used for sending those goods. Losing this key pair will be disastrous, as this will effectively give
+someone access to the assets in that key pair. This is why for additional security it's best practice to change addresses (keys)
+for every transaction. HD wallets automatically derive new addresses to use, thus eliminating the problem for the user to generate
+hundreds of keys on their own.
 
 ## Managing your digital wallet and security awareness
-The master seed is where all new key pairs will be derived from. Each new child key pair is created based off a existing parent key pair in the wallet. If a child key pair ever becomes 'compromised', it can't be tracked up the parent nodes. However this does warrant security awareness, that it will compromise all children key pairs derived from the stolen key pair.
+
+The master seed is where all new key pairs will be derived from. Each new child key pair is created based off a existing parent
+key pair in the wallet. If a child key pair ever becomes 'compromised', it can't be tracked up the parent nodes. However this
+does warrant security awareness, that it will compromise all children key pairs derived from the stolen key pair.
 
 {{< callout warning >}}
-For security reasons, the user is expected to keep track of all the key pairs via either the node address on the wallet or the slot it was allocated to on the HSM6. It's better to lose a *branch* than a whole *tree*, so keep your master seed safe and locked away!
+For security reasons, the user is expected to keep track of all the key pairs via either the node address on the wallet or the
+slot it was allocated to on the Zymbit module. It's better to lose a *branch* than a whole *tree*, so keep your master seed
+safe and locked away!
 {{< /callout >}}
 
 ### Prerequisites
@@ -31,6 +48,7 @@ For security reasons, the user is expected to keep track of all the key pairs vi
 * Zymbit Modules that support this feature:
     * [HSM6](https://www.zymbit.com/hsm6/)
     * [SCM \[Early Access\]](https://www.zymbit.com/secure-compute-platform/)
+
 
 * Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software.
 
@@ -94,12 +112,10 @@ the same name.
 {{< callout warning >}}
 Make sure to write the bip39 mnemonic and store it somewhere safe!
 **The master seed is the key to its kingdom, so don't give it out to just anybody!**
+{{< /callout >}}
 
 `gen_wallet_master_seed (string ec_key_type, bytearray master_key_generator, string wallet_name, recovery_strategy=<zymkey.RecoveryStrategy object>)`
-
-Returns the allocated master seed slot and the BIP39 mnemonic if the bool flag is set True
-
-{{< /callout >}}
+ - Returns the allocated master seed slot and the BIP39 mnemonic if the bool flag is set True
 
 ```
 # Create a master seed and return the BIP39 mnemonic
@@ -118,8 +134,7 @@ Hardened key pairs cannot be linked back to its parent key. So for best security
 hardened key pairs wherever possible.
 
 `gen_wallet_child_key(int slot, int index, bool is_hardened)`
-
-Returns allocated slot on success
+ - Returns allocated slot on success
 
 ```
 # Generate a child key from the master seed
@@ -129,7 +144,7 @@ child_pub_key = zymkey.client.get_public_key(child_slot)
 print("Child Slot:%s\nChild Public Key:%s" % (child_slot, child_pub_key))
 ```
 
-**Node Address:**
+`Node Address:`
 The index parameter in the above example will add a new number 3 to the node address string in the wallet. Apostrophes after the number denote hardened keys. Below is an example node address string.
 
 `m / 3' / 1' / 0' / 1 / 28`
@@ -139,8 +154,7 @@ The index parameter in the above example will add a new number 3 to the node add
 If the user knows the key slot, they can get the node index and wallet name with this function.
 
 `get_wallet_node_addr(int slot)` 
-
-Returns an array [node index string, wallet name, master seed slot number]
+ - Returns an array [node index string, wallet name, master seed slot number]
 
 ```
 #Get node address of the child key slot
@@ -155,8 +169,7 @@ they can get the HSM6 key slot with this function. Both master seed slot and wal
 but if neither are filled, then it will throw an exception.
 
 `get_wallet_key_slot(string node_index, string wallet_name, int master_slot)`
-
-Returns the key slot on success
+ - Returns the key slot on success
 
 ```
 # Get the key slot of the child key using our previous master key slot and wallet name
@@ -169,12 +182,11 @@ print("Key Slot:%s" % (key_slot,))
 With the Bip39 mnemonic sentence, bip39 passphrase, master generatorkey, and wallet name of a previously generated master seed, a user can restore a lost master seed or make a copy of the master seed on a different device.
 
 {{< callout warning >}}
-Keep in mind that this only restores the master seed, the children nodes will have to be manually generated again.
+Keep in mind that this only restores the master seed. The children nodes will have to be manually generated again.
 {{< /callout >}}
 
 `restore_wallet_master_seed_from_bip39_mnemonic(string ec_key_type, bytearray master_key, string wallet_name, string b64_bip39_passphrase, string bip39_mnemonic)`
-
-Returns the allocated key slot on success
+ - Returns the allocated key slot on success
 
 ```
 # Remove the master seed
