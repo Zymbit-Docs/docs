@@ -19,7 +19,7 @@ first seed standard for HD wallets, while BIP39 is a standard that converts a mn
 a 512 bit seed. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
 
 The HSM6 and SCM modules also support SLIP39 (Shamir's Secret Sharing) wallet recovery. A separate tutorial for SLIP39 recovery
-can be found [here](/tutorial/digital-wallet/slip39-example).
+can be found [here](docs.zymbit.com/tutorial/digital-wallet/slip39-example).
 
 ![Zymbit hardware wallet](Zymbit-hardware-wallet-graphic-1c.png)
 
