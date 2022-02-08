@@ -16,7 +16,7 @@ For more zymbit api documentation (Python/C/C++) visit: [HSM6 API Documentation]
 ## **What is a digital wallet?**
 The digital wallet provided by the HSM6 is a BIP32/39/44 HD wallet, or Hierarchical Deterministic wallet. A HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
 
-![digital wallet graphic-1](Zymbit-hardware-wallet-graphic-1b.png)
+![Zymbit hardware wallet](Zymbit-hardware-wallet-graphic-1c.png)
 
 ## **Why use a digital wallet?**
 To make digital transactions, a user needs to have a public/private key pair. The public key is an address used for receiving incoming goods, while the private key is used for sending those goods. Losing this key pair will be disastrous, as this will effectively give someone access to the assets in that key pair. This is why for additional security it's best practice to change addresses (keys) for every transaction. HD wallets automatically derive new addresses to use, thus eliminating the problem for the user to generate hundreds of keys on their own.
