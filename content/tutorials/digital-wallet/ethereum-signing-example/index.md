@@ -42,29 +42,28 @@ The private keys stored in our modules are never exportable and are always hidde
 * [**HSM6**](https://www.zymbit.com/hsm6/)
 * [**SCM \[Early Access\]**](https://www.zymbit.com/secure-compute-platform/)
 
-1. Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software. 
+#### Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software. 
 
-2. > <span dir="">All code snippets written in this article are written using Python3.</span>
-   >
-   > <span dir="">For more Zymbit API documentation (Python/C/C++) visit:</span> [HSM6 API Documentation](https://docs.zymbit.com/api/)
+#### All code snippets written in this article are written using Python3. For more Zymbit API documentation
+(Python/C/C++) visit:</span> [HSM6 API Documentation](https://docs.zymbit.com/api/)
 
-3. Python libraries
+#### Python libraries
 
-    Python libraries used in this example:
+#####    Python libraries used in this example:
 
-    * This library is used for rlp encoding
+* This library is used for rlp encoding
 
     ```plaintext
     apt install pandoc
     ```
 
-    * This library is used for Crypto.Hash() functions. In this example we will be using keccak hashes.
+* This library is used for Crypto.Hash() functions. In this example we will be using keccak hashes.
     
     ```plaintext
     pip3 install pycryptodome
     ```
 
-    * Of course we install web3 for easy-to-use blockchain development.
+* Of course we install web3 for easy-to-use blockchain development.
 
     ```plaintext
     pip3 install web3
