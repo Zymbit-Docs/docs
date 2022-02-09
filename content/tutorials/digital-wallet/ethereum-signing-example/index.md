@@ -101,13 +101,13 @@ from web3 import Web3
 Using the endpoint link from our Infura project, open a Web3 instance object.
 
 ```python
-#create web3 instance, from infura project (node) connecting to Ropsten test network
+# Create web3 instance, from infura project (node) connecting to Ropsten test network
 
 w3 = Web3(Web3.HTTPProvider('https://ropsten.infura.io/v3/9f06183d0529494792242beb59be4ad3'))
 ```
 
 
-#### Generating a secp256k1 key pair to be our sender:
+#### Generating a secp256k1 key pair to be the sender:
 
 Ethereum network is based off the Koblitz curve "secp256k1", so individual accounts are generated from secp256k1 public/private key pairs. The private key in the key pair is used to sign/encrypt data to be sent to the network or other users.
 
@@ -127,7 +127,7 @@ pub_key = zymkey.client.get_public_key(zymkey_pub_key_slot)
 print("zymkey secp256k1 public key:\n%s" % pub_key)
 ```
 
-#### Generate our Ethereum public address/account from our secp256k1 public key
+#### Generate the Ethereum public address/account from the secp256k1 public key
 
 The next step covers generating an Ethereum public address. An Ethereum address is akin to a user's account number on the Ethereum network and will be used to identify your transactions. Ethereum addresses look like this: `0x15C25E6EB5dE729d7e310d059e59659cCB86E6f6`.
 
@@ -186,9 +186,7 @@ print("Valid checksum:\n%s" % Web3.isAddress(checksum))
 This is the ethereum public address of our sender. The sender signs the transaction and sends it out. Once the receiver gets the transaction they will see it was from this sender's address.
 
 {{< callout notice >}}
-NOTE!
-
-To properly send out transaction to the ropsten test network with this sender's address. We need funds in this address to pay for the fees required to send out this transaction.
+To properly send out transaction to the Ropsten test network with this sender's address. We need funds in this address to pay for the fees required to send out this transaction.
 
 Because Ropsten is a test network for development, we can fund ethereum addresses for free with test ether. (Note: There is only one address per day limit).
 
@@ -196,7 +194,7 @@ You can do this here: [**Ropsten Faucet**](https://faucet.egorfine.com/)
 {{< /callout >}}
 
 
-#### Creating our transaction classes and making them rlp.serializable()
+#### Creating the transaction classes and making them rlp.serializable()
 
 RLP (Recursive Length Prefix) is a encoding method to compress binary and arrays of data. RLP is the official encoding method used on the ethereum network. So to abide by the standard we need to create a transaction class object, which have attributes that are rlp serializable. Thankfully the rlp library(pandoc) we installed earlier, lets us do this easily by subclassing rlp.serializable.
 
@@ -266,7 +264,7 @@ class SignedTransactionType1559(rlp.Serializable):
     ]
 ```
 
-#### Create our example transaction to send
+#### Create the example transaction to send
 
 Create an example transaction to send out on the Ropsten test network:
 
@@ -285,6 +283,7 @@ chain_id = 3
 transaction_legacy = TransactionLegacy(nonce = nonce, gasPrice = 500000, gasLimit = 800000, to = binascii.unhexlify(receiver_addr.replace('0x', '')), value = 5, data = b'hello', v = chain_id, r = 0, s = 0)
 transaction_1559 = RawTransactionType1559(chainId = chain_id, nonce = nonce, maxPriorityFeePerGas = 150000, maxFeePerGas = 150000, gas = 210000,
                                           to = binascii.unhexlify(receiver_addr.replace('0x', '')), value = 10, data = b'world', accessList = [])
+```
 
 #### Preparing our transaction to be signed by the Zymbit hardware
 
@@ -306,18 +305,18 @@ Per Ethereum standard the signature elements are generated for these transaction
 
 And because our transaction classes subclass rlp.serializable, we can simply rlp encode these class objects via:
 
-```plaintext
-#RLP encode the transaction
+```python
+# RLP encode the transaction
 
 encoded_transaction_legacy = rlp.encode(transaction_legacy)
 print("encoded transaction:\n%s" % binascii.hexlify(encoded_transaction_legacy).decode("utf-8"))
 
-#Transaction type is now a byte added to the front of the rlp encoded object
+# Transaction type is now a byte added to the front of the rlp encoded object
 encoded_transaction_1559 = bytes([2]) + rlp.encode(transaction_1559)
 print("encoded transaction:\n%s" % binascii.hexlify(encoded_transaction_1559).decode("utf-8")) 
 ```
 
-Next step 2 is to keccak hash the rlp encoded transaction
+Next, step 2 is to keccak hash the rlp encoded transaction
 
 ```plaintext
 #Per Ethereum standards, Keccak hash rlp encoded transaction
@@ -328,13 +327,11 @@ print("keccak_hash:\n%s" % keccak_hash.hexdigest())
 
 #### Signing the transaction data with a private key stored on the Zymbit module.
 
-Now lets sign this keccak hashed transaction with the private secp256k1 key we generated.
+Sign this keccak hashed transaction with the private secp256k1 key we generated. This ECDSA signature we get will give us `signature_r`, `signature_s`, `signature_v`, and the `y-parity`.
 
-This ECDSA signature we get will give us signature_r, signature_s, signature_v, and the y-parity.
+`signature_V` is only required by TransactionLegacy and follow [**EIP-155**](https://eips.ethereum.org/EIPS/eip-155).
 
-Signature_V is only required by TransactionLegacy and follow [**EIP-155**](https://eips.ethereum.org/EIPS/eip-155).
-
-* The other transaction types split up chain ID and Y parity as seperate params.
+* The other transaction types split up chain ID and Y parity as separate parameters.
 
 ```plaintext
 # sign the transaction hash and calculate v, r, s values
@@ -391,7 +388,7 @@ Transaction EIP-1559's signature elements are:
 * Y-Parity of the Signature
 
 ```python
-#We create our SignedTransactionType1559 from RawTransactionType1559, except we fill our yParity, r, s fields with the appropriate values.
+# We create our SignedTransactionType1559 from RawTransactionType1559, except we fill our yParity, r, s fields with the appropriate values.
 
 signed_transaction_1559 = SignedTransactionType1559(transaction_1559.chainId, transaction_1559.nonce, transaction_1559.maxPriorityFeePerGas, transaction_1559.maxFeePerGas, transaction_1559.gas,
                                                transaction_1559.to, transaction_1559.value, transaction_1559.data, transaction_1559.accessList, y_parity, r, s)
@@ -431,7 +428,7 @@ If successfully broadcasted, you should get a broadcast hash receipt back. You c
 ![image](transaction_receipt.png)
 
 {{< callout warning >}}
-Reminder! If you get Error: "Not enough funds or gas"
+If you get Error: "Not enough funds or gas"
 
 To properly send out transaction to the Ropsten test network with this sender's address, there must be adequate funds in this address to pay for the fees required to send out this transaction. Because Ropsten is a test network for development, we can fund ethereum addresses for free with test ether. There is a one IP address per day limit).
 

@@ -23,7 +23,7 @@ An algorithm created by Adi Shamir coined Shamir's Secret Sharing, provides a ne
 
 ## Why use SLIP39 recovery?
 
-If you are familiar with current wallets like MetaMask and Ledger, then you will notice that most of these wallets implement a backup strategy using Bip39. Bip39 is a 12 or 24 word unique sentence that can recreate private keys backed by this strategy . But this is only one shard, and puts responsibility on the owner to keep this one shard from falling into the wrong hands.
+If you are familiar with current wallets like MetaMask and Ledger, then you will notice that most of these wallets implement a backup strategy using BIP39. BIP39 is a 12 or 24 word unique sentence that can recreate private keys backed by this strategy . But this is only one shard, and puts responsibility on the owner to keep this one shard from falling into the wrong hands.
 
 SLIP39 allows the owner to backup their wallets with multiple shards using a committee-like approach. For example, we can generate 10 shards and require that 6 of these shards need to be present to recover a wallet. If the owner loses one shard to a thief then it becomes less of a concern as the thief would still need 5 other shards to get into the wallet. Furthermore the owner can store these 10 shards however he wants: give a shard to a friend, store a shard in safe, bury a shard in the backyard, etc.
 
@@ -31,13 +31,9 @@ SLIP39 allows the owner to backup their wallets with multiple shards using a com
 
 SLIP39 generates groups and each of these groups can contain its own system of member shards.
 
-* HSM6 only supports up to 14 groups \* 14 members per group = 196 shards total
+* HSM6 supports up to 14 groups \* 14 members per group = 196 shards total
 
 <!-- * SCM supports up to 16 groups \* 16 members per group = 256 shards total -->
-
-### One con to using SLIP39
-
-Unfortunately while SLIP39 is more secure than BIP39, many wallets have not yet adopted this backup strategy at the time of writing this tutorial.  This means that to recover a wallet using SLIP39, a user can only recover wallet keys using hardware wallets like Zymbit Hardware Wallet that support this feature.
 
 #### Useful Resources:
 
@@ -91,14 +87,14 @@ A return code of 0 means we successfully started an active SLIP39 session.
 
 > Important! Side Note. Cancelling active SLIP39 sessions
 
-> While a SLIP39 session is active for both generation or recovery, other wallet generation functions are locked up. This means we can't generate other keys while a SLIP39 session.
-
->If anything ever goes wrong in the SLIP39 process, we can cancel an active SLIP39 session at any time.
+{{< callout warning >}}
+While a SLIP39 session is active for both generation or recovery, other wallet generation functions are locked up. This means we can't generate other keys while a SLIP39 session. If anything ever goes wrong in the SLIP39 process, we can cancel an active SLIP39 session at any time.
 
 ```python
 # cancel an active SLIP39 session (Generation/Recovery)
 zymkey.client.cancel_slip39_session()
 ```
+{{< /callout >}}
 
 ### Setting up our Groups and their member shards
 

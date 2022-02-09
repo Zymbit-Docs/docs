@@ -55,7 +55,7 @@ import zymkey
 # Create a master seed and return the bip39 mnemonic
 master_key_generator = bytearray("3xampleM@sterK3Y", 'utf-8')
 wallet_name = "MyExampleWallet"
-# Use the bip39 recovery strategy to tell zymkey to return a mnemonic. Takes a base 64 encoded string for a bip39 passphrase. Can be empty string.
+# Use the BIP39 recovery strategy to tell zymkey to return a mnemonic. Takes a base 64 encoded string for a bip39 passphrase. Can be empty string.
 use_bip39_recovery = zymkey.RecoveryStrategyBip39("aGk=")
 master_slot, bip39_mnemonic = zymkey.client.gen_wallet_master_seed("secp256k1", master_key_generator, wallet_name, use_bip39_recovery)
 print("Master Slot:%s\nBip39 mnemonic (write this down!):\n%s" % (master_slot, bip39_mnemonic))
@@ -91,12 +91,10 @@ zymkey.client.remove_key(child_slot)
 The HSM6 can have multiple master seeds be stored in its key store, allowing for management of a variety of keyrings to work with. Master seeds and its derivations are additionally backed by EC curve cryptography for an extra layer of encryption/security. The ec curves currently supported are nistp256, secp256r1, secp256k1. The master_key_generator is used to generate the bip32 master seed, can be empty string. The RecoveryStrategy parameter dictates what recovery algorithm to return when generating the master seed. If the base RecoveryStrategy is used or none is specified, then no mnemonic will be returned. Current supported recovery strategies are none, bip39. This example generates a master seed with the RecoveryStrategyBip39. The bip39 mnemonic is a 24 word string that can be used to restore or recreate a previous generated master seed. Note that a wallet name is also unique! There can not be multiple wallets with the same name.
 
 {{< callout warning >}}
-Make sure to write the bip39 mnemonic and store it somewhere safe!
-**The master seed is the key to its kingdom, so don't give it out to just anybody!**
+Make sure to write the BIP39 mnemonic and store it somewhere safe! The master seed is the key to its kingdom. Don't give it out to just anybody!
 {{< /callout >}}
 
-> `gen_wallet_master_seed (string ec_key_type, bytearray master_key_generator, string wallet_name, recovery_strategy=<zymkey.RecoveryStrategy object>)`
->  Returns the allocated master seed slot and the BIP39 mnemonic if the bool flag is set True
+The function `gen_wallet_master_seed` returns the allocated master seed slot and the BIP39 mnemonic if the bool flag is set True
 
 ```
 # Create a master seed and return the BIP39 mnemonic
@@ -112,8 +110,7 @@ print("Master Slot:%s\nBip39 mnemonic (write this down!):\n%s" % (master_slot, b
 
 Child key pairs are generated from **both** the slot and index of another key pair. BIP32 has two possible derivations **hardened** and **non-hardened**. Non-hardened key pairs can be linked back to its parent key pair with just its public key.  Hardened key pairs cannot be linked back to its parent key. So for best security practices, it's advised to generate hardened key pairs wherever possible.
 
-> `gen_wallet_child_key(int slot, int index, bool is_hardened)`
->  Returns allocated slot on success
+The function `gen_wallet_child_key` returns allocated slot on success.
 
 ```
 # Generate a child key from the master seed
@@ -123,7 +120,7 @@ child_pub_key = zymkey.client.get_public_key(child_slot)
 print("Child Slot:%s\nChild Public Key:%s" % (child_slot, child_pub_key))
 ```
 
-`Node Address:`
+**Node Address:**
 The index parameter in the above example will add a new number 3 to the node address string in the wallet. Apostrophes after the number denote hardened keys. Below is an example node address string.
 
 `m / 3' / 1' / 0' / 1 / 28`
@@ -132,8 +129,7 @@ The index parameter in the above example will add a new number 3 to the node add
 
 If the user knows the key slot, they can get the node index and wallet name with this function.
 
-`get_wallet_node_addr(int slot)` 
- - Returns an array [node index string, wallet name, master seed slot number]
+The function `get_wallet_node_addr(int slot)` returns an array [node index string, wallet name, master seed slot number].
 
 ```
 # Get node address of the child key slot
@@ -148,8 +144,7 @@ If the user knows the wallet node index string and either the master seed slot o
 they can get the HSM6 key slot with this function. Both master seed slot and wallet name are optional arguments,
 but if neither are filled, then it will throw an exception.
 
-> `get_wallet_key_slot(string node_index, string wallet_name, int master_slot)`
->  Returns the key slot on success
+The function `get_wallet_key_slot(string node_index, string wallet_name, int master_slot)` returns the key slot on success.
 
 ```
 # Get the key slot of the child key using our previous master key slot and wallet name
@@ -166,8 +161,7 @@ With the Bip39 mnemonic sentence, bip39 passphrase, master generatorkey, and wal
 Keep in mind that this only restores the master seed. The children nodes will have to be manually generated again.
 {{< /callout >}}
 
-> `restore_wallet_master_seed_from_bip39_mnemonic(string ec_key_type, bytearray master_key, string wallet_name, string b64_bip39_passphrase, string bip39_mnemonic)`
->  Returns the allocated key slot on success
+The function `restore_wallet_master_seed_from_bip39_mnemonic` returns the allocated key slot on success.
 
 ```
 # Remove the master seed
