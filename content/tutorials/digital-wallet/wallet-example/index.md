@@ -9,23 +9,28 @@ weight: 20
 images: []
 toc: true
 ---
-Updated: 2022-02-08
+Updated: 2022-02-14
 
 ## What is a Hardware Wallet?
 
-The Hardware Wallet provided by the Zymbit HSM6 is a BIP32/39/44 HD wallet, or Hierarchical Deterministic wallet. A HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
+Zymbit's Hardware Wallet conforms to ![BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki), ![BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki), ![BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) Hierarchical Deterministic (HD) wallet. An HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed used for Master Seed recovery. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
+
+A Hardware Wallet, or cold storage wallet allows you to connect online and access your digital assets, safely store the referenced asset in the hardware wallet. The asset does not need to be stored on online servers or platforms. The private keys of the Hardware wallet remain on the device. 
+
+A Software Wallet, also known as a Soft Wallet or Desktop Wallet locally stores your keys on your desktop or in some other online location. The disadvantage of a Soft Wallet is that the presence of the keys online makes them far more susceptible to attacks.
 
 ## What is the Zymbit Embedded Hardware Wallet?
 
-Zymbit Embedded Hardware Wallet functionality is available in Zymbit products HSM6 and SCM (soon). These products are design to easily integrate into IoT and blockchain appliances that manage large numbers of keys and/or participate in blockchain and crypto transactions.  
+Zymbit Embedded Hardware Wallet functionality is available in Zymbit products, HSM6 and SCM (soon). These products are designed to easily integrate into IoT and blockchain appliances that manage large numbers of keys and/or participate in blockchain and crypto transactions.  
  
 The core features of Zymbit Embedded Hardware Wallets are: 
  * BIP32 – Hierarchical Deterministic Wallet
  * BIP39 – Master Seed Mnemonic Code Generator
  * BIP44 – Multi-Account Hierarchy Support
  * SLIP39 – Shamirs Secret Sharing [Example here](docs.zymbit.com/tutorial/digital-wallet/slip39-example)
- * APIs for secure easy integration with host computer (Python, C, C++)
+ * ![APIs](https://docs.zymbit.com/api/) for secure easy integration with host computer (Python, C, C++)
  * Dedicated secure hardware with tamper protection and response. 
+
 
 ![Zymbit hardware wallet](Zymbit-hardware-wallet-graphic-1c.png)
 

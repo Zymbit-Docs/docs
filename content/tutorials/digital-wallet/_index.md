@@ -1,5 +1,5 @@
 ---
-title: "Working with the Zymbit Module Digital HD Wallet"
+title: "Zymbit Embedded Hardware Wallet"
 linkTitle: "Embedded Hardware Wallet"
 icon: ""
 description: ""
