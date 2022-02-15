@@ -1,6 +1,6 @@
 ---
-title: "Working with the BIP32/39/44 Digital Wallet"
-linkTitle: "BIP32/39/44 Wallet"
+title: "Working with the Zymbit Hardware Wallet"
+linkTitle: "Zymbit Hardware Wallet"
 description: ""
 date: "2022-02-08"
 lastmod: ""
@@ -11,19 +11,29 @@ toc: true
 ---
 Updated: 2022-02-08
 
-## What is a digital wallet?
+## What is a Hardware Wallet?
 
-The digital wallet provided by the Zymbit HSM6 is a BIP32/39/44 HD wallet, or Hierarchical Deterministic wallet. A HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
+The Hardware Wallet provided by the Zymbit HSM6 is a BIP32/39/44 HD wallet, or Hierarchical Deterministic wallet. A HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
 
-The HSM6 also supports SLIP39 (Shamir's Secret Sharing) wallet recovery. A separate tutorial for SLIP39 recovery can be found [here](docs.zymbit.com/tutorial/digital-wallet/slip39-example).
+## What is the Zymbit Embedded Hardware Wallet?
+
+Zymbit Embedded Hardware Wallet functionality is available in Zymbit products HSM6 and SCM (soon). These products are design to easily integrate into IoT and blockchain appliances that manage large numbers of keys and/or participate in blockchain and crypto transactions.  
+ 
+The core features of Zymbit Embedded Hardware Wallets are: 
+ * BIP32 – Hierarchical Deterministic Wallet
+ * BIP39 – Master Seed Mnemonic Code Generator
+ * BIP44 – Multi-Account Hierarchy Support
+ * SLIP39 – Shamirs Secret Sharing [Example here](docs.zymbit.com/tutorial/digital-wallet/slip39-example)
+ * APIs for secure easy integration with host computer (Python, C, C++)
+ * Dedicated secure hardware with tamper protection and response. 
 
 ![Zymbit hardware wallet](Zymbit-hardware-wallet-graphic-1c.png)
 
-## Why use a digital wallet?
+## Why use a Hardware Wallet?
 
-To make digital transactions, a user needs to have a public/private key pair. The public key is an address used for receiving incoming goods, while the private key is used for sending those goods. Losing this key pair will be disastrous, as this will effectively give someone access to the assets in that key pair. This is why for additional security it's best practice to change addresses (keys) for every transaction. HD wallets automatically derive new addresses to use, thus eliminating the problem for the user to generate hundreds of keys on their own.
+To make secure crypto transactions, a user needs to have a public/private key pair. The public key is an address used for receiving incoming goods, while the private key is used for sending those goods. Losing this key pair will be disastrous, as this will effectively give someone access to the assets in that key pair. This is why for additional security it's best practice to change addresses (keys) for every transaction. HD wallets automatically derive new addresses to use, thus eliminating the problem for the user to generate hundreds of keys on their own.
 
-## Managing your digital wallet and security awareness
+## Managing your Hardware Wallet and Security Awareness
 
 The master seed is where all new key pairs will be derived from. Each new child key pair is created based off a existing parent key pair in the wallet. If a child key pair ever becomes 'compromised', it can't be tracked up the parent nodes. However this does warrant security awareness, that it will compromise all children key pairs derived from the stolen key pair.
 
@@ -43,9 +53,9 @@ safe and locked away!
 
 * All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
 
-## Using Digital Wallet:
+## Using the Zymbit Hardware Wallet:
 
-Example code snippet to show how to use digital wallet Zymbit API
+Example code snippet to show how to use the Zymbit wallet API
 
 ```
 #!/usr/bin/python3

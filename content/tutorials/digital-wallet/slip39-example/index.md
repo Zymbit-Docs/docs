@@ -3,14 +3,14 @@ title: "SLIP39 and Shamir's Wallet Recovery Example"
 linkTitle: "SLIP39 and Shamir's"
 description: ""
 date: "2022-02-04"
-lastmod: "2022-02-08"
+lastmod: "2022-02-14"
 draft: false
 weight: 60
 images: []
 toc: true
 ---
 
-Updated: 2022-02-08
+Updated: 2022-02-14
 
 <!-- TODO Remove this permanently? ## Intro
 
@@ -52,13 +52,13 @@ SLIP39 generates groups and each of these groups can contain its own system of m
 
 ## Generating a master seed with SLIP39 recovery
 
-The next steps cover how to create a master seed and setup for recovery of the seed with SLIP39
+The next steps cover how to create a master seed and setup for recovery of the seed with SLIP39. The example python code is provided in its entirety at the end of the explaination of each portion of the code.
 
 ### Opening a master seed SLIP39 generating session
 
 Create the recovery strategy. The recovery strategy will detail the number of groups to track (`group_count`) and number of groups needed to recover the master seed (`group_threshold`).
 
-`Iteration_exponent` dictates how many hashes are done at cryptographic layer (takes integer 0-5). The higher this number is, the longer (exponentially) the module will take to churn out a shard.
+`iteration_exponent` dictates how many hashes are done at cryptographic layer (takes integer 0-5). The higher this number is, the longer (exponentially) the module will take to churn out a shard.
 
 `variant` is only for curve "ed25519", we support the "cardano" variant for ed25519. Otherwise is empty string.
 | Supported Curves | Other supported variants |
@@ -84,8 +84,6 @@ print("Done! Return Code:%i" % (return_code))
 ```
 
 A return code of 0 means we successfully started an active SLIP39 session.
-
-> Important! Side Note. Cancelling active SLIP39 sessions
 
 {{< callout warning >}}
 While a SLIP39 session is active for both generation or recovery, other wallet generation functions are locked up. This means we can't generate other keys while a SLIP39 session. If anything ever goes wrong in the SLIP39 process, we can cancel an active SLIP39 session at any time.
@@ -149,7 +147,7 @@ Although this shard may look like a BIP39 mnemonic sentence. They are NOT interc
 # Third Group has been divided into just one member (THIS IS NOT RECOMMENDED LEAST SECURE). Will require the only member to reconstruct this group.
 # This group will have no passwords attached to the members
 # This shard is not the same as a BIP39 shard!
-#Since this is the last group, on the very last shard the add_gen_slip39_member_pwd() will return the master seed slot it was generated in, instead of -1.
+# Since this is the last group, on the very last shard the add_gen_slip39_member_pwd() will return the master seed slot it was generated in, instead of -1.
 print("\nSet our third example group configuration..")
 zymkey.client.set_gen_slip39_group_info(group_index = 2, member_count = 1, member_threshold = 1)
 print("Done!")
