@@ -184,7 +184,7 @@ All of these steps happen on the **provisioning** device
 
 1. Run `git clone https://github.com/zymbit-applications/aws-credentials-provider.git`
 2. Run `sudo mkdir /opt/zymbit`
-3. Run `sudo cp ~/aws-credentials-provider/credentials.sh /opt/zymbit/ && chmod +x /opt/zymbit/credentials.sh`
+3. Run `sudo cp ~/aws-credentials-provider/credentials.sh /opt/zymbit/ && sudo chmod +x /opt/zymbit/credentials.sh`
 4. Edit `~/aws-credentials-provider/config` to specify the appropriate region.
 5. Run `mkdir ~/.aws && cp ~/aws-credentials-provider/config ~/.aws/config`
 
@@ -225,7 +225,7 @@ An optional company name []:
    - If following our CA tutorial, the root ca key is CA_files/zk_ca.pem.
 5. On the **provisioning device**, run:
    - `sudo cp device.crt /opt/zymbit/ && sudo cp root.ca.pem /opt/zymbit/`
-   - `bash provision-device.sh`
+   - `cd ~/aws-credentials-provider; bash provision-device.sh`
      - The script will ask you a few questions, make sure everything is correct.
      - The script behind the scenes will:
        - Register device cert in AWS with root CA cert
