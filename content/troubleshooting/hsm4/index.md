@@ -238,6 +238,48 @@ That will show you progress of the second half of the encryption process.
 
 </details>
 
+##### Q: Can I re-run encryption with the same USB stick?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+A: The script is designed to re-use information on the USB stick to encrypt a "golden" image in production on more than one device. If the file `original_zk_root.tgz` exists on the USB stick, it will use that file and skip the step of creating a whole new tarball of the rootfs. If you truly want to start over,  start by reformatting/erasing your USB stick.
+
+-----
+
+</details>
+
+##### Q: If my PI automounts the USB device, will that interfere with the process?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+A: The script attempts to unmount the external device, but in some cricumstances the device may stay mounted and the process will fail. You will get a message either on your screen or in `journalctl -fu cfg_SD_crfs` during the second phase indicating the drive was already mounted. Unmount the drive and try again.
+
+```
+# Check /dev/sda* mount points for devices mounted to /media/*
+lsblk
+
+# if mounted, unmount
+sudo umount /media*
+
+# re-run service
+sudo systemctl restart 
+
+# monitor progress
+journalctl -fu cfg_SD_crfs
+```
+
+-----
+
+</details>
+
 ##### Q: How can I confirm my file system is encrypted and protected?
 
 <details>
@@ -246,9 +288,11 @@ That will show you progress of the second half of the encryption process.
 
 <br>
 
-A: Since `zkifc` is stopped during the process, the blue LED will flash rapidly until the whole process completes. Once both of the automautic reboots are completed, the blue LED will return to flashing once every 3 seconds. 
+A: Since `zkifc` is stopped during the process, the blue LED will flash rapidly until the whole process completes. Once both of the automautic reboots are completed, the blue LED will return to flashing once every 3 seconds.
 
 `lsblk` will show you that you now have a "cryptrfs" partition under your mmcblk0p2 (default)
+
+`df -h` will also show "/dev/mapper/cryptrfs" for the "/" file system.
 
 If your system reboots twice, the LED returns to flashing once every 3 seconds, and `lsblk` displays a "cryptrfs" partition, you can be confident your system is encrypted and protected.
 

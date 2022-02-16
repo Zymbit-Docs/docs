@@ -115,9 +115,9 @@ Power quality matters to the reliable and secure operation of your system and Zy
 
 For Raspian-based operating systems, you must configure the state of the {{< term/i2c >}}.
 
-0. Log in to your Raspberry Pi and run `sudo raspi-config`.
-0. Navigate to `Interfacing Options` -> `I2C` -> `Would you like the ARM I2C interface to be enabled?`
-0. Select yes, and confirm this choice.
+1. Log in to your Raspberry Pi and run `sudo raspi-config`.
+1. Navigate to `Interfacing Options` -> `I2C` -> `Would you like the ARM I2C interface to be enabled?`
+1. Select yes, and confirm this choice.
 
 Your {{< term/i2c >}} bus is now configured and ready to talk to the Zymkey. The default {{< term/i2c >}} address for the Zymkey is `0x30`.
 
