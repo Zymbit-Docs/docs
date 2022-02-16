@@ -27,7 +27,7 @@ The core features of Zymbit Embedded Hardware Wallets are:
  * BIP32 – Hierarchical Deterministic Wallet
  * BIP39 – Master Seed Mnemonic Code Generator
  * BIP44 – Multi-Account Hierarchy Support
- * SLIP39 – Shamirs Secret Sharing [Example here](docs.zymbit.com/tutorial/digital-wallet/slip39-example)
+ * SLIP39 – Shamirs Secret Sharing [See example]((https://docs.zymbit.com/tutorials/digital-wallet/slip39-example/)
  * [APIs](https://docs.zymbit.com/api/) for secure easy integration with host computer (Python, C, C++)
  * Dedicated secure hardware with tamper protection and response. 
 
