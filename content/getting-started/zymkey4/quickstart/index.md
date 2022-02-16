@@ -81,7 +81,7 @@ Installing your hardware correctly is important to avoid destroying your SBC or 
 
 #### Before installing
 
-Power off your Raspberry Pi and disconnecting it from power entirely to ensure that neither the SBC or the ZYMKEY4 are damaged.
+Power off your Raspberry Pi to ensure that neither the SBC or the ZYMKEY4 are damaged.
 
 #### Attach hardware
 
