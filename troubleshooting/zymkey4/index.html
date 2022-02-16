@@ -2,7 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=generator content="Hugo 0.92.0"><meta name=ROBOTS content="INDEX, FOLLOW">
+<meta name=generator content="Hugo 0.92.2"><meta name=ROBOTS content="INDEX, FOLLOW">
 <link rel="shortcut icon" href=/favicons/favicon.ico>
 <link rel=apple-touch-icon href=/favicons/apple-touch-icon.png sizes=180x180>
 <link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
@@ -20,12 +20,12 @@ Before contacting Zymbit with troubleshooting related questions, please read thr
  Power supply. The recommended power for the PI4 is 5V and 3 amps. Most of the problems we see are from a poor power source. Start with a good power supply from the PI foundation or Canakit, not a phone charger. I2C enabled. Double check that you have enabled the I2C bus.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/troubleshooting/zymkey4/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="troubleshooting">
-<meta property="article:modified_time" content="2021-10-29T11:34:44-07:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2022-02-11T11:53:54-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="ZYMKEY4 FAQ & Troubleshooting">
 <meta itemprop=description content="Troubleshooting  Troubleshooting Checklist Before contacting Zymbit with troubleshooting related questions, please read through the following troubleshooting checklist.
  Power supply. The recommended power for the PI4 is 5V and 3 amps. Most of the problems we see are from a poor power source. Start with a good power supply from the PI foundation or Canakit, not a phone charger. I2C enabled. Double check that you have enabled the I2C bus.">
-<meta itemprop=dateModified content="2021-10-29T11:34:44-07:00">
-<meta itemprop=wordCount content="2639"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=dateModified content="2022-02-11T11:53:54-08:00">
+<meta itemprop=wordCount content="2827"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="ZYMKEY4 FAQ & Troubleshooting">
@@ -236,9 +236,23 @@ Before contacting Zymbit with troubleshooting related questions, please read thr
 <input type=checkbox id=m-tutorialsalternative-gpio-check>
 <label for=m-tutorialsalternative-gpio-check><a href=/tutorials/alternative-gpio/ title="Using an Alternative GPIO Pin" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsalternative-gpio><span class=td-sidebar-link__page>Alternative GPIO Pin</span></a></label>
 </li>
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsdigital-wallet-li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-tutorialsdigital-wallet-li>
 <input type=checkbox id=m-tutorialsdigital-wallet-check>
-<label for=m-tutorialsdigital-wallet-check><a href=/tutorials/digital-wallet/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsdigital-wallet><span class=td-sidebar-link__page>Digital Wallet</span></a></label>
+<label for=m-tutorialsdigital-wallet-check><a href=/tutorials/digital-wallet/ title="Zymbit Embedded Hardware Wallet" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-tutorialsdigital-wallet><span class=td-sidebar-link__section>Embedded Hardware Wallet</span></a></label>
+<ul class="pr-md-3 ul-3 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsdigital-walletwallet-example-li>
+<input type=checkbox id=m-tutorialsdigital-walletwallet-example-check>
+<label for=m-tutorialsdigital-walletwallet-example-check><a href=/tutorials/digital-wallet/wallet-example/ title="Working with the Zymbit Hardware Wallet" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsdigital-walletwallet-example><span class=td-sidebar-link__page>Zymbit Hardware Wallet</span></a></label>
+</li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsdigital-walletethereum-signing-example-li>
+<input type=checkbox id=m-tutorialsdigital-walletethereum-signing-example-check>
+<label for=m-tutorialsdigital-walletethereum-signing-example-check><a href=/tutorials/digital-wallet/ethereum-signing-example/ title="Sending a Web3 Ethereum Transaction" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsdigital-walletethereum-signing-example><span class=td-sidebar-link__page>Ethereum Transaction</span></a></label>
+</li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsdigital-walletslip39-example-li>
+<input type=checkbox id=m-tutorialsdigital-walletslip39-example-check>
+<label for=m-tutorialsdigital-walletslip39-example-check><a href=/tutorials/digital-wallet/slip39-example/ title="SLIP39 and Shamir's Wallet Recovery Example" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsdigital-walletslip39-example><span class=td-sidebar-link__page>SLIP39 and Shamir's</span></a></label>
+</li>
+</ul>
 </li>
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsencrypt-rfs-li>
 <input type=checkbox id=m-tutorialsencrypt-rfs-check>
@@ -252,6 +266,14 @@ Before contacting Zymbit with troubleshooting related questions, please read thr
 <input type=checkbox id=m-tutorialsaws-iot-check>
 <label for=m-tutorialsaws-iot-check><a href=/tutorials/aws-iot/ title="AWS IoT Integrations & Client Certificates" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-tutorialsaws-iot><span class=td-sidebar-link__section>Integrate Zymbit with AWS</span></a></label>
 <ul class="pr-md-3 ul-3 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsaws-iotverify-sigs-li>
+<input type=checkbox id=m-tutorialsaws-iotverify-sigs-check>
+<label for=m-tutorialsaws-iotverify-sigs-check><a href=/tutorials/aws-iot/verify-sigs/ title="How to Verify Signatures against Public Key on AWS and Other Devices" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iotverify-sigs><span class=td-sidebar-link__page>Verify Signatures</span></a></label>
+</li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsaws-iottls-li>
+<input type=checkbox id=m-tutorialsaws-iottls-check>
+<label for=m-tutorialsaws-iottls-check><a href=/tutorials/aws-iot/tls/ title="AWS IoT - TLS Client Certificate Authentication" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iottls><span class=td-sidebar-link__page>Transport Level Security</span></a></label>
+</li>
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsaws-iotintegrate-li>
 <input type=checkbox id=m-tutorialsaws-iotintegrate-check>
 <label for=m-tutorialsaws-iotintegrate-check><a href=/tutorials/aws-iot/integrate/ title="How to Integrate Zymbit with AWS Credentials Provider" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iotintegrate><span class=td-sidebar-link__page>Integrate with AWS Credentials Provider</span></a></label>
@@ -259,14 +281,6 @@ Before contacting Zymbit with troubleshooting related questions, please read thr
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsaws-iotjitr-li>
 <input type=checkbox id=m-tutorialsaws-iotjitr-check>
 <label for=m-tutorialsaws-iotjitr-check><a href=/tutorials/aws-iot/jitr/ title="AWS IoT - Just in Time Registration of Client Certificates using Lambda functions" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iotjitr><span class=td-sidebar-link__page>Just In Time Registration</span></a></label>
-</li>
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsaws-iottls-li>
-<input type=checkbox id=m-tutorialsaws-iottls-check>
-<label for=m-tutorialsaws-iottls-check><a href=/tutorials/aws-iot/tls/ title="AWS IoT - TLS Client Certificate Authentication" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iottls><span class=td-sidebar-link__page>Transport Level Security</span></a></label>
-</li>
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsaws-iotverify-sigs-li>
-<input type=checkbox id=m-tutorialsaws-iotverify-sigs-check>
-<label for=m-tutorialsaws-iotverify-sigs-check><a href=/tutorials/aws-iot/verify-sigs/ title="How to Verify Signatures against Public Key on AWS and Other Devices" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iotverify-sigs><span class=td-sidebar-link__page>Verify Signatures</span></a></label>
 </li>
 </ul>
 </li>
@@ -550,12 +564,38 @@ sda            8:0    0   32.0G   0  disk
 <p>That will show you progress of the second half of the encryption process.</p>
 <hr>
 </details>
+<h5 id=q-can-i-re-run-encryption-with-the-same-usb-stick>Q: Can I re-run encryption with the same USB stick?</h5>
+<details>
+<summary>Expand for Answer</summary>
+<br>
+<p>A: The script is designed to re-use information on the USB stick to encrypt a &ldquo;golden&rdquo; image in production on more than one device. If the file <code>original_zk_root.tgz</code> exists on the USB stick, it will use that file and skip the step of creating a whole new tarball of the rootfs. If you truly want to start over, start by reformatting/erasing your USB stick.</p>
+<hr>
+</details>
+<h5 id=q-if-my-pi-automounts-the-usb-device-will-that-interfere-with-the-process>Q: If my PI automounts the USB device, will that interfere with the process?</h5>
+<details>
+<summary>Expand for Answer</summary>
+<br>
+<p>A: The script attempts to unmount the external device, but in some cricumstances the device may stay mounted and the process will fail. You will get a message either on your screen or in <code>journalctl -fu cfg_SD_crfs</code> during the second phase indicating the drive was already mounted. Unmount the drive and try again.</p>
+<pre tabindex=0><code># Check /dev/sda* mount points for devices mounted to /media/*
+lsblk
+
+# if mounted, unmount
+sudo umount /media*
+
+# re-run service
+sudo systemctl restart 
+
+# monitor progress
+journalctl -fu cfg_SD_crfs
+</code></pre><hr>
+</details>
 <h5 id=q-how-can-i-confirm-my-file-system-is-encrypted-and-protected>Q: How can I confirm my file system is encrypted and protected?</h5>
 <details>
 <summary>Expand for Answer</summary>
 <br>
 <p>A: Since <code>zkifc</code> is stopped during the process, the blue LED will flash rapidly until the whole process completes. Once both of the automautic reboots are completed, the blue LED will return to flashing once every 3 seconds.</p>
 <p><code>lsblk</code> will show you that you now have a &ldquo;cryptrfs&rdquo; partition under your mmcblk0p2 (default)</p>
+<p><code>df -h</code> will also show &ldquo;/dev/mapper/cryptrfs&rdquo; for the &ldquo;/&rdquo; file system.</p>
 <p>If your system reboots twice, the LED returns to flashing once every 3 seconds, and <code>lsblk</code> displays a &ldquo;cryptrfs&rdquo; partition, you can be confident your system is encrypted and protected.</p>
 <hr>
 </details>

@@ -2,7 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=generator content="Hugo 0.92.0"><meta name=ROBOTS content="INDEX, FOLLOW">
+<meta name=generator content="Hugo 0.92.2"><meta name=ROBOTS content="INDEX, FOLLOW">
 <link rel="shortcut icon" href=/favicons/favicon.ico>
 <link rel=apple-touch-icon href=/favicons/apple-touch-icon.png sizes=180x180>
 <link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
@@ -15,11 +15,11 @@
 <meta property="og:description" content="The AWS Credentials provider can give a remote device AWS credentials if it has a valid certificate. The device certificate is stored inside AWS IoT&rsquo;s service and can be revoked, deactivated or deleted at any time. AWS IoT can also record and index individual IoT Things within a fleet. Each IoT thing will have its own unique certificate verified by AWS, and can be given unique attributes to identify each device along with policies which control the approved actions of each device.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/tutorials/aws-iot/integrate/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="tutorials">
-<meta property="article:modified_time" content="2021-10-18T23:30:10-04:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2022-02-15T17:48:55-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="How to Integrate Zymbit with AWS Credentials Provider">
 <meta itemprop=description content="The AWS Credentials provider can give a remote device AWS credentials if it has a valid certificate. The device certificate is stored inside AWS IoT&rsquo;s service and can be revoked, deactivated or deleted at any time. AWS IoT can also record and index individual IoT Things within a fleet. Each IoT thing will have its own unique certificate verified by AWS, and can be given unique attributes to identify each device along with policies which control the approved actions of each device.">
-<meta itemprop=dateModified content="2021-10-18T23:30:10-04:00">
-<meta itemprop=wordCount content="1279"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=dateModified content="2022-02-15T17:48:55-08:00">
+<meta itemprop=wordCount content="1282"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="How to Integrate Zymbit with AWS Credentials Provider">
@@ -229,9 +229,23 @@
 <input type=checkbox id=m-tutorialsalternative-gpio-check>
 <label for=m-tutorialsalternative-gpio-check><a href=/tutorials/alternative-gpio/ title="Using an Alternative GPIO Pin" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsalternative-gpio><span class=td-sidebar-link__page>Alternative GPIO Pin</span></a></label>
 </li>
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsdigital-wallet-li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-tutorialsdigital-wallet-li>
 <input type=checkbox id=m-tutorialsdigital-wallet-check>
-<label for=m-tutorialsdigital-wallet-check><a href=/tutorials/digital-wallet/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsdigital-wallet><span class=td-sidebar-link__page>Digital Wallet</span></a></label>
+<label for=m-tutorialsdigital-wallet-check><a href=/tutorials/digital-wallet/ title="Zymbit Embedded Hardware Wallet" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-tutorialsdigital-wallet><span class=td-sidebar-link__section>Embedded Hardware Wallet</span></a></label>
+<ul class="pr-md-3 ul-3 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsdigital-walletwallet-example-li>
+<input type=checkbox id=m-tutorialsdigital-walletwallet-example-check>
+<label for=m-tutorialsdigital-walletwallet-example-check><a href=/tutorials/digital-wallet/wallet-example/ title="Working with the Zymbit Hardware Wallet" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsdigital-walletwallet-example><span class=td-sidebar-link__page>Zymbit Hardware Wallet</span></a></label>
+</li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsdigital-walletethereum-signing-example-li>
+<input type=checkbox id=m-tutorialsdigital-walletethereum-signing-example-check>
+<label for=m-tutorialsdigital-walletethereum-signing-example-check><a href=/tutorials/digital-wallet/ethereum-signing-example/ title="Sending a Web3 Ethereum Transaction" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsdigital-walletethereum-signing-example><span class=td-sidebar-link__page>Ethereum Transaction</span></a></label>
+</li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsdigital-walletslip39-example-li>
+<input type=checkbox id=m-tutorialsdigital-walletslip39-example-check>
+<label for=m-tutorialsdigital-walletslip39-example-check><a href=/tutorials/digital-wallet/slip39-example/ title="SLIP39 and Shamir's Wallet Recovery Example" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsdigital-walletslip39-example><span class=td-sidebar-link__page>SLIP39 and Shamir's</span></a></label>
+</li>
+</ul>
 </li>
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsencrypt-rfs-li>
 <input type=checkbox id=m-tutorialsencrypt-rfs-check>
@@ -245,6 +259,14 @@
 <input type=checkbox id=m-tutorialsaws-iot-check checked>
 <label for=m-tutorialsaws-iot-check><a href=/tutorials/aws-iot/ title="AWS IoT Integrations & Client Certificates" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-tutorialsaws-iot><span class=td-sidebar-link__section>Integrate Zymbit with AWS</span></a></label>
 <ul class="pr-md-3 ul-3 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsaws-iotverify-sigs-li>
+<input type=checkbox id=m-tutorialsaws-iotverify-sigs-check>
+<label for=m-tutorialsaws-iotverify-sigs-check><a href=/tutorials/aws-iot/verify-sigs/ title="How to Verify Signatures against Public Key on AWS and Other Devices" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iotverify-sigs><span class=td-sidebar-link__page>Verify Signatures</span></a></label>
+</li>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsaws-iottls-li>
+<input type=checkbox id=m-tutorialsaws-iottls-check>
+<label for=m-tutorialsaws-iottls-check><a href=/tutorials/aws-iot/tls/ title="AWS IoT - TLS Client Certificate Authentication" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iottls><span class=td-sidebar-link__page>Transport Level Security</span></a></label>
+</li>
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-tutorialsaws-iotintegrate-li>
 <input type=checkbox id=m-tutorialsaws-iotintegrate-check checked>
 <label for=m-tutorialsaws-iotintegrate-check><a href=/tutorials/aws-iot/integrate/ title="How to Integrate Zymbit with AWS Credentials Provider" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iotintegrate><span class="td-sidebar-nav-active-item td-sidebar-link__page">Integrate with AWS Credentials Provider</span></a></label>
@@ -252,14 +274,6 @@
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsaws-iotjitr-li>
 <input type=checkbox id=m-tutorialsaws-iotjitr-check>
 <label for=m-tutorialsaws-iotjitr-check><a href=/tutorials/aws-iot/jitr/ title="AWS IoT - Just in Time Registration of Client Certificates using Lambda functions" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iotjitr><span class=td-sidebar-link__page>Just In Time Registration</span></a></label>
-</li>
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsaws-iottls-li>
-<input type=checkbox id=m-tutorialsaws-iottls-check>
-<label for=m-tutorialsaws-iottls-check><a href=/tutorials/aws-iot/tls/ title="AWS IoT - TLS Client Certificate Authentication" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iottls><span class=td-sidebar-link__page>Transport Level Security</span></a></label>
-</li>
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-tutorialsaws-iotverify-sigs-li>
-<input type=checkbox id=m-tutorialsaws-iotverify-sigs-check>
-<label for=m-tutorialsaws-iotverify-sigs-check><a href=/tutorials/aws-iot/verify-sigs/ title="How to Verify Signatures against Public Key on AWS and Other Devices" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-tutorialsaws-iotverify-sigs><span class=td-sidebar-link__page>Verify Signatures</span></a></label>
 </li>
 </ul>
 </li>
@@ -513,7 +527,7 @@ auto register.</li>
 <ol>
 <li>Run <code>git clone https://github.com/zymbit-applications/aws-credentials-provider.git</code></li>
 <li>Run <code>sudo mkdir /opt/zymbit</code></li>
-<li>Run <code>sudo cp ~/aws-credentials-provider/credentials.sh /opt/zymbit/ && chmod +x /opt/zymbit/credentials.sh</code></li>
+<li>Run <code>sudo cp ~/aws-credentials-provider/credentials.sh /opt/zymbit/ && sudo chmod +x /opt/zymbit/credentials.sh</code></li>
 <li>Edit <code>~/aws-credentials-provider/config</code> to specify the appropriate region.</li>
 <li>Run <code>mkdir ~/.aws && cp ~/aws-credentials-provider/config ~/.aws/config</code></li>
 </ol>
@@ -575,7 +589,7 @@ An optional company name []:
 <li>On the <strong>provisioning device</strong>, run:
 <ul>
 <li><code>sudo cp device.crt /opt/zymbit/ && sudo cp root.ca.pem /opt/zymbit/</code></li>
-<li><code>bash provision-device.sh</code>
+<li><code>cd ~/aws-credentials-provider; bash provision-device.sh</code>
 <ul>
 <li>The script will ask you a few questions, make sure everything is correct.</li>
 <li>The script behind the scenes will:
