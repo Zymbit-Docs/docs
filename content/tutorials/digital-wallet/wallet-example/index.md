@@ -13,7 +13,7 @@ Updated: 2022-02-14
 
 ## What is a Hardware Wallet?
 
-Zymbit's Hardware Wallet conforms to [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki), [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki), [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) Hierarchical Deterministic (HD) wallet. An HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed used for Master Seed recovery. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
+Zymbit's Hardware Wallet conforms to [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki), [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki), [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) documents for Hierarchical Deterministic (HD) wallets. An HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed used for Master Seed recovery. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
 
 A Hardware Wallet, or cold storage wallet, allows you to connect online and access your digital assets, and then safely store the referenced asset in the hardware wallet. The asset does not need to be stored on online servers or platforms. The private keys of the Hardware wallet remain on the device and are never exposed. 
 
@@ -28,7 +28,7 @@ The core features of Zymbit Embedded Hardware Wallets are:
  * BIP39 – Master Seed Mnemonic Code Generator
  * BIP44 – Multi-Account Hierarchy Support
  * SLIP39 – Shamirs Secret Sharing [Example here](docs.zymbit.com/tutorial/digital-wallet/slip39-example)
- * ![APIs](https://docs.zymbit.com/api/) for secure easy integration with host computer (Python, C, C++)
+ * [APIs](https://docs.zymbit.com/api/) for secure easy integration with host computer (Python, C, C++)
  * Dedicated secure hardware with tamper protection and response. 
 
 
