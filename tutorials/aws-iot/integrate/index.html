@@ -15,11 +15,11 @@
 <meta property="og:description" content="The AWS Credentials provider can give a remote device AWS credentials if it has a valid certificate. The device certificate is stored inside AWS IoT&rsquo;s service and can be revoked, deactivated or deleted at any time. AWS IoT can also record and index individual IoT Things within a fleet. Each IoT thing will have its own unique certificate verified by AWS, and can be given unique attributes to identify each device along with policies which control the approved actions of each device.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/tutorials/aws-iot/integrate/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="tutorials">
-<meta property="article:modified_time" content="2022-02-15T17:48:55-08:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2022-02-16T17:34:47-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="How to Integrate Zymbit with AWS Credentials Provider">
 <meta itemprop=description content="The AWS Credentials provider can give a remote device AWS credentials if it has a valid certificate. The device certificate is stored inside AWS IoT&rsquo;s service and can be revoked, deactivated or deleted at any time. AWS IoT can also record and index individual IoT Things within a fleet. Each IoT thing will have its own unique certificate verified by AWS, and can be given unique attributes to identify each device along with policies which control the approved actions of each device.">
-<meta itemprop=dateModified content="2022-02-15T17:48:55-08:00">
-<meta itemprop=wordCount content="1282"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=dateModified content="2022-02-16T17:34:47-08:00">
+<meta itemprop=wordCount content="1314"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="How to Integrate Zymbit with AWS Credentials Provider">
@@ -533,6 +533,15 @@ auto register.</li>
 </ol>
 <hr>
 <h3 id=provisioning-an-iot-device>Provisioning an IoT Device</h3>
+<div class="callout callout-notice">
+<div class=callout-heading>
+<i class="callout-icon fas fa-flag"></i>
+<span class=callout-title>Notice</span>
+</div>
+<div class=callout-body>
+The following procedure was done with Raspberry PI OS Buster 32bit. The current version of cURL included in bullseye (7.74.0) seems to have an issue using the openssl engine import feature.
+</div>
+</div>
 <ol>
 <li>On the <strong>IoT</strong> device
 <ul>
