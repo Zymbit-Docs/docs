@@ -190,6 +190,11 @@ All of these steps happen on the **provisioning** device
 
 ---
 ### Provisioning an IoT Device
+
+{{% callout notice %}}
+The following procedure was done with Raspberry PI OS Buster 32bit. The current version of cURL included in bullseye (7.74.0) seems to have an issue using the openssl engine import feature.
+{{% /callout %}}
+
 1. On the **IoT** device
      - Run ```openssl req -key nonzymkey.key -new -out zymkey.csr -engine zymkey_ssl -keyform e```
      - Fill in the request with the specified values
