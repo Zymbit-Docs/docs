@@ -4,6 +4,7 @@ main:
   - name: Community
     pre: "<i class=\"fab fa-discourse\"></i>"
     url: https://community.zymbit.com/
-  - name: zymbit.com
-    pre: "<i class=\"fab fa-home-alt\"></i>"
+    
+  - name: Main Sight
+    pre: "<i class=\"fab fa-discourse\"></i>"
     url: https://zymbit.com
