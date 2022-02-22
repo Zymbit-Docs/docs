@@ -98,8 +98,13 @@ For a bare Raspbian system, first login to your Pi.
 Then download and install the necessary Zymbit services onto your Pi.  
 `curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash`
 
+{{< callout warning >}}
+**Raspberry PI OS - Bullseye 64 bit** We are working on pushing a repository to directly support the Raspberry PI OS Bullseye 64 bit release. In the meantime, the Zymbit Buster 64 bit repo will work. Substitute the following curl command for our standard installation script to use the Zymbit Buster 64 bit repo:
 
-(grab a cup of coffee because this will take between 4 and 20 minutes).
+`curl -G http://s3.amazonaws.com/zk-sw-repo/install_zk_sw_bullseye.sh | sudo bash`
+
+{{< /callout >}}
+
 
 ----------
 ## 6. Application Examples
