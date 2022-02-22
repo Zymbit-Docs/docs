@@ -1,5 +1,5 @@
 ---
-title: "Creating and Oversight (Read Only) Wallet"
+title: "Creating an Oversight (Read Only) Wallet"
 linkTitle: "Oversight Wallet"
 description: ""
 date: "2022-02-22"
