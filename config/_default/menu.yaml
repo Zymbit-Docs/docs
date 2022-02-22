@@ -5,6 +5,6 @@ main:
     pre: "<i class=\"fab fa-discourse\"></i>"
     url: https://community.zymbit.com/
     
-  - name: Main Sight
+  - name: zymbit.com
     pre: "<i class=\"fab fa-discourse\"></i>"
     url: https://zymbit.com
