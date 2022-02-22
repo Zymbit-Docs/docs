@@ -16,12 +16,12 @@
 In this Getting Started guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/getting-started/zymkey4/quickstart/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="getting-started">
-<meta property="article:modified_time" content="2022-02-16T14:21:34-08:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2022-02-21T16:44:51-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="Zymkey4 Quickstart">
 <meta itemprop=description content="ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi and NVIDIA Jetson. It connects to the GPIO header of the SBC and uses the I2C bus and GPIO4 to communicate with the SBC CPU via an encrypted channel.
 In this Getting Started guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.">
-<meta itemprop=dateModified content="2022-02-16T14:21:34-08:00">
-<meta itemprop=wordCount content="1091"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=dateModified content="2022-02-21T16:44:51-08:00">
+<meta itemprop=wordCount content="1152"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="Zymkey4 Quickstart">
@@ -503,6 +503,16 @@ Battery installation is not required for the Zymkey4 to function, but it is high
 <p><code>sudo apt install curl</code></p>
 <p>Download and install the necessary Zymbit services onto your device.</p>
 <p><code>curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash</code></p>
+<div class="callout callout-warning">
+<div class=callout-heading>
+<i class="callout-icon fas fa-exclamation-triangle"></i>
+<span class=callout-title>Warning</span>
+</div>
+<div class=callout-body>
+<p><strong>Raspberry PI OS - Bullseye 64 bit</strong> We are working on pushing a repository to directly support the Raspberry PI OS Bullseye 64 bit release. In the meantime, the Zymbit Buster 64 bit repo will work. Substitute the following curl command for our standard installation script to use the Zymbit Buster 64 bit repo:</p>
+<p><code>curl -G http://s3.amazonaws.com/zk-sw-repo/install_zk_sw_bullseye.sh | sudo bash</code></p>
+</div>
+</div>
 <h2 id=test-the-installation>Test the installation</h2>
 <p>When the software installation has completed, reboot your device. After the reboot has completed, the Raspberry Pi will perform an operation that will temporarily bind the Zymkey to your SBC. Once the Zymkey is bound to the SBC, the Zymkey&rsquo;s blue LED should blink slowly&ndash;once every 3 seconds&ndash;to indicate that the binding is complete.</p>
 <div class=resource-link>

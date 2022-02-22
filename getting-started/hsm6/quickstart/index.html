@@ -20,11 +20,11 @@ Other Linux distributions will work, but may …">
 <meta property="og:description" content="Prerequisites  Raspberry Pi 3 or 4, if using Raspberry Pi. Raspbian or Ubuntu/ Tegra is installed.  Other Linux distributions will work, but may require extra configuration. We will gladly provide guidance, but cannot guarantee support. For information on supported operating systems, see Operating Systems.   Adequate power supply is used (5V).  For Pi users: if the Red Power LED on the Pi is not illuminated this means the supply voltage is inadequate.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/getting-started/hsm6/quickstart/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="getting-started">
-<meta property="article:modified_time" content="2022-01-20T15:23:52-08:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2022-02-21T16:44:51-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="Getting Started with HSM6">
 <meta itemprop=description content="Prerequisites  Raspberry Pi 3 or 4, if using Raspberry Pi. Raspbian or Ubuntu/ Tegra is installed.  Other Linux distributions will work, but may require extra configuration. We will gladly provide guidance, but cannot guarantee support. For information on supported operating systems, see Operating Systems.   Adequate power supply is used (5V).  For Pi users: if the Red Power LED on the Pi is not illuminated this means the supply voltage is inadequate.">
-<meta itemprop=dateModified content="2022-01-20T15:23:52-08:00">
-<meta itemprop=wordCount content="1591"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=dateModified content="2022-02-21T16:44:51-08:00">
+<meta itemprop=wordCount content="1638"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="Getting Started with HSM6">
@@ -435,7 +435,16 @@ Install curl: sudo apt install curl</p>
 <p>For a bare Raspbian system, first login to your Pi.</p>
 <p>Then download and install the necessary Zymbit services onto your Pi.<br>
 <code>curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash</code></p>
-<p>(grab a cup of coffee because this will take between 4 and 20 minutes).</p>
+<div class="callout callout-warning">
+<div class=callout-heading>
+<i class="callout-icon fas fa-exclamation-triangle"></i>
+<span class=callout-title>Warning</span>
+</div>
+<div class=callout-body>
+<p><strong>Raspberry PI OS - Bullseye 64 bit</strong> We are working on pushing a repository to directly support the Raspberry PI OS Bullseye 64 bit release. In the meantime, the Zymbit Buster 64 bit repo will work. Substitute the following curl command for our standard installation script to use the Zymbit Buster 64 bit repo:</p>
+<p><code>curl -G http://s3.amazonaws.com/zk-sw-repo/install_zk_sw_bullseye.sh | sudo bash</code></p>
+</div>
+</div>
 <hr>
 <h2 id=6-application-examples>6. Application Examples</h2>
 <p>The quickest way to get started is to see the Zymkey&rsquo;s various features at work by running these test scripts that were installed with the client software:</p>
