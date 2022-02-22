@@ -4,6 +4,7 @@ main:
   - name: Community
     pre: "<i class=\"fab fa-discourse\"></i>"
     url: https://community.zymbit.com/
-  - name: GitHub
-    pre: "<i class=\"fab fa-github\"></i>"
-    url: https://github.com/zymbit-docs
+    
+  - name: zymbit.com
+    pre: "<i class=\"fab fa-discourse\"></i>"
+    url: https://zymbit.com
