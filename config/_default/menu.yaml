@@ -1,11 +1,10 @@
 ---
 
-menu:
-  main:
-    - name: Community
-      pre: "<i class=\"fab fa-discourse\"></i>"
-      url: https://community.zymbit.com/
+main:
+  - name: Community
+    pre: "<i class=\"fab fa-discourse\"></i>"
+    url: https://community.zymbit.com/
     
-    - name: zymbit.com
-      pre: "<i class=\"fa fa-heart\"></i>"
-      url: https://zymbit.com
+  - name: zymbit.com
+    pre: "<i class=\"fa fa-heart\"></i>"
+    url: https://zymbit.com
