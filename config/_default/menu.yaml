@@ -6,5 +6,5 @@ main:
     url: https://community.zymbit.com/
     
   - name: zymbit.com
-    pre: "<i class=\"fa fa-heart\"></i>"
+    pre: "<i class=\"fa fa-home\"></i>"
     url: https://zymbit.com
