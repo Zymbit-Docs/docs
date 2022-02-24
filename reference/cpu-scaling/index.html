@@ -18,12 +18,12 @@ We have seen some issues with the scaling cpu governor on the Raspberry PI inter
 Workaround Solution We Recommend: The PI sets the scaling governor to be ondemand by default. We recommend switching this mode to performance to get the best out of the ZYMKEY.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/reference/cpu-scaling/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="reference">
-<meta property="article:modified_time" content="2022-02-23T16:17:23-08:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2022-02-23T16:37:07-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="CPU Scaling Governor">
 <meta itemprop=description content="Issue: Cpu Scaling Governor Issue Description: We have seen some issues with the scaling cpu governor on the Raspberry PI interfere with the i2c bus. This sometimes causes the ZYMKEY to be put into a odd state or return failures from operations that get optimized out by the governor.
 Workaround Solution We Recommend: The PI sets the scaling governor to be ondemand by default. We recommend switching this mode to performance to get the best out of the ZYMKEY.">
-<meta itemprop=dateModified content="2022-02-23T16:17:23-08:00">
-<meta itemprop=wordCount content="176"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=dateModified content="2022-02-23T16:37:07-08:00">
+<meta itemprop=wordCount content="173"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="CPU Scaling Governor">
@@ -330,7 +330,7 @@ Workaround Solution We Recommend: The PI sets the scaling governor to be ondeman
 <ul>
 <li><a href=#issue-description>Issue Description:</a></li>
 <li><a href=#workaround-solution-we-recommend>Workaround Solution We Recommend:</a></li>
-<li><a href=#set-to-performance-for-current-boot-but-not-persistent-on-reboot>Set to <code>performance</code> for current boot, but not persistent on reboot:</a></li>
+<li><a href=#set-to-performance-for-current-boot-not-persistent-on-reboot>Set to <code>performance</code> for current boot; not persistent on reboot:</a></li>
 <li><a href=#set-performance-to-be-persistent-on-reboot-with-a-systemd-service>Set <code>performance</code> to be persistent on reboot with a systemd service:</a></li>
 </ul>
 </li>
@@ -359,9 +359,9 @@ Workaround Solution We Recommend: The PI sets the scaling governor to be ondeman
 <h4 id=workaround-solution-we-recommend>Workaround Solution We Recommend:</h4>
 <p>The PI sets the <strong>scaling governor</strong> to be <code>ondemand</code> by default. We recommend switching this mode to <code>performance</code> to get the best out of the ZYMKEY.</p>
 <blockquote>
-<p>Note: this will drain more battery power when switched to <code>performance</code>!</p>
+<p>Note: Switching to <code>performance</code> will use more battery power.</p>
 </blockquote>
-<h4 id=set-to-performance-for-current-boot-but-not-persistent-on-reboot>Set to <code>performance</code> for current boot, but not persistent on reboot:</h4>
+<h4 id=set-to-performance-for-current-boot-not-persistent-on-reboot>Set to <code>performance</code> for current boot; not persistent on reboot:</h4>
 <ol>
 <li>Run as root:<br>
 <code>sudo su</code><br>
@@ -370,7 +370,7 @@ Workaround Solution We Recommend: The PI sets the scaling governor to be ondeman
 <h4 id=set-performance-to-be-persistent-on-reboot-with-a-systemd-service>Set <code>performance</code> to be persistent on reboot with a systemd service:</h4>
 <ol>
 <li>Create a .service file in /etc/systemd/system/. You can name it whatever you wish. We will use <code>cpu-governor.service</code>.</li>
-<li><strong>Write this code to <code>/etc/systemd/system/cpu-governor.service</code> file:</strong></li>
+<li>Write this code to <code>/etc/systemd/system/cpu-governor.service</code> file:</li>
 </ol>
 <pre tabindex=0><code>[Unit]
 
