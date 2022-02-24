@@ -12,26 +12,23 @@
 <title>CPU Scaling Governor | </title>
 <meta name=description content="Issue: Cpu Scaling Governor
 Issue Description:
-We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. …">
+We have seen some issues with the scaling cpu governor on the Raspberry PI interfere with the i2c bus. …">
 <meta property="og:title" content="CPU Scaling Governor">
-<meta property="og:description" content="Issue: Cpu Scaling Governor
-Issue Description: We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. This sometimes causes the zymkey to be put into a odd state or return failures from operations that get optimized out by the governor.
-Workaround Solution We Recommend! The raspberry pi sets the scaling governor to be &ldquo;ondemand&rdquo; by default. We recommend switching this mode to &ldquo;performance&rdquo; to get the best out of the zymkey.">
+<meta property="og:description" content="Issue: Cpu Scaling Governor Issue Description: We have seen some issues with the scaling cpu governor on the Raspberry PI interfere with the i2c bus. This sometimes causes the ZYMKEY to be put into a odd state or return failures from operations that get optimized out by the governor.
+Workaround Solution We Recommend: The PI sets the scaling governor to be ondemand by default. We recommend switching this mode to performance to get the best out of the ZYMKEY.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://docs.zymbit.com/reference/cpu-scaling/"><meta property="og:image" content="https://docs.zymbit.com/doks.png"><meta property="article:section" content="reference">
-<meta property="article:modified_time" content="2021-11-04T14:46:13-07:00"><meta property="og:site_name" content="Zymbit Documentation">
+<meta property="article:modified_time" content="2022-02-23T16:17:23-08:00"><meta property="og:site_name" content="Zymbit Documentation">
 <meta itemprop=name content="CPU Scaling Governor">
-<meta itemprop=description content="Issue: Cpu Scaling Governor
-Issue Description: We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. This sometimes causes the zymkey to be put into a odd state or return failures from operations that get optimized out by the governor.
-Workaround Solution We Recommend! The raspberry pi sets the scaling governor to be &ldquo;ondemand&rdquo; by default. We recommend switching this mode to &ldquo;performance&rdquo; to get the best out of the zymkey.">
-<meta itemprop=dateModified content="2021-11-04T14:46:13-07:00">
-<meta itemprop=wordCount content="164"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
+<meta itemprop=description content="Issue: Cpu Scaling Governor Issue Description: We have seen some issues with the scaling cpu governor on the Raspberry PI interfere with the i2c bus. This sometimes causes the ZYMKEY to be put into a odd state or return failures from operations that get optimized out by the governor.
+Workaround Solution We Recommend: The PI sets the scaling governor to be ondemand by default. We recommend switching this mode to performance to get the best out of the ZYMKEY.">
+<meta itemprop=dateModified content="2022-02-23T16:17:23-08:00">
+<meta itemprop=wordCount content="176"><meta itemprop=image content="https://docs.zymbit.com/doks.png">
 <meta itemprop=keywords content><meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://docs.zymbit.com/doks.png">
 <meta name=twitter:title content="CPU Scaling Governor">
-<meta name=twitter:description content="Issue: Cpu Scaling Governor
-Issue Description: We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. This sometimes causes the zymkey to be put into a odd state or return failures from operations that get optimized out by the governor.
-Workaround Solution We Recommend! The raspberry pi sets the scaling governor to be &ldquo;ondemand&rdquo; by default. We recommend switching this mode to &ldquo;performance&rdquo; to get the best out of the zymkey.">
+<meta name=twitter:description content="Issue: Cpu Scaling Governor Issue Description: We have seen some issues with the scaling cpu governor on the Raspberry PI interfere with the i2c bus. This sometimes causes the ZYMKEY to be put into a odd state or return failures from operations that get optimized out by the governor.
+Workaround Solution We Recommend: The PI sets the scaling governor to be ondemand by default. We recommend switching this mode to performance to get the best out of the ZYMKEY.">
 <link rel=preload href=/scss/main.min.874b26b473cb7a1e419be33bf4a26faf0fd5ae3733989c5d2c9ab928a11b409d.css as=style>
 <link href=/scss/main.min.874b26b473cb7a1e419be33bf4a26faf0fd5ae3733989c5d2c9ab928a11b409d.css rel=stylesheet integrity>
 <script src=https://code.jquery.com/jquery-3.5.1.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
@@ -325,6 +322,22 @@ Workaround Solution We Recommend! The raspberry pi sets the scaling governor to 
 </aside><aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
 </div>
+<div class=td-toc><nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#issue-cpu-scaling-governor>Issue: Cpu Scaling Governor</a>
+<ul>
+<li><a href=#issue-description>Issue Description:</a></li>
+<li><a href=#workaround-solution-we-recommend>Workaround Solution We Recommend:</a></li>
+<li><a href=#set-to-performance-for-current-boot-but-not-persistent-on-reboot>Set to <code>performance</code> for current boot, but not persistent on reboot:</a></li>
+<li><a href=#set-performance-to-be-persistent-on-reboot-with-a-systemd-service>Set <code>performance</code> to be persistent on reboot with a systemd service:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
 </aside><main class="col-12 col-md-8 col-xl-7 pl-md-5" role=main>
 <nav aria-label=breadcrumb class="d-none d-md-block d-print-none">
 <ol class="breadcrumb spb-1">
@@ -340,36 +353,45 @@ Workaround Solution We Recommend! The raspberry pi sets the scaling governor to 
 <h1>CPU Scaling Governor</h1>
 <header class=article-meta>
 </header>
-<p><strong>Issue: Cpu Scaling Governor</strong></p>
-<p><strong>Issue Description:</strong>
-We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. This sometimes causes the zymkey to be put into a odd state or return failures from operations that get optimized out by the governor.</p>
-<p><strong>Workaround Solution We Recommend!</strong>
-The raspberry pi sets the <strong>scaling governor</strong> to be &ldquo;<strong>ondemand</strong>&rdquo; by default. We recommend switching this mode to &ldquo;<strong>performance</strong>&rdquo; to get the best out of the zymkey.</p>
-<p><strong>Be warned this will drain more battery power when switched to &ldquo;performance&rdquo;!</strong></p>
-<p><strong>Set to performance but not persistent on reboot:</strong></p>
-<ol>
-<li>Run as root: sudo su</li>
-<li>echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor</li>
-</ol>
-<p><strong>Set performance to be persistent on reboot with a systemd service:</strong></p>
-<ol>
-<li>Create a .service file in /etc/systemd/system/</li>
-<li><strong>Write this code to .service file:</strong></li>
-</ol>
+<h3 id=issue-cpu-scaling-governor>Issue: Cpu Scaling Governor</h3>
+<h4 id=issue-description>Issue Description:</h4>
+<p>We have seen some issues with the scaling cpu governor on the Raspberry PI interfere with the i2c bus. This sometimes causes the ZYMKEY to be put into a odd state or return failures from operations that get optimized out by the governor.</p>
+<h4 id=workaround-solution-we-recommend>Workaround Solution We Recommend:</h4>
+<p>The PI sets the <strong>scaling governor</strong> to be <code>ondemand</code> by default. We recommend switching this mode to <code>performance</code> to get the best out of the ZYMKEY.</p>
 <blockquote>
-<p>[Unit]</p>
-<p>Description=Set scaling governor to performance</p>
-<p>After=multi-user.target</p>
-<p>Before=zkbootrtc.service</p>
-<p>[Service]</p>
-<p>Type=oneshot</p>
-<p>ExecStart=/bin/sh -c &ldquo;echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor&rdquo;</p>
-<p>[Install]</p>
-<p>WantedBy=multi-user.target</p>
+<p>Note: this will drain more battery power when switched to <code>performance</code>!</p>
 </blockquote>
-<ol start=3>
-<li>Enable the service: sudo systemctl enable yourservice</li>
-<li>Start the service: sudo systemctl start yourservice</li>
+<h4 id=set-to-performance-for-current-boot-but-not-persistent-on-reboot>Set to <code>performance</code> for current boot, but not persistent on reboot:</h4>
+<ol>
+<li>Run as root:<br>
+<code>sudo su</code><br>
+<code>echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor</code></li>
+</ol>
+<h4 id=set-performance-to-be-persistent-on-reboot-with-a-systemd-service>Set <code>performance</code> to be persistent on reboot with a systemd service:</h4>
+<ol>
+<li>Create a .service file in /etc/systemd/system/. You can name it whatever you wish. We will use <code>cpu-governor.service</code>.</li>
+<li><strong>Write this code to <code>/etc/systemd/system/cpu-governor.service</code> file:</strong></li>
+</ol>
+<pre tabindex=0><code>[Unit]
+
+Description=Set scaling governor to performance
+
+After=multi-user.target
+
+Before=zkbootrtc.service
+
+[Service]
+
+Type=oneshot
+
+ExecStart=/bin/sh -c &quot;echo performance &gt; /sys/devices/system/cpu/cpufreq/policy0/scaling_governor&quot;
+
+[Install]
+
+WantedBy=multi-user.target
+</code></pre><ol start=3>
+<li>Enable the service: <code>sudo systemctl enable cpu-governor</code></li>
+<li>Start the service: <code>sudo systemctl start cpu-governor</code></li>
 </ol>
 </div>
 </main>
