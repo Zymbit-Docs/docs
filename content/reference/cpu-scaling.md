@@ -21,9 +21,9 @@ We have seen some issues with the scaling cpu governor on the Raspberry PI inter
 
 The PI sets the **scaling governor** to be `ondemand` by default. We recommend switching this mode to `performance` to get the best out of the ZYMKEY.
 
-> Note: this will drain more battery power when switched to `performance`!
+> Note: Switching to `performance` will use more battery power.
 
-#### Set to `performance` for current boot, but not persistent on reboot:
+#### Set to `performance` for current boot; not persistent on reboot:
 
  1. Run as root:  
     `sudo su`  
@@ -32,7 +32,7 @@ The PI sets the **scaling governor** to be `ondemand` by default. We recommend s
 #### Set `performance` to be persistent on reboot with a systemd service:
 
  1. Create a .service file in /etc/systemd/system/. You can name it whatever you wish. We will use `cpu-governor.service`.
- 2. **Write this code to `/etc/systemd/system/cpu-governor.service` file:**
+ 2. Write this code to `/etc/systemd/system/cpu-governor.service` file:
 
 ```
 [Unit]
