@@ -13,8 +13,6 @@ toc: true
 
 ### Issue: Cpu Scaling Governor
 
-#### Issue Description:
-
 We have seen some issues with the scaling cpu governor on the Raspberry PI interfere with the i2c bus. This sometimes causes the ZYMKEY to be put into a odd state or return failures from operations that get optimized out by the governor.
 
 #### Workaround Solution We Recommend:
@@ -57,3 +55,8 @@ WantedBy=multi-user.target
  3. Enable the service:  `sudo systemctl enable cpu-governor`
  4. Start the service: `sudo systemctl start cpu-governor`
  
+ #### Verifying the setting
+ 
+ You can use `cat` to verify the current setting. It should return `performance`.  
+`sudo cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor`  
+
