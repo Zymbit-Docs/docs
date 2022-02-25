@@ -24,7 +24,7 @@ weight: 3
 ---
 ## 3D Step Model
 
-[HSM6 Can Assembly REV D 1.0.1.STEP.zip](zymbit-hsm6.STEP.zip) (378.5 KB)
+[HSM6 Can Assembly REV D 1.1.4.STEP](hsm-can-rev-d-1.1.4-hsm6.STEP) (1.3 MB)
 
 ---
 
