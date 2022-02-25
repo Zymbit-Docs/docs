@@ -19,8 +19,7 @@ weight: 3
 
 ## KiCAD (Version 6 only)
 
-[Zymbit HSM Library-KiCAD 6.zip](../zymbit-hsm-kicad.zip) (5.1 KB)
-[Zymbit HSM4 Library-KiCAD 6](zymbit-hsm4-library-kicad-6.zip) (221 KB)
+[Zymbit HSM6 Library-KiCAD 6](zymbit-hsm6-library-kicad-6.zip) (221 KB)
 
 ---
 ## 3D Step Model
