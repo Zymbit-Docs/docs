@@ -23,7 +23,7 @@ If you decide that you are not ready for permanent binding, leave the HSM4 in de
 
 {{< /callout >}}
 
-When you have completed your devlopment work with the HSM4 and are ready to deploy your system into the field, we recommend that you permanently bind your HSM4 to a specific host device and SD card.
+When you have completed your development work with the HSM4 and are ready to deploy your system into the field, we recommend that you permanently bind your HSM4 to a specific host device and SD card.
 
 {{< resource_link "reference/binding" >}}
 HSM4 generates a unique Device ID by measuring certain attributes of the specific host and the HSM4 itself to permanently associate the two devices.
@@ -32,28 +32,24 @@ HSM4 generates a unique Device ID by measuring certain attributes of the specifi
 ### Summary of Steps
 
 Develop your application
-:   Ensure your host has all the necessary prerequisites in place to interface with the HSM4 and that it will be able to run your software application.
+* [ ] Ensure your host has all the necessary prerequisites in place to interface with the HSM4 and that it will be able to run your software application.
 
 Active production mode
-:   Permanently bind your HSM4 to the host device.
+* [ ] Permanently bind your HSM4 to the host device.
 
 ## Develop your application
 
-{{< callout destructive >}}
-*DO NOT* cut the lock tab yet.
-{{< /callout >}}
-
 To begin, ensure that you have followed the Getting Started guide for your HSM4 carefully to install the prerequisite client software:
 
-{{< resource_link "getting-started/zymkey4" >}}
+{{< resource_link "getting-started/hsm4" >}}
 Install your HSM4 to a Raspberry Pi running Raspbian or Ubuntu before moving to production mode.
 {{< /resource_link >}}
 
 To reiterate, before you continue, the following steps should be complete:
 
- [ ] Install a battery on the HSM4.
- [ ] Connect the GPIO header of the HSM4 to the GPIO pins of the host board while the host is powered down.
- [ ] Install HSM4 software on the host and establish temporary binding in development mode.
+* [ ] Install a battery on the HSM4.
+* [ ] Connect the GPIO header of the HSM4 to the GPIO pins of the host board while the host is powered down.
+* [ ] Install HSM4 software on the host and establish temporary binding in development mode.
 
 After these steps have been completed, you are ready to prepare your device for permanent binding.
 
@@ -61,7 +57,7 @@ After these steps have been completed, you are ready to prepare your device for 
 
 The `Perimeter Event Actions` for your HSM4 should be set to `none` or `notify` only. If your HSM4's action mode is set to `selfdestruct`, you might render your HSM4 useless while attempting to activate production mode.
 
-{{< resource_link "tutorials/perimeter-detect/zymkey4/" >}}
+{{< resource_link "tutorials/perimeter-detect/hsm4/" >}}
 Understand how to use the HSM4's perimeter detect features.
 {{< /resource_link >}}
 
@@ -78,7 +74,7 @@ zymkey.client.clear_perimeter_detect_info()"
 
 If you intend to use your HSM4 to encrypt your root file system, you should complete that step now, using our guide. This step is highly recommended.
 
-{{< resource_link "tutorials/encrypt-rfs/zymkey4/" >}}
+{{< resource_link "tutorials/encrypt-rfs/hsm4/" >}}
 Encrypt the root file system of your host device using LUKS and your HSM4.
 {{< /resource_link >}}
 
@@ -96,7 +92,7 @@ Test the functionality of your application thoroughly to ensure it is free of ma
 
 With the Zymkey, a physical tab was cut to go into production mode. In the HSM models, to go into production mode it only requires a function call followed by a reboot.
 
-The API function lock binding puts the HSM into production mode. Below are three scripts which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to production mode.
+The API function lock binding puts the HSM into production mode. Below are three examples which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to production mode.
 
 <details>
 
@@ -104,6 +100,15 @@ The API function lock binding puts the HSM into production mode. Below are three
 <br>
 
 ```
+// gcc example_binding.c -I /usr/include/zymkey -l zk_app_utils -o example_binding
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "zk_app_utils.h"
+#include "zk_b64.h"
+
 void check_code(int code, char* location){
   if (code < 0)
   {
@@ -222,7 +227,7 @@ int main()
 <summary>Python - lock_binding</summary>
 <br>
 
-```
+```python
 import zymkey
 tup = zymkey.client.get_current_binding_info()
 print("HSM is bound: " + str(tup[1]))
