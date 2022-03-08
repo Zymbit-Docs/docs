@@ -19,7 +19,7 @@ In this Getting Started guide we describe how to install your HSM to a Raspberry
 
 {{< cardpane >}}
 {{% card header="HSM6 Hardware" %}}
-{{< figure >
+{{< figure 
     src="HSM-install-to-hat.png"
     alt="HSM6 to HAT hardware"
     caption="Diagram of HSM placement on PiZero HAT"
