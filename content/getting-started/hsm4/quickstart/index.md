@@ -25,7 +25,7 @@ In this Getting Started guide we describe how to install your HSM to a Raspberry
     caption="Diagram of HSM placement on PiZero HAT"
     >}}
 {{% /card %}}
-{{< /cardpane }}
+{{< /cardpane >}}
 
 ### Summary of Setup Steps
 
