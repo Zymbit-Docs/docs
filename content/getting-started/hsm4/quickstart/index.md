@@ -1,39 +1,63 @@
 ---
-title: Getting Started with HSM4
+title: HSM4 Quickstart
 linkTitle: Quickstart
 description: ""
 aliases:
     - /quickstart/getting-started/hsm4/
 date: ""
-lastmod: ""
+lastmod: "2022-03-08"
 draft: false
 images: []
 weight: -670
 toc: true
 ---
 
-## Prerequisites
+The HSM4 is a ‘snap in’ security module designed for easy integration within a secure manufacturing environment. All connections are through a single, 30 pin connector that is hidden underneath the module. It is designed specifically to work with Raspberry Pi embedded applications. A PiZero HAT (Hardware Attached on Top) adapter is available for easy integration to the standard GPIO pins of the Pi.
 
-* Raspberry Pi 3 or 4, if using Raspberry Pi.
-* Raspbian or Ubuntu/ Tegra is installed.
-    * Other Linux distributions will work, but may require extra configuration. We will gladly provide guidance, but cannot guarantee support. For information on supported operating systems, see [Operating Systems](https://docs.zymbit.com/troubleshooting/general/#q-which-operating-systems-does-zymbit-support).
-* Adequate power supply is used (5V).
-    * **For Pi users:** if the Red Power LED on the Pi is not illuminated this means the supply voltage is inadequate.
-    * More info [here](https://docs.zymbit.com/reference/power-quality/).
-----------
-## 1. Install the HSM4
+In this Getting Started guide we describe how to install your HSM to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.
+
+
+{{< cardpane >}}
+{{% card header="HSM4 Hardware" %}}
+{{< figure 
+    src="HSM-install-to-hat.png"
+    alt="HSM4 to HAT hardware"
+    caption="Diagram of HSM placement on PiZero HAT"
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
+
+### Summary of Setup Steps
+
+Installing the Hardware
+:   Install the HSM on the PiZero HAT. Install the battery on the HAT. Connect the HAT to the host single-board computer.
+
+Establish an {{< term/i2c >}} connection
+:   Enable the {{< term/i2c >}} bus on the host device in order to be able to communicate with the HSM.
+
+Install the client software
+:   These utilities provided by Zymbit are necessary to interact with the hardware module.
+
+Test the installation
+:   Your HSM is now temporarily bound to your SBC and ready for use in developer mode.
+
+## Installing the hardware
+
+### HSM to PiZero HAT
 
 Fit your HSM onto the PiZero HAT (Hardware Attached on Top). The connector plugs into the pins on the board.
 
-![HSM4 Pi HAT Installation](HSM-install-to-hat.png)
+### Battery Installation
 
-----------
-## 2. Install Battery
-##### **Optional, but highly recommended**
-Battery installation is highly recommended if your device is vulnerable to physical access. If main power to the HSM is removed, then the real-time-clock and tamper detect features will not function. The battery is used to maintain operation of the real-time-clock and tamper detect features in the event that main power (from the GPIO header) is lost. 
+{{< callout warning >}}
+Battery installation is not required for the HSM to function, but it is highly recommended if your device is vulnerable to physical access!
+{{< /callout >}}
+
+
+To maintain the real-time clock (RTC) and tamper detection features in the event of power loss, your PiZero HAT can be fitted with a **3V CR2032  coincell**. This battery should last 3-5 years. We recommend using a high quality one like [this](https://www.amazon.com/Batteries-Panasonic-Lithium-Battery-Blister/dp/B002U00ZNK/ref=sr_1_5?crid=1YG7IIRUM96SP&dchild=1&keywords=panasonic+cr2032+3v+battery&qid=1602709891&sprefix=panasonic%2Caps%2C180&sr=8-5). 
+
 
 ##### **Primary Battery Holder (Recommended)**
-Your PiZero HAT can be fitted with a **3V CR2032  coincell**. This battery should last 3-5 years. We recommend using a high quality one like [this](https://www.amazon.com/Batteries-Panasonic-Lithium-Battery-Blister/dp/B002U00ZNK/ref=sr_1_5?crid=1YG7IIRUM96SP&dchild=1&keywords=panasonic+cr2032+3v+battery&qid=1602709891&sprefix=panasonic%2Caps%2C180&sr=8-5). 
 
 **IMPORTANT:** Note the correct polarity with **+ve  facing upwards !!**
 
@@ -54,48 +78,87 @@ Plug wired CR2032 battery into optional battery connector, located below.
 
 ----------
 
-## 3. Install Pi HAT
+### Install Pi HAT with HSM (and battery)
 
-**Power off your Pi or Jetson before proceeding**
+{{< callout danger >}}
+Installing your hardware correctly is important to avoid destroying your SBC or PiHAT. Be sure to follow the instructions below carefully. In particular:
+
+* Pay close attention to the images below to ensure the SBC's GPIO pins are **properly aligned** with the HAT's header.
+* Ensure that your **Raspberry Pi is powered down** before proceeding.
+* Ensure that the coincell battery (if installed) is installed with the positive side (marked with `+`) facing upward.
+{{< /callout >}}
+
+
+#### Before installing
+
+Power off your Raspberry Pi to ensure that neither the SBC or the PiHAT are damaged.
+
+#### Attach hardware
+
+Follow the below pictures to position the PiHAT onto your SBC. The HSM and battery should be facing the Raspberry Pi and concealed from view.
 
 <p><img src="HSM-install-hat-1.png" alt="Install PiHAT onto RPi - Open" width="50%"><img src="HSM-install-hat-nvidia-1.png" alt="Install PiHAT onto RPi - Open Nvidia" width="50%"></p>
 <p><img src="HSM-install-hat-2.png" alt="Install PiHAT onto RPi - Closed" width="50%"><img src="HSM-install-hat-nvidia-2.png" alt="Install PiHAT onto RPi - Closed Nvidia" width="50%"></p>
 
-Follow the above pictures to position the PiHAT. The HSM and battery should be facing the Raspberry Pi and concealed from view.
 
-**WARNING**: Be sure all the GPIO pins are aligned and have a respective slot. If misaligned, this could cause damage to the HSM, PiHAT, and/or your host device.
+Be sure all the GPIO pins are aligned and have a respective slot. If misaligned, this could cause damage to the HSM, PiHAT, and/or your host device. Once aligned properly, press firmly down onto the header. Your PiHAT should fit relatively snug.
 
-Once aligned properly, press firmly down onto the header. Your PiHAT should fit relatively snug.
+{{< resource_link "tutorials/alternative-gpio" >}}
+The default configuration uses GPIO4. This can be reconfigured to use another GPIO of your choice.
+{{< /resource_link >}}
 
-Now power up the Pi and you will see a blue LED blinking rapidly and consistently (5 blinks per second). This indicates the HSM is operational but not configured. If the blue LED blinks erratically, or not at all, then there is an installation error and you should check your connections.
+#### Power on and confirm operation
+
+Power up the Pi and you will see a blue LED blinking rapidly and consistently (5 blinks per second). This indicates the HSM is operational but not configured. 
 
 <img src="HSM4-LED-5times-per-second.gif" alt="HSM4-LED-5times-per-second" width="25%">
 
-----------
-## 4. Turn on the I2C Bus
+If the blue LED blinks erratically, or not at all, then there is an installation error and you should check your connections.
 
-For the Jetson, the Operating System - Tegra - is based on Ubuntu. The I2C bus is enabled by default. There are no additional steps required.
+{{< resource_link "reference/power-quality/" >}}
+Power quality matters to the reliable and secure operation of your system and Zymkey.
+{{< /resource_link >}}
+
+## Establish an I2C connection
 
 For Raspian-based operating systems, you must configure the state of the {{< term/i2c >}}.
 
-Log in to your Raspberry Pi and run `sudo raspi-config`.  
-Navigate to Interfacing Options -> I2C -> Would you like the ARM I2C interface to be enabled?  
-Select yes, and confirm this choice.  
-Your {{< term/i2c >}} bus is now configured and ready to talk to the Zymkey. The default {{< term/i2c >}} address for the Zymkey is 0x30.
+1. Log in to your Raspberry Pi and run `sudo raspi-config`.  
+1. Navigate to Interfacing Options -> I2C -> Would you like the ARM I2C interface to be enabled?  
+1. Select yes, and confirm this choice.  
 
-{{< resource_link "troubleshooting/zymkey4/#q-how-do-i-set-an-alternative-i2c-address" >}} The default I2C address for Zymkey is 0x30. If this conflicts with another device in your system, you can reconfigure the Zymkey to use another address of your choice. {{< /resource_link >}}
+Your {{< term/i2c >}} bus is now configured and ready to talk to the HSM. The default {{< term/i2c >}} address for the HSM is 0x30.
+
+{{< resource_link "troubleshooting/hsm4/#q-how-do-i-set-an-alternative-i2c-address" >}} The default I2C address for HSM is 0x30. If this conflicts with another device in your system, you can reconfigure the HSM4 to use another address of your choice.
+{{< /resource_link >}}
 
 Your I2C bus is now on and ready to talk to the HSM.
 
-----------
-## 5. Install Software Packages and API
+{{% callout notice %}}
+The default mode for the cpu scaling governor is ondemand. There have been some issues with the interaction between the HSM and the I2C bus, when the governor is set to ondemand. We highly recommend to switching the governor to performance to get the most out of the HSM.
 
-The Zymbit install process uses curl which is not included with Tegra (Ubuntu 18.04) by default. 
-Install curl: sudo apt install curl
+{{< resource_link "reference/cpu-scaling/" >}}
+How to set cpu governor to performance.
+{{< /resource_link >}}
 
-For a bare Raspbian system, first login to your Pi.
+{{% /callout %}}
 
-Then download and install the necessary Zymbit services onto your Pi.  
+
+## Install the client software
+
+Login to your host device and follow these steps to install the HSM's client software.
+
+The HSM will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
+
+* Zymbit `.service` files located in the `/etc/systemd/system` directory
+* `pip`
+
+Ensure that `curl` is installed on your host:
+
+`sudo apt install curl`
+
+Download and install the necessary Zymbit services onto your device.
+
 `curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash`
 
 {{< callout warning >}}
@@ -106,223 +169,26 @@ Then download and install the necessary Zymbit services onto your Pi.
 {{< /callout >}}
 
 
-----------
-## 6. Application Examples
+## Test the installation
 
-The quickest way to get started is to see the Zymkey's various features at work by running these test scripts that were installed with the client software:
+When the software installation has completed, the script will automatically reboot your device. After the reboot has completed, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
 
-`python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`  
+{{< resource_link "reference/binding" >}}
+In production mode, HSM generates a unique Device ID by measuring certain attributes of the specific host and the HSM itself to permanently associate the two.
+{{< /resource_link >}}
+
+The quickest way to get started is to see the HSM's various features at work by running these test scripts that were installed with the client software:
+
+`python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`
 `python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
 
 The example scripts are missing in focal and bullseye distributions. You can get the example scripts from here:
 
 [Download example files](https://community.zymbit.com/t/installation-missing-files/1331/2?u=bob_of_zymbit)
 
-Now you're ready to start developing with the Zymbit module.
+Now you're ready to start developing with HSM and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
 
-----------
-## 7. Developer Mode (temporary binding)
-When the software installation has completed, reboot. After rebooting, the Pi/ Jetson will temporarily bind the HSM to itself. Once bound, the blue LED should blink once every 3 seconds.
-
-<img src="HSM4-LED-every-3-seconds.gif" alt="HSM4-LED-every-3-seconds" width="25%">
-
-Your HSM is now in Developer Mode. The binding is temporary and the HSM can be moved to another host device and the binding process repeated. Now is the time to prototype. Do all development work with the HSM in this mode. You can safely test the self-destruct features here. A self-destruct in this mode will stop all HSM functionality until the host is rebooted. Only in production mode will the HSM actually self-destruct.
-
-Before moving on to Production mode, ensure your application is running correctly. 
-
-Explore our HSM resources for help: 
-* [Perimeter Detect](https://docs.zymbit.com/tutorials/perimeter-detect/hsm4/)
-* [Encrypting your root file system](https://docs.zymbit.com/tutorials/encrypt-rfs/)
-* [Encrypting & decrypting sensor data on disk](https://docs.zymbit.com/tutorials/sensor-data/)
-* [Using the Real Time Clock](https://docs.zymbit.com/reference/real-time-clock/)
-* [Zymbit APIs](https://docs.zymbit.com/quickstart/api/).
-
-If you have any questions, feel free to create a new post in the Community and we will get back to you.
-
-----------
-## 8. Production Mode (permanent binding)
-
-When you are ready to deploy your system into the field we recommend that you permanently bind your HSM to a specific host device and SD card.
-
-{{< callout destructive >}} THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FOLLOWING:
-
-Your specific HSM4 will be permanently locked to the specific host device.
-It will be impossible to move or bind your HSM4 to another device. There are no factory resets, masterkeys, or other forms of recovery.
-If you are using the Perimeter Detect features, then the sequence in which you arm and disarm this feature is very important. Be sure to carefully follow the process steps below.
-Once you have locked your HSM4 into production mode, Zymbit cannot guarantee its operation if you subsequently do a major distribution upgrade (e.g. Raspbian Buster to Bullseye). Contact Zymbit for more information.
-If you decide that you are not ready for permanent binding, leave the HSM4 in developer mode, but beware this makes it easier for a bad actor to replace the host with rogue hardware.
-
-{{< /callout >}}
-
-##### **Moving from Developer Mode to Production Mode**
-**Pre-binding Checklist**
-Make sure this is done before continuing
-1.    Install the battery onto HAT and install HSM onto HAT
-2.    Place HAT onto the host device (with power down on the host)
-3.    Turn on the host (LED: 5 blinks per second)
-4.    Configure the I2C bus
-5.    Install HSM interface software package (LED: 1 blink every 3 seconds)
-6.    Set Perimeter Event Actions to “none” or “notify only” (It is "none" by default)
-7.    Create your LUKS encrypted volume (If encrypting SD card)
-8.    Install your applications into your encrypted volume (If encrypting SD card)
-9.    Confirm your system and applications work fully as you intend
-
-With the Zymkey, a physical tab was cut to go into production mode. In the HSM models, to go into production mode it only requires a function call followed by a reboot.
-
-The API function lock binding puts the HSM into production mode. Below are three scripts which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to production mode.
-
-<details>
-
-<summary>C - zkLockBinding</summary>
-<br>
-
-```
-void check_code(int code, char* location){
-  if (code < 0)
-  {
-    fprintf(stderr, "FAILURE: %s - %s\n", location, strerror(code));
-  }
-  else if (code >= 0)
-  {
-    fprintf(stdout, "SUCCESS: %s - %d\n", location, code);
-  }
-}
-
-void HSM_soft_bind(zkCTX zk_ctx)
-{
-  bool binding_is_locked = false;
-  bool is_bound = false;
-  int ret = zkGetCurrentBindingInfo(zk_ctx, &binding_is_locked, &is_bound);
-  check_code(ret, "zkGetCurrentBindingInfo");
-  printf("Binding is locked: ");
-  printf(binding_is_locked ? "true" : "false");
-  printf("\n");
-  printf("HSM is bound: ");
-  printf(is_bound ? "true" : "false");
-  printf("\n\n");
-
-  //ret = zkLockBinding(zk_ctx);
-  //if(binding_is_locked && is_bound)
-  //{
-  //  check_code(ret, "zkLockBinding - Already Bound");
-  //}
-  //else
-  //{
-  //  check_code(ret, "zkLockBinding");
-  //}
-  //printf("\n");
-
-  ret = zkGetCurrentBindingInfo(zk_ctx, &binding_is_locked, &is_bound);
-  check_code(ret, "zkGetCurrentBindingInfo");
-  printf("Binding is locked: ");
-  printf(binding_is_locked ? "true" : "false");
-  printf("\n");
-  printf("HSM is bound: ");
-  printf(is_bound ? "true" : "false");
-  printf("\n\n");
-}
-
-int main()
-{
-  zkCTX zk_ctx;
-  int status = zkOpen(&zk_ctx);
-  check_code(status, "zkOpen");
-  printf("\n\n");
-
-  HSM_soft_bind(zk_ctx);
-
-  status = zkClose(zk_ctx);
-  check_code(status, "zkClose");
-  printf("\n");
-
-  return 0;
-}
-```
-</details>
-
-
-<details>
-<summary>C++ - lockBinding</summary>
-<br>
-
-```
-#include <stdio.h>
-#include <zkAppUtilsClass.h>
-
-using namespace std;
-using namespace zkAppUtils;
-
-void HSM_soft_bind(zkClass* zk_inst)
-{
-  bool binding_is_locked = false;
-  bool is_bound = false;
-  zk_inst->getCurrentBindingInfo(binding_is_locked, is_bound);
-  printf("Binding is locked: ");
-  printf(binding_is_locked ? "true" : "false");
-  printf("\n");
-  printf("HSM is bound: ");
-  printf(is_bound ? "true" : "false");
-  printf("\n");
-
-  //zk_inst->lockBinding();
-  //printf("lockBinding successful\n");
-
-  zk_inst->getCurrentBindingInfo(binding_is_locked, is_bound);
-  printf("Binding is locked: ");
-  printf(binding_is_locked ? "true" : "false");
-  printf("\n");
-  printf("HSM is bound: ");
-  printf(is_bound ? "true" : "false");
-  printf("\n");
-}
-
-int main()
-{
-  zkClass* zk_inst;
-  zk_inst = new zkClass();
- 
-  HSM_soft_bind(zk_inst);
-
-  delete zk_inst;
-  return 0;
-}
-```
-</details>
-
-<details>
-
-<summary>Python - lock_binding</summary>
-<br>
-
-```
-import zymkey
-tup = zymkey.client.get_current_binding_info()
-print("HSM is bound: " + str(tup[1]))
-print("Binding is locked: " + str(tup[0]))
-
-#zymkey.client.lock_binding()
-
-tup = zymkey.client.get_current_binding_info()
-print("HSM is bound: " + str(tup[1]))
-print("Binding is locked: " + str(tup[0]))
-```
-</details>
-
-
-Once you have successfully moved to Production Mode and rebooted your system, the LED blink pattern will change to **3 rapid blinks once every 3 seconds** to indicate that HSM has bound to the host in production mode.
-
-<img src="HSM4-LED-3times-every-3-seconds.gif" alt="HSM4-LED-3times-every-3-seconds" width="25%">
-
-----
-##### Prime perimeter detect (optional)
-After bind locking the HSM, if using the perimeter detect features, prime your perimeter detect using the API.
-
-1.    Close your perimeter circuit(s) (enclosure lid)
-2.    Clear Perimeter Detect Events
-3.    Get Perimeter Detect Info to confirm prior events are cleared and the perimeter is closed.
-4.    If the Perimeter Detect Event returns clear, then you can ‘arm your system’ as you require by setting Set Perimeter Event Actions to “none”, “notify” or “selfdestruct” (You can only do this once!).
-5.  **Your system is now armed.**
-
-
-
+{{< resource_link "getting-started/hsm4/production-mode" >}}
+To permanently bind the HSM to a host board, generates a unique Device ID by measuring certain attributes of the host and the HSM itself to associate the two devices.
+{{< /resource_link >}}
 
