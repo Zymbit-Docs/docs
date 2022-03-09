@@ -115,7 +115,11 @@ Power up the Pi and you will see a blue LED blinking rapidly and consistently (5
 
 If the blue LED blinks erratically, or not at all, then there is an installation error and you should check your connections.
 
-## Establish and I2C connection
+{{< resource_link "reference/power-quality/" >}}
+Power quality matters to the reliable and secure operation of your system and Zymkey.
+{{< /resource_link >}}
+
+## Establish an I2C connection
 
 For Raspian-based operating systems, you must configure the state of the {{< term/i2c >}}.
 
@@ -125,7 +129,8 @@ For Raspian-based operating systems, you must configure the state of the {{< ter
 
 Your {{< term/i2c >}} bus is now configured and ready to talk to the HSM. The default {{< term/i2c >}} address for the HSM is 0x30.
 
-{{< resource_link "troubleshooting/hsm/#q-how-do-i-set-an-alternative-i2c-address" >}} The default I2C address for HSM is 0x30. If this conflicts with another device in your system, you can reconfigure the HSM4 to use another address of your choice. {{< /resource_link >}}
+{{< resource_link "troubleshooting/hsm4/#q-how-do-i-set-an-alternative-i2c-address" >}} The default I2C address for HSM is 0x30. If this conflicts with another device in your system, you can reconfigure the HSM4 to use another address of your choice.
+{{< /resource_link >}}
 
 Your I2C bus is now on and ready to talk to the HSM.
 
@@ -139,8 +144,7 @@ How to set cpu governor to performance.
 {{% /callout %}}
 
 
-----------
-## Install the client software packages and API
+## Install the client software
 
 Login to your host device and follow these steps to install the HSM's client software.
 
@@ -184,7 +188,7 @@ The example scripts are missing in focal and bullseye distributions. You can get
 
 Now you're ready to start developing with HSM and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
 
-{{< resource_link "getting-started/hsm/production-mode" >}}
+{{< resource_link "getting-started/hsm4/production-mode" >}}
 To permanently bind the HSM to a host board, generates a unique Device ID by measuring certain attributes of the host and the HSM itself to associate the two devices.
 {{< /resource_link >}}
 
