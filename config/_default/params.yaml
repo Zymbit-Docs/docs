@@ -22,6 +22,10 @@ schemaLinkedIn: "https://www.linkedin.com/company/zymbit"
 schemaGitHub: "https://github.com/zymbit"
 schemaSection: "blog"
 
+## Lunr.js search
+offlineSearch: true
+sidebar_search_disable: true
+
 ## Sitelinks Search Box
 siteLinksSearchBox: false
 
