@@ -337,7 +337,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">sign</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign-05259f19" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">sign</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">encoding</span> = <span class="default-val">"utf-8"</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">digest</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign-13e91de2" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -348,7 +348,7 @@ toc: true
 <ul>
 <li class="param-item">
 <span class="name">src</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The SHA256 digest of the data that will be used to generate the signature.</span>
+<span class="type-paren paren-open">(</span><span class="type">Union[str, bytes, bytearray]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The SHA256 digest of the data that will be used to generate the signature.</span>
 </li>
 <li class="param-item">
 <span class="name">slot</span>
@@ -357,6 +357,14 @@ toc: true
 <li class="param-item">
 <span class="name">return_recid</span>
 <span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the y parity to be returned.</span>
+</li>
+<li class="param-item">
+<span class="name">encoding</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the encoding for the string source.</span>
+</li>
+<li class="param-item">
+<span class="name">digest</span>
+<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the type of hash. Can be None. Defaults to sha256.</span>
 </li>
 </ul>
 </div>
@@ -377,7 +385,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">sign\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">sha256</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="signdigest-fab8e8da" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">sign\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">digest</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="signdigest-0dfc355e" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -387,8 +395,8 @@ toc: true
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
-<span class="name">sha256</span>
-<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A hashlib.sha256 instance representing the digest to be signed.</span>
+<span class="name">digest</span>
+<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A encoded str instance representing the digest to be signed.</span>
 </li>
 <li class="param-item">
 <span class="name">slot</span>
@@ -426,7 +434,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">verify</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verify-4d37323f" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">verify</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">encoding</span> = <span class="default-val">"utf-8"</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">digest</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verify-550d8765" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -459,6 +467,14 @@ toc: true
 <span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If false, the normal key store is referenced. Otherwise, the foreign
                                                 public key store is referenced.<strong>Note:</strong> This parameter is only applicable for model &gt;= HSM6. </span>
 </li>
+<li class="param-item">
+<span class="name">encoding</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the encoding for the string source.</span>
+</li>
+<li class="param-item">
+<span class="name">digest</span>
+<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the type of hash. Can be None. Defaults to sha256.</span>
+</li>
 </ul>
 </div>
 <div class="returns">
@@ -473,7 +489,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">verify\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">sha256</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verifydigest-28fb1759" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">verify\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">digest</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verifydigest-002b3e6c" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -484,8 +500,8 @@ toc: true
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
-<span class="name">sha256</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">A hashlib.sha256 instance that will be used to generate the signature.</span>
+<span class="name">digest</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">A hashlib instance that will be used to generate the signature.</span>
 </li>
 <li class="param-item">
 <span class="name">sig</span>
@@ -660,6 +676,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -830,6 +851,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -875,6 +901,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -899,6 +930,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -918,6 +954,11 @@ toc: true
 <span class="description">If <span class="title-reference">ret</span> is a bad return code from the Zymkey library function. </span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1272,6 +1313,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1305,6 +1351,11 @@ toc: true
 </span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1476,6 +1527,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1496,6 +1552,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1515,6 +1576,11 @@ toc: true
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The perimeter detect low power max number of bits</span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1540,6 +1606,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1559,6 +1630,11 @@ toc: true
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">(input) The maximum amount of time in milliseconds to wait for a perimeter breach event to arrive.</span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1583,9 +1659,15 @@ toc: true
 #### <span><span class="name">clear\_perimeter\_detect\_info</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="clearperimeterdetectinfo-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
-<div class="description"></div>
+<div class="description">
 <p>Clear perimeter detect info.</p>
 <p>This function clears all perimeter detect info and rearms all perimeter detect channels.</p>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1714,6 +1796,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1733,6 +1820,11 @@ toc: true
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The threshold in Volts.</span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1786,6 +1878,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1805,6 +1902,93 @@ toc: true
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The threshold in celsius.</span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">set\_verified\_boot\_policy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">policy\_id</span> = <span class="default-val">0</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="setverifiedbootpolicy-072c5c0f" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Sets the verified boot policy. (model &gt;= SCM).</p>
+<p>This function sets the action policy to take when verified boot detects a file change during the boot process.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">policy_id</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The actions to apply to the verified boot process:
+                                        - 0 Do Nothing
+                                        - 1 Self-Destruct
+                                        - 2 Hold Chip in Reset</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">add\_or\_update\_verified\_boot\_file</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">filepath</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addorupdateverifiedbootfile-ed1a93c8" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Update file manifest for verified boot to check. (model &gt;= SCM).</p>
+<p>This function adds or updates a file in the file manifest to be checked by verified during the boot process.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot to sign the file with.</span>
+</li>
+<li class="param-item">
+<span class="name">filepath</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The file to be signed and checked by verified boot.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">remove\_verified\_boot\_file</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">filepath</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="removeverifiedbootfile-e62cc748" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Remove a file from file manifest for verified boot to check. (model &gt;= SCM).</p>
+<p>This function removes a file in the file manifest to be checked by verified boot during the boot process.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">filepath</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The file to be removed from the manifest.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1856,6 +2040,50 @@ toc: true
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
+<li class="param-item">
+<span class="name">variant</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Variant of the key type. Currently only &#8220;cardano&#8221; for ed25519 is supported.</span>
+</li>
+<li class="param-item">
+<span class="name">passphrase</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Passphrase used for bip39 generation. Can be empty string. Must be b64 encoded.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="class">
+
+### <span><span class="annotation">class</span> <span class="addname">zymkey.</span><span class="name">RecoveryStrategySlip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">group\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">group\_threshold</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">iteration\_exponent</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="class-zymkey.-RecoveryStrategySlip39-a19de114" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<p>The RecoveryStrategySlip39 class definition.</p>
+<p>This class specifies the Slip39 recovery strategy used for wallet generation within Python. Derived from RecoveryStrategy class.</p>
+<div class="method">
+
+#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">group\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">group\_threshold</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">iteration\_exponent</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init-a19de114" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Initialize an instance of RecoveryStrategySlip39.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">group_count</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Total number of group shares to generate [Max: 14 Groups].</span>
+</li>
+<li class="param-item">
+<span class="name">group_threshold</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Number of groups needed to restore a master seed with [threshold &lt;= group_count].</span>
+</li>
+<li class="param-item">
+<span class="name">iteration_exponent</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The higher the exponent the more PBKDF2 hashing is done. [Exponent: 0-5]</span>
+</li>
 <li class="param-item">
 <span class="name">variant</span>
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Variant of the key type. Currently only &#8220;cardano&#8221; for ed25519 is supported.</span>

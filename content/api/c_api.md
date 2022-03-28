@@ -3128,5 +3128,96 @@ toc: true
 </div>
 </div>
 </div>
+<div class="method">
+
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkSetVerifiedBootPolicy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">policy\_id</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkSetVerifiedBootPolicy-040caccf" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Sets the verified boot policy. (model &gt;= SCM).</p>
+<p>This function specifies the action to take when verified boot event triggers based on a file change.</p>
+</div>
+<div class="parameters">
+<h4>Parameters</h4>
+<ul>
+<li class="param-item">
+<span class="name">policy_id</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) The actions to apply to the verified boot process:</p>
+<ul>
+<li>0 Do Nothing (ZK_SUPBOOT_FAIL_NO_ACTION).</li>
+<li>1 Self-Destruct (ZK_SUPBOOT_FAIL_DESTROY).</li>
+<li>2 Hold Chip in Reset (ZK_SUPBOOT_FAIL_HOLD_RESET).</li>
+</ul>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h4>Returns</h4>
+<span class="return_value">
+<p>0 for success, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkAddOrUpdateVerifiedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">slot</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkAddOrUpdateVerifiedBootFile-bc296c39" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Update file manifest for verified boot to check. (model &gt;= SCM).</p>
+<p>This function adds or updates files to be checked by verified boot.</p>
+</div>
+<div class="parameters">
+<h4>Parameters</h4>
+<ul>
+<li class="param-item">
+<span class="name">slot</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) The slot to sign the file with.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">file_path</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) The file to be signed and checked by verified boot.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h4>Returns</h4>
+<span class="return_value">
+<p>0 for success, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkRemoveVerifiedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkRemoveVerifiedBootFile-b4ea059f" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Remove a file from file manifest for verified boot to check. (model &gt;= SCM).</p>
+<p>This function removes a file to be checked by verified boot.</p>
+</div>
+<div class="parameters">
+<h4>Parameters</h4>
+<ul>
+<li class="param-item">
+<span class="name">file_path</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) The file to be removed from the verified boot manifest.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h4>Returns</h4>
+<span class="return_value">
+<p>0 for success, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
 </div>
 </div>
