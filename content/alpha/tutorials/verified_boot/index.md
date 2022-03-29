@@ -30,7 +30,7 @@ All files in the Manifest must reside within the /boot partition. File paths in 
 
 * The SCM comes pre-installed and ready to run. No additional steps are necessary
 
-* All code snippets written in this article are written using Python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](https://docs/zymbit.com/api)
+* All code snippets written in this article are written using Python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](api)
 
 ### Example Application
 
@@ -43,7 +43,6 @@ import argparse
 import zymkey
 
 class Manifest:
-
     def add_update(slot, filepath):
         print(f"Manifest Add/Update (slot={slot}):  {filepath}")
         zymkey.client.add_or_update_verified_boot_file(slot, filepath)
@@ -56,7 +55,6 @@ class Manifest:
         print("Manifest:")
         print("---------")
         zymkey.client.retrieve_manifest_method()
-
 
 # Setup arg parser
 parser = argparse.ArgumentParser(
@@ -71,7 +69,7 @@ parser.add_argument("-s", "--slot", metavar="slot_num", help="use slot for add/d
 args = parser.parse_args()
 parser.parse_args()
 
-
+# Do the work
 if args.add:
     Manifest.add_update(args.slot, args.add)
 
@@ -86,10 +84,11 @@ Manifest.show()
 
 ### Display the Current Manifest
 
-Running the example with no parameters will display the current contents of the Manifest. The default Manifest as shipped contains,
+Running the example with no parameters will display the current contents of the Manifest. The default Manifest as shipped contains:
 
+
+`./manifest.py`
 ```
-./manifest.py
 Manifest:
 ---------
 config.txt
@@ -97,3 +96,34 @@ cmdline.txt
 start4.elf
 kernel.img
 ```
+
+To add a file to the Manifest, run the example script with the --add option and give it a filepath to a file in /boot. We'll create a sample file by copying /etc/hosts,
+
+```
+sudo cp /etc/hosts /boot/sample.txt
+./manifest.py --add sample.txt
+```
+Manifest:
+---------
+config.txt
+cmdline.txt
+start4.elf
+kernel.img
+sample1.txt
+```
+
+The SCM will create a signature for the file `sample1.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. For alpha, the SCM will "simulate" this process by flashing an LED sequence of 20 flashes, repeated three times, and then the SCM will boot normaly. 
+
+You can test this out:
+
+ * First, after adding `sample1.txt` to the Manifest, reboot. The system should boot normally.
+ * Next, edit `sample1.txt` and reboot. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 20 flashes, three times.
+ * Revert the sample1.txt back to it's original contents. Reboot should return to normal.
+
+TODO:
+
+*  Add example of deleting file
+*  Add example of updating file
+*  Add example using an alternative slot ! 0
+
+
