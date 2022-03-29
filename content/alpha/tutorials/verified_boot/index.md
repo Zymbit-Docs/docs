@@ -88,27 +88,27 @@ Running the example with no parameters will display the current contents of the 
 
 
 ```
-./manifest.py
-> Manifest:
-> ---------
-> config.txt
-> cmdline.txt
-> start4.elf
-> kernel.img
+$ ./manifest.py
+Manifest:
+---------
+config.txt
+cmdline.txt
+start4.elf
+kernel.img
 ```
 
 To add a file to the Manifest, run the example script with the --add option and give it a filepath to a file in /boot. We'll create a sample file by copying /etc/hosts,
 
 ```
-sudo cp /etc/hosts /boot/sample.txt
-./manifest.py --add sample.txt
-> Manifest:
-> ---------
-> config.txt
-> cmdline.txt
-> start4.elf
-> kernel.img
-> sample.txt
+$ sudo cp /etc/hosts /boot/sample.txt
+$ ./manifest.py --add sample.txt
+Manifest:
+---------
+config.txt
+cmdline.txt
+start4.elf
+kernel.img
+sample.txt
 ```
 
 The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. For alpha, the SCM will "simulate" this process by flashing an LED sequence of 20 flashes, repeated three times, and then the SCM will boot normaly. 
