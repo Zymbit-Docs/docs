@@ -55,11 +55,11 @@ Irrespective of the above configurations, the Verified Boot feature will always 
 # Why is "Verified Boot" Better Than an On-Chip Secure Boot Framework?
 To answer this question, let's take a look at how the i.MX8 High Assurance Boot (HAB) works from a high level.
 ## NXP i.MX8 Secure Boot
-![i.MX8_AHAB_high_level_boot_flowchart](uploads/9726a92b323e42caa1024a4d57c6be54/i.MX8_AHAB_high_level_boot_flowchart.png)
+![i.MX8_AHAB_high_level_boot_flowchart](i.MX8_AHAB_high_level_boot_flowchart.png)
 ### Vulnerabilities
 < Go into more detail from "Security Measure 2" >
 ## Zymbit Verified Boot
-![CM4_Secure_boot_high_level_flowchart](uploads/eb50355759a71bb9dbb1aafcf4c281de/CM4_Secure_boot_high_level_flowchart.png)
+![CM4_Secure_boot_high_level_flowchart](CM4_Secure_boot_high_level_flowchart.png)
 ### Preliminary Requirements
 1. Need way to hold host processor in reset. The CM4 brings the RUN pin out of its connector.
 2. Need way to access boot media. The CM4 can pose as a slave processor and, after loading a special bootloader, it exposes the eMMC as a USB device.

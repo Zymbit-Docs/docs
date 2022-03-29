@@ -30,7 +30,7 @@ All files in the Manifest must reside within the /boot partition. File paths in 
 
 * The SCM comes pre-installed and ready to run. No additional steps are necessary
 
-* All code snippets written in this article are written using Python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](api)
+* All code snippets written in this article are written using Python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](/api)
 
 ### Example Application
 
@@ -87,14 +87,14 @@ Manifest.show()
 Running the example with no parameters will display the current contents of the Manifest. The default Manifest as shipped contains:
 
 
-`./manifest.py`
 ```
-Manifest:
----------
-config.txt
-cmdline.txt
-start4.elf
-kernel.img
+./manifest.py
+> Manifest:
+> ---------
+> config.txt
+> cmdline.txt
+> start4.elf
+> kernel.img
 ```
 
 To add a file to the Manifest, run the example script with the --add option and give it a filepath to a file in /boot. We'll create a sample file by copying /etc/hosts,
@@ -102,23 +102,22 @@ To add a file to the Manifest, run the example script with the --add option and 
 ```
 sudo cp /etc/hosts /boot/sample.txt
 ./manifest.py --add sample.txt
-```
-Manifest:
----------
-config.txt
-cmdline.txt
-start4.elf
-kernel.img
-sample1.txt
+> Manifest:
+> ---------
+> config.txt
+> cmdline.txt
+> start4.elf
+> kernel.img
+> sample.txt
 ```
 
-The SCM will create a signature for the file `sample1.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. For alpha, the SCM will "simulate" this process by flashing an LED sequence of 20 flashes, repeated three times, and then the SCM will boot normaly. 
+The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. For alpha, the SCM will "simulate" this process by flashing an LED sequence of 20 flashes, repeated three times, and then the SCM will boot normaly. 
 
 You can test this out:
 
- * First, after adding `sample1.txt` to the Manifest, reboot. The system should boot normally.
- * Next, edit `sample1.txt` and reboot. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 20 flashes, three times.
- * Revert the sample1.txt back to it's original contents. Reboot should return to normal.
+ * First, after adding `sample.txt` to the Manifest, reboot. The system should boot normally.
+ * Next, edit `sample.txt` and reboot. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 20 flashes, three times.
+ * Revert the sample.txt back to it's original contents. Reboot should return to normal.
 
 TODO:
 
