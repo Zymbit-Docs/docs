@@ -1,5 +1,5 @@
 ---
-title: "SCM Alpha Getting Started"
+title: "SCM (Early Release) Getting Started"
 linkTitle: "Getting Started"
 lastmod:
 draft: false
@@ -9,12 +9,12 @@ toc: true
 ---
 
 -----
-### **Getting Started with the  SCM Alpha Release**
+### **Getting Started with the  SCM Early Release**
 April 10, 2022
 
 #### Welcome Intro
 
-The SCM platform for Alpha comes pre-loaded with buster and all Zymbit software. The root filesystem is already encrypted. There are no further installation steps required.
+The SCM Early Release comes pre-loaded with buster and all Zymbit software. The root filesystem is already encrypted. There are no further installation steps required.
 
 ##### Power on and Bootup
  * Steps to power on

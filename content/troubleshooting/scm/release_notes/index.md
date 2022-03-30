@@ -1,6 +1,6 @@
 ---
-title: "SCM Alpha Release Notes"
-linkTitle: "Release Notes"
+title: "SCM Early Release Notes"
+linkTitle: "SCM Release Notes"
 lastmod:
 draft: false
 images: []

@@ -1,6 +1,6 @@
 ---
-title: "Working with SCM Verified Boot Manifest"
-linkTitle: "Verified Boot"
+title: "Working with SCM Verified Boot"
+linkTitle: "Verified Boot (SCM Early Access)"
 description: ""
 date: "2022-03-28"
 lastmod: ""
