@@ -1,10 +1,10 @@
 ---
 title: "SCM Early Release Notes"
-linkTitle: "SCM Release Notes"
+linkTitle: "SCM (Early Release)"
 lastmod:
 draft: false
 images: []
-weight: 10
+weight: 60
 toc: true
 ---
 
