@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout the branch with possible unprocessed XML-based API docs
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
           fetch-depth: 0
@@ -43,7 +43,7 @@ jobs:
       upstream_commit_hash: ${{ steps.prepare-commit.outputs.upstream_commit_hash }}
     steps:
       - name: Checkout the branch with unprocessed XML-based API docs
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
           fetch-depth: 0
@@ -121,7 +121,7 @@ jobs:
 
     steps:
       - name: Checkout the branch with updated API docs
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
           fetch-depth: 0
