@@ -1,6 +1,6 @@
 ---
-title: "SCM Early Release Notes"
-linkTitle: "SCM (Early Release)"
+title: "SCM Alpha Release Troubleshooting/FAQ"
+linkTitle: "SCM (Alpha)"
 lastmod:
 draft: false
 images: []
@@ -9,7 +9,7 @@ toc: true
 ---
 
 -----
-### **Current SCM Alpha Release Information**
+### **Current SCM Alpha Release**
 April 10, 2022
 
 #### Firmware: 

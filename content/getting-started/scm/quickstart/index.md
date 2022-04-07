@@ -1,5 +1,5 @@
 ---
-title: "SCM (Early Release) Getting Started"
+title: "SCM (Alpha Release) Getting Started"
 linkTitle: "Getting Started"
 lastmod:
 draft: false
@@ -9,12 +9,21 @@ toc: true
 ---
 
 -----
-### **Getting Started with the  SCM Early Release**
+### **Getting Started with the Secure Compute Module Aplha Release**
 April 10, 2022
 
 #### Welcome Intro
 
 The SCM Early Release comes pre-loaded with buster and all Zymbit software. The root filesystem is already encrypted. There are no further installation steps required.
+
+##### What's included in the Alpha
+
+ * Raspberry Pi CM4 8GB, 32GB eMMC, with wireless
+ * Zymbit SCM Secure Compute Module
+ * Raspberry Pi CM4/IO board
+ * Zymbit Perimeter Detect Cable Adapter
+ * Zymbit Battery Adapter
+ * 12V Power Supply
 
 ##### Power on and Bootup
  * Steps to power on

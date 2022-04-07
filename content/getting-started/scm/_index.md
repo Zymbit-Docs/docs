@@ -1,5 +1,5 @@
 ---
-title: SCM (Early Release)
+title: SCM (Alpha)
 aliases:
     - /quickstart/getting-started/scm/
 draft: false
