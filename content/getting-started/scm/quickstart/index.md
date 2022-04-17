@@ -9,8 +9,8 @@ toc: true
 ---
 
 -----
-### **Getting Started with the Secure Compute Module Aplha Release**
-April 10, 2022
+### **Getting Started with the Secure Compute Module Alpha Release**
+April 17, 2022
 
 #### Welcome Intro
 
