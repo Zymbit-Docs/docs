@@ -41,11 +41,8 @@ The SCM Early Release comes pre-loaded with Raspberry Pi OS Lite (legacy) - Bust
     - rapid blinking *Verified Boot successfully completed, booting underway*
     - blinking stops *USB bus enumeration found SCM; may stay off for seconds*
     - one blink every 3 seconds *zkifc has loaded and the system is ready to go*
-   A video of a typical boot process can be seen here:
    
-<figure class="video_container">
-  <iframe src="good_verified_boot.mp4" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
+   ![Example boot video](good_verified_boot.gif)
 
 ##### Changing Configuration
  * Steps to add custom packages/software
