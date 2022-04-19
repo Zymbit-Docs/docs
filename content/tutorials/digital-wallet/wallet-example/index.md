@@ -3,17 +3,17 @@ title: "Working with the Zymbit Hardware Wallet"
 linkTitle: "Zymbit Hardware Wallet"
 description: ""
 date: "2022-02-08"
-lastmod: ""
+lastmod: "2022-04-18"
 draft: false
 weight: 20
 images: []
 toc: true
 ---
-Updated: 2022-02-14
+Updated: 2022-04-18
 
 ## What is a Hardware Wallet?
 
-Zymbit's Hardware Wallet conforms to [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki), [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki), [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) documents for Hierarchical Deterministic (HD) wallets. An HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed used for Master Seed recovery. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
+Zymbit's Hardware Wallet conforms to [BIP32](https://github.com/bitcoin/BIPs/blob/master/BIP-0032.mediawiki), [BIP39](https://github.com/bitcoin/BIPs/blob/master/BIP-0039.mediawiki), [BIP44](https://github.com/bitcoin/BIPs/blob/master/BIP-0044.mediawiki) documents for Hierarchical Deterministic (HD) wallets. An HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed used for Master Seed recovery. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
 
 A Hardware Wallet, or cold storage wallet, allows you to connect online and access your digital assets, and then safely store the referenced asset in the hardware wallet. The asset does not need to be stored on online servers or platforms. The private keys of the Hardware wallet remain on the device and are never exposed. 
 
@@ -67,13 +67,14 @@ Example code snippet to show how to use the Zymbit wallet API
 
 import zymkey
 
-# Create a master seed and return the bip39 mnemonic
+# Create a master seed and return the BIP39 mnemonic
 master_key_generator = bytearray("3xampleM@sterK3Y", 'utf-8')
 wallet_name = "MyExampleWallet"
-# Use the BIP39 recovery strategy to tell zymkey to return a mnemonic. Takes a base 64 encoded string for a bip39 passphrase. Can be empty string.
-use_bip39_recovery = zymkey.RecoveryStrategyBip39("aGk=")
-master_slot, bip39_mnemonic = zymkey.client.gen_wallet_master_seed("secp256k1", master_key_generator, wallet_name, use_bip39_recovery)
-print("Master Slot:%s\nBip39 mnemonic (write this down!):\n%s" % (master_slot, bip39_mnemonic))
+
+# Use the BIP39 recovery strategy to tell zymkey to return a mnemonic. Takes a base 64 encoded string for a BIP39 passphrase. Can be empty string.
+use_BIP39_recovery = zymkey.RecoveryStrategyBIP39()
+master_slot, BIP39_mnemonic = zymkey.client.gen_wallet_master_seed("secp256k1", master_key_generator, wallet_name, use_BIP39_recovery)
+print("Master Slot:%s\nBIP39 mnemonic (write this down!):\n%s" % (master_slot, BIP39_mnemonic))
 
 # Generate a child key from the master seed
 child_slot = zymkey.client.gen_wallet_child_key(master_slot, 3, True)
@@ -86,24 +87,25 @@ node_addr = zymkey.client.get_wallet_node_addr(child_slot)
 print("Node index:'%s' Wallet Name:'%s' Master Slot:'%s'" % (node_addr[0], node_addr[1], node_addr[2]))
 
 # Get the key slot of the child key using our previous master key slot and wallet name
-key_slot = zymkey.client.get_wallet_key_slot(node_addr[0],"MyExampleWallet", master_slot)
+key_slot = zymkey.client.get_wallet_key_slot(node_addr[0],wallet_name, master_slot)
 print("Key Slot:%s" % (key_slot,))
 
 # Remove the master seed
 zymkey.client.remove_key(master_slot)
 
-# Restore the master seed with our previous written down bip39 mnemonic!
-restored_seed_slot = zymkey.client.restore_wallet_master_seed_from_bip39_mnemonic("nistp256", bytearray("3xampleM@sterK3Y", 'utf-8'), "MyExampleWallet", "aGk=", bip39_mnemonic)
+# Restore the master seed with our previous written down BIP39 mnemonic!
+restored_seed_slot = zymkey.client.restore_wallet_master_seed("nistp256", bytearray("3xampleM@sterK3Y", 'utf-8'), wallet_name, use_BIP39_recovery, BIP39_mnemonic)
 print("Restored slot:%s" % (restored_seed_slot,))
 
 # Clean up the example slots
 zymkey.client.remove_key(master_slot)
 zymkey.client.remove_key(child_slot)
+
 ```
 
 ### Creating a master seed (new wallet)
 
-The HSM6 can have multiple master seeds be stored in its key store, allowing for management of a variety of keyrings to work with. Master seeds and its derivations are additionally backed by EC curve cryptography for an extra layer of encryption/security. The ec curves currently supported are nistp256, secp256r1, secp256k1. The master_key_generator is used to generate the bip32 master seed, can be empty string. The RecoveryStrategy parameter dictates what recovery algorithm to return when generating the master seed. If the base RecoveryStrategy is used or none is specified, then no mnemonic will be returned. Current supported recovery strategies are none, bip39. This example generates a master seed with the RecoveryStrategyBip39. The bip39 mnemonic is a 24 word string that can be used to restore or recreate a previous generated master seed. Note that a wallet name is also unique! There can not be multiple wallets with the same name.
+The HSM6 can have multiple master seeds be stored in its key store, allowing for management of a variety of keyrings to work with. Master seeds and its derivations are additionally backed by EC curve cryptography for an extra layer of encryption/security. The ec curves currently supported are nistp256, secp256r1, secp256k1. The master_key_generator is used to generate the BIP32 master seed, can be empty string. The RecoveryStrategy parameter dictates what recovery algorithm to return when generating the master seed. If the base RecoveryStrategy is used or none is specified, then no mnemonic will be returned. Current supported recovery strategies are none, BIP39. This example generates a master seed with the RecoveryStrategyBIP39. The BIP39 mnemonic is a 24 word string that can be used to restore or recreate a previous generated master seed. Note that a wallet name is also unique! There can not be multiple wallets with the same name.
 
 {{< callout warning >}}
 Make sure to write the BIP39 mnemonic and store it somewhere safe! The master seed is the key to its kingdom. Don't give it out to just anybody!
@@ -112,13 +114,15 @@ Make sure to write the BIP39 mnemonic and store it somewhere safe! The master se
 The function `gen_wallet_master_seed` returns the allocated master seed slot and the BIP39 mnemonic if the bool flag is set True
 
 ```
+import zymkey
+
 # Create a master seed and return the BIP39 mnemonic
 master_key_generator = bytearray("3xampleM@sterK3Y", 'utf-8')
 wallet_name = "MyExampleWallet"
-# Use the bip39 recovery strategy to tell zymkey to return a mnemonic. Takes a base 64 encoded string for a bip39 passphrase. Can be empty string.
-use_bip39_recovery = zymkey.RecoveryStrategyBip39("aGk=")
-master_slot, bip39_mnemonic = zymkey.client.gen_wallet_master_seed("secp256k1", master_key_generator, wallet_name, use_bip39_recovery)
-print("Master Slot:%s\nBip39 mnemonic (write this down!):\n%s" % (master_slot, bip39_mnemonic)
+# Use the BIP39 recovery strategy to tell zymkey to return a mnemonic. Takes a base 64 encoded string for a BIP39 passphrase. Can be empty string.
+use_BIP39_recovery = zymkey.RecoveryStrategyBIP39()
+master_slot, BIP39_mnemonic = zymkey.client.gen_wallet_master_seed("secp256k1", master_key_generator, wallet_name, use_BIP39_recovery)
+print("Master Slot:%s\nBIP39 mnemonic (write this down!):\n%s" % (master_slot, BIP39_mnemonic))
 ```
 
 ### Generating a child Key
@@ -170,20 +174,23 @@ print("Key Slot:%s" % (key_slot,))
 
 ## Restore a wallet master seed from a BIP39 mnemonic
 
-With the Bip39 mnemonic sentence, bip39 passphrase, master generatorkey, and wallet name of a previously generated master seed, a user can restore a lost master seed or make a copy of the master seed on a different device.
+With the BIP39 mnemonic sentence, BIP39 passphrase, master generatorkey, and wallet name of a previously generated master seed, a user can restore a lost master seed or make a copy of the master seed on a different device.
 
 {{< callout warning >}}
 Keep in mind that this only restores the master seed. The children nodes will have to be manually generated again.
 {{< /callout >}}
 
-The function `restore_wallet_master_seed_from_bip39_mnemonic` returns the allocated key slot on success.
+The function `restore_wallet_master_seed` returns the allocated key slot on success.
 
 ```
+import zymkey
+
 # Remove the master seed
 zymkey.client.remove_key(master_slot)
 
-# Restore the master seed with our previous written down bip39 mnemonic!
-restored_seed_slot = zymkey.client.restore_wallet_master_seed_from_bip39_mnemonic("nistp256", bytearray("3xampleM@sterK3Y", 'utf-8'), "MyExampleWallet", "aGk=", bip39_mnemonic)
+# Restore the master seed with our previous written down BIP39 mnemonic!
+use_BIP39_recovery = zymkey.RecoveryStrategyBIP39()
+restored_seed_slot = zymkey.client.restore_wallet_master_seed("nistp256", bytearray("3xampleM@sterK3Y", 'utf-8'), "MyExampleWallet", use_BIP39_recovery, BIP39_mnemonic)
 print("Restored slot:%s" % (restored_seed_slot,))
 ```
 
