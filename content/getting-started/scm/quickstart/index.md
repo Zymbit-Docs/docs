@@ -33,7 +33,7 @@ The SCM Early Release comes pre-loaded with Raspberry Pi OS Lite (legacy) - Bust
   * Default `pi` username replaced with `zymbit`
   * Hostname changed to `zymbit-dev`
 
-##### Power on and Bootup
+#### Power on and Bootup
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse.
  * Monitor the Blue LED on the Zymbit SCM module. It will go through the following stages:
     - one slow blink  *initializing the SCM*
@@ -44,16 +44,23 @@ The SCM Early Release comes pre-loaded with Raspberry Pi OS Lite (legacy) - Bust
    
    ![Example boot video](good_verified_boot.gif)
 
-##### Changing Configuration
- * Steps to add custom packages/software
+#### Login via SSH with key
+We have provided a key file in two formats: ppk for use with Putty and pem for standard linux ssh
 
-##### Where to Next?
- * Verified Boot page
- * Other tutorials (wallet, aws)
- * API link
+<details>
 
+<summaryLogin with Putty</summary>
+
+    
+</details>
+
+#### Where to Next?
+ * [Working with Verified Boot](http://docs.zymbit.com/tutorials/verified-boot/)
+ * [See API Documentation](http://docs.zymbit.com/api/)
+ * [Working with the HD Wallet](https://docs.zymbit.com/tutorials/digital-wallet/)
+ * [Setting up Tamper Detect](https://docs.zymbit.com/tutorials/perimeter-detect/)
 ##### Support
- * Link to release notes
- * Link to support@zymbit.com
+ * [Release notes](https://docs.zymbit.com/getting-started/scm/release-notes/)
+ * support@zymbit.com
 
 
