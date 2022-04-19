@@ -337,7 +337,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">sign</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign-05259f19" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">sign</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">encoding</span> = <span class="default-val">"utf-8"</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">digest</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign-13e91de2" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -348,7 +348,7 @@ toc: true
 <ul>
 <li class="param-item">
 <span class="name">src</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The SHA256 digest of the data that will be used to generate the signature.</span>
+<span class="type-paren paren-open">(</span><span class="type">Union[str, bytes, bytearray]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The SHA256 digest of the data that will be used to generate the signature.</span>
 </li>
 <li class="param-item">
 <span class="name">slot</span>
@@ -357,6 +357,14 @@ toc: true
 <li class="param-item">
 <span class="name">return_recid</span>
 <span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the y parity to be returned.</span>
+</li>
+<li class="param-item">
+<span class="name">encoding</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the encoding for the string source.</span>
+</li>
+<li class="param-item">
+<span class="name">digest</span>
+<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the type of hash. Can be None. Defaults to sha256.</span>
 </li>
 </ul>
 </div>
@@ -377,7 +385,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">sign\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">sha256</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="signdigest-fab8e8da" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">sign\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">digest</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="signdigest-0dfc355e" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -387,8 +395,8 @@ toc: true
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
-<span class="name">sha256</span>
-<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A hashlib.sha256 instance representing the digest to be signed.</span>
+<span class="name">digest</span>
+<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A encoded str instance representing the digest to be signed.</span>
 </li>
 <li class="param-item">
 <span class="name">slot</span>
@@ -426,7 +434,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">verify</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verify-4d37323f" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">verify</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">encoding</span> = <span class="default-val">"utf-8"</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">digest</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verify-550d8765" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -459,6 +467,14 @@ toc: true
 <span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If false, the normal key store is referenced. Otherwise, the foreign
                                                 public key store is referenced.<strong>Note:</strong> This parameter is only applicable for model &gt;= HSM6. </span>
 </li>
+<li class="param-item">
+<span class="name">encoding</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the encoding for the string source.</span>
+</li>
+<li class="param-item">
+<span class="name">digest</span>
+<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the type of hash. Can be None. Defaults to sha256.</span>
+</li>
 </ul>
 </div>
 <div class="returns">
@@ -473,7 +489,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">verify\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">sha256</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verifydigest-28fb1759" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">verify\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">digest</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verifydigest-002b3e6c" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -484,8 +500,8 @@ toc: true
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
-<span class="name">sha256</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">A hashlib.sha256 instance that will be used to generate the signature.</span>
+<span class="name">digest</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">A hashlib instance that will be used to generate the signature.</span>
 </li>
 <li class="param-item">
 <span class="name">sig</span>
@@ -660,6 +676,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -830,6 +851,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -875,6 +901,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -899,6 +930,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -918,6 +954,11 @@ toc: true
 <span class="description">If <span class="title-reference">ret</span> is a bad return code from the Zymkey library function. </span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -947,25 +988,25 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">recovery_strategy</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">RecoveryStrategy() class that defines what strategy to be used {None, Bip39, Slip39} are currently supported. RecoveryStrategy-&gt;passphrase must be b64 encoded.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">RecoveryStrategy() class that defines what strategy to be used {None, BIP39, SLIP39} are currently supported. RecoveryStrategy-&gt;passphrase must be b64 encoded.</span>
 </li>
 </ul>
 </div>
 <div class="returns">
 <h5>Returns</h5>
 <span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">the slot the master seed was generated in. 0 for starting slip39 sessions.</span>
+<span class="return_value">the slot the master seed was generated in. 0 for starting SLIP39 sessions.</span>
 </div>
 </div>
 </div>
 <div class="method">
 
-#### <span><span class="name">set\_gen\_slip39\_group\_info</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">group\_index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">member\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">member\_threshold</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="setgenslip39groupinfo-56042b6f" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">set\_gen\_SLIP39\_group\_info</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">group\_index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">member\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">member\_threshold</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="setgenSLIP39groupinfo-56042b6f" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
 <p>Configures the number of members and threshold for the group shares (model &gt;= HSM6).</p>
-<p>This method sets the number of members required for a group share once a slip39 session was opened via gen_wallet_master_seed().</p>
+<p>This method sets the number of members required for a group share once a SLIP39 session was opened via gen_wallet_master_seed().</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -993,19 +1034,19 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">add\_gen\_slip39\_member\_pwd</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addgenslip39memberpwd-504b6969" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">add\_gen\_SLIP39\_member\_pwd</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addgenSLIP39memberpwd-504b6969" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Generates a new mnemonic_str tied to a slip39 member (model &gt;= HSM6).</p>
-<p>This method generates a new member of a group share. Members can also be passphrase protected. Passphrases are not required to be unique. This function is meant to be called after configuring a group via set_gen_slip39_group_info().</p>
+<p>Generates a new mnemonic_str tied to a SLIP39 member (model &gt;= HSM6).</p>
+<p>This method generates a new member of a group share. Members can also be passphrase protected. Passphrases are not required to be unique. This function is meant to be called after configuring a group via set_gen_SLIP39_group_info().</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">passphrase</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the passphrase of the slip39 member and is associated with the mnemonic string generated. Can be empty string for no passphrase.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the passphrase of the SLIP39 member and is associated with the mnemonic string generated. Can be empty string for no passphrase.</span>
 </li>
 </ul>
 </div>
@@ -1018,12 +1059,12 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">cancel\_slip39\_session</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="cancelslip39session-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">cancel\_SLIP39\_session</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="cancelSLIP39session-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Cancels an active slip39 session (model &gt;= HSM6).</p>
-<p>This method cancels an ongoing slip39 session for both master seed generation and recovery.</p>
+<p>Cancels an active SLIP39 session (model &gt;= HSM6).</p>
+<p>This method cancels an ongoing SLIP39 session for both master seed generation and recovery.</p>
 </div>
 <div class="returns">
 <h5>Returns</h5>
@@ -1144,7 +1185,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">mnemonics</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Mnemonic sentences required for restoration, number of mnemonics dependant on recovery strategy used. This field is not used for Slip39.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Mnemonic sentences required for restoration, number of mnemonics dependant on recovery strategy used. This field is not used for SLIP39.</span>
 </li>
 </ul>
 </div>
@@ -1157,23 +1198,23 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">add\_restore\_slip39\_mnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">mnemonic\_sentence</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addrestoreslip39mnemonic-b27c5de4" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">add\_restore\_SLIP39\_mnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">mnemonic\_sentence</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addrestoreSLIP39mnemonic-b27c5de4" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
 <p>Feed a mnemonic string and the passphrase associated with it (model &gt;= HSM6).</p>
-<p>This method feeds in mnemonic sentences (shards) into the module. Meant to be called after starting a restore_wallet_master_seed() slip39 session. Will return -1 until the master seed is reconstructed properly.</p>
+<p>This method feeds in mnemonic sentences (shards) into the module. Meant to be called after starting a restore_wallet_master_seed() SLIP39 session. Will return -1 until the master seed is reconstructed properly.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">mnemonic_sentence</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">24-word recovery phrase associated with the slip39 member.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">24-word recovery phrase associated with the SLIP39 member.</span>
 </li>
 <li class="param-item">
 <span class="name">passphrase</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the passphrase of the slip39 member and is associated with the mnemonic string generated. Can be empty string for no passphrase.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the passphrase of the SLIP39 member and is associated with the mnemonic string generated. Can be empty string for no passphrase.</span>
 </li>
 </ul>
 </div>
@@ -1272,6 +1313,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1305,6 +1351,11 @@ toc: true
 </span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1476,6 +1527,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1496,6 +1552,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1515,6 +1576,11 @@ toc: true
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The perimeter detect low power max number of bits</span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1540,6 +1606,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1559,6 +1630,11 @@ toc: true
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">(input) The maximum amount of time in milliseconds to wait for a perimeter breach event to arrive.</span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1583,9 +1659,15 @@ toc: true
 #### <span><span class="name">clear\_perimeter\_detect\_info</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="clearperimeterdetectinfo-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
-<div class="description"></div>
+<div class="description">
 <p>Clear perimeter detect info.</p>
 <p>This function clears all perimeter detect info and rearms all perimeter detect channels.</p>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1714,6 +1796,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1733,6 +1820,11 @@ toc: true
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The threshold in Volts.</span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1786,6 +1878,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1805,6 +1902,115 @@ toc: true
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The threshold in celsius.</span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">set\_verified\_boot\_policy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">policy\_id</span> = <span class="default-val">0</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="setverifiedbootpolicy-072c5c0f" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Sets the verified boot policy. (model &gt;= SCM).</p>
+<p>This function sets the action policy to take when verified boot detects a file change during the boot process.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">policy_id</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The actions to apply to the verified boot process:
+                                        - 0 Do Nothing
+                                        - 1 Self-Destruct
+                                        - 2 Hold Chip in Reset</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">add\_or\_update\_verified\_boot\_file</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">filepath</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addorupdateverifiedbootfile-ed1a93c8" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Update file manifest for verified boot to check. (model &gt;= SCM).</p>
+<p>This function adds or updates a file in the file manifest to be checked by verified during the boot process.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot to sign the file with.</span>
+</li>
+<li class="param-item">
+<span class="name">filepath</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The file to be signed and checked by verified boot.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">remove\_verified\_boot\_file</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">filepath</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="removeverifiedbootfile-e62cc748" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Remove a file from file manifest for verified boot to check. (model &gt;= SCM).</p>
+<p>This function removes a file in the file manifest to be checked by verified boot during the boot process.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">filepath</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The file to be removed from the manifest.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">get\_verified\_boot\_file\_manifest</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="getverifiedbootfilemanifest-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Get the file manifest for verified boot to check. (model &gt;= SCM).</p>
+<p>This function gets a list of the files that are checked by verified boot during the boot process.</p>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_value">
+<ul>
+<li>
+<em>TYPE</em> &#8211; 0 for success, less than 0 for failure. </li>
+<li>
+<em>TYPE</em> &#8211; File manifest to be checked by verified boot. </li>
+</ul>
+</span>
 </div>
 </div>
 </div>
@@ -1840,18 +2046,18 @@ toc: true
 </div>
 <div class="class">
 
-### <span><span class="annotation">class</span> <span class="addname">zymkey.</span><span class="name">RecoveryStrategyBip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="class-zymkey.-RecoveryStrategyBip39-0e50d58c" class="markdown-h3 signature include-toc"}
+### <span><span class="annotation">class</span> <span class="addname">zymkey.</span><span class="name">RecoveryStrategyBIP39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="class-zymkey.-RecoveryStrategyBIP39-0e50d58c" class="markdown-h3 signature include-toc"}
 
 <div class="body">
-<p>The RecoveryStrategyBip39 class definition.</p>
-<p>This class specifies the Bip39 recovery strategy used for wallet generation within Python. Derived from RecoveryStrategy class.</p>
+<p>The RecoveryStrategyBIP39 class definition.</p>
+<p>This class specifies the BIP39 recovery strategy used for wallet generation within Python. Derived from RecoveryStrategy class.</p>
 <div class="method">
 
 #### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init-0e50d58c" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Initialize an instance of RecoveryStrategyBip39.</p>
+<p>Initialize an instance of RecoveryStrategyBIP39.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -1862,7 +2068,51 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">passphrase</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Passphrase used for bip39 generation. Can be empty string. Must be b64 encoded.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Passphrase used for BIP39 generation. Can be empty string. Must be b64 encoded.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="class">
+
+### <span><span class="annotation">class</span> <span class="addname">zymkey.</span><span class="name">RecoveryStrategySLIP39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">group\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">group\_threshold</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">iteration\_exponent</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="class-zymkey.-RecoveryStrategySLIP39-a19de114" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<p>The RecoveryStrategySLIP39 class definition.</p>
+<p>This class specifies the SLIP39 recovery strategy used for wallet generation within Python. Derived from RecoveryStrategy class.</p>
+<div class="method">
+
+#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">group\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">group\_threshold</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">iteration\_exponent</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init-a19de114" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Initialize an instance of RecoveryStrategySLIP39.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">group_count</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Total number of group shares to generate [Max: 14 Groups].</span>
+</li>
+<li class="param-item">
+<span class="name">group_threshold</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Number of groups needed to restore a master seed with [threshold &lt;= group_count].</span>
+</li>
+<li class="param-item">
+<span class="name">iteration_exponent</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The higher the exponent the more PBKDF2 hashing is done. [Exponent: 0-5]</span>
+</li>
+<li class="param-item">
+<span class="name">variant</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Variant of the key type. Currently only &#8220;cardano&#8221; for ed25519 is supported.</span>
+</li>
+<li class="param-item">
+<span class="name">passphrase</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Passphrase used for BIP39 generation. Can be empty string. Must be b64 encoded.</span>
 </li>
 </ul>
 </div>

@@ -1675,7 +1675,7 @@ toc: true
 <h3 class="context-name">Digital Wallet (BIP32/39/44)</h3>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkGenWalletMasterSeedWithBip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">variant</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">uint8\_t</span> <span class="pointer-ref">\*</span> <span class="name">master\_generator\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">master\_generator\_key\_size</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">passphrase</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">char</span> <span class="pointer-ref">\*\*</span> <span class="name">mnemonic</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkGenWalletMasterSeedWithBip39-d97b2e22" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkGenWalletMasterSeedWithBIP39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">variant</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">uint8\_t</span> <span class="pointer-ref">\*</span> <span class="name">master\_generator\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">master\_generator\_key\_size</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">passphrase</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">char</span> <span class="pointer-ref">\*\*</span> <span class="name">mnemonic</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkGenWalletMasterSeedWithBIP39-d97b2e22" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -1717,7 +1717,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">passphrase</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(input) The passphrase to generate a different bip39_mnemonic. Can be empty string.</p>
+<p>(input) The passphrase to generate a different BIP39_mnemonic. Can be empty string.</p>
 </span>
 </li>
 <li class="param-item">
@@ -1737,12 +1737,12 @@ toc: true
 </div>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkGenWalletMasterSeedWithSlip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">variant</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">uint8\_t</span> <span class="pointer-ref">\*</span> <span class="name">master\_generator\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">master\_generator\_key\_size</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_threshold</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_iteration\_exponent</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">master\_passphrase</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkGenWalletMasterSeedWithSlip39-acba5f92" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkGenWalletMasterSeedWithSLIP39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">variant</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">uint8\_t</span> <span class="pointer-ref">\*</span> <span class="name">master\_generator\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">master\_generator\_key\_size</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_threshold</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_iteration\_exponent</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">master\_passphrase</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkGenWalletMasterSeedWithSLIP39-acba5f92" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
 <p>Generate master seed to start a new blockchain wallet. (model &gt;= HSM6).</p>
-<p>This function opens a session to generate a new blockchain master seed with the ability to recover from slip39 shards.</p>
+<p>This function opens a session to generate a new blockchain master seed with the ability to recover from SLIP39 shards.</p>
 </div>
 <div class="parameters">
 <h4>Parameters</h4>
@@ -1789,7 +1789,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">group_iteration_exponent</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(input) The iteration of exponent of slip39.</p>
+<p>(input) The iteration of exponent of SLIP39.</p>
 </span>
 </li>
 <li class="param-item">
@@ -1802,18 +1802,18 @@ toc: true
 <div class="returns">
 <h4>Returns</h4>
 <span class="return_value">
-<p>0 if successful on opening a slip39 session, less than 0 for failure.</p>
+<p>0 if successful on opening a SLIP39 session, less than 0 for failure.</p>
 </span>
 </div>
 </div>
 </div>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkSetSlip39GroupInfo</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">member\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">member\_threshold</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkSetSlip39GroupInfo-5431774e" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkSetSLIP39GroupInfo</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">group\_index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">member\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">member\_threshold</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkSetSLIP39GroupInfo-5431774e" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Set the active slip39 group and the amount of members needed. (model &gt;= HSM6).</p>
+<p>Set the active SLIP39 group and the amount of members needed. (model &gt;= HSM6).</p>
 <p>This function configures the active group to generate the number of shards requested for the active group.</p>
 </div>
 <div class="parameters">
@@ -1851,12 +1851,12 @@ toc: true
 </div>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkAddSlip39MemberPassword</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">passhrase</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">char</span> <span class="pointer-ref">\*\*</span> <span class="name">mnemonic\_sentence</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkAddSlip39MemberPassword-5e86575b" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkAddSLIP39MemberPassword</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">passhrase</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">char</span> <span class="pointer-ref">\*\*</span> <span class="name">mnemonic\_sentence</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkAddSLIP39MemberPassword-5e86575b" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Generate a new slip39 member shard. (model &gt;= HSM6).</p>
-<p>This function generates a new slip39 member shard. The shard can optionally have a password attached to it.</p>
+<p>Generate a new SLIP39 member shard. (model &gt;= HSM6).</p>
+<p>This function generates a new SLIP39 member shard. The shard can optionally have a password attached to it.</p>
 </div>
 <div class="parameters">
 <h4>Parameters</h4>
@@ -1881,19 +1881,19 @@ toc: true
 <div class="returns">
 <h4>Returns</h4>
 <span class="return_value">
-<p>0 if successful on opening a slip39 session, less than 0 for failure.</p>
+<p>0 if successful on opening a SLIP39 session, less than 0 for failure.</p>
 </span>
 </div>
 </div>
 </div>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkCancelSlip39Session</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkCancelSlip39Session-ac5d4fe2" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkCancelSLIP39Session</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkCancelSLIP39Session-ac5d4fe2" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Cancels the current active slip39 session (model &gt;= HSM6).</p>
-<p>This function cancels open active slip39 sessions. For both generation and restore slip39 sessions.</p>
+<p>Cancels the current active SLIP39 session (model &gt;= HSM6).</p>
+<p>This function cancels open active SLIP39 sessions. For both generation and restore SLIP39 sessions.</p>
 </div>
 <div class="parameters">
 <h4>Parameters</h4>
@@ -1908,7 +1908,7 @@ toc: true
 <div class="returns">
 <h4>Returns</h4>
 <span class="return_value">
-<p>0 if successful on aborting a slip39 session, less than 0 for failure.</p>
+<p>0 if successful on aborting a SLIP39 session, less than 0 for failure.</p>
 </span>
 </div>
 </div>
@@ -2019,7 +2019,7 @@ toc: true
 </div>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkRestoreWalletMasterSeedFromBip39Mnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">variant</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">uint8\_t</span> <span class="pointer-ref">\*</span> <span class="name">master\_generator\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">master\_generator\_key\_size</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">bip39\_passphrase</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">bip39\_mnemonic</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkRestoreWalletMasterSeedFromBip39Mnemonic-90fde10c" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkRestoreWalletMasterSeedFromBIP39Mnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">variant</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">uint8\_t</span> <span class="pointer-ref">\*</span> <span class="name">master\_generator\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">master\_generator\_key\_size</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">BIP39\_passphrase</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">BIP39\_mnemonic</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkRestoreWalletMasterSeedFromBIP39Mnemonic-b74cc999" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -2060,13 +2060,13 @@ toc: true
 </span>
 </li>
 <li class="param-item">
-<span class="name">bip39_passphrase</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(input) The passphrase used to generate the bip39_mnemonic.</p>
+<span class="name">BIP39_passphrase</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) The passphrase used to generate the BIP39_mnemonic.</p>
 </span>
 </li>
 <li class="param-item">
-<span class="name">bip39_mnemonic</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(input) The bip39_mnemonic string, null terminated and UTF-8 NFKD encoded from the BIP39 English dictionary.</p>
+<span class="name">BIP39_mnemonic</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) The BIP39_mnemonic string, null terminated and UTF-8 NFKD encoded from the BIP39 English dictionary.</p>
 </span>
 </li>
 </ul>
@@ -2081,12 +2081,12 @@ toc: true
 </div>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkRestoreWalletMasterSeedFromSlip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">variant</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">uint8\_t</span> <span class="pointer-ref">\*</span> <span class="name">master\_generator\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">master\_generator\_key\_size</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">slip39\_passphrase</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkRestoreWalletMasterSeedFromSlip39-c140ab97" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkRestoreWalletMasterSeedFromSLIP39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">ZK\_EC\_KEY\_TYPE</span> <span class="pointer-ref"></span> <span class="name">type</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">variant</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">wallet\_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">uint8\_t</span> <span class="pointer-ref">\*</span> <span class="name">master\_generator\_key</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">master\_generator\_key\_size</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">SLIP39\_passphrase</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkRestoreWalletMasterSeedFromSLIP39-430e3fce" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
 <p>Open a SLIP39 restore master seed session (model &gt;= HSM6).</p>
-<p>This function starts a restore slip39 session, in order to start feeding shards into.</p>
+<p>This function starts a restore SLIP39 session, in order to start feeding shards into.</p>
 </div>
 <div class="parameters">
 <h4>Parameters</h4>
@@ -2122,7 +2122,7 @@ toc: true
 </span>
 </li>
 <li class="param-item">
-<span class="name">slip39_passphrase</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<span class="name">SLIP39_passphrase</span><span class="param-desc-divider"> &#8212; </span><span class="description">
 <p>(input) The master passphrase.</p>
 </span>
 </li>
@@ -2138,11 +2138,11 @@ toc: true
 </div>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkAddRestoreSlip39Mnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">passphrase</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">mnemonic\_sentence</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkAddRestoreSlip39Mnemonic-74fb1c50" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkAddRestoreSLIP39Mnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">passphrase</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">mnemonic\_sentence</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkAddRestoreSLIP39Mnemonic-74fb1c50" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Feed a slip39 shard to restore a master seed (model &gt;= HSM6).</p>
+<p>Feed a SLIP39 shard to restore a master seed (model &gt;= HSM6).</p>
 <p>This function will feed a shard to the module until the conditions are met and a master seed is generated.</p>
 </div>
 <div class="parameters">
@@ -3116,6 +3116,124 @@ toc: true
 <li class="param-item">
 <span class="name">threshold</span><span class="param-desc-divider"> &#8212; </span><span class="description">
 <p>(input) The threshold in celsius.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h4>Returns</h4>
+<span class="return_value">
+<p>0 for success, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkSetVerifiedBootPolicy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">policy\_id</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkSetVerifiedBootPolicy-040caccf" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Sets the verified boot policy. (model &gt;= SCM).</p>
+<p>This function specifies the action to take when verified boot event triggers based on a file change.</p>
+</div>
+<div class="parameters">
+<h4>Parameters</h4>
+<ul>
+<li class="param-item">
+<span class="name">policy_id</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) The actions to apply to the verified boot process:</p>
+<ul>
+<li>0 Do Nothing (ZK_SUPBOOT_FAIL_NO_ACTION).</li>
+<li>1 Self-Destruct (ZK_SUPBOOT_FAIL_DESTROY).</li>
+<li>2 Hold Chip in Reset (ZK_SUPBOOT_FAIL_HOLD_RESET).</li>
+</ul>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h4>Returns</h4>
+<span class="return_value">
+<p>0 for success, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkAddOrUpdateVerifiedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">slot</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkAddOrUpdateVerifiedBootFile-bc296c39" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Update file manifest for verified boot to check. (model &gt;= SCM).</p>
+<p>This function adds or updates files to be checked by verified boot.</p>
+</div>
+<div class="parameters">
+<h4>Parameters</h4>
+<ul>
+<li class="param-item">
+<span class="name">slot</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) The slot to sign the file with.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">file_path</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) The file to be signed and checked by verified boot.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h4>Returns</h4>
+<span class="return_value">
+<p>0 for success, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkRemoveVerifiedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkRemoveVerifiedBootFile-b4ea059f" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Remove a file from file manifest for verified boot to check. (model &gt;= SCM).</p>
+<p>This function removes a file to be checked by verified boot.</p>
+</div>
+<div class="parameters">
+<h4>Parameters</h4>
+<ul>
+<li class="param-item">
+<span class="name">file_path</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) The file to be removed from the verified boot manifest.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h4>Returns</h4>
+<span class="return_value">
+<p>0 for success, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkGetVerifiedBootFileManifest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">char</span> <span class="pointer-ref">\*\*</span> <span class="name">manifest</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkGetVerifiedBootFileManifest-b8e636d2" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Get file manifest for verified boot to check. (model &gt;= SCM).</p>
+<p>This function gets the list of files to be checked by verified boot.</p>
+</div>
+<div class="parameters">
+<h4>Parameters</h4>
+<ul>
+<li class="param-item">
+<span class="name">manifest</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(output) The file manifest that is checked by verified boot.</p>
 </span>
 </li>
 </ul>
