@@ -41,8 +41,17 @@ The SCM Early Release comes pre-loaded with Raspberry Pi OS Lite (legacy) - Bust
     - rapid blinking *Verified Boot successfully completed, booting underway*
     - blinking stops *USB bus enumeration found SCM; may stay off for seconds*
     - one blink every 3 seconds *zkifc has loaded and the system is ready to go*
-   
-   ![Example boot video](good_verified_boot.gif)
+
+{{< cardpane >}}
+{{% card header="Boot Sequence" %}}
+{{< figure 
+    src="good_verified_boot.gif"
+    alt="SCM Boot Sequence"
+    caption="Example of successful Verified Boot LED Sequence"
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
+
 
 #### Login via SSH with key
 The SSH key is included on the USB drive in two formats: PPK for use with Putty and PEM for standard linux ssh
@@ -59,12 +68,12 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 </details>
 
 #### Where to Next?
- * [Working with Verified Boot](tutorials/verified-boot/)
- * [See API Documentation](api/)
- * [Working with the HD Wallet](tutorials/digital-wallet/)
- * [Setting up Tamper Detect](tutorials/perimeter-detect/)
+ * [Working with Verified Boot](docs.zymbit.com/tutorials/verified-boot/)
+ * [See API Documentation]((docs.zymbit.com/api/)
+ * [Working with the HD Wallet]((docs.zymbit.com/tutorials/digital-wallet/)
+ * [Setting up Tamper Detect]((docs.zymbit.com/tutorials/perimeter-detect/)
 ##### Support
- * [Release notes](getting-started/scm/release-notes/)
- * [Contact Support](support@zymbit.com)
+ * [Release notes]((docs.zymbit.com/getting-started/scm/release-notes/)
+ * [Contact Support](mailto:support@zymbit.com)
 
 
