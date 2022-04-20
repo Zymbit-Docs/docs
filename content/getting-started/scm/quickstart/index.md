@@ -68,12 +68,12 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 </details>
 
 #### Where to Next?
- * [Working with Verified Boot](docs.zymbit.com/tutorials/verified-boot/)
- * [See API Documentation]((docs.zymbit.com/api/)
- * [Working with the HD Wallet]((docs.zymbit.com/tutorials/digital-wallet/)
- * [Setting up Tamper Detect]((docs.zymbit.com/tutorials/perimeter-detect/)
+ * [Working with Verified Boot](../../../tutorials/verified-boot/)
+ * [See API Documentation]((../../../api/)
+ * [Working with the HD Wallet]((../../../tutorials/digital-wallet/)
+ * [Setting up Tamper Detect]((../../../tutorials/perimeter-detect/)
 ##### Support
- * [Release notes]((docs.zymbit.com/getting-started/scm/release-notes/)
+ * [Release notes]((../release-notes/)
  * [Contact Support](mailto:support@zymbit.com)
 
 
