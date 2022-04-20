@@ -47,23 +47,24 @@ The SCM Early Release comes pre-loaded with Raspberry Pi OS Lite (legacy) - Bust
 #### Login via SSH with key
 The SSH key is included on the USB drive in two formats: PPK for use with Putty and PEM for standard linux ssh
 
-##### SSH Login using Putty
 <details>
 
 <summary>
-    Steps for logging in with Putty
+   SSH login with Putty
 </summary>
 
-    
+    1. Copy PPK key from USB drive to your host
+    2. Open Putty, goto SSH -> Auth -> Browse to input the PPK file.
+
 </details>
 
 #### Where to Next?
- * [Working with Verified Boot](/tutorials/verified-boot/)
- * [See API Documentation](/api/)
- * [Working with the HD Wallet](/tutorials/digital-wallet/)
- * [Setting up Tamper Detect](/tutorials/perimeter-detect/)
+ * [Working with Verified Boot](tutorials/verified-boot/)
+ * [See API Documentation](api/)
+ * [Working with the HD Wallet](tutorials/digital-wallet/)
+ * [Setting up Tamper Detect](tutorials/perimeter-detect/)
 ##### Support
- * [Release notes](/getting-started/scm/release-notes/)
+ * [Release notes](getting-started/scm/release-notes/)
  * [Contact Support](support@zymbit.com)
 
 
