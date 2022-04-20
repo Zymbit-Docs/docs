@@ -45,22 +45,25 @@ The SCM Early Release comes pre-loaded with Raspberry Pi OS Lite (legacy) - Bust
    ![Example boot video](good_verified_boot.gif)
 
 #### Login via SSH with key
-We have provided a key file in two formats: ppk for use with Putty and pem for standard linux ssh
+The SSH key is included on the USB drive in two formats: PPK for use with Putty and PEM for standard linux ssh
 
+##### SSH Login using Putty
 <details>
 
-<summaryLogin with Putty</summary>
+<summary>
+    Steps for logging in with Putty
+</summary>
 
     
 </details>
 
 #### Where to Next?
- * [Working with Verified Boot](http://docs.zymbit.com/tutorials/verified-boot/)
- * [See API Documentation](http://docs.zymbit.com/api/)
- * [Working with the HD Wallet](https://docs.zymbit.com/tutorials/digital-wallet/)
- * [Setting up Tamper Detect](https://docs.zymbit.com/tutorials/perimeter-detect/)
+ * [Working with Verified Boot](/tutorials/verified-boot/)
+ * [See API Documentation](/api/)
+ * [Working with the HD Wallet](/tutorials/digital-wallet/)
+ * [Setting up Tamper Detect](/tutorials/perimeter-detect/)
 ##### Support
- * [Release notes](https://docs.zymbit.com/getting-started/scm/release-notes/)
- * support@zymbit.com
+ * [Release notes](/getting-started/scm/release-notes/)
+ * [Contact Support](support@zymbit.com)
 
 
