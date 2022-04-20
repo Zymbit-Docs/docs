@@ -63,7 +63,18 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 </summary>
 
     1. Copy PPK key from USB drive to your host
-    2. Open Putty, goto SSH -> Auth -> Browse to input the PPK file.
+    2. Open Putty, goto SSH -> Auth -> Browse to input the zscm.ppk file.
+
+</details>
+
+<details>
+
+<summary>
+   SSH login from Linux CLI
+</summary>
+
+    1. Copy PEM key from USB drive to your host
+    2. `ssh -i zscm.pem zymbit@zymbit-dev`
 
 </details>
 
