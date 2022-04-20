@@ -1,7 +1,7 @@
 ---
 title: "SCM (Alpha Release) Getting Started"
 linkTitle: "Getting Started"
-lastmod:
+lastmod: "2022-04-20"
 draft: false
 images: []
 weight: 5
@@ -10,7 +10,7 @@ toc: true
 
 -----
 ### **Getting Started with the Secure Compute Module Alpha Release**
-April 17, 2022
+April 20, 2022
 
 #### Welcome Intro
 
@@ -61,9 +61,32 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 <summary>
    SSH login with Putty
 </summary>
+    
+* Copy PPK key from USB drive to your host
 
-    1. Copy PPK key from USB drive to your host
-    2. Open Putty, goto SSH -> Auth -> Browse to input the zscm.ppk file.
+{{< cardpane >}}
+{{% card header="Open PuTTY" %}}
+{{< figure
+    src="putty1.png"
+    alt="Load SSH key file into PuTTY"
+    caption="Open PuTTY, navigate to SSH -> Auth, and Browse to the PPK file."
+    >}}
+{{% /card %}}
+{{% card header="Configure and Save" %}}
+{{< figure
+    src="putty2.png"
+    alt="Choose Session, then name and Save"
+    caption="Choose Session, then fill out the Host Name, the Session name, and Save."
+    >}}
+{{% /card %}}
+    {{% card header="Open SSH Session" %}}
+{{< figure
+    src="putty3.png"
+    alt="Open your PuTTY Session"
+    caption="Choose your saved session and Open. Enter the Passphrase you received from Zymbit when prompted."
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
 
 </details>
 
