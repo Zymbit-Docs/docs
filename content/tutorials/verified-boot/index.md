@@ -12,7 +12,19 @@ Updated: 2022-03-28
 
 ## What is Verified Boot?
 
-Description for Verfied Boot and the Manifest.
+Verified Boot is Zymbit's method for insuring that the boot process is secure. A list of files can be specifed to be hashed, signed, and verified by the SCM prior to allowing the CM4 module to boot. By default, the following files are signed and verified:
+
+```
+/boot/bcm2711-rpi-cm4.dtb
+/boot/bootcode.bin
+/boot/cmdline.txt
+/boot/config.txt
+/boot/initrd.img
+/boot/kernel7l.img
+/boot/start4.elf
+/boot/zymbit_mac_address
+/boot/overlays/vc4-kms-v3d.dtbo
+```
 
 ## The Manifest
 
@@ -25,9 +37,7 @@ All files in the Manifest must reside within the /boot partition. File paths in 
 ### Prerequisites
 
 * Zymbit Modules that support this feature:
-    * [SCM Early Access](https://www.zymbit.com/secure-compute-node//)
-
-* The SCM comes pre-installed and ready to run. No additional steps are necessary
+    * [SCM Early Access](https://www.zymbit.com/secure-compute-node/)
 
 * All code snippets written in this article are written using Python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](/api)
 
@@ -36,24 +46,31 @@ All files in the Manifest must reside within the /boot partition. File paths in 
 The code below can be used to add/update/delete and display the Manifest of files to check during Secure Boot operation. Save the code below to a file. We will name it manifest.py for the following examples.
 
 ```python
-#!/usr/bin/python3
+ #!/usr/bin/python3
 
 import argparse
 import zymkey
 
 class Manifest:
+
     def add_update(slot, filepath):
         print(f"Manifest Add/Update (slot={slot}):  {filepath}")
-        zymkey.client.add_or_update_verified_boot_file(slot, filepath)
+        zymkey.client.add_or_update_verified_boot_file(int(slot), filepath)
 
-    def delete(filepath: str):
+    def delete(filepath):
         print(f"Manifest Delete:  {filepath}")
-        zymkey.client.remove_verified_boot_file(filepath) 
+        zymkey.client.remove_verified_boot_file(filepath)
 
     def show():
-        print("Manifest:")
+        print("\nManifest:")
         print("---------")
-        zymkey.client.retrieve_manifest_method()
+        list = zymkey.client.get_verified_boot_file_manifest()
+        if len(list) ==  0:
+            print("Manifest is empty")
+        else:
+            for filepath in list.split():
+                print(filepath)
+        print("")
 
 # Setup arg parser
 parser = argparse.ArgumentParser(
@@ -68,13 +85,10 @@ parser.add_argument("-s", "--slot", metavar="slot_num", help="use slot for add/d
 args = parser.parse_args()
 parser.parse_args()
 
-# Do the work
 if args.add:
     Manifest.add_update(args.slot, args.add)
-
 elif args.update:
     Manifest.add_update(args.slot, args.update)
-
 elif args.delete:
     Manifest.delete(args.delete)
 
