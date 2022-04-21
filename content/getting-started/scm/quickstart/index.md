@@ -10,16 +10,50 @@ toc: true
 
 -----
 ### **Getting Started with the Secure Compute Module Alpha Release**
-April 20, 2022
+April 21, 2022
 
-#### Welcome Intro
+#### Intro
 
-The SCM Early Release comes pre-loaded with Raspberry Pi OS Lite (legacy) - Buster 32bit, and all Zymbit software. The root filesystem is already encrypted. A default set of boot files are configured to use Zymbit Verified Boot mechanism.
+##### Highlights
+* 100% pin compatible with RPi CM4, all configurations.
+* 100% code compatible with RPi
+* Easy to Scale
+* Pre-fuzzed, pre-encrypted file system
+* Pre-loaded Linux kernel
+* Pre-load with customer software
+* Pre-defined file manifest & policies
+* Custom MAC OUID blocks available
+
+##### Layers of Security
+* Verified boot
+* Fully encapsulated
+* Last gasp power defenses
+* Tamper sense and response
+* File system encryption
+* Measured system identity & authentication
+* Data encryption & signing
+
+##### Compute Options
+* Broadcom BCM2711, Quad core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5GHz
+* LPDDR4 RAM: 1G to 8G, eMMC: 0G to 32G
+* 2.4/5.0GHz Wi-Fi & Bluetooth
+
+The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy) - Buster 32bit, and all Zymbit software. The root filesystem is already encrypted. A default set of boot files are configured to use Zymbit Verified Boot mechanism.
 
 ##### What's included in the Alpha box
 
- * Raspberry Pi CM4 8GB, 32GB eMMC, with wireless
- * Zymbit SCM Secure Compute Module (permanently attached to CM4)
+{{< cardpane >}}
+{{% card header="SCM Alpha Kit Components" %}}
+{{< figure 
+    src="SCM-Alpha-Kit-components-2.png"
+    alt="SCM Alpha Kit"
+    caption="Contents of the SCM Alpha Kit"
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
+
+ 
+ * Zymbit SCM Secure Compute Module and Raspberry Pi CM4
  * Raspberry Pi CM4/IO board
  * USB drive with SSH keys necessary for login
  * Zymbit Perimeter Detect Cable Adapter
@@ -33,7 +67,7 @@ The SCM Early Release comes pre-loaded with Raspberry Pi OS Lite (legacy) - Bust
   * Default `pi` username replaced with `zymbit`
   * Hostname changed to `zymbit-dev`
 
-#### Power on and Bootup
+#### Power On and Bootup
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse.
  * Monitor the Blue LED on the Zymbit SCM module. It will go through the following stages:
     - one slow blink  *initializing the SCM*
@@ -79,7 +113,10 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
     caption="Choose Session, then fill out the Host Name, the Session name, and Save."
     >}}
 {{% /card %}}
-    {{% card header="Open SSH Session" %}}
+{{< /cardpane >}}
+    
+{{< cardpane >}}
+{{% card header="Open SSH Session" %}}
 {{< figure
     src="putty3.png"
     alt="Open your PuTTY Session"
