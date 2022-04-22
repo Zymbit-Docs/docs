@@ -21,14 +21,14 @@ A Software Wallet, also known as a Soft Wallet or Desktop Wallet locally stores 
 
 ## What is the Zymbit Embedded Hardware Wallet?
 
-Zymbit Embedded Hardware Wallet functionality is available in Zymbit products, HSM6 and SCM (soon). These products are designed to easily integrate into IoT and blockchain appliances that manage large numbers of keys and/or participate in blockchain and crypto transactions.  
+Zymbit Embedded Hardware Wallet functionality is available in Zymbit products, HSM6 and SCM (Alpha). These products are designed to easily integrate into IoT and blockchain appliances that manage large numbers of keys and/or participate in blockchain and crypto transactions.  
  
 The core features of Zymbit Embedded Hardware Wallets are: 
  * BIP32 – Hierarchical Deterministic Wallet
  * BIP39 – Master Seed Mnemonic Code Generator
  * BIP44 – Multi-Account Hierarchy Support
- * SLIP39 – Shamirs Secret Sharing [See example](https://docs.zymbit.com/tutorials/digital-wallet/slip39-example/)
- * [APIs](https://docs.zymbit.com/api/) for secure easy integration with host computer (Python, C, C++)
+ * SLIP39 – Shamirs Secret Sharing [See example](../../tutorials/digital-wallet/slip39-example/)
+ * [APIs](../../api/) for secure easy integration with host computer (Python, C, C++)
  * Dedicated secure hardware with tamper protection and response. 
 
 
@@ -52,11 +52,11 @@ safe and locked away!
 
 * Zymbit Modules that support this feature:
     * [HSM6](https://www.zymbit.com/hsm6/)
-    <!-- * [SCM \[Early Access\]](https://www.zymbit.com/secure-compute-platform/)  -->
+    * [SCM \[Alpha\]](https://www.zymbit.com/secure-compute-platform/)  
 
-* Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software.
+* Follow the [Getting Started guide](../../getting-started/) first, installing all baseline software.
 
-* All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
+* All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](../../api/)
 
 ## Using the Zymbit Hardware Wallet:
 
@@ -105,7 +105,7 @@ zymkey.client.remove_key(child_slot)
 
 ### Creating a master seed (new wallet)
 
-The HSM6 can have multiple master seeds be stored in its key store, allowing for management of a variety of keyrings to work with. Master seeds and its derivations are additionally backed by EC curve cryptography for an extra layer of encryption/security. The ec curves currently supported are nistp256, secp256r1, secp256k1. The master_key_generator is used to generate the BIP32 master seed, can be empty string. The RecoveryStrategy parameter dictates what recovery algorithm to return when generating the master seed. If the base RecoveryStrategy is used or none is specified, then no mnemonic will be returned. Current supported recovery strategies are none, BIP39. This example generates a master seed with the RecoveryStrategyBIP39. The BIP39 mnemonic is a 24 word string that can be used to restore or recreate a previous generated master seed. Note that a wallet name is also unique! There can not be multiple wallets with the same name.
+The Zymbit module with wallet support can have multiple master seeds be stored in its key store, allowing for management of a variety of keyrings to work with. Master seeds and its derivations are additionally backed by EC curve cryptography for an extra layer of encryption/security. The ec curves currently supported are nistp256, secp256r1, secp256k1. The master_key_generator is used to generate the BIP32 master seed, can be empty string. The RecoveryStrategy parameter dictates what recovery algorithm to return when generating the master seed. If the base RecoveryStrategy is used or none is specified, then no mnemonic will be returned. Current supported recovery strategies are none, BIP39. This example generates a master seed with the RecoveryStrategyBIP39. The BIP39 mnemonic is a 24 word string that can be used to restore or recreate a previous generated master seed. Note that a wallet name is also unique! There can not be multiple wallets with the same name.
 
 {{< callout warning >}}
 Make sure to write the BIP39 mnemonic and store it somewhere safe! The master seed is the key to its kingdom. Don't give it out to just anybody!
@@ -160,7 +160,7 @@ print("Node address:'%s' Wallet Name:'%s' Master Slot:'%s'" % (node_addr[0], nod
 ### Get a key slot from a wallet node address
 
 If the user knows the wallet node index string and either the master seed slot or the wallet name it belongs to,
-they can get the HSM6 key slot with this function. Both master seed slot and wallet name are optional arguments,
+they can get the key slot with this function. Both master seed slot and wallet name are optional arguments,
 but if neither are filled, then it will throw an exception.
 
 The function `get_wallet_key_slot(string node_index, string wallet_name, int master_slot)` returns the key slot on success.
@@ -195,6 +195,6 @@ print("Restored slot:%s" % (restored_seed_slot,))
 ```
 
 ### Troubleshooting
-[HSM6 Troubleshooting](https://docs.zymbit.com/troubleshooting/hsm6/)  
+[Troubleshooting](../../troubleshooting/
 [Community](https://community.zymbit.com/)
 

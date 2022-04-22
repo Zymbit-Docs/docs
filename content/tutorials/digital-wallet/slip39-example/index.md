@@ -32,8 +32,7 @@ SLIP39 allows the owner to backup their wallets with multiple shards using a com
 SLIP39 generates groups and each of these groups can contain its own system of member shards.
 
 * HSM6 supports up to 14 groups \* 14 members per group = 196 shards total
-
-<!-- * SCM supports up to 16 groups \* 16 members per group = 256 shards total -->
+* SCM supports up to 16 groups \* 16 members per group = 256 shards total 
 
 #### Useful Resources:
 
@@ -43,11 +42,11 @@ SLIP39 generates groups and each of these groups can contain its own system of m
 
 * Zymbit Modules that support this feature:
     * [HSM6](https://www.zymbit.com/hsm6/)
-    <!-- * [SCM \[Early Access\]](https://www.zymbit.com/secure-compute-platform/) -->
+    * [SCM \[Alpha\]](https://www.zymbit.com/secure-compute-platform/) 
 
-*  Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software. 
+*  Follow the [Getting Started guide](../../getting-started/) first, installing all baseline software. 
 
-* All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
+* All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](../../api/)
 
 
 ## Generating a master seed with SLIP39 recovery
