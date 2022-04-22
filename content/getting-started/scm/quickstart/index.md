@@ -59,7 +59,8 @@ The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) 
 
 
 #### Power On and Bootup
- * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse.
+ * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. SSH login is restricted to only use keys.
+ 
  * Monitor the Blue LED on the Zymbit SCM module. It will go through the following stages:
     - one slow blink  *initializing the SCM*
     - one -> two -> three -> four blinks *Verified Boot is verifying the signed file information*
@@ -126,6 +127,7 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 
     1. Copy PEM key from USB drive to your host
     2. `ssh -i zscm.pem zymbit@zymbit-dev`
+    3. Present your passphrase when prompted
 
 </details>
 
