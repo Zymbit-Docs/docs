@@ -144,7 +144,7 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
 ##### Support
- * [Release notes](../release-notes/)
+ * [Release notes](../../../troubleshooting/scm/)
  * [Contact Support](mailto:support@zymbit.com)
 
 
