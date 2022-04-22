@@ -9,7 +9,7 @@ toc: true
 ---
 
 -----
-### **Current SCM Alpha Release**
+### Current SCM Alpha Release
 April 22, 2022
 
 #### Firmware: 
@@ -29,7 +29,7 @@ April 22, 2022
 
 The SCM ships with a pre-installed version of Raspberry PI OS Lite (legacy/buster32) with a more secure configuration. The table below summarizes changes made to the standard image. 
 
-| Standard | As Shipped |
+| Default | As Shipped |
 |------------------|--------------------------|
 | Console login allowed | Disabled |
 | SSH with password allowed | Disabled. SSH must use keys |
@@ -38,18 +38,18 @@ The SCM ships with a pre-installed version of Raspberry PI OS Lite (legacy/buste
 | MAC with Pi OID | MAC uses Zymbit OID |
 
 -----
-### **SCM Alpha Non-Standard Functionality
+### SCM Alpha Non-Standard Functionality
 For the Alpha Evaluation, much of the destructive functionality will be simulated, allowing the user to trigger events for experimentation without rendering the unit useless. The Alpha units will be recoverable here at Zymbit. Production units will not be recoverable here at Zymbit if self-destruct has been triggered in the field.
 
 | Item | Alpha | Production |
 |------------|------------------------------------------------|-----------------------------------------------------------|
 | Tamper Detect | Self-destruct mode does 6 flashes, 3 times and then recovers. Close loops to resume. | Self-destruct will destroy all keys. No recovery possible. |
 | Verified Boot | Sign/Verify file integrity failure does 20 flashes, 3 time and then recovers. | Sign/Verify file integrity failure with execute policy to either hold in reset or self-destruct. No recovery possible.
-| Last Gasp | Battery Treshold action of self-destruct does 4 flashes, 3 times and recovers. Requires bind lock. | self-destruct action destroy all keys. No recovery possible. |
+| Last Gasp | Battery Threshold action of self-destruct does 4 flashes, 3 times and recovers. Requires bind lock. | Self-destruct action destroy all keys. No recovery possible. |
 
 
 -----
-### **Known Issues**
+### Known Issues
 
 Issue #91: SCM: Low Power Last Gasp doesn't react initially if Supply power pulled then battery pulled.
 
