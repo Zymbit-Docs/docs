@@ -9,12 +9,10 @@ toc: true
 ---
 
 -----
-### **Getting Started with the Secure Compute Module Alpha Release**
+### **Getting Started with the Secure Compute Module (SCM) Alpha Release**
 April 22, 2022
 
-The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy) - Buster 32bit, and all Zymbit software. The root filesystem is already encrypted. A default set of boot files are configured to use Zymbit Verified Boot mechanism.
-
-##### What's included in the Alpha box
+The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) and all Zymbit software. The root filesystem is already encrypted. A default set of boot files are configured to use Zymbit Verified Boot mechanism.
 
 {{< cardpane >}}
 {{% card header="SCM Alpha Kit Components" %}}
@@ -26,20 +24,14 @@ The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy) - Buster 32bit
 {{% /card %}}
 {{< /cardpane >}}
 
+##### Items
  
- * Zymbit SCM Secure Compute Module and Raspberry Pi CM4
+ * Zymbit Secure Compute Module including Pi CM4
  * Raspberry Pi CM4/IO board
- * USB drive with SSH keys necessary for login
- * Zymbit Perimeter Detect Cable Adapter
- * Zymbit Battery Adapter
+ * Zymbit Perimeter Detect Cable
+ * Zymbit External Battery
  * 12V Power Supply
-
-#### Modifications to standard Raspberry PI OS Lite
-  * Login access is only available via ssh with provided key
-  * No console logins are enabled.
-  * Zymbit MAC address replaces Pi foundation MAC address
-  * Default `pi` username replaced with `zymbit`
-  * Hostname changed to `zymbit-dev`
+ * USB drive with SSH keys necessary for SSH login
 
 ##### Highlights
 * 100% pin compatible with RPi CM4, all configurations.
