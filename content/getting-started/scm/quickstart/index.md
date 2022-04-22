@@ -10,33 +10,7 @@ toc: true
 
 -----
 ### **Getting Started with the Secure Compute Module Alpha Release**
-April 21, 2022
-
-#### Intro
-
-##### Highlights
-* 100% pin compatible with RPi CM4, all configurations.
-* 100% code compatible with RPi
-* Easy to Scale
-* Pre-fuzzed, pre-encrypted file system
-* Pre-loaded Linux kernel
-* Pre-load with customer software
-* Pre-defined file manifest & policies
-* Custom MAC OUID blocks available
-
-##### Layers of Security
-* Verified boot
-* Fully encapsulated
-* Last gasp power defenses
-* Tamper sense and response
-* File system encryption
-* Measured system identity & authentication
-* Data encryption & signing
-
-##### Compute Options
-* Broadcom BCM2711, Quad core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5GHz
-* LPDDR4 RAM: 1G to 8G, eMMC: 0G to 32G
-* 2.4/5.0GHz Wi-Fi & Bluetooth
+April 22, 2022
 
 The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy) - Buster 32bit, and all Zymbit software. The root filesystem is already encrypted. A default set of boot files are configured to use Zymbit Verified Boot mechanism.
 
@@ -66,6 +40,31 @@ The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy) - Buster 32bit
   * Zymbit MAC address replaces Pi foundation MAC address
   * Default `pi` username replaced with `zymbit`
   * Hostname changed to `zymbit-dev`
+
+##### Highlights
+* 100% pin compatible with RPi CM4, all configurations.
+* 100% code compatible with RPi
+* Easy to Scale
+* Pre-fuzzed, pre-encrypted file system
+* Pre-loaded Linux kernel
+* Pre-load with customer software
+* Pre-defined file manifest & policies
+* Custom MAC OUID blocks available
+
+##### Layers of Security
+* Verified boot
+* Fully encapsulated
+* Last gasp power defenses
+* Tamper sense and response
+* File system encryption
+* Measured system identity & authentication
+* Data encryption & signing
+
+##### Compute Options
+* Broadcom BCM2711, Quad core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5GHz
+* LPDDR4 RAM: 1G to 8G, eMMC: 0G to 32G
+* 2.4/5.0GHz Wi-Fi & Bluetooth
+
 
 #### Power On and Bootup
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse.
