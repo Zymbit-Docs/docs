@@ -10,41 +10,45 @@ toc: true
 
 -----
 ### **Current SCM Alpha Release**
-April 10, 2022
+April 22, 2022
 
 #### Firmware: 
- - SCM: XX.XX.XX
+ - SCM: 00.00.27alpha
 
 #### Zymbit Host Side Code:
- - libzk Y.Y.YY
- - libzymkeyssl 
- - zkapputilslib 
- - zkbootrtc 
- - zkifc 
- - zkpkcs 
- - zksaapps 
- - zku 
-
-### System Platform and OS
- - CM4
- - CM4 I/O
- - Buster 32
+ - libzk 1.1-22
+ - libzymkeyssl 1.0-10
+ - zkapputilslib 1.1-23
+ - zkbootrtc 1.1-15
+ - zkifc 1.2-33
+ - zkpkcs11 1.0-2 
+ - zksaapps 1.0.-15
+ - zku 1.0.31
 
 #### Modifications from Standard Raspberry PI OS Lite
-  * Login access is only available via SSH with provided key
-  * No console logins are enabled.
-  * Zymbit MAC address replaces Pi foundation MAC address
-  * Default `pi` username replaced with `zymbit`
-  * Hostname changed to `zymbit-dev`
 
-### Features
- * Zymbit Verified Boot
- * All other existing features of HSM6 including wallet support
- * Non-destructive feature support for Alpha
- * Pre-encrypted root file system
+The SCM ships with a pre-installed version of Raspberry PI OS Lite (legacy/buster32) with a more secure configuration. The table below summarizes changes made to the standard image. 
+
+| Standard | As Shipped |
+|------------------|--------------------------|
+| Console login allowed | Disabled |
+| SSH with password allowed | Disabled. SSH must use keys |
+| Hostname is `raspberrypi` | Hostname changed to `zymbit-dev` |
+| Default user of `pi` | Default user is `zymbit`. User `pi` removed |
+| MAC with Pi OID | MAC uses Zymbit OID |
 
 -----
+### **SCM Alpha Non-Standard Functionality
+For the Alpha Evaluation, much of the destructive functionality will be simulated, allowing the user to trigger events for experimentation without rendering the unit useless. The Alpha units will be recoverable here at Zymbit. Production units will not be recoverable here at Zymbit if self-destruct has been triggered in the field.
 
+| Item | Alpha | Production |
+|------------|------------------------------------------------|-----------------------------------------------------------|
+| Tamper Detect | Self-destruct mode does 6 flashes, 3 times and then recovers. Close loops to resume. | Self-destruct will destroy all keys. No recovery possible. |
+| Verified Boot | Sign/Verify file integrity failure does 20 flashes, 3 time and then recovers. | Sign/Verify file integrity failure with execute policy to either hold in reset or self-destruct. No recovery possible.
+| Last Gasp | Battery Treshold action of self-destruct does 4 flashes, 3 times and recovers. Requires bind lock. | self-destruct action destroy all keys. No recovery possible. |
+
+
+-----
 ### **Known Issues**
 
 Issue #91: SCM: Low Power Last Gasp doesn't react initially if Supply power pulled then battery pulled.
