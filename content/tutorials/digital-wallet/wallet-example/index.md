@@ -27,8 +27,8 @@ The core features of Zymbit Embedded Hardware Wallets are:
  * BIP32 – Hierarchical Deterministic Wallet
  * BIP39 – Master Seed Mnemonic Code Generator
  * BIP44 – Multi-Account Hierarchy Support
- * SLIP39 – Shamirs Secret Sharing [See example](../../tutorials/digital-wallet/slip39-example/)
- * [APIs](../../api/) for secure easy integration with host computer (Python, C, C++)
+ * SLIP39 – Shamirs Secret Sharing [See example](../../../tutorials/digital-wallet/slip39-example/)
+ * [APIs](../../../api/) for secure easy integration with host computer (Python, C, C++)
  * Dedicated secure hardware with tamper protection and response. 
 
 
@@ -54,9 +54,9 @@ safe and locked away!
     * [HSM6](https://www.zymbit.com/hsm6/)
     * [SCM \[Alpha\]](https://www.zymbit.com/secure-compute-platform/)  
 
-* Follow the [Getting Started guide](../../getting-started/) first, installing all baseline software.
+* Follow the [Getting Started guide](../../../getting-started/) first, installing all baseline software.
 
-* All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](../../api/)
+* All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](../../../api/)
 
 ## Using the Zymbit Hardware Wallet:
 
@@ -195,6 +195,6 @@ print("Restored slot:%s" % (restored_seed_slot,))
 ```
 
 ### Troubleshooting
-[Troubleshooting](../../troubleshooting/
+[Troubleshooting](../../../troubleshooting/
 [Community](https://community.zymbit.com/)
 
