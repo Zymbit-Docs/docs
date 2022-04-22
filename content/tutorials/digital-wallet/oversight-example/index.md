@@ -39,7 +39,7 @@ This can be useful for handing a copy of a wallet to a financial advisor or some
 First create an example BIP32 master seed wallet as a reference for our oversight wallet.
 
 ```plaintext
-# Create our bip32 master seed
+# Create our BIP32 master seed
 print("Create our normal wallet...")
 master_seed_slot = zymkey.client.gen_wallet_master_seed(key_type = "secp256k1", master_gen_key = "", wallet_name = MyExampleWallet)
 print("Done! Master seed slot:%i" % (master_seed_slot))
@@ -85,7 +85,7 @@ import zymkey
 wallet_name = "MyExampleWallet"
 # -----------------------------Create a oversight wallet example-------------------------------------------------------------
 
-# Create our bip32 master seed
+# Create our BIP32 master seed
 print("Create our normal wallet...")
 master_seed_slot = zymkey.client.gen_wallet_master_seed(key_type = "secp256k1", master_gen_key = "", wallet_name = MyExampleWallet)
 print("Done! Master seed slot:%i" % (master_seed_slot))
@@ -102,7 +102,7 @@ hardened_node_pub_key = zymkey.client.get_public_key(child_slot)
 print("Done! m/44/60/0/0' slot:%i" % (child_slot))
 
 # Now that we have the public key and chain code, can create the oversight wallet.
-# Note that the oversight wallet can exist at the same time as our bip32 wallet. But needs a different wallet name, as wallet names are unique.
+# Note that the oversight wallet can exist at the same time as our BIP32 wallet. But needs a different wallet name, as wallet names are unique.
 print("Create our oversight wallet...")
 oversight_slot = zymkey.client.gen_oversight_wallet(key_type = "secp256k1", pub_key = hardened_node_pub_key, chain_code = chain_code, node_addr = "m/44/60/0/0'", wallet_name = "Oversight_wallet")
 print("Done! oversight_slot slot:%i" % (oversight_slot))
