@@ -33,6 +33,23 @@ The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) 
  * 12V Power Supply
  * USB drive with SSH keys necessary for SSH login
 
+{{< cardpane >}}
+{{% card header="Zymbit SCM Internals" %}}
+{{< figure
+    src="scm_block.png"
+    alt=""
+    caption="High Level Features"
+    >}}
+{{% /card %}}
+{{% card header="SCM Layout" %}}
+{{< figure
+    src="scm_layer.png"
+    alt=""
+    caption="Layout Overview"
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
+    
 ##### Highlights
 * 100% pin compatible with RPi CM4, all configurations.
 * 100% code compatible with RPi
