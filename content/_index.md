@@ -11,4 +11,4 @@ layout: single
 # url: "/"
 ---
 
-Welcome to Zymbit’s Documentation Site. Here, you will find all the resources you need to learn about and to use all Zymbit products.
+Welcome to Zymbit’s Documentation Site. Here, you will find all the resources you need to learn about and to use all Zymbit products.This is an early access version of the site designed to support the Secure Compute Module Alpha program. If you are using standard product, please go to [docs.zymbit.com](https://docs.zymbit.com/)
