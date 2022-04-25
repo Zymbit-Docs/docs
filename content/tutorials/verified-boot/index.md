@@ -1,6 +1,6 @@
 ---
 title: "Working with SCM Verified Boot"
-linkTitle: "Verified Boot (SCM Early Access)"
+linkTitle: "Verified Boot (SCM Alpha)"
 description: ""
 date: "2022-03-28"
 lastmod: ""
@@ -39,7 +39,7 @@ All files in the Manifest must reside within the /boot partition. File paths in 
 * Zymbit Modules that support this feature:
     * [SCM Early Access](https://www.zymbit.com/secure-compute-node/)
 
-* All code snippets written in this article are written using Python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](/api)
+* All code snippets written in this article are written using Python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](../../api)
 
 ### Example Application
 
@@ -95,19 +95,23 @@ elif args.delete:
 Manifest.show()
 ```
 
-### Display the Current Manifest
+### Working with the Manifest
 
 Running the example with no parameters will display the current contents of the Manifest. The default Manifest as shipped contains:
-
 
 ```
 $ ./manifest.py
 Manifest:
 ---------
-config.txt
+bcm2711-rpi-cm4.dtb
+bootcode.bin
 cmdline.txt
+config.txt
+initrd.img
+kernel7l.img
 start4.elf
-kernel.img
+zymbit_mac_address
+overlays/vc4-kms-v3d.dtbo
 ```
 
 To add a file to the Manifest, run the example script with the --add option and give it a filepath to a file in /boot. We'll create a sample file by copying /etc/hosts,
@@ -117,10 +121,15 @@ $ sudo cp /etc/hosts /boot/sample.txt
 $ ./manifest.py --add sample.txt
 Manifest:
 ---------
-config.txt
+bcm2711-rpi-cm4.dtb
+bootcode.bin
 cmdline.txt
+config.txt
+initrd.img
+kernel7l.img
 start4.elf
-kernel.img
+zymbit_mac_address
+overlays/vc4-kms-v3d.dtbo
 sample.txt
 ```
 
@@ -128,14 +137,25 @@ The SCM will create a signature for the file `sample.txt` and store it internall
 
 You can test this out:
 
- * First, after adding `sample.txt` to the Manifest, reboot. The system should boot normally.
- * Next, edit `sample.txt` and reboot. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 20 flashes, three times.
- * Revert the sample.txt back to it's original contents. Reboot should return to normal.
+ * First, after adding `sample.txt` to the Manifest and power cycle. The system should boot normally.
+ * Next, edit `/boot/sample.txt` and power cycle. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 20 flashes, three times. For Alpha, the SCM will boot up and allow you to recover. 
 
-TODO:
+There are three ways you can remedy the verification failure:
+ 
+ * Edit `/boot/sample.txt` and revert back to its original contents.
+ * Update the Manifest to sync up the current contents of the file with the Manifest
 
-*  Add example of deleting file
-*  Add example of updating file
-*  Add example using an alternative slot ! 0
+    `./manifest.py --update sample.txt`
+    
+ * Remove the file from the Manifest with `./manifest.py --delete
+
+    `./manifest.py --delete sample.txt`
+
+The next powercycle should boot with the normal sequence - it should not flash the 20 flashes, three times sequence.
+
+### Specifying a Different Slot
+
+Any of the SCM key slots can be used for the sign/verify functions. Slot 0 is used by default. The example above will take alternative slot numbers. Slots 0-13 are always available. To use a slot in the key store (Slots 16-528) you would need to change the above script to first include generating a key for that slot. See the [API Documentation](../../api).
+
 
 
