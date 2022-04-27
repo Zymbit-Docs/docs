@@ -59,6 +59,7 @@ The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) 
 * Pre-load with customer software
 * Pre-defined file manifest & policies
 * Custom MAC OUID blocks available
+* Optional embedded hardware wallet with SLIP39-Shamir's Secret Sharing
 
 ##### Layers of Security
 * Verified boot
