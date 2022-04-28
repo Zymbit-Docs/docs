@@ -78,6 +78,10 @@ Also note that this oversight wallet starts from the " 0' " index of the previou
 # Full Code Example
 
 ```plaintext
+#!/usr/bin/python3
+
+import zymkey
+
 # -----------------------------Create a oversight wallet example-------------------------------------------------------------
 wallet_name = "MyExampleWallet"
 # Create our BIP32 master seed
