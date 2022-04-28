@@ -3,7 +3,7 @@ title: "Creating an Oversight (Read Only) Wallet"
 linkTitle: "Oversight Wallet"
 description: ""
 date: "2022-02-22"
-lastmod: "2022-02-22"
+lastmod: "2022-04-28"
 draft: false
 weight: 80
 images: []
@@ -78,16 +78,11 @@ Also note that this oversight wallet starts from the " 0' " index of the previou
 # Full Code Example
 
 ```plaintext
-#!/usr/bin/python3
-
-import zymkey
-
-wallet_name = "MyExampleWallet"
 # -----------------------------Create a oversight wallet example-------------------------------------------------------------
-
+wallet_name = "MyExampleWallet"
 # Create our BIP32 master seed
 print("Create our normal wallet...")
-master_seed_slot = zymkey.client.gen_wallet_master_seed(key_type = "secp256k1", master_gen_key = "", wallet_name = MyExampleWallet)
+master_seed_slot = zymkey.client.gen_wallet_master_seed(key_type = "secp256k1", master_gen_key = "", wallet_name=wallet_name)
 print("Done! Master seed slot:%i" % (master_seed_slot))
 
 # Oversight wallet requires the public key and chain code of the last hardened node in a wallet address.
@@ -108,4 +103,4 @@ oversight_slot = zymkey.client.gen_oversight_wallet(key_type = "secp256k1", pub_
 print("Done! oversight_slot slot:%i" % (oversight_slot))
 
 # -----------------------------------------------------------------------------------------------------------------------------
-```
+
