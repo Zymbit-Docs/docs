@@ -36,7 +36,7 @@ SLIP39 generates groups and each of these groups can contain its own system of m
 
 #### Useful Resources:
 
-* [SLIP39](https://github.com/satoshilabs/SLIPs/blob/master/SLIP-0039.md)
+* [SLIP39](https://github.com/satoshilabs/slips/blob/master/slip-0039.md)
 
 ### Prerequisites
 
