@@ -12,7 +12,7 @@ toc: true
 ### **Getting Started with the Secure Compute Module (SCM) Alpha Release**
 April 22, 2022
 
-The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) and all Zymbit software. The root filesystem is already encrypted. A default set of boot files are configured to use Zymbit Verified Boot mechanism.
+The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) and all Zymbit software. The root filesystem is already encrypted. A default set of boot files are configured to use Zymbit Verified Boot mechanism. Designed for embedded security. Includes a programmable hardware wallet.
 
 {{< cardpane >}}
 {{% card header="SCM Alpha Kit Components" %}}
@@ -59,7 +59,7 @@ The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) 
 * Pre-load with customer software
 * Pre-defined file manifest & policies
 * Custom MAC OUID blocks available
-* Optional embedded hardware wallet with SLIP39-Shamir's Secret Sharing
+* Embedded hardware wallet with SLIP39-Shamir's Secret Sharing
 
 ##### Layers of Security
 * Verified boot
