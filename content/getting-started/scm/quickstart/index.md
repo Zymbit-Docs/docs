@@ -27,7 +27,7 @@ The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) 
 ##### Items
  
  * Zymbit Secure Compute Module including Pi CM4
- * Raspberry Pi CM4/IO board
+ * Raspberry Pi CM4/IO board [Datasheet](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
  * Zymbit Perimeter Detect Cable
  * Zymbit External Battery
  * 12V Power Supply
