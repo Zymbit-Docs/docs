@@ -155,6 +155,7 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 #### Where to Next?
  * [Working with Verified Boot](../../../tutorials/verified-boot/)
  * [See API Documentation](../../../api/)
+ * [Securing with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
 ##### Support
