@@ -1,7 +1,7 @@
 ---
 title: "SCM (Alpha Release) Getting Started"
 linkTitle: "Getting Started"
-lastmod: "2022-04-20"
+lastmod: "2022-05-09"
 draft: false
 images: []
 weight: 5
@@ -10,7 +10,7 @@ toc: true
 
 -----
 ### **Getting Started with the Secure Compute Module (SCM) Alpha Release**
-April 22, 2022
+May 9, 2022
 
 The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) and all Zymbit software. The root filesystem is already encrypted. A default set of boot files are configured to use Zymbit Verified Boot mechanism. Designed for embedded security. Includes a programmable hardware wallet.
 
@@ -27,7 +27,7 @@ The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) 
 ##### Items
  
  * Zymbit Secure Compute Module including Pi CM4
- * Raspberry Pi CM4/IO board [Datasheet](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
+ * Raspberry Pi CM4 I/O board - [Datasheet](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
  * Zymbit Perimeter Detect Cable
  * Zymbit External Battery
  * 12V Power Supply
