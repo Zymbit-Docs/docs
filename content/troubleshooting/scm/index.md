@@ -51,16 +51,9 @@ For the Alpha Evaluation, much of the destructive functionality will be simulate
 -----
 ### Known Issues
 
-**Issue #91**: SCM: Low Power Last Gasp doesn't react initially if Supply power pulled then battery pulled.
+**Issue #93**: SCM: battery_voltage_threshold - bad window from 2.5V - 3.0V. Setting the low voltage threshold within the range of 2.5V to 3.0V should not be allowed but there is currently no check. Do not set the low voltage threshold to > 2.5 volts.
 
-Sequence to reproduce:
-* plug in battery, plug in power
-* set_battery_voltage_action(False, True)
-* lock_binding()
-* unplug power, wait 5 seconds, unplug battery, wait 5 seconds
-* plug in power
-* SCM does not self-destruct
-On the next powercycle without the battery connected, SCM self destructs
+**Issue #92**: SCM: Power up issues - Sometimes powering uo does not complete. The LED will either never come on or will stay on. Most likely related to supercapacitor charge. Workaround for alpha is to power down and allow 30 seconds to discharge prior to powering back up.
 
 **Issue #90**: SCM: zkifc stop/reset drops all USB devices except SCM. Causes problems when rebooting, setting tamper actions, and also during encryption. Workaround is to powercycle after any stop/reset of zkifc. Note: Configured headless precludes any issues that may surface with console I/O via a USB keyboard/mouse.
 
