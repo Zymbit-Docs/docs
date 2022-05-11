@@ -61,7 +61,10 @@ The Zymbit Secure Compute Module comprises a Zymbit Security Module + Hardware W
 * 100% pin compatible with RPi CM4, all configurations.
 * 100% code compatible with RPi
 * Easy to Scale
-* Pre-fuzzed, pre-encrypted file system (NOTE: *New images cannot be re-loaded via* `rpiboot`)
+* Pre-fuzzed, pre-encrypted file system
+{{% callout notice %}}
+The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field for Alpha. Please contact support@zymbit.com for assistance.
+{{% /callout %}}
 * Pre-loaded Linux kernel
 * Pre-load with customer software
 * Pre-defined file manifest & policies
