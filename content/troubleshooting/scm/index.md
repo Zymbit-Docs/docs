@@ -27,7 +27,13 @@ April 22, 2022
 
 #### Modifications from Standard Raspberry PI OS Lite
 
-The SCM ships with a pre-installed version of Raspberry PI OS Lite (legacy/buster32) with a more secure configuration. The table below summarizes changes made to the standard image. 
+The SCM ships with a pre-installed version of Raspberry PI OS Lite (legacy/buster32) with a more secure configuration.
+
+{{% callout notice %}}
+The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field for Alpha. Please contact support@zymbit.com if you require a different image.
+{{% /callout %}}
+
+The table below summarizes changes made to the standard image. 
 
 | Default | As Shipped |
 |------------------|--------------------------|
@@ -66,34 +72,35 @@ For the Alpha Evaluation, much of the destructive functionality will be simulate
 
 Common LED patterns:
 
-* Constant rapid blinking (waiting for host to connect)
-   * This indicates that your SCM is operational but has not bound to the host. If the SCM continues to blink this pattern, it could mean that there is a problem with the host Pi or that the SCM is not seen by the Pi.
-
 * Once every 3 seconds
-   * This indicates that your SCM is working and running.
+   * This indicates that your SCM is working and running.  
 
 * Three rapid blinks every 3 seconds
-   * This indicates the SCM is in Production Mode and is working and running.
+   * This indicates the SCM is in Production Mode and is working and running.  
+
+* Constant rapid blinking (waiting for host to connect)
+   * This indicates that your SCM is operational but has not bound to the host. If the SCM continues to blink this pattern, it could mean that there is a problem with the host Pi or that the SCM is not seen by the Pi.  
 
 * Rapid blinking then LED off permanently
-   * This indicates the SCM is in Production Mode but cannot bind with the RPi.  In Production Mode the binding with a particular Pi becomes permanent. Most likely cause for this is that the SCM or the PI has been swapped out. Also can indicate an improper salt file.
+   * This indicates the SCM is in Production Mode but cannot bind with the RPi.  In Production Mode the binding with a particular Pi becomes permanent. Most likely cause for this is that the SCM or the PI has been swapped out. Also can indicate an improper salt file.  
 
 The Zymkey has the following fatal LED structure.
-Preamble: 10 very rapid flashes
-Off for 1 second
-Main code: a number of 0.5 second flashes which define the main code
-Off for 1 second
-Optional subcode: a number of 0.5 second flashes which define the subcode
 
-The fatal LED sequence is repeated 3 times, after which the SAML21 reboots.
+- Preamble: 10 very rapid flashes
+- Off for 1 second
+- Main code: a number of 0.5 second flashes which define the main code
+- Off for 1 second
+- Optional subcode: a number of 0.5 second flashes which define the subcode
+
+The fatal LED sequence is repeated 3 times, after which the SCM reboots.
 
 | Main Code | Sub Code | Description |
 | ------ | ------ | ------ |
 | 5 | None | ATECC Serial number mismatch. Usually the result of the keys being erased due to a tamper breach with self-destruct policy. |
-| 6 | None | Digest of keys area of SAML21 flash have failed. Could be caused by a tamper breach (see 5: ZKFE_ATECC_ID) or a hardware failure caused by malfunctioning SAML21 flash. Also the result of Battery Voltage Threshold self_destruct action.|
-| 6 | subcode | Tamper detect event in self destruct mode while in developer mode. Subcode represents aggregate of all channels witnessed. [^3] |
-| 8 | None | Zymkey unable to send response back to host. Can be caused by overutilized host CPU which causes heartbeats to not be sent to Zymkey. |
-| 17 | None | Verified boot failure: at least one Verified boot file failed signature check. |
+| 6 | None | Digest of keys area of SCM flash have failed. Could be caused by a tamper breach or a hardware failure. Also the result of Battery Voltage Threshold self_destruct action.|
+| 6 | subcode | Tamper detect event in self destruct mode while in developer mode. Subcode represents aggregate of all channels witnessed. |
+| 8 | None | SCM unable to send response back to host. Can be caused by overutilized host CPU which causes heartbeats to not be sent to SCM. |
+| 17 | None | Verified Boot failure: at least one Verified Boot file failed signature check. |
 | 20 | 1 | Temperature below low boundary in self destruct mode in developer mode. |
 | 20 | 2 | Temperature above high boundary in self destruct mode in developer mode. |
 
