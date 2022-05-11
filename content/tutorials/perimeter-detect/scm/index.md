@@ -47,9 +47,11 @@ Prior to permanently binding your SCM to a specific host device, it can be confi
 
 ##### Response Choices
 
-A)  Do nothing (disable)
-B)  Notify host when perimeter breach occurs (default as shipped for SCM Alpha)
-C)  Destroy all key material (this essentially destroys any encrypted data or file system. Note: For SCM Alpha, complete destruction of the keys is disabled, even in Production Mode. Self-destruction is simulated by flashing a 6 flash sequenced 3 times, then recovering)
+A)  Do nothing (disable)  
+B)  Notify host when perimeter breach occurs (default as shipped for SCM Alpha)  
+C)  Destroy all key material (this essentially destroys any encrypted data or file system.  
+
+> Note: For SCM Alpha, complete destruction of the keys is disabled, even in Production Mode. Self-destruction is simulated by flashing a 6 flash sequenced 3 times, then recovering)  
 
 ### Test Perimeter Detect 
 **Developer Mode only**
@@ -165,13 +167,13 @@ SUCCESS: zkClose - 0
 ### Perimeter Detect Circuit Examples
 
 For best practices and examples of how to physically configure perimeter circuits: 
-[Learn more>](https://docs.zymbit.com/tutorials/perimeter-detect/examples)
+[Learn more>](../examples)
 
 ### Additional Self Destruct Policies
 
 SCM has two additional self destruct policies, independent of Perimeter Detect-- temperature and voltage level monitoring. For more information, visit [Python documentation](https://docs.zymbit.com/api/python_api/#setbatteryvoltageaction-45bcda8a) or [C documentation](https://docs.zymbit.com/api/c_api/#int--zkSetBatteryVoltageAction-f90f5fd1).
 
 ## Troubleshooting
-[Troubleshooting](https://docs.zymbit.com/troubleshooting/)  
+[Troubleshooting](../../../troubleshooting/)  
 [Community](https://community.zymbit.com/)
 
