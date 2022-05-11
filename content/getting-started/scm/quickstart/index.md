@@ -1,5 +1,5 @@
 ---
-title: "SCM Alpha Release - Getting Started"
+title: "SCM - Getting Started"
 linkTitle: "Getting Started"
 lastmod: "2022-05-11"
 draft: false
@@ -12,30 +12,30 @@ toc: true
 ### **Overview**
 May 11, 2022
 
-The SCM-Alpha kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is alpha-release which means there are a small number of features that have not been included, and a few known bugs that have not yet been resolved. Refer to [SCM Alpha Release Notes](../../../troubleshooting/scm/).
+The SCM Alpha kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is alpha-release which means there are a small number of features that have not been included, and a few known bugs that have not yet been resolved. Refer to [SCM Alpha Release Notes](../../../troubleshooting/scm/).
 
 ##### Contents of Kit
  
  * Zymbit Secure Compute Module including Pi CM4
- * [Raspberry Pi CM4 I/O board](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
+ * Raspberry Pi CM4 I/O board[(Datasheet)](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
  * Zymbit Perimeter Detect Cable
  * Zymbit External Battery
  * 12V Power Supply
  * USB drive with SSH keys necessary for SSH login
 
 {{< cardpane >}}
-{{% card header="Contents of Kit" %}}
+{{% card header="Contents" %}}
 {{< figure 
     src="SCM-Alpha-Kit-components-2.png"
     alt="SCM Alpha Kit"
-    caption="Contents of the SCM Alpha Kit"
+    caption=""
     >}}
 {{% /card %}}
 {{< /cardpane >}}
 
 ##### Secure Compute Module
 
-The Zymbit secure compute module comprises a Zymbit security module + hardware wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
+The Zymbit Secure Compute Module comprises a Zymbit Security Module + hardware wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
 
 {{< cardpane >}}
 {{% card header="SCM Physical Architecture" %}}
@@ -45,6 +45,9 @@ The Zymbit secure compute module comprises a Zymbit security module + hardware w
     caption=""
     >}}
 {{% /card %}}
+{{< /cardpane >}}
+
+{{< cardpane >}}
 {{% card header="SCM Functional Architecture" %}}
 {{< figure
     src="scm_block.png"
@@ -52,14 +55,13 @@ The Zymbit secure compute module comprises a Zymbit security module + hardware w
     caption=""
     >}}
 {{% /card %}}
-
 {{< /cardpane >}}
     
 ##### Highlights
 * 100% pin compatible with RPi CM4, all configurations.
 * 100% code compatible with RPi
 * Easy to Scale
-* Pre-fuzzed, pre-encrypted file system
+* Pre-fuzzed, pre-encrypted file system (NOTE: *New images cannot be re-loaded*)
 * Pre-loaded Linux kernel
 * Pre-load with customer software
 * Pre-defined file manifest & policies
