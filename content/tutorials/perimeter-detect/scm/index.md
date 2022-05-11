@@ -56,109 +56,49 @@ C)  Destroy all key material (this essentially destroys any encrypted data or fi
 ### Test Perimeter Detect 
 **Developer Mode only**
 
-To quickly test your perimeter detect setup, here are two samples of code using the Python and C API's. Both programs will wait for ten seconds to detect any perimeter breaches. Before running this script, connect the circuits using either the FPC or Pin headers and during the ten second pause in the script, breach the perimeter by unplugging the circuit wires from the Hat. The wait function should immediately exit and the script will finish.
+To quickly test your perimeter detect setup, here is sample code using the Python API. The program will wait for ten seconds to detect any perimeter breaches. Before running this script, connect the circuits using either the FPC or Pin headers and during the ten second pause in the script, breach the perimeter by unplugging the circuit wires. The wait function should immediately exit and the script will finish.
 
-Please specify the channel (0 or 1) you are testing in either set_perimeter_event_actions or zkSetPerimeterEventAction. In the API, perimeter circuit 2 (as shown in the above images) is defined as channel 1 and perimeter circuit 1 is defined as channel 0. As noted, for SCM Alpha, channel 0 and channel 1 have already been set to action_notify=True.
+Please specify the channel (0 or 1) you are testing in either set_perimeter_event_actions or zkSetPerimeterEventAction. In the API, perimeter circuit 2 (as shown in the above images) is defined as channel 1 and perimeter circuit 1 is defined as channel 0. As noted, for SCM Alpha, channel 0 and channel 1 have already been set to action_notify=True. NOTE: For Alpha, setting the Perimeter Event Action restarts `zkifc` which can lead to problems. For Alpha, please power cycle after changing the Perimeter Event settings.
 
-Examples for how to set for channel 0:
+Example for monitoring Perimeter Events
 <details>
 
 <summary>For Python</summary>
 
-<br>
-
-
 ```
+#!/usr/bin/python3
+
 import zymkey
+from datetime import datetime
+import time
 
-zymkey.client.clear_perimeter_detect_info()
-zymkey.client.set_perimeter_event_actions(0, action_notify=True, action_self_destruct=False)
-
-zymkey.client.wait_for_perimeter_event(timeout_ms=10000)
-perim_status_str = ""
-idx = 0
+# Get any existing events, including while powered down with battery in place
+print("Checking for existing events.")
 plst = zymkey.client.get_perimeter_detect_info()
+print("Perimeter 1 Timestamp: " + str(datetime.fromtimestamp(plst[0])) + "  [" + str(plst[0]) + "]")
+print("Perimeter 2 Timestamp: " + str(datetime.fromtimestamp(plst[1])) + "  [" + str(plst[1]) + "]")
 
-for p in plst:
-  if p:
-     perim_status_str += "Channel %d breach timestamp = %d\n" % (idx, p)
-  idx += 1
-print("Perimeter breach detected!\n" + perim_status_str)
-```
-</details>
+# Clear the events
+print("Clearing perimeter detect info...")
+zymkey.client.clear_perimeter_detect_info()
+time.sleep(2)
 
+# Loop waiting for events while up and running
+#while True:
+while input('Enter or (q)uit: ') != 'q':
+    try:
+        print("Waiting 10 secs for an event")
+        zymkey.client.wait_for_perimeter_event(timeout_ms=10000)
+        plst = zymkey.client.get_perimeter_detect_info()
+        print("Perimeter event detected!")
+        print("Perimeter 1 Timestamp: " + str(datetime.fromtimestamp(plst[0])) + "  [" + str(plst[0]) + "]")
+        print("Perimeter 2 Timestamp: " + str(datetime.fromtimestamp(plst[1])) + "  [" + str(plst[1]) + "]")
+        print("Clearing perimeter detect info...")
+        zymkey.client.clear_perimeter_detect_info()
+        time.sleep(2)
+    except zymkey.exceptions.ZymkeyTimeoutError:
+        print("No perimeter event detected. (Timed out)")
 
-<details>
-
-<summary>For C</summary>
-
-<br>
-
-```
-#include <stdio.h>
-#include "zk_app_utils.h"
-
-void check_code(int code, char* location)
-{
-  if (code < 0)
-  {
-    printf("FAILURE: %s - %d\n", location, code);
-  }
-  else if (code >= 0)
-  {
-    printf("SUCCESS: %s - %d\n", location, code);
-  }
-}
-
-int main()
-{
-  zkCTX zk_ctx;
-  int status = zkOpen(&zk_ctx);
-  check_code(status, "zkOpen");
-
-  status = zkClearPerimeterDetectEvents(zk_ctx);
-  check_code(status, "zkClearPerimeterDetectEvents");
-
-  status = zkSetPerimeterEventAction(zk_ctx, 0, ZK_PERIMETER_EVENT_ACTION_NOTIFY);
-  check_code(status, "zkSetPerimeterEventAction");
-
-  int p_code = zkWaitForPerimeterEvent(zk_ctx, 10000);
-  check_code(p_code, "zkWaitForPerimeterEvent");
-
-  uint32_t* timestamps_sec;
-  int num_timestamps;
-  status = zkGetPerimeterDetectInfo(zk_ctx, &timestamps_sec, &num_timestamps);
-  check_code(status, "zkGetPerimeterDetectInfo");
-
-  //There was a perimeter event/breach.
-  if (p_code == 0)
-  {
-    printf("Perimeter breach detected!\n");
-    for(int i=0; i<num_timestamps; i++)
-    {
-      printf("Channel %d breach timestamp = %d\n", i, timestamps_sec[i]);
-    }
-    printf("\n");
-  }
-
-  status = zkClose(zk_ctx);
-  check_code(status, "zkClose");
-  return 0;
-}
-```
-
-To compile
-```
-gcc -I /usr/include/zymkey/ -l zk_app_utils <Your Program>
-```
-If the perimeter is not breached, zkWaitForPerimeterEvent will return a failure code indicating a timeout occurred and no breach was detected.
-```
-SUCCESS: zkOpen - 0
-SUCCESS: zkSetPerimeterEventAction - 0
-FAILURE: zkWaitForPerimeterEvent - -110
-SUCCESS: zkGetPerimeterDetectInfo - 0
-SUCCESS: zkClearPerimeterDetectEvents - 0
-SUCCESS: zkClose - 0
 ```
 </details>
 
