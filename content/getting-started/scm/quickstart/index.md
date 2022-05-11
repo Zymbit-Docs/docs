@@ -17,7 +17,7 @@ The SCM Alpha kit provides all the hardware and software components required to 
 ##### Contents of Kit
  
  * Zymbit Secure Compute Module including Pi CM4
- * Raspberry Pi CM4 I/O board[(Datasheet)](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
+ * Raspberry Pi CM4 I/O board[ (Datasheet)](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
  * Zymbit Perimeter Detect Cable
  * Zymbit External Battery
  * 12V Power Supply
@@ -35,7 +35,7 @@ The SCM Alpha kit provides all the hardware and software components required to 
 
 ##### Secure Compute Module
 
-The Zymbit Secure Compute Module comprises a Zymbit Security Module + hardware wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
+The Zymbit Secure Compute Module comprises a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
 
 {{< cardpane >}}
 {{% card header="SCM Physical Architecture" %}}
@@ -61,7 +61,7 @@ The Zymbit Secure Compute Module comprises a Zymbit Security Module + hardware w
 * 100% pin compatible with RPi CM4, all configurations.
 * 100% code compatible with RPi
 * Easy to Scale
-* Pre-fuzzed, pre-encrypted file system (NOTE: *New images cannot be re-loaded*)
+* Pre-fuzzed, pre-encrypted file system (NOTE: *New images cannot be re-loaded via* `rpiboot`)
 * Pre-loaded Linux kernel
 * Pre-load with customer software
 * Pre-defined file manifest & policies
