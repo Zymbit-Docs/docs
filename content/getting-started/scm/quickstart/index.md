@@ -94,7 +94,7 @@ Before getting started your will need to register your device to receive a uniqu
 [Register](https://forms.zoho.com/phil12/form/SecureComputeModuleAlphaDeviceRegistration/)
 
 ![register](reg_barcode.png)
-#### 2) Power On and Bootup
+##### 2) Power On and Bootup
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. SSH login is restricted to only use keys.
  
  * Monitor the Blue LED on the Zymbit SCM module. It will go through the following stages:
@@ -114,7 +114,7 @@ Before getting started your will need to register your device to receive a uniqu
 {{% /card %}}
 {{< /cardpane >}}
 
-#### 3) Login via SSH with key
+##### 3) Login via SSH with key
 The SSH key is included on the USB drive in two formats: PPK for use with Putty and PEM for standard linux ssh
 
 <details>
@@ -123,7 +123,7 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
    SSH login with Putty
 </summary>
     
-* Copy PPK key from USB drive to your host
+* Copy PPK key file zscn.ppk from USB drive to your host
 
 {{< cardpane >}}
 {{% card header="Open PuTTY" %}}
@@ -163,9 +163,9 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
    SSH login from Linux CLI
 </summary>
 
-    1. Copy PEM key from USB drive to your host
-    2. `ssh -i zscm.pem zymbit@zymbit-dev`
-    3. Present your passphrase when prompted
+1) Copy PEM key file zscn.pem from USB drive to your host  
+2) `ssh -i zscn.pem zymbit@zymbit-dev`  
+3) Present your passphrase when prompted  
 
 </details>
 
@@ -177,7 +177,7 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
     
-##### Support
+#### Support
     
  * [Release Notes](../../../troubleshooting/scm/)
  * [Contact Support](mailto:support@zymbit.com)
