@@ -21,6 +21,8 @@ Perimeter Detect provides two additional layers of physical security that can be
 
 SCM includes two independent Perimeter Loops that can be configured to meet different applications.
 
+![HSM Perimeter Detect](../SCM-perim-detect-cable.png) 
+
 
 When a Perimeter Loop is breached, SCM can be configured (at time of binding) to respond with different "Actions", depending upon your security policy. 
 
