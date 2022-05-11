@@ -1,7 +1,7 @@
 ---
-title: "SCM (Alpha Release) Getting Started"
+title: "SCM Alpha Release - Getting Started"
 linkTitle: "Getting Started"
-lastmod: "2022-05-09"
+lastmod: "2022-05-11"
 draft: false
 images: []
 weight: 5
@@ -9,13 +9,22 @@ toc: true
 ---
 
 -----
-### **Getting Started with the Secure Compute Module (SCM) Alpha Release**
-May 9, 2022
+### **Overview**
+May 11, 2022
 
-The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) and all Zymbit software. The root filesystem is already encrypted. A default set of boot files are configured to use Zymbit Verified Boot mechanism. Designed for embedded security. Includes a programmable hardware wallet.
+The SCM-Alpha kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is alpha-release which means there are a small number of features that have not been included, and a few known bugs that have not yet been resolved. Refer to [SCM Alpha Release Notes](../../../troubleshooting/scm/).
+
+##### Contents of Kit
+ 
+ * Zymbit Secure Compute Module including Pi CM4
+ * [Raspberry Pi CM4 I/O board](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
+ * Zymbit Perimeter Detect Cable
+ * Zymbit External Battery
+ * 12V Power Supply
+ * USB drive with SSH keys necessary for SSH login
 
 {{< cardpane >}}
-{{% card header="SCM Alpha Kit Components" %}}
+{{% card header="Contents of Kit" %}}
 {{< figure 
     src="SCM-Alpha-Kit-components-2.png"
     alt="SCM Alpha Kit"
@@ -24,30 +33,26 @@ The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) 
 {{% /card %}}
 {{< /cardpane >}}
 
-##### Items
- 
- * Zymbit Secure Compute Module including Pi CM4
- * Raspberry Pi CM4 I/O board - [Datasheet](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
- * Zymbit Perimeter Detect Cable
- * Zymbit External Battery
- * 12V Power Supply
- * USB drive with SSH keys necessary for SSH login
+##### Secure Compute Module
+
+The Zymbit secure compute module comprises a Zymbit security module + hardware wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
 
 {{< cardpane >}}
-{{% card header="Zymbit SCM Internals" %}}
-{{< figure
-    src="scm_block.png"
-    alt=""
-    caption="High Level Features"
-    >}}
-{{% /card %}}
-{{% card header="SCM Layout" %}}
+{{% card header="SCM Physical Architecture" %}}
 {{< figure
     src="scm_layer.png"
     alt=""
-    caption="Layout Overview"
+    caption=""
     >}}
 {{% /card %}}
+{{% card header="SCM Functional Architecture" %}}
+{{< figure
+    src="scm_block.png"
+    alt=""
+    caption=""
+    >}}
+{{% /card %}}
+
 {{< /cardpane >}}
     
 ##### Highlights
@@ -75,8 +80,16 @@ The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) 
 * LPDDR4 RAM: 1G to 8G, eMMC: 0G to 32G
 * 2.4/5.0GHz Wi-Fi & Bluetooth
 
+### **Configure and Setup your SCM**
 
-#### Power On and Bootup
+##### 1) Register your device, receive SSH passphrase
+
+Before getting started your will need to register your device to receive a unique passphrase that has been associated with your device by Zymbit.  Register here:
+
+[Register](https://forms.zoho.com/phil12/form/SecureComputeModuleAlphaDeviceRegistration/)
+
+![register](reg_barcode.png)
+#### 2) Power On and Bootup
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. SSH login is restricted to only use keys.
  
  * Monitor the Blue LED on the Zymbit SCM module. It will go through the following stages:
@@ -96,8 +109,7 @@ The SCM Alpha comes pre-loaded with Raspberry Pi OS Lite (legacy buster 32 bit) 
 {{% /card %}}
 {{< /cardpane >}}
 
-
-#### Login via SSH with key
+#### 3) Login via SSH with key
 The SSH key is included on the USB drive in two formats: PPK for use with Putty and PEM for standard linux ssh
 
 <details>
@@ -152,13 +164,16 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 
 </details>
 
-#### Where to Next?
+#### Using SCM: API and Examples
+    
+ * [See API Documentation](../../../api/)   
  * [Working with Verified Boot](../../../tutorials/verified-boot/)
- * [See API Documentation](../../../api/)
- * [Securing with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
+ * [Securing the SCM further with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
+    
 ##### Support
+    
  * [Release Notes](../../../troubleshooting/scm/)
  * [Contact Support](mailto:support@zymbit.com)
 
