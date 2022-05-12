@@ -114,8 +114,6 @@ Make sure to write the BIP39 mnemonic and store it somewhere safe! The master se
 The function `gen_wallet_master_seed` returns the allocated master seed slot and the BIP39 mnemonic if the bool flag is set True
 
 ```
-import zymkey
-
 # Create a master seed and return the BIP39 mnemonic
 master_key_generator = bytearray("3xampleM@sterK3Y", 'utf-8')
 wallet_name = "MyExampleWallet"
@@ -183,14 +181,12 @@ Keep in mind that this only restores the master seed. The children nodes will ha
 The function `restore_wallet_master_seed` returns the allocated key slot on success.
 
 ```
-import zymkey
-
 # Remove the master seed
 zymkey.client.remove_key(master_slot)
 
 # Restore the master seed with our previous written down BIP39 mnemonic!
 use_BIP39_recovery = zymkey.RecoveryStrategyBIP39()
-restored_seed_slot = zymkey.client.restore_wallet_master_seed("nistp256", bytearray("3xampleM@sterK3Y", 'utf-8'), "MyExampleWallet", use_BIP39_recovery, BIP39_mnemonic)
+restored_seed_slot = zymkey.client.restore_wallet_master_seed("secp256k1", bytearray("3xampleM@sterK3Y", 'utf-8'), "MyExampleWallet", use_BIP39_recovery, BIP39_mnemonic)
 print("Restored slot:%s" % (restored_seed_slot,))
 ```
 
