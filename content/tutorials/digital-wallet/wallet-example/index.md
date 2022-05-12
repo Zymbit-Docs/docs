@@ -94,7 +94,7 @@ print("Key Slot:%s" % (key_slot,))
 zymkey.client.remove_key(master_slot)
 
 # Restore the master seed with our previous written down BIP39 mnemonic!
-restored_seed_slot = zymkey.client.restore_wallet_master_seed("nistp256", bytearray("3xampleM@sterK3Y", 'utf-8'), wallet_name, use_BIP39_recovery, BIP39_mnemonic)
+restored_seed_slot = zymkey.client.restore_wallet_master_seed("secp256k1", bytearray("3xampleM@sterK3Y", 'utf-8'), wallet_name, use_BIP39_recovery, BIP39_mnemonic)
 print("Restored slot:%s" % (restored_seed_slot,))
 
 # Clean up the example slots
