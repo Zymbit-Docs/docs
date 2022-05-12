@@ -70,8 +70,9 @@ import zymkey
 # Create a master seed and return the bip39 mnemonic
 master_key_generator = bytearray("3xampleM@sterK3Y", 'utf-8')
 wallet_name = "MyExampleWallet"
+
 # Use the BIP39 recovery strategy to tell zymkey to return a mnemonic. Takes a base 64 encoded string for a bip39 passphrase. Can be empty string.
-use_bip39_recovery = zymkey.RecoveryStrategyBip39("aGk=")
+use_bip39_recovery = zymkey.RecoveryStrategyBip39()
 master_slot, bip39_mnemonic = zymkey.client.gen_wallet_master_seed("secp256k1", master_key_generator, wallet_name, use_bip39_recovery)
 print("Master Slot:%s\nBip39 mnemonic (write this down!):\n%s" % (master_slot, bip39_mnemonic))
 
@@ -86,14 +87,14 @@ node_addr = zymkey.client.get_wallet_node_addr(child_slot)
 print("Node index:'%s' Wallet Name:'%s' Master Slot:'%s'" % (node_addr[0], node_addr[1], node_addr[2]))
 
 # Get the key slot of the child key using our previous master key slot and wallet name
-key_slot = zymkey.client.get_wallet_key_slot(node_addr[0],"MyExampleWallet", master_slot)
+key_slot = zymkey.client.get_wallet_key_slot(node_addr[0],wallet_name, master_slot)
 print("Key Slot:%s" % (key_slot,))
 
 # Remove the master seed
 zymkey.client.remove_key(master_slot)
 
 # Restore the master seed with our previous written down bip39 mnemonic!
-restored_seed_slot = zymkey.client.restore_wallet_master_seed_from_bip39_mnemonic("nistp256", bytearray("3xampleM@sterK3Y", 'utf-8'), "MyExampleWallet", "aGk=", bip39_mnemonic)
+restored_seed_slot = zymkey.client.restore_wallet_master_seed("secp256k1", bytearray("3xampleM@sterK3Y", 'utf-8'), wallet_name, use_bip39_recovery, bip39_mnemonic)
 print("Restored slot:%s" % (restored_seed_slot,))
 
 # Clean up the example slots
@@ -116,9 +117,10 @@ The function `gen_wallet_master_seed` returns the allocated master seed slot and
 master_key_generator = bytearray("3xampleM@sterK3Y", 'utf-8')
 wallet_name = "MyExampleWallet"
 # Use the bip39 recovery strategy to tell zymkey to return a mnemonic. Takes a base 64 encoded string for a bip39 passphrase. Can be empty string.
-use_bip39_recovery = zymkey.RecoveryStrategyBip39("aGk=")
+use_bip39_recovery = zymkey.RecoveryStrategyBip39()
 master_slot, bip39_mnemonic = zymkey.client.gen_wallet_master_seed("secp256k1", master_key_generator, wallet_name, use_bip39_recovery)
-print("Master Slot:%s\nBip39 mnemonic (write this down!):\n%s" % (master_slot, bip39_mnemonic)
+print("Master Slot:%s\nBip39 mnemonic (write this down!):\n%s" % (master_slot, bip39_mnemonic))
+
 ```
 
 ### Generating a child Key
@@ -183,7 +185,8 @@ The function `restore_wallet_master_seed_from_bip39_mnemonic` returns the alloca
 zymkey.client.remove_key(master_slot)
 
 # Restore the master seed with our previous written down bip39 mnemonic!
-restored_seed_slot = zymkey.client.restore_wallet_master_seed_from_bip39_mnemonic("nistp256", bytearray("3xampleM@sterK3Y", 'utf-8'), "MyExampleWallet", "aGk=", bip39_mnemonic)
+use_bip39_recovery = zymkey.RecoveryStrategyBip39()
+restored_seed_slot = zymkey.client.restore_wallet_master_seed("secp256k1", bytearray("3xampleM@sterK3Y", 'utf-8'), "MyExampleWallet", use_bip39_recovery, bip39_mnemonic)
 print("Restored slot:%s" % (restored_seed_slot,))
 ```
 
