@@ -55,6 +55,7 @@ The table below summarizes changes made to the standard image.
 | Hostname is `raspberrypi` | Hostname changed to `zymbit-dev` |
 | Default user of `pi` | Default user is `zymbit`. User `pi` removed |
 | MAC with Pi OID | MAC uses Zymbit OID |
+| sudo password free | sudo requires a password (*zymkey) |
 
 -----
 ### SCM Alpha Non-Standard Functionality
@@ -95,6 +96,7 @@ The fatal LED sequence is repeated 3 times, after which the SCM reboots.
 
 | Main Code | Sub Code | Description |
 | ------ | ------ | ------ |
+| 4 | None | Low voltage threshold event |
 | 5 | None | ATECC Serial number mismatch. Usually the result of the keys being erased due to a tamper breach with self-destruct policy. |
 | 6 | None | Digest of keys area of SCM flash have failed. Could be caused by a tamper breach or a hardware failure. Also the result of Battery Voltage Threshold self_destruct action.|
 | 6 | subcode | Tamper detect event in self destruct mode while in developer mode. Subcode represents aggregate of all channels witnessed. |
