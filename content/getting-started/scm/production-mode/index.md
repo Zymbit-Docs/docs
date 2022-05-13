@@ -4,12 +4,24 @@ description: ""
 aliases:
     - /quickstart/production-mode/scm/
 date: "2022-04-29"
-lastmod: ""
+lastmod: "2022-05-13"
 draft: false
 images: []
 weight: 1000
 toc: true
 ---
+
+{{% callout notice %}} For supporting the SCM Alpha program, the Destructive function of actions in Production Mode are simulated with LED flash sequences and recovery rather than destruction to allow for experimentation with the security functions. The LED sequence will repeat three times and then the system will recover. The table below summarizes the differences unique to the Alpha program vs standard product.
+
+| Event | Development Mode | Alpha Production Mode | Standard Production Mode |
+| :----: | :----: | :----: | :----: |
+| Tamper | Nothing | 6 flash + channel | Destroy all keys |
+| Low Temp | | | |
+| High Temp | | | |
+| Low Voltage | | | |
+| Verified Boot | | | |
+
+{{% /callout %}}
 
 {{< callout destructive >}}
 THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FOLLOWING:
