@@ -20,7 +20,7 @@ For supporting the SCM Alpha program, the Destructive function of actions in Pro
 | Tamper Event| No action | 6 flash + channel sub-flash | Destroy all keys | Immediately |
 | Low Temp Threshold | 20 flash + 1 sub-flash | 20 flash + 1 sub-flash | Destroy all keys | Immediately |
 | High Temp Threshold | 20 flash + 2 sub-flash | 20 flash + 2 sub-flash | Destroy all keys | Immediately |
-| Low Voltage Threshold | No action | 6 flash | Destroy all keys | Power Off |
+| Low Voltage Threshold | No action | 4 flash | Destroy all keys | Power Off |
 | Verified Boot Failure | 20 flash + 9 sub-flash | 20 flash + 9 sub-flash | Destroy all keys | On Boot |
 
 {{< callout destructive >}}
