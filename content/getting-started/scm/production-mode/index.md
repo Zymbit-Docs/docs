@@ -11,24 +11,32 @@ weight: 1000
 toc: true
 ---
 
-{{% callout notice %}} For supporting the SCM Alpha program, the Destructive function of actions in Production Mode are simulated with LED flash sequences and recovery rather than destruction to allow for experimentation with the security functions. The LED sequence will repeat three times and then the system will recover. The table below summarizes the differences unique to the Alpha program vs standard product.
-
-| Event | Development Mode | Alpha Production Mode | Standard Production Mode |
-| :----: | :----: | :----: | :----: |
-| Tamper | Nothing | 6 flash + channel | Destroy all keys |
-| Low Temp | | | |
-| High Temp | | | |
-| Low Voltage | | | |
-| Verified Boot | | | |
-
+{{% callout notice %}} 
+For supporting the SCM Alpha program, the Destructive function of actions in Production Mode are simulated with LED flash sequences and recovery rather than destruction to allow for experimentation with the security functions. The LED sequence will repeat three times and then the system will recover. The table below summarizes the differences unique to the Alpha program vs standard product.
 {{% /callout %}}
+
+| Event | Development Mode | Alpha Production Mode | Standard Production Mode | Triggers |
+| :----: | :----: | :----: | :----: |
+| Tamper Event| No action | 6 flash + channel sub-flash | Destroy all keys | Immediately |
+| Low Temp Threshold | 20 flash + 1 sub-flash | 20 flash + 1 sub-flash | Destroy all keys | Immediately |
+| High Temp Threshold | 20 flash + 2 sub-flash | 20 flash + 2 sub-flash | Destroy all keys | Immediately |
+| Low Voltage Threshold | No action | 6 flash | Destroy all keys | No main power |
+| Verified Boot Failure | 20 flash + 9 sub-flash | 20 flash + 9 sub-flash | Destroy all keys | On Boot |
 
 {{< callout destructive >}}
 THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FOLLOWING:
 
-* Your specific SCM will be **permanently** locked to the specific host device.
-* It will be impossible to move or bind your SCM to another device. There are no factory resets, masterkeys, or other forms of recovery.
 * If you are using the *Perimeter Detect* features, then the sequence in which you arm and disarm this feature is very important. Be sure to carefully follow the process steps below.
+* Once locked, the Event Action settings are limited in the following way:
+
+| Event | Setting |
+| :----: | :----- |
+| Tamper | Once after locked |
+| Low Temp Threshold | Must be set prior to locking |
+| High Temp Threshold | Must be set prior to locking |
+| Low Voltage Threshold | Must be set prior to locking |
+| Verified Boot Failure | TBD |
+
 * Once you have locked your SCM into Production Mode, Zymbit cannot guarantee its operation if you subsequently do a major distribution upgrade (e.g. Raspbian Buster to Bullseye). [Contact Zymbit for more information.](https://www.zymbit.com/contact-us/)
 
 If you decide that you are not ready for permanent binding, leave the SCM in developer mode.
@@ -37,36 +45,26 @@ If you decide that you are not ready for permanent binding, leave the SCM in dev
 
 When you have completed your development work with the SCM and are ready to deploy your system into the field, we recommend that you permanently bind your SCM to a specific host device.
 
-{{< resource_link "reference/binding" >}}
-SCM generates a unique Device ID by measuring certain attributes of the specific host and the HSM6 itself to permanently associate the two devices.
-{{< /resource_link >}}
-
 ### Summary of Steps
 
 Develop your application
-* [ ] Ensure your host has all the necessary prerequisites in place to interface with the SCM and that it will be able to run your software application.
+[ ] Ensure your host has all the necessary prerequisites in place to interface with the SCM and that it will be able to run your software application.
 
 Activate Production Mode
-* [ ] Permanently bind your SCM to the host device.
+[ ] Permanently bind your SCM to the host device.
 
 ## Develop your application
 
-To begin, ensure that you have followed the Getting Started guide for your HSM6 carefully to install the prerequisite client software:
+The following steps should be complete:
 
-{{< resource_link "getting-started/scm" >}}
-Getting started with the Secure Compute Module (SCM).
-{{< /resource_link >}}
-
-To reiterate, before you continue, the following steps should be complete:
-
-* [ ] Install a battery on the SCM.
-* [ ] Install all necessary software for your application on the host and establish temporary binding in development mode.
+[ ] Install a battery on the SCM.
+[ ] Install all necessary software for your application on the host and establish temporary binding in development mode.
 
 After these steps have been completed, you are ready to prepare your device for permanent binding.
 
 ### Prepare *Perimeter Detect*
 
-The `Perimeter Event Actions` for your SCM should be set to `none` or `notify` only. If your SCM's action mode is set to `selfdestruct`, you might render your useless while attempting to activate Production Mode.
+The `Perimeter Event Actions` for your SCM should be set to `none` or `notify` only. If your SCM's action mode is set to `self_destruct`, you might render your useless while attempting to activate Production Mode.
 
 {{< resource_link "tutorials/perimeter-detect/scm/" >}}
 Understand how to use the SCM's perimeter detect features.
@@ -83,7 +81,7 @@ zymkey.client.clear_perimeter_detect_info()"
 
 ### Prepare your application
 
-You should then install your application on your host SBC (in the encrypted volume, if applicable).
+You should then install your application on your host SBC. The SCM root partition is pre-encrypted and is secured by the SCM itself.
 
 ### Test, debug, and test again
 
@@ -95,7 +93,7 @@ Test the functionality of your application thoroughly to ensure it is free of ma
 
 ## Activate Production Mode
 
-To put the SCM into Production Mode only requires a function call followed by a reboot.
+To put the SCM into Production Mode only requires a function call followed by a power cycle.
 
 The API function lock_binding puts the HSM into Production Mode. Below are three examples which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to Production Mode.
 
@@ -247,7 +245,7 @@ print("Binding is locked: " + str(tup[0]))
 </details>
 
 {{< callout warning >}}
-Do not proceed without completing the steps outlined above, including setting the `Perimeter Event Actions` to `none` or `notify`.
+Do not proceed without completing the steps outlined above, including setting the `Perimeter Event Actions` to `none` or `notify`. Prior to setting the Bind Lock.
 {{< /callout >}}
 
 
