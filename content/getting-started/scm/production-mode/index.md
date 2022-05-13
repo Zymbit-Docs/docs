@@ -16,41 +16,42 @@ For supporting the SCM Alpha program, the Destructive function of actions in Pro
 {{% /callout %}}
 
 | Event | Development Mode | Alpha Production Mode | Standard Production Mode | Triggers |
-| :----: | :----: | :----: | :----: |
+| :---- | :---- | :---- | :---- | :---- |
 | Tamper Event| No action | 6 flash + channel sub-flash | Destroy all keys | Immediately |
 | Low Temp Threshold | 20 flash + 1 sub-flash | 20 flash + 1 sub-flash | Destroy all keys | Immediately |
 | High Temp Threshold | 20 flash + 2 sub-flash | 20 flash + 2 sub-flash | Destroy all keys | Immediately |
-| Low Voltage Threshold | No action | 6 flash | Destroy all keys | No main power |
+| Low Voltage Threshold | No action | 6 flash | Destroy all keys | Power Off |
 | Verified Boot Failure | 20 flash + 9 sub-flash | 20 flash + 9 sub-flash | Destroy all keys | On Boot |
 
 {{< callout destructive >}}
 THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FOLLOWING:
 
 * If you are using the *Perimeter Detect* features, then the sequence in which you arm and disarm this feature is very important. Be sure to carefully follow the process steps below.
-* Once locked, the Event Action settings are limited in the following way:
+* Once you have locked your SCM into Production Mode, Zymbit cannot guarantee its operation if you subsequently do a major distribution upgrade (e.g. Raspbian Buster to Bullseye). [Contact Zymbit for more information.](https://www.zymbit.com/contact-us/)
+
+If you decide that you are not ready for permanent binding, leave the SCM in developer mode.
+{{< /callout >}}
+
+Once locked, setting the Event Action modes are limited in the following way:
 
 | Event | Setting |
-| :----: | :----- |
+| :---- | :----- |
 | Tamper | Once after locked |
 | Low Temp Threshold | Must be set prior to locking |
 | High Temp Threshold | Must be set prior to locking |
 | Low Voltage Threshold | Must be set prior to locking |
 | Verified Boot Failure | TBD |
 
-* Once you have locked your SCM into Production Mode, Zymbit cannot guarantee its operation if you subsequently do a major distribution upgrade (e.g. Raspbian Buster to Bullseye). [Contact Zymbit for more information.](https://www.zymbit.com/contact-us/)
-
-If you decide that you are not ready for permanent binding, leave the SCM in developer mode.
-
-{{< /callout >}}
-
 When you have completed your development work with the SCM and are ready to deploy your system into the field, we recommend that you permanently bind your SCM to a specific host device.
 
 ### Summary of Steps
 
 Develop your application
+
 [ ] Ensure your host has all the necessary prerequisites in place to interface with the SCM and that it will be able to run your software application.
 
 Activate Production Mode
+
 [ ] Permanently bind your SCM to the host device.
 
 ## Develop your application
@@ -58,6 +59,7 @@ Activate Production Mode
 The following steps should be complete:
 
 [ ] Install a battery on the SCM.
+
 [ ] Install all necessary software for your application on the host and establish temporary binding in development mode.
 
 After these steps have been completed, you are ready to prepare your device for permanent binding.
