@@ -64,7 +64,7 @@ For the Alpha Evaluation, much of the destructive functionality will be simulate
 | Item | Alpha | Production |
 |------------|------------------------------------------------|-----------------------------------------------------------|
 | Tamper Detect | Self-destruct mode does 6 flashes, 3 times and then recovers. Close loops to resume. | Self-destruct will destroy all keys. No recovery possible. |
-| Verified Boot | Sign/Verify file integrity failure does 20 flashes followed by 9 flashes, 3 times and then recovers. | Sign/Verify file integrity failure with execute policy to either hold in reset or self-destruct. No recovery possible.
+| Verified Boot | Sign/Verify file integrity failure does 22 flashes followed by 9 flashes, 3 times and then recovers. | Sign/Verify file integrity failure with execute policy to either hold in reset or self-destruct. No recovery possible.
 | Last Gasp | Battery Threshold action of self-destruct does 4 flashes, 3 times and recovers. Requires bind lock. | Self-destruct action destroy all keys. No recovery possible. |
 
 -----
@@ -101,8 +101,8 @@ The fatal LED sequence is repeated 3 times, after which the SCM reboots.
 | 6 | None | Digest of keys area of SCM flash have failed. Could be caused by a tamper breach or a hardware failure. Also the result of Battery Voltage Threshold self_destruct action.|
 | 6 | subcode | Tamper detect event in self destruct mode while in developer mode. Subcode represents aggregate of all channels witnessed. |
 | 8 | None | SCM unable to send response back to host. Can be caused by overutilized host CPU which causes heartbeats to not be sent to SCM. |
-| 20 | 9 | Verified Boot failure: at least one Verified Boot file failed signature check. |
 | 20 | 1 | Temperature below low boundary in self destruct mode in developer mode. |
 | 20 | 2 | Temperature above high boundary in self destruct mode in developer mode. |
+| 22 | 9 | Verified Boot failure: at least one Verified Boot file failed signature check. |
 
 
