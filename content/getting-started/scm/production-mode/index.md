@@ -18,10 +18,10 @@ For supporting the SCM Alpha program, the Destructive function of actions in Pro
 | Event | Development Mode | Alpha Production Mode | Standard Production Mode | Triggers |
 | :---- | :---- | :---- | :---- | :---- |
 | Tamper Event| No action | 6 flash + channel sub-flash | Destroy all keys | Immediately |
-| Low Temp Threshold | 20 flash + 1 sub-flash | 20 flash + 1 sub-flash | Destroy all keys | Immediately |
-| High Temp Threshold | 20 flash + 2 sub-flash | 20 flash + 2 sub-flash | Destroy all keys | Immediately |
-| Low Voltage Threshold | No action | 4 flash | Destroy all keys | Power Off |
-| Verified Boot Failure | 20 flash + 9 sub-flash | 20 flash + 9 sub-flash | Destroy all keys | On Boot |
+| Low Temp Threshold | 20 flash + 1 sub-flash | 20 flash + 1 sub-flash | Do Not Boot | Immediately |
+| High Temp Threshold | 20 flash + 2 sub-flash | 20 flash + 2 sub-flash | Do Not Boot | Immediately |
+| Low Battery Voltage Threshold | No action | 4 flash | Two Policies: Prevent Boot or Destroy all keys | Power Off |
+| Verified Boot Failure | 22 flash + 9 sub-flash | 22 flash + 9 sub-flash | Two Policies: Prevent Boot or Destroy all keys | On Boot |
 
 {{< callout destructive >}}
 THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FOLLOWING:
@@ -36,10 +36,10 @@ Once locked, setting the Event Action modes are limited in the following way:
 
 | Event | Setting |
 | :---- | :----- |
-| Tamper | Once after locked |
+| Tamper | One time after locked |
 | Low Temp Threshold | Must be set prior to locking |
 | High Temp Threshold | Must be set prior to locking |
-| Low Voltage Threshold | Must be set prior to locking |
+| Low Battery Voltage Threshold | Must be set prior to locking |
 | Verified Boot Failure | TBD |
 
 When you have completed your development work with the SCM and are ready to deploy your system into the field, we recommend that you permanently bind your SCM to a specific host device.
