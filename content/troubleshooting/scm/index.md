@@ -55,7 +55,7 @@ The table below summarizes changes made to the standard image.
 | Hostname is `raspberrypi` | Hostname changed to `zymbit-dev` |
 | Default user of `pi` | Default user is `zymbit`. User `pi` removed |
 | MAC with Pi OID | MAC uses Zymbit OID |
-| sudo password free | sudo requires a password (*zymkey) |
+| sudo password free | sudo requires a password (zymkey) |
 
 -----
 ### SCM Alpha Non-Standard Functionality
