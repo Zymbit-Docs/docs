@@ -46,7 +46,7 @@ All files in the Manifest must reside within the /boot partition. File paths in 
 The code below can be used to add/update/delete and display the Manifest of files to check during Secure Boot operation. Save the code below to a file. We will name it manifest.py for the following examples.
 
 ```python
- #!/usr/bin/python3
+#!/usr/bin/python3
 
 import argparse
 import zymkey
