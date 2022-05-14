@@ -40,7 +40,7 @@ Once locked, setting the Event Action modes are limited in the following way:
 | Low Temp Threshold | Must be set prior to locking |
 | High Temp Threshold | Must be set prior to locking |
 | Low Battery Voltage Threshold | Must be set prior to locking |
-| Verified Boot Failure | TBD |
+| Verified Boot Failure | No limit |
 
 When you have completed your development work with the SCM and are ready to deploy your system into the field, we recommend that you permanently bind your SCM to a specific host device.
 
