@@ -3,12 +3,12 @@ title: "Working with SCM Verified Boot"
 linkTitle: "Verified Boot (SCM Alpha)"
 description: ""
 date: "2022-03-28"
-lastmod: ""
+lastmod: "2022-05-19"
 draft: false
 images: []
 toc: true
 ---
-Updated: 2022-03-28
+Updated: 2022-05-19
 
 ## What is Verified Boot?
 
@@ -25,6 +25,8 @@ Verified Boot is Zymbit's method for insuring that the boot process is secure. A
 /boot/zymbit_mac_address
 /boot/overlays/vc4-kms-v3d.dtbo
 ```
+
+If any file exists in the Manifest, Verified Boot is automatically enabled. To turn off Verified Boot, remove all files from the Manifest.
 
 ## The Manifest
 
@@ -133,12 +135,12 @@ overlays/vc4-kms-v3d.dtbo
 sample.txt
 ```
 
-The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. For alpha, the SCM will "simulate" this process by flashing an LED sequence of 20 flashes, repeated three times, and then the SCM will boot normaly. 
+The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. For alpha, the SCM will "simulate" this process by flashing an LED sequence of 22 flashes followed by 9 flashes, repeated three times, and then the SCM will boot normaly. 
 
 You can test this out:
 
  * First, after adding `sample.txt` to the Manifest and power cycle. The system should boot normally.
- * Next, edit `/boot/sample.txt` and power cycle. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 20 flashes, three times. For Alpha, the SCM will boot up and allow you to recover. 
+ * Next, edit `/boot/sample.txt` and power cycle. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 22 flashes followed by 9 flashes, three times. For Alpha, the SCM will boot up and allow you to recover. 
 
 There are three ways you can remedy the verification failure:
  
@@ -151,7 +153,7 @@ There are three ways you can remedy the verification failure:
 
     `./manifest.py --delete sample.txt`
 
-The next powercycle should boot with the normal sequence - it should not flash the 20 flashes, three times sequence.
+The next powercycle should boot with the normal sequence - it should not flash the 22 flashes followed by 9 flashes, three times sequence.
 
 ### Specifying a Different Slot
 
