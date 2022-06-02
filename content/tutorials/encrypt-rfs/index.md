@@ -5,7 +5,7 @@ aliases:
     - /tutorials/encrypt-rfs/zymkey4/
 description: ""
 date: ""
-lastmod: ""
+lastmod: "06-02-2022"
 draft: false
 images: []
 toc: true
@@ -120,6 +120,16 @@ Using this ID / Authentication feature, the Zymbit Security Module can be used t
 ### WHERE TO STORE YOUR LUKS ENCRYPTED RFS
 
 LUKS is very versatile and can be applied to both SD Card and external storage media. Lets review the pros and cons of each option:
+    
+{{< callout warning >}}
+When encrypting your rootfs, we highly recommend turning off unattended-upgrades prior to the encryption process. In some cases primarily with Ubuntu 20.04, during an update/upgrade after encryption, the update-initramfs process may fail and leave the system unable to boot.
+
+To mitigate this issue, remove the service unattended-upgrades:
+
+`systemctl stop unattended-upgrades`
+`systemctl disable unattended-upgrade`
+    
+{{< /callout >}}
 
 #### Option 1 - Convert existing SD Card to LUKS
 
