@@ -127,6 +127,7 @@ When encrypting your rootfs, we highly recommend turning off unattended-upgrades
 To mitigate this issue, remove the service unattended-upgrades:
 
 `systemctl stop unattended-upgrades`
+
 `systemctl disable unattended-upgrade`
     
 {{< /callout >}}
