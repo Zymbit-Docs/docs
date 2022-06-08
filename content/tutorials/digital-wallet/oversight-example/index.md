@@ -29,7 +29,7 @@ This can be useful for handing a copy of a wallet to a financial advisor or some
 
 * Follow the [Getting Started guide](https://docs.zymbit.com/getting-started) first, installing all baseline software.
 
-* All code snippets written in this article are written using Python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](https://docs/zymbit.com/api)
+* All code snippets written in this article are written using Python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](https://docs.zymbit.com/api)
 
 
 ### Creating an oversight wallet on the Zymbit module
