@@ -22,7 +22,7 @@ Before getting started your will need to register your device to receive a uniqu
 
 ![register](reg_barcode.png)
 
-##### Contents of Kit
+### **Contents of Kit**
  
  * Zymbit Secure Compute Module including Pi CM4
  * Raspberry Pi CM4 I/O board[ (Datasheet)](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
