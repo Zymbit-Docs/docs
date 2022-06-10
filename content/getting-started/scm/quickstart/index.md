@@ -1,7 +1,7 @@
 ---
 title: "SCM - Getting Started"
 linkTitle: "Getting Started"
-lastmod: "2022-05-11"
+lastmod: "2022-06-10"
 draft: false
 images: []
 weight: 5
@@ -13,6 +13,14 @@ toc: true
 May 11, 2022
 
 The SCM Alpha kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is alpha-release which means there are a small number of features that have not been included, and a few known bugs that have not yet been resolved. Refer to [SCM Alpha Release Notes](../../../troubleshooting/scm/).
+
+#### Register your device, receive SSH passphrase
+
+Before getting started your will need to register your device to receive a unique passphrase that has been associated with your device by Zymbit.  Register here:
+
+[Register](https://forms.zoho.com/phil12/form/SecureComputeModuleAlphaDeviceRegistration/)
+
+![register](reg_barcode.png)
 
 ##### Contents of Kit
  
@@ -87,14 +95,7 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 
 ### **Configure and Setup your SCM**
 
-##### 1) Register your device, receive SSH passphrase
-
-Before getting started your will need to register your device to receive a unique passphrase that has been associated with your device by Zymbit.  Register here:
-
-[Register](https://forms.zoho.com/phil12/form/SecureComputeModuleAlphaDeviceRegistration/)
-
-![register](reg_barcode.png)
-##### 2) Power On and Bootup
+##### 1) Power On and Bootup
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. SSH login is restricted to only use keys.
  
  * Monitor the Blue LED on the Zymbit SCM module. It will go through the following stages:
@@ -114,7 +115,7 @@ Before getting started your will need to register your device to receive a uniqu
 {{% /card %}}
 {{< /cardpane >}}
 
-##### 3) Login via SSH with key
+##### 2) Login via SSH with key
 The SSH key is included on the USB drive in two formats: PPK for use with Putty and PEM for standard linux ssh
 
 <details>
