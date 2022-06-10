@@ -9,6 +9,53 @@ toc: true
 ---
 
 -----
+<details>
+
+<summary>
+Introduction
+</summary>
+
+A big thank you for agreeing to checkout out our new SCM Alpha release. Your testing and feedback will help us improve the features and quality of final product before it’s general release. 
+    
+The following types of feedback will be very helpful to us: 
+    
+*	Quality - does the feature work as advertised?  
+*	Useability – was the feature easy/intuitive to use?  Or totally mind numbing?  
+*	Improvements/new features – what improvements or new features would you like to see? 
+    
+    The following are key features of the product that we encourage you to test. Most have specific tutorials or documentation to support your evaluation linked below.
+    
+*   Tightening up standard Pi login access  
+*	Pre-configured and encrypted operating system  
+*   Verified Boot  
+*	Sanitization Script  
+•	Tamper sensors and policies  
+
+Getting Support 
+
+support@zymbit.com
+
+Pen Testing and Beyond
+    
+For those of you trying pen test the device, we understand everything, and anything is possible! Its just a question of how much time, money and expertise you have.
+    
+•	Can you brick it?  Yes if you do bad things to it!  
+•	Can you extract sensitive data from it? Try it.  
+    
+Useful feedback on pen testing would include how you had configured the SCM – what sensors and policies did you have enabled, what attack and escalation path did you follow. If you have any cool pictures of angle grinders or drills, or lasers, please share them!
+
+Final Thoughts on Purpose
+    
+SCM is a commercial product, designed to bring a higher level of security to applications that use single board computers deployed outside the security of a data center – IoT, gateways, terminals etc. Its purpose is to protect valuable assets like IP, data and credentials from typical real-world exploits. It’s designed for developers to innovate freely using familiar tools, without needing expert security knowledge or additional layers of technology. 
+    
+If you can help us achieve our purpose of making compute hardware products more secure, we’re on the same page. Thanks for testing – we look forward to your feedback and suggestions!
+
+Team Zymbit.
+
+
+</details>
+
+-----
 ### **Overview**
 May 11, 2022
 
