@@ -36,7 +36,7 @@ The following types of feedback will be very helpful to us:
 
 support@zymbit.com
 
-Pen Testing and Beyond
+**Pen Testing and Beyond**
     
 For those of you trying pen test the device, we understand everything, and anything is possible! Its just a question of how much time, money and expertise you have.
     
