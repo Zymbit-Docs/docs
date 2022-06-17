@@ -26,13 +26,13 @@ Verified Boot is Zymbit's method for insuring that the boot process is secure. A
 /boot/overlays/vc4-kms-v3d.dtbo
 ```
 
-If any file exists in the Manifest, Verified Boot is automatically enabled. To turn off Verified Boot, remove all files from the Manifest.
-
 ## The Manifest
 
 The Manifest is the list of files that will be tracked and verified by the Zymbit Secure Compute Module (SCM) during the boot process. The Manifest resides within the SCM itself. It does not live on any file system. Zymbit provides an API interface to add/update/delete entries in the Manifest, as well as set the action to take if a signature verification of a file should fail.
  
 All files in the Manifest must reside within the /boot partition. File paths in the Manifest all include `/boot/` by default. Only include the portion of the file path after `/boot/`. For instance, to include `/boot/config.txt`, you would call our API with the string `config.txt`.
+
+If any file exists in the Manifest, Verified Boot is automatically enabled. To turn off Verified Boot, remove all files from the Manifest.
 
 ## Example Python CLI Application
 
