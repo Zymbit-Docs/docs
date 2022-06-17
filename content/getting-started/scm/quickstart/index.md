@@ -12,7 +12,8 @@ toc: true
 <details>
 
 <summary>
-Introduction
+    <b>Introduction</b>
+<p>
 </summary>
 
 A big thank you for agreeing to checkout out our new SCM Alpha release. Your testing and feedback will help us improve the features and quality of final product before it’s general release. 
@@ -34,7 +35,7 @@ The following types of feedback will be very helpful to us:
 
 **Getting Support**
 
-support@zymbit.com
+[Contact Support](mailto:support@zymbit.com)
 
 **Pen Testing and Beyond**
     
