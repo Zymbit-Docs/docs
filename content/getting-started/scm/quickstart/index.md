@@ -12,7 +12,7 @@ toc: true
 <details>
 
 <summary>
-    <b>Introduction</b>
+    <h3> <b>Introduction to Alpha Release</b> </h3>
 <p>
 </summary>
 
@@ -25,7 +25,7 @@ The following types of feedback will be very helpful to us:
 *	Useability – was the feature easy/intuitive to use?  Or totally mind numbing?  
 *	Improvements/new features – what improvements or new features would you like to see? 
     
-    The following are key features of the product that we encourage you to test. Most have specific tutorials or documentation to support your evaluation linked below.
+The following are key features of the product that we encourage you to test. Most have specific tutorials or documentation to support your evaluation linked below.
     
 *   Tightening up standard Pi login access  
 *	Pre-configured and encrypted operating system  
@@ -39,7 +39,7 @@ The following types of feedback will be very helpful to us:
 
 **Pen Testing and Beyond**
     
-For those of you trying pen test the device, we understand everything, and anything is possible! Its just a question of how much time, money and expertise you have.
+For those of you trying pen test the device, we understand that anything and everything is possible! Its just a question of how much time, money and expertise you have.
     
 *   Can you brick it?  Yes if you do bad things to it!  
 *   Can you extract sensitive data from it? Try it.  
