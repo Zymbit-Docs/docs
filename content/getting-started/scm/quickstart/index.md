@@ -1,7 +1,7 @@
 ---
 title: "SCM - Getting Started"
 linkTitle: "Getting Started"
-lastmod: "2022-06-10"
+lastmod: "2022-06-20"
 draft: false
 images: []
 weight: 5
@@ -12,8 +12,7 @@ toc: true
 <details>
 
 <summary>
-    <h3> <b>Introduction to Alpha Release</b> </h3>
-<p>
+<h3>Introduction to Alpha Release</h3>
 </summary>
 
 A big thank you for agreeing to checkout out our new SCM Alpha release. Your testing and feedback will help us improve the features and quality of final product before it’s general release. 
