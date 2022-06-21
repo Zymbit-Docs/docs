@@ -59,7 +59,6 @@ Team Zymbit.
 
 -----
 ### **Overview**
-May 11, 2022
 
 The SCM Alpha kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is alpha-release which means there are a small number of features that have not been included, and a few known bugs that have not yet been resolved. Refer to [SCM Alpha Release Notes](../../../troubleshooting/scm/).
 
