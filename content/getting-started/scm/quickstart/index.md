@@ -13,9 +13,9 @@ toc: true
 
 <summary>
 <h3><b>Introduction to Alpha Release</b></h3>
-<p>
 </summary>
 
+<br>
 A big thank you for agreeing to checkout out our new SCM Alpha release. Your testing and feedback will help us improve the features and quality of final product before it’s general release. 
 
     
