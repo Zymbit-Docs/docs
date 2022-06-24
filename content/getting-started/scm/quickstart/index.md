@@ -66,7 +66,7 @@ The SCM Alpha kit provides all the hardware and software components required to 
 
 Before getting started your will need to register your device to receive a unique passphrase that has been associated with your device by Zymbit.  Register here:
 
-[Register](https://forms.zoho.com/phil12/form/SecureComputeModuleAlphaDeviceRegistration/)
+[Register](https://forms.zohopublic.com/phil12/form/SecureComputeModuleAlphaDeviceRegistration/formperma/qTHLxAZEdVSx5ErwVyQzmxULOk1BxJ6CC-IfpYE9JDI)
 
 ![register](reg_barcode.png)
 
