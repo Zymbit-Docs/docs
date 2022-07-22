@@ -10,9 +10,17 @@ toc: true
 
 -----
 ### Current SCM Alpha Release
-June 2, 2022
+July 22, 2022
 
-### Known Issues
+### Issues
+
+**Issue #98**  FEATURE CHANGE: Changed references from Verified Boot to Supervised Boot. The names of methods and function calls for the Python, C, and C++ APIs changed. Any programs written to manipulate the manifest will require updating. Changes are in version `zkapputilslib 1.1-24`. To update to the new naming convention,
+```
+sudo apt-get update
+sudo apt-get upgrade
+dpkg --list zkapputilslib
+
+```
 
 **Fixed Issue #92** Major: SCM: Power up issues - Sometimes powering up does not complete. The LED will either never come on or will stay on. Most likely related to supercapacitor charge.
 
@@ -25,17 +33,17 @@ June 2, 2022
 **Fixed Issue #87**: SCM: Manifest Retrieve missing a space between file name chunks. Manifest filename storage occurs in chunks of approximately 1k. If the total size of the strings requires multiple chunks, a space is left out between displaying the end of the chunk and the start of the next chunk. Uncovered in testing. Not a normal user configuration.
 
 #### Firmware: 
- - SCM: 00.00.31alpha
+ - SCM: 00.00.34alpha
 
 #### Zymbit Host Side Code:
  - libzk 1.1-22
  - libzymkeyssl 1.0-10
- - zkapputilslib 1.1-23
+ - zkapputilslib 1.1-24
  - zkbootrtc 1.1-15
  - zkifc 1.2-34
  - zkpkcs11 1.0-2 
  - zksaapps 1.0.-16
- - zku 1.0.31
+ - zku 1.0.34
 
 
 -----
