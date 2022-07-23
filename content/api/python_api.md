@@ -1912,19 +1912,19 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">set\_verified\_boot\_policy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">policy\_id</span> = <span class="default-val">0</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="setverifiedbootpolicy-072c5c0f" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">set\_supervised\_boot\_policy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">policy\_id</span> = <span class="default-val">0</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="setsupervisedbootpolicy-072c5c0f" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Sets the verified boot policy. (model &gt;= SCM).</p>
-<p>This function sets the action policy to take when verified boot detects a file change during the boot process.</p>
+<p>Sets the Supervised boot policy. (model &gt;= SCM).</p>
+<p>This function sets the action policy to take when Supervised boot detects a file change during the boot process.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">policy_id</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The actions to apply to the verified boot process:
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The actions to apply to the Supervised boot process:
                                         - 0 Do Nothing
                                         - 1 Self-Destruct
                                         - 2 Hold Chip in Reset</span>
@@ -1940,12 +1940,12 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">add\_or\_update\_verified\_boot\_file</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">filepath</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addorupdateverifiedbootfile-ed1a93c8" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">add\_or\_update\_supervised\_boot\_file</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">filepath</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addorupdatesupervisedbootfile-ed1a93c8" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Update file manifest for verified boot to check. (model &gt;= SCM).</p>
-<p>This function adds or updates a file in the file manifest to be checked by verified during the boot process.</p>
+<p>Update file manifest for Supervised boot to check. (model &gt;= SCM).</p>
+<p>This function adds or updates a file in the file manifest to be checked by Supervised during the boot process.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -1956,7 +1956,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">filepath</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The file to be signed and checked by verified boot.</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The file to be signed and checked by Supervised boot.</span>
 </li>
 </ul>
 </div>
@@ -1969,12 +1969,12 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">remove\_verified\_boot\_file</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">filepath</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="removeverifiedbootfile-e62cc748" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">remove\_supervised\_boot\_file</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">filepath</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="removesupervisedbootfile-e62cc748" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Remove a file from file manifest for verified boot to check. (model &gt;= SCM).</p>
-<p>This function removes a file in the file manifest to be checked by verified boot during the boot process.</p>
+<p>Remove a file from file manifest for Supervised boot to check. (model &gt;= SCM).</p>
+<p>This function removes a file in the file manifest to be checked by Supervised boot during the boot process.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -1994,12 +1994,12 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">get\_verified\_boot\_file\_manifest</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="getverifiedbootfilemanifest-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">get\_supervised\_boot\_file\_manifest</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="getsupervisedbootfilemanifest-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Get the file manifest for verified boot to check. (model &gt;= SCM).</p>
-<p>This function gets a list of the files that are checked by verified boot during the boot process.</p>
+<p>Get the file manifest for Supervised boot to check. (model &gt;= SCM).</p>
+<p>This function gets a list of the files that are checked by Supervised boot during the boot process.</p>
 </div>
 <div class="returns">
 <h5>Returns</h5>
@@ -2008,7 +2008,7 @@ toc: true
 <li>
 <em>TYPE</em> &#8211; 0 for success, less than 0 for failure. </li>
 <li>
-<em>TYPE</em> &#8211; File manifest to be checked by verified boot. </li>
+<em>TYPE</em> &#8211; File manifest to be checked by Supervised boot. </li>
 </ul>
 </span>
 </div>

@@ -2786,19 +2786,19 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="returns">void</span>  <span class="pointer-ref"></span> <span class="name">setVerifiedBootPolicy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">policy\_id</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="void--setVerifiedBootPolicy-ed330f81" class="markdown-h4 signature include-toc"}
+#### <span><span class="returns">void</span>  <span class="pointer-ref"></span> <span class="name">setSupervisedBootPolicy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">policy\_id</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="void--setSupervisedBootPolicy-ed330f81" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Sets the verified boot policy. (model &gt;= SCM).</p>
-<p>This function specifies the action to take when verified boot event triggers based on a file change.</p>
+<p>Sets the Supervised boot policy. (model &gt;= SCM).</p>
+<p>This function specifies the action to take when Supervised boot event triggers based on a file change.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">policy_id</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(input) The actions to apply to the verified boot process:</p>
+<p>(input) The actions to apply to the Supervised boot process:</p>
 <ul>
 <li>0 Do Nothing (ZK_SUPBOOT_FAIL_NO_ACTION).</li>
 <li>1 Self-Destruct (ZK_SUPBOOT_FAIL_DESTROY).</li>
@@ -2818,12 +2818,12 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="returns">void</span>  <span class="pointer-ref"></span> <span class="name">addOrUpdateVerifiedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">slot</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref"></span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="void--addOrUpdateVerifiedBootFile-31fe4b4a" class="markdown-h4 signature include-toc"}
+#### <span><span class="returns">void</span>  <span class="pointer-ref"></span> <span class="name">addOrUpdateSupervisedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">slot</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref"></span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="void--addOrUpdateSupervisedBootFile-31fe4b4a" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Update file manifest for verified boot to check. (model &gt;= SCM).</p>
-<p>This function adds or updates files to be checked by verified boot.</p>
+<p>Update file manifest for Supervised boot to check. (model &gt;= SCM).</p>
+<p>This function adds or updates files to be checked by Supervised boot.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -2835,7 +2835,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">file_path</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(input) The file to be signed and checked by verified boot.</p>
+<p>(input) The file to be signed and checked by Supervised boot.</p>
 </span>
 </li>
 </ul>
@@ -2850,19 +2850,19 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="returns">void</span>  <span class="pointer-ref"></span> <span class="name">removeVerifiedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref"></span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="void--removeVerifiedBootFile-fba659e5" class="markdown-h4 signature include-toc"}
+#### <span><span class="returns">void</span>  <span class="pointer-ref"></span> <span class="name">removeSupervisedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">std::string</span> <span class="pointer-ref"></span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="void--removeSupervisedBootFile-fba659e5" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Remove a file from file manifest for verified boot to check. (model &gt;= SCM).</p>
-<p>This function removes a file to be checked by verified boot.</p>
+<p>Remove a file from file manifest for Supervised boot to check. (model &gt;= SCM).</p>
+<p>This function removes a file to be checked by Supervised boot.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">file_path</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(input) The file to be removed from the verified boot manifest.</p>
+<p>(input) The file to be removed from the Supervised boot manifest.</p>
 </span>
 </li>
 </ul>
@@ -2877,19 +2877,19 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="returns">std::string \*</span>  <span class="pointer-ref"></span> <span class="name">getVerifiedBootFileManifest</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="std::string-getVerifiedBootFileManifest-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span><span class="returns">std::string \*</span>  <span class="pointer-ref"></span> <span class="name">getSupervisedBootFileManifest</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="std::string-getSupervisedBootFileManifest-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Get file manifest for verified boot to check. (model &gt;= SCM).</p>
-<p>This function gets the list of files to be checked by verified boot.</p>
+<p>Get file manifest for Supervised boot to check. (model &gt;= SCM).</p>
+<p>This function gets the list of files to be checked by Supervised boot.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">manifest</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(output) The file manifest that is checked by verified boot.</p>
+<p>(output) The file manifest that is checked by Supervised boot.</p>
 </span>
 </li>
 </ul>

@@ -29,7 +29,7 @@ The following are key features of the product that we encourage you to test. Mos
     
 *   Tightening up standard Pi login access  
 *	Pre-configured and encrypted operating system  
-*   Verified Boot  
+*   Supervised Boot  
 *	Sanitization Script  
 *   Tamper sensors and policies  
 
@@ -128,7 +128,7 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 * Embedded hardware wallet with SLIP39-Shamir's Secret Sharing
 
 ##### Layers of Security
-* Verified boot
+* Supervised boot
 * Fully encapsulated
 * Last gasp power defenses
 * Tamper sense and response
@@ -148,8 +148,8 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
  
  * Monitor the Blue LED on the Zymbit SCM module. It will go through the following stages:
     - one slow blink:    *initializing the SCM*
-    - one -> two -> three -> four blinks:   *Verified Boot is verifying the signed file information*
-    - rapid blinking:   *Verified Boot successfully completed, booting underway*
+    - one -> two -> three -> four blinks:   *Supervised Boot is verifying the signed file information*
+    - rapid blinking:   *Supervised Boot successfully completed, booting underway*
     - blinking stops:   *USB bus enumeration found SCM; may stay off for seconds*
     - one blink every 3 seconds:   *zkifc has loaded and the system is ready to go*
 
@@ -158,7 +158,7 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 {{< figure 
     src="good_verified_boot.gif"
     alt="SCM Boot Sequence"
-    caption="Example of successful Verified Boot LED Sequence"
+    caption="Example of successful Supervised Boot LED Sequence"
     >}}
 {{% /card %}}
 {{< /cardpane >}}
@@ -221,7 +221,7 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 #### Using SCM: API and Examples
     
  * [See API Documentation](../../../api/)   
- * [Working with Verified Boot](../../../tutorials/verified-boot/)
+ * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
  * [Securing the SCM further with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)

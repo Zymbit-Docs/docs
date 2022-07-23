@@ -10,9 +10,21 @@ toc: true
 
 -----
 ### Current SCM Alpha Release
-June 2, 2022
+July 22, 2022
 
-### Known Issues
+### Issues
+
+**Issue #98**  FEATURE CHANGE: Changed references from Verified Boot to Supervised Boot. The names of methods and function calls for the Python, C, and C++ APIs changed. Any programs written to manipulate the manifest will require updating. Changes are in version `zkapputilslib 1.1-24` and `zku 1.0.32`. To update to the new naming convention,
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo pip3 install -i https://test.pypi.org/simple/ zku --upgrade
+
+dpkg --list zkapputilslib
+pip3 show zku
+```
+
+**Open Issue #99** Minor: SCM: set_perimeter_event_actions() resets and can cause problems if another command is attempted for a period of seconds. A delay of 10 seconds after a set_perimeter_event_actions() will workaround the issue. The SCM ships set to Notify=True and self_destruct=False. 
 
 **Fixed Issue #92** Major: SCM: Power up issues - Sometimes powering up does not complete. The LED will either never come on or will stay on. Most likely related to supercapacitor charge.
 
@@ -25,17 +37,17 @@ June 2, 2022
 **Fixed Issue #87**: SCM: Manifest Retrieve missing a space between file name chunks. Manifest filename storage occurs in chunks of approximately 1k. If the total size of the strings requires multiple chunks, a space is left out between displaying the end of the chunk and the start of the next chunk. Uncovered in testing. Not a normal user configuration.
 
 #### Firmware: 
- - SCM: 00.00.31alpha
+ - SCM: 00.00.34alpha
 
 #### Zymbit Host Side Code:
  - libzk 1.1-22
  - libzymkeyssl 1.0-10
- - zkapputilslib 1.1-23
+ - zkapputilslib 1.1-24
  - zkbootrtc 1.1-15
  - zkifc 1.2-34
  - zkpkcs11 1.0-2 
  - zksaapps 1.0.-16
- - zku 1.0.31
+ - zku 1.0.32
 
 
 -----
@@ -95,7 +107,7 @@ For the Alpha Evaluation, much of the destructive functionality will be simulate
 | Item | Alpha | Production |
 |------------|------------------------------------------------|-----------------------------------------------------------|
 | Tamper Detect | Self-destruct mode does 6 flashes, 3 times and then recovers. Close loops to resume. | Self-destruct will destroy all keys. No recovery possible. |
-| Verified Boot | Sign/Verify file integrity failure does 22 flashes followed by 9 flashes, 3 times and then recovers. | Sign/Verify file integrity failure with execute policy to either hold in reset or self-destruct. No recovery possible.
+| Supervised Boot | Sign/Verify file integrity failure does 22 flashes followed by 9 flashes, 3 times and then recovers. | Sign/Verify file integrity failure with execute policy to either hold in reset or self-destruct. No recovery possible.
 | Last Gasp | Battery Threshold action of self-destruct does 4 flashes, 3 times and recovers. Requires bind lock. | Self-destruct action destroy all keys. No recovery possible. |
 
 -----
@@ -134,6 +146,6 @@ The fatal LED sequence is repeated 3 times, after which the SCM reboots.
 | 8 | None | SCM unable to send response back to host. Can be caused by overutilized host CPU which causes heartbeats to not be sent to SCM. |
 | 20 | 1 | Temperature below low boundary in self destruct mode in developer mode. |
 | 20 | 2 | Temperature above high boundary in self destruct mode in developer mode. |
-| 22 | 9 | Verified Boot failure: at least one Verified Boot file failed signature check. |
+| 22 | 9 | Supervised Boot failure: at least one Supervised Boot file failed signature check. |
 
 

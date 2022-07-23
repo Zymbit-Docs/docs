@@ -3130,19 +3130,19 @@ toc: true
 </div>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkSetVerifiedBootPolicy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">policy\_id</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkSetVerifiedBootPolicy-040caccf" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkSetSupervisedBootPolicy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">policy\_id</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkSetSupervisedBootPolicy-040caccf" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Sets the verified boot policy. (model &gt;= SCM).</p>
-<p>This function specifies the action to take when verified boot event triggers based on a file change.</p>
+<p>Sets the Supervised boot policy. (model &gt;= SCM).</p>
+<p>This function specifies the action to take when Supervised boot event triggers based on a file change.</p>
 </div>
 <div class="parameters">
 <h4>Parameters</h4>
 <ul>
 <li class="param-item">
 <span class="name">policy_id</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(input) The actions to apply to the verified boot process:</p>
+<p>(input) The actions to apply to the Supervised boot process:</p>
 <ul>
 <li>0 Do Nothing (ZK_SUPBOOT_FAIL_NO_ACTION).</li>
 <li>1 Self-Destruct (ZK_SUPBOOT_FAIL_DESTROY).</li>
@@ -3162,12 +3162,12 @@ toc: true
 </div>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkAddOrUpdateVerifiedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">slot</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkAddOrUpdateVerifiedBootFile-bc296c39" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkAddOrUpdateSupervisedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">slot</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkAddOrUpdateSupervisedBootFile-bc296c39" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Update file manifest for verified boot to check. (model &gt;= SCM).</p>
-<p>This function adds or updates files to be checked by verified boot.</p>
+<p>Update file manifest for Supervised boot to check. (model &gt;= SCM).</p>
+<p>This function adds or updates files to be checked by Supervised boot.</p>
 </div>
 <div class="parameters">
 <h4>Parameters</h4>
@@ -3179,7 +3179,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">file_path</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(input) The file to be signed and checked by verified boot.</p>
+<p>(input) The file to be signed and checked by Supervised boot.</p>
 </span>
 </li>
 </ul>
@@ -3194,19 +3194,19 @@ toc: true
 </div>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkRemoveVerifiedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkRemoveVerifiedBootFile-b4ea059f" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkRemoveSupervisedBootFile</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">file\_path</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkRemoveSupervisedBootFile-b4ea059f" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Remove a file from file manifest for verified boot to check. (model &gt;= SCM).</p>
-<p>This function removes a file to be checked by verified boot.</p>
+<p>Remove a file from file manifest for Supervised boot to check. (model &gt;= SCM).</p>
+<p>This function removes a file to be checked by Supervised boot.</p>
 </div>
 <div class="parameters">
 <h4>Parameters</h4>
 <ul>
 <li class="param-item">
 <span class="name">file_path</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(input) The file to be removed from the verified boot manifest.</p>
+<p>(input) The file to be removed from the Supervised boot manifest.</p>
 </span>
 </li>
 </ul>
@@ -3221,19 +3221,19 @@ toc: true
 </div>
 <div class="method">
 
-### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkGetVerifiedBootFileManifest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">char</span> <span class="pointer-ref">\*\*</span> <span class="name">manifest</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkGetVerifiedBootFileManifest-b8e636d2" class="markdown-h3 signature include-toc"}
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkGetSupervisedBootFileManifest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">char</span> <span class="pointer-ref">\*\*</span> <span class="name">manifest</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkGetSupervisedBootFileManifest-b8e636d2" class="markdown-h3 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Get file manifest for verified boot to check. (model &gt;= SCM).</p>
-<p>This function gets the list of files to be checked by verified boot.</p>
+<p>Get file manifest for Supervised boot to check. (model &gt;= SCM).</p>
+<p>This function gets the list of files to be checked by Supervised boot.</p>
 </div>
 <div class="parameters">
 <h4>Parameters</h4>
 <ul>
 <li class="param-item">
 <span class="name">manifest</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>(output) The file manifest that is checked by verified boot.</p>
+<p>(output) The file manifest that is checked by Supervised boot.</p>
 </span>
 </li>
 </ul>

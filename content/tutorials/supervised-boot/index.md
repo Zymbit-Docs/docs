@@ -1,6 +1,6 @@
 ---
-title: "Working with SCM Verified Boot"
-linkTitle: "Verified Boot (SCM Alpha)"
+title: "Working with SCM Supervised Boot"
+linkTitle: "Supervised Boot (SCM Alpha)"
 description: ""
 date: "2022-03-28"
 lastmod: "2022-05-19"
@@ -8,11 +8,11 @@ draft: false
 images: []
 toc: true
 ---
-Updated: 2022-05-19
+Updated: 2022-07-22
 
-## What is Verified Boot?
+## What is Supervised Boot?
 
-Verified Boot is Zymbit's method for insuring that the boot process is secure. A list of files can be specifed to be hashed, signed, and verified by the SCM prior to allowing the CM4 module to boot. By default, the following files are signed and verified:
+Supervised Boot is Zymbit's method for insuring that the boot process is secure. A list of files can be specifed to be hashed, signed, and verified by the SCM prior to allowing the CM4 module to boot. By default, the following files are signed and verified:
 
 ```
 /boot/bcm2711-rpi-cm4.dtb
@@ -32,9 +32,23 @@ The Manifest is the list of files that will be tracked and verified by the Zymbi
  
 All files in the Manifest must reside within the /boot partition. File paths in the Manifest all include `/boot/` by default. Only include the portion of the file path after `/boot/`. For instance, to include `/boot/config.txt`, you would call our API with the string `config.txt`.
 
-If any file exists in the Manifest, Verified Boot is automatically enabled. To turn off Verified Boot, remove all files from the Manifest.
+If any file exists in the Manifest, Supervised Boot is automatically enabled. To turn off Supervised Boot, remove all files from the Manifest.
 
 ## Example Python CLI Application
+
+{{% callout notice %}}
+
+The name of the feature has been changed to **Supervised Boot** and the API methods have also been changed from earlier versions. The example below requires new API and Zymbit python code. Changes are in version `zkapputilslib 1.1-24` and `zku 1.0.32`. To update to the new naming convention,
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo pip3 install -i https://test.pypi.org/simple/ zku --upgrade
+
+dpkg --list zkapputilslib
+pip3 show zku
+```
+
+{{% /callout %}}
 
 ### Prerequisites
 
@@ -57,16 +71,16 @@ class Manifest:
 
     def add_update(slot, filepath):
         print(f"Manifest Add/Update (slot={slot}):  {filepath}")
-        zymkey.client.add_or_update_verified_boot_file(int(slot), filepath)
+        zymkey.client.add_or_update_supervised_boot_file(int(slot), filepath)
 
     def delete(filepath):
         print(f"Manifest Delete:  {filepath}")
-        zymkey.client.remove_verified_boot_file(filepath)
+        zymkey.client.remove_supervised_boot_file(filepath)
 
     def show():
         print("\nManifest:")
         print("---------")
-        list = zymkey.client.get_verified_boot_file_manifest()
+        list = zymkey.client.get_supervised_boot_file_manifest()
         if len(list) ==  0:
             print("Manifest is empty")
         else:
@@ -76,7 +90,7 @@ class Manifest:
 
 # Setup arg parser
 parser = argparse.ArgumentParser(
-    description="add/del/update Verified Boot Manifest. (show by default)",
+    description="add/del/update Supervised Boot Manifest. (show by default)",
     epilog="filepath from /boot. ex: for /boot/config.txt, provide config.txt."
     )
 group = parser.add_mutually_exclusive_group()
