@@ -2,6 +2,8 @@
 title: "Working with SCM Supervised Boot"
 linkTitle: "Supervised Boot (SCM Alpha)"
 description: ""
+aliases:
+    - /tutorials/verified-boot/
 date: "2022-03-28"
 lastmod: "2022-05-19"
 draft: false
@@ -170,7 +172,7 @@ The next powercycle should boot with the normal sequence - it should not flash t
 
 ### Specifying a Different Slot
 
-Any of the SCM key slots can be used for the sign/verify functions. Slot 0 is used by default. The example above will take alternative slot numbers. Slots 0-13 are always available. To use a slot in the key store (Slots 16-528) you would need to change the above script to first include generating a key for that slot. See the [API Documentation](../../api).
+Any of the SCM key slots can be used for the sign/verify functions. The example above uses slot 0 by default but will take alternative slot numbers. Slots 0-13 are always available. To use a slot in the key store (Slots 16-528) you would need to change the above script to first include generating a key for that slot. See the [API Documentation](../../api).
 
 
 
