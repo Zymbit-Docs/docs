@@ -8,7 +8,7 @@ draft: false
 images: []
 toc: true
 ---
-Updated: 2022-05-19
+Updated: 2022-07-22
 
 ## What is Supervised Boot?
 
