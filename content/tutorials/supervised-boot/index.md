@@ -36,6 +36,20 @@ If any file exists in the Manifest, Supervised Boot is automatically enabled. To
 
 ## Example Python CLI Application
 
+{{% callout notice %}}
+
+The name of the feature has been changed to **Supervised Boot** and the API methods have also been changed from earlier versions. The example below requires new API and Zymbit python code. Changes are in version `zkapputilslib 1.1-24` and `zku 1.0.32`. To update to the new naming convention,
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo pip3 install -i https://test.pypi.org/simple/ zku --upgrade
+
+dpkg --list zkapputilslib
+pip3 show zku
+```
+
+{{% /callout %}}
+
 ### Prerequisites
 
 * Zymbit Modules that support this feature:
