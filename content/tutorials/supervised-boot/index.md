@@ -150,7 +150,7 @@ overlays/vc4-kms-v3d.dtbo
 sample.txt
 ```
 
-The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. For alpha, the SCM will "simulate" this process by flashing an LED sequence of 22 flashes followed by 9 flashes, repeated three times, and then the SCM will boot normaly. 
+The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. For alpha, the SCM will "simulate" this process by flashing an LED sequence of 22 flashes followed by 9 flashes, repeated three times, and then the SCM will boot normally. 
 
 You can test this out:
 
