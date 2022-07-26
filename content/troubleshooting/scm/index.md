@@ -28,7 +28,9 @@ dpkg --list zkapputilslib
 pip3 show zku
 ```
 
-**Open Issue #99** Minor: SCM: set_perimeter_event_actions() resets and can cause problems if another command is attempted for a period of seconds. A delay of 10 seconds after a set_perimeter_event_actions() will workaround the issue. The SCM ships set to Notify=True and self_destruct=False. 
+**Open Issue #99** Minor: SCM: set_perimeter_event_actions() resets and can cause problems if another command is attempted for a period of seconds. A delay of 10 seconds after a set_perimeter_event_actions() will workaround the issue. The SCM ships set to Notify=True and self_destruct=False.
+
+**Open Issue #102** Minor: SCM: Supervised Boot does not work with generated key pairs (slot 16 and up). Use slots 0-13.
 
 **Fixed Issue #92** Major: SCM: Power up issues - Sometimes powering up does not complete. The LED will either never come on or will stay on. Most likely related to supercapacitor charge.
 
