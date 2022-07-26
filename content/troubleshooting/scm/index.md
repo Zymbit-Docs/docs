@@ -150,6 +150,7 @@ The fatal LED sequence is repeated 3 times, after which the SCM reboots.
 | 8 | None | SCM unable to send response back to host. Can be caused by overutilized host CPU which causes heartbeats to not be sent to SCM. |
 | 20 | 1 | Temperature below low boundary in self destruct mode in developer mode. |
 | 20 | 2 | Temperature above high boundary in self destruct mode in developer mode. |
-| 22 | 9 | Supervised Boot failure: at least one Supervised Boot file failed signature check. |
+| 22 | 9 | Supervised Boot failure: True failure in Supervised Boot process. |
+| 22 | 10 | Supervised Boot failure: For alpha, simulated failure; at least one Supervised Boot file failed signature check. |
 
 
