@@ -155,12 +155,12 @@ overlays/vc4-kms-v3d.dtbo
 sample.txt
 ```
 
-The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. For alpha, the SCM will "simulate" this process by flashing an LED sequence of 22 flashes followed by 9 flashes, repeated three times, and then the SCM will boot normally. 
+The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. For alpha, the SCM will "simulate" this process by flashing an LED sequence of 22 flashes followed by 10 flashes, repeated three times, and then the SCM will boot normally. 
 
 You can test this out:
 
  * First, after adding `sample.txt` to the Manifest and power cycle. The system should boot normally.
- * Next, edit `/boot/sample.txt` and power cycle. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 22 flashes followed by 9 flashes, three times. For Alpha, the SCM will boot up and allow you to recover. 
+ * Next, edit `/boot/sample.txt` and power cycle. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 22 flashes followed by 10 flashes, three times. For Alpha, the SCM will boot up and allow you to recover. 
 
 There are three ways you can remedy the verification failure:
  
@@ -173,11 +173,11 @@ There are three ways you can remedy the verification failure:
 
     `./manifest.py --delete sample.txt`
 
-The next powercycle should boot with the normal sequence - it should not flash the 22 flashes followed by 9 flashes, three times sequence.
+The next powercycle should boot with the normal sequence - it should not flash the 22 flashes followed by 10 flashes, three times sequence.
 
 ### Specifying a Different Slot
 
-Any of the SCM key slots can be used for the sign/verify functions. The example above uses slot 0 by default but will take alternative slot numbers. Slots 0-13 are always available. To use a slot in the key store (Slots 16-528) you would need to change the above script to first include generating a key for that slot. See the [API Documentation](../../api).
+The example above uses slot 0 by default but will take alternative slot numbers. Slots 0-13 are currently available. Slots in the key store (Slots 16-528) will be supported in the future but are not currently available for use. See the [API Documentation](../../api).
 
 
 
