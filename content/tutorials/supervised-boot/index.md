@@ -45,6 +45,11 @@ The name of the feature has been changed to **Supervised Boot** and the API meth
 sudo apt-get update
 sudo apt-get upgrade
 sudo pip3 install -i https://test.pypi.org/simple/ zku --upgrade
+```
+
+To check the current versions,
+
+```
 dpkg --list zkapputilslib
 pip3 show zku
 ```
