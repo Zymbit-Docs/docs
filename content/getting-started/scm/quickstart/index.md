@@ -146,6 +146,13 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 ##### 1) Power On and Bootup
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. SSH login is restricted to only use keys.
  
+ {{% callout notice %}}
+ 
+If you received a Secure Compute Node Type D35 enclosure, the Blue LED of the SCM called out in the following section is not visible from outside the D35 box. The production version of the D35 product includes an Blue LED on the front panel.
+
+The total boot time as configured should take approximately 90 seconds from power on.
+
+{{% /callout %}}
  * Monitor the Blue LED on the Zymbit SCM module. It will go through the following stages:
     - one slow blink:    *initializing the SCM*
     - one -> two -> three -> four blinks:   *Supervised Boot is verifying the signed file information*
