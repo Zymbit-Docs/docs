@@ -4,7 +4,7 @@ description: ""
 aliases:
     - /quickstart/production-mode/scm/
 date: "2022-04-29"
-lastmod: "2022-05-13"
+lastmod: "2022-07-29"
 draft: false
 images: []
 weight: 1000
@@ -17,7 +17,7 @@ For supporting the SCM Alpha program, the Destructive function of actions in Pro
 
 | Event | Development Mode | Alpha Production Mode | Standard Production Mode | Triggers |
 | :---- | :---- | :---- | :---- | :---- |
-| Tamper Event| No action | 6 flash + channel sub-flash | Destroy all keys | Immediately |
+| Tamper Event| 6 flash + channel sub-flash | 6 flash + channel sub-flash | Destroy all keys | Immediately |
 | Low Temp Threshold | 20 flash + 1 sub-flash | 20 flash + 1 sub-flash | Do Not Boot | Immediately |
 | High Temp Threshold | 20 flash + 2 sub-flash | 20 flash + 2 sub-flash | Do Not Boot | Immediately |
 | Low Battery Voltage Threshold | No action | 4 flash | Two Policies: Prevent Boot or Destroy all keys | Power Off |
