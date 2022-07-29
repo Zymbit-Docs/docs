@@ -27,8 +27,10 @@ To check the current versions,
 dpkg --list zkapputilslib
 pip3 show zku
 ```
+NOTE: The host_security_sanitization.py script included in the image references the old format. A script with the new format is available here: [host_security_sanitation.py](https://github.com/zymbit-applications/zk-scripts/blob/a6caa2489a2199c5477b152248929c924ec61058/host_security_sanitization.py)
 
 **Open Issue #99** Minor: SCM: set_perimeter_event_actions() resets and can cause problems if another command is attempted for a period of seconds. A delay of 10 seconds after a set_perimeter_event_actions() will workaround the issue. The SCM ships set to Notify=True and self_destruct=False.
+NOTE: The host_security_sanitization.py script included in the image does not include a 10 second delay. An updated script with the delay is available here: [host_security_sanitation.py](https://github.com/zymbit-applications/zk-scripts/blob/a6caa2489a2199c5477b152248929c924ec61058/host_security_sanitization.py)
 
 **Open Issue #102** Minor: SCM: Supervised Boot does not work with generated key pairs (slot 16 and up). Use slots 0-13.
 
