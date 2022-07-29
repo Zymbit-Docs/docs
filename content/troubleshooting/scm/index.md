@@ -10,7 +10,7 @@ toc: true
 
 -----
 ### Current SCM Alpha Release
-July 22, 2022
+July 29, 2022
 
 ### Issues
 
@@ -32,7 +32,9 @@ NOTE: The host_security_sanitization.py script included in the image references 
 **Open Issue #99** Minor: SCM: set_perimeter_event_actions() resets and can cause problems if another command is attempted for a period of seconds. A delay of 10 seconds after a set_perimeter_event_actions() will workaround the issue. The SCM ships set to Notify=True and self_destruct=False.
 NOTE: The host_security_sanitization.py script included in the image does not include a 10 second delay. An updated script with the delay is available here: [host_security_sanitation.py](https://github.com/zymbit-applications/zk-scripts/blob/a6caa2489a2199c5477b152248929c924ec61058/host_security_sanitization.py)
 
-**Open Issue #102** Minor: SCM: Supervised Boot does not work with generated key pairs (slot 16 and up). Use slots 0-13.
+**Open Issue #103** Major: SCM: Tamper Detect events occassionally resets the SCM and CM4. We are still investigating the root cause of this issue, but it happens quite often with tamper events. For Alpha, self-destruction is disabled for evaluation purposes which should prevent any loss of data. It will cause a reboot.
+
+**Open Issue #102** Minor: SCM: Supervised Boot does not work with generated key pairs (slot 16 and up), but the APIs will accept generated key pair slot numbers. Use slots 0-13.
 
 **Fixed Issue #92** Major: SCM: Power up issues - Sometimes powering up does not complete. The LED will either never come on or will stay on. Most likely related to supercapacitor charge.
 
