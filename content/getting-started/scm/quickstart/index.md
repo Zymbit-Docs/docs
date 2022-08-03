@@ -160,15 +160,9 @@ The total boot time as configured should take approximately 90 seconds from powe
     - blinking stops:   *USB bus enumeration found SCM; may stay off for seconds*
     - one blink every 3 seconds:   *zkifc has loaded and the system is ready to go*
 
-{{< cardpane >}}
-{{% card header="Boot Sequence" %}}
-{{< figure 
-    src="good_verified_boot.gif"
-    alt="SCM Boot Sequence"
-    caption="Example of successful Supervised Boot LED Sequence"
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
+##### Example of Successful Supervised Boot LED Sequence
+
+[<img src="LED_image.jpg" width="30%">](https://user-images.githubusercontent.com/78050323/182671957-dc3d125a-9915-4ae7-bfb8-7b55b1c5053b.mp4)
 
 ##### 2) Login via SSH with key
 The SSH key is included on the USB drive in two formats: PPK for use with Putty and PEM for standard linux ssh
