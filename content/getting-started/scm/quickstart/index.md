@@ -219,6 +219,23 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 
 </details>
 
+#### Update to the latest Zymbit software
+    
+FEATURE CHANGE: Changed references from Verified Boot to Supervised Boot. The names of methods and function calls for the Python, C, and C++ APIs changed. Any programs written to manipulate the manifest will require updating. Changes are in version `zkapputilslib 1.1-24` and `zku 1.0.32`. To update to the new naming convention,
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo pip3 install -i https://test.pypi.org/simple/ zku --upgrade
+```
+
+To check the current versions,
+
+```
+dpkg --list zkapputilslib
+pip3 show zku
+```
+NOTE: The host_security_sanitization.py script included in the image also references the old format. A script with the new format is available here: [host_security_sanitation.py](https://github.com/zymbit-applications/zk-scripts/blob/a6caa2489a2199c5477b152248929c924ec61058/host_security_sanitization.py)
+
 #### Using SCM: API and Examples
     
  * [See API Documentation](../../../api/)   
