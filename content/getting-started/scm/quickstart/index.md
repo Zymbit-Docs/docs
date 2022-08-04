@@ -160,7 +160,7 @@ The total boot time as configured should take approximately 90 seconds from powe
     - blinking stops:   *USB bus enumeration found SCM; may stay off for seconds*
     - one blink every 3 seconds:   *zkifc has loaded and the system is ready to go*
 
-##### Example of Successful Supervised Boot LED Sequence
+##### Example of Successful Supervised Boot LED Sequence (Click image for video)
 
 [<img src="LED_image.jpg" width="30%">](https://user-images.githubusercontent.com/78050323/182671957-dc3d125a-9915-4ae7-bfb8-7b55b1c5053b.mp4)
 
