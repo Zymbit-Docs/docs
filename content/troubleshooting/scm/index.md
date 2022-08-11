@@ -36,6 +36,8 @@ NOTE: The host_security_sanitization.py script included in the image does not in
 
 **Open Issue #102** Minor: SCM: Supervised Boot does not work with generated key pairs (slot 16 and up), but the APIs will accept generated key pair slot numbers. Use slots 0-13.
 
+**Open Issue #105*** Minor SCM: Pi shutdown leads to an SCM reset of the CM4 which reboots the CM4. Workaround for now is to power down.
+
 **Fixed Issue #92** Major: SCM: Power up issues - Sometimes powering up does not complete. The LED will either never come on or will stay on. Most likely related to supercapacitor charge.
 
 **Fixed Issue #93**: SCM: battery_voltage_threshold - bad window from 2.5V - 3.0V. Setting the low voltage threshold within the range of 2.5V to 3.0V should not be allowed but there is currently no check. Do not set the low voltage threshold to > 2.5 volts.
