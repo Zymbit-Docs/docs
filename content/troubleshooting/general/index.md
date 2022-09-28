@@ -9,42 +9,8 @@ toc: true
 ---
 
 -----
-### **Current Release Information**
-December 21, 2021 
 
-#### Firmware: 
- - HSM6 updated to 06.01.23Rel. Firmware is not field upgradeable
- - HSM4: 04.01.07RelHSM. No change 
- - ZYMKEY4: 04.01.06RelE. No change
-
-#### Zymbit Host Side Code:
- - libzk 1.1-21 (updated)
- - libzymkeyssl 1.0.10
- - zkapputilslib 1.1-22 (updated)
- - zkbootrtc 1.1-14
- - zkifc 1.2-32 (updated)
- - zkpkcs 1.0-2
- - zksaapps 1.0.14
- - zku 1.0.29 (updated)
-
-### New Features
-#### Raspberry PI OS Bullseye
-Added support for Raspberry PI OS Bullseye (32 bit). All Zymbit modules.
-
-#### HD Wallet - Edwards Curve Support
-HSM6: HD Wallet added ED25519 (edwards curve) support, as well as a "Cardano" specific variant.
-
-#### HD Wallet - Oversight Wallet
-HSM6: Includes new feature of Oversight Wallet. An Oversight Wallet allows a manager or overseer to monitor transactions without the ability to actually complete transactions.
-
-
-#### HD Wallet - HD Wallet Shamir's Secret Sharing
-HSM6: Includes HD Wallet SLIP39 recovery, Shamir's Secret Sharing, of up to 14 groups, each capable of 14 members. Shamir's Secret Sharing is detailed here: 
-[Learn about SLIP-39](https://github.com/satoshilabs/slips/blob/master/slip-0039.md)
-
------
-
-### **Known Issues**
+### **Known Issues (All Products)**
 
 #### CPU Scaling Governor
 We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. This sometimes causes the zymkey to be put into a odd state or return failures from operations that get optimized out by the governor. The raspberry pi sets the **scaling governor** to be "**ondemand**" by default. We recommend switching this mode to "**performance**" to get the best out of the zymkey. Details:
