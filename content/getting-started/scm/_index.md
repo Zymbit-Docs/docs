@@ -1,9 +1,9 @@
 ---
-title: SCM (Alpha)
+title: SCM (Beta)
 aliases:
     - /quickstart/getting-started/scm/
 draft: false
 images: []
-weight: 5
+weight: 10
 headless: true
 ---

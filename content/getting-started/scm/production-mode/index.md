@@ -4,33 +4,33 @@ description: ""
 aliases:
     - /quickstart/production-mode/scm/
 date: "2022-04-29"
-lastmod: "2022-07-29"
+lastmod: "2022-10-29"
 draft: false
 images: []
 weight: 1000
 toc: true
 ---
 
-{{% callout notice %}} 
-For supporting the SCM Alpha program, the Destructive function of actions in Production Mode are simulated with LED flash sequences and recovery rather than destruction to allow for experimentation with the security functions. The LED sequence will repeat three times and then the system will recover. The table below summarizes the differences unique to the Alpha program vs standard product.
-{{% /callout %}}
-
-| Event | Development Mode | Alpha Production Mode | Standard Production Mode | Triggers |
-| :---- | :---- | :---- | :---- | :---- |
-| Tamper Event| 6 flash + channel sub-flash | 6 flash + channel sub-flash | Destroy all keys | Immediately |
-| Low Temp Threshold | 20 flash + 1 sub-flash | 20 flash + 1 sub-flash | Do Not Boot | Immediately |
-| High Temp Threshold | 20 flash + 2 sub-flash | 20 flash + 2 sub-flash | Do Not Boot | Immediately |
-| Low Battery Voltage Threshold | No action | 4 flash | Two Policies: Prevent Boot or Destroy all keys | Power Off |
-| Supervised Boot Failure | 22 flash + 9 sub-flash | 22 flash + 9 sub-flash | Two Policies: Prevent Boot or Destroy all keys | On Boot |
+For the SCM Beta program, if left in Development Mode, self-destruct events are simulated with LED flash sequences and recovery rather than destruction to allow for experimentation with the security functions. The LED sequence will repeat three times and then the system will recover.
 
 {{< callout destructive >}}
 THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FOLLOWING:
 
 * If you are using the *Perimeter Detect* features, then the sequence in which you arm and disarm this feature is very important. Be sure to carefully follow the process steps below.
-* Once you have locked your SCM into Production Mode, Zymbit cannot guarantee its operation if you subsequently do a major distribution upgrade (e.g. Raspbian Buster to Bullseye). [Contact Zymbit for more information.](https://www.zymbit.com/contact-us/)
 
 If you decide that you are not ready for permanent binding, leave the SCM in developer mode.
 {{< /callout >}}
+
+The table below summarizes the differences between Development Mode (no Bind Lock) and Production Mode (Bind Locked)
+
+| Event | Development Mode | Production Mode | Triggers |
+| :---- | :---- | :---- | :---- |
+| Tamper Event| 6 flash + channel sub-flash | Destroy all keys | Immediately |
+| Low Temp Threshold | 20 flash + 1 sub-flash | Do Not Boot | Immediately |
+| High Temp Threshold | 20 flash + 2 sub-flash | Do Not Boot | Immediately |
+| Low Battery Voltage Threshold | 6 flash | Two Policies: Prevent Boot or Destroy all keys | Power Off |
+| Supervised Boot Failure | 4 flash + 2 sub-flash | Two Policies: Prevent Boot or Destroy all keys | On Boot |
+
 
 Once locked, setting the Event Action modes are limited in the following way:
 
@@ -66,7 +66,7 @@ After these steps have been completed, you are ready to prepare your device for 
 
 ### Prepare *Perimeter Detect*
 
-The `Perimeter Event Actions` for your SCM should be set to `none` or `notify` only. If your SCM's action mode is set to `self_destruct`, you might render your useless while attempting to activate Production Mode.
+The `Perimeter Event Actions` for your SCM should be set to `none` or `notify` only. If your SCM's action mode is set to `self_destruct`, you might render your unit /c/Users/bobgu/OneDrive/Desktop/Atom.lnkuseless while attempting to activate Production Mode.
 
 {{< resource_link "tutorials/perimeter-detect/scm/" >}}
 Understand how to use the SCM's perimeter detect features.
@@ -91,13 +91,13 @@ You should then install your application on your host SBC. The SCM root partitio
 *DO NOT* skip this step. If you encounter a major issue with your application after your SCM has been permanently bound to your device and armed, you may not be able to fix it.
 {{< /callout >}}
 
-Test the functionality of your application thoroughly to ensure it is free of major defects that will prevent it from functioning properly. In Production Mode when *Perimeter Detect* features are in use, it may be difficult to make significant chances to your configuration without locking youself out of the SCM, depending on the nature of your application and its configuration.
+Test the functionality of your application thoroughly to ensure it is free of major defects that will prevent it from functioning properly. In Production Mode when *Perimeter Detect* features are in use, it may be difficult to make significant changes to your configuration without locking youself out of the SCM, depending on the nature of your application and its configuration.
 
 ## Activate Production Mode
 
 To put the SCM into Production Mode only requires a function call followed by a power cycle.
 
-The API function lock_binding puts the HSM into Production Mode. Below are three examples which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to Production Mode.
+The API function lock_binding puts the SCM into Production Mode. Below are three examples which check the current binding info, lock the SCM binding, then check the current binding info again. Remove the comments around the lock binding function to move to Production Mode.
 
 <details>
 
@@ -134,7 +134,7 @@ void HSM_soft_bind(zkCTX zk_ctx)
   printf("Binding is locked: ");
   printf(binding_is_locked ? "true" : "false");
   printf("\n");
-  printf("HSM is bound: ");
+  printf("SCM is bound: ");
   printf(is_bound ? "true" : "false");
   printf("\n\n");
 
@@ -154,7 +154,7 @@ void HSM_soft_bind(zkCTX zk_ctx)
   printf("Binding is locked: ");
   printf(binding_is_locked ? "true" : "false");
   printf("\n");
-  printf("HSM is bound: ");
+  printf("SCM is bound: ");
   printf(is_bound ? "true" : "false");
   printf("\n\n");
 }
@@ -197,7 +197,7 @@ void HSM_soft_bind(zkClass* zk_inst)
   printf("Binding is locked: ");
   printf(binding_is_locked ? "true" : "false");
   printf("\n");
-  printf("HSM is bound: ");
+  printf("SCM is bound: ");
   printf(is_bound ? "true" : "false");
   printf("\n");
 
@@ -208,7 +208,7 @@ void HSM_soft_bind(zkClass* zk_inst)
   printf("Binding is locked: ");
   printf(binding_is_locked ? "true" : "false");
   printf("\n");
-  printf("HSM is bound: ");
+  printf("SCM is bound: ");
   printf(is_bound ? "true" : "false");
   printf("\n");
 }
@@ -235,13 +235,13 @@ int main()
 ```python
 import zymkey
 tup = zymkey.client.get_current_binding_info()
-print("HSM is bound: " + str(tup[1]))
+print("SCM is bound: " + str(tup[1]))
 print("Binding is locked: " + str(tup[0]))
 
 #zymkey.client.lock_binding()
 
 tup = zymkey.client.get_current_binding_info()
-print("HSM is bound: " + str(tup[1]))
+print("SCM is bound: " + str(tup[1]))
 print("Binding is locked: " + str(tup[0]))
 ```
 </details>

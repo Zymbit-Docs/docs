@@ -1,7 +1,7 @@
 ---
 title: "SCM - Getting Started"
 linkTitle: "Getting Started"
-lastmod: "2022-06-20"
+lastmod: "2022-09-29"
 draft: false
 images: []
 weight: 5
@@ -12,11 +12,11 @@ toc: true
 <details>
 
 <summary>
-<h3><b>Introduction to Alpha Release</b></h3>
+<h3><b>Introduction to Beta Release</b></h3>
 </summary>
 
 <br>
-A big thank you for agreeing to checkout out our new SCM Alpha release. Your testing and feedback will help us improve the features and quality of final product before it’s general release. 
+Thank you for agreeing to evaluate our SCM Beta release. Your testing and feedback will help us improve the features and quality of final product before it’s general release. 
 
     
 The following types of feedback will be very helpful to us: 
@@ -60,7 +60,7 @@ Team Zymbit.
 -----
 ### **Overview**
 
-The SCM Alpha kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is alpha-release which means there are a small number of features that have not been included, and a few known bugs that have not yet been resolved. Refer to [SCM Alpha Release Notes](../../../troubleshooting/scm/).
+The SCM Beta kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is beta-release which means the release is considered feature complete, but a few known bugs that have not yet been resolved. Refer to [SCM Beta Release Notes](../../../troubleshooting/scm/).
 
 #### Register your device, receive SSH passphrase
 
@@ -73,8 +73,9 @@ Before getting started your will need to register your device to receive a uniqu
 ### **Contents of Kit**
  
  * Zymbit Secure Compute Module including Pi CM4
- * Raspberry Pi CM4 I/O board[ (Datasheet)](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
- * Zymbit Perimeter Detect Cable
+ * Zymbit Secure Compute I/O Motherboard
+ * (optional) Raspberry Pi CM4 I/O board[ (Datasheet)](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
+ * Zymbit Perimeter Detect Cable for Channel 2
  * Zymbit External Battery
  * 12V Power Supply
  * USB drive with SSH keys necessary for SSH login
@@ -119,9 +120,9 @@ The Zymbit Secure Compute Module comprises a Zymbit Security Module + Hardware W
 * Easy to Scale
 * Pre-fuzzed, pre-encrypted file system
 {{% callout notice %}}
-The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field for Alpha. Please contact support@zymbit.com for assistance.
+The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
 {{% /callout %}}
-* Pre-loaded Linux kernel
+* Pre-loaded Linux kernel (bullseye 32-bit)
 * Pre-load with customer software
 * Pre-defined file manifest & policies
 * Custom MAC OUID blocks available
@@ -148,7 +149,6 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
  
  {{% callout notice %}}
  
-If you received a Secure Compute Node Type D35 enclosure, the Blue LED of the SCM called out in the following section is not visible from outside the D35 box. The production version of the D35 product includes an Blue LED on the front panel.
 
 The total boot time as configured should take approximately 90 seconds from power on.
 
@@ -162,7 +162,7 @@ The total boot time as configured should take approximately 90 seconds from powe
 
 ##### Example of Successful Supervised Boot LED Sequence (Click image for video)
 
-[<img src="LED_image.jpg" width="30%">](https://user-images.githubusercontent.com/78050323/182961313-4a3981b1-6730-4cd9-a8d6-f1c8defba45e.mp4)
+<img src="LED_image.jpg" width="30%">](https://user-images.githubusercontent.com/78050323/182961313-4a3981b1-6730-4cd9-a8d6-f1c8defba45e.mp4)
 
 ##### 2) Login via SSH with key
 The SSH key is included on the USB drive in two formats: PPK for use with Putty and PEM for standard linux ssh
@@ -219,22 +219,6 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 
 </details>
 
-#### Update to the latest Zymbit software
-    
-FEATURE CHANGE: Changed references from Verified Boot to Supervised Boot. The names of methods and function calls for the Python, C, and C++ APIs changed. Any programs written to manipulate the manifest will require updating. Changes are in version `zkapputilslib 1.1-24` and `zku 1.0.32`. To update to the new naming convention,
-```
-sudo apt-get update
-sudo apt-get upgrade
-sudo pip3 install -i https://test.pypi.org/simple/ zku --upgrade
-```
-
-To check the current versions,
-
-```
-dpkg --list zkapputilslib
-pip3 show zku
-```
-NOTE: The host_security_sanitization.py script included in the image also references the old format. A script with the new format is available here: [host_security_sanitation.py](https://github.com/zymbit-applications/zk-scripts/blob/a6caa2489a2199c5477b152248929c924ec61058/host_security_sanitization.py)
 
 #### Using SCM: API and Examples
     
