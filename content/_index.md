@@ -15,6 +15,9 @@ Welcome to Zymbit’s Documentation Site. Here, you will find all the resources 
 
 {{% callout notice %}}
 
-This is an early access version of the site designed to support the Secure Compute Module Alpha program. If you are using standard product, please go to [docs.zymbit.com](https://docs.zymbit.com/)
+This version of the site designed to support the Secure Compute Module and Secure Compute Node Beta program. 
+
+* If you are using standard product, please go to [docs.zymbit.com](https://docs.zymbit.com/)
+* If you are part of the Secure Compute Module Alpha program, the alpha site can be found here: [Alpha docsite](https://zymbit-docs.github.io/docs-staging/branch/alpha/)
 
 {{% /callout %}}
