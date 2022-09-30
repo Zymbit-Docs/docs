@@ -1,16 +1,16 @@
 ---
 title: "Working with SCM Supervised Boot"
-linkTitle: "Supervised Boot (SCM Alpha)"
+linkTitle: "Supervised Boot (SCM Beta)"
 description: ""
 aliases:
     - /tutorials/verified-boot/
 date: "2022-03-28"
-lastmod: "2022-05-19"
+lastmod: "2022-09-30"
 draft: false
 images: []
 toc: true
 ---
-Updated: 2022-07-22
+Updated: 2022-09-30
 
 ## What is Supervised Boot?
 
@@ -30,7 +30,7 @@ Supervised Boot is Zymbit's method for insuring that the boot process is secure.
 
 ## The Manifest
 
-The Manifest is the list of files that will be tracked and verified by the Zymbit Secure Compute Module (SCM) during the boot process. The Manifest resides within the SCM itself. It does not live on any file system. Zymbit provides an API interface to add/update/delete entries in the Manifest, as well as set the action to take if a signature verification of a file should fail.
+The Manifest is the list of files that will be tracked and verified by the Zymbit Secure Compute Module (SCM) during the boot process. The Manifest resides within the SCM itself. It does not live on any file system. Zymbit provides an API interface to add/update/delete entries in the Manifest as well as set the action to take if a signature verification of a file should fail.
  
 All files in the Manifest must reside within the /boot partition. File paths in the Manifest all include `/boot/` by default. Only include the portion of the file path after `/boot/`. For instance, to include `/boot/config.txt`, you would call our API with the string `config.txt`.
 
@@ -38,28 +38,11 @@ If any file exists in the Manifest, Supervised Boot is automatically enabled. To
 
 ## Example Python CLI Application
 
-{{% callout notice %}}
-
-The name of the feature has been changed to **Supervised Boot** and the API methods have also been changed from earlier versions. The example below requires new API and Zymbit python code. Changes are in version `zkapputilslib 1.1-24` and `zku 1.0.32`. To update to the new naming convention,
-```
-sudo apt-get update
-sudo apt-get upgrade
-sudo pip3 install -i https://test.pypi.org/simple/ zku --upgrade
-```
-
-To check the current versions,
-
-```
-dpkg --list zkapputilslib
-pip3 show zku
-```
-
-{{% /callout %}}
 
 ### Prerequisites
 
 * Zymbit Modules that support this feature:
-    * [SCM Early Access](https://www.zymbit.com/secure-compute-node/)
+    * [Secure Compute Module (SCM )](https://www.zymbit.com/secure-compute-node/)
 
 * All code snippets written in this article are written using Python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](../../api)
 
@@ -68,53 +51,64 @@ pip3 show zku
 The code below can be used to add/update/delete and display the Manifest of files to check during Secure Boot operation. Save the code below to a file. We will name it manifest.py for the following examples.
 
 ```python
+#####
+
 #!/usr/bin/python3
 
 import argparse
 import zymkey
 
-class Manifest:
 
-    def add_update(slot, filepath):
-        print(f"Manifest Add/Update (slot={slot}):  {filepath}")
-        zymkey.client.add_or_update_supervised_boot_file(int(slot), filepath)
+def add_update(filepath, slot=None):
+    if slot:
+        print(f"Manifest Add/Update {filepath}    slot={slot}")
+        zymkey.client.add_or_update_supervised_boot_file(filepath, int(slot))
+    else:
+        print(f"Manifest Add/Update {filepath}  no slot specified")
+        zymkey.client.add_or_update_supervised_boot_file(filepath)
 
-    def delete(filepath):
-        print(f"Manifest Delete:  {filepath}")
-        zymkey.client.remove_supervised_boot_file(filepath)
 
-    def show():
-        print("\nManifest:")
-        print("---------")
-        list = zymkey.client.get_supervised_boot_file_manifest()
-        if len(list) ==  0:
-            print("Manifest is empty")
-        else:
-            for filepath in list.split():
-                print(filepath)
-        print("")
+def delete(filepath):
+    print(f"Manifest Delete:  {filepath}")
+    zymkey.client.remove_supervised_boot_file(filepath)
 
-# Setup arg parser
-parser = argparse.ArgumentParser(
-    description="add/del/update Supervised Boot Manifest. (show by default)",
-    epilog="filepath from /boot. ex: for /boot/config.txt, provide config.txt."
-    )
-group = parser.add_mutually_exclusive_group()
-group.add_argument("-a", "--add", metavar="filepath", help="add filepath to manifest", action="store", required=False)
-group.add_argument("-u", "--update", metavar="filepath", help="update filepath in manifest", action="store", required=False)
-group.add_argument("-d", "--delete", metavar="filepath", help="delete filepath from manifest", action="store", required=False)
-parser.add_argument("-s", "--slot", metavar="slot_num", help="use slot for add/delete (default=0)", default=0, action="store", required=False)
-args = parser.parse_args()
-parser.parse_args()
 
-if args.add:
-    Manifest.add_update(args.slot, args.add)
-elif args.update:
-    Manifest.add_update(args.slot, args.update)
-elif args.delete:
-    Manifest.delete(args.delete)
+def show():
+    print("\nManifest:")
+    print("---------")
+    list = zymkey.client.get_supervised_boot_file_manifest()
+    if len(list) ==  0:
+        print("Manifest is empty")
+    else:
+        for filepath in list.split():
+            print(filepath)
+    print("")
 
-Manifest.show()
+
+if __name__ == "__main__":
+
+    # Setup arg parser
+    parser = argparse.ArgumentParser(
+        description="add/del/update Supervised Boot Manifest. (show by default)",
+        epilog="filepath from /boot. ex: for /boot/config.txt, provide config.txt."
+        )
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("-a", "--add", metavar="filepath", help="add filepath to manifest", action="store", required=False)
+    group.add_argument("-u", "--update", metavar="filepath", help="update filepath in manifest", action="store", required=False)
+    group.add_argument("-d", "--delete", metavar="filepath", help="delete filepath from manifest", action="store", required=False)
+    parser.add_argument("-s", "--slot", metavar="slot_num", help="use slot for add/delete (default=0)", default=0, action="store", required=False)
+    args = parser.parse_args()
+    parser.parse_args()
+
+    if args.add:
+        add_update(args.add, args.slot)
+    elif args.update:
+        add_update(args.update, args.slot)
+    elif args.delete:
+        delete(args.delete)
+
+    show()
+
 ```
 
 ### Working with the Manifest
@@ -136,7 +130,7 @@ zymbit_mac_address
 overlays/vc4-kms-v3d.dtbo
 ```
 
-To add a file to the Manifest, run the example script with the --add option and give it a filepath to a file in /boot. We'll create a sample file by copying /etc/hosts,
+To add a file to the Manifest, run the example script with the `--add` option and give it a filepath to a file in /boot. We'll create a sample file by copying `/etc/hosts`,
 
 ```
 $ sudo cp /etc/hosts /boot/sample.txt
@@ -155,12 +149,12 @@ overlays/vc4-kms-v3d.dtbo
 sample.txt
 ```
 
-The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. For alpha, the SCM will "simulate" this process by flashing an LED sequence of 22 flashes followed by 10 flashes, repeated three times, and then the SCM will boot normally. 
+The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. In Development Mode (no bind lock), the SCM will "simulate" this process by flashing an LED sequence of 4 followed by 2 flashes, repeated three times, and then the SCM will boot normally. 
 
 You can test this out:
 
  * First, after adding `sample.txt` to the Manifest and power cycle. The system should boot normally.
- * Next, edit `/boot/sample.txt` and power cycle. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 22 flashes followed by 10 flashes, three times. For Alpha, the SCM will boot up and allow you to recover. 
+ * Next, edit `/boot/sample.txt` and power cycle. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 4 flashes followed by 2 flashes, three times. If left in Development Mode (no bind lock), the SCM will boot up and allow you to recover. 
 
 There are three ways you can remedy the verification failure:
  
@@ -173,11 +167,11 @@ There are three ways you can remedy the verification failure:
 
     `./manifest.py --delete sample.txt`
 
-The next powercycle should boot with the normal sequence - it should not flash the 22 flashes followed by 10 flashes, three times sequence.
+The next powercycle should boot with the normal sequence - it should not flash the 4 flashes followed by 2 flashes, three times sequence.
 
 ### Specifying a Different Slot
 
-The example above uses slot 0 by default but will take alternative slot numbers. Slots 0-13 are currently available. Slots in the key store (Slots 16-528) will be supported in the future but are not currently available for use. See the [API Documentation](../../api).
+The example above uses the default slot, slot 15 by default but will take alternative slot numbers, 0-15. Slots in the key store (Slots 16-528) are not supported.
 
 
 

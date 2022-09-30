@@ -3,14 +3,14 @@ title: "Sending a Web3 Ethereum Transaction"
 linkTitle: "Ethereum Transaction"
 description: ""
 date: "2022-01-03"
-lastmod: "2022-02-14"
+lastmod: "2022-09-30"
 draft: false
 weight: 40
 images: []
 toc: true
 ---
 
-Updated: 2022-02-14
+Updated: 2022-09-30
 
 
 ## What is a Cryptographic ECDSA Signature?
@@ -36,7 +36,7 @@ The private keys stored in our modules are never exportable and are always hidde
 
 * Zymbit Modules that support this feature:
     * [HSM6](https://www.zymbit.com/hsm6/)
-    * [SCM \[Alpha\]](https://www.zymbit.com/secure-compute-platform/)
+    * [SCM ](https://www.zymbit.com/secure-compute-platform/)
 
 * Follow the [Getting Started guide](../../../getting-started/) first, installing all baseline software.
 

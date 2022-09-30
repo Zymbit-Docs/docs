@@ -3,7 +3,7 @@ title: "SLIP39 and Shamir's Wallet Recovery Example"
 linkTitle: "SLIP39 and Shamir's"
 description: ""
 date: "2022-02-04"
-lastmod: "2022-02-14"
+lastmod: "2022-09-30"
 draft: false
 weight: 60
 images: []
@@ -42,7 +42,7 @@ SLIP39 generates groups and each of these groups can contain its own system of m
 
 * Zymbit Modules that support this feature:
     * [HSM6](https://www.zymbit.com/hsm6/)
-    * [SCM \[Alpha\]](https://www.zymbit.com/secure-compute-platform/) 
+    * [SCM](https://www.zymbit.com/secure-compute-platform/) 
 
 *  Follow the [Getting Started guide](../../../getting-started/) first, installing all baseline software. 
 

@@ -25,7 +25,7 @@ This can be useful for handing a copy of a wallet to a financial advisor or some
 
 * Zymbit Modules that support this feature:
     * [HSM6](https://www.zymbit.com/hsm6/)
-    * [SCM \[Alpha\]](https://www.zymbit.com/secure-compute-platform/)
+    * [SCM ](https://www.zymbit.com/secure-compute-platform/)
 
 * Follow the [Getting Started guide](../../../getting-started) first, installing all baseline software.
 

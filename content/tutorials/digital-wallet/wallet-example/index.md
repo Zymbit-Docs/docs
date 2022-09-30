@@ -3,7 +3,7 @@ title: "Working with the Zymbit Hardware Wallet"
 linkTitle: "Zymbit Hardware Wallet"
 description: ""
 date: "2022-02-08"
-lastmod: "2022-04-18"
+lastmod: "2022-09-30"
 draft: false
 weight: 20
 images: []
@@ -21,7 +21,7 @@ A Software Wallet, also known as a Soft Wallet or Desktop Wallet locally stores 
 
 ## What is the Zymbit Embedded Hardware Wallet?
 
-Zymbit Embedded Hardware Wallet functionality is available in Zymbit products, HSM6 and SCM (Alpha). These products are designed to easily integrate into IoT and blockchain appliances that manage large numbers of keys and/or participate in blockchain and crypto transactions.  
+Zymbit Embedded Hardware Wallet functionality is available in Zymbit products, HSM6 and SCM. These products are designed to easily integrate into IoT and blockchain appliances that manage large numbers of keys and/or participate in blockchain and crypto transactions.  
  
 The core features of Zymbit Embedded Hardware Wallets are: 
  * BIP32 – Hierarchical Deterministic Wallet
@@ -52,7 +52,7 @@ safe and locked away!
 
 * Zymbit Modules that support this feature:
     * [HSM6](https://www.zymbit.com/hsm6/)
-    * [SCM \[Alpha\]](https://www.zymbit.com/secure-compute-platform/)  
+    * [SCM ](https://www.zymbit.com/secure-compute-platform/)  
 
 * Follow the [Getting Started guide](../../../getting-started/) first, installing all baseline software.
 
@@ -191,6 +191,6 @@ print("Restored slot:%s" % (restored_seed_slot,))
 ```
 
 ### Troubleshooting
-[Troubleshooting](../../../troubleshooting/
+[Troubleshooting](../../../troubleshooting/)
 [Community](https://community.zymbit.com/)
 

@@ -60,7 +60,7 @@ Team Zymbit.
 -----
 ### **Overview**
 
-The SCM Beta kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is beta-release which means the release is considered feature complete, but a few known bugs that have not yet been resolved. Refer to [SCM Beta Release Notes](../../../troubleshooting/scm/).
+The SCM Beta kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is beta-release which means the release is considered feature complete, but a few known bugs exist that have not yet been resolved. Refer to [SCM Beta Release Notes](../../../troubleshooting/scm/).
 
 #### Register your device, receive SSH passphrase
 
