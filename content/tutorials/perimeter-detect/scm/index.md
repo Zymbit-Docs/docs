@@ -3,7 +3,7 @@ title : "Perimeter Detect: SCM"
 linkTitle: "SCM"
 description: ""
 date: "05-11-2022"
-lastmod: "05-11-2022"
+lastmod: "09-29-2022"
 draft: false
 images: []
 layout: "single"
@@ -17,17 +17,20 @@ This describes the perimeter detect feature on SCM.
 
 <!-- ![HSM Perimeter Detect](../HSM-PD-perimter.png) -->
 
-Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended  or in high risk environments. 
+Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended or in high risk environments. 
 
-SCM includes two independent Perimeter Loops that can be configured to meet different applications.
+The SCM includes two independent Perimeter Loops that can be configured to meet different applications. 
 
 ![HSM Perimeter Detect](../SCM-perim-detect-cable.png) 
+
 
 When a Perimeter Loop is breached, SCM can be configured (at time of binding) to respond with different "Actions", depending upon your security policy. 
 
 ### Connecting Perimeter Loop Circuits
 
-SCM Alpha provides four pin connector to interface to perimeter circuits 1 and 2, as well as a Perimeter Detect Cable attached for demo purposes. Removing and re-attaching the yellow and blue wires can be used to simulate perimeter events.
+When used in conjunction with the Zymbit SCM I/O motherboard, the first perimeter loop connects to the four switches on the bottom of the motherboard; the second perimeter loop is accessible off the two pins labeled `Perimeter` on the bottom of the motherboard.
+
+Alternatively, the SCM has a four pin connector to interface to perimeter circuits 1 and 2. Zymbit can provide an optional Perimeter Detect Cable as shown above for demo purposes. Removing and re-attaching the yellow and blue wires can be used to simulate perimeter events.
 
 ### Electrical Circuit
 
@@ -42,17 +45,15 @@ For released product, prior to permanently binding your SCM to a specific host d
 ##### Response Choices
 
 A)  Do nothing (disable)  
-B)  Notify host when perimeter breach occurs (default as shipped for SCM Alpha)  
+B)  Notify host when perimeter breach occurs (default as shipped for SCM Beta)  
 C)  Destroy all key material (this essentially destroys any encrypted data or file system.  
-
-> Note: For SCM Alpha, complete destruction of the keys is disabled, even in Production Mode. Self-destruction is simulated by flashing a 6 flash sequenced 3 times, then recovering)  
 
 ### Test Perimeter Detect 
 **Developer Mode only**
 
 To quickly test your perimeter detect setup, here is sample code using the Python API. The program will wait for ten seconds to detect any perimeter breaches. Before running this script, connect the circuits with the provided yellow and blue wires and during the ten second pause in the script, breach the perimeter by unplugging the circuit wires. The wait function should immediately detect the event.
 
-In the API, perimeter circuit 2 (as shown in the above images) is defined as channel 1 and perimeter circuit 1 is defined as channel 0. As noted, for SCM Alpha, channel 0 and channel 1 have already been set to action_notify=True. NOTE: For Alpha, setting the Perimeter Event Action restarts `zkifc` which can lead to problems. For Alpha, please power cycle if you change the Perimeter Event settings.
+In the API, perimeter circuit 2 (as shown in the above images) is defined as channel 1 and perimeter circuit 1 is defined as channel 0. As noted, for SCM Beta, channel 0 and channel 1 have already been set to action_notify=True. 
 
 Example for monitoring Perimeter Events:
 <details>
@@ -105,7 +106,7 @@ For best practices and examples of how to physically configure perimeter circuit
 
 ### Additional Self Destruct Policies
 
-SCM has two additional self destruct policies independent of Perimeter Detect: temperature and voltage level monitoring. For more information, visit [Python documentation](https://docs.zymbit.com/api/python_api/#setbatteryvoltageaction-45bcda8a) or [C documentation](https://docs.zymbit.com/api/c_api/#int--zkSetBatteryVoltageAction-f90f5fd1).
+SCM has additional self destruct policies independent of Perimeter Detect: Supervised Boot, Low/High Temperature and Low Voltage level monitoring. For more information, visit [Python documentation](https://docs.zymbit.com/api/python_api/#setbatteryvoltageaction-45bcda8a) or [C documentation](https://docs.zymbit.com/api/c_api/#int--zkSetBatteryVoltageAction-f90f5fd1).
 
 ## Troubleshooting
 [Troubleshooting](../../../troubleshooting/)  
