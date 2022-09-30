@@ -64,7 +64,7 @@ def add_update(filepath, slot=None):
         print(f"Manifest Add/Update {filepath}    slot={slot}")
         zymkey.client.add_or_update_supervised_boot_file(filepath, int(slot))
     else:
-        print(f"Manifest Add/Update {filepath}  no slot specified")
+        print(f"Manifest Add/Update {filepath}  default slot=15")
         zymkey.client.add_or_update_supervised_boot_file(filepath)
 
 
@@ -96,7 +96,7 @@ if __name__ == "__main__":
     group.add_argument("-a", "--add", metavar="filepath", help="add filepath to manifest", action="store", required=False)
     group.add_argument("-u", "--update", metavar="filepath", help="update filepath in manifest", action="store", required=False)
     group.add_argument("-d", "--delete", metavar="filepath", help="delete filepath from manifest", action="store", required=False)
-    parser.add_argument("-s", "--slot", metavar="slot_num", help="use slot for add/delete (default=0)", default=0, action="store", required=False)
+    parser.add_argument("-s", "--slot", metavar="slot_num", help="use slot for add/delete (default=15)", action="store", required=False)
     args = parser.parse_args()
     parser.parse_args()
 
@@ -171,7 +171,7 @@ The next powercycle should boot with the normal sequence - it should not flash t
 
 ### Specifying a Different Slot
 
-The example above uses the default slot, slot 15 by default but will take alternative slot numbers, 0-15. Slots in the key store (Slots 16-528) are not supported.
+The example above uses the default slot 15 but will take alternative slot numbers, 0-15. Slots in the key store (Slots 16-528) are not supported.
 
 
 
