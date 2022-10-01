@@ -44,7 +44,16 @@ HSM6: Includes HD Wallet SLIP39 recovery, Shamir's Secret Sharing, of up to 14 g
 
 -----
 
-### **Known Issues**
+### **Issues and Solutions**
+
+#### Expired GPG Key Preventing Access to Repository
+
+The Zymbit GPG key expired and was renewed on September 30, 2022. New installations should not have any problems. `apt-get update` may complain that the GPG key has expired. To update your local key, do the following:
+
+```
+sudo su
+curl -L https://zk-sw-repo.s3.amazonaws.com/apt-zymkey-pubkey.gpg | apt-key add -
+```
 
 #### CPU Scaling Governor
 We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. This sometimes causes the zymkey to be put into a odd state or return failures from operations that get optimized out by the governor. The raspberry pi sets the **scaling governor** to be "**ondemand**" by default. We recommend switching this mode to "**performance**" to get the best out of the zymkey. Details:
