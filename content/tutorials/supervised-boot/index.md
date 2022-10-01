@@ -48,11 +48,9 @@ If any file exists in the Manifest, Supervised Boot is automatically enabled. To
 
 ### Example Application
 
-The code below can be used to add/update/delete and display the Manifest of files to check during Secure Boot operation. Save the code below to a file. We will name it manifest.py for the following examples.
+The code below can be used to add/update/delete and display the Manifest of files to check during Secure Boot operation. It can also update all the files in the Manifest or delete all the files in the Manifest. Save the code below to a file. We will name it manifest.py for the following examples.
 
 ```python
-#####
-
 #!/usr/bin/python3
 
 import argparse
@@ -68,9 +66,28 @@ def add_update(filepath, slot=None):
         zymkey.client.add_or_update_supervised_boot_file(filepath)
 
 
+def update_all_entries(slot=None):
+    list = zymkey.client.get_supervised_boot_file_manifest()
+    if len(list) ==  0:
+        print("Manifest is empty")
+    else:
+        for filepath in list.split():
+            add_update(filepath, slot)
+
+
 def delete(filepath):
     print(f"Manifest Delete:  {filepath}")
     zymkey.client.remove_supervised_boot_file(filepath)
+
+
+def delete_all_entries():
+    list = zymkey.client.get_supervised_boot_file_manifest()
+    if len(list) ==  0:
+        print("Manifest is empty")
+    else:
+        for filepath in list.split():
+            delete(filepath)
+
 
 
 def show():
@@ -95,7 +112,9 @@ if __name__ == "__main__":
     group = parser.add_mutually_exclusive_group()
     group.add_argument("-a", "--add", metavar="filepath", help="add filepath to manifest", action="store", required=False)
     group.add_argument("-u", "--update", metavar="filepath", help="update filepath in manifest", action="store", required=False)
+    group.add_argument("-U", help="update all entries in manifest", action="store_true", required=False)
     group.add_argument("-d", "--delete", metavar="filepath", help="delete filepath from manifest", action="store", required=False)
+    group.add_argument("-D", help="delete all entries from manifest", action="store_true", required=False)
     parser.add_argument("-s", "--slot", metavar="slot_num", help="use slot for add/delete (default=15)", action="store", required=False)
     args = parser.parse_args()
     parser.parse_args()
@@ -104,8 +123,14 @@ if __name__ == "__main__":
         add_update(args.add, args.slot)
     elif args.update:
         add_update(args.update, args.slot)
+    elif args.U:
+        print("Updating all entries in manifest...")
+        update_all_entries(args.slot)
     elif args.delete:
         delete(args.delete)
+    elif args.D:
+        print("Deleting all entries from manifest...")
+        delete_all_entries()
 
     show()
 
