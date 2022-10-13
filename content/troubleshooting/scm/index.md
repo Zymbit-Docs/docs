@@ -12,17 +12,18 @@ toc: true
 ### Current SCM Beta Release
 Oct 1, 2022
 
-> TODO: Update list below
-
 ### Changes and Additions since Alpha program
+
+* Numerous improvements in stability regarding tamper settings and events
 
 * Added permanent slots 14 and 15 as pre-configured ed25519 slots. 
 
-* Added a default slot for Supervised Boot manifest using slot 15. Switched the order of the filename and slot to accommodate the default.
+* Added a default slot for Supervised Boot manifest using slot 15. Switched the order of the filename and slot to accommodate the default. Example for python:
+
+Was: `add_or_update_supervised_boot_file(slot = 0 , filepath ="")`
+Is:  `add_or_update_supervised_boot_file(filepath ="" , slot = 15)`
 
 * self-destruct now permanently destroys keys in Production Mode
-
-* Numerous improvements in stability regarding tamper settings and events
 
 * A system shutdown no longer reboots. It shuts down.
 
@@ -30,15 +31,17 @@ Oct 1, 2022
 
 ### Issues in 10/1/2022 Beta Release
 
-**Issue #nnn**  set_perimeter_event_actions() leaves the LED off. The LED will return to normal after the next zkifc Open Session after approximately one minute.
+**Issue #117** SCM: Stored tamper event on shutdown has incorrect timestamp. The status of an event (or no event) is always correct, just the timestamp value is incorrectly stored when powering down. Timestamps are correct for running systems and for events that happen while under battery. This does not affect the tamper detect functionality, only the timestamp.
+
+**Issue #116** SCM: crypt unlock takes two tries. The first attempt times out while waiting for the SCM to come on line. If you have a console attached, you will see a message stating "No Zymkeys", then the process will wait and unlock the LUKS key to gain access to the root file system.
+
+**Issue #114**  set_perimeter_event_actions() leaves the LED off. The LED will return to normal after the next zkifc Open Session after approximately one minute.
 
 See [alpha release issues](https://zymbit-docs.github.io/docs-staging/branch/alpha/troubleshooting/scm/) for pre-Beta issues.
 
-
-**Fixed from Alpha to Beta - Issue #99** Minor: SCM: set_perimeter_event_actions() resets and can cause problems if another command is attempted for a period of seconds. A delay of 10 seconds after a set_perimeter_event_actions() will workaround the issue. The SCM ships set to Notify=True and self_destruct=False.
+**Fixed from Alpha to Beta - Issue #99** Minor: SCM: set_perimeter_event_actions() resets and can cause problems if another command is attempted for a period of seconds. A delay of 10 seconds after a set_perimeter_event_actions() will workaround the issue.
 
 **Fixed from Alpha to Beta - Issue #103** Major: SCM: Tamper Detect events occassionally resets the SCM and CM4. We are still investigating the root cause of this issue, but it happens quite often with tamper events. For Alpha, self-destruction is disabled for evaluation purposes which should prevent any loss of data. It will cause a reboot.
-
 
 **Fixed from Alpha to Beta - Issue #93**: SCM: battery_voltage_threshold - bad window from 2.5V - 3.0V. Setting the low voltage threshold within the range of 2.5V to 3.0V should not be allowed but there is currently no check. Do not set the low voltage threshold to > 2.5 volts.
 
@@ -48,14 +51,14 @@ See [alpha release issues](https://zymbit-docs.github.io/docs-staging/branch/alp
 
 
 #### Firmware: 
- - SCM: 00.00.51beta, 00.00.32beta
+ - SCM: 00.00.51beta, 00.00.34beta
 
 #### Zymbit Host Side Code:
  - libzk 1.1-22
  - libzymkeyssl 1.0-10
- - zkapputilslib 1.1-24
+ - zkapputilslib 1.1-25
  - zkbootrtc 1.1-15
- - zkifc 1.2-34
+ - zkifc 1.2-35
  - zkpkcs11 1.0-2 
  - zksaapps 1.0.-16
  - zku 1.0.33
