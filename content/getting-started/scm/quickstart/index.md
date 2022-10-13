@@ -1,7 +1,7 @@
 ---
 title: "SCM - Getting Started"
 linkTitle: "Getting Started"
-lastmod: "2022-09-29"
+lastmod: "2022-10-13"
 draft: false
 images: []
 weight: 5
@@ -162,7 +162,7 @@ The total boot time as configured should take approximately 90 seconds from powe
 
 ##### Example of Successful Supervised Boot LED Sequence (Click image for video)
 
-<img src="LED_image.jpg" width="30%">](https://user-images.githubusercontent.com/78050323/182961313-4a3981b1-6730-4cd9-a8d6-f1c8defba45e.mp4)
+[<img src="LED_image.jpg" width="30%">](https://user-images.githubusercontent.com/78050323/182961313-4a3981b1-6730-4cd9-a8d6-f1c8defba45e.mp4)
 
 ##### 2) Login via SSH with key
 The SSH key is included on the USB drive in two formats: PPK for use with Putty and PEM for standard linux ssh
