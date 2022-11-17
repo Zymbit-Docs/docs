@@ -62,6 +62,10 @@ Team Zymbit.
 
 The SCM Beta kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is beta-release which means the release is considered feature complete, but a few known bugs exist that have not yet been resolved. Refer to [SCM Beta Release Notes](../../../troubleshooting/scm/).
 
+{{% callout notice %}}
+All necessary Zymbit software has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
+{{% /callout %}}
+
 #### Register your device, receive SSH passphrase
 
 Before getting started your will need to register your device to receive a unique passphrase that has been associated with your device by Zymbit.  Register here:
