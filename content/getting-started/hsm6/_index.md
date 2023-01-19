@@ -4,6 +4,6 @@ aliases:
     - /quickstart/getting-started/hsm6/
 draft: false
 images: []
-weight: 3
+weight: 40
 headless: true
 ---
