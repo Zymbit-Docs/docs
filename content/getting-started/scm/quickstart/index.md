@@ -1,7 +1,7 @@
 ---
 title: "SCM - Getting Started"
 linkTitle: "Getting Started"
-lastmod: "2023-01-18
+lastmod: "2023-01-18"
 draft: false
 images: []
 weight: 5
@@ -41,8 +41,8 @@ All necessary Zymbit software has been pre-installed. No further installation is
 ### **Contents of Development Kit**
 
  * Zymbit Secure Compute Module including Pi CM4
- * Zymbit Secure Compute I/O Motherboard [(Datasheet)](https://www.zymbit.com/secure-compute-node/#platform-features)
- * (optional) Raspberry Pi CM4 I/O board [(Datasheet)](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
+ * Zymbit Secure Compute I/O Motherboard [ (Datasheet)](https://www.zymbit.com/secure-compute-node/#platform-features)
+ * (optional) Raspberry Pi CM4 I/O board [ (Datasheet)](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
  * Zymbit Perimeter Detect Cable for Channel 2
  * Zymbit External Battery
  * 12V Power Supply
