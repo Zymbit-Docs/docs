@@ -3,7 +3,7 @@ title: HSM6 Quickstart
 linkTitle: Quickstart
 description: ""
 aliases:
-    - /quickstart/getting-started/hsm4/
+    - /quickstart/getting-started/hsm6/
 date: ""
 lastmod: "2022-03-08"
 draft: false
