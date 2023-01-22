@@ -29,70 +29,18 @@ We've updated the SCM release to support the A1 release of the SCM hardware. Sum
 * zkifc 1.2-36 - Fixed: #120 get_public_key() with a very large number crashes zkifc
 * zkpkcs 11 1.0-3 - Fixed: #123 zk_pkcs11: Doesn't work with 64-bit OS
 
-<details>
-
-<summary>
-<h3><b>Introduction to Beta Release</b></h3>
-</summary>
-
-<br>
-Thank you for agreeing to evaluate our SCM Beta release. Your testing and feedback will help us improve the features and quality of final product before it’s general release. 
-
-    
-The following types of feedback will be very helpful to us: 
-    
-*	Quality - does the feature work as advertised?  
-*	Useability – was the feature easy/intuitive to use?  Or totally mind numbing?  
-*	Improvements/new features – what improvements or new features would you like to see? 
-    
-The following are key features of the product that we encourage you to test. Most have specific tutorials or documentation to support your evaluation linked below.
-    
-*   Tightening up standard Pi login access  
-*	Pre-configured and encrypted operating system  
-*   Supervised Boot  
-*	Sanitization Script  
-*   Tamper sensors and policies  
-
 **Getting Support**
 
 [Contact Support](mailto:support@zymbit.com)
 
-**Pen Testing and Beyond**
-    
-For those of you trying pen test the device, we understand that anything and everything is possible! Its just a question of how much time, money and expertise you have.
-    
-*   Can you brick it?  Yes if you do bad things to it!  
-*   Can you extract sensitive data from it? Try it.  
-    
-Useful feedback on pen testing would include how you had configured the SCM – what sensors and policies did you have enabled, what attack and escalation path did you follow. If you have any cool pictures of angle grinders or drills, or lasers, please share them!
-
-**Final Thoughts on Purpose**
-    
-SCM is a commercial product, designed to bring a higher level of security to applications that use single board computers deployed outside the security of a data center – IoT, gateways, terminals etc. Its purpose is to protect valuable assets like IP, data and credentials from typical real-world exploits. It’s designed for developers to innovate freely using familiar tools, without needing expert security knowledge or additional layers of technology. 
-    
-If you can help us achieve our purpose of making compute hardware products more secure, we’re on the same page. Thanks for testing – we look forward to your feedback and suggestions!
-
-Team Zymbit.  
-
-
-</details>
-
 -----
 ### **Overview**
 
-The SCM Beta kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is beta-release which means the release is considered feature complete, but a few known bugs exist that have not yet been resolved. Refer to [SCM Beta Release Notes](../../../troubleshooting/scm/).
+The SCM Deveoper's kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. For up to date information on known issues, please refer to [SCM Beta Release Notes](../../../troubleshooting/scm/).
 
 {{% callout notice %}}
 All necessary Zymbit software has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
 {{% /callout %}}
-
-#### Register your device, receive SSH passphrase
-
-Before getting started your will need to register your device to receive a unique passphrase that has been associated with your device by Zymbit.  Register here:
-
-[Register](https://forms.zohopublic.com/phil12/form/SecureComputeModuleAlphaDeviceRegistration/formperma/qTHLxAZEdVSx5ErwVyQzmxULOk1BxJ6CC-IfpYE9JDI)
-
-![register](reg_barcode.png)
 
 ### **Contents of Kit**
  
@@ -168,8 +116,8 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 
 ### **Configure and Setup your SCM**
 
-##### 1) Power On and Bootup
- * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. SSH login is restricted to only use keys.
+##### Power On, Bootup, and SSH in
+ * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
  
  {{% callout notice %}}
  
@@ -187,61 +135,6 @@ The total boot time as configured should take approximately 90 seconds from powe
 ##### Example of Successful Supervised Boot LED Sequence (Click image for video)
 
 [<img src="LED_image.jpg" width="30%">](https://user-images.githubusercontent.com/78050323/182961313-4a3981b1-6730-4cd9-a8d6-f1c8defba45e.mp4)
-
-##### 2) Login via SSH with key
-The SSH key is included on the USB drive in two formats: PPK for use with Putty and PEM for standard linux ssh
-
-<details>
-
-<summary>
-   SSH login with Putty
-</summary>
-    
-* Copy PPK key file zscn.ppk from USB drive to your host
-
-{{< cardpane >}}
-{{% card header="Open PuTTY" %}}
-{{< figure
-    src="putty1.png"
-    alt="Load SSH key file into PuTTY"
-    caption="Open PuTTY, navigate to SSH -> Auth, and Browse to the PPK file."
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
-    
-{{< cardpane >}}
-{{% card header="Configure and Save" %}}
-{{< figure
-    src="putty2.png"
-    alt="Choose Session, then name and Save"
-    caption="Choose Session, then fill out the Host Name, the Session name, and Save."
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
-    
-{{< cardpane >}}
-{{% card header="Open SSH Session" %}}
-{{< figure
-    src="putty3.png"
-    alt="Open your PuTTY Session"
-    caption="Choose your saved session and Open. Enter the Passphrase you received from Zymbit when prompted."
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
-
-</details>
-
-<details>
-
-<summary>
-   SSH login from Linux CLI
-</summary>
-
-1) Copy PEM key file zscn.pem from USB drive to your host  
-2) `ssh -i zscn.pem zymbit@zymbit-dev`  
-3) Present your passphrase when prompted  
-
-</details>
 
 
 #### Using SCM: API and Examples

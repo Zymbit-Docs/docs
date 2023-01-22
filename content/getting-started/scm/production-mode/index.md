@@ -4,14 +4,14 @@ description: ""
 aliases:
     - /quickstart/production-mode/scm/
 date: "2022-04-29"
-lastmod: "2022-10-29"
+lastmod: "2023-01-22"
 draft: false
 images: []
 weight: 1000
 toc: true
 ---
 
-For the SCM Beta program, if left in Development Mode, self-destruct events are simulated with LED flash sequences and recovery rather than destruction to allow for experimentation with the security functions. The LED sequence will repeat three times and then the system will recover.
+If left in Development Mode, self-destruct events are simulated with LED flash sequences and recovery rather than destruction to allow for experimentation with the security functions. The LED sequence will repeat three times and then the system will recover.
 
 {{< callout destructive >}}
 THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FOLLOWING:
@@ -58,7 +58,7 @@ Activate Production Mode
 
 The following steps should be complete:
 
-[ ] Install a battery on the SCM.
+[ ] Install a battery on the Zymbit SCM I/O board.
 
 [ ] Install all necessary software for your application on the host and establish temporary binding in development mode.
 
