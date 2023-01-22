@@ -1,5 +1,5 @@
 ---
-title: SCM (Beta)
+title: Secure Compute Module - SCM 
 aliases:
     - /quickstart/getting-started/scm/
 draft: false
