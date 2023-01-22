@@ -1,7 +1,7 @@
 ---
 title: "SCM - Getting Started"
 linkTitle: "Getting Started"
-lastmod: "2023-01-18"
+lastmod: "2022-01-20"
 draft: false
 images: []
 weight: 5
@@ -9,40 +9,96 @@ toc: true
 ---
 
 -----
+## Updated release 1/13/2023 (RC-23.01)
+
+We've updated the SCM release to support the A1 release of the SCM hardware. Summary of changes:
+
+### Pre-loaded OS options
+* Raspberry PI OS Lite 64-bit (Bullseye)
+* Raspberry PI OS Lite 32-bit (Bullseye)
+
+### Modifications from previous beta
+* Now allow initial SSH via password (use zymbit/zymbit). Please change once logged in.
+* No longer providing SSH key on USB stick; as noted above, you can use password.
+* No longer necessary to register product; no SSH key necessary so no need for key passphrase.
+* sudo for user zymbit with password in standard PI OS manner allowed; no need to supply password every time.
+
+### Changes
+* FW 01.00.00 - Supports A1 revision of SCM
+* FW 01.00.00 - Fixed:  #117 Stored tamper event on shutdown has incorrect timestamp
+* zkifc 1.2-36 - Fixed: #120 get_public_key() with a very large number crashes zkifc
+* zkpkcs 11 1.0-3 - Fixed: #123 zk_pkcs11: Doesn't work with 64-bit OS
+
 <details>
 
 <summary>
-<h3><b>Introduction to Secure Compute Module</b></h3>
+<h3><b>Introduction to Beta Release</b></h3>
 </summary>
 
 <br>
-Thank you for in our Secure Compute Module (SCM) product line. SCM is a commercial product, designed to bring a higher level of security to applications that use single board computers deployed outside the security of a data center – IoT, gateways, terminals etc. Its purpose is to protect valuable assets like IP, data and credentials from typical real-world exploits. It is designed for developers to innovate freely using familiar tools, without needing expert security knowledge or additional layers of technology.
+Thank you for agreeing to evaluate our SCM Beta release. Your testing and feedback will help us improve the features and quality of final product before it’s general release. 
+
+    
+The following types of feedback will be very helpful to us: 
+    
+*	Quality - does the feature work as advertised?  
+*	Useability – was the feature easy/intuitive to use?  Or totally mind numbing?  
+*	Improvements/new features – what improvements or new features would you like to see? 
+    
+The following are key features of the product that we encourage you to test. Most have specific tutorials or documentation to support your evaluation linked below.
+    
+*   Tightening up standard Pi login access  
+*	Pre-configured and encrypted operating system  
+*   Supervised Boot  
+*	Sanitization Script  
+*   Tamper sensors and policies  
 
 **Getting Support**
 
 [Contact Support](mailto:support@zymbit.com)
+
+**Pen Testing and Beyond**
+    
+For those of you trying pen test the device, we understand that anything and everything is possible! Its just a question of how much time, money and expertise you have.
+    
+*   Can you brick it?  Yes if you do bad things to it!  
+*   Can you extract sensitive data from it? Try it.  
+    
+Useful feedback on pen testing would include how you had configured the SCM – what sensors and policies did you have enabled, what attack and escalation path did you follow. If you have any cool pictures of angle grinders or drills, or lasers, please share them!
+
+**Final Thoughts on Purpose**
+    
+SCM is a commercial product, designed to bring a higher level of security to applications that use single board computers deployed outside the security of a data center – IoT, gateways, terminals etc. Its purpose is to protect valuable assets like IP, data and credentials from typical real-world exploits. It’s designed for developers to innovate freely using familiar tools, without needing expert security knowledge or additional layers of technology. 
+    
+If you can help us achieve our purpose of making compute hardware products more secure, we’re on the same page. Thanks for testing – we look forward to your feedback and suggestions!
+
+Team Zymbit.  
+
 
 </details>
 
 -----
 ### **Overview**
 
-The Secure Compute Module is offered as a standalone unit or can be ordered from us with two options of Development Kits, or as a complete, enclosed Node product. We currently offer two flavors of a pre-installed image:
-
-* Raspberry PI OS Lite (Bullseye 64-bit)
-* Raspberry PI OS Lite (Bullseye 32-bit)
-
-Refer to [SCM Beta Release Notes](../../../troubleshooting/scm/) for details on this SCM release (rc-23.01)
+The SCM Beta kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. The product you are receiving is beta-release which means the release is considered feature complete, but a few known bugs exist that have not yet been resolved. Refer to [SCM Beta Release Notes](../../../troubleshooting/scm/).
 
 {{% callout notice %}}
 All necessary Zymbit software has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
 {{% /callout %}}
 
-### **Contents of Development Kit**
+#### Register your device, receive SSH passphrase
 
+Before getting started your will need to register your device to receive a unique passphrase that has been associated with your device by Zymbit.  Register here:
+
+[Register](https://forms.zohopublic.com/phil12/form/SecureComputeModuleAlphaDeviceRegistration/formperma/qTHLxAZEdVSx5ErwVyQzmxULOk1BxJ6CC-IfpYE9JDI)
+
+![register](reg_barcode.png)
+
+### **Contents of Kit**
+ 
  * Zymbit Secure Compute Module including Pi CM4
- * Zymbit Secure Compute I/O Motherboard [ (Datasheet)](https://www.zymbit.com/secure-compute-node/#platform-features)
- * (optional) Raspberry Pi CM4 I/O board [ (Datasheet)](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
+ * Zymbit Secure Compute I/O Motherboard
+ * (optional) Raspberry Pi CM4 I/O board[ (Datasheet)](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
  * Zymbit Perimeter Detect Cable for Channel 2
  * Zymbit External Battery
  * 12V Power Supply
@@ -50,7 +106,7 @@ All necessary Zymbit software has been pre-installed. No further installation is
 
 {{< cardpane >}}
 {{% card header="Contents" %}}
-{{< figure
+{{< figure 
     src="SCM-Alpha-Kit-components-2.png"
     alt="SCM Alpha Kit"
     caption=""
@@ -60,7 +116,7 @@ All necessary Zymbit software has been pre-installed. No further installation is
 
 ##### Secure Compute Module
 
-The Zymbit Secure Compute Module comprises a Zymbit Security Service + Hardware Wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
+The Zymbit Secure Compute Module comprises a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
 
 {{< cardpane >}}
 {{% card header="SCM Physical Architecture" %}}
@@ -81,7 +137,7 @@ The Zymbit Secure Compute Module comprises a Zymbit Security Service + Hardware 
     >}}
 {{% /card %}}
 {{< /cardpane >}}
-
+    
 ##### Highlights
 * 100% pin compatible with RPi CM4, all configurations.
 * 100% code compatible with RPi
@@ -114,9 +170,9 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 
 ##### 1) Power On and Bootup
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. SSH login is restricted to only use keys.
-
+ 
  {{% callout notice %}}
-
+ 
 
 The total boot time as configured should take approximately 90 seconds from power on.
 
@@ -140,7 +196,7 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 <summary>
    SSH login with Putty
 </summary>
-
+    
 * Copy PPK key file zscn.ppk from USB drive to your host
 
 {{< cardpane >}}
@@ -152,7 +208,7 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
     >}}
 {{% /card %}}
 {{< /cardpane >}}
-
+    
 {{< cardpane >}}
 {{% card header="Configure and Save" %}}
 {{< figure
@@ -162,7 +218,7 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
     >}}
 {{% /card %}}
 {{< /cardpane >}}
-
+    
 {{< cardpane >}}
 {{% card header="Open SSH Session" %}}
 {{< figure
@@ -189,14 +245,16 @@ The SSH key is included on the USB drive in two formats: PPK for use with Putty 
 
 
 #### Using SCM: API and Examples
-
+    
  * [See API Documentation](../../../api/)   
  * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
  * [Securing the SCM further with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
-
+    
 #### Support
-
+    
  * [Release Notes](../../../troubleshooting/scm/)
  * [Contact Support](mailto:support@zymbit.com)
+
+
