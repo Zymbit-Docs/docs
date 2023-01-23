@@ -17,6 +17,7 @@ We updated the common Zymbit software release common to all products: ZYMKEY4, H
 ```
 sudo apt-get update
 sudo apt-get upgrade -y
+sudo pip3 install -i https://test.pypi.org/simple/ zku --upgrade
 ```
 
 #### Zymbit Host Side Code Versions (view with `dpkg -l | grep -i zym`):
