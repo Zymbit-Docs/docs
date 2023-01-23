@@ -35,6 +35,7 @@ sudo apt-get upgrade -y
 * Fixed: #120 get_public_key() with a very large number crashes zkifc
 * Fixed: #123 zk_pkcs11: Doesn't work with 64-bit OS
 * Fixed: #113 LED resets to default pattern after 5-10 minutes
+* Fixed: #110 Fixed memory leak in zkifc which eventually could lead to zkifc crashing
 * API functions that include Bip or Slip have been renamed to BIP and SLIP. See API docs for new syntax
 
 
