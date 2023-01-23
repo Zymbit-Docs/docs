@@ -1,7 +1,7 @@
 ---
-title: "SCM Beta Release Troubleshooting/FAQ"
-linkTitle: "SCM (Beta)"
-lastmod:
+title: "SCM Troubleshooting/FAQ"
+linkTitle: "SCM" 
+lastmod: "2023-01-22"
 draft: false
 images: []
 weight: 15
@@ -9,7 +9,30 @@ toc: true
 ---
 
 -----
-### Current SCM Beta Release
+
+### Updated release 1/13/2023 (RC-23.01)
+
+We've updated the SCM release to support the A1 release of the SCM hardware. Summary of changes:
+
+#### Pre-loaded OS options
+* Raspberry PI OS Lite 64-bit (Bullseye)
+* Raspberry PI OS Lite 32-bit (Bullseye)
+
+#### Modifications from previous beta
+* Now allow initial SSH via password (use zymbit/zymbit). Please change once logged in.
+* No longer providing SSH key on USB stick; as noted above, you can use password.
+* No longer necessary to register product; no SSH key necessary so no need for key passphrase.
+* sudo for user zymbit with password in standard PI OS manner allowed; no need to supply password every time.
+
+#### Changes
+* FW 01.00.00 - Supports A1 revision of SCM
+* FW 01.00.00 - Fixed:  #117 Stored tamper event on shutdown has incorrect timestamp
+* zkifc 1.2-36 - Fixed: #120 get_public_key() with a very large number crashes zkifc
+* zkpkcs 11 1.0-3 - Fixed: #123 zk_pkcs11: Doesn't work with 64-bit OS
+
+-----
+
+### SCM Beta Release
 Oct 1, 2022
 
 ### Changes and Additions since Alpha program

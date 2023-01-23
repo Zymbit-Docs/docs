@@ -1,16 +1,16 @@
 ---
 title: "Working with SCM Supervised Boot"
-linkTitle: "Supervised Boot (SCM Beta)"
+linkTitle: "Supervised Boot (SCM)"
 description: ""
 aliases:
     - /tutorials/verified-boot/
 date: "2022-03-28"
-lastmod: "2022-09-30"
+lastmod: "2023-01-22"
 draft: false
 images: []
 toc: true
 ---
-Updated: 2022-09-30
+Updated: 2023-01-22
 
 ## What is Supervised Boot?
 
