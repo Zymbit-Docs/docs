@@ -1,12 +1,43 @@
 ---
 title: "General FAQ & Troubleshooting"
 linkTitle: "General"
-lastmod: 2022-10-11
+lastmod: 2023-01-22
 draft: false
 images: []
 weight: 10
 toc: true
 ---
+
+-----
+
+### **Release Notes - Latest Release 1/13/2023 (RC-23.01)**
+
+We updated the common Zymbit software release common to all products: ZYMKEY4, HSM4, HSM6, and the new SCM-based product line. Existing customers can do an update/upgrade to get the latest code.
+
+```
+sudo apt-get update
+sudo apt-get upgrade -y
+```
+
+#### Zymbit Host Side Code Versions (view with `dpkg -l | grep -i zym`):
+* libzk 1.1-22
+* libzymkeyssl 1.0-10
+* zkapputilslib 1.1-25
+* zkbootrtc 1.1-15
+* zkifc 1.2-36
+* zkpkcs11 1.0-3
+* zksaapps 1.0-16
+* zku 1.0.33
+
+#### Changes
+* Added support for Raspberry OS Bullseye 64-bit and Ubuntu 22.04 Jammy 32-bit and 64-bit
+* Common code base supports across all products including SCM. See SCM release notes for details on SCM features.
+* Fixed: #120 get_public_key() with a very large number crashes zkifc
+* Fixed: #123 zk_pkcs11: Doesn't work with 64-bit OS
+* Fixed: #113 LED resets to default pattern after 5-10 minutes
+* API functions that include Bip or Slip have been renamed to BIP and SLIP. See API docs for new syntax
+
+
 
 -----
 
