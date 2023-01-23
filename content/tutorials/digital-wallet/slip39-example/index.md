@@ -3,7 +3,7 @@ title: "SLIP39 and Shamir's Wallet Recovery Example"
 linkTitle: "SLIP39 and Shamir's"
 description: ""
 date: "2022-02-04"
-lastmod: "2022-02-14"
+lastmod: "2022-09-30"
 draft: false
 weight: 60
 images: []
@@ -32,8 +32,7 @@ SLIP39 allows the owner to backup their wallets with multiple shards using a com
 SLIP39 generates groups and each of these groups can contain its own system of member shards.
 
 * HSM6 supports up to 14 groups \* 14 members per group = 196 shards total
-
-<!-- * SCM supports up to 16 groups \* 16 members per group = 256 shards total -->
+* SCM supports up to 16 groups \* 16 members per group = 256 shards total 
 
 #### Useful Resources:
 
@@ -43,11 +42,11 @@ SLIP39 generates groups and each of these groups can contain its own system of m
 
 * Zymbit Modules that support this feature:
     * [HSM6](https://www.zymbit.com/hsm6/)
-    <!-- * [SCM \[Early Access\]](https://www.zymbit.com/secure-compute-platform/) -->
+    * [SCM](https://www.zymbit.com/secure-compute-platform/) 
 
-*  Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software. 
+*  Follow the [Getting Started guide](../../../getting-started/) first, installing all baseline software. 
 
-* All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [HSM6 API Documentation](https://docs.zymbit.com/api/)
+* All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](../../../api/)
 
 
 ## Generating a master seed with SLIP39 recovery
@@ -70,7 +69,7 @@ Create the recovery strategy. The recovery strategy will detail the number of gr
 `passphrase` is the password for generating/recovering the master generator key.
 
 ```python
-use_slip39_recovery = zymkey.RecoveryStrategySlip39(group_count = 3, group_threshold = 2, iteration_exponent = 0, variant = "", passphrase = "")
+use_SLIP39_recovery = zymkey.RecoveryStrategySLIP39(group_count = 3, group_threshold = 2, iteration_exponent = 0, variant = "", passphrase = "")
 ```
 
 Next, start the shard generating SLIP39 session.
@@ -79,7 +78,7 @@ Next, start the shard generating SLIP39 session.
 # The master seed will not be generated until all groups are created. So the slot will not be returned until all shards are generated.
 # Opens a SLIP39 session successfully on return code 0
 print("Starting SLIP39 shard generating session...")
-return_code = zymkey.client.gen_wallet_master_seed("secp256k1", "", "MyExampleWallet", use_slip39_recovery)
+return_code = zymkey.client.gen_wallet_master_seed("secp256k1", "", "MyExampleWallet", use_SLIP39_recovery)
 print("Done! Return Code:%i" % (return_code))
 ```
 
@@ -90,32 +89,32 @@ While a SLIP39 session is active for both generation or recovery, other wallet g
 
 ```python
 # cancel an active SLIP39 session (Generation/Recovery)
-zymkey.client.cancel_slip39_session()
+zymkey.client.cancel_SLIP39_session()
 ```
 {{< /callout >}}
 
 ### Setting up our Groups and their member shards
 
-Groups can also contain their own member shard system. We will need to set this configuration for each group we work on with `set_gen_slip39_group_info`.  The `group_index` is the group id we will be working on. So if we asked for 3 groups in our recovery strategy, then the group indexes for these 3 groups are \[0,1,2\].
+Groups can also contain their own member shard system. We will need to set this configuration for each group we work on with `set_gen_SLIP39_group_info`.  The `group_index` is the group id we will be working on. So if we asked for 3 groups in our recovery strategy, then the group indexes for these 3 groups are \[0,1,2\].
 
 The `member_count` is the number of shards in the group.
 
 The `member_threshold` is the number of member shards we required to reconstruct the group.
 
-`add_gen_slip39_member_pwd(string passphrase)` will return a -1 and 33 word mnemonic sentence (shard). If we specified a member_count of three, then we will need to call this function 3 times to generate our 3 member shards. By default the function doesn't attach a password to any of these shards. This function will return a -1 until all groups/members are generated.
+`add_gen_SLIP39_member_pwd(string passphrase)` will return a -1 and 33 word mnemonic sentence (shard). If we specified a member_count of three, then we will need to call this function 3 times to generate our 3 member shards. By default the function doesn't attach a password to any of these shards. This function will return a -1 until all groups/members are generated.
 
 For now, the first group will have 3 shards with a threshold of 2 shards required for reconstruction. These shards will also not have passwords attached to them.
 
 ```python
 # First Group has been divided into three members. Will require two of these three members to reconstruct this group.
 # This group will have no passwords attached to the members
-# add_gen_slip39_member_pwd() will return a [-1, mnemonic_sentence]. -1 symbolizing that all shards haven't been generated yet.
+# add_gen_SLIP39_member_pwd() will return a [-1, mnemonic_sentence]. -1 symbolizing that all shards haven't been generated yet.
 print("\nSet our first example group configuration..")
-zymkey.client.set_gen_slip39_group_info(group_index = 0, member_count = 3, member_threshold = 2)
+zymkey.client.set_gen_SLIP39_group_info(group_index = 0, member_count = 3, member_threshold = 2)
 print("Generating 3 Shards for Group 0 (Shards required for recovering the group: 2)...")
 group_0_shard_list = []
 for i in range(3):
-    ret, mnemonic_shard = zymkey.client.add_gen_slip39_member_pwd()
+    ret, mnemonic_shard = zymkey.client.add_gen_SLIP39_member_pwd()
     group_0_shard_list.append(mnemonic_shard)
     print("Shard #%i , Mnemonic sentence:\n%s" % (i+1, group_0_shard_list[i]))
 ```
@@ -126,18 +125,18 @@ For the second group, generate three total shards again, but this time with a th
 # Second Group has been divided into three members. Will require all three members to reconstruct this group.
 # This group will have passwords attached to the members
 print("\nSet our second example group configuration..")
-zymkey.client.set_gen_slip39_group_info(group_index = 1, member_count = 3, member_threshold = 3)
+zymkey.client.set_gen_SLIP39_group_info(group_index = 1, member_count = 3, member_threshold = 3)
 print("Done!")
 print("Generating 3 Shards for Group 1 (Shards required for recovering the group: 3)...")
 group_1_shard_dict = {}
 group_1_pwd_list = ["p@ssw0rd", "T3st", "h3LlO"]
 for i in range(3):
-    ret, mnemonic_shard = zymkey.client.add_gen_slip39_member_pwd(group_1_pwd_list[i])
+    ret, mnemonic_shard = zymkey.client.add_gen_SLIP39_member_pwd(group_1_pwd_list[i])
     group_1_shard_dict[group_1_pwd_list[i]] = mnemonic_shard
     print("Shard #%i , Mnemonic sentence(Password: %s):\n%s" % (i+1, group_1_pwd_list[i], group_1_shard_dict[group_1_pwd_list[i]]))
 ```
 
-For the third group we will have only one shard. To show that we do not have to always shard up our groups into multiple shards. Since this is the last group in the SLIP39 session, the master seed key's slot number will be returned on the last shard generated by add_gen_slip39_member_pwd() instead of -1.
+For the third group we will have only one shard. To show that we do not have to always shard up our groups into multiple shards. Since this is the last group in the SLIP39 session, the master seed key's slot number will be returned on the last shard generated by add_gen_SLIP39_member_pwd() instead of -1.
 
 {{< callout warning >}}
 Although this shard may look like a BIP39 mnemonic sentence. They are NOT interchangeable.
@@ -147,12 +146,12 @@ Although this shard may look like a BIP39 mnemonic sentence. They are NOT interc
 # Third Group has been divided into just one member (THIS IS NOT RECOMMENDED LEAST SECURE). Will require the only member to reconstruct this group.
 # This group will have no passwords attached to the members
 # This shard is not the same as a BIP39 shard!
-# Since this is the last group, on the very last shard the add_gen_slip39_member_pwd() will return the master seed slot it was generated in, instead of -1.
+# Since this is the last group, on the very last shard the add_gen_SLIP39_member_pwd() will return the master seed slot it was generated in, instead of -1.
 print("\nSet our third example group configuration..")
-zymkey.client.set_gen_slip39_group_info(group_index = 2, member_count = 1, member_threshold = 1)
+zymkey.client.set_gen_SLIP39_group_info(group_index = 2, member_count = 1, member_threshold = 1)
 print("Done!")
 print("Generating 1 Shards for Group 2 (Shards required for recovering the group: 1)...")
-master_seed_slot, last_shard = zymkey.client.add_gen_slip39_member_pwd()
+master_seed_slot, last_shard = zymkey.client.add_gen_SLIP39_member_pwd()
 print("Shard #%i , Mnemonic sentence:\n%s" % (1, last_shard))
 ```
 A master seed key pair has been generated with a SLIP39 backup strategy. For security, the master seed public key cannot be exported, but a child key can be generated and its public key can be exported.
@@ -190,7 +189,7 @@ Start the SLIP39 recovery session. This must take in the same curve type, master
 # Return code will be -1, but this is due to security reasons. To not let users know how far along the recovery process is.
 # It will instead throw an exception if it fails.
 print("\nStarting SLIP39 shard restoring session...")
-return_code = zymkey.client.restore_wallet_master_seed("secp256k1", "", "MyExampleWallet", use_slip39_recovery)
+return_code = zymkey.client.restore_wallet_master_seed("secp256k1", "", "MyExampleWallet", use_SLIP39_recovery)
 print("Done! Return Code:%i" % (return_code))
 ```
 
@@ -208,7 +207,7 @@ These three ways will all recover the master key.
 | Group1 + Group2 | 3 + 1 | 4 |
 | Group2 + Group0 | 1 + 2 | 3 |
 
-Now recover the master key using the group combination of Group0 + Group1. Shards are fed in one at a time and can be fed out of order as well. The module will auto reconstruct any groups as it gets more shards fed in. The module will return -1 until it successfully recreates all groups needed to generate the master key. If an incorrect shard is fed in, then it will still return -1. Remember we can always call `cancel_slip39_session` to stop our active SLIP39 session, if an incorrect shard is fed in.
+Now recover the master key using the group combination of Group0 + Group1. Shards are fed in one at a time and can be fed out of order as well. The module will auto reconstruct any groups as it gets more shards fed in. The module will return -1 until it successfully recreates all groups needed to generate the master key. If an incorrect shard is fed in, then it will still return -1. Remember we can always call `cancel_SLIP39_session` to stop our active SLIP39 session, if an incorrect shard is fed in.
 
 ```python
 # Feed in the shards. The shards will be fed in one at a time, and can be fed in any order.
@@ -218,16 +217,16 @@ Now recover the master key using the group combination of Group0 + Group1. Shard
 
 # Feed group 0 shards, and for fun out of order.
 print("\nFeeding Group 0 Shard#3 and Shard#1...")
-zymkey.client.add_restore_slip39_mnemonic(mnemonic_sentence = group_0_shard_list[2])
-zymkey.client.add_restore_slip39_mnemonic(mnemonic_sentence = group_0_shard_list[0])
+zymkey.client.add_restore_SLIP39_mnemonic(mnemonic_sentence = group_0_shard_list[2])
+zymkey.client.add_restore_SLIP39_mnemonic(mnemonic_sentence = group_0_shard_list[0])
 print("Done!")
 
 # group1 shards have passwords attached to them. So we need to feed in the correct passwords for these shards.
 print("\nFeeding Group 1 Shards with their passwords...")
-zymkey.client.add_restore_slip39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[0]), passphrase = group_1_pwd_list[0])
-zymkey.client.add_restore_slip39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[2]), passphrase = group_1_pwd_list[2])
+zymkey.client.add_restore_SLIP39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[0]), passphrase = group_1_pwd_list[0])
+zymkey.client.add_restore_SLIP39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[2]), passphrase = group_1_pwd_list[2])
 # Notice the last shard required for full master seed reconstruction will return the slot number instead of -1
-master_seed_slot = zymkey.client.add_restore_slip39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[1]), passphrase = group_1_pwd_list[1])
+master_seed_slot = zymkey.client.add_restore_SLIP39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[1]), passphrase = group_1_pwd_list[1])
 print("Done!")
 ```
 
@@ -263,45 +262,45 @@ wallet_name = "MyExampleWallet"
 # iteration_exponent dictates how many hashes are done at cryptographic layer.
 # The master seed will not be generated until all groups are created. So the slot will not be returned until all shards are generated.
 # Opens a SLIP39 session successfully on return code 0
-use_slip39_recovery = zymkey.RecoveryStrategySlip39(group_count = 3, group_threshold = 2, iteration_exponent = 0, variant = "", passphrase = "")
-print("Starting slip39 shard generating session...")
-return_code = zymkey.client.gen_wallet_master_seed("secp256k1", "", wallet_name, use_slip39_recovery)
+use_SLIP39_recovery = zymkey.RecoveryStrategySLIP39(group_count = 3, group_threshold = 2, iteration_exponent = 0, variant = "", passphrase = "")
+print("Starting SLIP39 shard generating session...")
+return_code = zymkey.client.gen_wallet_master_seed("secp256k1", "", wallet_name, use_SLIP39_recovery)
 print("Done! Return Code:%i" % (return_code))
 
 # First Group has been divided into three members. Will require two of these three members to reconstruct this group.
 # This group will have no passwords attached to the members
-# add_gen_slip39_member_pwd() will return a [-1, mnemonic_sentence]. -1 symbolizing that all shards haven't been generated yet.
+# add_gen_SLIP39_member_pwd() will return a [-1, mnemonic_sentence]. -1 symbolizing that all shards haven't been generated yet.
 print("\nSet our first example group configuration..")
-zymkey.client.set_gen_slip39_group_info(group_index = 0, member_count = 3, member_threshold = 2)
+zymkey.client.set_gen_SLIP39_group_info(group_index = 0, member_count = 3, member_threshold = 2)
 print("Generating 3 Shards for Group 0 (Shards required for recovering the group: 2)...")
 group_0_shard_list = []
 for i in range(3):
-    ret, mnemonic_shard = zymkey.client.add_gen_slip39_member_pwd()
+    ret, mnemonic_shard = zymkey.client.add_gen_SLIP39_member_pwd()
     group_0_shard_list.append(mnemonic_shard)
     print("Shard #%i , Mnemonic sentence:\n%s" % (i+1, group_0_shard_list[i]))
 
 # Second Group has been divided into three members. Will require all three members to reconstruct this group.
 # This group will have passwords attached to the members
 print("\nSet our second example group configuration..")
-zymkey.client.set_gen_slip39_group_info(group_index = 1, member_count = 3, member_threshold = 3)
+zymkey.client.set_gen_SLIP39_group_info(group_index = 1, member_count = 3, member_threshold = 3)
 print("Done!")
 print("Generating 3 Shards for Group 1 (Shards required for recovering the group: 3)...")
 group_1_shard_dict = {}
 group_1_pwd_list = ["p@ssw0rd", "T3st", "h3LlO"]
 for i in range(3):
-    ret, mnemonic_shard = zymkey.client.add_gen_slip39_member_pwd(group_1_pwd_list[i])
+    ret, mnemonic_shard = zymkey.client.add_gen_SLIP39_member_pwd(group_1_pwd_list[i])
     group_1_shard_dict[group_1_pwd_list[i]] = mnemonic_shard
     print("Shard #%i , Mnemonic sentence(Password: %s):\n%s" % (i+1, group_1_pwd_list[i], group_1_shard_dict[group_1_pwd_list[i]]))
 
 # Third Group has been divided into just one member (THIS IS NOT RECOMMENDED LEAST SECURE). Will require the only member to reconstruct this group.
 # This group will have no passwords attached to the members
 # This shard is not the same as a BIP39 shard!
-# Since this is the last group, on the very last shard the add_gen_slip39_member_pwd() will return the master seed slot it was generated in, instead of -1.
+# Since this is the last group, on the very last shard the add_gen_SLIP39_member_pwd() will return the master seed slot it was generated in, instead of -1.
 print("\nSet our third example group configuration..")
-zymkey.client.set_gen_slip39_group_info(group_index = 2, member_count = 1, member_threshold = 1)
+zymkey.client.set_gen_SLIP39_group_info(group_index = 2, member_count = 1, member_threshold = 1)
 print("Done!")
 print("Generating 1 Shards for Group 2 (Shards required for recovering the group: 1)...")
-master_seed_slot, last_shard = zymkey.client.add_gen_slip39_member_pwd()
+master_seed_slot, last_shard = zymkey.client.add_gen_SLIP39_member_pwd()
 print("Shard #%i , Mnemonic sentence:\n%s" % (i+1, last_shard))
 
 # master_seed_pub_key = zymkey.client.get_public_key(master_seed_slot)
@@ -324,7 +323,7 @@ print("Done!")
 # Return code will be -1, but this is due to security reasons. To not let users know how far along the recovery process is.
 # It will instead throw an exception if it fails.
 print("\nStarting SLIP39 shard restoring session...")
-return_code = zymkey.client.restore_wallet_master_seed("secp256k1", "", wallet_name, use_slip39_recovery)
+return_code = zymkey.client.restore_wallet_master_seed("secp256k1", "", wallet_name, use_SLIP39_recovery)
 print("Done! Return Code:%i" % (return_code))
 
 # Now we will feed in our shards. These will be fed in one at a time, and can be fed in any order.
@@ -334,16 +333,16 @@ print("Done! Return Code:%i" % (return_code))
 
 #Feed group 0 shards, and for fun out of order.
 print("\nFeeding Group 0 Shard#3 and Shard#1...")
-zymkey.client.add_restore_slip39_mnemonic(mnemonic_sentence = group_0_shard_list[2])
-zymkey.client.add_restore_slip39_mnemonic(mnemonic_sentence = group_0_shard_list[0])
+zymkey.client.add_restore_SLIP39_mnemonic(mnemonic_sentence = group_0_shard_list[2])
+zymkey.client.add_restore_SLIP39_mnemonic(mnemonic_sentence = group_0_shard_list[0])
 print("Done!")
 
 # group1 shards have passwords attached to them. So we need to feed in the correct passwords for these shards.
 print("\nFeeding Group 1 Shards with their passwords...")
-zymkey.client.add_restore_slip39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[0]), passphrase = group_1_pwd_list[0])
-zymkey.client.add_restore_slip39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[2]), passphrase = group_1_pwd_list[2])
+zymkey.client.add_restore_SLIP39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[0]), passphrase = group_1_pwd_list[0])
+zymkey.client.add_restore_SLIP39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[2]), passphrase = group_1_pwd_list[2])
 # Notice the last shard required for full master seed reconstruction will return the slot number instead of -1
-master_seed_slot = zymkey.client.add_restore_slip39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[1]), passphrase = group_1_pwd_list[1])
+master_seed_slot = zymkey.client.add_restore_SLIP39_mnemonic(mnemonic_sentence = group_1_shard_dict.get(group_1_pwd_list[1]), passphrase = group_1_pwd_list[1])
 print("Done!")
 
 # Let's Check the public key and make sure its the same.

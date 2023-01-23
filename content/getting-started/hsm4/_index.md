@@ -5,6 +5,6 @@ aliases:
     - /getting-started/hsm4/intro/
 draft: false
 images: []
-weight: 2
+weight: 30
 headless: true
 ---

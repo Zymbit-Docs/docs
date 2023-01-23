@@ -337,7 +337,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">sign</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign-05259f19" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">sign</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">encoding</span> = <span class="default-val">"utf-8"</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">digest</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign-13e91de2" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -348,7 +348,7 @@ toc: true
 <ul>
 <li class="param-item">
 <span class="name">src</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The SHA256 digest of the data that will be used to generate the signature.</span>
+<span class="type-paren paren-open">(</span><span class="type">Union[str, bytes, bytearray]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The SHA256 digest of the data that will be used to generate the signature.</span>
 </li>
 <li class="param-item">
 <span class="name">slot</span>
@@ -357,6 +357,14 @@ toc: true
 <li class="param-item">
 <span class="name">return_recid</span>
 <span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the y parity to be returned.</span>
+</li>
+<li class="param-item">
+<span class="name">encoding</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the encoding for the string source.</span>
+</li>
+<li class="param-item">
+<span class="name">digest</span>
+<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the type of hash. Can be None. Defaults to sha256.</span>
 </li>
 </ul>
 </div>
@@ -377,7 +385,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">sign\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">sha256</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="signdigest-fab8e8da" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">sign\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">digest</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">return\_recid</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="signdigest-0dfc355e" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -387,8 +395,8 @@ toc: true
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
-<span class="name">sha256</span>
-<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A hashlib.sha256 instance representing the digest to be signed.</span>
+<span class="name">digest</span>
+<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A encoded str instance representing the digest to be signed.</span>
 </li>
 <li class="param-item">
 <span class="name">slot</span>
@@ -426,7 +434,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">verify</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verify-4d37323f" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">verify</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">src</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">encoding</span> = <span class="default-val">"utf-8"</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">digest</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verify-550d8765" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -457,7 +465,15 @@ toc: true
 <li class="param-item">
 <span class="name">foreign</span>
 <span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If false, the normal key store is referenced. Otherwise, the foreign
-                                                public key store is referenced.<strong>Note:</strong> This parameter is only applicable for model &gt;= HSM6. </span>
+                                                public key store is referenced.<strong>Note:</strong> This parameter is only applicable for Supported Devices: HSM6, Secure Compute Module. </span>
+</li>
+<li class="param-item">
+<span class="name">encoding</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the encoding for the string source.</span>
+</li>
+<li class="param-item">
+<span class="name">digest</span>
+<span class="type-paren paren-open">(</span><span class="type">_hashlib.HASH</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter asks for the type of hash. Can be None. Defaults to sha256.</span>
 </li>
 </ul>
 </div>
@@ -473,7 +489,7 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">verify\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">sha256</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verifydigest-28fb1759" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">verify\_digest</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">digest</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">sig</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">raise\_exception</span> = <span class="default-val">True</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">pubkey\_slot</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">foreign</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="verifydigest-002b3e6c" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -484,8 +500,8 @@ toc: true
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
-<span class="name">sha256</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">A hashlib.sha256 instance that will be used to generate the signature.</span>
+<span class="name">digest</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">A hashlib instance that will be used to generate the signature.</span>
 </li>
 <li class="param-item">
 <span class="name">sig</span>
@@ -504,7 +520,7 @@ toc: true
 <li class="param-item">
 <span class="name">foreign</span>
 <span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If false, the normal key store is referenced. Otherwise, the foreign
-                                                public key store is referenced.<strong>Note:</strong> This parameter is only applicable for model &gt;= HSM6. </span>
+                                                public key store is referenced.<strong>Note:</strong> This parameter is only applicable for Supported Devices: HSM6, Secure Compute Module. </span>
 </li>
 </ul>
 </div>
@@ -524,7 +540,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Derive a key or a pre-master secret from an ECDH operation. (model &gt;= HSM6).</p>
+<p>Derive a key or a pre-master secret from an ECDH operation. (Supported Devices: HSM6, Secure Compute Module).</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -647,7 +663,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">foreign</span>
-<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (model &gt;= HSM6). </span>
+<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (Supported Devices: HSM6, Secure Compute Module). </span>
 </li>
 </ul>
 </div>
@@ -659,6 +675,11 @@ toc: true
 <span class="description">If <span class="title-reference">ret</span> is a bad return code from the Zymkey library function. </span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -716,7 +737,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">foreign</span>
-<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (model &gt;= HSM6). </span>
+<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (Supported Devices: HSM6, Secure Compute Module). </span>
 </li>
 </ul>
 </div>
@@ -742,7 +763,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get a list of the allocated slots in the key store (model &gt;= HSM6).</p>
+<p>Get a list of the allocated slots in the key store (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method gets a list of the allocated slots in the key store.</p>
 </div>
 <div class="parameters">
@@ -750,7 +771,7 @@ toc: true
 <ul>
 <li class="param-item">
 <span class="name">foreign</span>
-<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (model &gt;= HSM6). </span>
+<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (Supported Devices: HSM6, Secure Compute Module). </span>
 </li>
 </ul>
 </div>
@@ -776,7 +797,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Stores a foreign public key on the Zymkey foreign keyring (model &gt;= HSM6).</p>
+<p>Stores a foreign public key on the Zymkey foreign keyring (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method stores a foreign public key onto the Zymkey foreign public keyring.</p>
 </div>
 <div class="parameters">
@@ -814,7 +835,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Disable exporting of a public key at a given slot (model &gt;= HSM6).</p>
+<p>Disable exporting of a public key at a given slot (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method permanently disables exporting a public key from a given slot.</p>
 </div>
 <div class="parameters">
@@ -830,6 +851,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -838,7 +864,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generate a new key pair (model &gt;= HSM6).</p>
+<p>Generate a new key pair (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method generates a new key pair of the specified type.</p>
 </div>
 <div class="parameters">
@@ -863,7 +889,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generate a new ephemeral key pair (model &gt;= HSM6).</p>
+<p>Generate a new ephemeral key pair (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method generates a new ephemeral key pair of the specified type, overwriting the previous ephemeral key pair.</p>
 </div>
 <div class="parameters">
@@ -875,6 +901,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -883,7 +914,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Remove a key at the designated slot (model &gt;= HSM6).</p>
+<p>Remove a key at the designated slot (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method removes a key at the designated slot in either the standard key store or the foreign public keyring.</p>
 </div>
 <div class="parameters">
@@ -899,6 +930,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -907,7 +943,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Invalidate the ephemeral key (model &gt;= HSM6).</p>
+<p>Invalidate the ephemeral key (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method invalidates the ephemeral key, effectively removing it from service until a new key is generated.</p>
 </div>
 <div class="exceptions">
@@ -919,6 +955,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -927,7 +968,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generates a new master seed for creating a new BIP32 wallet (model &gt;= HSM6).</p>
+<p>Generates a new master seed for creating a new BIP32 wallet (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method generates a new master seed for creating a new BIP32 wallet.</p>
 </div>
 <div class="parameters">
@@ -947,25 +988,25 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">recovery_strategy</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">RecoveryStrategy() class that defines what strategy to be used {None, Bip39, Slip39} are currently supported. RecoveryStrategy-&gt;passphrase must be b64 encoded.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">RecoveryStrategy() class that defines what strategy to be used {None, BIP39, SLIP39} are currently supported. RecoveryStrategy-&gt;passphrase must be b64 encoded.</span>
 </li>
 </ul>
 </div>
 <div class="returns">
 <h5>Returns</h5>
 <span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">the slot the master seed was generated in. 0 for starting slip39 sessions.</span>
+<span class="return_value">the slot the master seed was generated in. 0 for starting SLIP39 sessions.</span>
 </div>
 </div>
 </div>
 <div class="method">
 
-#### <span><span class="name">set\_gen\_slip39\_group\_info</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">group\_index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">member\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">member\_threshold</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="setgenslip39groupinfo-56042b6f" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">set\_gen\_SLIP39\_group\_info</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">group\_index</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">member\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">member\_threshold</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="setgenSLIP39groupinfo-56042b6f" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Configures the number of members and threshold for the group shares (model &gt;= HSM6).</p>
-<p>This method sets the number of members required for a group share once a slip39 session was opened via gen_wallet_master_seed().</p>
+<p>Configures the number of members and threshold for the group shares (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>This method sets the number of members required for a group share once a SLIP39 session was opened via gen_wallet_master_seed().</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -993,19 +1034,19 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">add\_gen\_slip39\_member\_pwd</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addgenslip39memberpwd-504b6969" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">add\_gen\_SLIP39\_member\_pwd</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addgenSLIP39memberpwd-504b6969" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Generates a new mnemonic_str tied to a slip39 member (model &gt;= HSM6).</p>
-<p>This method generates a new member of a group share. Members can also be passphrase protected. Passphrases are not required to be unique. This function is meant to be called after configuring a group via set_gen_slip39_group_info().</p>
+<p>Generates a new mnemonic_str tied to a SLIP39 member (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>This method generates a new member of a group share. Members can also be passphrase protected. Passphrases are not required to be unique. This function is meant to be called after configuring a group via set_gen_SLIP39_group_info().</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">passphrase</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the passphrase of the slip39 member and is associated with the mnemonic string generated. Can be empty string for no passphrase.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the passphrase of the SLIP39 member and is associated with the mnemonic string generated. Can be empty string for no passphrase.</span>
 </li>
 </ul>
 </div>
@@ -1018,12 +1059,12 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">cancel\_slip39\_session</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="cancelslip39session-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">cancel\_SLIP39\_session</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="cancelSLIP39session-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Cancels an active slip39 session (model &gt;= HSM6).</p>
-<p>This method cancels an ongoing slip39 session for both master seed generation and recovery.</p>
+<p>Cancels an active SLIP39 session (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>This method cancels an ongoing SLIP39 session for both master seed generation and recovery.</p>
 </div>
 <div class="returns">
 <h5>Returns</h5>
@@ -1038,7 +1079,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generates a supervisory bip32 wallet. (model &gt;= HSM6).</p>
+<p>Generates a supervisory bip32 wallet. (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method generates a new supervisory Bip32 wallet. Meant for read-only transactions and supervising history.</p>
 </div>
 <div class="parameters">
@@ -1083,7 +1124,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generates a child key based on a parent key that is in a wallet (model &gt;= HSM6).</p>
+<p>Generates a child key based on a parent key that is in a wallet (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method generates a child key based on a parent key that is in a wallet.</p>
 </div>
 <div class="parameters">
@@ -1120,7 +1161,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Restore a wallet&#8217;s master seed based on the recovery strategy object (model &gt;= HSM6).</p>
+<p>Restore a wallet&#8217;s master seed based on the recovery strategy object (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method restores a wallet&#8217;s master seed based on a mnemonic string and a master generator key. This method can be used in the process of wallet duplication.</p>
 </div>
 <div class="parameters">
@@ -1144,7 +1185,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">mnemonics</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Mnemonic sentences required for restoration, number of mnemonics dependant on recovery strategy used. This field is not used for Slip39.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Mnemonic sentences required for restoration, number of mnemonics dependant on recovery strategy used. This field is not used for SLIP39.</span>
 </li>
 </ul>
 </div>
@@ -1157,23 +1198,23 @@ toc: true
 </div>
 <div class="method">
 
-#### <span><span class="name">add\_restore\_slip39\_mnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">mnemonic\_sentence</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addrestoreslip39mnemonic-b27c5de4" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">add\_restore\_SLIP39\_mnemonic</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">mnemonic\_sentence</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addrestoreSLIP39mnemonic-b27c5de4" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Feed a mnemonic string and the passphrase associated with it (model &gt;= HSM6).</p>
-<p>This method feeds in mnemonic sentences (shards) into the module. Meant to be called after starting a restore_wallet_master_seed() slip39 session. Will return -1 until the master seed is reconstructed properly.</p>
+<p>Feed a mnemonic string and the passphrase associated with it (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>This method feeds in mnemonic sentences (shards) into the module. Meant to be called after starting a restore_wallet_master_seed() SLIP39 session. Will return -1 until the master seed is reconstructed properly.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">mnemonic_sentence</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">24-word recovery phrase associated with the slip39 member.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">24-word recovery phrase associated with the SLIP39 member.</span>
 </li>
 <li class="param-item">
 <span class="name">passphrase</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the passphrase of the slip39 member and is associated with the mnemonic string generated. Can be empty string for no passphrase.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">This parameter indicates the passphrase of the SLIP39 member and is associated with the mnemonic string generated. Can be empty string for no passphrase.</span>
 </li>
 </ul>
 </div>
@@ -1190,7 +1231,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get a wallet node address from a key slot (model &gt;= HSM6).</p>
+<p>Get a wallet node address from a key slot (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method gets a wallet entry&#8217;s node address from its key slot assignment. The wallet name and master seed slot are also returned.</p>
 </div>
 <div class="parameters">
@@ -1215,7 +1256,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Look up a wallet key slot number from a node address (model &gt;= HSM6).</p>
+<p>Look up a wallet key slot number from a node address (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This method gets a wallet key slot number from its node address and wallet name or master seed key slot. Either the wallet name or the master seed slot must be present.</p>
 </div>
 <div class="parameters">
@@ -1272,6 +1313,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1305,6 +1351,11 @@ toc: true
 </span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1476,6 +1527,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1484,7 +1540,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set the digital perimeter detect low power period (model &gt;= HSM6).</p>
+<p>Set the digital perimeter detect low power period (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This function sets the digital perimeter detect low power period (microseconds).</p>
 </div>
 <div class="parameters">
@@ -1496,6 +1552,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1504,7 +1565,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set the low power max number of bits (model &gt;= HSM6).</p>
+<p>Set the low power max number of bits (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This function sets the digital perimeter detect low power max number of bits.</p>
 </div>
 <div class="parameters">
@@ -1516,6 +1577,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1524,7 +1590,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set the digital perimeter detect delays (model &gt;= HSM6).</p>
+<p>Set the digital perimeter detect delays (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This function sets the digital perimeter detect delay values.</p>
 </div>
 <div class="parameters">
@@ -1539,6 +1605,11 @@ toc: true
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The maximum delay in nanoseconds.</span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1559,6 +1630,11 @@ toc: true
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">(input) The maximum amount of time in milliseconds to wait for a perimeter breach event to arrive.</span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
 </div>
 </div>
 </div>
@@ -1583,9 +1659,15 @@ toc: true
 #### <span><span class="name">clear\_perimeter\_detect\_info</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="clearperimeterdetectinfo-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
-<div class="description"></div>
+<div class="description">
 <p>Clear perimeter detect info.</p>
 <p>This function clears all perimeter detect info and rearms all perimeter detect channels.</p>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1594,7 +1676,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get current CPU temperature (model &gt;= HSM6).</p>
+<p>Get current CPU temperature (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This function gets the current HSM CPU temperature.</p>
 </div>
 <div class="returns">
@@ -1606,11 +1688,37 @@ toc: true
 </div>
 <div class="method">
 
+#### <span><span class="name">get\_aux\_temp</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index</span> = <span class="default-val">0</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="getauxtemp-321e1197" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Get current aux temperature (Secure Compute Modules only).</p>
+<p>THIS FUNCTION IS FOR INTERNAL ZYMBIT USE ONLY.</p>
+<p>This function gets the current aux temperature. (defaults to 0).</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">index</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">(input) The index id of the processor.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The temperature in celsius as a float</span>
+</div>
+</div>
+</div>
+<div class="method">
+
 #### <span><span class="name">get\_rtc\_drift</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="getrtcdrift-f24db7dc" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Get RTC drift (model &gt;= HSM6).</p>
+<p>Get RTC drift (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This function gets the current RTC drift.</p>
 </div>
 <div class="returns">
@@ -1626,7 +1734,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get current battery voltage (model &gt;= HSM6).</p>
+<p>Get current battery voltage (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This function gets the current battery voltage.</p>
 </div>
 <div class="returns">
@@ -1690,7 +1798,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set battery voltage action. (model &gt;= HSM6).</p>
+<p>Set battery voltage action. (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This function specifies the action to take when the battery voltage falls below the threshold set by set_battery_voltage_threshold. If this function is never called, do nothing is default. There are three actions:</p>
 <blockquote>
 <ul>
@@ -1714,6 +1822,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1722,7 +1835,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Sets the battery voltage threshold. (model &gt;= HSM6).</p>
+<p>Sets the battery voltage threshold. (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This function sets the threshold at which if the battery voltage falls bellow, the action set by set_battery_voltage_action will be carried out. The recommended threshold is 2.3V is assumed by default. Threshold must be below 2.5V.</p>
 </div>
 <div class="parameters">
@@ -1734,6 +1847,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1742,7 +1860,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set HSM CPU temperature threshold action. (model &gt;= HSM6).</p>
+<p>Set HSM CPU temperature threshold action. (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This function specifies the action to take when the HSM CPU temperature falls below the threshold set by set_cpu_low_temp_threshold, or rises above the threshold set by set_cpu_high_temp_threshold. There are two actions to apply:</p>
 <blockquote>
 <ul>
@@ -1774,7 +1892,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Sets the HSM CPU low temperature threshold. (model &gt;= HSM6).</p>
+<p>Sets the HSM CPU low temperature threshold. (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This function sets the threshold at which if the on-board HSM CPU&#8217;s tempreature falls below, the action set by set_cpu_temp_action will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold above the CPU&#8217;s ambient temperature. The recommended setting is no more than 20C. If this function is never called, -10 degrees celsius is assumed.</p>
 </div>
 <div class="parameters">
@@ -1786,6 +1904,11 @@ toc: true
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
 </div>
 </div>
 <div class="method">
@@ -1794,7 +1917,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Sets the HSM CPU high temperature threshold. (model &gt;= HSM6).</p>
+<p>Sets the HSM CPU high temperature threshold. (Supported Devices: HSM6, Secure Compute Module).</p>
 <p>This function sets the threshold at which if the on-board HSM CPU&#8217;s tempreature rises above, the action set by set_cpu_temp_action will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold below the CPU&#8217;s ambient temperature. The recommended setting is no less than 40C. If this function is never called, 65 degrees celsius is assumed.</p>
 </div>
 <div class="parameters">
@@ -1805,6 +1928,115 @@ toc: true
 <span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The threshold in celsius.</span>
 </li>
 </ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">set\_supervised\_boot\_policy</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">policy\_id</span> = <span class="default-val">0</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="setsupervisedbootpolicy-072c5c0f" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Sets the Supervised boot policy. (Supported Devices: Secure Compute Module).</p>
+<p>This function sets the action policy to take when Supervised boot detects a file change during the boot process.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">policy_id</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The actions to apply to the Supervised boot process:
+                                        - 0 Do Nothing
+                                        - 1 Self-Destruct
+                                        - 2 Hold Chip in Reset</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">add\_or\_update\_supervised\_boot\_file</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">filepath</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">15</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="addorupdatesupervisedbootfile-57792407" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Update file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module).</p>
+<p>This function adds or updates a file in the file manifest to be checked by Supervised during the boot process.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot to sign the file with.</span>
+</li>
+<li class="param-item">
+<span class="name">filepath</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The file to be signed and checked by Supervised boot.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">remove\_supervised\_boot\_file</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">filepath</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="removesupervisedbootfile-e62cc748" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Remove a file from file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module).</p>
+<p>This function removes a file in the file manifest to be checked by Supervised boot during the boot process.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">filepath</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The file to be removed from the manifest.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">TYPE</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">0 for success, less than 0 for failure.</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+#### <span><span class="name">get\_supervised\_boot\_file\_manifest</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="getsupervisedbootfilemanifest-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Get the file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module).</p>
+<p>This function gets a list of the files that are checked by Supervised boot during the boot process.</p>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_value">
+<ul>
+<li>
+<em>TYPE</em> &#8211; 0 for success, less than 0 for failure. </li>
+<li>
+<em>TYPE</em> &#8211; File manifest to be checked by Supervised boot. </li>
+</ul>
+</span>
 </div>
 </div>
 </div>
@@ -1840,18 +2072,18 @@ toc: true
 </div>
 <div class="class">
 
-### <span><span class="annotation">class</span> <span class="addname">zymkey.</span><span class="name">RecoveryStrategyBip39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="class-zymkey.-RecoveryStrategyBip39-0e50d58c" class="markdown-h3 signature include-toc"}
+### <span><span class="annotation">class</span> <span class="addname">zymkey.</span><span class="name">RecoveryStrategyBIP39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="class-zymkey.-RecoveryStrategyBIP39-0e50d58c" class="markdown-h3 signature include-toc"}
 
 <div class="body">
-<p>The RecoveryStrategyBip39 class definition.</p>
-<p>This class specifies the Bip39 recovery strategy used for wallet generation within Python. Derived from RecoveryStrategy class.</p>
+<p>The RecoveryStrategyBIP39 class definition.</p>
+<p>This class specifies the BIP39 recovery strategy used for wallet generation within Python. Derived from RecoveryStrategy class.</p>
 <div class="method">
 
 #### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init-0e50d58c" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Initialize an instance of RecoveryStrategyBip39.</p>
+<p>Initialize an instance of RecoveryStrategyBIP39.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -1862,7 +2094,51 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">passphrase</span>
-<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Passphrase used for bip39 generation. Can be empty string. Must be b64 encoded.</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Passphrase used for BIP39 generation. Can be empty string. Must be b64 encoded.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="class">
+
+### <span><span class="annotation">class</span> <span class="addname">zymkey.</span><span class="name">RecoveryStrategySLIP39</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">group\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">group\_threshold</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">iteration\_exponent</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="class-zymkey.-RecoveryStrategySLIP39-a19de114" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<p>The RecoveryStrategySLIP39 class definition.</p>
+<p>This class specifies the SLIP39 recovery strategy used for wallet generation within Python. Derived from RecoveryStrategy class.</p>
+<div class="method">
+
+#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">group\_count</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">group\_threshold</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">iteration\_exponent</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">variant</span> = <span class="default-val">''</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">passphrase</span> = <span class="default-val">''</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init-a19de114" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Initialize an instance of RecoveryStrategySLIP39.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">group_count</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Total number of group shares to generate [Max: 14 Groups].</span>
+</li>
+<li class="param-item">
+<span class="name">group_threshold</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Number of groups needed to restore a master seed with [threshold &lt;= group_count].</span>
+</li>
+<li class="param-item">
+<span class="name">iteration_exponent</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">The higher the exponent the more PBKDF2 hashing is done. [Exponent: 0-5]</span>
+</li>
+<li class="param-item">
+<span class="name">variant</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Variant of the key type. Currently only &#8220;cardano&#8221; for ed25519 is supported.</span>
+</li>
+<li class="param-item">
+<span class="name">passphrase</span>
+<span class="type"></span><span class="param-desc-divider"> &#8212; </span><span class="description">Passphrase used for BIP39 generation. Can be empty string. Must be b64 encoded.</span>
 </li>
 </ul>
 </div>
