@@ -13,10 +13,10 @@ weight: 40
 
 ## 3D Step Model
 
-[Zymkey 3D model](ZYMBIT-SCM-CAD-Model-defeatured-no-battery-2022.12.step)
+[SCM 3D model](ZYMBIT-SCM-CAD-Model-defeatured-no-battery-2022.12.step)
 
 ## 2D Drawing
 
-![Zymkey CAD Drawing](ZYMBIT-SCM-Mechanical-Connectors-2023.01.png)
+![SCM CAD Drawing](ZYMBIT-SCM-Mechanical-Connectors-2023.01.png)
 
 
