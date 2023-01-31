@@ -30,6 +30,11 @@ We've updated the SCM release to support the A1 release of the SCM hardware. Sum
 * zkifc 1.2-36 - Fixed: #120 get_public_key() with a very large number crashes zkifc
 * zkpkcs 11 1.0-3 - Fixed: #123 zk_pkcs11: Doesn't work with 64-bit OS
 
+#### Open Issues
+ * #122 - SCM: USB Isochronous mode data experiences delays while zkifc is running
+ * #119 - SCM: will not work with otg_mode=1, must set dtoverylay=dwc2,dr_mode=host. This can affect the ability for recognition of some other USB devices at boot time
+ * #126 - SCM: set_supervised_boot_policy not implemented. Currently, if there is an entry in the manifest, it is enabled. If no entry in manifest it is disabled. In Development mode it will flash 4-2 for failure. In Production mode, it self-destructs. There is no "held in reset" mode implemented.
+
 -----
 
 ### SCM Beta Release
