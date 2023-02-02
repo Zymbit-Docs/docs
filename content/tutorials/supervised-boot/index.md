@@ -18,11 +18,10 @@ Supervised Boot is Zymbit's method for insuring that the boot process is secure.
 
 ```
 /boot/bcm2711-rpi-cm4.dtb
-/boot/bootcode.bin
 /boot/cmdline.txt
 /boot/config.txt
 /boot/initrd.img
-/boot/kernel7l.img
+/boot/kernel8.img  (or /boot/kernel7l.img for 32-bit)
 /boot/start4.elf
 /boot/zymbit_mac_address
 /boot/overlays/vc4-kms-v3d.dtbo
@@ -149,7 +148,7 @@ bootcode.bin
 cmdline.txt
 config.txt
 initrd.img
-kernel7l.img
+kernel8.img
 start4.elf
 zymbit_mac_address
 overlays/vc4-kms-v3d.dtbo
@@ -167,7 +166,7 @@ bootcode.bin
 cmdline.txt
 config.txt
 initrd.img
-kernel7l.img
+kernel8.img
 start4.elf
 zymbit_mac_address
 overlays/vc4-kms-v3d.dtbo
