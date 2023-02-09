@@ -1,7 +1,7 @@
 ---
 title: "SCM - Getting Started"
 linkTitle: "Getting Started"
-lastmod: "2022-01-20"
+lastmod: "2023-02-09"
 draft: false
 images: []
 weight: 5
@@ -36,7 +36,7 @@ We've updated the SCM release to support the A1 release of the SCM hardware. Sum
 -----
 ### **Overview**
 
-The SCM Deveoper's kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. For up to date information on known issues, please refer to [SCM Beta Release Notes](../../../troubleshooting/scm/).
+The SCM Developer's kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module. For up to date information on known issues, please refer to [SCM Beta Release Notes](../../../troubleshooting/scm/).
 
 {{% callout notice %}}
 All necessary Zymbit software has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
@@ -50,7 +50,6 @@ All necessary Zymbit software has been pre-installed. No further installation is
  * Zymbit Perimeter Detect Cable for Channel 2
  * Zymbit External Battery
  * 12V Power Supply
- * USB drive with SSH keys necessary for SSH login
 
 {{< cardpane >}}
 {{% card header="Contents" %}}
