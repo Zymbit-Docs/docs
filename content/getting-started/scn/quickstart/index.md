@@ -8,7 +8,15 @@ weight: 5
 toc: true
 ---
 
-
+{{< cardpane >}}
+{{% card header="Secure Compute Node" %}}
+{{< figure
+    src="scn.jpg"
+    alt=""
+    caption=""
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
 -----
 ### **Overview**
 
