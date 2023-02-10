@@ -24,9 +24,6 @@ The Zymbit Secure Compute Module (SCM) is an all-in-one Linux compute module - s
 {{< /cardpane >}}
 
 
-{{% callout notice %}}
-All necessary Zymbit software has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
-{{% /callout %}}
 -----
 ## **Configure and Setup your SCM**
 
@@ -34,11 +31,10 @@ All necessary Zymbit software has been pre-installed. No further installation is
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
  
 {{% callout notice %}}
-
-The total boot time as configured should take approximately 90 seconds from power on.
-
+All necessary Zymbit software has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
 {{% /callout %}}
- * Monitor the Blue LED on the Zymbit SCM module. It will go through the following stages:
+
+ * Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured should take approximately 90 seconds from power on. It will go through the following stages:
     - one slow blink:    *initializing the SCM*
     - one -> two -> three -> four blinks:   *Supervised Boot is verifying the signed file information*
     - rapid blinking:   *Supervised Boot successfully completed, booting underway*
@@ -49,28 +45,28 @@ The total boot time as configured should take approximately 90 seconds from powe
 
 [<img src="LED_image.jpg" width="30%">](https://user-images.githubusercontent.com/78050323/182961313-4a3981b1-6730-4cd9-a8d6-f1c8defba45e.mp4)
 
-## Updated release 1/13/2023 (RC-23.01)
+### Updated release 1/13/2023 (RC-23.01)
 
 We've updated the SCM release to support the A1 release of the SCM hardware. Summary of changes:
 
-### Pre-loaded OS options
+#### Pre-loaded OS options
 * Raspberry PI OS Lite 64-bit (Bullseye) - DEFAULT
 * Raspberry PI OS Lite 32-bit (Bullseye) - OPTIONAL
 
-### Modifications from previous beta
+#### Modifications from previous beta
 * Now allow initial SSH via password (use zymbit/zymbit). Please change once logged in.
 * No longer providing SSH key on USB stick; as noted above, you can use password.
 * No longer necessary to register product; no SSH key necessary so no need for key passphrase.
 * sudo for user zymbit with password in standard PI OS manner allowed; no need to supply password every time.
 
-### Changes
+#### Changes
 * FW 01.00.00 - Supports A1 revision of SCM
 * FW 01.00.00 - Fixed:  #117 Stored tamper event on shutdown has incorrect timestamp
 * zkifc 1.2-36 - Fixed: #120 get_public_key() with a very large number crashes zkifc
 * zkpkcs 11 1.0-3 - Fixed: #123 zk_pkcs11: Doesn't work with 64-bit OS
 
 
-### **SCM Developer's Kit**
+## **SCM Developer's Kit**
 
 The SCM Developer's kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module.
  * Zymbit Secure Compute Module (Zymbit Security Module and CM4)
@@ -80,7 +76,7 @@ The SCM Developer's kit provides all the hardware and software components requir
  * 12V Power Supply
 
 {{< cardpane >}}
-{{% card header="Contents" %}}
+{{% card header="Contents of Dev Kit" %}}
 {{< figure 
     src="scm-dev-kit2.png"
     alt="SCM Dev Kit"
@@ -89,7 +85,7 @@ The SCM Developer's kit provides all the hardware and software components requir
 {{% /card %}}
 {{< /cardpane >}}
 
-##### Secure Compute Module
+## Secure Compute Module
 
 {{< cardpane >}}
 {{% card header="SCM Functional Architecture" %}}
@@ -129,7 +125,7 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 * LPDDR4 RAM: 1G to 8G, eMMC: 0G to 32G
 * 2.4/5.0GHz Wi-Fi & Bluetooth
 
-#### Using SCM: API and Examples
+### Using SCM: API and Examples
     
  * [See API Documentation](../../../api/)   
  * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
@@ -137,7 +133,7 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
     
-#### Support
+### Support
     
  * [Release Notes](../../../troubleshooting/scm/)
  * [Contact Support](mailto:support@zymbit.com)
