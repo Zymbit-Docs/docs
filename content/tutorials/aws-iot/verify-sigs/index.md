@@ -313,7 +313,7 @@ Next we will publish the temperature data signed and saved from the last section
 to do this can be found in the tutorial linked above.** 
 
 ```python
-!/usr/bin/python3
+#!/usr/bin/python3
 
 import json
 import pycurl
