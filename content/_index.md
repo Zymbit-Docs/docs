@@ -11,7 +11,7 @@ layout: single
 # url: "/"
 ---
 
-Welcome to Zymbit’s Documentation Site. Here, you will find all the resources you need to learn about and to use all Zymbit products.
+Depricated - Zymbit’s Documentation Site. Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
 {{% callout notice %}}
 
