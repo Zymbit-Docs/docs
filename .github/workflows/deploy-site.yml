@@ -11,7 +11,7 @@ on:
 jobs:
   deploy:
     name: Generate static docs site using Hugo
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout branch
