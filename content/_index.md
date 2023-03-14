@@ -14,5 +14,5 @@ Welcome to Zymbit’s Documentation Site. Here, you will find all the resources 
 
 ### NEWS
 
-1/22/2023 - We recently pushed up a new, common code base (RC-23.01) that works for all Zymbit products. This adds support for our Secure Compute Module in the main code repository, as well as support for Bullseye 64-bit and Ubuntu 22.04LTS Jammy, and bug fixes. Details can be found on the [General Troubleshooting](/troubleshooting/general/) page.
+1/22/2023 - We recently pushed up a new, common code base (RC-23.01) that works for all Zymbit products. This adds support for our Secure Compute Module in the main code repository, as well as support for Bullseye 64-bit and Ubuntu 22.04LTS Jammy, and bug fixes, etc. Details can be found on the [General Troubleshooting](/troubleshooting/general/) page.
 
