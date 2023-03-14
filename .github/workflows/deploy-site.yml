@@ -30,9 +30,11 @@ jobs:
         uses: c-hive/gha-npm-cache@v1
 
       - name: Install npm dependencies
-        run: npm version
         run: npm install
-
+        
+      - name: Print npm dependency versions
+        run: npm version
+        
       - name: Build static site with Hugo
         run: hugo --gc --minify
 
