@@ -10,7 +10,7 @@ type: docs
 layout: single
 ---
 
-Welcome to Zymbit’s Documentation Site. Here, you will find all the resources you need to learn about and to use all Zymbit products.
+Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
 ### NEWS
 
