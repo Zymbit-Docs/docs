@@ -1,6 +1,8 @@
 ---
 title: "SCM - Getting Started"
 linkTitle: "Getting Started"
+aliases:
+    - https://zymbit-docs.github.io/docs-staging/branch/alpha/getting-started/scm/quickstart/
 lastmod: "2023-02-09"
 draft: false
 images: []
