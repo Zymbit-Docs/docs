@@ -1,8 +1,9 @@
 ---
-title: Enabling Production Mode - SCM
+title: Enabling Production Mode - Secure Edge Node
 description: ""
 aliases:
-    - /quickstart/production-mode/scm/
+    - /quickstart/production-mode/scn/
+    - /getting-started/scn/production-mode/
 date: "2022-04-29"
 lastmod: "2023-01-22"
 draft: false
