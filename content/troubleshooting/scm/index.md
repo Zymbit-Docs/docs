@@ -65,8 +65,6 @@ Is:  `add_or_update_supervised_boot_file(filepath ="" , slot = 15)`
 
 **Issue #114**  set_perimeter_event_actions() leaves the LED off. The LED will return to normal after the next zkifc Open Session after approximately one minute.
 
-See [alpha release issues](https://zymbit-docs.github.io/docs-staging/branch/alpha/troubleshooting/scm/) for pre-Beta issues.
-
 **Fixed from Alpha to Beta - Issue #99** Minor: SCM: set_perimeter_event_actions() resets and can cause problems if another command is attempted for a period of seconds. A delay of 10 seconds after a set_perimeter_event_actions() will workaround the issue.
 
 **Fixed from Alpha to Beta - Issue #103** Major: SCM: Tamper Detect events occassionally resets the SCM and CM4. We are still investigating the root cause of this issue, but it happens quite often with tamper events. For Alpha, self-destruction is disabled for evaluation purposes which should prevent any loss of data. It will cause a reboot.
