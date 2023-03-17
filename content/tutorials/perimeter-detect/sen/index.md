@@ -19,7 +19,15 @@ Perimeter Detect provides two additional layers of physical security that can be
 
 ### Connecting Perimeter Loop Circuits
 
-![SEN Perimeter Detect]scmio_bottom.png)
+{{< cardpane >}}
+{{% card header="SCM Perimeter Loop Circuits" %}}
+{{< figure
+    src="scmio_bottom.png"
+    alt=""
+    caption=""
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
 
 The SEN includes two independent Perimeter Loops that can be configured to meet different applications. The first perimeter loop connects to the four switches on the bottom of the motherboard. The four switches are in a closed position when the SEN enclosure is screwed tightly. Opening the Node will open the switches, opening the first perimeter loop. There is also a four pin connector labeled "Perimeter" on the underside of the IO board. The first perimeter loop can be controlled by the two center pins of the header; the second perimeter loop can be controlled by the outside two pins of the header.
 
