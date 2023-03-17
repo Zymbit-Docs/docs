@@ -1,7 +1,7 @@
 ---
 title: "Secure Edge Node - Getting Started"
-linkTitle: "SEN Getting Started"
-lastmod: "2023-02-10"
+linkTitle: "Secure Edge Node - Getting Started"
+lastmod: "2023-03-17"
 draft: false
 images: []
 weight: 5
