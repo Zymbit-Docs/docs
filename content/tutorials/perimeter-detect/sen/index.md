@@ -15,7 +15,7 @@ toc: true
 
 This describes the perimeter detect feature on Secure Edge Node (SEN)
 
-<!-- ![HSM Perimeter Detect](../HSM-PD-perimter.png) -->
+<!-- ![SEN Perimeter Detect]scmio.png) -->
 
 Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended or in high risk environments.
 
