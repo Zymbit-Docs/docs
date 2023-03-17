@@ -13,30 +13,23 @@ toc: true
 
 ## Scope
 
-This describes the perimeter detect feature on Secure Edge Node (SEN)
+This describes the perimeter detect feature on the Secure Edge Node (SEN)
 
-<!-- ![SEN Perimeter Detect]scmio.png) -->
-
-Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended or in high risk environments.
-
-The SEN includes two independent Perimeter Loops that can be configured to meet different applications.
-
-![HSM Perimeter Detect](../SCM-perim-detect-cable.png)
-
-
-When a Perimeter Loop is breached, the SEN can be configured (at time of binding) to respond with different "Actions", depending upon your security policy.
+Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended or in high risk environments. When a Perimeter Loop is breached, the SEN can be configured (at time of binding) to respond with different "Actions", depending upon your security policy.
 
 ### Connecting Perimeter Loop Circuits
 
-The first perimeter loop connects to the four switches on the bottom of the motherboard. The four switches are in a closed position when the SEN enclosure is screwed tightly. Opening the Node will open the switches, opening the first perimeter loop. There is also a four pin connector labelled "Perimeter" on the underside of the IO board. The first perimeter loop can be controlled by the two center pins of the header; the second perimeter loop can be controlled by the outside two pins of the header.
+![SEN Perimeter Detect]scmio_bottom.png)
+
+The SEN includes two independent Perimeter Loops that can be configured to meet different applications. The first perimeter loop connects to the four switches on the bottom of the motherboard. The four switches are in a closed position when the SEN enclosure is screwed tightly. Opening the Node will open the switches, opening the first perimeter loop. There is also a four pin connector labeled "Perimeter" on the underside of the IO board. The first perimeter loop can be controlled by the two center pins of the header; the second perimeter loop can be controlled by the outside two pins of the header.
 
 ### Access to the Perimeter Loop Circuits.
 
-Use a T10 Torx socket to loosen the screw holding the Node enclosure together. 
+Use a T10 Torx socket to loosen the screws holding the Node enclosure together. 
 
 ### Electrical Circuit
 
-Each perimeter loop should be connected with a 30 AWG wire or thicker and nominal length of 2 feet. For longer lengths contact Zymbit. The wire should be electrically insulated for all applications. A shielded cable may be necessary for electrically noisy or industrial applications.
+Each perimeter loop should be connected with a 30 AWG wire or thicker and nominal length of up to 2 feet. For longer lengths contact Zymbit. The wire should be electrically insulated for all applications. A shielded cable may be necessary for electrically noisy or industrial applications.
 
 Custom flex PCBs and rigid PCBs may also be used to complete a perimeter loop circuit.
 
