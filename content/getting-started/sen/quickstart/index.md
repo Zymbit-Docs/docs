@@ -1,6 +1,6 @@
 ---
-title: "Secure Compute Node - Getting Started"
-linkTitle: "SCN Getting Started"
+title: "Secure Edge Node - Getting Started"
+linkTitle: "SEN Getting Started"
 lastmod: "2023-02-10"
 draft: false
 images: []
@@ -9,7 +9,7 @@ toc: true
 ---
 
 {{< cardpane >}}
-{{% card header="Secure Compute Node" %}}
+{{% card header="Secure Edge Node" %}}
 {{< figure
     src="scn.jpg"
     alt=""
@@ -20,7 +20,7 @@ toc: true
 -----
 ### **Overview**
 
-Secure Compute Node - Zymbit offers a standard baseline enclosure that accommodates Zymbit’s secure motherboard, Secure Compute Module (SCM) and a choice of accessories.  
+Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates Zymbit’s secure motherboard, Secure Compute Module (SCM) and a choice of accessories.  
 
 * Standard Type D35 Enclosure
 
@@ -41,7 +41,7 @@ Secure Compute Node - Zymbit offers a standard baseline enclosure that accommoda
 
 * 12V Power Supply
 
-### **Configure and Setup your Secure Compute Node**
+### **Configure and Setup your Secure Edge Node**
 
 ##### Power On, Bootup, and SSH in
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
@@ -64,7 +64,7 @@ All necessary Zymbit software has been pre-installed. No further installation is
 
 ##### Secure Compute Module
 
-Inside the Secure Compute Node is the Secure Compute Module: a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
+Inside the Secure Edge Node is the Secure Compute Module: a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
 
 {{< cardpane >}}
 {{% card header="SCM Physical Architecture" %}}

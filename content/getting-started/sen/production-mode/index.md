@@ -1,10 +1,11 @@
 ---
-title: Enabling Production Mode - SCM
+title: Enabling Production Mode - Secure Edge Node
 description: ""
 aliases:
-    - /quickstart/production-mode/scm/
+    - /quickstart/production-mode/scn/
+    - /getting-started/scn/production-mode/
 date: "2022-04-29"
-lastmod: "2023-01-22"
+lastmod: "2023-03-16"
 draft: false
 images: []
 weight: 1000
@@ -18,7 +19,7 @@ THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FO
 
 * If you are using the *Perimeter Detect* features, then the sequence in which you arm and disarm this feature is very important. Be sure to carefully follow the process steps below.
 
-If you decide that you are not ready for permanent binding, leave the SCM in developer mode.
+If you decide that you are not ready for permanent binding, leave the SEN in developer mode.
 {{< /callout >}}
 
 The table below summarizes the differences between Development Mode (no Bind Lock) and Production Mode (Bind Locked)
@@ -42,23 +43,23 @@ Once locked, setting the Event Action modes are limited in the following way:
 | Low Battery Voltage Threshold | Must be set prior to locking |
 | Supervised Boot Failure | No limit |
 
-When you have completed your development work with the SCM and are ready to deploy your system into the field, we recommend that you permanently bind your SCM to a specific host device.
+When you have completed your development work with the SEN and are ready to deploy your system into the field, we recommend that you permanently bind your SEN to a specific host device.
 
 ### Summary of Steps
 
 Develop your application
 
-[ ] Ensure your host has all the necessary prerequisites in place to interface with the SCM and that it will be able to run your software application.
+[ ] Ensure your host has all the necessary prerequisites in place to interface with the SEN and that it will be able to run your software application.
 
 Activate Production Mode
 
-[ ] Permanently bind your SCM to the host device.
+[ ] Permanently bind your SEN.
 
 ## Develop your application
 
 The following steps should be complete:
 
-[ ] Install a battery on the Zymbit SCM I/O board.
+[ ] Install a battery on the Zymbit SEN I/O board.
 
 [ ] Install all necessary software for your application on the host and establish temporary binding in development mode.
 
@@ -66,13 +67,13 @@ After these steps have been completed, you are ready to prepare your device for 
 
 ### Prepare *Perimeter Detect*
 
-The `Perimeter Event Actions` for your SCM should be set to `none` or `notify` only. If your SCM's action mode is set to `self_destruct`, you might render your unit /c/Users/bobgu/OneDrive/Desktop/Atom.lnkuseless while attempting to activate Production Mode.
+The `Perimeter Event Actions` for your SEN should be set to `none` or `notify` only. If your SEN's action mode is set to `self_destruct`, you might render your unit /c/Users/bobgu/OneDrive/Desktop/Atom.lnkuseless while attempting to activate Production Mode.
 
-{{< resource_link "tutorials/perimeter-detect/scm/" >}}
-Understand how to use the SCM's perimeter detect features.
+{{< resource_link "tutorials/perimeter-detect/sen/" >}}
+Understand how to use the SEN's perimeter detect features.
 {{< /resource_link >}}
 
-To do this quickly, with the SCM client libraries installed, you can run the following shell command to use the Python API to communicate with the SCM and set the `Perimeter Event Actions` to only Notify when triggered:
+To do this quickly, with the SEN client libraries installed, you can run the following shell command to use the Python API to communicate with the SEN and set the `Perimeter Event Actions` to only Notify when triggered:
 
 ```bash
 python3 -c "import zymkey;
@@ -83,21 +84,21 @@ zymkey.client.clear_perimeter_detect_info()"
 
 ### Prepare your application
 
-You should then install your application on your host SBC. The SCM root partition is pre-encrypted and is secured by the SCM itself.
+You should then install your application on your host SBC. The SEN root partition is pre-encrypted and is secured by the SEN itself.
 
 ### Test, debug, and test again
 
 {{< callout danger >}}
-*DO NOT* skip this step. If you encounter a major issue with your application after your SCM has been permanently bound to your device and armed, you may not be able to fix it.
+*DO NOT* skip this step. If you encounter a major issue with your application after your SEN has been permanently bound to your device and armed, you may not be able to fix it.
 {{< /callout >}}
 
-Test the functionality of your application thoroughly to ensure it is free of major defects that will prevent it from functioning properly. In Production Mode when *Perimeter Detect* features are in use, it may be difficult to make significant changes to your configuration without locking youself out of the SCM, depending on the nature of your application and its configuration.
+Test the functionality of your application thoroughly to ensure it is free of major defects that will prevent it from functioning properly. In Production Mode when *Perimeter Detect* features are in use, it may be difficult to make significant changes to your configuration without locking youself out of the SEN, depending on the nature of your application and its configuration.
 
 ## Activate Production Mode
 
-To put the SCM into Production Mode only requires a function call followed by a power cycle.
+To put the SEN into Production Mode only requires a function call followed by a power cycle.
 
-The API function lock_binding puts the SCM into Production Mode. Below are three examples which check the current binding info, lock the SCM binding, then check the current binding info again. Remove the comments around the lock binding function to move to Production Mode.
+The API function lock_binding puts the SEN into Production Mode. Below are three examples which check the current binding info, lock the SEN binding, then check the current binding info again. Remove the comments around the lock binding function to move to Production Mode.
 
 <details>
 
@@ -134,7 +135,7 @@ void HSM_soft_bind(zkCTX zk_ctx)
   printf("Binding is locked: ");
   printf(binding_is_locked ? "true" : "false");
   printf("\n");
-  printf("SCM is bound: ");
+  printf("SEN is bound: ");
   printf(is_bound ? "true" : "false");
   printf("\n\n");
 
@@ -154,7 +155,7 @@ void HSM_soft_bind(zkCTX zk_ctx)
   printf("Binding is locked: ");
   printf(binding_is_locked ? "true" : "false");
   printf("\n");
-  printf("SCM is bound: ");
+  printf("SEN is bound: ");
   printf(is_bound ? "true" : "false");
   printf("\n\n");
 }
@@ -197,7 +198,7 @@ void HSM_soft_bind(zkClass* zk_inst)
   printf("Binding is locked: ");
   printf(binding_is_locked ? "true" : "false");
   printf("\n");
-  printf("SCM is bound: ");
+  printf("SEN is bound: ");
   printf(is_bound ? "true" : "false");
   printf("\n");
 
@@ -208,7 +209,7 @@ void HSM_soft_bind(zkClass* zk_inst)
   printf("Binding is locked: ");
   printf(binding_is_locked ? "true" : "false");
   printf("\n");
-  printf("SCM is bound: ");
+  printf("SEN is bound: ");
   printf(is_bound ? "true" : "false");
   printf("\n");
 }
@@ -235,13 +236,13 @@ int main()
 ```python
 import zymkey
 tup = zymkey.client.get_current_binding_info()
-print("SCM is bound: " + str(tup[1]))
+print("SEN is bound: " + str(tup[1]))
 print("Binding is locked: " + str(tup[0]))
 
 #zymkey.client.lock_binding()
 
 tup = zymkey.client.get_current_binding_info()
-print("SCM is bound: " + str(tup[1]))
+print("SEN is bound: " + str(tup[1]))
 print("Binding is locked: " + str(tup[0]))
 ```
 </details>
@@ -253,7 +254,7 @@ Do not proceed without completing the steps outlined above, including setting th
 
 ### Finalize your device for deployment
 
-After using the APIs to lock binding, reboot. The blink pattern on the SCM will change to 3 rapid blinks once every 3 seconds to indicate that SCM has bound to the host in Production Mode.
+After using the APIs to lock binding, reboot. The blink pattern on the SEN will change to 3 rapid blinks once every 3 seconds to indicate that the SEN has bound to the host in Production Mode.
 
 If you are using the *Perimeter Detect* features, close your perimeter circuits (for example, by closing the enclosure's lid), and then clear any `Perimeter Detect Events` using the API:
 
