@@ -33,7 +33,7 @@ The SEN includes two independent Perimeter Loops that can be configured to meet 
 
 ### Access to the Perimeter Loop Circuits.
 
-Use a T10 Torx socket to loosen the screws holding the Node enclosure together. 
+Use a Torx-T10 screwdriver to loosen the six screws holding the Node enclosure together. Flip over and remove the bottom to access the Perimeter Loop circuits.
 
 ### Electrical Circuit
 
