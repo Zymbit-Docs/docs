@@ -49,9 +49,9 @@ Prior to permanently binding your Secure Edge Node to a specific host device, it
 
 ##### Response Choices
 
-A)  Do nothing (disable)
-B)  Notify host when perimeter breach occurs (default as shipped)
-C)  Destroy all key material (prevents access to encrypted data or root file system)
+-  Do nothing (disable)
+-  Notify host when perimeter breach occurs (default as shipped)
+-  Destroy all key material (prevents access to encrypted data or root file system)
 
 ### Test Perimeter Detect
 **Developer Mode only**
