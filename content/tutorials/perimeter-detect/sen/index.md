@@ -3,7 +3,7 @@ title : "Perimeter Detect: Secure Edge Node"
 linkTitle: "Secure Edge Node"
 description: ""
 date: "05-11-2022"
-lastmod: "03-16-2023"
+lastmod: "03-20-2023"
 draft: false
 images: []
 layout: "single"
@@ -15,12 +15,12 @@ toc: true
 
 This describes the perimeter detect feature on the Secure Edge Node (SEN)
 
-Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended or in high risk environments. When a Perimeter Loop is breached, the SEN can be configured (at time of binding) to respond with different "Actions", depending upon your security policy.
+Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended or in high risk environments. When a Perimeter Loop is breached, the Secure Edge Node can be configured to respond with different "Actions", depending upon your security policy.
 
 ### Connecting Perimeter Loop Circuits
 
 {{< cardpane >}}
-{{% card header="SCM Perimeter Loop Circuits" %}}
+{{% card header="Secure Compute Motherboard Perimeter Loop Circuits" %}}
 {{< figure
     src="scmio_bottom.png"
     alt=""
@@ -29,7 +29,9 @@ Perimeter Detect provides two additional layers of physical security that can be
 {{% /card %}}
 {{< /cardpane >}}
 
-The SEN includes two independent Perimeter Loops that can be configured to meet different applications. The first perimeter loop connects to the four switches on the bottom of the motherboard. The four switches are in a closed position when the SEN enclosure is screwed tightly. Opening the Node will open the switches, opening the first perimeter loop. There is also a four pin connector labeled "Perimeter" on the underside of the IO board. The first perimeter loop can be controlled by the two center pins of the header; the second perimeter loop can be controlled by the outside two pins of the header.
+The Secure Edge Node includes two independent Perimeter Loops that can be configured to meet different applications. The first perimeter loop connects to the four switches on the bottom of the motherboard. The four switches are in a closed position when the Secure Edge Node enclosure is screwed tightly. Opening the Node will open the switches, opening the first perimeter loop. 
+
+There is also a four pin connector labeled "Perimeter" on the underside of the IO board. The first perimeter loop can be controlled by the two center pins of the header; the second perimeter loop can be controlled by the outside two pins of the header.
 
 ### Access to the Perimeter Loop Circuits.
 
@@ -43,20 +45,20 @@ Custom flex PCBs and rigid PCBs may also be used to complete a perimeter loop ci
 
 ### Perimeter Breach Response Actions
 
-Prior to permanently binding your SEN to a specific host device, it can be configured through the API to respond to a perimeter breach event in one of three ways. After permanent binding is completed, the selected configuration is locked and immutable.
+Prior to permanently binding your Secure Edge Node to a specific host device, it can be configured through the API to respond to a perimeter breach event in one of three ways. After permanent binding is completed, the selected configuration is locked and immutable.
 
 ##### Response Choices
 
 A)  Do nothing (disable)
-B)  Notify host when perimeter breach occurs (default as shipped for SCM Beta)
-C)  Destroy all key material (this essentially destroys any encrypted data or file system.
+B)  Notify host when perimeter breach occurs (default as shipped)
+C)  Destroy all key material (prevents access to encrypted data or root file system)
 
 ### Test Perimeter Detect
 **Developer Mode only**
 
 To quickly test your perimeter detect setup, here is sample code using the Python API. The program will wait for ten seconds to detect any perimeter breaches. Before running this script, connect the circuits with the provided yellow and blue wires and during the ten second pause in the script, breach the perimeter by unplugging the circuit wires. The wait function should immediately detect the event.
 
-In the API, perimeter circuit 2 (as shown in the above images) is defined as channel 1 and perimeter circuit 1 is defined as channel 0. As noted, for SCM Beta, channel 0 and channel 1 have already been set to action_notify=True.
+In the API, perimeter circuit 2 (as shown in the above images) is defined as channel 1 and perimeter circuit 1 is defined as channel 0. As shipped, Channel 0 and Channel 1 have been set to action_notify=True.
 
 Example for monitoring Perimeter Events:
 <details>
