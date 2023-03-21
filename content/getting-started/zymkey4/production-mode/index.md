@@ -1,5 +1,6 @@
 ---
-title: Enabling Production Mode
+title: Enabling Production Mode - ZYMKEY4
+linkTitle: "Enabling Production Mode"
 description: ""
 aliases:
     - /quickstart/production-mode/zymkey4/

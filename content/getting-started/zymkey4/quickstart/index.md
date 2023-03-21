@@ -1,5 +1,5 @@
 ---
-title: Zymkey4 Quickstart
+title: Quickstart - ZYMKEY4
 linkTitle: Quickstart
 description: ""
 aliases:

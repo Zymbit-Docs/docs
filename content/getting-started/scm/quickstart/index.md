@@ -1,6 +1,6 @@
 ---
-title: "SCM - Getting Started"
-linkTitle: "Getting Started"
+title: "Quickstart - Secure Compute Module (SCM)"
+linkTitle: "Quickstart"
 lastmod: "2023-02-09"
 draft: false
 images: []

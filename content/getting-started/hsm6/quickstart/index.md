@@ -1,5 +1,5 @@
 ---
-title: HSM6 Quickstart
+title: Quickstart - HSM6
 linkTitle: Quickstart
 description: ""
 aliases:
