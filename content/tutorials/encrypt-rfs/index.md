@@ -195,11 +195,6 @@ The existing root file system can be migrated to an external LUKS encrypted USB 
 #### Prerequisites
 Make sure you have the Zymbit Security Module software suite already running and operational as well as bound. Instructions [here](https://docs.zymbit.com/getting-started).
 
-##### NOTE for RPi users: For the CM4/IO Module with eMMC, additional steps are needed due to the fact that the USB 2.0 ports are disabled by default:
-1. Upgrade the bootloader version: Jan. 16 2021
-2. Set the boot order to allow booting off USB: 0xf15
-3. Modify /boot/config.txt and add the line "otg_mode=1" under [all]. This replaces the line, "dtoverlay=dwc2,dr_mode=host" if added.
-
 
 #### Option 1 - Convert existing SD Card to LUKS
 
