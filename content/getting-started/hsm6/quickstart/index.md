@@ -97,9 +97,10 @@ Power off your Raspberry Pi to ensure that neither the SBC or the PiHAT are dama
 
 Follow the below pictures to position the PiHAT onto your SBC. The HSM and battery should be facing the Raspberry Pi and concealed from view.
 
-<p><img src="HSM-install-hat-1.png" alt="Install PiHAT onto RPi - Open" width="50%"><img src="HSM-install-hat-nvidia-1.png" alt="Install PiHAT onto RPi - Open Nvidia" width="50%"></p>
-<p><img src="HSM-install-hat-2.png" alt="Install PiHAT onto RPi - Closed" width="50%"><img src="HSM-install-hat-nvidia-2.png" alt="Install PiHAT onto RPi - Closed Nvidia" width="50%"></p>
-
+<p>
+<img src="HSM-install-hat-1.png" alt="Install PiHAT onto RPi - Open" width="50%">
+<img src="HSM-install-hat-2.png" alt="Install PiHAT onto RPi - Closed" width="50%">
+</p>
 
 Be sure all the GPIO pins are aligned and have a respective slot. If misaligned, this could cause damage to the HSM, PiHAT, and/or your host device. Once aligned properly, press firmly down onto the header. Your PiHAT should fit relatively snug.
 
