@@ -1,6 +1,6 @@
 ---
-title: "Secure Edge Node - Getting Started"
-linkTitle: "Getting Started - Secure Edge Node"
+title: "Quickstart - Secure Edge Node"
+linkTitle: "Quickstart"
 lastmod: "2023-03-17"
 draft: false
 images: []

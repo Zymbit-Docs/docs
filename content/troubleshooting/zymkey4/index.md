@@ -616,7 +616,6 @@ A: Sign up for our new product email updates at the bottom of [Zymbit's homepage
 *  Electrically, the Zymkey-I2C will interface to any single board computer using I2C. Check compatibility with your particular Linux distribution.
 *  Raspberry Pi 3, 3B+, 4, Zero
 *  RPi Compute Module 3, 4
-*  NVIDIA Jetson Nano, Xavier NX
 
 -----
 

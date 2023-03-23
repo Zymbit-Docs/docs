@@ -5,7 +5,7 @@ aliases:
     - /tutorials/encrypt-rfs/zymkey4/
 description: ""
 date: ""
-lastmod: "06-02-2022"
+lastmod: "03-21-2023"
 draft: false
 images: []
 toc: true
@@ -16,11 +16,11 @@ toc: true
 #### Prerequisites
 
 Raspberry Pi:
-* Raspbian: Buster (32 or 64 bit); or Ubuntu 18 or 20 (32 or 64 bit)
-
-Nvidia Jetson:
-* Jetson Xavier NX or Nano
-* Jetpack 4.4 or earlier
+* Raspberry PI OS: Bullseye (32 or 64 bit)
+* Raspberry PI OS: Buster (32 or 64 bit)
+* Ubuntu 22.04 LTS (32 or 64 bit)
+* Ubuntu 20.04 LTS (32 or 64 bit)
+* Ubuntu 18.04 LTS (32 or 64 bit)
 
 ## **BACKGROUND** 
 
@@ -30,18 +30,10 @@ To skip the background information and start encrypting your RFS, click [here](#
 
 There are many reasons to encrypt the Root File System (RFS), from keeping WiFi credentials immutable to keeping proprietary software and sensitive data from being cloned.
 
-For many Raspberry Pi configurations, only two partitions exist:
+For most Raspberry Pi configurations, only two partitions exist:
 
-* /boot   <nbsp> on    /dev/mmcblk0p1
+* /boot      on   /dev/mmcblk0p1
 * /          on   /dev/mmcblk0p2
-
-For Jetson configurations, many small partitions are created but the / file system including the /boot area is located here:
-
-* /dev/mmcblk0p1
-
-
-So it makes sense to encrypt the root partition as a way of encrypting everything.
-
 
 ------------
 
@@ -52,7 +44,6 @@ LUKS (**L**inux **U**nified **K**ey **S**etup) is the popular key management set
 LUKS provides a robust and flexible mechanism for multiple users (and services) to interface to and access Linux's '[dm-crypt](https://wiki.archlinux.org/index.php/dm-crypt)' infrastructure.
 
 _dm-crypt_ is a transparent disk encryption subsystem in Linux kernel versions 2.6 and later and is part of the device mapper infrastructure, and uses cryptographic routines from the kernel's Crypto API. Both are widely used and understood in the IT community.
-
 
 
 #### Weaknesses of single Master key
@@ -100,9 +91,9 @@ When used with LUKS, the User Key is sent to the Zymbit Security Module to be lo
 
 
 ------
-_ZYMKEY4 fitted to Raspberry Pi and Jetson_
+_ZYMKEY4 fitted to Raspberry Pi_
 
-<p><img src="erfs3.png" alt="rpi" width="50%"><img src="jetson3.png" alt="jetson" width="50%"></p>
+<p><img src="erfs3.png" alt="rpi" width="50%"></p>
 
 **Zymbit Security Module Authenticates Host System Before Unlocking LUKS Key**
 
@@ -147,21 +138,17 @@ Converting the existing root file system on the SD card still requires an extern
 3. Write cycle constraints.
 4. Access speed constraints.
 
-
-**Process Steps:**
+**Process Steps Run By Script:**
 1. Make a tarball of the original root file system and store it on the external device
 2. Copy the original root file system files to the external device to form a temporary file system
 3. Boot to the temporary file system. Once booted, the temporary file system will:
 * Create a LUKS key
 * Lock the LUKS key with Zymbit Security Module
-* Create a LUKS volume on the original root partition. The standard Jetson installation creates up to 14 partitions. In most cases, the new partition will be mmcblk0p13 or mmcblk0p15.
+* Create a LUKS volume on the original root partition. 
 * Create an ext4 partition on the LUKS volume on the original root partition
 * Untar the root file system tarball into the converted partition
-* For Jetson users: Untar the /boot area into the original SD card partition, mmcblk0p1
-
 
 #### Option 2 - Migrate existing SD card to external LUKS storage device.
-
 
 The existing root file system can be migrated to an external LUKS encrypted USB flash, hard drive or SSD.
 
@@ -175,15 +162,13 @@ The existing root file system can be migrated to an external LUKS encrypted USB 
 1. For HDD and SSD and non-compact USB flash devices, there are additional power requirements.
 2. Except for compact USB flash devices, physical space requirements also increase. This may be especially important for the Raspberry Pi Zero family.
 
-**Process Steps:**
+**Process Steps Run By Script:**
 1. Create the LUKS key
 2. Lock the LUKS key
 3. Create a LUKS volume on an external USB device
 4. Create an ext4 partition on the LUKS volume
 5. Move the existing root file system to the LUKS volume on the external device
-6. For RPi users: Boot to the new root file system and erase the previous root volume
-* For Jetson users: Copy the /boot area into the original SD card partition mmcblk0p1
-7. Boot to the new root file system
+6. Boot to the new root file system and erase the previous root volume
 
 
 ----------
@@ -194,11 +179,6 @@ The existing root file system can be migrated to an external LUKS encrypted USB 
 
 #### Prerequisites
 Make sure you have the Zymbit Security Module software suite already running and operational as well as bound. Instructions [here](https://docs.zymbit.com/getting-started).
-
-##### NOTE for RPi users: For the CM4/IO Module with eMMC, additional steps are needed due to the fact that the USB 2.0 ports are disabled by default:
-1. Upgrade the bootloader version: Jan. 16 2021
-2. Set the boot order to allow booting off USB: 0xf15
-3. Modify /boot/config.txt and add the line "otg_mode=1" under [all]. This replaces the line, "dtoverlay=dwc2,dr_mode=host" if added.
 
 
 #### Option 1 - Convert existing SD Card to LUKS
@@ -220,13 +200,9 @@ In the above invocation with no parameters, the defaults are:
 
 One thing to note is that, if the external storage device has an ext4 formatted partition with the original root file system partition (e.g. /dev/mmcblk0p2) on it, this script will use what is already on the external storage device to convert the SD card. This cuts down time for converting lots of device root file systems and allows the script to be used in a mass production deployment.
 
-On a Pi3 with an attached USB SSD as the external device on a bare Jessie "full" version (~4GB), the first run of this script requires about an hour to complete the first phase. The second phase takes around 15 minutes.
+On a Pi4 with an attached USB SSD as the external device on a bare Bullseye "full" version, the first run of this script requires 30 minutes or so to complete the first phase. The second phase takes around 10 minutes.
 
-The same platform with a Jessie "lite" version (~1.6GB) takes around 20 minutes for phase 1 and 5 minutes for phase 2.
-
-For Jetson, the first run of this script can take upwards of 30 minutes to an hour to complete the first phase. The second phase takes around 15 minutes.
-
-Based on the above, using the formatted external device to convert subsequent units should only take 15 minutes.
+Based on the above, using the formatted external device to convert subsequent units should only take around 10 minutes.
 
 
 #### Option 2 - Migrate existing SD card to external LUKS storage device.
@@ -245,10 +221,6 @@ In the above invocation with no parameters, the defaults for RPi are:
  1. Original root file system located on /dev/mmcblk0p2
  2. New root file system located on /dev/sda1
  3. New root file system takes up entirety of new device
-The defaults for Jetson are:
-1. Original root file system located on /dev/mmcblk0p1
-2. Temporary root file system/storage for original root tarball located on /dev/sda
-3. Temporary root file system takes up entirety of new device
 
 Please note that the new root file system should be at least a little larger in size than the original root partition
 
