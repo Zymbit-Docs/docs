@@ -29,7 +29,7 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 |       | PoE PD (optional) |
 |       | SATA (optional) |
 | LEDs  | CM4 PWR (red) |
-|       | CM4 Actity (green) |
+|       | CM4 Activity (green) |
 |       | SCM Status (blue) |
 | Front I/O | 1x 1GbE LAN |
 |           | 1x HDMI |
@@ -43,15 +43,26 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 |                 | 1x Battery connector Molex 51021-0200-B (1.25mm Pitch) |
 |                 | 1x Zymbit Security Module for HSM4/HSM6 |
 |                 | 1x 5V Fan |
-|                 |
 | Tamper Circuits | 4x Switches complete Channel 1 tamper circuit |
-                  | Header pins for Channel 1 and Channel 2 tamper circuits |
+|                 | Header pins for Channel 1 and Channel 2 tamper circuits |
 
 
 ### **Configure and Setup your Secure Edge Node**
 
-##### Power On, Bootup, and SSH in
- * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
+##### Power On
+ * Connect the included 12V Power Supply up to the front panel 12V barrel connector. Optionally, supply power via PoE to the ethernet connector, or via the SATA edge connector.
+
+{{< cardpane >}}
+{{% card header="Front Panel IO" %}}
+{{< figure
+    src="node_end1.png"
+    alt=""
+    caption=""
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
+
+ * Connect an ethernet cable to the front panel ethernet. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
  
  {{% callout notice %}}
 
