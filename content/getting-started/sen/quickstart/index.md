@@ -1,7 +1,7 @@
 ---
 title: "Quickstart - Secure Edge Node"
 linkTitle: "Quickstart"
-lastmod: "2023-03-17"
+lastmod: "2023-03-23"
 draft: false
 images: []
 weight: 5
@@ -21,25 +21,32 @@ toc: true
 ### **Overview**
 
 Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates Zymbit’s secure motherboard, Secure Compute Module (SCM) and a choice of accessories.  
+| Feature | Description |
+| ------- | ----------- |
+| Enclosure | Standard Type D35 Enclosure. Fit into standard 3.5″ drive bay caddy |
+| Dimensions | 1.04 x 3.95 x 5.80 inches,  26 x 100 x 148mm |
+| Power | 12V Barrel Style (standard) |
+|       | PoE PD (optional) |
+|       | SATA (optional) |
+| LEDs  | CM4 PWR (red) |
+|       | CM4 Actity (green) |
+|       | SCM Status (blue) |
+| Front I/O | 1x 1GbE LAN |
+|           | 1x HDMI |
+|           | 1x USB-A 2.0 |
+| Onboard Headers | 1x AUX USB 2.0 |
+|                 | 2x CSI Camera |
+|                 | 1x DSI Display |
+|                 | 1x M.2 B-Key |
+|                 | 1x 40-pin GPIO header |
+|                 | 1x Micro SIM port. For use with compatible M.2 modules. Push-push type connector |
+|                 | 1x Battery connector Molex 51021-0200-B (1.25mm Pitch) |
+|                 | 1x Zymbit Security Module for HSM4/HSM6 |
+|                 | 1x 5V Fan |
+|                 |
+| Tamper Circuits | 4x Switches complete Channel 1 tamper circuit |
+                  | Header pins for Channel 1 and Channel 2 tamper circuits |
 
-* Standard Type D35 Enclosure
-
-  * Rugged plastic and metal construction
-  * Tamper switch compatible - Enclosure complete Channel 1 Tamper circuit (Opening box causes Tamper Event on Ch1)
-  * Integrated heatsink
-  * Customizable front connector plate
-  * Stackable
-  * 1.04 x 3.95 x 5.80 inches,  26 x 100 x 148mm
-  * Fit into standard 3.5″ drive bay caddy
-  * Optional SATA power connector
-  * Optional POE module
-  * Custom Features
-
-  * User cover is easily modified to include customer-specific designs 
-  * Mechanical interface CAD files available
-  * Options User Cover with SATA power support
-
-* 12V Power Supply
 
 ### **Configure and Setup your Secure Edge Node**
 
