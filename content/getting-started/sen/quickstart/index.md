@@ -28,9 +28,7 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 | Power | 12V Barrel Style (standard) |
 |       | PoE PD (optional) |
 |       | SATA (optional) |
-| LEDs  | CM4 PWR (red) |
-|       | CM4 Activity (green) |
-|       | SCM Status (blue) |
+| LEDs  | CM4 PWR (red), CM4 Activity (green), SCM Status (blue) |
 | Front I/O | 1x 1GbE LAN |
 |           | 1x HDMI |
 |           | 1x USB-A 2.0 |
@@ -64,11 +62,10 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 
  * Connect an ethernet cable to the front panel ethernet. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
  
- {{% callout notice %}}
-
+{{% callout notice %}}
 The total boot time as configured should take approximately 90 seconds from power on.
-
 {{% /callout %}}
+
  * Monitor the Blue LED on the Zymbit SCM module. It will go through the following stages:
     - one slow blink:    *initializing the SCM*
     - one -> two -> three -> four blinks:   *Supervised Boot is verifying the signed file information*
@@ -83,26 +80,6 @@ All necessary Zymbit software has been pre-installed. No further installation is
 ##### Secure Compute Module
 
 Inside the Secure Edge Node is the Secure Compute Module: a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
-
-{{< cardpane >}}
-{{% card header="SCM Physical Architecture" %}}
-{{< figure
-    src="scm_layer.png"
-    alt=""
-    caption=""
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
-
-{{< cardpane >}}
-{{% card header="SCM Functional Architecture" %}}
-{{< figure
-    src="scm_block.png"
-    alt=""
-    caption=""
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
     
 ### Pre-loaded OS options
 
