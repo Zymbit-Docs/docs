@@ -43,6 +43,8 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 |                 | 1x 5V Fan |
 | Tamper Circuits | 4x Switches complete Channel 1 tamper circuit |
 |                 | Header pins for Channel 1 and Channel 2 tamper circuits |
+| Pre-installed OS | Raspberry PI Bullseye Lite 64-bit (optional 32-bit) |
+| Operational Environment | Temperature: 0-60 degrees C |
 
 
 ### **Configure and Setup your Secure Edge Node**
@@ -88,7 +90,7 @@ Now you're ready to start developing with the Zymbit Secure Compute Module.
 
 ##### Secure Compute Module
 
-Inside the Secure Edge Node is the [Secure Compute Module](https://zymbit-docs.github.io/docs-staging/branch/node-off-main/getting-started/scm/quickstart/): a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a ecure encapsulated module. Details of the SCM itself including any other Zymbit specific cofigurations can be found [here](https://zymbit-docs.github.io/docs-staging/branch/node-off-main/getting-started/scm/quickstart/):
+Inside the Secure Edge Node is the [Secure Compute Module](https://zymbit-docs.github.io/docs-staging/branch/node-off-main/getting-started/scm/quickstart/): a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure, encapsulated module. Details of the SCM itself including any other Zymbit specific cofigurations can be found [here](https://zymbit-docs.github.io/docs-staging/branch/node-off-main/getting-started/scm/quickstart/):
     
 
 #### Using Secure Edge Node/SCM: API and Examples
