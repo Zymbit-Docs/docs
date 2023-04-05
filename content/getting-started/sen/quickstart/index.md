@@ -76,8 +76,7 @@ All necessary Zymbit software has been pre-installed. No further installation is
 
 ##### Example of Successful Supervised Boot LED Sequence (Click image for video)
 
-[<img src="sen_led.png" width="30%">](https://user-images.githubusercontent.com/78050323/229950608-591423b3-8ce9-4fb0-a9d4-72fe6cc886ac.mp4)
-
+[<img src="sen_led.png" width="30%">](https://user-images.githubusercontent.com/78050323/229965026-45de9c09-a55b-4999-8b14-98345570f972.mp4)
 
 ##### Secure Compute Module
 
