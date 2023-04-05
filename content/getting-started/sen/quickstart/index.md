@@ -50,17 +50,8 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 ##### Power On
  * Connect the included 12V Power Supply up to the front panel 12V barrel connector. Optionally, supply power via PoE to the ethernet connector, or via the SATA edge connector. Connect an ethernet cable to the front panel gigabit ethernet port. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse.
 
-{{< cardpane >}}
-{{% card header="Front Panel IO" %}}
-{{< figure
-    src="node_end1.png"
-    alt=""
-    caption=""
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
+<img src="node_end1.png" width="60%">
 
-<img src="node_end1.png" width="50%">
 
  *  As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
 
@@ -78,7 +69,7 @@ All necessary Zymbit software has been pre-installed. No further installation is
 
 ##### Example of Successful Supervised Boot LED Sequence (Click image for video)
 
-[<img src="sen_led.png" width="50%">](https://user-images.githubusercontent.com/78050323/229965026-45de9c09-a55b-4999-8b14-98345570f972.mp4)
+[<img src="sen_led.png" width="40%">](https://user-images.githubusercontent.com/78050323/229965026-45de9c09-a55b-4999-8b14-98345570f972.mp4)
 
 ##### Secure Compute Module
 
