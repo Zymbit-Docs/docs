@@ -61,21 +61,23 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 {{< /cardpane >}}
 
  * Connect an ethernet cable to the front panel ethernet. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
- 
+
 {{% callout notice %}}
-The total boot time as configured should take approximately 90 seconds from power on.
+All necessary Zymbit software has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
 {{% /callout %}}
 
- * Monitor the Blue LED on the Zymbit SCM module. It will go through the following stages:
+ * Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured should take approximately 90 seconds from power on. It will go through the following stages:
+
     - one slow blink:    *initializing the SCM*
     - one -> two -> three -> four blinks:   *Supervised Boot is verifying the signed file information*
     - rapid blinking:   *Supervised Boot successfully completed, booting underway*
     - blinking stops:   *USB bus enumeration found SCM; may stay off for seconds*
     - one blink every 3 seconds:   *zkifc has loaded and the system is ready to go*
 
-{{% callout notice %}}
-All necessary Zymbit software has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
-{{% /callout %}}
+##### Example of Successful Supervised Boot LED Sequence (Click image for video)
+
+[<img src="sen_led.png" width="30%">](https://user-images.githubusercontent.com/78050323/229950608-591423b3-8ce9-4fb0-a9d4-72fe6cc886ac.mp4)
+
 
 ##### Secure Compute Module
 
