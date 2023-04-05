@@ -23,7 +23,7 @@ toc: true
 Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates Zymbit’s secure motherboard, Secure Compute Module (SCM) and a choice of accessories.  
 | Feature | Description |
 | ------- | ----------- |
-| Enclosure | Standard Type D35 Enclosure. Fit into standard 3.5″ drive bay caddy |
+| Enclosure | Standard Type D35 Enclosure. Fits into standard 3.5″ drive bay caddy |
 | Dimensions | 1.04 x 3.95 x 5.80 inches,  26 x 100 x 148mm |
 | Power | 12V Barrel Style (standard) |
 |       | PoE PD (optional) |
@@ -48,18 +48,17 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 ### **Configure and Setup your Secure Edge Node**
 
 ##### Power On
- * Connect the included 12V Power Supply up to the front panel 12V barrel connector. Optionally, supply power via PoE to the ethernet connector, or via the SATA edge connector. Connect an ethernet cable to the front panel gigabit ethernet port. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse.
+ * Connect the included 12V Power Supply up to the front panel 12V barrel connector. Optionally, supply power via PoE to the ethernet connector, or via the SATA edge connector. Connect an ethernet cable to the front panel gigabit ethernet port. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. Tje only access is via SSH.
 
+<br />
 <img src="node_end1.png" width="60%">
-
-
- *  As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
+<br />
 
 {{% callout notice %}}
-All necessary Zymbit software has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
+The Secure Edge Node includes pre-installed Raspberry PI Bullseye Lite 64-bit (or optionally 32-bit) and all necessary Zymbit software. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
 {{% /callout %}}
 
- * Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured should take approximately 90 seconds from power on. It will go through the following stages:
+Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured should take approximately 90 seconds from power on. It will go through the following stages:
 
     - one slow blink:    *initializing the SCM*
     - one -> two -> three -> four blinks:   *Supervised Boot is verifying the signed file information*
@@ -70,17 +69,29 @@ All necessary Zymbit software has been pre-installed. No further installation is
 ##### Example of Successful Supervised Boot LED Sequence (Click image for video)
 
 [<img src="sen_led.png" width="40%">](https://user-images.githubusercontent.com/78050323/229965026-45de9c09-a55b-4999-8b14-98345570f972.mp4)
+<br />
+
+##### Login via SSH
+
+Once the boot sequence completes and the Blue LED is blinking once every three seconds, login remotely via SSH. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
+
+##### Run example code
+
+The quickest way to get started is to see the Secure Edge Node's various features at work is by running these test scripts. You can get the example scripts from here:
+
+[Download example files](https://community.zymbit.com/t/installation-missing-files/1331/2?u=bob_of_zymbit)
+
+`python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`  
+`python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
+
+Now you're ready to start developing with the Zymbit Secure Compute Module. 
 
 ##### Secure Compute Module
 
-Inside the Secure Edge Node is the Secure Compute Module: a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
+Inside the Secure Edge Node is the [Secure Compute Module](https://zymbit-docs.github.io/docs-staging/branch/node-off-main/getting-started/scm/quickstart/): a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a ecure encapsulated module. Details of the SCM itself including any other Zymbit specific cofigurations can be found [here](https://zymbit-docs.github.io/docs-staging/branch/node-off-main/getting-started/scm/quickstart/):
     
-### Pre-loaded OS options
 
-* Raspberry PI OS Lite 64-bit (Bullseye)
-* Raspberry PI OS Lite 32-bit (Bullseye)
-
-#### Using SCM: API and Examples
+#### Using Secure Edge Node/SCM: API and Examples
     
  * [See API Documentation](../../../api/)   
  * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
