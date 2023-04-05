@@ -48,7 +48,7 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 ### **Configure and Setup your Secure Edge Node**
 
 ##### Power On
- * Connect the included 12V Power Supply up to the front panel 12V barrel connector. Optionally, supply power via PoE to the ethernet connector, or via the SATA edge connector.
+ * Connect the included 12V Power Supply up to the front panel 12V barrel connector. Optionally, supply power via PoE to the ethernet connector, or via the SATA edge connector. Connect an ethernet cable to the front panel gigabit ethernet port. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse.
 
 {{< cardpane >}}
 {{% card header="Front Panel IO" %}}
@@ -60,7 +60,9 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 {{% /card %}}
 {{< /cardpane >}}
 
- * Connect an ethernet cable to the front panel ethernet. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
+<img src="node_end1.png" width="50%">
+
+ *  As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
 
 {{% callout notice %}}
 All necessary Zymbit software has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
@@ -76,7 +78,7 @@ All necessary Zymbit software has been pre-installed. No further installation is
 
 ##### Example of Successful Supervised Boot LED Sequence (Click image for video)
 
-[<img src="sen_led.png" width="30%">](https://user-images.githubusercontent.com/78050323/229965026-45de9c09-a55b-4999-8b14-98345570f972.mp4)
+[<img src="sen_led.png" width="50%">](https://user-images.githubusercontent.com/78050323/229965026-45de9c09-a55b-4999-8b14-98345570f972.mp4)
 
 ##### Secure Compute Module
 
