@@ -62,11 +62,11 @@ The Secure Edge Node includes pre-installed Raspberry PI Bullseye Lite 64-bit (o
 
 Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured should take approximately 90 seconds from power on. It will go through the following stages:
 
-    - one slow blink:    *initializing the SCM*
-    - one -> two -> three -> four blinks:   *Supervised Boot is verifying the signed file information*
-    - rapid blinking:   *Supervised Boot successfully completed, booting underway*
-    - blinking stops:   *USB bus enumeration found SCM; may stay off for seconds*
-    - one blink every 3 seconds:   *zkifc has loaded and the system is ready to go*
+- one slow blink:    *initializing the SCM*
+- one -> two -> three -> four blinks:   *Supervised Boot is verifying the signed file information*
+- rapid blinking:   *Supervised Boot successfully completed, booting underway*
+- blinking stops:   *USB bus enumeration found SCM; may stay off for seconds*
+- one blink every 3 seconds:   *zkifc has loaded and the system is ready to go*
 
 ##### Example of Successful Supervised Boot LED Sequence (Click image for video)
 
@@ -90,7 +90,7 @@ Now you're ready to start developing with the Zymbit Secure Compute Module.
 
 ##### Secure Compute Module
 
-Inside the Secure Edge Node is the [Secure Compute Module](https://zymbit-docs.github.io/docs-staging/branch/node-off-main/getting-started/scm/quickstart/): a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure, encapsulated module. Details of the SCM itself including any other Zymbit specific cofigurations can be found [here](https://zymbit-docs.github.io/docs-staging/branch/node-off-main/getting-started/scm/quickstart/):
+Inside the Secure Edge Node is the [Secure Compute Module](/getting-started/scm/quickstart/): a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure, encapsulated module. Details of the SCM itself including any other Zymbit specific cofigurations can be found [here](/getting-started/scm/quickstart/):
     
 
 #### Using Secure Edge Node/SCM: API and Examples
