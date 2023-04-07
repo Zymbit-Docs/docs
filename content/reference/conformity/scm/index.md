@@ -1,6 +1,6 @@
 ---
-title: "Secure Compute Module Conformity Documents"
-toc_title: "Secure Compute Module (SCM)"
+title: "Secure Compute Family Conformity Documents"
+toc_title: "Secure Compute Conformity Documents"
 description: ""
 aliases:
     - /technical_reference/conformity/scm/
