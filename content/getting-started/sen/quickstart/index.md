@@ -8,6 +8,10 @@ weight: 5
 toc: true
 ---
 
+### **Overview**
+
+Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates Zymbit’s secure motherboard, [Secure Compute Module](/getting-started/scm/quickstart/)  and a choice of accessories.  
+
 {{< cardpane >}}
 {{% card header="Secure Edge Node" %}}
 {{< figure
@@ -17,10 +21,7 @@ toc: true
     >}}
 {{% /card %}}
 {{< /cardpane >}}
------
-### **Overview**
 
-Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates Zymbit’s secure motherboard, Secure Compute Module (SCM) and a choice of accessories.  
 | Feature | Description |
 | ------- | ----------- |
 | Enclosure | Standard Type D35 Enclosure. Fits into standard 3.5″ drive bay caddy |
