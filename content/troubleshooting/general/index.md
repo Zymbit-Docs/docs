@@ -119,6 +119,20 @@ See [Power Quality]( https://docs.zymbit.com/reference/power-quality/) for more 
 
 </details>
 
+##### Q: What is the expected battery life for Zymbit Products?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+![Battery Lifetime Guidelines](../pub-battery-lifetimes.png)
+
+-----
+
+</details>
+
 ### **Compatibility**
 
 ##### Q: Which operating systems does Zymbit support?
