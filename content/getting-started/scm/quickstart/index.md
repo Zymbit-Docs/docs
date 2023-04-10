@@ -44,7 +44,7 @@ All necessary Zymbit software has been pre-installed. No further installation is
 
 ##### Example of Successful Supervised Boot LED Sequence (Click image for video)
 
-[<img src="LED_image.jpg" width="30%">](https://user-images.githubusercontent.com/78050323/230241994-473fc680-41da-4412-bf58-e3c0e4a5ed6c.mp4)
+[<img src="LED_image.png" width="30%">](https://user-images.githubusercontent.com/78050323/230241994-473fc680-41da-4412-bf58-e3c0e4a5ed6c.mp4)
 
 ### Updated release 1/13/2023 (RC-23.01)
 
