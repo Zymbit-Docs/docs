@@ -68,7 +68,7 @@ The quickest way to interact with the ethereum blockchain network is to use remo
 
 ![Infura Login](infura_login.png)
 
-3. Go to project settings and change the endpoints dropdown from Mainnet->Ropsten. Ropsten is the test network we will be testing our transaction on. Write down the web link to our test project for web3 to communicate with.
+3. Go to project settings and change the endpoints dropdown from Mainnet->Goerli. Goerli is the test network we will be testing our transaction on. Write down the web link to our test project for web3 to communicate with.
 
 {{< callout warning >}}
 If you are developing in Infura moving forward, make sure to not give out the project secret and project ID!
@@ -101,9 +101,9 @@ from web3 import Web3
 Using the endpoint link from our Infura project, open a Web3 instance object.
 
 ```python
-# Create web3 instance, from infura project (node) connecting to Ropsten test network
+# Create web3 instance, from infura project (node) connecting to Goerli test network
 
-w3 = Web3(Web3.HTTPProvider('https://ropsten.infura.io/v3/9f06183d0529494792242beb59be4ad3'))
+w3 = Web3(Web3.HTTPProvider('https://goerli.infura.io/v3/9f06183d0529494792242beb59be4ad3'))
 ```
 
 
@@ -186,11 +186,11 @@ print("Valid checksum:\n%s" % Web3.isAddress(checksum))
 This is the ethereum public address of our sender. The sender signs the transaction and sends it out. Once the receiver gets the transaction they will see it was from this sender's address.
 
 {{< callout notice >}}
-To properly send out transaction to the Ropsten test network with this sender's address. We need funds in this address to pay for the fees required to send out this transaction.
+To properly send out transaction to the Goerli test network with this sender's address. We need funds in this address to pay for the fees required to send out this transaction.
 
-Because Ropsten is a test network for development, we can fund ethereum addresses for free with test ether. (Note: There is only one address per day limit).
+Because Goerli is a test network for development, we can fund ethereum addresses for free with test ether. (Note: There is only one address per day limit).
 
-You can do this here: [**Ropsten Faucet**](https://faucet.egorfine.com/)
+You can do this here: [**Goerli Faucet**](https://faucet.egorfine.com/)
 {{< /callout >}}
 
 
@@ -266,7 +266,7 @@ class SignedTransactionType1559(rlp.Serializable):
 
 #### Create the example transaction to send
 
-Create an example transaction to send out on the Ropsten test network:
+Create an example transaction to send out on the Goerli test network:
 
 ```python
 # grab nonce value of sender's account. nonce = number of transactions
@@ -276,10 +276,10 @@ print("Nonce value:\n %i" % nonce)
 # Example receiver's address
 receiver_addr = '0x15C25E6EB5dE729d7e310d059e59659cCB86E6f6'
 
-# Ropsten chain ID is 3
+# Goerli chain ID is 3
 chain_id = 3
 
-# prepare the transaction, chainID 3 is ropsten
+# prepare the transaction, chainID 3 is goerli
 transaction_legacy = TransactionLegacy(nonce = nonce, gasPrice = 500000, gasLimit = 800000, to = binascii.unhexlify(receiver_addr.replace('0x', '')), value = 5, data = b'hello', v = chain_id, r = 0, s = 0)
 transaction_1559 = RawTransactionType1559(chainId = chain_id, nonce = nonce, maxPriorityFeePerGas = 150000, maxFeePerGas = 150000, gas = 210000,
                                           to = binascii.unhexlify(receiver_addr.replace('0x', '')), value = 10, data = b'world', accessList = [])
@@ -423,16 +423,16 @@ transaction_result_hash = w3.eth.sendRawTransaction(encoded_signed_transaction)
 print("Transaction broadcast hash:\n%s" % binascii.hexlify(transaction_result_hash).decode("utf-8"))
 ```
 
-If successfully broadcasted, you should get a broadcast hash receipt back. You can view your transaction's validation progress on the network by pasting that hash receipt here: <https://ropsten.etherscan.io/>
+If successfully broadcasted, you should get a broadcast hash receipt back. You can view your transaction's validation progress on the network by pasting that hash receipt here: <https://goerli.etherscan.io/>
 
 ![image](transaction_receipt.png)
 
 {{< callout warning >}}
 If you get Error: "Not enough funds or gas"
 
-To properly send out transaction to the Ropsten test network with this sender's address, there must be adequate funds in this address to pay for the fees required to send out this transaction. Because Ropsten is a test network for development, we can fund ethereum addresses for free with test ether. There is a one IP address per day limit).
+To properly send out transaction to the Goerli test network with this sender's address, there must be adequate funds in this address to pay for the fees required to send out this transaction. Because Goerli is a test network for development, we can fund ethereum addresses for free with test ether. There is a one IP address per day limit).
 
-You can do this here: [**Ropsten Faucet**](https://faucet.egorfine.com/)
+You can do this here: [**Goerli Faucet**](https://faucet.egorfine.com/)
 {{< /callout >}}
 
 
@@ -502,8 +502,8 @@ class SignedTransactionType1559(rlp.Serializable):
 
     ]
 #------------------------------------------------------------------------------------------------------------------------------------------------------
-# create web3 instance, from infura project (node) connecting to ropsten test network
-w3 = Web3(Web3.HTTPProvider('https://ropsten.infura.io/v3/9f06183d0529494792242beb59be4ad3'))
+# create web3 instance, from infura project (node) connecting to goerli test network
+w3 = Web3(Web3.HTTPProvider('https://goerli.infura.io/v3/9f06183d0529494792242beb59be4ad3'))
 
 # Example receiver's address
 receiver_addr = '0x15C25E6EB5dE729d7e310d059e59659cCB86E6f6'
@@ -547,10 +547,10 @@ print("Valid checksum:\n%s" % Web3.isAddress(checksum))
 nonce = w3.eth.getTransactionCount(checksum)
 print("Nonce value:\n %i" % nonce)
 
-# Ropsten chain ID is 3
+# Goerli chain ID is 3
 chain_id = 3
 
-# prepare the transaction, chainID 3 is ropsten
+# prepare the transaction, chainID 3 is goerli
 transaction_legacy = TransactionLegacy(nonce = nonce, gasPrice = 500000, gasLimit = 800000, to = binascii.unhexlify(receiver_addr.replace('0x', '')), value = 5, data = b'hello', v = chain_id, r = 0, s = 0)
 transaction_1559 = RawTransactionType1559(chainId = chain_id, nonce = nonce, maxPriorityFeePerGas = 150000, maxFeePerGas = 150000, gas = 210000,
                                           to = binascii.unhexlify(receiver_addr.replace('0x', '')), value = 10, data = b'world', accessList = [])
