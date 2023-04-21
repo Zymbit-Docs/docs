@@ -3,14 +3,14 @@ title: "Sending a Web3 Ethereum Transaction"
 linkTitle: "Ethereum Transaction"
 description: ""
 date: "2022-01-03"
-lastmod: "2022-09-30"
+lastmod: "2023-04-21"
 draft: false
 weight: 40
 images: []
 toc: true
 ---
 
-Updated: 2022-09-30
+Updated: 2023-04-21
 
 
 ## What is a Cryptographic ECDSA Signature?
@@ -190,7 +190,7 @@ To properly send out transaction to the Goerli test network with this sender's a
 
 Because Goerli is a test network for development, we can fund ethereum addresses for free with test ether. (Note: There is only one address per day limit).
 
-You can do this here: [**Goerli Faucet**](https://faucet.egorfine.com/)
+You can do this here: [**Goerli Faucet**](https://faucet.quicknode.com/ethereum/goerli)
 {{< /callout >}}
 
 
@@ -432,7 +432,7 @@ If you get Error: "Not enough funds or gas"
 
 To properly send out transaction to the Goerli test network with this sender's address, there must be adequate funds in this address to pay for the fees required to send out this transaction. Because Goerli is a test network for development, we can fund ethereum addresses for free with test ether. There is a one IP address per day limit).
 
-You can do this here: [**Goerli Faucet**](https://faucet.egorfine.com/)
+You can do this here: [**Goerli Faucet**](https://faucet.quicknode.com/ethereum/goerli)
 {{< /callout >}}
 
 
