@@ -177,7 +177,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">options</span>
-<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be <span class="type">dict<span> returned by <span class="type">serialize()</span></span>
+<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be <span class="type">dict<span> returned by <span class="name">serialize()</span></span>
 </li>
 </ul>
 </div>
@@ -221,7 +221,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">options</span>
-<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be <span class="type">dict<span> returned by <span class="type">serialize()</span></span>
+<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be <span class="type">dict<span> returned by <span class="name">serialize()</span></span>
 </li>
 </ul>
 </div>
