@@ -29,7 +29,7 @@ pip install ethconnect
 ### <span class="markdown-h3 include-toc">Abstract Classes</span>
 
 1. Account
-    - An abstract class which outlines the basic functionality required to be considered an account
+    - An abstract class which outlines the basic functionality for an account
 2. Keyring
     - An abstract class which outlines the basic functionality required to be considered a keyring
     - If you want your keyring to work with KeyringManager, your keyring implementation must be a subclass of keyring
@@ -70,7 +70,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">path</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">address</span>, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span></span><span class="param-paren paren-close">)</span></span></span> {id="ledflash-81aed609" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">path</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">address</span>, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="ledflash-81aed609" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
