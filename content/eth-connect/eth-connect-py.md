@@ -61,7 +61,7 @@ pip install ethconnect
 
 <div class="body">
 <p>The EthAccount class definition</p>
-<p>This class provides access to EthAccounts within Python.</p>
+<p>This class provides access to EthAccount within Python.</p>
 <div class="attribute">
 
 <div class="body">
@@ -131,6 +131,48 @@ pip install ethconnect
 <h5>Returns</h5>
 <span class="return_type">str</span><span class="param-desc-divider"> &#8212; </span>
 <span class="return_value">hex encoded public key</span>
+</div>
+</div>
+</div>
+
+<div class="class">
+
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">ZymbitEthKeyring</span></span>
+
+<div class="body">
+<p>The ZymbitEthKeyring class definition</p>
+<p>This class provides access to ZymbitEthKeyring within Python.</p>
+<div class="attribute">
+
+<div class="body">
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="ledflash-81aed609" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Initialize an instance of a ZymbitEthKeyring context</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">options</span>
+<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be <span class="type">dict<span> returned by <span class="type">serialize()</span></span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the "wallet_name" or "master_slot" provided in options is invalid</span>
+</li>
+</ul>
 </div>
 </div>
 </div>
