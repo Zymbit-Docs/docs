@@ -51,7 +51,7 @@ pip install ethconnect
 
 <div class="api-docs">
 
-## <span class="markdown-h2 include-toc">SDK Classes</span>
+## <span class="markdown-h2 include-toc">ETH-Connect Python Classes</span>
 
 <div class="class">
 
@@ -68,7 +68,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">path</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">address</span>, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="ledflash-81aed609" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">path</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">address</span>, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init-81aed69" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -148,25 +148,25 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">TYPE</span> = "ETH"</span></span> {id="init-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">TYPE</span> = "ETH"</span></span> {id="type" class="markdown-h4 signature include-toc"}
 
 </div>
 
 <div class="method">
 
-#### <span><span class="name">BASE_PATH</span> = "m/44'/60'/0'/0"</span></span> {id="init-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">BASE_PATH</span> = "m/44'/60'/0'/0"</span></span> {id="base_path" class="markdown-h4 signature include-toc"}
 
 </div>
 
 <div class="method">
 
-#### <span><span class="name">CURVE</span> = EllipticCurve.secp256k1</span></span> {id="init-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">CURVE</span> = EllipticCurve.secp256k1</span></span> {id="curve" class="markdown-h4 signature include-toc"}
 
 </div>
 
 <div class="method">
 
-#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="ledflash-81aed609" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init-81aed609" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -177,7 +177,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">options</span>
-<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be <span class="type">dict<span> returned by <span class="name">serialize()</span></span>
+<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be the <span class="type">dict<span> returned by <span class="name">serialize()</span></span>
 </li>
 </ul>
 </div>
@@ -210,7 +210,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">deserialize</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="ledflash-81aed609" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">deserialize</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="deserialize-81aed609" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -221,7 +221,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">options</span>
-<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be <span class="type">dict<span> returned by <span class="name">serialize()</span></span>
+<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be the <span class="type">dict<span> returned by <span class="name">serialize()</span></span>
 </li>
 </ul>
 </div>
@@ -231,6 +231,77 @@ pip install ethconnect
 <li class="exc-item">
 <span class="name">ValueError</span>
 <span class="description">If the "wallet_name" or "master_slot" provided in options is invalid</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+<span><span class="name">add_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index</span> = <span class="default-val">0</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_account" class="markdown-h4 signature include-toc"}
+<div class="body">
+<div class="description">
+<p>Add an Ethereum account to the keyring at the specified index.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">index</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The index at which to add the account (default: 0)</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the index is invalid or the account already exists in the keyring</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="name">EthAccount</span>
+<span class="description">The added Ethereum account</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="method">
+<span><span class="name">add_accounts</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">n</span> = <span class="default-val">1</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_accounts" class="markdown-h4 signature include-toc"}
+<div class="body">
+<div class="description">
+<p>Add multiple Ethereum accounts to the keyring.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">n</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The number of accounts to add (default: 1)</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the number of accounts to add is invalid</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="name">list[EthAccount]</span>
+<span class="description">A list of added Ethereum accounts</span>
 </li>
 </ul>
 </div>
