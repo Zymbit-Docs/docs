@@ -105,5 +105,35 @@ pip install ethconnect
 </div>
 </div>
 
+<div class="method">
+
+#### <span><span class="name">serialize</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="init-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+<p>Serialize the EthAccount object</p>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">dict</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">containing the "path", "address", and "slot" properties</span>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">get\_public\_key</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="init-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+<p>Retrieve the public key associated with the Ethereum account</p>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">str</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">hex encoded public key</span>
+</div>
+</div>
+</div>
+
 </div>
 </div>
