@@ -1,6 +1,6 @@
 ---
-title: "ETH-Connect Python API"
-linkTitle: "ETH-Connect-Python"
+title: "ETH-Connect Python SDK"
+linkTitle: "ETH-Connect-PY Documentation"
 icon: ""
 description: ""
 aliases:
@@ -14,7 +14,14 @@ images: []
 # layout: "single"
 ---
 
-## Abstract Classes
+<div class="api-docs">
+
+## <span class="markdown-h2 include-toc">Introduction</span>
+<p>This documentation contains a set of Python classes which intend to abstract away the technical complexities of the Ethereum blockchain, and allow developers to easily integrate Ethereum accounts, transactions, and dApps in their embedded Python applications. 
+
+## <span class="markdown-h2 include-toc">High Level Overview</span>
+
+### <span class="markdown-h3 include-toc">Abstract Classes</span>
 
 1. Account
  - An abstract class which outlines the basic functionality required to be considered an account
@@ -22,7 +29,7 @@ images: []
  - An abstract class which outlines the basic functionality required to be considered a keyring
  - If you want your keyring to work with KeyringManager, your keyring implementation must be a subclass of keyring
 
-## Classes
+### <span class="markdown-h3 include-toc">Classes</span>
  
 1. EthAccount
     - A subclass of Account which represents an Ethereum account in the context of Zymbit's hardware wallet
