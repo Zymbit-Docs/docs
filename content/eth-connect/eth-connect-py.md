@@ -238,7 +238,8 @@ pip install ethconnect
 </div>
 
 <div class="method">
-<span><span class="name">add_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index</span> = <span class="default-val">0</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_account" class="markdown-h4 signature include-toc"}
+
+#### <span><span class="name">add_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index</span> = <span class="default-val">0</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_account" class="markdown-h4 signature include-toc"}
 <div class="body">
 <div class="description">
 <p>Add an Ethereum account to the keyring at the specified index.</p>
@@ -273,7 +274,8 @@ pip install ethconnect
 </div>
 </div>
 <div class="method">
-<span><span class="name">add_accounts</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">n</span> = <span class="default-val">1</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_accounts" class="markdown-h4 signature include-toc"}
+
+#### <span><span class="name">add_accounts</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">n</span> = <span class="default-val">1</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_accounts" class="markdown-h4 signature include-toc"}
 <div class="body">
 <div class="description">
 <p>Add multiple Ethereum accounts to the keyring.</p>
@@ -302,6 +304,62 @@ pip install ethconnect
 <li class="return-item">
 <span class="name">list[EthAccount]</span>
 <span class="description">A list of added Ethereum accounts</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">add_accounts_list</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index_list</span> = <span class="default-val">[]</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_accounts_list" class="markdown-h4 signature include-toc"}
+<div class="body">
+<div class="description">
+<p>Add Ethereum accounts to the keyring at specified indexes from a list.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">index_list</span>
+<span class="type-paren paren-open">(</span><span class="type">list[int]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of indexes at which to add the accounts (default: [])</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the list of indexes is invalid or an account with the specified index already exists in the keyring</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="name">list[EthAccount]</span>
+<span class="description">A list of added Ethereum accounts</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">get_accounts</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="get_accounts" class="markdown-h4 signature include-toc"}
+<div class="body">
+<div class="description">
+<p>Get a list of Ethereum accounts in the keyring.</p>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="name">list[EthAccount]</span>
+<span class="description">A list of Ethereum accounts in the keyring</span>
 </li>
 </ul>
 </div>
