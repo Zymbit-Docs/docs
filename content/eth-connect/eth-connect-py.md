@@ -1,17 +1,15 @@
 ---
-title: "ETH-Connect Python SDK"
-linkTitle: "ETH-Connect-PY Documentation"
-icon: ""
-description: ""
-aliases:
-    - /quickstart/eth-connect/
-date: ""
-lastmod: ""
+title: ETH-Connect Python Documentation
+linkTitle: ETH-Connect Python SDK
+description: Eth-Connect Python SDK
+lastmod:
 draft: false
-weight: 10
 images: []
-# headless: true
-# layout: "single"
+type: docs
+api_docs: true
+layout: single
+weight: 0
+toc: true
 ---
 
 <div class="api-docs">
@@ -150,11 +148,73 @@ pip install ethconnect
 
 <div class="method">
 
+#### <span><span class="name">TYPE</span> = "ETH"</span></span> {id="init-f24db7dc" class="markdown-h4 signature include-toc"}
+
+</div>
+
+<div class="method">
+
+#### <span><span class="name">BASE_PATH</span> = "m/44'/60'/0'/0"</span></span> {id="init-f24db7dc" class="markdown-h4 signature include-toc"}
+
+</div>
+
+<div class="method">
+
+#### <span><span class="name">CURVE</span> = EllipticCurve.secp256k1</span></span> {id="init-f24db7dc" class="markdown-h4 signature include-toc"}
+
+</div>
+
+<div class="method">
+
 #### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="ledflash-81aed609" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
 <p>Initialize an instance of a ZymbitEthKeyring context</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">options</span>
+<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be <span class="type">dict<span> returned by <span class="type">serialize()</span></span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the "wallet_name" or "master_slot" provided in options is invalid</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">serialize</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="init-f24db7dc" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+<p>Serialize the ZymbitEthKeyring object</p>
+<div class="returns">
+<h5>Returns</h5>
+<span class="return_type">dict</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">containing the "wallet_name", "master_slot", "type", "base_path", "base_slot", and "accounts" for the ZymbitEthKeyring instance</span>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">deserialize</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="ledflash-81aed609" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Restore an instance of a ZymbitEthKeyring context</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>

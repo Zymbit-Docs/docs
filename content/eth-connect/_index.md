@@ -1,6 +1,6 @@
 ---
 title: "ETH-Connect SDK"
-linkTitle: "ETH-Connect"
+linkTitle: "ETH-Connect SDK"
 icon: ""
 description: ""
 aliases:
