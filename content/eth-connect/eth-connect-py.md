@@ -368,7 +368,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">remove_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="remove_account" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">remove_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="remove_account" class="markdown-h4 signature include-toc"}
 <div class="body">
 <div class="description">
 <p>Remove an Ethereum account from the keyring by its address, slot, or path.</p>
@@ -413,7 +413,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">get_public_key</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="get_public_key" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">get_public_key</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="get_public_key" class="markdown-h4 signature include-toc"}
 <div class="body">
 <div class="description">
 <p>Retrieve the public key of an Ethereum account in the keyring by its address, slot, or path.</p>
@@ -462,7 +462,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">sign_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">transaction</span>:</span> <span class="param"><span class="name">EthTransaction</span>,</span> <span class="param"><span class="name">address</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_transaction" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">sign_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">transaction</span><span class="param-divider">, </span></span> <span class="param"><span class="name">address</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_transaction" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -520,7 +520,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">sign_message</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">message</span>:</span> <span class="param"><span class="name">Union[SHA256.SHA256Hash, keccak.Keccak_Hash]</span>,</span> <span class="param"><span class="name">address</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_message" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">sign_message</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">message</span><span class="param-divider">, </span></span> <span class="param"><span class="name">address</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_message" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
