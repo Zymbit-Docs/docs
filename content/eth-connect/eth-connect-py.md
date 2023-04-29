@@ -580,5 +580,63 @@ pip install ethconnect
 </div>
 </div>
 
+<div class="method">
+
+#### <span><span class="name">generate_eth_address</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">slot</span>:</span> <span class="param"><span class="name">int</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="generate_eth_address" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Generates an Ethereum address using the provided slot.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot to be used for generating the Ethereum address</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">str</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The generated Ethereum address</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">account_exists</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index</span>:</span> <span class="param"><span class="name">int</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="account_exists" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Checks if an account with the given index exists in the keyring.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">index</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The index to be checked for the existence of an account in the keyring</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">bool</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">True if the account exists in the keyring, False otherwise</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
 </div>
 </div>
