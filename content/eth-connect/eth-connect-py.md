@@ -266,8 +266,8 @@ pip install ethconnect
 <h5>Returns</h5>
 <ul>
 <li class="return-item">
-<span class="name">EthAccount</span>
-<span class="description">The added Ethereum account</span>
+<span class="return_type">EthAccount</span> <span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The added Ethereum account</span>
 </li>
 </ul>
 </div>
@@ -302,8 +302,8 @@ pip install ethconnect
 <h5>Returns</h5>
 <ul>
 <li class="return-item">
-<span class="name">list[EthAccount]</span>
-<span class="description">A list of added Ethereum accounts</span>
+<span class="return_type">list[EthAccount]</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">A list of added Ethereum accounts</span>
 </li>
 </ul>
 </div>
@@ -339,8 +339,8 @@ pip install ethconnect
 <h5>Returns</h5>
 <ul>
 <li class="return-item">
-<span class="name">list[EthAccount]</span>
-<span class="description">A list of added Ethereum accounts</span>
+<span class="return_type">list[EthAccount]</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">A list of added Ethereum accounts</span>
 </li>
 </ul>
 </div>
@@ -358,8 +358,222 @@ pip install ethconnect
 <h5>Returns</h5>
 <ul>
 <li class="return-item">
-<span class="name">list[EthAccount]</span>
-<span class="description">A list of Ethereum accounts in the keyring</span>
+<span class="return_type">list[EthAccount]</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">A list of Ethereum accounts in the keyring</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">remove_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="remove_account" class="markdown-h4 signature include-toc"}
+<div class="body">
+<div class="description">
+<p>Remove an Ethereum account from the keyring by its address, slot, or path.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">address</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account to remove (default: None)</span>
+</li>
+<li class="param-item">
+<span class="name">slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account to remove (default: None)</span>
+</li>
+<li class="param-item">
+<span class="name">path</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account to remove (default: None)</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If valid address, slot, or path is not provided</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">bool</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">True if the account is removed, False otherwise</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">get_public_key</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="get_public_key" class="markdown-h4 signature include-toc"}
+<div class="body">
+<div class="description">
+<p>Retrieve the public key of an Ethereum account in the keyring by its address, slot, or path.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">address</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account (default: None)</span>
+</li>
+<li class="param-item">
+<span class="name">slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account (default: None)</span>
+</li>
+<li class="param-item">
+<span class="name">path</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account (default: None)</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If valid address, slot, or path is not provided</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the account is not found in the keyring</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">str</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The public key of the Ethereum account</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">sign_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">transaction</span>:</span> <span class="param"><span class="name">EthTransaction</span>,</span> <span class="param"><span class="name">address</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_transaction" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Sign an Ethereum transaction using an account in the keyring by its address, slot, or path.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">transaction</span>
+<span class="type-paren paren-open">(</span><span class="type">EthTransaction</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The transaction to be signed</span>
+</li>
+<li class="param-item">
+<span class="name">address</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account used to sign the transaction (default: None)</span>
+</li>
+<li class="param-item">
+<span class="name">slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account used to sign the transaction (default: None)</span>
+</li>
+<li class="param-item">
+<span class="name">path</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account used to sign the transaction (default: None)</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the transaction is not of type EthTransaction</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If valid address, slot, or path is not provided</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the account does not exist in the keyring</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">SignedEthTransaction</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The signed Ethereum transaction</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">sign_message</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">message</span>:</span> <span class="param"><span class="name">Union[SHA256.SHA256Hash, keccak.Keccak_Hash]</span>,</span> <span class="param"><span class="name">address</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span>,</span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_message" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Sign a message using an account in the keyring by its address, slot, or path.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">message</span>
+<span class="type-paren paren-open">(</span><span class="type">Union[SHA256.SHA256Hash, keccak.Keccak_Hash]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The message to be signed as a Crypto.Hash object</span>
+</li>
+<li class="param-item">
+<span class="name">address</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account used to sign the message (default: None)</span>
+</li>
+<li class="param-item">
+<span class="name">slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account used to sign the message (default: None)</span>
+</li>
+<li class="param-item">
+<span class="name">path</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account used to sign the message (default: None)</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">TypeError</span>
+<span class="description">If the message is not an instance of either SHA256.SHA256Hash or keccak.Keccak_Hash Crypto.Hash object</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the message is not a valid 256 bit digest in hex format</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If valid address, slot, or path is not provided</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the account does not exist in the keyring</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">tuple[int, int, int]</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">A tuple containing the v, r, and s values of the signed message</span>
 </li>
 </ul>
 </div>
