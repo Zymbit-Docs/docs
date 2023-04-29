@@ -249,7 +249,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">index</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The index at which to add the account (default: 0)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The index at which to add the account</span>
 </li>
 </ul>
 </div>
@@ -285,7 +285,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">n</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The number of accounts to add (default: 1)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The number of accounts to add</span>
 </li>
 </ul>
 </div>
@@ -322,7 +322,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">index_list</span>
-<span class="type-paren paren-open">(</span><span class="type">list[int]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of indexes at which to add the accounts (default: [])</span>
+<span class="type-paren paren-open">(</span><span class="type">list[int]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of indexes at which to add the accounts</span>
 </li>
 </ul>
 </div>
@@ -368,7 +368,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">remove_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="remove_account" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">remove_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="remove_account" class="markdown-h4 signature include-toc"}
 <div class="body">
 <div class="description">
 <p>Remove an Ethereum account from the keyring by its address, slot, or path.</p>
@@ -378,15 +378,15 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">address</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account to remove (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account to remove</span>
 </li>
 <li class="param-item">
 <span class="name">slot</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account to remove (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account to remove</span>
 </li>
 <li class="param-item">
 <span class="name">path</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account to remove (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account to remove</span>
 </li>
 </ul>
 </div>
@@ -413,7 +413,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">get_public_key</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="get_public_key" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">get_public_key</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="get_public_key" class="markdown-h4 signature include-toc"}
 <div class="body">
 <div class="description">
 <p>Retrieve the public key of an Ethereum account in the keyring by its address, slot, or path.</p>
@@ -423,15 +423,15 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">address</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account</span>
 </li>
 <li class="param-item">
 <span class="name">slot</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account</span>
 </li>
 <li class="param-item">
 <span class="name">path</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account</span>
 </li>
 </ul>
 </div>
@@ -462,7 +462,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">sign_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">transaction</span><span class="param-divider">, </span></span> <span class="param"><span class="name">address</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_transaction" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">sign_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">transaction</span></span><span class="param-divider">, </span></span> <span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_transaction" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -477,15 +477,15 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">address</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account used to sign the transaction (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account used to sign the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">slot</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account used to sign the transaction (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account used to sign the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">path</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account used to sign the transaction (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account used to sign the transaction</span>
 </li>
 </ul>
 </div>
@@ -520,7 +520,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">sign_message</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">message</span><span class="param-divider">, </span></span> <span class="param"><span class="name">address</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span><span class="param-divider">, </span></span> <span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_message" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">sign_message</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">message</span></span><span class="param-divider">, </span></span><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_message" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -535,15 +535,15 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">address</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account used to sign the message (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account used to sign the message</span>
 </li>
 <li class="param-item">
 <span class="name">slot</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account used to sign the message (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account used to sign the message</span>
 </li>
 <li class="param-item">
 <span class="name">path</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account used to sign the message (default: None)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account used to sign the message</span>
 </li>
 </ul>
 </div>
@@ -582,7 +582,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">generate_eth_address</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">slot</span>:</span> <span class="param"><span class="name">int</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="generate_eth_address" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">generate_eth_address</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">slot</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="generate_eth_address" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -611,7 +611,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">account_exists</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index</span>:</span> <span class="param"><span class="name">int</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="account_exists" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">account_exists</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="account_exists" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
