@@ -368,7 +368,8 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">remove_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span> <span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="remove_account" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">remove_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span>
+<span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span><span><span class="param-item-wrapper"><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="remove_account" class="markdown-h4 signature include-toc"}
 <div class="body">
 <div class="description">
 <p>Remove an Ethereum account from the keyring by its address, slot, or path.</p>
@@ -520,7 +521,9 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">sign_message</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">message</span></span><span class="param-divider">, </span></span><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_message" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">sign_message</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">message</span></span><span class="param-divider">, <span><span><span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span>
+<span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">path<span> = <span class="default-val">None</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_message" class="markdown-h4 signature include-toc"}
+
 
 <div class="body">
 <div class="description">
@@ -632,6 +635,44 @@ pip install ethconnect
 <li class="return-item">
 <span class="return_type">bool</span><span class="param-desc-divider"> &#8212; </span>
 <span class="return_value">True if the account exists in the keyring, False otherwise</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">digest_to_hex</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">digest</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="digest_to_hex" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Converts a given Crypto.Hash digest to its hexadecimal representation.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">digest</span>
+<span class="type-paren paren-open">(</span><span class="type">Union[SHA256.SHA256Hash, keccak.Keccak_Hash]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The digest to be converted to its hexadecimal representation</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">TypeError</span>
+<span class="description">If the digest is not an instance of either SHA256.SHA256Hash or keccak.Keccak_Hash Crypto.Hash object</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">str</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The hexadecimal representation of the given digest</span>
 </li>
 </ul>
 </div>
