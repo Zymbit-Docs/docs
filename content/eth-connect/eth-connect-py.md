@@ -368,8 +368,9 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">remove_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span>
-<span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span><span><span class="param-item-wrapper"><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="remove_account" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">remove_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="remove_account" class="markdown-h4 signature include-toc"}
+
+
 <div class="body">
 <div class="description">
 <p>Remove an Ethereum account from the keyring by its address, slot, or path.</p>
