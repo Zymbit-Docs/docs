@@ -681,5 +681,38 @@ pip install ethconnect
 </div>
 </div>
 
+<div class="class">
+
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">ZymbitKeyringManager</span></span>
+
+<div class="body">
+<p>The ZymbitKeyringManager class definition</p>
+<p>This class provides access to ZymbitKeyringManager within Python.</p>
+<div class="attribute">
+
+<div class="body">
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">__init__</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">keyrings</span> = <span class="default-val">[]</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="__init__" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>This method initializes a new instance of the class with an optional list of keyrings. If keyrings are provided, it validates that each keyring is an instance of the Keyring class or a subclass thereof.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">keyrings</span>
+<span class="type-paren paren-open">(</span><span class="type">list[Type[Keyring]]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">An optional list of keyring instances. Default is an empty list</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
 </div>
 </div>
