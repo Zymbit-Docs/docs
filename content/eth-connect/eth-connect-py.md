@@ -1048,6 +1048,215 @@ pip install ethconnect
 </div>
 
 
+<div class="method">
+
+#### <span><span class="name">create_deploy_contract_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">chain_id</span> = <span class="default-val">1</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">nonce</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">max_priority_fee_per_gas</span> = <span class="default-val">1</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">max_fee_per_gas</span> = <span class="default-val">10</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">gas</span> = <span class="default-val">21000</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">value</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">access_list</span> = <span class="default-val">[]</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">contract_bytecode_path</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">contract_abi_path</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">constructor_args</span> = <span class="default-val">[]</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="create_deploy_contract_transaction" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Create an EthTransaction object for deploying a smart contract with the provided parameters, bytecode, and ABI.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">chain_id</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The chain ID of the Ethereum network. Default is 1, which indicates the main Ethereum network</span>
+</li>
+<li class="param-item">
+<span class="name">nonce</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The transaction nonce</span>
+</li>
+<li class="param-item">
+<span class="name">max_priority_fee_per_gas</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The maximum priority fee per gas. Default is 1</span>
+</li>
+<li class="param-item">
+<span class="name">max_fee_per_gas</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The maximum fee per gas. Default is 10</span>
+</li>
+<li class="param-item">
+<span class="name">gas</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of gas for the transaction. Default is 21000</span>
+</li>
+<li class="param-item">
+<span class="name">value</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Ether to send with the transaction. Default is 0</span>
+</li>
+<li class="param-item">
+<span class="name">access_list</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The access list for the transaction. Default is an empty list</span>
+</li>
+<li class="param-item">
+<span class="name">contract_bytecode_path</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path to the file containing the contract bytecode</span>
+</li>
+<li class="param-item">
+<span class="name">contract_abi_path</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path to the file containing the contract ABI (Application Binary Interface)</span>
+</li>
+<li class="param-item">
+<span class="name">constructor_args</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of arguments to pass to the contract constructor. Default is an empty list</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If one or more parameter types are invalid</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the bytecode or ABI file paths do not exist</span>
+</li>
+</ul>
+</div>
+<div class="return">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="name">EthTransaction</span>
+<span class="description">An EthTransaction object for deploying the smart contract with the provided parameters, bytecode, and ABI</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">create_execute_contract_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">chain_id</span> = <span class="default-val">1</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">nonce</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">max_priority_fee_per_gas</span> = <span class="default-val">1</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">max_fee_per_gas</span> = <span class="default-val">10</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">gas</span> = <span class="default-val">210000</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">contract_address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">value</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">access_list</span> = <span class="default-val">[]</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">contract_abi_path</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">function_name</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">args</span> = <span class="default-val">[]</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="create_execute_contract_transaction" class="markdown-h4 signature include-toc"}
+
+
+
+<div class="body">
+<div class="description">
+<p>Create a transaction to execute a function of a smart contract on the Ethereum network.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">chain_id</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The chain ID of the Ethereum network. Default is 1, which indicates the main Ethereum network</span>
+</li>
+<li class="param-item">
+<span class="name">nonce</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The transaction nonce</span>
+</li>
+<li class="param-item">
+<span class="name">max_priority_fee_per_gas</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The maximum priority fee per gas</span>
+</li>
+<li class="param-item">
+<span class="name">max_fee_per_gas</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The maximum fee per gas</span>
+</li>
+<li class="param-item">
+<span class="name">gas</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The gas limit for the transaction</span>
+</li>
+<li class="param-item">
+<span class="name">contract_address</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the smart contract</span>
+</li>
+<li class="param-item">
+<span class="name">value</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The value to be sent with the transaction, in Wei</span>
+</li>
+<li class="param-item">
+<span class="name">access_list</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">An optional access list for the transaction</span>
+</li>
+<li class="param-item">
+<span class="name">contract_abi_path</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The file path to the smart contract's ABI</span>
+</li>
+<li class="param-item">
+<span class="name">function_name</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The name of the function to be executed</span>
+</li>
+<li class="param-item">
+<span class="name">args</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The arguments for the function to be executed</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<p>An <code>EthTransaction</code> object representing the transaction to execute the smart contract function.</p>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If one or more parameter types are invalid, or if the provided contract address is not a valid checksum address, or if the ABI file path does not exist</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="method">
+<h4><span class="name">sign_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">transaction</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">keyring</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></h4>
+
+<div class="body">
+<div class="description">
+<p>Signs an Ethereum transaction using a Zymbit keyring.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">transaction</span>
+<span class="type-paren paren-open">(</span><span class="type">EthTransaction</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The transaction to be signed</span>
+</li>
+<li class="param-item">
+<span class="name">keyring</span>
+<span class="type-paren paren-open">(</span><span class="type">ZymbitEthKeyring</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The Zymbit keyring to use for signing</span>
+</li>
+<li class="param-item">
+<span class="name">address</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account in the keyring used to sign the transaction</span>
+</li>
+<li class="param-item">
+<span class="name">slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account in the keyring used to sign the transaction</span>
+</li>
+<li class="param-item">
+<span class="name">path</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account in the keyring used to sign the transaction</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<p>A <code>SignedEthTransaction</code> object representing the signed transaction.</p>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the transaction is not of type EthTransaction</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the keyring is not of type ZymbitEthKeyring</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If none of address, slot, or path are provided</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 </div>
