@@ -697,7 +697,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span class="markdown-h4 signature include-toc"><span class="name">account_exists</span><span class="param-list"><span class="param-paren paren-open">(</span><span class="param-item-wrapper"><span class="param"><span class="name">index</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="account_exists" class="markdown-h4 signature include-toc"}
+#### <span class="name">account_exists</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index</span></span></span><span class="param-paren paren-close">)</span></span> {id="account_exists" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
