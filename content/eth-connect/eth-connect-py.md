@@ -1185,9 +1185,13 @@ pip install ethconnect
 </li>
 </ul>
 </div>
-<div class="returns">
 <h5>Returns</h5>
-<p>An <code>EthTransaction</code> object representing the transaction to execute the smart contract function.</p>
+<ul>
+<li class="return-item">
+<span class="return_type">EthTransaction</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">An EthTransaction object representing the contract execution transaction</span>
+</li>
+</ul>
 </div>
 <div class="exceptions">
 <h5>Exceptions</h5>
@@ -1203,7 +1207,8 @@ pip install ethconnect
 
 
 <div class="method">
-<h4><span class="name">sign_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">transaction</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">keyring</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></h4>
+
+#### <span class="name">sign_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">transaction</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">keyring</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span> {id="sign_transaction_eth_connect" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -1236,7 +1241,12 @@ pip install ethconnect
 </div>
 <div class="returns">
 <h5>Returns</h5>
-<p>A <code>SignedEthTransaction</code> object representing the signed transaction.</p>
+<ul>
+<li class="return-item">
+<span class="return_type">SignedEthTransaction</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">A SignedEthTransaction object ready to be serialized and broadcasted to the network</span>
+</li>
+</ul>
 <div class="exceptions">
 <h5>Exceptions</h5>
 <ul>
@@ -1256,6 +1266,208 @@ pip install ethconnect
 </div>
 </div>
 </div>
+
+<div class="method">
+
+#### <span><span class="name">rlp_serialize_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">transaction</span></span></span><span class="param-divider">, </span><span class="param-item-wrapper"><span class="param"><span class="name">SignedEthTransaction</span></span></span><span class="param-divider">)</span></span> {id="rlp_serialize_transaction" class="markdown-h4 signature include-toc"}
+
+
+
+<div class="body">
+<div class="description">
+<p>Serialize an <code>EthTransaction</code> or <code>SignedEthTransaction</code> object using RLP encoding.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">transaction</span>
+<span class="type-paren paren-open">(</span><span class="type">Union[EthTransaction, SignedEthTransaction]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The transaction to be serialized</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the transaction is neither of type EthTransaction nor SignedEthTransaction</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">bytes</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The serialized transaction in bytes format</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">rlp_deserialize_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">encoded_transaction</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="rlp_deserialize_transaction" class="markdown-h4 signature include-toc"}
+
+
+
+<div class="body">
+<div class="description">
+<p>Deserialize an RLP-encoded transaction to either an EthTransaction or a SignedEthTransaction object.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">encoded_transaction</span>
+<span class="type-paren paren-open">(</span><span class="type">bytes</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The encoded transaction as bytes</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the encoded transaction is not a bytes object</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the encoded transaction is not an EIP-1559 transaction (type 2)</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the encoded transaction cannot be deserialized to an EthTransaction or a SignedEthTransaction object</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">Union[EthTransaction, SignedEthTransaction]</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">An EthTransaction or a SignedEthTransaction object representing the deserialized transaction</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="method">
+
+#### <span><span class="name">create_message</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">message</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="create_message" class="markdown-h4 signature include-toc"}
+
+
+
+<div class="body">
+<div class="description">
+<p>Create an Ethereum message to be signed. Prepends the message that is passed in with <code>"Ethereum Signed Message:\n"</code></p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">message</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The message to be signed as a string</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">TypeError</span>
+<span class="description">If the message is not a string</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">tuple[str, bytes]</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">A tuple containing the Ethereum message as a string and its corresponding bytes representation</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">sign_message</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">message</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">keyring</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">address</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">path</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sign_message" class="markdown-h4 signature include-toc"}
+
+
+
+<div class="body">
+<div class="description">
+<p>Sign a message using an account in the keyring by its address, slot, or path.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">message</span>
+<span class="type-paren paren-open">(</span><span class="type">Union[SHA256.SHA256Hash, keccak.Keccak_Hash]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The message to be signed as a Crypto.Hash object</span>
+</li>
+<li class="param-item">
+<span class="name">keyring</span>
+<span class="type-paren paren-open">(</span><span class="type">ZymbitEthKeyring</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The keyring object used to sign the message</span>
+</li>
+<li class="param-item">
+<span class="name">address</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The address of the account used to sign the message</span>
+</li>
+<li class="param-item">
+<span class="name">slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The slot of the account used to sign the message</span>
+</li>
+<li class="param-item">
+<span class="name">path</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path of the account used to sign the message</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">TypeError</span>
+<span class="description">If the message is not an instance of either SHA256.SHA256Hash or keccak.Keccak_Hash Crypto.Hash object</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the message is not a valid 256 bit digest in hex format</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the keyring is not an instance of ZymbitEthKeyring</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If valid address, slot, or path is not provided</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the account does not exist in the keyring</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">str</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The concatenated hex encoded ECDSA signature</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
 
 </div>
 </div>
