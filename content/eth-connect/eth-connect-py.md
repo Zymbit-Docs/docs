@@ -1114,12 +1114,12 @@ pip install ethconnect
 </li>
 </ul>
 </div>
-<div class="return">
+<div class="returns">
 <h5>Returns</h5>
 <ul>
 <li class="return-item">
-<span class="name">EthTransaction</span>
-<span class="description">An EthTransaction object for deploying the smart contract with the provided parameters, bytecode, and ABI</span>
+<span class="return_type">EthTransaction</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">An EthTransaction object for deploying the smart contract with the provided parameters, bytecode, and ABI</span>
 </li>
 </ul>
 </div>
@@ -1184,14 +1184,6 @@ pip install ethconnect
 <span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The arguments for the function to be executed</span>
 </li>
 </ul>
-</div class="returns">
-<h5>Returns</h5>
-<ul>
-<li class="return-item">
-<span class="return_type">EthTransaction</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">An EthTransaction object representing the contract execution transaction</span>
-</li>
-</ul>
 </div>
 <div class="exceptions">
 <h5>Exceptions</h5>
@@ -1199,6 +1191,15 @@ pip install ethconnect
 <li class="exc-item">
 <span class="name">ValueError</span>
 <span class="description">If one or more parameter types are invalid, or if the provided contract address is not a valid checksum address, or if the ABI file path does not exist</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">EthTransaction</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">An EthTransaction object representing the contract execution transaction</span>
 </li>
 </ul>
 </div>
