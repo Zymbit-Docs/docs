@@ -1469,6 +1469,121 @@ pip install ethconnect
 </div>
 
 
+<div class="method">
+<span><span class="name">keccak256</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">str_data</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">bytes_data</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="keccak256" class="markdown-h4 signature include-toc"}
+<div class="body">
+<div class="description">
+<p>Hashes the input data using the Keccak-256 algorithm.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">str_data</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The input data as a string. Either str_data or bytes_data must be provided.</span>
+</li>
+<li class="param-item">
+<span class="name">bytes_data</span>
+<span class="type-paren paren-open">(</span><span class="type">bytes</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The input data as bytes. Either str_data or bytes_data must be provided.</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If both str_data and bytes_data are provided at the same time.</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If neither str_data nor bytes_data are provided.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">keccak.Keccak_Hash</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The Keccak-256 hash object.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+<span><span class="name">sha256</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">str_data</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">bytes_data</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sha256" class="markdown-h4 signature include-toc"}
+<div class="body">
+<div class="description">
+<p>Generate a SHA256 hash digest from the given string or bytes data.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">str_data</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">String data to generate the SHA256 hash digest from.</span>
+</li>
+<li class="param-item">
+<span class="name">bytes_data</span>
+<span class="type-paren paren-open">(</span><span class="type">bytes</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Bytes data to generate the SHA256 hash digest from.</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If both str_data and bytes_data are provided.</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If neither str_data nor bytes_data are provided.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">SHA256.SHA256Hash</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">A SHA256 hash digest as a Crypto.Hash.SHA256Hash object.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+<span><span class="name">eth_to_wei</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">ether_amount</span></span><span class="param-divider">= </span><span class="param-item"><span class="default-val">0</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="eth_to_wei" class="markdown-h4 signature include-toc"}
+<div class="body">
+<div class="description">
+<p>Converts a given amount in Ether to its equivalent value in Wei.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">ether_amount</span>
+<span class="type-paren paren-open">(</span><span class="type">float</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Ether to convert to Wei. Defaults to 0.</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">int</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The equivalent value in Wei as an integer.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 </div>
