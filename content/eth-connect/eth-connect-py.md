@@ -225,7 +225,7 @@ pip install ethconnect
 <div class="method">
 
 #### <span><span class="name">TYPE</span></span></span> {id="type" class="markdown-h4 signature include-toc"}
-<p> A class level variable set to "Eth" </p>
+<p> A class level variable set to "ETH" </p>
 </div>
 
 <div class="method">
