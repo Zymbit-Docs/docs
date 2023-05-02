@@ -1184,7 +1184,7 @@ pip install ethconnect
 <span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The arguments for the function to be executed</span>
 </li>
 </ul>
-</div>
+</div class="returns">
 <h5>Returns</h5>
 <ul>
 <li class="return-item">
@@ -1239,14 +1239,6 @@ pip install ethconnect
 </li>
 </ul>
 </div>
-<div class="returns">
-<h5>Returns</h5>
-<ul>
-<li class="return-item">
-<span class="return_type">SignedEthTransaction</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">A SignedEthTransaction object ready to be serialized and broadcasted to the network</span>
-</li>
-</ul>
 <div class="exceptions">
 <h5>Exceptions</h5>
 <ul>
@@ -1264,18 +1256,25 @@ pip install ethconnect
 </li>
 </ul>
 </div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">SignedEthTransaction</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">A SignedEthTransaction object ready to be serialized and broadcasted to the network</span>
+</li>
+</ul>
+</div>
 </div>
 </div>
 
 <div class="method">
 
-#### <span><span class="name">rlp_serialize_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">transaction</span></span></span><span class="param-divider">, </span><span class="param-item-wrapper"><span class="param"><span class="name">SignedEthTransaction</span></span></span><span class="param-divider">)</span></span> {id="rlp_serialize_transaction" class="markdown-h4 signature include-toc"}
-
-
+#### <span><span class="name">rlp_serialize_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">transaction</span></span></span><span class="param-divider">)</span></span> {id="rlp_serialize_transaction" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Serialize an <code>EthTransaction</code> or <code>SignedEthTransaction</code> object using RLP encoding.</p>
+<p>Serialize an EthTransaction or SignedEthTransaction object using RLP encoding.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -1470,7 +1469,9 @@ pip install ethconnect
 
 
 <div class="method">
-<span><span class="name">keccak256</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">str_data</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">bytes_data</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="keccak256" class="markdown-h4 signature include-toc"}
+
+#### <span><span class="name">keccak256</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">str_data</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">bytes_data</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="keccak256" class="markdown-h4 signature include-toc"}
+
 <div class="body">
 <div class="description">
 <p>Hashes the input data using the Keccak-256 algorithm.</p>
@@ -1514,7 +1515,9 @@ pip install ethconnect
 </div>
 
 <div class="method">
-<span><span class="name">sha256</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">str_data</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">bytes_data</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sha256" class="markdown-h4 signature include-toc"}
+
+#### <span><span class="name">sha256</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">str_data</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">bytes_data</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="sha256" class="markdown-h4 signature include-toc"}
+
 <div class="body">
 <div class="description">
 <p>Generate a SHA256 hash digest from the given string or bytes data.</p>
@@ -1558,7 +1561,9 @@ pip install ethconnect
 </div>
 
 <div class="method">
-<span><span class="name">eth_to_wei</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">ether_amount</span></span><span class="param-divider">= </span><span class="param-item"><span class="default-val">0</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="eth_to_wei" class="markdown-h4 signature include-toc"}
+
+#### <span><span class="name">eth_to_wei</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">ether_amount</span></span><span class="param-divider">= </span><span class="param-item"><span class="default-val">0</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="eth_to_wei" class="markdown-h4 signature include-toc"}
+
 <div class="body">
 <div class="description">
 <p>Converts a given amount in Ether to its equivalent value in Wei.</p>
