@@ -187,7 +187,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">get_curve_type</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-paren paren-close">)</span></span></span> {id="get_curve_type" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">get_curve_type</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="get_curve_type" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -224,25 +224,25 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">TYPE</span> = "ETH"</span></span> {id="type" class="markdown-h4 signature include-toc"}
-
+#### <span><span class="name">TYPE</span></span></span> {id="type" class="markdown-h4 signature include-toc"}
+<p> A class level variable set to "Eth" </p>
 </div>
 
 <div class="method">
 
-#### <span><span class="name">BASE_PATH</span> = "m/44'/60'/0'/0"</span></span> {id="base_path" class="markdown-h4 signature include-toc"}
-
+#### <span><span class="name">BASE_PATH</span></span></span> {id="base_path" class="markdown-h4 signature include-toc"}
+<p> A class level variable set to "m/44'/60'/0'/0" </p>
 </div>
 
 <div class="method">
 
-#### <span><span class="name">CURVE</span> = EllipticCurve.secp256k1</span></span> {id="curve" class="markdown-h4 signature include-toc"}
-
+#### <span><span class="name">CURVE</span></span></span> {id="curve" class="markdown-h4 signature include-toc"}
+<p> A class level variable set to <code>EllipticCurve.secp256k1 </code></p>
 </div>
 
 <div class="method">
 
-#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init-81aed609" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">__init__</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -253,7 +253,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">options</span>
-<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be the <span class="type">dict<span> returned by <span class="name">serialize()</span></span>
+<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be the <span class="type">dict<span> returned by <span class="name">serialize()</span>. Wallet must have a master slot present in the keystore.</span>
 </li>
 </ul>
 </div>
@@ -286,7 +286,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">deserialize</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="deserialize-81aed609" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">deserialize</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="deserialize" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -315,7 +315,8 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">add_account</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index</span> = <span class="default-val">0</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_account" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">add_account</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-item-wrapper"><span class="param"><span class="name">index</span> = <span class="default-val">0</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_account" class="markdown-h4 signature include-toc"}
+
 <div class="body">
 <div class="description">
 <p>Add an Ethereum account to the keyring at the specified index.</p>
@@ -351,7 +352,8 @@ pip install ethconnect
 </div>
 <div class="method">
 
-#### <span><span class="name">add_accounts</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">n</span> = <span class="default-val">1</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_accounts" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">add_accounts</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-item-wrapper"><span class="param"><span class="name">n</span> <span class="param-type">int</span> = <span class="default-val">1</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_accounts" class="markdown-h4 signature include-toc"}
+
 <div class="body">
 <div class="description">
 <p>Add multiple Ethereum accounts to the keyring.</p>
@@ -388,7 +390,9 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">add_accounts_list</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index_list</span> = <span class="default-val">[]</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_accounts_list" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">add_accounts_list</span> <span class="param-list">(</span><span class="param"><span class="name">index_list</span><span class="param-type"> = []</span></span><span class="param-list">)</span></span> {id="add_accounts_list" class="markdown-h4 signature include-toc"}
+
+
 <div class="body">
 <div class="description">
 <p>Add Ethereum accounts to the keyring at specified indexes from a list.</p>
@@ -663,7 +667,8 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">generate_eth_address</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">slot</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="generate_eth_address" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">generate_eth_address</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">slot</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="generate_eth_address" class="markdown-h4 signature include-toc"}
+
 
 <div class="body">
 <div class="description">
@@ -692,7 +697,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">account_exists</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index</span></span></span></span><span class="param-paren paren-close">)</span></span></span> {id="account_exists" class="markdown-h4 signature include-toc"}
+#### <span class="markdown-h4 signature include-toc"><span class="name">account_exists</span><span class="param-list"><span class="param-paren paren-open">(</span><span class="param-item-wrapper"><span class="param"><span class="name">index</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="account_exists" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
