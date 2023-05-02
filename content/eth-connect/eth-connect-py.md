@@ -242,7 +242,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">__init__</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
