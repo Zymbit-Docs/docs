@@ -741,7 +741,7 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">master_gen_key</span>
-<span class="type-paren paren-open">(</span><span class="type">bytearray</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Optional master generation key. Default is an empty bytearray</span>
+<span class="type-paren paren-open">(</span><span class="type">bytearray</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Optional master generation key</span>
 </li>
 </ul>
 </div>
@@ -864,7 +864,7 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">remove_master</span>
-<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Flag indicating whether to remove the master key associated with the keyring. Default is False</span>
+<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Flag indicating whether to remove the master key associated with the keyring</span>
 </li>
 </ul>
 </div>
@@ -986,7 +986,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">chain_id</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The chain ID of the Ethereum network. Default is 1, which indicates the main Ethereum network</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The chain ID of the Ethereum network. Defaults to 1, the chainId of the main Ethereum network</span>
 </li>
 <li class="param-item">
 <span class="name">nonce</span>
@@ -1002,7 +1002,7 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">gas</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of gas units for the transaction. Default is 21000</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of gas units for the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">to</span>
@@ -1014,11 +1014,11 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">data</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The transaction data in hexadecimal format. Default is "0x"</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The transaction data in hexadecimal format</span>
 </li>
 <li class="param-item">
 <span class="name">access_list</span>
-<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The access list for the transaction. Default is an empty list</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The access list for the transaction</span>
 </li>
 </ul>
 </div>
@@ -1061,7 +1061,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">chain_id</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The chain ID of the Ethereum network. Default is 1, which indicates the main Ethereum network</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The chain ID of the Ethereum network. Defaults to 1, the chainId of the main Ethereum network</span>
 </li>
 <li class="param-item">
 <span class="name">nonce</span>
@@ -1069,23 +1069,23 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">max_priority_fee_per_gas</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The maximum priority fee per gas. Default is 1</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The maximum priority fee per gas</span>
 </li>
 <li class="param-item">
 <span class="name">max_fee_per_gas</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The maximum fee per gas. Default is 10</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The maximum fee per gas</span>
 </li>
 <li class="param-item">
 <span class="name">gas</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of gas for the transaction. Default is 21000</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of gas for the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">value</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Ether to send with the transaction. Default is 0</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Ether to send with the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">access_list</span>
-<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The access list for the transaction. Default is an empty list</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The access list for the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">contract_bytecode_path</span>
@@ -1097,7 +1097,7 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">constructor_args</span>
-<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of arguments to pass to the contract constructor. Default is an empty list</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of arguments to pass to the contract constructor</span>
 </li>
 </ul>
 </div>
@@ -1141,7 +1141,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">chain_id</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The chain ID of the Ethereum network. Default is 1, which indicates the main Ethereum network</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The chain ID of the Ethereum network. Defaults to 1, the chainId of the main Ethereum network</span>
 </li>
 <li class="param-item">
 <span class="name">nonce</span>
@@ -1574,7 +1574,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">ether_amount</span>
-<span class="type-paren paren-open">(</span><span class="type">float</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Ether to convert to Wei. Defaults to 0.</span>
+<span class="type-paren paren-open">(</span><span class="type">float</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Ether to convert to Wei</span>
 </li>
 </ul>
 </div>
