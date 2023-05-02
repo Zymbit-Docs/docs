@@ -51,7 +51,7 @@ pip install ethconnect
 </div>
 <div class="api-docs">
 
-## <span class="markdown-h2 include-toc">ETH-Connect Python Classes</span>
+## <span class="markdown-h2 include-toc">ETH-Connect Classes</span>
 
 <div class="class">
 
@@ -888,10 +888,71 @@ pip install ethconnect
 
 <div class="body">
 <p>The EthTransaction class definition</p>
-<p>This class provides access to EthTransaction within Python.</p>
+<p>This class represents an Ethereum transaction according to the EIP-1559 standard and extends the rlp.Serializable class.</p>
+
 <div class="attribute">
 
 <div class="body">
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">transaction_type</span> <span class="param-list"></span></span> {id="transaction-type" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>An integer value of 2, representing the EIP-1559 transaction type.</p>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">fields</span> <span class="param-list"></span></span> {id="fields" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>A list of tuples, each containing a field name and its corresponding data type. The fields are: chain_id, nonce, max_priority_fee_per_gas, max_fee_per_gas, gas, to, value, data, and access_list.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="class">
+
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">SignedEthTransaction</span></span>
+
+<div class="body">
+<p>The SignedEthTransaction class definition</p>
+<p>This class represents a signed Ethereum transaction according to the EIP-1559 standard and extends the rlp.Serializable class.</p>
+
+<div class="attribute">
+
+<div class="body">
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">transaction_type</span> <span class="param-list"></span></span> {id="transaction-type" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>An integer value of 2, representing the EIP-1559 transaction type.</p>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">fields</span> <span class="param-list"></span></span> {id="fields" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>A list of tuples, each containing a field name and its corresponding data type. The fields are: chain_id, nonce, max_priority_fee_per_gas, max_fee_per_gas, gas, to, value, data, access_list, y_parity, r, and s.</p>
+</div>
 </div>
 </div>
 
