@@ -701,19 +701,26 @@ pip install ethconnect
 </div>
 
 <div class="method">
-
-#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">keyrings</span> = <span class="default-val">[]</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="__init__" class="markdown-h4 signature include-toc"}
-
+<span><span class="name">__init__</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">keyrings</span> = <span class="default-val">[]</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init" class="markdown-h4 signature include-toc"}
 <div class="body">
 <div class="description">
-<p>This method initializes a new instance of the class with an optional list of keyrings. If keyrings are provided, it validates that each keyring is an instance of the Keyring class or a subclass thereof.</p>
+<p>Initializes an instance of a KeyringManager with an optional list of Keyring objects.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">keyrings</span>
-<span class="type-paren paren-open">(</span><span class="type">list[Type[Keyring]]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">An optional list of keyring instances</span>
+<span class="type-paren paren-open">(</span><span class="type">list[Type[Keyring]]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of Keyring objects to be managed by the KeyringManager</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">TypeError</span>
+<span class="description">If any item in the keyrings list is not an instance of a subclass of the Keyring abstract class.</span>
 </li>
 </ul>
 </div>
@@ -726,7 +733,7 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>This method creates a new keyring of the specified class and wallet name, and optionally uses the provided master generation key. It returns a tuple containing the master slot and the mnemonic seed phrase.</p>
+<p>Creates a new keyring of the specified class and wallet name, and optionally uses the provided master generation key.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -741,7 +748,7 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">master_gen_key</span>
-<span class="type-paren paren-open">(</span><span class="type">bytearray</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Optional master generation key</span>
+<span class="type-paren paren-open">(</span><span class="type">bytearray</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master generation key used for key generation</span>
 </li>
 </ul>
 </div>
@@ -763,7 +770,7 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>This method adds a keyring instance to the list of keyrings. The method validates that the provided keyring is an instance of the Keyring class or a subclass thereof and returns True upon successful addition.</p>
+<p>Adds a keyring instance to the list of keyrings</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -792,18 +799,18 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>This method retrieves a keyring instance from the list of keyrings by either the wallet name or the master slot. If neither wallet name nor master slot is provided, a ValueError is raised. If the requested keyring is not found in the KeyringManager, a ValueError is raised as well.</p>
+<p>Retrieves a keyring instance from the list of keyrings by either the wallet name or the master slot.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">wallet_name</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The wallet name associated with the keyring (optional)</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The wallet name associated with the keyring</span>
 </li>
 <li class="param-item">
 <span class="name">master_slot</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master slot associated with the keyring (optional)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master slot associated with the keyring</span>
 </li>
 </ul>
 </div>
@@ -825,7 +832,7 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>This method retrieves the list of keyring instances stored in the KeyringManager.</p>
+<p>Retrieves the list of keyring instances stored in the KeyringManager.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -849,18 +856,18 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>This method removes a keyring instance from the list of keyrings in the KeyringManager by either the wallet name or the master slot. If neither wallet name nor master slot is provided, a ValueError is raised. If the 'remove_master' flag is set to True, the method will also remove the master key associated with the keyring.</p>
+<p>Removes a keyring instance from the list of keyrings in the KeyringManager and deletes all related keys from the module by either the wallet name or the master slot. If the 'remove_master' flag is set to True, the method will also remove the master key associated with the keyring.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">wallet_name</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The wallet name associated with the keyring (optional)</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The wallet name associated with the keyring</span>
 </li>
 <li class="param-item">
 <span class="name">master_slot</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master slot associated with the keyring (optional)</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master slot associated with the keyring</span>
 </li>
 <li class="param-item">
 <span class="name">remove_master</span>
@@ -979,7 +986,7 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>Create and return an EthTransaction object with the specified parameters. This method verifies the input parameter types and validates the provided Ethereum address.</p>
+<p>Create and return an EthTransaction object with the specified parameters.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -1077,27 +1084,27 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">gas</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of gas for the transaction</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The gas limit for the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">value</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Ether to send with the transaction</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The value to be sent with the transaction, in Wei</span>
 </li>
 <li class="param-item">
 <span class="name">access_list</span>
-<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The access list for the transaction</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">An access list for the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">contract_bytecode_path</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path to the file containing the contract bytecode</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path to the file containing the contract bytecode. Should be a text file with the bytecode hex encoded.</span>
 </li>
 <li class="param-item">
 <span class="name">contract_abi_path</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path to the file containing the contract ABI (Application Binary Interface)</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path to the file containing the contract ABI (Application Binary Interface). Should be a JSON file.</span>
 </li>
 <li class="param-item">
 <span class="name">constructor_args</span>
-<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of arguments to pass to the contract constructor</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of arguments to pass to the contract constructor. Ordered from first parameter to last.</span>
 </li>
 </ul>
 </div>
@@ -1134,7 +1141,7 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>Create a transaction to execute a function of a smart contract on the Ethereum network.</p>
+<p>Create a transaction to execute a function of a smart contract on an Ethereum network.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -1169,19 +1176,19 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">access_list</span>
-<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">An optional access list for the transaction</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">An access list for the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">contract_abi_path</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The file path to the smart contract's ABI</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The path to the file containing the contract ABI (Application Binary Interface). Should be a JSON file.</span>
 </li>
 <li class="param-item">
 <span class="name">function_name</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The name of the function to be executed</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The name of the smart contract function to be executed</span>
 </li>
 <li class="param-item">
 <span class="name">args</span>
-<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The arguments for the function to be executed</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The arguments for the function to be executed. From first parameter to last.</span>
 </li>
 </ul>
 </div>
@@ -1262,7 +1269,7 @@ pip install ethconnect
 <ul>
 <li class="return-item">
 <span class="return_type">SignedEthTransaction</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">A SignedEthTransaction object ready to be serialized and broadcasted to the network</span>
+<span class="return_value">A SignedEthTransaction object ready to be serialized and broadcasted to an Ethereum network</span>
 </li>
 </ul>
 </div>
