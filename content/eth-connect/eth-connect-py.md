@@ -786,7 +786,115 @@ pip install ethconnect
 </div>
 </div>
 
+<div class="method">
+
+#### <span><span class="name">get_keyring</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">wallet_name</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">master_slot</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="get_keyring" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>This method retrieves a keyring instance from the list of keyrings by either the wallet name or the master slot. If neither wallet name nor master slot is provided, a ValueError is raised. If the requested keyring is not found in the KeyringManager, a ValueError is raised as well.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">wallet_name</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The wallet name associated with the keyring (optional)</span>
+</li>
+<li class="param-item">
+<span class="name">master_slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master slot associated with the keyring (optional)</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">Type[Keyring]</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The keyring instance corresponding to the provided wallet name or master slot</span>
+</li>
+</ul>
+</div>
+</div>
 </div>
 
+<div class="method">
+
+#### <span><span class="name">get_keyrings</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="get_keyrings" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>This method retrieves the list of keyring instances stored in the KeyringManager.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<p>None</p>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">list[Type[Keyring]]</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The list of keyring instances stored in the KeyringManager</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">remove_keyring</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">wallet_name</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">master_slot</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">remove_master</span> = <span class="default-val">False</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="remove_keyring" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>This method removes a keyring instance from the list of keyrings in the KeyringManager by either the wallet name or the master slot. If neither wallet name nor master slot is provided, a ValueError is raised. If the 'remove_master' flag is set to True, the method will also remove the master key associated with the keyring.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">wallet_name</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The wallet name associated with the keyring (optional)</span>
+</li>
+<li class="param-item">
+<span class="name">master_slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master slot associated with the keyring (optional)</span>
+</li>
+<li class="param-item">
+<span class="name">remove_master</span>
+<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Flag indicating whether to remove the master key associated with the keyring. Default is False</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">bool</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">True if the keyring is successfully removed, False otherwise</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="class">
+
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">EthTransaction</span></span>
+
+<div class="body">
+<p>The EthTransaction class definition</p>
+<p>This class provides access to EthTransaction within Python.</p>
+<div class="attribute">
+
+<div class="body">
+</div>
+</div>
+
+</div>
 </div>
 </div>
