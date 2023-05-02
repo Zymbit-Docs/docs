@@ -920,10 +920,22 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>A list of tuples, each containing a field name and its corresponding data type. The fields are: chain_id, nonce, max_priority_fee_per_gas, max_fee_per_gas, gas, to, value, data, and access_list.</p>
+<p>A list of tuples, each containing a field name and its corresponding data type. The fields are:</p>
+<ul>
+<li>chain_id: The chain ID of the Ethereum network the transaction is meant for.</li>
+<li>nonce: The nonce value for the sender's account, representing the number of transactions sent from the account.</li>
+<li>max_priority_fee_per_gas: The maximum fee per gas the sender is willing to pay for the transaction's priority.</li>
+<li>max_fee_per_gas: The maximum total fee per gas the sender is willing to pay, including both priority and base fees.</li>
+<li>gas: The amount of gas the sender is willing to allocate to the transaction.</li>
+<li>to: The recipient's address, or an empty address for contract creation transactions.</li>
+<li>value: The amount of Ether the sender is transferring to the recipient.</li>
+<li>data: The transaction data payload, typically used for contract interaction.</li>
+<li>access_list: A list of addresses and storage keys the transaction will access, used for EIP-2930 access list transactions.</li>
+</ul>
 </div>
 </div>
 </div>
+
 </div>
 </div>
 
@@ -958,7 +970,21 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>A list of tuples, each containing a field name and its corresponding data type. The fields are: chain_id, nonce, max_priority_fee_per_gas, max_fee_per_gas, gas, to, value, data, access_list, y_parity, r, and s.</p>
+<p>A list of tuples, each containing a field name and its corresponding data type. The fields are:</p>
+<ul>
+<li>chain_id: The chain ID of the Ethereum network the transaction is meant for.</li>
+<li>nonce: The nonce value for the sender's account, representing the number of transactions sent from the account.</li>
+<li>max_priority_fee_per_gas: The maximum fee per gas the sender is willing to pay for the transaction's priority.</li>
+<li>max_fee_per_gas: The maximum total fee per gas the sender is willing to pay, including both priority and base fees.</li>
+<li>gas: The amount of gas the sender is willing to allocate to the transaction.</li>
+<li>to: The recipient's address, or an empty address for contract creation transactions.</li>
+<li>value: The amount of Ether the sender is transferring to the recipient.</li>
+<li>data: The transaction data payload, typically used for contract interaction.</li>
+<li>access_list: A list of addresses and storage keys the transaction will access, used for EIP-2930 access list transactions.</li>
+<li>y_parity: The y-coordinate parity of the public key, used for signature validation.</li>
+<li>r: The r value of the ECDSA signature.</li>
+<li>s: The s value of the ECDSA signature.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1596,7 +1622,77 @@ pip install ethconnect
 </div>
 </div>
 </div>
+</div>
+</div>
+
+<div class="class">
+
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">EllipticCurve</span></span>
+
+<div class="body">
+<p>The EllipticCurve class definition</p>
+<p>This class represents an enumeration of elliptic curves available on Zymbit's hardware wallet and extends the Python Enum class.</p>
+
+<div class="attribute">
+
+<div class="body">
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">secp256k1</span> <span class="param-list"></span></span> {id="secp256k1" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>An enumeration value representing the secp256k1 elliptic curve, used in Ethereum and Bitcoin.</p>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">secp256r1</span> <span class="param-list"></span></span> {id="secp256r1" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>An enumeration value representing the secp256r1 elliptic curve, also known as nist256 or prime256v1.</p>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">ed25519</span> <span class="param-list"></span></span> {id="ed25519" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>An enumeration value representing the Ed25519 elliptic curve, used in Cardano, Solana, Polkadot, and Monero to name a few</p>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">get_curve_type</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-paren paren-close">)</span></span></span> {id="get_curve_type" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Returns the string representation of the elliptic curve type.</p>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">str</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">The string representation of the elliptic curve type. Can return "secp256k1", "secp256r1", or "ed25519", depending on the enum's value.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
 
 </div>
 </div>
+
 </div>
