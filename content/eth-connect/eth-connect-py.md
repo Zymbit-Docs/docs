@@ -702,7 +702,7 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">__init__</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">keyrings</span> = <span class="default-val">[]</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="__init__" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">keyrings</span> = <span class="default-val">[]</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="__init__" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -955,6 +955,98 @@ pip install ethconnect
 </div>
 </div>
 </div>
+
+</div>
+</div>
+
+<div class="class">
+
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">EthConnect</span></span>
+
+<div class="body">
+<p>The EthConnect class definition</p>
+<p>This class contains an assortment of static methods which allow you to use the accounts in your ZymbitEthKeyring instances to sign Ethereum transactions and messages</p>
+
+<div class="attribute">
+
+<div class="body">
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">create_transaction</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">chain_id</span> = <span class="default-val">1</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">nonce</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">max_priority_fee_per_gas</span> = <span class="default-val">1</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">max_fee_per_gas</span> = <span class="default-val">10</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">gas</span> = <span class="default-val">21000</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">to</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">value</span> = <span class="default-val">0</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">data</span> = <span class="default-val">"0x"</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">access_list</span> = <span class="default-val">[]</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="create_transaction" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Create and return an EthTransaction object with the specified parameters. This method verifies the input parameter types and validates the provided Ethereum address.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">chain_id</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The chain ID of the Ethereum network. Default is 1, which indicates the main Ethereum network</span>
+</li>
+<li class="param-item">
+<span class="name">nonce</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The transaction nonce</span>
+</li>
+<li class="param-item">
+<span class="name">max_priority_fee_per_gas</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The maximum priority fee per gas unit</span>
+</li>
+<li class="param-item">
+<span class="name">max_fee_per_gas</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The maximum fee per gas unit</span>
+</li>
+<li class="param-item">
+<span class="name">gas</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of gas units for the transaction. Default is 21000</span>
+</li>
+<li class="param-item">
+<span class="name">to</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The recipient Ethereum address</span>
+</li>
+<li class="param-item">
+<span class="name">value</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Ether to be sent with the transaction</span>
+</li>
+<li class="param-item">
+<span class="name">data</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The transaction data in hexadecimal format. Default is "0x"</span>
+</li>
+<li class="param-item">
+<span class="name">access_list</span>
+<span class="type-paren paren-open">(</span><span class="type">list</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The access list for the transaction. Default is an empty list</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If one or more parameter types are invalid</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the 'to' field is not a valid checksum address</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">EthTransaction</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">An EthTransaction object with the specified parameters</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
 
 </div>
 </div>
