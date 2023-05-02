@@ -134,6 +134,8 @@ pip install ethconnect
 </div>
 </div>
 
+</div>
+
 <div class="class">
 
 ### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">ZymbitEthKeyring</span></span>
@@ -753,6 +755,37 @@ pip install ethconnect
 </ul>
 </div>
 </div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">add_keyring</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">keyring</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_keyring" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>This method adds a keyring instance to the list of keyrings. The method validates that the provided keyring is an instance of the Keyring class or a subclass thereof and returns True upon successful addition.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">keyring</span>
+<span class="type-paren paren-open">(</span><span class="type">Type[Keyring]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The keyring instance to be added</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">bool</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">True if the keyring was added successfully</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
 </div>
 
 </div>
