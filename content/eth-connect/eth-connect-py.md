@@ -60,6 +60,7 @@ pip install ethconnect
 <div class="body">
 <p>The EthAccount class definition</p>
 <p>This class provides access to EthAccount within Python.</p>
+<p>EthAccount extends the Account abstract class.</p>
 <div class="attribute">
 
 <div class="body">
@@ -140,6 +141,7 @@ pip install ethconnect
 <div class="body">
 <p>The ZymbitEthKeyring class definition</p>
 <p>This class provides access to ZymbitEthKeyring within Python.</p>
+<p>ZymbitEthKeyring extends the Keyring abstract class.</p>
 <div class="attribute">
 
 <div class="body">
@@ -681,6 +683,8 @@ pip install ethconnect
 </div>
 </div>
 
+</div>
+
 <div class="class">
 
 ### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">ZymbitKeyringManager</span></span>
@@ -707,7 +711,44 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">keyrings</span>
-<span class="type-paren paren-open">(</span><span class="type">list[Type[Keyring]]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">An optional list of keyring instances. Default is an empty list</span>
+<span class="type-paren paren-open">(</span><span class="type">list[Type[Keyring]]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">An optional list of keyring instances</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="method">
+
+#### <span><span class="name">create_keyring</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">keyring_class</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">wallet_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">master_gen_key</span> = <span class="default-val">bytearray()</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="create_keyring" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>This method creates a new keyring of the specified class and wallet name, and optionally uses the provided master generation key. It returns a tuple containing the master slot and the mnemonic seed phrase.</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">keyring_class</span>
+<span class="type-paren paren-open">(</span><span class="type">Type[Keyring]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The class of the keyring to be created</span>
+</li>
+<li class="param-item">
+<span class="name">wallet_name</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The name of the wallet associated with the keyring</span>
+</li>
+<li class="param-item">
+<span class="name">master_gen_key</span>
+<span class="type-paren paren-open">(</span><span class="type">bytearray</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Optional master generation key. Default is an empty bytearray</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">tuple[int, str]</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">A tuple containing the master slot (int) and the mnemonic seed phrase (str)</span>
 </li>
 </ul>
 </div>
