@@ -48,7 +48,7 @@ pip install ethconnect
 4. EthConnect
     - A class with an assortment of methods for interacting with Ethereum using ZymbitEthKeyring instances
 
-
+</div>
 <div class="api-docs">
 
 ## <span class="markdown-h2 include-toc">ETH-Connect Python Classes</span>
@@ -133,7 +133,7 @@ pip install ethconnect
 </div>
 </div>
 </div>
-
+</div>
 </div>
 
 <div class="class">
@@ -684,7 +684,7 @@ pip install ethconnect
 </div>
 </div>
 </div>
-
+</div>
 </div>
 
 <div class="class">
