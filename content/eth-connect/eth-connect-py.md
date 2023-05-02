@@ -1500,7 +1500,7 @@ pip install ethconnect
 <ul>
 <li class="return-item">
 <span class="return_type">tuple[str, bytes]</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">A tuple containing the Ethereum message as a string and its corresponding bytes representation</span>
+<span class="return_value">A tuple containing the Ethereum message (str) and its corresponding bytes representation (bytes)</span>
 </li>
 </ul>
 </div>
