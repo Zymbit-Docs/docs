@@ -1586,18 +1586,18 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>Hashes the input data using the Keccak-256 algorithm.</p>
+<p>Generate a Keccak256 hash digest from the given string or bytes data.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">str_data</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The input data as a string. Either str_data or bytes_data must be provided.</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">String data to generate the Keccak256 hash digest from.</span>
 </li>
 <li class="param-item">
 <span class="name">bytes_data</span>
-<span class="type-paren paren-open">(</span><span class="type">bytes</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The input data as bytes. Either str_data or bytes_data must be provided.</span>
+<span class="type-paren paren-open">(</span><span class="type">bytes</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Bytes data to generate the Keccak256 hash digest from.</span>
 </li>
 </ul>
 </div>
@@ -1606,7 +1606,7 @@ pip install ethconnect
 <ul>
 <li class="exc-item">
 <span class="name">ValueError</span>
-<span class="description">If both str_data and bytes_data are provided at the same time.</span>
+<span class="description">If both str_data and bytes_data are provided.</span>
 </li>
 <li class="exc-item">
 <span class="name">ValueError</span>
@@ -1619,7 +1619,7 @@ pip install ethconnect
 <ul>
 <li class="return-item">
 <span class="return_type">keccak.Keccak_Hash</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">The Keccak-256 hash object.</span>
+<span class="return_value">A Keccak256 hash digest as a Crypto.Hash.keccak.Keccak_Hash object.</span>
 </li>
 </ul>
 </div>
@@ -1665,7 +1665,7 @@ pip install ethconnect
 <ul>
 <li class="return-item">
 <span class="return_type">SHA256.SHA256Hash</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">A SHA256 hash digest as a Crypto.Hash.SHA256Hash object.</span>
+<span class="return_value">A SHA256 hash digest as a Crypto.Hash.SHA256.SHA256Hash object.</span>
 </li>
 </ul>
 </div>
