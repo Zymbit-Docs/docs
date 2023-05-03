@@ -352,7 +352,7 @@ pip install ethconnect
 </div>
 <div class="method">
 
-#### <span><span class="name">add_accounts</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-item-wrapper"><span class="param"><span class="name">n</span> <span class="param-type">int</span> = <span class="default-val">1</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_accounts" class="markdown-h4 signature include-toc"}
+#### <span class="name">add_accounts</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">n</span> = <span class="default-val">1</span></span></span><span class="param-paren paren-close">)</span></span> {id="add_accounts" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
