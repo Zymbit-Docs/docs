@@ -912,10 +912,6 @@ pip install ethconnect
 <div class="description">
 <p>Retrieves the list of keyring instances stored in the KeyringManager.</p>
 </div>
-<div class="parameters">
-<h5>Parameters</h5>
-<p>None</p>
-</div>
 <div class="returns">
 <h5>Returns</h5>
 <ul>
