@@ -116,7 +116,7 @@ pip install ethconnect
 <div class="returns">
 <h5>Returns</h5>
 <span class="return_type">dict</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">containing the "path", "address", and "slot" properties</span>
+<span class="return_value">containing the path (str), address (hex encoded str), and slot (int) properties</span>
 </div>
 </div>
 </div>
@@ -242,18 +242,23 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="init" class="markdown-h4 signature include-toc"}
+
+#### <span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">wallet_name</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">master_slot</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span> {id="init" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Initialize an instance of a ZymbitEthKeyring context</p>
+<p>Initialize an instance of a ZymbitEthKeyring context. Internally calls <code>deserialize(wallet_name, master_slot)</code> and makes some basic checks.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
-<span class="name">options</span>
-<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be the <span class="type">dict<span> returned by <span class="name">serialize()</span>. Wallet must have a master slot present in the keystore.</span>
+<span class="name">wallet_name</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The name of the wallet associated with the keyring.</span>
+</li>
+<li class="param-item">
+<span class="name">master_slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master slot number of the keyring, optional.</span>
 </li>
 </ul>
 </div>
@@ -271,33 +276,44 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">serialize</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span></span> {id="init-f24db7dc" class="markdown-h4 signature include-toc"}
+#### <span class="name">serialize</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-paren paren-close">)</span></span> {id="serialize" class="markdown-h4 signature include-toc"}
 
 <div class="body">
-<div class="description"></div>
-<p>Serialize the ZymbitEthKeyring object</p>
+<div class="description">
+<p>Serialize the ZymbitEthKeyring instance.</p>
+</div>
 <div class="returns">
 <h5>Returns</h5>
+<ul>
+<li class="return-item">
 <span class="return_type">dict</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">containing the "wallet_name", "master_slot", "type", "base_path", "base_slot", and "accounts" for the ZymbitEthKeyring instance</span>
+<span class="return_value">A dictionary containing the serialized keyring's data including wallet_name (str), master_slot (int), type ("ETH"), curve ("secp256k1"), base_path ("m/44'/60'/0'/0"), base_slot (int), and accounts (list of serialized EthAccount instances).</span>
+</li>
+</ul>
 </div>
 </div>
 </div>
 
 <div class="method">
 
-#### <span><span class="name">deserialize</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">options</span> = <span class="default-val">{}</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="deserialize" class="markdown-h4 signature include-toc"}
+#### <span class="name">deserialize</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">wallet_name</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">master_slot</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span> {id="deserialize" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Restore an instance of a ZymbitEthKeyring context</p>
+<p>Deserializes a keyring using either a wallet name or a master slot. Effectively restores an instance of a ZymbitEthKeyring context.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
-<span class="name">options</span>
-<span class="type-paren paren-open">(</span><span class="type">dict</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Must contain "wallet_name" or "master_slot" property. Can be the <span class="type">dict<span> returned by <span class="name">serialize()</span></span>
+
+<span class="name">wallet_name</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The wallet name associated with the keyring.</span>
+</li>
+<li class="param-item">
+<span class="name">master_slot</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master slot number of the keyring.</span>
+
 </li>
 </ul>
 </div>
@@ -306,7 +322,24 @@ pip install ethconnect
 <ul>
 <li class="exc-item">
 <span class="name">ValueError</span>
-<span class="description">If the "wallet_name" or "master_slot" provided in options is invalid</span>
+<span class="description">If neither wallet_name nor master_slot are provided</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If both wallet_name and master_slot are provided</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the provided wallet_name or master_slot is invalid</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h5>Returns</h5>
+<ul>
+<li class="return-item">
+<span class="return_type">bool</span><span class="param-desc-divider"> &#8212; </span>
+<span class="return_value">True if the keyring is successfully deserialized, otherwise an exception is raised.</span>
 </li>
 </ul>
 </div>
@@ -352,7 +385,7 @@ pip install ethconnect
 </div>
 <div class="method">
 
-#### <span><span class="name">add_accounts</span> <span class="param-list"><span class="param-paren paren-open">(</span><span class="param-item-wrapper"><span class="param"><span class="name">n</span> <span class="param-type">int</span> = <span class="default-val">1</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="add_accounts" class="markdown-h4 signature include-toc"}
+#### <span class="name">add_accounts</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">n</span> = <span class="default-val">1</span></span></span><span class="param-paren paren-close">)</span></span> {id="add_accounts" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
@@ -789,7 +822,9 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">keyrings</span>
-<span class="type-paren paren-open">(</span><span class="type">list[Type[Keyring]]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of Keyring objects to be managed by the KeyringManager</span>
+
+<span class="type-paren paren-open">(</span><span class="type">list[Keyring]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of Keyring objects to be managed by the KeyringManager</span>
+
 </li>
 </ul>
 </div>
@@ -807,18 +842,24 @@ pip install ethconnect
 
 <div class="method">
 
-#### <span><span class="name">create_keyring</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">keyring_class</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">wallet_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">master_gen_key</span> = <span class="default-val">bytearray()</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="create_keyring" class="markdown-h4 signature include-toc"}
+
+<div class="method">
+
+#### <span class="name">create_keyring</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">keyring_class</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">wallet_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">master_gen_key</span> = <span class="default-val">bytearray()</span></span></span><span class="param-paren paren-close">)</span></span> {id="create_keyring" class="markdown-h4 signature include-toc"}
 
 <div class="body">
 <div class="description">
-<p>Creates a new keyring of the specified class and wallet name, and optionally uses the provided master generation key.</p>
+<p>Creates a new keyring of the specified type, associates it with a wallet name, and optionally initializes it with a master generation key.</p>
+
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">keyring_class</span>
-<span class="type-paren paren-open">(</span><span class="type">Type[Keyring]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The class of the keyring to be created</span>
+
+<span class="type-paren paren-open">(</span><span class="type">Type[Keyring]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The Keyring subclass representing the type of keyring to create</span>
+
 </li>
 <li class="param-item">
 <span class="name">wallet_name</span>
@@ -826,7 +867,30 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">master_gen_key</span>
-<span class="type-paren paren-open">(</span><span class="type">bytearray</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master generation key used for key generation</span>
+
+<span class="type-paren paren-open">(</span><span class="type">bytearray</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master generation key used for initializing the keyring, optional (default is an empty bytearray)</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">TypeError</span>
+<span class="description">If keyring_class is not a subclass of Keyring</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If wallet_name is empty or not a string</span>
+</li>
+<li class="exc-item">
+<span class="name">TypeError</span>
+<span class="description">If master_gen_key is not a bytearray</span>
+</li>
+<li class="exc-item">
+<span class="name">ValueError</span>
+<span class="description">If the keyring creation fails</span>
+
 </li>
 </ul>
 </div>
@@ -835,7 +899,9 @@ pip install ethconnect
 <ul>
 <li class="return-item">
 <span class="return_type">tuple[int, str]</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">A tuple containing the master slot (int) and the mnemonic seed phrase (str)</span>
+
+<span class="return_value">A tuple containing the wallet's master key slot and the new wallet's mnemonic phrase (store safely for wallet recovery)</span>
+
 </li>
 </ul>
 </div>
@@ -855,7 +921,9 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">keyring</span>
-<span class="type-paren paren-open">(</span><span class="type">Type[Keyring]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The keyring instance to be added</span>
+
+<span class="type-paren paren-open">(</span><span class="type">Keyring</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The keyring instance to be added</span>
+
 </li>
 </ul>
 </div>
@@ -896,7 +964,9 @@ pip install ethconnect
 <h5>Returns</h5>
 <ul>
 <li class="return-item">
-<span class="return_type">Type[Keyring]</span><span class="param-desc-divider"> &#8212; </span>
+
+<span class="return_type">Keyring</span><span class="param-desc-divider"> &#8212; </span>
+
 <span class="return_value">The keyring instance corresponding to the provided wallet name or master slot</span>
 </li>
 </ul>
@@ -912,15 +982,14 @@ pip install ethconnect
 <div class="description">
 <p>Retrieves the list of keyring instances stored in the KeyringManager.</p>
 </div>
-<div class="parameters">
-<h5>Parameters</h5>
-<p>None</p>
-</div>
+
 <div class="returns">
 <h5>Returns</h5>
 <ul>
 <li class="return-item">
-<span class="return_type">list[Type[Keyring]]</span><span class="param-desc-divider"> &#8212; </span>
+
+<span class="return_type">list[Keyring]</span><span class="param-desc-divider"> &#8212; </span>
+
 <span class="return_value">The list of keyring instances stored in the KeyringManager</span>
 </li>
 </ul>
@@ -1586,18 +1655,21 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>Hashes the input data using the Keccak-256 algorithm.</p>
+
+<p>Generate a Keccak256 hash digest from the given string or bytes data.</p>
+
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">str_data</span>
-<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The input data as a string. Either str_data or bytes_data must be provided.</span>
+<span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">String data to generate the Keccak256 hash digest from.</span>
 </li>
 <li class="param-item">
 <span class="name">bytes_data</span>
-<span class="type-paren paren-open">(</span><span class="type">bytes</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The input data as bytes. Either str_data or bytes_data must be provided.</span>
+<span class="type-paren paren-open">(</span><span class="type">bytes</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Bytes data to generate the Keccak256 hash digest from.</span>
+
 </li>
 </ul>
 </div>
@@ -1606,7 +1678,9 @@ pip install ethconnect
 <ul>
 <li class="exc-item">
 <span class="name">ValueError</span>
-<span class="description">If both str_data and bytes_data are provided at the same time.</span>
+
+<span class="description">If both str_data and bytes_data are provided.</span>
+
 </li>
 <li class="exc-item">
 <span class="name">ValueError</span>
@@ -1619,7 +1693,9 @@ pip install ethconnect
 <ul>
 <li class="return-item">
 <span class="return_type">keccak.Keccak_Hash</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">The Keccak-256 hash object.</span>
+
+<span class="return_value">A Keccak256 hash digest as a Crypto.Hash.keccak.Keccak_Hash object.</span>
+
 </li>
 </ul>
 </div>
@@ -1665,7 +1741,9 @@ pip install ethconnect
 <ul>
 <li class="return-item">
 <span class="return_type">SHA256.SHA256Hash</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">A SHA256 hash digest as a Crypto.Hash.SHA256Hash object.</span>
+
+<span class="return_value">A SHA256 hash digest as a Crypto.Hash.SHA256.SHA256Hash object.</span>
+
 </li>
 </ul>
 </div>
@@ -1702,5 +1780,10 @@ pip install ethconnect
 </div>
 </div>
 </div>
+
+
+## <span class="markdown-h2 include-toc">Additional Resources</span>
+
+If you are a developer interested in creating your own custom implementations of Accounts and/or Keyrings to work with `ZymbitKeyringManager`, we encourage you to explore [our Github repository](https://github.com/Zymbit-Wallet/ETH-Connect-PY). By extending the Account and Keyring [Abstract Base Classes (ABCs)](https://docs.python.org/3/library/abc.html), you can implement the required methods and any additional functionality as needed. The elliptic curves we support (secp256k1, secp256r1, and ed25519) are used by many major blockchains, including Bitcoin, Ethereum, Cardano, Solana, and Polkadot. Developing your own keyrings can be incredibly beneficial for a wide range of applications, such as key management or on-chain interactions like sending transactions or interacting with smart contracts.
 
 </div>
