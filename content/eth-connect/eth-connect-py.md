@@ -1752,4 +1752,8 @@ pip install ethconnect
 </div>
 </div>
 
+## <span class="markdown-h2 include-toc">Additional Resources</span>
+
+If you are a developer who wants to develop their own implementation of Accounts and/or Keyrings to use with <code>ZymbitKeyringManager</code>, then check out [our Github](https://github.com/Zymbit-Wallet/ETH-Connect-PY). You can extend the Account and Keyring [ABCs (Abstract Base Class)](https://docs.python.org/3/library/abc.html) and implement the specified methods and more at your discretion. The curves we support (secp256k1, secp256r1, and ed25519) are used by many major blockchains (BTC, ETH, Cardano, Solana, Polkadot, and more), so developing your own keyrings can be extremely useful for any application involving key management or on-chain interactions (sending transactions or invoking smart contracts).
+
 </div>
