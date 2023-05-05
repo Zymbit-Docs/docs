@@ -1,7 +1,7 @@
 ---
-title: ETH-Connect Python Documentation
-linkTitle: ETH-Connect Python SDK
-description: Eth-Connect Python SDK
+title: Zymbit Wallet Python SDK Documentation
+linkTitle: Zymbit Wallet Python SDK
+description: Zymbit Wallet Python SDK
 lastmod:
 draft: false
 images: []
@@ -15,11 +15,13 @@ toc: true
 <div class="api-docs">
 
 ## <span class="markdown-h2 include-toc">Introduction</span>
-<p>This documentation contains a set of Python classes which intend to abstract away the technical complexities of the Ethereum blockchain, and allow developers to easily integrate Ethereum accounts, transactions, and dApps in their embedded Python applications.</p>
+<p>This documentation contains a set of Python classes which intend to abstract away the technical complexities of using Zymbit's hardware wallet with various blockchains. </p>
+
+<p>The first iteration of the SDK encapsulates all wallet creation, management, and use (sending transactions and interacting with dApps) capabilities for Ethereum and EVM compatible chains.</p>
 
 ## <span class="markdown-h2 include-toc">Installation</span>
 ```
-pip install ethconnect
+pip install zymbitwalletsdk
 ```
 
 ## <span class="markdown-h2 include-toc">High Level Overview</span>
@@ -53,11 +55,11 @@ pip install ethconnect
 </div>
 <div class="api-docs">
 
-## <span class="markdown-h2 include-toc">ETH-Connect Classes</span>
+## <span class="markdown-h2 include-toc">Zymbit Wallet SDK Classes</span>
 
 <div class="class">
 
-### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">EthAccount</span></span>
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">zymbitwalletsdk.</span><span class="name">EthAccount</span></span>
 
 <div class="body">
 <p>The EthAccount class definition</p>
@@ -140,7 +142,7 @@ pip install ethconnect
 
 <div class="class">
 
-### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">EllipticCurve</span></span>
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">zymbitwalletsdk.</span><span class="name">EllipticCurve</span></span>
 
 <div class="body">
 <p>The EllipticCurve class definition</p>
@@ -210,7 +212,7 @@ pip install ethconnect
 
 <div class="class">
 
-### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">ZymbitEthKeyring</span></span>
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">zymbitwalletsdk.</span><span class="name">ZymbitEthKeyring</span></span>
 
 <div class="body">
 <p>The ZymbitEthKeyring class definition</p>
@@ -241,7 +243,6 @@ pip install ethconnect
 </div>
 
 <div class="method">
-
 
 #### <span class="name">\_\_init\_\_</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">wallet_name</span> = <span class="default-val">None</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">master_slot</span> = <span class="default-val">None</span></span></span><span class="param-paren paren-close">)</span></span> {id="init" class="markdown-h4 signature include-toc"}
 
@@ -287,7 +288,7 @@ pip install ethconnect
 <ul>
 <li class="return-item">
 <span class="return_type">dict</span><span class="param-desc-divider"> &#8212; </span>
-<span class="return_value">A dictionary containing the serialized keyring's data including wallet_name (str), master_slot (int), type ("ETH"), curve ("secp256k1"), base_path ("m/44'/60'/0'/0"), base_slot (int), and accounts (list of serialized EthAccount instances).</span>
+<span class="return_value">A dictionary containing the serialized keyring's data including wallet_name (str), master_slot (int), type ("ETH"), curve (EllipticCurve.secp256k1), base_path ("m/44'/60'/0'/0"), base_slot (int), and accounts (list of serialized EthAccount instances).</span>
 </li>
 </ul>
 </div>
@@ -300,20 +301,18 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-<p>Deserializes a keyring using either a wallet name or a master slot. Effectively restores an instance of a ZymbitEthKeyring context.</p>
+<p>Deserializes a keyring using either a wallet name or a master slot to restore an instance of a ZymbitEthKeyring context.</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
-
 <span class="name">wallet_name</span>
 <span class="type-paren paren-open">(</span><span class="type">str</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The wallet name associated with the keyring.</span>
 </li>
 <li class="param-item">
 <span class="name">master_slot</span>
 <span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master slot number of the keyring.</span>
-
 </li>
 </ul>
 </div>
@@ -799,7 +798,7 @@ pip install ethconnect
 
 <div class="class">
 
-### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">ZymbitKeyringManager</span></span>
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">zymbitwalletsdk.</span><span class="name">ZymbitKeyringManager</span></span>
 
 <div class="body">
 <p>The ZymbitKeyringManager class definition</p>
@@ -822,9 +821,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">keyrings</span>
-
 <span class="type-paren paren-open">(</span><span class="type">list[Keyring]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">A list of Keyring objects to be managed by the KeyringManager</span>
-
 </li>
 </ul>
 </div>
@@ -842,7 +839,6 @@ pip install ethconnect
 
 <div class="method">
 
-
 <div class="method">
 
 #### <span class="name">create_keyring</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">keyring_class</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">wallet_name</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">master_gen_key</span> = <span class="default-val">bytearray()</span></span></span><span class="param-paren paren-close">)</span></span> {id="create_keyring" class="markdown-h4 signature include-toc"}
@@ -850,16 +846,13 @@ pip install ethconnect
 <div class="body">
 <div class="description">
 <p>Creates a new keyring of the specified type, associates it with a wallet name, and optionally initializes it with a master generation key.</p>
-
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
 <ul>
 <li class="param-item">
 <span class="name">keyring_class</span>
-
 <span class="type-paren paren-open">(</span><span class="type">Type[Keyring]</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The Keyring subclass representing the type of keyring to create</span>
-
 </li>
 <li class="param-item">
 <span class="name">wallet_name</span>
@@ -867,7 +860,6 @@ pip install ethconnect
 </li>
 <li class="param-item">
 <span class="name">master_gen_key</span>
-
 <span class="type-paren paren-open">(</span><span class="type">bytearray</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The master generation key used for initializing the keyring, optional (default is an empty bytearray)</span>
 </li>
 </ul>
@@ -890,7 +882,6 @@ pip install ethconnect
 <li class="exc-item">
 <span class="name">ValueError</span>
 <span class="description">If the keyring creation fails</span>
-
 </li>
 </ul>
 </div>
@@ -899,9 +890,7 @@ pip install ethconnect
 <ul>
 <li class="return-item">
 <span class="return_type">tuple[int, str]</span><span class="param-desc-divider"> &#8212; </span>
-
 <span class="return_value">A tuple containing the wallet's master key slot and the new wallet's mnemonic phrase (store safely for wallet recovery)</span>
-
 </li>
 </ul>
 </div>
@@ -921,9 +910,7 @@ pip install ethconnect
 <ul>
 <li class="param-item">
 <span class="name">keyring</span>
-
 <span class="type-paren paren-open">(</span><span class="type">Keyring</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The keyring instance to be added</span>
-
 </li>
 </ul>
 </div>
@@ -964,9 +951,7 @@ pip install ethconnect
 <h5>Returns</h5>
 <ul>
 <li class="return-item">
-
 <span class="return_type">Keyring</span><span class="param-desc-divider"> &#8212; </span>
-
 <span class="return_value">The keyring instance corresponding to the provided wallet name or master slot</span>
 </li>
 </ul>
@@ -982,14 +967,11 @@ pip install ethconnect
 <div class="description">
 <p>Retrieves the list of keyring instances stored in the KeyringManager.</p>
 </div>
-
 <div class="returns">
 <h5>Returns</h5>
 <ul>
 <li class="return-item">
-
 <span class="return_type">list[Keyring]</span><span class="param-desc-divider"> &#8212; </span>
-
 <span class="return_value">The list of keyring instances stored in the KeyringManager</span>
 </li>
 </ul>
@@ -1038,7 +1020,7 @@ pip install ethconnect
 
 <div class="class">
 
-### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">EthTransaction</span></span>
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">zymbitwalletsdk.</span><span class="name">EthTransaction</span></span>
 
 <div class="body">
 <p>The EthTransaction class definition</p>
@@ -1088,7 +1070,7 @@ pip install ethconnect
 
 <div class="class">
 
-### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">SignedEthTransaction</span></span>
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">zymbitwalletsdk.</span><span class="name">SignedEthTransaction</span></span>
 
 <div class="body">
 <p>The SignedEthTransaction class definition</p>
@@ -1141,7 +1123,7 @@ pip install ethconnect
 
 <div class="class">
 
-### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">ethconnect.</span><span class="name">EthConnect</span></span>
+### <span class="markdown-h3 signature include-toc"><span class="annotation">class</span> <span class="addname">zymbitwalletsdk.</span><span class="name">EthConnect</span></span>
 
 <div class="body">
 <p>The EthConnect class definition</p>
@@ -1655,9 +1637,7 @@ pip install ethconnect
 
 <div class="body">
 <div class="description">
-
 <p>Generate a Keccak256 hash digest from the given string or bytes data.</p>
-
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -1669,7 +1649,6 @@ pip install ethconnect
 <li class="param-item">
 <span class="name">bytes_data</span>
 <span class="type-paren paren-open">(</span><span class="type">bytes</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">Bytes data to generate the Keccak256 hash digest from.</span>
-
 </li>
 </ul>
 </div>
@@ -1678,9 +1657,7 @@ pip install ethconnect
 <ul>
 <li class="exc-item">
 <span class="name">ValueError</span>
-
 <span class="description">If both str_data and bytes_data are provided.</span>
-
 </li>
 <li class="exc-item">
 <span class="name">ValueError</span>
@@ -1693,9 +1670,7 @@ pip install ethconnect
 <ul>
 <li class="return-item">
 <span class="return_type">keccak.Keccak_Hash</span><span class="param-desc-divider"> &#8212; </span>
-
 <span class="return_value">A Keccak256 hash digest as a Crypto.Hash.keccak.Keccak_Hash object.</span>
-
 </li>
 </ul>
 </div>
@@ -1741,9 +1716,7 @@ pip install ethconnect
 <ul>
 <li class="return-item">
 <span class="return_type">SHA256.SHA256Hash</span><span class="param-desc-divider"> &#8212; </span>
-
 <span class="return_value">A SHA256 hash digest as a Crypto.Hash.SHA256.SHA256Hash object.</span>
-
 </li>
 </ul>
 </div>
@@ -1781,9 +1754,8 @@ pip install ethconnect
 </div>
 </div>
 
-
 ## <span class="markdown-h2 include-toc">Additional Resources</span>
 
-If you are a developer interested in creating your own custom implementations of Accounts and/or Keyrings to work with `ZymbitKeyringManager`, we encourage you to explore [our Github repository](https://github.com/Zymbit-Wallet/ETH-Connect-PY). By extending the Account and Keyring [Abstract Base Classes (ABCs)](https://docs.python.org/3/library/abc.html), you can implement the required methods and any additional functionality as needed. The elliptic curves we support (secp256k1, secp256r1, and ed25519) are used by many major blockchains, including Bitcoin, Ethereum, Cardano, Solana, and Polkadot. Developing your own keyrings can be incredibly beneficial for a wide range of applications, such as key management or on-chain interactions like sending transactions or interacting with smart contracts.
+If you are a developer interested in creating your own custom implementations of Accounts and/or Keyrings to work with `ZymbitKeyringManager`, we encourage you to explore [our Github repository](https://github.com/Zymbit-Wallet/Zymbit-Wallet-Python-SDK). By extending the Account and Keyring [Abstract Base Classes (ABCs)](https://docs.python.org/3/library/abc.html), you can implement the required methods and any additional functionality as needed. The elliptic curves we support (secp256k1, secp256r1, and ed25519) are used by many major blockchains, including Bitcoin, Ethereum, Cardano, Solana, and Polkadot. Developing your own keyrings can be incredibly beneficial for a wide range of applications, such as key management or on-chain interactions like sending transactions or interacting with smart contracts.
 
 </div>
