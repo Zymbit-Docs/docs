@@ -422,7 +422,7 @@ pip install zymbitwalletsdk
 
 <div class="method">
 
-#### <span><span class="name">add_accounts_list</span> <span class="param-list">(</span><span class="param"><span class="name">index_list</span><span class="param-type"> = []</span></span><span class="param-list">)</span></span> {id="add_accounts_list" class="markdown-h4 signature include-toc"}
+#### <span><span class="name">add_accounts_list</span> <span class="param-list">(</span><span class="param-item-wrapper"><span class="param"><span class="name">index_list</span><span class="param-type"> = []</span></span></span><span class="param-list">)</span></span> {id="add_accounts_list" class="markdown-h4 signature include-toc"}
 
 
 <div class="body">
