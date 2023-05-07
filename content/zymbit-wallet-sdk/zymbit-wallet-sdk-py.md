@@ -422,7 +422,7 @@ pip install zymbitwalletsdk
 
 <div class="method">
 
-#### <span><span class="name">add_accounts_list</span> <span class="param-list">(</span><span class="param"><span class="name">index_list</span><span class="param-type"> = []</span></span><span class="param-list">)</span></span> {id="add_accounts_list" class="markdown-h4 signature include-toc"}
+#### <span class="name">add_accounts_list</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">index_list</span> = <span class="default-val">[]</span></span></span><span class="param-paren paren-close">)</span></span> {id="add_accounts_list" class="markdown-h4 signature include-toc"}
 
 
 <div class="body">
@@ -1057,7 +1057,7 @@ pip install zymbitwalletsdk
 <li>max_fee_per_gas: The maximum total fee per gas the sender is willing to pay, including both priority and base fees.</li>
 <li>gas: The amount of gas the sender is willing to allocate to the transaction.</li>
 <li>to: The recipient's address, or an empty address for contract creation transactions.</li>
-<li>value: The amount of Ether the sender is transferring to the recipient.</li>
+<li>value: The amount of Wei the sender is transferring to the recipient.</li>
 <li>data: The transaction data payload, typically used for contract interaction.</li>
 <li>access_list: A list of addresses and storage keys the transaction will access, used for EIP-2930 access list transactions.</li>
 </ul>
@@ -1107,7 +1107,7 @@ pip install zymbitwalletsdk
 <li>max_fee_per_gas: The maximum total fee per gas the sender is willing to pay, including both priority and base fees.</li>
 <li>gas: The amount of gas the sender is willing to allocate to the transaction.</li>
 <li>to: The recipient's address, or an empty address for contract creation transactions.</li>
-<li>value: The amount of Ether the sender is transferring to the recipient.</li>
+<li>value: The amount of Wei the sender is transferring to the recipient.</li>
 <li>data: The transaction data payload, typically used for contract interaction.</li>
 <li>access_list: A list of addresses and storage keys the transaction will access, used for EIP-2930 access list transactions.</li>
 <li>y_parity: The y-coordinate parity of the public key, used for signature validation.</li>
@@ -1172,7 +1172,7 @@ pip install zymbitwalletsdk
 </li>
 <li class="param-item">
 <span class="name">value</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Ether to be sent with the transaction</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Wei to be sent with the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">data</span>
@@ -1243,7 +1243,7 @@ pip install zymbitwalletsdk
 </li>
 <li class="param-item">
 <span class="name">value</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The value to be sent with the transaction, in Wei</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Wei to be sent with the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">access_list</span>
@@ -1327,7 +1327,7 @@ pip install zymbitwalletsdk
 </li>
 <li class="param-item">
 <span class="name">value</span>
-<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The value to be sent with the transaction, in Wei</span>
+<span class="type-paren paren-open">(</span><span class="type">int</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">The amount of Wei to be sent with the transaction</span>
 </li>
 <li class="param-item">
 <span class="name">access_list</span>
