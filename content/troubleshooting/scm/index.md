@@ -105,7 +105,7 @@ The table below summarizes changes made to the standard image.
 | Default | As Shipped |
 |------------------|--------------------------|
 | Console login allowed | Disabled |
-| SSH with password allowed | Disabled. SSH must use keys |
+| SSH optionally enabled |SSH with password allowed |
 | Hostname is `raspberrypi` | Hostname changed to `zymbit-dev` |
 | Default user of `pi` | Default user is `zymbit`. User `pi` removed |
 | MAC with Pi OID | MAC uses Zymbit OID |
