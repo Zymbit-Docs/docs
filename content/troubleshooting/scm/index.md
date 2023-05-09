@@ -1,7 +1,7 @@
 ---
 title: "SCM Troubleshooting/FAQ"
 linkTitle: "SCM" 
-lastmod: "2023-01-31"
+lastmod: "2023-05-09"
 draft: false
 images: []
 weight: 15
@@ -94,7 +94,7 @@ Is:  `add_or_update_supervised_boot_file(filepath ="" , slot = 15)`
 
 #### Modifications from Standard Raspberry PI OS Lite
 
-The SCM ships with a pre-installed version of Raspberry PI OS Lite (bullseye 32bit) with a more secure configuration.
+The SCM ships with a pre-installed version of Raspberry PI OS Lite (bullseye 64bit) with a more secure configuration.
 
 {{% callout notice %}}
 The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com if you require a different image.
