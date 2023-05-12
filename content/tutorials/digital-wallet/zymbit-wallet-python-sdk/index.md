@@ -15,6 +15,8 @@ Updated: 2023-05-11
 
 Blockchain accounts, signatures, and transactions have an additional layer of complexity over traditional cryptographic keys and signatures. Our Wallet SDK aims to abstract away this complexity, enabling you to create and manage multiple blockchain wallets and seamlessly interact with smart contracts in your applicaitons without having to deal with their technical intricacies.
 
+These examples are derived from the [documentation](https://docs.zymbit.com/zymbit-wallet-sdk/zymbit-wallet-sdk-py/).
+
 ## Installation
 
 ```
@@ -363,3 +365,124 @@ Output:
         ]
 )]
 ```
+
+## EthConnect Library Examples
+
+### Create an ETH Transaction (EIP-1559)
+
+```
+from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager, EthConnect
+
+keyring = ZymbitEthKeyring(wallet_name = "MyExampleWallet")
+
+value_in_wei = EthConnect.eth_to_wei(1)
+recipient = keyring.get_accounts()[0].address
+transaction = EthConnect.create_transaction(value = value_in_wei, to = recipient)
+
+print(transaction)
+```
+
+Output:
+
+```
+EthTransaction(chain_id=1, nonce=0, max_priority_fee_per_gas=1, max_fee_per_gas=10, gas=21000, to=b'\x93\xd4X\xd6\xb1J\x02\x94:\x07p\x8a$\xd8\xa9\xf1B\xfcZ\x00', value=1000000000000000000, data=b'', access_list=())
+```
+
+### Contract Transactions (EIP-1559)
+
+For the deploying and executing contract examples, we will be using the following solidity contract:
+```
+pragma solidity >=0.7.0 <0.9.0;
+
+contract Counter {
+
+    uint public counter;
+
+    event IncrementedCounter (uint counter, address indexed sender);
+
+    constructor(uint initial) {
+        counter = initial;
+    }
+
+    function increment_counter() public {
+        counter += 1;
+        emit IncrementedCounter(counter, msg.sender);
+    }
+}
+```
+
+For this tutorial, this contract was deployed on the Sepolia test network
+
+#### Create an ETH Deploy Contract Transaction
+
+To deploy a contract, you need to save the contract ABI as a JSON file and the hex encoded bytecode as a txt file on your Pi's local file system. Once you have done that, you can deploy a contract like this:
+
+```
+from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager, EthConnect
+from web3 import Web3
+import binascii
+
+web3 = Web3(Web3.HTTPProvider("YOUR ETH NODE'S HTTPS ENDPOINT"))
+
+keyring = ZymbitEthKeyring(wallet_name = "MyExampleWallet1")
+sending_account = keyring.get_accounts()[1]
+
+chain_id = web3.eth.chain_id
+nonce = web3.eth.get_transaction_count(sending_account.address)
+value_in_wei = EthConnect.eth_to_wei(1)
+recipient = keyring.get_accounts()[0].address
+gas_price = web3.eth.gas_price
+gas_limit = 2100000
+transaction = EthConnect.create_deploy_contract_transaction(chain_id = chain_id, nonce = nonce, contract_abi_path = './ABI.json', contract_bytecode_path = "./bytecode.txt", constructor_args = [0], max_fee_per_gas = gas_price, gas = gas_limit)
+signed_transaction = EthConnect.sign_transaction(transaction, keyring, address = sending_account.address)
+
+serialized_transaction = EthConnect.rlp_serialize_transaction(signed_transaction)
+transaction_result_hash = web3.eth.send_raw_transaction(serialized_transaction)
+print("Transaction broadcast hash:\n%s" % binascii.hexlify(transaction_result_hash).decode("utf-8"))
+```
+
+Output:
+
+```
+Transaction broadcast hash:
+d8163f20bd3baf0f59ee23091eda5b0160147b7a4e4eeb3988306e3534a7e03d
+```
+
+You can view the transaction details [here](https://sepolia.etherscan.io/tx/0xd8163f20bd3baf0f59ee23091eda5b0160147b7a4e4eeb3988306e3534a7e03d)
+
+#### Create an ETH Execute Contract Transaction
+
+In this example, we are going to invoke the increment_counter function in our deployed contract. Here's how to do it:
+
+```
+from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager, EthConnect
+from web3 import Web3
+import binascii
+
+web3 = Web3(Web3.HTTPProvider("YOUR ETH NODE'S HTTPS ENDPOINT"))
+
+keyring = ZymbitEthKeyring(wallet_name = "MyExampleWallet1")
+sending_account = keyring.get_accounts()[1]
+
+chain_id = web3.eth.chain_id
+nonce = web3.eth.get_transaction_count(sending_account.address)
+value_in_wei = EthConnect.eth_to_wei(1)
+contract_address = "0xE575A1F131be23223ee59f00379FF13B913E9063" # The deployed contract's address on the Sepolia test network
+gas_price = web3.eth.gas_price
+gas_limit = 2100000
+transaction = EthConnect.create_execute_contract_transaction(chain_id = chain_id, nonce = nonce, contract_abi_path = './ABI.json', contract_address = contract_address, function_name= "increment_counter", args = [], max_fee_per_gas = gas_price, gas = gas_limit)
+signed_transaction = EthConnect.sign_transaction(transaction, keyring, address = sending_account.address)
+
+serialized_transaction = EthConnect.rlp_serialize_transaction(signed_transaction)
+transaction_result_hash = web3.eth.send_raw_transaction(serialized_transaction)
+print("Transaction broadcast hash:\n%s" % binascii.hexlify(transaction_result_hash).decode("utf-8"))
+```
+
+Output:
+
+```
+Transaction broadcast hash:
+ae5bc454c77405d6492e794a71fdb74342c8429091bc41967ba1f0ce3753c147
+```
+
+You can view the transaction details [here](https://sepolia.etherscan.io/tx/0xae5bc454c77405d6492e794a71fdb74342c8429091bc41967ba1f0ce3753c147)
