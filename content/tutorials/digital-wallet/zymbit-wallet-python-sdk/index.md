@@ -368,25 +368,49 @@ Output:
 
 ## EthConnect Library Examples
 
-### Create an ETH Transaction (EIP-1559)
+For this tutorial, we use the Sepolia test network to test sending our transactions.
+
+### Create and Broadcast an ETH Transaction (EIP-1559)
 
 ```
 from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager, EthConnect
+from web3 import Web3
+import binascii
 
-keyring = ZymbitEthKeyring(wallet_name = "MyExampleWallet")
+web3 = Web3(Web3.HTTPProvider("YOUR ETH NODE'S HTTPS ENDPOINT"))
 
-value_in_wei = EthConnect.eth_to_wei(1)
-recipient = keyring.get_accounts()[0].address
-transaction = EthConnect.create_transaction(value = value_in_wei, to = recipient)
+keyring = ZymbitEthKeyring(wallet_name = "MyExampleWallet1")
+sending_account = keyring.get_accounts()[1]
 
+chain_id = web3.eth.chain_id
+nonce = web3.eth.get_transaction_count(sending_account.address)
+value_in_wei = EthConnect.eth_to_wei(0.0001)
+recipient_address = keyring.get_accounts()[0].address
+gas_price = web3.eth.gas_price
+gas_limit = 21000
+transaction = EthConnect.create_transaction(chain_id = chain_id, nonce = nonce, value = value_in_wei, to = recipient_address, max_fee_per_gas = gas_price, gas = gas_limit)
 print(transaction)
+
+signed_transaction = EthConnect.sign_transaction(transaction, keyring, address = sending_account.address)
+print(signed_transaction)
+
+serialized_transaction = EthConnect.rlp_serialize_transaction(signed_transaction)
+transaction_result_hash = web3.eth.send_raw_transaction(serialized_transaction)
+print("Transaction broadcast hash:\n%s" % binascii.hexlify(transaction_result_hash).decode("utf-8"))
 ```
 
 Output:
 
 ```
-EthTransaction(chain_id=1, nonce=0, max_priority_fee_per_gas=1, max_fee_per_gas=10, gas=21000, to=b'\x93\xd4X\xd6\xb1J\x02\x94:\x07p\x8a$\xd8\xa9\xf1B\xfcZ\x00', value=1000000000000000000, data=b'', access_list=())
+EthTransaction(chain_id=11155111, nonce=30, max_priority_fee_per_gas=1, max_fee_per_gas=1000000007, gas=21000, to=b'.W\xa1s\xb2\xbb\nIF\xa8\xaa\x7f\xd9\x9f7=K\xf3\x98 ', value=100000000000000, data=b'', access_list=())
+
+SignedEthTransaction(chain_id=11155111, nonce=30, max_priority_fee_per_gas=1, max_fee_per_gas=1000000007, gas=21000, to=b'.W\xa1s\xb2\xbb\nIF\xa8\xaa\x7f\xd9\x9f7=K\xf3\x98 ', value=100000000000000, data=b'', access_list=(), y_parity=True, r=44987742661489270771188443846316967428376177535265140127433627783003713851105, s=54741034043774433582032940802071398050179513067469791027144539380885541407020)
+
+Transaction broadcast hash:
+4c2118a229b63ee096408233a19bea3d93340b44d141a397072093f98306d064
 ```
+
+You can view the transaction details [here](https://sepolia.etherscan.io/tx/0x4c2118a229b63ee096408233a19bea3d93340b44d141a397072093f98306d064)
 
 ### Contract Transactions (EIP-1559)
 
@@ -410,8 +434,6 @@ contract Counter {
     }
 }
 ```
-
-For this tutorial, this contract was deployed on the Sepolia test network
 
 #### Create an ETH Deploy Contract Transaction
 
@@ -452,7 +474,7 @@ You can view the transaction details [here](https://sepolia.etherscan.io/tx/0xd8
 
 #### Create an ETH Execute Contract Transaction
 
-In this example, we are going to invoke the increment_counter function in our deployed contract. Here's how to do it:
+In this example, we are going to invoke the ```increment_counter``` function in our deployed contract. Here's how to do it:
 
 ```
 from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager, EthConnect
