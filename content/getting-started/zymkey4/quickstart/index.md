@@ -5,7 +5,7 @@ description: ""
 aliases:
     - /quickstart/getting-started/zymkey4/
 date: ""
-lastmod: "03-21-2023"
+lastmod: "05-26-2023"
 draft: false
 images: []
 weight: 1
@@ -137,6 +137,13 @@ How to set cpu governor to performance.
 ## Install the client software
 
 Login to your host device and follow these steps to install the ZYMKEY4's client software.
+
+{{% callout notice %}}
+As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the follwing line to the bottom of the file, then reboot.
+
+`arm_64bit=0`
+
+{{% /callout %}}
 
 The ZYMKEY4 will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
 
