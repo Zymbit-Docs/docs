@@ -5,7 +5,7 @@ description: ""
 aliases:
     - /quickstart/getting-started/zymkey4/
 date: ""
-lastmod: "05-26-2023"
+lastmod: "06-06-2023"
 draft: false
 images: []
 weight: 1
@@ -63,7 +63,7 @@ Test the installation
 Battery installation is not required for the ZYMKEY4 to function, but it is highly recommended if your device is vulnerable to physical access!
 {{< /callout >}}
 
-To maintain the real-time clock (RTC) and tamper detection features in the event of power loss, install a **high quality** 3V `CR1025` coincell battery in the ZYMKEY4's battery slot with `+ve` **facing upward**.
+To maintain the real-time clock (RTC) and tamper detection features in the event of power loss, install a **high quality** 3V `CR1025` coincell battery (not included) in the ZYMKEY4's battery slot with `+ve` **facing upward**. Recommend CR1025 from [Panasonic](https://industrial.panasonic.com/cdbs/www-data/pdf2/AAA4000/AAA4000C273.pdf) or [Renata](https://www.mouser.com/datasheet/2/346/CR1025_v06-25259.pdf)
 
 ![Battery Install](ZK4-battery-install.png)
 
