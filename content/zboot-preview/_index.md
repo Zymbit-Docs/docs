@@ -49,10 +49,10 @@ tar xvf zymbit-ota-preview.tar
 ```
 
 The contents will be extracted into zymbit-ota-preview/. Files extracted: 
-| | |
-| install_zboot_tools.sh | Shell script to install zboot tools |
-| scripts/ | Scripts and configuration files for zboot |
-| zboot_artifacts/ | zboot executable and boot artifacts |
+
+| install_zboot_tools.sh | Shell script to install zboot tools       |
+| scripts/               | Scripts and configuration files for zboot |
+| zboot_artifacts/       | zboot executable and boot artifacts       |
 
 The install script will copy necessary scripts to /usr/bin and copy over zboot binaries to /boot. Because we copy binaries and modify files in /boot, if /dev/mmcblk0p1 is mounted somewhere other than /boot, the zboot binaries need to be copied to that mount point instead. For instance, if /dev/mmcblk0p1 is mounted on /myboot instead of /boot, please run:
 
@@ -108,9 +108,8 @@ sudo ./zymbit-image-convertor my.img
 
 The script will prompt for information:
 
-| | |
-| Name of Image?: myImg | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
-| Version?: 1.0 | An arbitrary version number for your reference. |
+| Name of Image?: myImg                         | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
+| Version?: 1.0                                 | An arbitrary version number for your reference. |
 | Boot File System Partition Number? (EX: 1): 1 | Partition number of boot filesystem in binary image file. Must be provided; no default. |
 | Root File System Partition Number? (EX: 2): 2 | Partition number of root filesystem in binary image file. Must be provided; no default. |
 
@@ -128,8 +127,7 @@ sudo ./zymbit-image-convertor -T
 
 The script will prompt for information:
 
-| | |
-|Name of Image?: my | Name of the converted output file. A zi extension will be added to the name. |
+|Name of Image?: my                    | Name of the converted output file. A zi extension will be added to the name. |
 | Version?: 1.0 | An arbitrary version number for your reference.
 | Boot tarball path? ./golden_boot.tar | Path including filename of boot tarball. Must be provided; no default. |
 | Root tarball path? ./golden_root.tar | Path including filename of root tarball. Must be provided; no default. |
@@ -146,23 +144,21 @@ Run: zboot_install_new_update with root permissions (this will be an executable 
 ```
 sudo zboot_install_new_update
 ```
-| | |
 | Name of Image? (Don't add .zi extension): myTar | Name of the zi formatted image. Leave off the zi extension |
-| Update endpoint? (Ex: /dev/sda1): /dev/sda1 | Endpoint location of myTar.zi image. | This should either be the USB device or the full URL of the file if pulling via HTTP. Not optional; no default. Example for URL: https://myserver.com/myTar.zi |
-| Update endpoint type?  1. USB 2. HTTPS : 1 | Enter 1 if using a USB device or 2 if using HTTPS. |
+| Update endpoint? (Ex: /dev/sda1): /dev/sda1     | Endpoint location of myTar.zi image. | This should either be the USB device or the full URL of the file if pulling via HTTP. Not optional; no default. Example for URL: https://myserver.com/myTar.zi |
+| Update endpoint type?  1. USB 2. HTTPS : 1      | Enter 1 if using a USB device or 2 if using HTTPS. |
 
 After this script finishes running, you can verify these parameters by looking at /boot/zbmanifest.txt.  (This file helps communicate these config params to zboot)
 
 `cat /boot/zbmanifest.txt`
 
-| | |
-| new_update_needed=1 | Flag set when zboot runs and detects it | needs an update If set to 0, zboot does not apply the update |
-| root_dev=/dev/mmcblk0p2 | The ACTIVE root partition |
-| root_a=/dev/mmcblk0p2 | Partition A |
-| root_b=/dev/mmcblk0p3 | Partition B |
+| new_update_needed=1       | Flag set when zboot runs and detects it | needs an update If set to 0, zboot does not apply the update |
+| root_dev=/dev/mmcblk0p2   | The ACTIVE root partition |
+| root_a=/dev/mmcblk0p2     | Partition A |
+| root_b=/dev/mmcblk0p3     | Partition B |
 | update_endpoint=/dev/sda1 | If zi image is not detected in /etc/zymbit/zboot/update_artifacts/output of ACTIVE root, will look here for zi image and attempt download |
-| endpoint_type=USB | Either USB or HTTPS |
-| update_name=base_ota | The base name of the zi image |
+| endpoint_type=USB         | Either USB or HTTPS |
+| update_name=base_ota      | The base name of the zi image |
 
 Reboot to boot using Zboot and apply your updates.
 
