@@ -179,7 +179,7 @@ Reboot to boot using Zboot and apply your updates.
 
 `sudo reboot`
 
-## Zboot Boot Process
+## zboot Boot Process
 
 The Zboot process will now take place. On the console, you will see:
 
