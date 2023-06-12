@@ -50,6 +50,8 @@ tar xvf zymbit-ota-preview.tar
 
 The contents will be extracted into zymbit-ota-preview/. Files extracted: 
 
+| Item | Description |
+| ----- | ----- |
 | install_zboot_tools.sh | Shell script to install zboot tools       |
 | scripts/               | Scripts and configuration files for zboot |
 | zboot_artifacts/       | zboot executable and boot artifacts       |
@@ -108,6 +110,8 @@ sudo ./zymbit-image-convertor my.img
 
 The script will prompt for information:
 
+| Item | Description |
+| ----- | ----- |
 | Name of Image?: myImg                         | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
 | Version?: 1.0                                 | An arbitrary version number for your reference. |
 | Boot File System Partition Number? (EX: 1): 1 | Partition number of boot filesystem in binary image file. Must be provided; no default. |
@@ -127,6 +131,8 @@ sudo ./zymbit-image-convertor -T
 
 The script will prompt for information:
 
+| Item | Description |
+| ----- | ----- |
 |Name of Image?: my                    | Name of the converted output file. A zi extension will be added to the name. |
 | Version?: 1.0 | An arbitrary version number for your reference.
 | Boot tarball path? ./golden_boot.tar | Path including filename of boot tarball. Must be provided; no default. |
@@ -144,6 +150,8 @@ Run: zboot_install_new_update with root permissions (this will be an executable 
 ```
 sudo zboot_install_new_update
 ```
+| Item | Description |
+| ----- | ----- |
 | Name of Image? (Don't add .zi extension): myTar | Name of the zi formatted image. Leave off the zi extension |
 | Update endpoint? (Ex: /dev/sda1): /dev/sda1     | Endpoint location of myTar.zi image. | This should either be the USB device or the full URL of the file if pulling via HTTP. Not optional; no default. Example for URL: https://myserver.com/myTar.zi |
 | Update endpoint type?  1. USB 2. HTTPS : 1      | Enter 1 if using a USB device or 2 if using HTTPS. |
@@ -152,6 +160,8 @@ After this script finishes running, you can verify these parameters by looking a
 
 `cat /boot/zbmanifest.txt`
 
+| Item | Description |
+| ----- | ----- |
 | new_update_needed=1       | Flag set when zboot runs and detects it | needs an update If set to 0, zboot does not apply the update |
 | root_dev=/dev/mmcblk0p2   | The ACTIVE root partition |
 | root_a=/dev/mmcblk0p2     | Partition A |
