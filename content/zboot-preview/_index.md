@@ -138,7 +138,7 @@ The script will prompt for information:
 
 | Item | Description |
 | ----- | ----- |
-|Name of Image?: my                    | Name of the converted output file. A zi extension will be added to the name. |
+|Name of Image?: myTar | Name of the converted output file. A zi extension will be added to the name. |
 | Version?: 1.0 | An arbitrary version number for your reference.
 | Boot tarball path? ./golden_boot.tar | Path including filename of boot tarball. Must be provided; no default. |
 | Root tarball path? ./golden_root.tar | Path including filename of root tarball. Must be provided; no default. |
@@ -173,7 +173,7 @@ After this script finishes running, you can verify these parameters by looking a
 | root_b=/dev/mmcblk0p3     | Partition B |
 | update_endpoint=/dev/sda1 | If zi image is not detected in /etc/zymbit/zboot/update_artifacts/output of ACTIVE root, will look here for zi image and attempt download |
 | endpoint_type=USB         | Either USB or HTTPS |
-| update_name=base_ota      | The base name of the zi image |
+| update_name=myTar      | The base name of the zi image |
 
 Reboot to boot using Zboot and apply your updates.
 
