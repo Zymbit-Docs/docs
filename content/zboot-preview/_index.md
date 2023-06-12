@@ -33,7 +33,12 @@ If the device has only one root partition, zboot creates an A/B partition scheme
 
 If the device has an existing A/B partition scheme, zboot loads the new image to the Backup partition of A/B and sets the updated partition to Active. 
 
-IMPORTANT: The current Preview of zboot does not have roll back recovery. It cannot detect if the device doesn’t boot up. 
+IMPORTANT: 
+
+{{< callout warning >}}
+The current Preview of zboot does not have roll back recovery. It cannot detect if the device doesn’t boot up. A failure to boot does not allow access to the SCM in order to take action to recover.
+{{< /callout >}}
+
 ## Downloading zboot Utilities
 
 Download the zboot utilities to the SCM. The zboot utilities can be downloaded from here with curl:
@@ -186,12 +191,14 @@ The Zboot process will now take place. On the console, you will see:
 ## Change Active/Backup Partitions
 To switch the Active partition manually, edit /boot/cmdline.txt and change the root= parameter to point at the other partition:
 
-```
 Current Partition Active:
-console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 fsck.repair=yes rootwait
+
+`console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 fsck.repair=yes rootwait`
+
 Switch to other Partition Active:
-console=serial0,115200 console=tty1 root=/dev/mmcblk0p 3 rootfstype=ext4 fsck.repair=yes rootwait
-```
+
+`console=serial0,115200 console=tty1 root=/dev/mmcblk0p3 rootfstype=ext4 fsck.repair=yes rootwait`
+
 
 ## Warnings
 * For the default eMMC size of 32GB, the maximum available size for root partition data is approximately 14.4 GB. There is currently no sanity check for the data size. Please keep your root filesystem data under 14.4 GB.
