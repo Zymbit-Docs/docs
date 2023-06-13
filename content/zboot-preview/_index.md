@@ -1,6 +1,6 @@
 ---
 title: "Bootware Preview        June 1, 2023"
-linkTitle: "zboot preview"
+linkTitle: "Bootware Preview"
 icon: ""
 description: ""
 aliases:
@@ -17,7 +17,7 @@ images: []
 Bootware™ is a set of software, tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/), and
 therefore also the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). that will provide:
 
-• Trusted execution layer with secure, supervised boot chain  
+* Trusted execution layer with secure, supervised boot chain  
 * Full image secure updates  
 * Automatic secure image recovery (A/B, Safe)  
 * Customer-defined OTA distribution  
