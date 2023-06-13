@@ -1,5 +1,5 @@
 ---
-title: "zboot preview"
+title: "Bootware Preview        June 1, 2023"
 linkTitle: "zboot preview"
 icon: ""
 description: ""
@@ -14,19 +14,60 @@ images: []
 # layout: "single"
 ---
 
-## Overview
+Bootware™ is a set of software, tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/), and
+therefore also the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). that will provide:
 
-Zymbit has begun the rollout of a Bootware strategy, making modern IoT infrastructure resilient to compromised updates and bricked hardware. The first portion begins to address image updates in secure manner that provides for rollover and recovery. This early preview implementation provides A/B partitioning with zboot hardened bootloader.
+• Trusted execution layer with secure, supervised boot chain  
+* Full image secure updates  
+* Automatic secure image recovery (A/B, Safe)  
+* Customer-defined OTA distribution  
+* OTA update diagnostics  
+* Optional Zymbit distribution/recovery service  
 
-**NOTE:** Only available on the [SCM](https://www.zymbit.com/scm/), and [SEN](https://www.zymbit.com/secure-compute-node/) in limited numbers at this time.
+### Bootware Release Schedule:  
+* Bootware Preview – Now. Limited functionality detailed below
+* Bootware Full Release to OEMs “Beta” – August 2023
+* Bootware Full Standard Release – Q4 2023
 
+### BOOTWARE PREVIEW FEATURE SET (JUNE 1, 2023)
+#### Bootware Preview was designed for customers to do the following:
 
-## zboot Summary
+1. Transfer a Raspberry Pi CM4 image to an SCM
+2. Replicate a SCM “golden image” to other SCMs
+3. In a single SCM, store an original golden image in one eMMC partition plus a copy for development in a
+second partition, allowing regression to the original golden image at will
 
-Zboot can pull and reflash a device with a new user image. In the current Preview, the image can be downloaded two ways:
+#### To achieve this functionality, Bootware Preview provides the following new SCM functionality:
 
-* over the internet via http 
+1. The ability to make and update two partitions (A/B), managed by a partition supervisor called zboot.
+2. A zboot methodology to load (and subsequently reload) the A/B partitions from a USB or a URL (Ethernet)
+3. The ability to manually select to boot from one partition or the other.
+4. Initial tools and scripts for creating and loading images into the A/B partitions.
 
+#### Important Bootware Preview Restrictions
+
+1. Maximum SCM partition size is 14.4 GB. Images larger than 14.4 GB should not be attempted, else it may
+render the SCM inoperable. Size checks will be implemented in a future release.
+2. Two partitions (A/B) are supported. A shared data partition is not included and will be implemented in a future release.
+3. The A/B partitions are not to be encrypted during Bootware development in the Preview release. Partition and kernel encryption
+will be implemented in a future release.
+4. The A/B partition selection for boot is handled manually. Automated process, scheduling and
+rollback/recovery will be implemented in a future release.
+5. Only load SCM or CM4 images that have been tested. The Preview unit cannot recover if it does not
+boot. Bootware will safeguard from this in a future release. by A/B rollback recovery as well as “bare metal
+recovery”, including up to reformatting the eMMC, reloading zboot and a safe image.
+6. The Preview SCM uses its own/boot/config.txt that both enables zboot and the dwc2 driver. Do not enable
+otg mode in config.txt. Bootware rollback recovery (A/B/Safe) will be implemented in a future release.
+Confidential & Proprietary Information, Zymbit, Inc., www.zymbit.com
+7. USB storage devices most likely require a powered hub. Failure to do so may result in the SCM rebooting.
+8. Bullseye 64-based images are supported by the Preview. For other images, please contact Zymbit for
+verification
+
+## Using zboot - Hardened Zymbit boot utility
+
+Zboot is Zymbit's boot utility that can pull and reflash a device with a new user image. In the current Preview, the image can be downloaded two ways:
+
+* over the internet via https  
 * from a USB storage device
 
 If the device has only one root partition, zboot creates an A/B partition scheme and loads the new image to both partitions. Partition A will be Active and Partition B will be Backup.
@@ -61,13 +102,7 @@ The contents will be extracted into zymbit-ota-preview/. Files extracted:
 | scripts/               | Scripts and configuration files for zboot |
 | zboot_artifacts/       | zboot executable and boot artifacts       |
 
-The install script will copy necessary scripts to /usr/bin and copy over zboot binaries to /boot. Because we copy binaries and modify files in /boot, if /dev/mmcblk0p1 is mounted somewhere other than /boot, the zboot binaries need to be copied to that mount point instead. For instance, if /dev/mmcblk0p1 is mounted on /myboot instead of /boot, please run:
 
-```
-sudo cp -a zymbit-ota-preview/zboot_artifacts/. /tmp/p1 
-```
-
-after the install script.
 
 Run the following install script on the SCM to install the zboot utilities:
 
@@ -87,9 +122,20 @@ Done!
 
 Once completed, all necessary files required for loading new images via zboot will be installed.
 
+NOTE: The install script will copy necessary scripts to /usr/bin and copy over zboot binaries to /boot. Because we copy binaries and modify files in /boot, if /dev/mmcblk0p1 is mounted somewhere other than /boot, the zboot binaries need to be copied to that mount point instead. For instance, if /dev/mmcblk0p1 is mounted on /myboot instead of /boot, after running the install script, please run:
+
+```
+sudo cp -a zymbit-ota-preview/zboot_artifacts/. /myboot
+```
+
 ## Installing and running zboot to reflash an image
 
 zboot requires images in a particular format unique to zboot. An image conversion tool is provided. Input images can be either complete binary images of your entire eMMC or tarballs of your /boot and /rootfs partitions. NOTE: This does not have to be done on the running device. The script can be run on any workstation.
+
+> If you would like to get started with a sample image, we've converted the base image installed on the SCM for the preview to a zboot format. Otherwise, continue on to create your own image. Our example image can be downloaded from here:
+```
+curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_ota.zi --output base_ota.zi
+```
 
 The script used to convert to a zboot image is: 
 
@@ -99,8 +145,9 @@ zymbit-ota-preview/scripts/zymbit-image-converter [ test.img | -T ]
 	-T	Takes a boot partition tarball and root partition tarball as input.
 ```
 
-### Examples:
+### Examples of Image conversions:
 
+For both examples below, please load pre-requisites:
 ```
 cd zymbit-ota-preview/scripts
 chmod +x zymbit-image-convertor
@@ -150,7 +197,7 @@ The script extracts the boot/root tarballs of the binary image. It will then pac
 Put the .zi image from the script on a server or USB drive for download. Zboot downloads images from either a USB storage device or the internet via curl requests.
 
 ## Use zboot to Install the New Image
-Run: zboot_install_new_update with root permissions (this will be an executable in /usr/bin/ and can be called anywhere). Follow the prompted questions for input params needed:
+Run: `zboot_install_new_update` with root permissions (this will be an executable in /usr/bin/ and can be called anywhere). Follow the prompted questions for input params needed:
 
 ```
 sudo zboot_install_new_update
@@ -200,10 +247,22 @@ Switch to other Partition Active:
 `console=serial0,115200 console=tty1 root=/dev/mmcblk0p3 rootfstype=ext4 fsck.repair=yes rootwait`
 
 
-## Warnings
-* For the default eMMC size of 32GB, the maximum available size for root partition data is approximately 14.4 GB. There is currently no sanity check for the data size. Please keep your root filesystem data under 14.4 GB.
-* Rollback recovery and bare metal recovery is not currently implemented. You can swap the A/B partitions manually. If the unit doesn’t boot up properly, then there is currently no way to recover this unit.
-* The SCM depends on the dwc2 driver instead of otg_mode driver. Do not enable otg_mode in /boot/config.txt or the SCM will not boot and cannot be recovered. /boot/config.txt from the installation scripts will be used. /boot/config.txt from your image will be ignored.
-* Please note with the Waveshare IO board, any USB storage devices should be used in conjunction with a powered hub. Otherwise the SCM may reboot upon insertion
+# FAQ
+
+Q. What happens if I cannot boot into the ACTIVE partition?  
+A. For this Preview, you can only manually switch from the ACTIVE to the BACKUP partition. You must be booted
+to switch partitions.
+
+Q. How do I create my own custom image using Preview?  
+A. The recommended procedure is to create two tarballs - one of the boot partition and one of the root partition.
+An alternative would be to use a CM4 to create image and then use dd or similar tool to extract a binary
+image from there. The included converter utility, zymbit-image-convertor can create a zboot image from either a
+binary image or two tarballs.
+
+Q. What happens if my boot artifacts have a problem during Preview? Can I recover?  
+A. Unfortunately no. As mentioned above, rollback/recovery will be implemented per the Bootware in a future release.
+
+Q. Can I start over, meaning completely from scratch, if a Preview unit cannot boot?  
+A. You must be able to access zboot. If you cannot boot, there is no method for recovery
 
 
