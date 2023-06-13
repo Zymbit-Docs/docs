@@ -4,7 +4,7 @@ linkTitle: "Bootware Preview"
 icon: ""
 description: ""
 aliases:
-    - /quickstart/zboot-preview/
+    - /zboot-preview/
 date: "2023-06-09"
 lastmod: ""
 draft: false
