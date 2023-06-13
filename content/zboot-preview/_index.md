@@ -205,7 +205,7 @@ sudo zboot_install_new_update
 | Item | Description |
 | ----- | ----- |
 | Name of Image? (Don't add .zi extension): myTar | Name of the zi formatted image. Leave off the zi extension |
-| Update endpoint? (Ex: /dev/sda1): /dev/sda1     | Endpoint location of myTar.zi image. | This should either be the USB device or the full URL of the file if pulling via HTTP. Not optional; no default. Example for URL: https://myserver.com/myTar.zi |
+| Update endpoint? (Ex: /dev/sda1): /dev/sda1     | Endpoint location of myTar.zi image. This should either be the USB device or the full URL of the file if pulling via HTTP. Not optional; no default. Example for URL: https://myserver.com/myTar.zi |
 | Update endpoint type?  1. USB 2. HTTPS : 1      | Enter 1 if using a USB device or 2 if using HTTPS. |
 
 After this script finishes running, you can verify these parameters by looking at /boot/zbmanifest.txt.  (This file helps communicate these config params to zboot)
