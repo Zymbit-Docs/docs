@@ -3283,5 +3283,21 @@ toc: true
 </div>
 </div>
 </div>
+<div class="method">
+
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkGetZbootCFG</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">char</span> <span class="pointer-ref">\*\*</span> <span class="name">cfg\_str</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkGetZbootCFG-8e9e45bc" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
+<div class="method">
+
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkSetZbootCFGVar</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">var</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation">const</span>  <span class="type">char</span> <span class="pointer-ref">\*</span> <span class="name">value</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkSetZbootCFGVar-3e3db87d" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
 </div>
 </div>

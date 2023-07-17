@@ -2040,6 +2040,14 @@ toc: true
 </div>
 </div>
 </div>
+<div class="method">
+
+#### <span><span class="name">set\_zboot\_cfg\_var</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="name">var</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="name">value</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="setzbootcfgvar-f55fd7b0" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description"></div>
+</div>
+</div>
 </div>
 </div>
 <div class="class">
