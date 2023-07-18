@@ -5,7 +5,7 @@ icon: ""
 description: ""
 aliases:
     - /zboot-preview/
-date: "2023-06-09"
+date: "2023-07-18"
 lastmod: ""
 draft: false
 weight: 10
@@ -25,7 +25,8 @@ therefore also the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure
 * Optional Zymbit distribution/recovery service  
 
 ### Bootware Release Schedule:  
-* Bootware Preview – Now. Limited functionality detailed below
+* Bootware Preview1 – Now. Limited functionality detailed below
+* Bootware Preview2 - Early August. Will include rollback/recovery
 * Bootware Full Release to OEMs “Beta” – August 2023
 * Bootware Full Standard Release – Q4 2023
 
@@ -164,14 +165,14 @@ The script will prompt for information:
 
 | Item | Description |
 | ----- | ----- |
-| Name of Image?: myImg                         | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
+| Name of Image?: base_ota                         | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
 | Version?: 1.0                                 | An arbitrary version number for your reference. |
 | Boot File System Partition Number? (EX: 1): 1 | Partition number of boot filesystem in binary image file. Must be provided; no default. |
 | Root File System Partition Number? (EX: 2): 2 | Partition number of root filesystem in binary image file. Must be provided; no default. |
 
 The script extracts the boot/root tarballs of the binary image. It will then packages it up in a Zymbit image and output it to:
 
-`/etc/zymbit/zboot/update_artifacts/output/myImg.zi`
+`/etc/zymbit/zboot/update_artifacts/output/base_ota.zi`
 
 ### Example to convert boot/root tarballs (created from tar cvf my_boot.tar <boot_part>, tar cvf my_rfs.tar <root_part>)
 
@@ -185,14 +186,14 @@ The script will prompt for information:
 
 | Item | Description |
 | ----- | ----- |
-|Name of Image?: myTar | Name of the converted output file. A zi extension will be added to the name. |
+|Name of Image?: base_ota | Name of the converted output file. A zi extension will be added to the name. |
 | Version?: 1.0 | An arbitrary version number for your reference.
 | Boot tarball path? ./golden_boot.tar | Path including filename of boot tarball. Must be provided; no default. |
 | Root tarball path? ./golden_root.tar | Path including filename of root tarball. Must be provided; no default. |
 
 The script extracts the boot/root tarballs of the binary image. It will then package it up in a Zymbit image and output it to:
 
-`/etc/zymbit/zboot/update_artifacts/output/myTar.zi`
+`/etc/zymbit/zboot/update_artifacts/output/base_ota.zi`
 
 Put the .zi image from the script on a server or USB drive for download. Zboot downloads images from either a USB storage device or the internet via curl requests.
 
@@ -204,8 +205,8 @@ sudo zboot_install_new_update
 ```
 | Item | Description |
 | ----- | ----- |
-| Name of Image? (Don't add .zi extension): myTar | Name of the zi formatted image. Leave off the zi extension |
-| Update endpoint? (Ex: /dev/sda1): /dev/sda1     | Endpoint location of myTar.zi image. This should either be the USB device or the full URL of the file if pulling via HTTP. Not optional; no default. Example for URL: https://myserver.com/myTar.zi |
+| Name of Image? (Don't add .zi extension): base_ota | Name of the zi formatted image. Leave off the zi extension. Important: For this Preview this name must match the name of the file in the enpoint URL below. |
+| Update endpoint? (Ex: /dev/sda1): /dev/sda1     | Endpoint location of base_ota.zi image. This should either be the USB device or the full URL of the file if pulling via HTTP. Not optional; no default. Example for URL: https://myserver.com/base_ota.zi |
 | Update endpoint type?  1. USB 2. HTTPS : 1      | Enter 1 if using a USB device or 2 if using HTTPS. |
 
 After this script finishes running, you can verify these parameters by looking at /boot/zbmanifest.txt.  (This file helps communicate these config params to zboot)
@@ -220,9 +221,9 @@ After this script finishes running, you can verify these parameters by looking a
 | root_b=/dev/mmcblk0p3     | Partition B |
 | update_endpoint=/dev/sda1 | If zi image is not detected in /etc/zymbit/zboot/update_artifacts/output of ACTIVE root, will look here for zi image and attempt download |
 | endpoint_type=USB         | Either USB or HTTPS |
-| update_name=myTar      | The base name of the zi image |
+| update_name=base_ota      | The base name of the zi image |
 
-Reboot to boot using Zboot and apply your updates.
+Reboot to boot into Zboot and apply your updates.
 
 `sudo reboot`
 
@@ -263,6 +264,6 @@ Q. What happens if my boot artifacts have a problem during Preview? Can I recove
 A. Unfortunately no. As mentioned above, rollback/recovery will be implemented per the Bootware in a future release.
 
 Q. Can I start over, meaning completely from scratch, if a Preview unit cannot boot?  
-A. You must be able to access zboot. If you cannot boot, there is no method for recovery
+A. You must be able to access zboot. If you cannot boot, there is currently no method for recovery in this Preview.
 
 
