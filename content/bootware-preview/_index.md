@@ -1,11 +1,11 @@
 ---
-title: "Bootware Preview        June 1, 2023"
+title: "Bootware Preview2 DRAFT        Early August, 2023"
 linkTitle: "Bootware Preview"
 icon: ""
 description: ""
 aliases:
     - /zboot-preview/
-date: "2023-07-18"
+date: "2023-07-27"
 lastmod: ""
 draft: false
 weight: 10
@@ -14,8 +14,7 @@ images: []
 # layout: "single"
 ---
 
-Bootware™ is a set of software, tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/), and
-therefore also the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). that will provide:
+Bootware™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). Bootware™ includes:
 
 * Trusted execution layer with secure, supervised boot chain  
 * Full image secure updates  
@@ -27,11 +26,11 @@ therefore also the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure
 ### Bootware Release Schedule:  
 * Bootware Preview1 – Now. Limited functionality detailed below
 * Bootware Preview2 - Early August. Will include rollback/recovery
-* Bootware Full Release to OEMs “Beta” – August 2023
+* Bootware Full Release to OEMs “Beta” – Late August 2023
 * Bootware Full Standard Release – Q4 2023
 
-### BOOTWARE PREVIEW FEATURE SET (JUNE 1, 2023)
-#### Bootware Preview was designed for customers to do the following:
+### BOOTWARE PREVIEW1 FEATURE SET (JUNE 1, 2023)
+#### Bootware Preview1 was designed for customers to do the following:
 
 1. Transfer a Raspberry Pi CM4 image to an SCM
 2. Replicate a SCM “golden image” to other SCMs
