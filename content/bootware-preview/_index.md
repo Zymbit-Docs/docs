@@ -85,13 +85,13 @@ The current Preview of zboot does not have roll back recovery. It cannot detect 
 Download the zboot utilities to the SCM. The zboot utilities can be downloaded from here with curl:
 
 ```
-curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/zymbit-ota-preview.tar --output zymbit-ota-preview.tar
+curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/zymbit-ota-preview2.tar --output zymbit-ota-preview2.tar
 ```
 
 Once the tar file is downloaded, untar:
 
 ```
-tar xvf zymbit-ota-preview.tar
+tar xvf zymbit-ota-preview2.tar
 ```
 
 The contents will be extracted into zymbit-ota-preview/. Files extracted: 
@@ -118,9 +118,10 @@ Building dependency tree... Done
 …
 Installing zboot...
 Done!
+After installing the zboot tools. A reboot is required. Reboot now? (y/n)
 ```
 
-Once completed, all necessary files required for loading new images via zboot will be installed.
+Reboot to complete the installation process. Once completed, all necessary files required for loading new images via zboot will be installed.
 
 NOTE: The install script will copy necessary scripts to /usr/bin and copy over zboot binaries to /boot. Because we copy binaries and modify files in /boot, if /dev/mmcblk0p1 is mounted somewhere other than /boot, the zboot binaries need to be copied to that mount point instead. For instance, if /dev/mmcblk0p1 is mounted on /myboot instead of /boot, after running the install script, please run:
 
@@ -231,11 +232,27 @@ Reboot to boot into Zboot and apply your updates.
 The Zboot process will now take place. On the console, you will see:
 
 * “Loading zboot please wait…” message, which takes around 4-5min.
+* The A/B partitions will be configured and setup for LUKS encryption protected by the Zymbit HSM
 * It will then take a few minutes to get/unpack tarballs from the image.
 * It will take some time to unpack the image into the A/B root partitions - approximately 7 minutes, each.
 * Once it's done unpacking the image to the A and B partitions, it will boot into the updated ACTIVE partition. You can use `lsblk` to examine the partitions.
 
+## Reload all utilities
+
+The Bootware utilities are needed for Bootware to function. If not included in your newly loaded image, you will need to load the utilities into your partition(s).
+
+## Recovery
+
+Each successful boot will clear a max_boot_failure counter. A max_boot_failure count of 3 (currently not user configurable) will trigger the recovery mechanism. The BACKUP partition will become the ACTIVE partition. If neither can boot, the endpoint with a good image will be loaded.
+
+## Force Failover
+
+## Automatic Update Process
+
+Bootware is configured with a cronjob that will check your endpoint for a new image once every minute. If Bootware detects a new image, it will attempt to pull down the new image and reload to the BACKUP partition. The BACKUP partition will then be set as the ACTIVE partition for the next boot. If the next boot fails, Bootware will move the ACTIVE partition back to the original ACTIVE partition.
+
 ## Change Active/Backup Partitions
+OUT OF DATE FOR PREVIEW2
 To switch the Active partition manually, edit /boot/cmdline.txt and change the root= parameter to point at the other partition:
 
 Current Partition Active:
@@ -250,17 +267,15 @@ Switch to other Partition Active:
 # FAQ
 
 Q. What happens if I cannot boot into the ACTIVE partition?  
-A. For this Preview, you can only manually switch from the ACTIVE to the BACKUP partition. You must be booted
-to switch partitions.
-
+A.If your ACTIVE fails to boot more than 3 times, Bootware will switch the ACTIVE and BACKUP partitions.
 Q. How do I create my own custom image using Preview?  
 A. The recommended procedure is to create two tarballs - one of the boot partition and one of the root partition.
 An alternative would be to use a CM4 to create image and then use dd or similar tool to extract a binary
 image from there. The included converter utility, zymbit-image-convertor can create a zboot image from either a
 binary image or two tarballs.
 
-Q. What happens if my boot artifacts have a problem during Preview? Can I recover?  
-A. Unfortunately no. As mentioned above, rollback/recovery will be implemented per the Bootware in a future release.
+Q. What happens if my boot artifacts have a problem during Preview2? Can I recover?  
+A. Unfortunately no. Rollback/recovery will be implemented per the Bootware in a future release.
 
 Q. Can I start over, meaning completely from scratch, if a Preview unit cannot boot?  
 A. You must be able to access zboot. If you cannot boot, there is currently no method for recovery in this Preview.
