@@ -5,7 +5,7 @@ icon: ""
 description: ""
 aliases:
     - /zboot-preview/
-date: "2023-07-27"
+date: "2023-08-09"
 lastmod: ""
 draft: false
 weight: 10
@@ -85,13 +85,13 @@ The current Preview of zboot does not have roll back recovery. It cannot detect 
 Download the zboot utilities to the SCM. The zboot utilities can be downloaded from here with curl:
 
 ```
-curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/zymbit-ota-preview2.tar --output zymbit-ota-preview2.tar
+curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/zymbit-ota-preview2.tgz --output zymbit-ota-preview2.tgz
 ```
 
 Once the tar file is downloaded, untar:
 
 ```
-tar xvf zymbit-ota-preview2.tar
+tar xvzf zymbit-ota-preview2.tgz
 ```
 
 The contents will be extracted into zymbit-ota-preview/. Files extracted: 
@@ -133,7 +133,10 @@ sudo cp -a zymbit-ota-preview/zboot_artifacts/. /myboot
 
 zboot requires images in a particular format unique to zboot. An image conversion tool is provided. Input images can be either complete binary images of your entire eMMC or tarballs of your /boot and /rootfs partitions. NOTE: This does not have to be done on the running device. The script can be run on any workstation.
 
+TODO: Update the sample image in the next step. This image is from Preview1
+
 > If you would like to get started with a sample image, we've converted the base image installed on the SCM for the preview to a zboot format. Otherwise, continue on to create your own image. Our example image can be downloaded from here:
+
 ```
 curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_ota.zi --output base_ota.zi
 ```
@@ -141,25 +144,33 @@ curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_ota.zi --output base_o
 The script used to convert to a zboot image is: 
 
 ```
-zymbit-ota-preview/scripts/zymbit-image-converter [ test.img | -T ]
+zymbit-ota-preview/scripts/zymbit-image-converter [ test.img | {-b <boot.tar> -r <root.tar} | -z ] [-o]
 	test.img	Binary image file of eMMC (e.g. created from dd). Name of output image need not match.
-	-T	Takes a boot partition tarball and root partition tarball as input.
+	-b	Use this boot tarball as input
+    -r  Use this root tarball as input
+    -o  Output directory for new .zi image
+    -z  Creates a zi image from your current running root file system.
 ```
 
 ### Examples of Image conversions:
 
-For both examples below, please load pre-requisites:
 ```
-cd zymbit-ota-preview/scripts
-chmod +x zymbit-image-convertor
-sudo pip3 install pycryptodome
+cd ~/zymbit-ota-preview/scripts
+```
+
+### Example to create a zi image from your current running root file system
+
+```
+sudo ./zymbit-image-convertor my.img
 ```
 
 ### Example to convert a binary image file (created from dd if=/dev/sda bs=4M of=my.img):
 
 ```
-sudo ./zymbit-image-convertor my.img
+sudo ./zymbit-image-convertor my.img -z
 ```
+
+TODO: Needs updating 
 
 The script will prompt for information:
 
@@ -279,5 +290,4 @@ A. Unfortunately no. Rollback/recovery will be implemented per the Bootware in a
 
 Q. Can I start over, meaning completely from scratch, if a Preview unit cannot boot?  
 A. You must be able to access zboot. If you cannot boot, there is currently no method for recovery in this Preview.
-
 
