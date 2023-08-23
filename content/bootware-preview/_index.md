@@ -7,7 +7,6 @@ aliases:
     - /zboot-preview/
 date: "2023-08-09"
 lastmod: ""
-mermaid: true
 draft: false
 weight: 10
 images: []
@@ -29,15 +28,6 @@ Bootware™ is a set of software tools and micro services for the Zymbit Secure 
 * Bootware Preview2 - Early August. Will include rollback/recovery
 * Bootware Full Release to OEMs “Beta” – Late August 2023
 * Bootware Full Standard Release – Q4 2023
-
-{{< mermaid >}}
-flowchart LR
-    y("👫 You") --> h{"🤝 Found this helpful?"}
-    h --> |Yes| r[/"⭐ Check out my featured posts!"/]
-    h --> |No| su[/"📝 Suggest changes by clicking near the title"/]
-    click r "/categories/featured" _blank
-{{< /mermaid >}}
-
 
 ### BOOTWARE PREVIEW1 FEATURE SET (JUNE 1, 2023)
 #### Bootware Preview1 was designed for customers to do the following:
