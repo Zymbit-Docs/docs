@@ -30,15 +30,6 @@ Bootware™ is a set of software tools and micro services for the Zymbit Secure 
 * Bootware Full Release to OEMs “Beta” – Late August 2023
 * Bootware Full Standard Release – Q4 2023
 
-```goat
-
-     .
-    / \
-   +   +
-   |   |
-  Yes  No
-```
-
 {{< mermaid >}}
 flowchart LR
     y("👫 You") --> h{"🤝 Found this helpful?"}
