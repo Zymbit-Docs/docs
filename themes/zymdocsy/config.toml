@@ -22,8 +22,13 @@ isHTML = true
 mediaType = "text/html"
 path = "_print"
 permalinkable = false
+guessSyntax = false
 
 offlineSearch = true
+
+[params.mermaid]
+enable = true
+
 
 
 # User interface configuration
