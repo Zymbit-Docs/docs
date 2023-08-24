@@ -31,14 +31,16 @@ Bootware™ is a set of software tools and micro services for the Zymbit Secure 
 * Bootware Full Standard Release – Q4 2023
 
 ### Preview 2 
-{{< mermaid >}}
+
+<div class="mermaid">
 flowchart TD
     A[Release Preview 2] --> B{Is it Friday?};
     B -- Yes --> C[Do not deploy!];
     B -- No --> D[Push to S3 bucket!];
     C ----> E[Enjoy your weekend!];
     D ----> E[Enjoy your weekend!];
-{{< /mermaid >}}
+</div>
+<script async src="https://unpkg.com/mermaid@8.2.3/dist/mermaid.min.js"></script>
 
 
 ### BOOTWARE PREVIEW1 FEATURE SET (JUNE 1, 2023)
