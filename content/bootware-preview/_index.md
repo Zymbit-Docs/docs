@@ -10,6 +10,7 @@ lastmod: ""
 draft: false
 weight: 10
 images: []
+mermaid: true
 # headless: true
 # layout: "single"
 ---
@@ -30,14 +31,14 @@ Bootware™ is a set of software tools and micro services for the Zymbit Secure 
 * Bootware Full Standard Release – Q4 2023
 
 ### Preview 2 
-{{< mermaid >}}
+{{% mermaid %}}
 flowchart TD
     A[Release Preview 2] --> B{Is it Friday?};
     B -- Yes --> C[Do not deploy!];
     B -- No --> D[Push to S3 bucket!];
     C ----> E[Enjoy your weekend!];
     D ----> E[Enjoy your weekend!];
-{{< /mermaid >}}
+{{% /mermaid %}}
 
 
 ### BOOTWARE PREVIEW1 FEATURE SET (JUNE 1, 2023)
