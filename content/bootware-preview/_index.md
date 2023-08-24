@@ -8,6 +8,7 @@ aliases:
 date: "2023-08-09"
 lastmod: ""
 draft: false
+mermaid: true
 weight: 10
 images: []
 # headless: true
