@@ -237,10 +237,15 @@ sudo zboot_install_new_update
 
 The script will show your configuration for review and confirmation, or give you the option to change the configuration. This method can be used as an alternative to using the Wizaard.
 
-| Item | Description |
-| ----- | ----- |
-| Update endpoint? (Ex: /dev/sda1): /dev/sda1     | Endpoint location of base_preview2_2m.zi image. This should either be the USB device or the full URL of the file if pulling via HTTP. Not optional; no default. Example for URL: [https://myserver.com/base_preview.zi](https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_preview.zi) |
-| Update endpoint type?  1. USB 2. HTTPS : 1      | Enter 1 if using a USB device or 2 if using HTTPS. |
+{{< cardpane >}}
+{{% card header="zboot_install_new_update" %}}
+{{< figure
+    src="updatemain.png"
+    alt="zboot update"
+    caption="Review and continue for zboot update"
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
 
 The script will prompt for a reboot to complete the process. 
 
