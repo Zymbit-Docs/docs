@@ -118,12 +118,12 @@ curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_preview.zi --output ba
 The script used to convert to a zboot image is: 
 
 ```
-zymbit-image-converter [ test.img | {-b <boot.tar> -r <root.tar} | -z ] [-o <directory> ]
-	test.img	      Binary image file of eMMC (e.g. created from dd). Name of output image need not match.
-	-b	<boot.tar>    Use this boot tarball as input. Must include -r option.
-    -r  <root.tar>    Use this root tarball as input. Must include -b option.
-    -o  <directory>   Output directory for new .zi image.
-    -z                Creates a zi image from your current running root file system.
+zymbit-image-converter [ test.img | {-b <boot.tar> -r <root.tar} | -z ] [-o <directory> ]  
+    test.img	      Binary image file of eMMC (e.g. created from dd). Name of output image need not match.  
+    -b	<boot.tar>    Use this boot tarball as input. Must include -r option.  
+    -r  <root.tar>    Use this root tarball as input. Must include -b option.  
+    -o  <directory>   Output directory for new .zi image.  
+    -z                Creates a zi image from your current running root file system.  
 ```
 
 ### Examples of Image conversions:
@@ -184,6 +184,17 @@ Bootware Preview includes a a tool to help configure your system called `zb-wiza
 ```
 sudo zb-wizard
 ```
+Choose your settings as described below.
+
+{{< cardpane >}}
+{{% card header="Bootware Wizard -Main Screen" %}}
+{{< figure
+    src="wizmain.png"
+    alt="Bootware Wizard"
+    caption="Choose your options, save and exit."
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
 
 **Partition setup** – How the device partition layout will look like after an update. Keep in mind, this preview does not take into account any floating data partitions around.  Be cautious when switching between different partition layouts when using other data partitions not related to the main (A)ctive/(B)ackup root partitions. Filesystem sizes estimates are based off of 32GB CM4s.
 
