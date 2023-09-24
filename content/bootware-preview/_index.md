@@ -102,7 +102,6 @@ Installing zboot...
 Done!
 After installing the zboot tools. A reboot is required. Reboot now? (Y/n)
 ```
-
 Reboot to complete the installation process. Once completed, all necessary files required for loading new images via zboot will be installed.
 
 ## Installing and running zboot to reflash an image
@@ -138,7 +137,7 @@ sudo zymbit-image-convertor -z
 | Name of Image?: base_preview             | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
 | Version?: 2.0                                 | An arbitrary version number for your reference. |
 
-### Example to convert a binary image file (created from dd if=/dev/sda bs=4M of=my.img):
+### Example to convert a binary image file (created from `dd if=/dev/sda bs=4M of=my.img`):
 
 ```
 sudo zymbit-image-convertor my.img
@@ -196,35 +195,37 @@ Choose your settings as described below.
 {{% /card %}}
 {{< /cardpane >}}
 
-**Partition setup** – How the device partition layout will look like after an update. Keep in mind, this preview does not take into account any floating data partitions around.  Be cautious when switching between different partition layouts when using other data partitions not related to the main (A)ctive/(B)ackup root partitions. Filesystem sizes estimates are based off of 32GB CM4s.
+**Partition Setup** – How the device partition layout will look like after an update. Keep in mind, this preview does not take into account any floating data partitions around.  Be cautious when switching between different partition layouts when using other data partitions not related to the main (A)ctive/(B)ackup root partitions. Filesystem sizes estimates are based off of 32GB CM4s.
 
-*	A only [half disk] – This will take the remaining disk space available after the boot partition (around ~29GB) and create an encrypted partition that will use half of this space as the root partition (around 14.4 GB). This leaves half the disk empty on purpose for dev usage, but heed the warning above.
+*	1  A Only [HALF DISK] – This will take the remaining disk space available after the boot partition (around ~29GB) and create an encrypted partition that will use half of this space as the root partition (around 14.4 GB). This leaves half the disk empty on purpose for dev usage, but heed the warning above.
 
-*	A only [full disk] – This will take the remaining disk space available after the boot partition (around ~29GB) and create an encrypted partition that will use almost all of this space as the root partition (around ~28.9GB).
+*	2  A only [FULL DISK] – This will take the remaining disk space available after the boot partition (around ~29GB) and create an encrypted partition that will use almost all of this space as the root partition (around ~28.9GB).
 
-*	A/B [recommended] – This will take the remaining disk space available after the boot partition (around ~29GB) and create two encrypted partitions, each taking up half of the remaining space (around 14.4 GB). This partition setup gives some added device robustness by having an extra stable partition to rollback to.
+*	3  A/B – RECOMMENDED This will take the remaining disk space available after the boot partition (around ~29GB) and create two encrypted partitions, each taking up half of the remaining space (around 14.4 GB). This partition setup gives some added device robustness by having an extra stable partition to rollback to.
 
-**Update policies** – The update policies are centered around how a new update gets applied to the filesystems on the device. The update policies listed below are only related to (A)ctive/(B)ackup partitioned devices, as (A)ctive only devices only have one filesystem to update.
+**Update Policy** – The update policies are centered around how a new update gets applied to the filesystems on the device. The update policies listed below are only related to (A)ctive/(B)ackup partitioned devices, as (A)ctive only devices only have one filesystem to update.
 
-*	Active – Apply new updates to only the current active filesystem and keep the backup partition untouched.
 
-*	Backup [Recommended] – Apply new updates to current backup filesystem and swap to booting the new updated backup partition as the active partition now. If the new update is bad, it will boot back into the previous stable active partition.
 
-*	Both – Apply new updates to both filesystems and always boot on the first root partition as the active partition. Be cautious as a bad update will have nothing to rollback to, so the device will have to go through a recovery process.
+*	1  Backup – RECOMMENDED Apply new updates to current backup filesystem and swap to booting the new updated backup partition as the active partition now. If the new update is bad, it will rollback into the previous stable active partition.
+  
+*	2  Active – Apply new updates to only the current active filesystem and keep the backup partition untouched.
 
-**Update endpoint** – The configured endpoint ready with a new update(.zi image) to pull from. This can be either from a https URL or a external mass storage device like a USB stick. This preview does not take into complicated redirected URLS.
+*	3  Both – Apply new updates to both filesystems and always boot on the first root partition as the active partition. Be cautious as a bad update will have nothing to rollback to, so the device will have to go through a recovery process.
 
-*	Endpoint – Simply type the endpoint where the .zi image resides for the device to pull updates from.
+**Endpoint Setup** – The configured endpoint ready with a new update(.zi image) to pull from. This can be either from a https URL or a external mass storage device like a USB stick. This preview does not take into complicated redirected URLS.
 
-  -  Example https URL: https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_ota.zi
-  -  Example USB stick: /dev/sda1
+*	Endpoint – Type the endpoint where the .zi image resides for the device to pull updates from. The endpoint will be checked for validity.
 
-**Wifi credentials** – Bootware supports pulling updates via Wifi instead of LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates.
+    > Example https URL: https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_ota.zi  
+    > Example USB stick: /dev/sda1
+
+**Wireless Setup** – Bootware supports pulling updates via Wifi instead of LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
 
 *   SSID - Provide the Wifi SSID
 *   Passphrase - Provide the Wifi passphrase
 
-**Save** and **Exit**
+**Save** and **Exit**. You may also choose to Revert to the default configuration.
 
 
 ## Use zboot to Install the New Image
