@@ -53,6 +53,7 @@ second partition, allowing regression to the original golden image at will
 6. The Preview SCM uses its own/boot/config.txt that both enables zboot and the dwc2 driver. Do not enable otg_mode in config.txt.
 7. USB storage devices most likely require a powered hub when using the Zymbit Secure Edge Node or Zymbit Dev IO board. Failure to do so may result in the SCM rebooting.
 8. Only RaspberryPI OS Bullseye64-based images are supported by the Preview. For other images, please contact Zymbit for verification
+9. Image security features are not enabled in the Preview release. Secure image rollback and recovery features will be implemented in the fianl release.
 
 ## Using zboot - Hardened Zymbit boot utility
 
