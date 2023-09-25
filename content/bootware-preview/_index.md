@@ -291,9 +291,6 @@ sudo zboot_install_new_update -r
 Q. What happens if I cannot boot into the ACTIVE partition?  
 A.If your ACTIVE fails to boot more than 3 times, Bootware will switch the ACTIVE and BACKUP partitions.
 
-Q. What happens if my boot artifacts have a problem during Preview? Can I recover?  
-A. Not in the Preview. Rollback/recovery will be implemented per the Bootware in a future release.
-
 Q. Can I start over, meaning completely from scratch, if a Preview unit cannot boot?  
 A. You must be able to access zboot. There is currently no method for bare-metal-recovery in this Preview.
 
