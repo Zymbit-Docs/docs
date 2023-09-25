@@ -30,7 +30,7 @@ Bootware™ is a set of software tools and micro services for the Zymbit Secure 
 * Bootware Full Standard Release – Q4 2023
 
 ### BOOTWARE PREVIEW FEATURE SET (Sept 2023)
-#### Bootware Preview was designed for customers to do the following:
+#### Bootware Preview is designed for customers to do the following:
 
 1. Transfer a Raspberry Pi CM4 image to an SCM
 2. Replicate an SCM “golden image” to other SCMs
