@@ -15,6 +15,10 @@ images: []
 mermaid: true
 ---
 
+{{< callout warning >}}
+This an Engineering/Developer Preview Feature! This is not meant for Production. Previewing Bootware features is irreversible and is not standard product. Only load this feature if you are working directly with Zymbit as a Preview customer.
+{{< /callout >}}
+
 Bootware™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). Bootware™ includes:
 
 * Trusted execution layer with secure, supervised boot chain   
