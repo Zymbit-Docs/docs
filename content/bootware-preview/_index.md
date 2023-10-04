@@ -5,7 +5,7 @@ icon: ""
 description: ""
 aliases:
     - /zboot-preview/
-date: "2023-09-22"
+date: "2023-10-04"
 lastmod: ""
 draft: false
 weight: 10
@@ -16,9 +16,12 @@ mermaid: true
 ---
 
 {{< callout warning >}}
-This an Engineering/Developer Preview Feature! This is not meant for Production. Previewing Bootware features is irreversible and is not standard product. Only load this feature if you are working directly with Zymbit as a Preview customer.
+This an Engineering/Developer Preview Feature! This is not meant for Production. Bootware Preview features are not standard product. Only load this feature if you are working directly with Zymbit as a Preview customer.
+
+We recommend attaching an HDMI console when using Bootware Preview. The process of repartitioning and populating partitions can take substantial time, upwards of 45 minutes and the console serves as a point of reference of activity.
 {{< /callout >}}
 
+### WHAT IS BOOTWARE?
 Bootware™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). Bootware™ includes:
 
 * Trusted execution layer with secure, supervised boot chain   
