@@ -52,11 +52,11 @@ second partition, allowing regression to the original golden image at will
 
 1. Maximum SCM partition size is 14.4 GB. Images larger than 14.4 GB should not be attempted.
 2. Two partitions (A/B) are supported. A shared data partition is not included in the Preview.
-5. Only load SCM or CM4 images that have been tested. The Preview unit cannot recover if it cannot access the zboot bootloader. “bare metal recovery” is not included in the Preview.
-6. The Preview SCM uses its own/boot/config.txt that both enables zboot and the dwc2 driver. Do not enable otg_mode in config.txt.
-7. USB storage devices most likely require a powered hub when using the Zymbit Secure Edge Node or Zymbit Dev IO board. Failure to do so may result in the SCM rebooting.
-8. Only RaspberryPI OS Bullseye64-based images are supported by the Preview. For other images, please contact Zymbit for verification
-9. Image security features are not enabled in the Preview release. Secure image rollback and recovery features will be implemented in the fianl release.
+3. Only load SCM or CM4 images that have been tested. The Preview unit cannot recover if it cannot access the zboot bootloader. “bare metal recovery” is not included in the Preview.
+4. The Zymbit SCM uses its own/boot/config.txt that both enables zboot and the dwc2 driver. Do not enable otg_mode in config.txt.
+5. USB storage devices most likely require a powered hub when using the Zymbit Secure Edge Node or Zymbit Dev IO board. Failure to do so may result in the SCM rebooting.
+6. Only RaspberryPI OS Bullseye64-based images are supported by the Preview. For other images, please contact Zymbit for verification
+7. Image security features are not enabled in the Preview release. Secure image rollback and recovery features will be implemented in the final release.
 
 ## Using zboot - Hardened Zymbit boot utility
 
@@ -287,16 +287,8 @@ A failover from Active to Backup is done with the -r option to `zboot_install_ne
 sudo zboot_install_new_update -r
 ```
 
-
-
-# FAQ
-
-Q. What happens if I cannot boot into the ACTIVE partition?  
-A.If your ACTIVE fails to boot more than 3 times, Bootware will switch the ACTIVE and BACKUP partitions.
-
-Q. Can I start over, meaning completely from scratch, if a Preview unit cannot boot?  
-A. You must be able to access zboot. There is currently no method for bare-metal-recovery in this Preview.
-
-Q. Are there file size limitations?
-A. Yes, If you are using ACTIVE/BACKUP root partitions, the Preview creates root partitions A and B of approximately 14GB each. Your initial file system contents should not exceed 14GB.
+### Additional Information and Support
+    
+ * [Bootware Error Codes](error-codes.md/)
+ * [Contact Support](mailto:support@zymbit.com)
 
