@@ -1,4 +1,16 @@
-## Bootware File Structure Overview:
+---
+title: Bootware Additional Info
+lastmod:
+draft: false
+images: []
+type: docs
+layout: single
+weight: 0
+toc: false
+---
+
+-----
+### Bootware File Structure Overview:
 
 Brief description of Bootware files that complete the Bootware process.
 
