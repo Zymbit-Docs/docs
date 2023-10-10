@@ -289,6 +289,7 @@ sudo zboot_install_new_update -r
 
 ### Additional Information and Support
     
- * [Bootware Error Codes](error-codes.md/)
+ * [Additional Bootware File information](additional-info)
+ * [Bootware Logging and Error Codes](error-codes)
  * [Contact Support](mailto:support@zymbit.com)
 
