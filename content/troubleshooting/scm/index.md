@@ -20,8 +20,9 @@ Updated the SCM release to support the B1 release of the SCM hardware. Summary o
 
 #### SCM Hardware changes
 
-* FW 01.02.02 - Supports SCM hardware version B1
-* Version B1 SCM includes improved boot sequence checks. Images will retry at every stage of loading. Should there be trouble with an image load, the boot process will retry. This results in occasional additional boot time.
+* FW 01.02.02 - Supports SCM Rev B.
+* SCM Rev B has different boot timing as compared to Rev A. This has to do with additional checks and with new requirements related to Zymbit bootware(tm). Average boots times are similar, however, some boot times may be longer by approximately 50 seconds. This is normal behavior for SCM Rev B units.
+* SCM Rev. B has one new 40-pin connector and a different connector for tamper detect and battery backer. Please see the ECN for complete details. The new tamper/battery connector improves physical security of the SCM, improves compatibility with generic CM4 boards, and provides additional features. The new 40-pin expansion connector provides access to additional USB ports as well as additional security and integration features in future versions of the SCM.
 
 #### Known Issues
 * Zymbit IO board: Subject to rebooting during high USB in rush current. See Engineering Note 20230721.
