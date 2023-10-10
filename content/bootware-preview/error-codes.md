@@ -9,6 +9,10 @@ toc: true
 ---
 
 -----
+
+Bootware error codes are displayed on the screen (HDMI console is all that is visible until booted) and are logged in `/boot/zboot.log`. The list below includes all the available error codes. 
+
+-----
 ### **zb_config Errors:**
 
 ##### [ERROR] [0.2.0] [SYSTEM] [0x0802] load_config(): decrypt zb_config.enc
