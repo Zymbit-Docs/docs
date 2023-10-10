@@ -11,7 +11,9 @@ toc: true
 -----
 ### Updated Release 10/10/2023 (RC-23.01 base software unchanged)
 
-Updated the SCM release to support the B1 release of the SCM hardware. Summary of changes:
+Updated the SCM release to support the Rev B release of the SCM hardware. 
+
+Summary of changes:
 
 #### Pre-loaded OS options
 * Raspberry PI OS Lite 64-bit (Bullseye) - SHIPPED AS STANDARD (NO CHANGE)
@@ -33,8 +35,7 @@ Updated the SCM release to support the B1 release of the SCM hardware. Summary o
 We've updated the SCM release to support the A1 release of the SCM hardware. Summary of changes:
 
 #### Pre-loaded OS options
-* Raspberry PI OS Lite 64-bit (Bullseye) - SHIPPED AS STANDARD 
-* Raspberry PI OS Lite 32-bit (Bullseye) - OPTIONAL, FACTORY CONFIGURED
+* Raspberry PI OS Lite 64-bit (Bullseye)
 
 #### Modifications from previous beta
 * Now allow initial SSH via password (use zymbit/zymbit). Please change once logged in.
