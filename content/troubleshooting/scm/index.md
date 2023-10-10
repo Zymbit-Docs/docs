@@ -1,7 +1,7 @@
 ---
 title: "SCM Troubleshooting/FAQ"
 linkTitle: "SCM" 
-lastmod: "2023-05-09"
+lastmod: "2023-10-10"
 draft: false
 images: []
 weight: 15
@@ -9,6 +9,23 @@ toc: true
 ---
 
 -----
+### Updated Release 10/10/2023 (RC-23.01 base software unchanged)
+
+Updated the SCM release to support the B1 release of the SCM hardware. Summary of changes:
+
+#### Pre-loaded OS options
+* Raspberry PI OS Lite 64-bit (Bullseye) - SHIPPED AS STANDARD (NO CHANGE)
+* Raspberry PI OS Lite 32-bit (Bullseye) - OPTIONAL, FACTORY CONFIGURED (NO CHANGE)
+* Root partition now 50% of available eMMC space (encrypted). Message included on login as a reminder, along with steps to expand the root partition to 100% of space (encrypted)
+
+#### SCM Hardware changes
+
+* FW 01.02.02 - Supports SCM hardware version B1
+* Version B1 SCM includes improved boot sequence checks. Images will retry at every stage of loading. Should there be trouble with an image load, the boot process will retry. This results in occasional additional boot time.
+
+#### Known Issues
+* Zymbit IO board: Subject to rebooting during high USB in rush current. See Engineering Note 20230721.
+* Zymbit IO board: The ID EEPROM I2C pins are not connected. To use this feature with the Zymbit IO board, you will need two green wires. See Engineering Note 20231010.
 
 ### Updated Software Release 1/13/2023 (RC-23.01)
 
