@@ -1,5 +1,6 @@
 ---
 title: Bootware Additional Info
+linkTitle: "Additional Bootware File Info"
 lastmod:
 draft: false
 images: []
