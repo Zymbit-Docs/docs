@@ -11,7 +11,7 @@ draft: false
 weight: 10
 images: []
 # headless: true
-# layout: "single"
+layout: "single"
 mermaid: true
 ---
 
