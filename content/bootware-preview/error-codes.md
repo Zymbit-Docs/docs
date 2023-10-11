@@ -1,12 +1,16 @@
 ---
 title: "Bootware Error Codes"
-linkTitle: "Bootware Error Codes"
+linkTitle: "Logging and Bootware Error Codes"
 lastmod: "9-22-2023"
 draft: false
 images: []
 weight: 10
-toc: true
+toc: false
 ---
+
+-----
+
+Bootware error codes are displayed on the screen (HDMI console is all that is visible until booted) and are logged in `/boot/zboot.log`. The list below includes all the available error codes. 
 
 -----
 ### **zb_config Errors:**

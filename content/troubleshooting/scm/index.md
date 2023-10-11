@@ -1,12 +1,34 @@
 ---
 title: "SCM Troubleshooting/FAQ"
 linkTitle: "SCM" 
-lastmod: "2023-05-09"
+lastmod: "2023-10-10"
 draft: false
 images: []
 weight: 15
 toc: true
 ---
+
+-----
+### Updated Release 10/10/2023 (RC-23.01 base software unchanged)
+
+Updated the SCM release to support the Rev B release of the SCM hardware. 
+
+Summary of changes:
+
+#### Pre-loaded OS options
+* Raspberry PI OS Lite 64-bit (Bullseye) - SHIPPED AS STANDARD (NO CHANGE)
+* Raspberry PI OS Lite 32-bit (Bullseye) - OPTIONAL, FACTORY CONFIGURED (NO CHANGE)
+* Root partition now 50% of available eMMC space (encrypted). Message included on login as a reminder, along with steps to expand the root partition to 100% of space (encrypted)
+
+#### SCM Hardware changes
+
+* FW 01.02.02 - Supports SCM Rev B.
+* SCM Rev B has different boot timing as compared to Rev A. This has to do with additional checks and with new requirements related to Zymbit bootware(tm). Average boots times are similar, however, some boot times may be longer by approximately 50 seconds. This is normal behavior for SCM Rev B units.
+* SCM Rev. B has one new 40-pin connector and a different connector for tamper detect and battery backer. Please see the ECN for complete details. The new tamper/battery connector improves physical security of the SCM, improves compatibility with generic CM4 boards, and provides additional features. The new 40-pin expansion connector provides access to additional USB ports as well as additional security and integration features in future versions of the SCM.
+
+#### Known Issues
+* Zymbit IO board: Subject to rebooting during high USB in rush current. See [Engineering Note 20230721](/reference/engineering-notes/Zymbit-Engineering-Note-20230721-SCM-Motherboard-USB.pdf).
+* Zymbit IO board: The ID EEPROM I2C pins are not connected. To use this feature with the Zymbit IO board, you will need two green wires to pins 27 and 28. [Contact Support](mailto:support@zymbit.com) for more information.
 
 -----
 
@@ -15,8 +37,7 @@ toc: true
 We've updated the SCM release to support the A1 release of the SCM hardware. Summary of changes:
 
 #### Pre-loaded OS options
-* Raspberry PI OS Lite 64-bit (Bullseye) - SHIPPED AS STANDARD 
-* Raspberry PI OS Lite 32-bit (Bullseye) - OPTIONAL, FACTORY CONFIGURED
+* Raspberry PI OS Lite 64-bit (Bullseye)
 
 #### Modifications from previous beta
 * Now allow initial SSH via password (use zymbit/zymbit). Please change once logged in.
