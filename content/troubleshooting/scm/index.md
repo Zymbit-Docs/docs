@@ -27,7 +27,7 @@ Summary of changes:
 * SCM Rev. B has one new 40-pin connector and a different connector for tamper detect and battery backer. Please see the ECN for complete details. The new tamper/battery connector improves physical security of the SCM, improves compatibility with generic CM4 boards, and provides additional features. The new 40-pin expansion connector provides access to additional USB ports as well as additional security and integration features in future versions of the SCM.
 
 #### Known Issues
-* Zymbit IO board: Subject to rebooting during high USB in rush current. See [Engineering Note 20230721](../../reference/engineering-notes/Zymbit-Engineering-Note-20230721-SCM-Motherboard-USB/).
+* Zymbit IO board: Subject to rebooting during high USB in rush current. See [Engineering Note 20230721](/reference/engineering-notes/en-20230721-scm-mobo/).
 * Zymbit IO board: The ID EEPROM I2C pins are not connected. To use this feature with the Zymbit IO board, you will need two green wires to pins 27 and 28. [Contact Support](mailto:support@zymbit.com) for more information.
 
 -----
