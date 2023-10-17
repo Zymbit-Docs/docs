@@ -15,7 +15,8 @@ toc: true
 {{% card header="SCM Motherboard D35 GPIO Pinout" %}}
 {{< figure
     src="SCM-motherboard-revA1-gpio-pinout-SPI-example.jpg"
-    caption="Note the "standard" GPIO pinout is accessed on the bottom side of the D35 board."
+    alt=""
+    caption="Note the standard GPIO pinout is accessed on the bottom side of the D35 board."
     >}}
 {{% /card %}}
 {{< /cardpane >}}
