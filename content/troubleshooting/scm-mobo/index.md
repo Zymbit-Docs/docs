@@ -22,7 +22,7 @@ toc: true
 {{< /cardpane >}}
 
 
-#### Known Issues
+#### Known Issues - Rev A1
 * Zymbit IO board: Subject to rebooting during high USB in rush current. See [Engineering Note 20230721](/reference/engineering-notes/Zymbit-Engineering-Note-20230721-SCM-Motherboard-USB.pdf).
 * Zymbit IO board: The ID EEPROM I2C pins are not connected. To use this feature with the Zymbit IO board, you will need two green wires to pins 27 and 28. [Contact Support](mailto:support@zymbit.com) for more information.
 
