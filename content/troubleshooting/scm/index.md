@@ -1,5 +1,5 @@
 ---
-title: "SCM Troubleshooting/FAQ"
+title: "SCM FAQ and Troubleshooting"
 linkTitle: "SCM" 
 lastmod: "2023-10-10"
 draft: false
