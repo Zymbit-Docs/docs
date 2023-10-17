@@ -21,7 +21,6 @@ toc: true
 {{% /card %}}
 {{< /cardpane >}}
 
-[(SCM-motherboard-revA1-gpio-pinout-SPI-example.jpg)
 
 #### Known Issues
 * Zymbit IO board: Subject to rebooting during high USB in rush current. See [Engineering Note 20230721](/reference/engineering-notes/Zymbit-Engineering-Note-20230721-SCM-Motherboard-USB.pdf).
