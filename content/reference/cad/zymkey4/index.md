@@ -1,5 +1,5 @@
 ---
-title: "Zymkey4 CAD Files"
+title: "Zymkey4"
 linkTitle: "ZYMKEY4"
 description: ""
 aliases:
