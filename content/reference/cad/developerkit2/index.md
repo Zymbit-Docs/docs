@@ -1,5 +1,5 @@
 ---
-title: "Developer Kit CAD Files"
+title: "SCM Developer Kit 2 Assembly"
 linkTitle: "Developer Kit (D35 I/O Board)"
 description: ""
 aliases:
@@ -13,7 +13,7 @@ weight: 50
 
 ## 3D Step Model
 
-[I/O Motherboard 3D model](Z350-01-012-defeatured_nocase_SCMrevA.stp)
+[Developer Kit 2 Assembly 3D model](Z350-01-012-defeatured_nocase_SCMrevA.stp)
 
 
 
