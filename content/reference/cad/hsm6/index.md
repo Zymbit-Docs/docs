@@ -1,5 +1,5 @@
 ---
-title: "HSM6 CAD Files"
+title: "HSM6"
 linkTitle: "HSM6"
 description: ""
 aliases:
