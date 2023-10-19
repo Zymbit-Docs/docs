@@ -1,5 +1,5 @@
 ---
-title: "SCM CAD Files"
+title: "Secure Compute Module (SCM)"
 linkTitle: "Secure Compute Module (SCM)"
 description: ""
 aliases:
