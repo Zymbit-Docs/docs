@@ -98,7 +98,7 @@ Run the following install script on the SCM to install the zboot utilities:
 
 ```
 cd zymbit-ota-preview
-sudo ./install_zboot_tool.sh
+sudo ./install_zboot_tools.sh
 ```
 
 ```
@@ -138,7 +138,7 @@ zymbit-image-converter [ test.img | {-b <boot.tar> -r <root.tar} | -z ] [-o <dir
 ### Example to create a zi image from your current running root file system
 
 ```
-sudo zymbit-image-convertor -z
+sudo zymbit-image-converter -z
 ```
 | Item | Description |
 | ----- | ----- |
@@ -148,7 +148,7 @@ sudo zymbit-image-convertor -z
 ### Example to convert a binary image file (created from `dd if=/dev/sda bs=4M of=my.img`):
 
 ```
-sudo zymbit-image-convertor my.img
+sudo zymbit-image-convert3r my.img
 ```
 The script will prompt for information:
 
@@ -168,7 +168,7 @@ The script extracts the boot/root tarballs of the binary image. It will then pac
 You will need to provide the names and paths to your tarballs. Run the script:
 
 ```
-sudo zymbit-image-convertor -b ./boot.tar -r ./root.tar
+sudo zymbit-image-converter -b ./boot.tar -r ./root.tar
 ```
 
 The script will prompt for information:
