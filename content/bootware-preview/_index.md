@@ -235,16 +235,16 @@ Choose your settings as described below.
 
 
 ## Use zboot to Install the New Image
-Once you have completed using the Wizard to configure your Bootware, run `zboot_install_new_update` to complete the process by repartitioning and loading your image.
+Once you have completed using the Wizard to configure your Bootware, run `zboot-install-new-update` to complete the process by repartitioning and loading your image.
 
 ```
-sudo zboot_install_new_update
+sudo zboot-install-new-update
 ```
 
 The script will show your configuration for review and confirmation, or give you the option to change the configuration. This method can be used as an alternative to using the Wizaard.
 
 {{< cardpane >}}
-{{% card header="zboot_install_new_update" %}}
+{{% card header="zboot-install-new-update" %}}
 {{< figure
     src="updatemain.png"
     alt="zboot update"
@@ -281,10 +281,10 @@ Each successful boot will clear a max_boot_failure counter. A max_boot_failure c
 
 ## Force Failover (Change Active/Backup partitions)
 
-A failover from Active to Backup is done with the -r option to `zboot_install_new_update`
+A failover from Active to Backup is done with the -r option to `zboot-install-new-update`
 
 ```
-sudo zboot_install_new_update -r
+sudo zboot-install-new-update -r
 ```
 
 ### Additional Information and Support
