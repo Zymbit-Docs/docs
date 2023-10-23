@@ -148,7 +148,7 @@ sudo zymbit-image-converter -z
 ### Example to convert a binary image file (created from `dd if=/dev/sda bs=4M of=my.img`):
 
 ```
-sudo zymbit-image-convert3r my.img
+sudo zymbit-image-converter my.img
 ```
 The script will prompt for information:
 
