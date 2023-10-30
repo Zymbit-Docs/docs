@@ -5,7 +5,7 @@ icon: ""
 description: ""
 aliases:
     - /zboot-preview/
-date: "2023-10-04"
+date: "2023-10-30"
 lastmod: ""
 draft: false
 weight: 10
@@ -32,7 +32,7 @@ Bootware™ is a set of software tools and micro services for the Zymbit Secure 
 * Bootware Preview – Now. Limited functionality. **Not intended for Production**.
 * Bootware Full Standard Release – Q4 2023
 
-### BOOTWARE PREVIEW FEATURE SET (Sept 2023)
+### BOOTWARE PREVIEW FEATURE SET (October 2023)
 #### Bootware Preview is designed for customers to do the following:
 
 1. Transfer a Raspberry Pi CM4 image to an SCM
@@ -50,8 +50,8 @@ second partition, allowing regression to the original golden image at will
 
 #### Important Bootware Preview Restrictions
 
-1. Maximum SCM partition size is 14.4 GB. Images larger than 14.4 GB should not be attempted.
-2. Two partitions (A/B) are supported. A shared data partition is not included in the Preview.
+1. Two partitions (A/B) are supported. A shared data partition is not included in the Preview.
+2. In an A/B partition layout, the maximum SCM partition size is 14.4 GB. Images larger than 14.4 GB should not be attempted.
 3. Only load SCM or CM4 images that have been tested. The Preview unit cannot recover if it cannot access the zboot bootloader. “bare metal recovery” is not included in the Preview.
 4. The Zymbit SCM uses its own/boot/config.txt that both enables zboot and the dwc2 driver. Do not enable otg_mode in config.txt.
 5. USB storage devices most likely require a powered hub when using the Zymbit Secure Edge Node or Zymbit Dev IO board. Failure to do so may result in the SCM rebooting.
@@ -143,7 +143,7 @@ sudo zymbit-image-converter -z
 | Item | Description |
 | ----- | ----- |
 | Name of Image?: base_preview             | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
-| Version?: 2.0                                 | An arbitrary version number for your reference. |
+| Version?: 2.1                                 | An arbitrary version number for your reference. |
 
 ### Example to convert a binary image file (created from `dd if=/dev/sda bs=4M of=my.img`):
 
@@ -155,7 +155,7 @@ The script will prompt for information:
 | Item | Description |
 | ----- | ----- |
 | Name of Image?: base_preview             | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
-| Version?: 2.0                                 | An arbitrary version number for your reference. |
+| Version?: 2.1                                 | An arbitrary version number for your reference. |
 | Boot File System Partition Number? (EX: 1): 1 | Partition number of boot filesystem in binary image file. Must be provided; no default. |
 | Root File System Partition Number? (EX: 2): 2 | Partition number of root filesystem in binary image file. Must be provided; no default. |
 
@@ -176,7 +176,7 @@ The script will prompt for information:
 | Item | Description |
 | ----- | ----- |
 |Name of Image?: base_preview | Name of the converted output file. A zi extension will be added to the name. |
-| Version?: 2.0 | An arbitrary version number for your reference.
+| Version?: 2.1 | An arbitrary version number for your reference.
 
 The script extracts the boot/root tarballs of the binary image. It will then package it up in a Zymbit image and output it to:
 
@@ -256,7 +256,6 @@ The script will show your configuration for review and confirmation, or give you
 The script will prompt for a reboot to complete the process. 
 
 
-
 ## zboot Boot Process
 
 The Zboot process will now take place. 
@@ -286,6 +285,16 @@ A failover from Active to Backup is done with the -r option to `zboot-install-ne
 ```
 sudo zboot-install-new-update -r
 ```
+
+## Uninstall Bootware
+
+A utility is included to uninstall bootware, returning to the standard linux boot process. The uninstall process will leave you in the current encrypted active partition and preserve the contents of that partion as well as the overall partition layout.
+
+```
+cd ~/zymbit-ota-preview
+sudo ./uninstall_zboot.sh
+```
+The script will confirm you would like to uninstall the bootware scripts and artifacts, as well as a required reboot.
 
 ### Additional Information and Support
     
