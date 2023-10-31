@@ -46,45 +46,23 @@ All necessary Zymbit software has been pre-installed. No further installation is
 
 [<img src="LED_image.png" width="30%">](https://user-images.githubusercontent.com/78050323/230241994-473fc680-41da-4412-bf58-e3c0e4a5ed6c.mp4)
 
-### Updated release 1/13/2023 (RC-23.01)
-
-We've updated the SCM release to support the A1 release of the SCM hardware. Summary of changes:
-
 #### Pre-loaded OS options
 * Raspberry PI OS Lite 64-bit (Bullseye) - DEFAULT
 * Raspberry PI OS Lite 32-bit (Bullseye) - OPTIONAL
 
-#### Modifications from previous beta
+#### Modifications from beta
 * Now allow initial SSH via password (use zymbit/zymbit). Please change once logged in.
 * No longer providing SSH key on USB stick; as noted above, you can use password.
 * No longer necessary to register product; no SSH key necessary so no need for key passphrase.
 * sudo for user zymbit with password in standard PI OS manner allowed; no need to supply password every time.
 
 #### Changes
+* FW 01.03.00 - Supports B1 revision of SCM
 * FW 01.00.00 - Supports A1 revision of SCM
 * FW 01.00.00 - Fixed:  #117 Stored tamper event on shutdown has incorrect timestamp
 * zkifc 1.2-36 - Fixed: #120 get_public_key() with a very large number crashes zkifc
 * zkpkcs 11 1.0-3 - Fixed: #123 zk_pkcs11: Doesn't work with 64-bit OS
 
-
-## **SCM Developer's Kit**
-
-The SCM Developer's kit provides all the hardware and software components required to evaluate the Zymbit Secure Compute Module.
- * Zymbit Secure Compute Module (Zymbit Security Module and CM4)
- * Zymbit Secure Compute I/O Motherboard
- * Zymbit Perimeter Detect Cable for Channel 2
- * Zymbit External Battery (optional)
- * 12V Power Supply
-
-{{< cardpane >}}
-{{% card header="Contents of Dev Kit" %}}
-{{< figure 
-    src="scm-dev-kit2.png"
-    alt="SCM Dev Kit"
-    caption=""
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
 
 ## Secure Compute Module
 
@@ -125,6 +103,10 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 * Broadcom BCM2711, Quad core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5GHz
 * LPDDR4 RAM: 1G to 8G, eMMC: 0G to 32G
 * 2.4/5.0GHz Wi-Fi & Bluetooth
+
+### Zymbit Platform Reference
+ * [Zymbit Secure Edge Node](../../sen/)
+ * [Zymbit Developer Kit 2](../../scm-dev-kit2/)
 
 ### Using SCM: API and Examples
     
