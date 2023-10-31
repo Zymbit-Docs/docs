@@ -1,7 +1,7 @@
 ---
-title: Secure Compute Module - SCM 
+title: SCM Developer Kit 2
 aliases:
-    - /quickstart/getting-started/scm/
+    - /quickstart/getting-started/scm-dev-kit2/
 draft: false
 images: []
 weight: 12

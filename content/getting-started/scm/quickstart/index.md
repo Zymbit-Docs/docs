@@ -1,7 +1,7 @@
 ---
 title: "Quickstart - Secure Compute Module (SCM)"
 linkTitle: "Quickstart"
-lastmod: "2023-02-09"
+lastmod: "2023-10-31"
 draft: false
 images: []
 weight: 5
