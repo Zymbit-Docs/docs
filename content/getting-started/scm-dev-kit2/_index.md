@@ -1,5 +1,5 @@
 ---
-title: SCM Developer Kit 2
+title: Secure Compute Module - Dev Kit 2
 aliases:
     - /quickstart/getting-started/scm-dev-kit2/
 draft: false
