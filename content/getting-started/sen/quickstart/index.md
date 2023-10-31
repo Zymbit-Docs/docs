@@ -28,7 +28,9 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 ### **Configure and Setup your Secure Edge Node**
 
 #### Power On
- * Connect the included 12V Power Supply up to the front panel 12V barrel connector. Optionally, supply power via PoE to the ethernet connector, or via the SATA edge connector. Connect an ethernet cable to the front panel gigabit ethernet port. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. The only access is via SSH.
+ * Connect 12V Power Supply (available for purchase from Zymbit) up to the front panel 12V barrel connector. Optionally, supply power via PoE to the ethernet connector, or via the SATA edge connector. 
+ * Connect an ethernet cable to the front panel gigabit ethernet port. 
+ * The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. The only access is via SSH.
 
 <br />
 <img src="node_end1.png" width="60%">
