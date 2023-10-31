@@ -95,10 +95,10 @@ Now you're ready to start developing with the Zymbit Secure Compute Module.
 
 #### Secure Compute Module
 
-Inside the Secure Edge Node is the [Secure Compute Module](/getting-started/scm/quickstart/): a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure, encapsulated module. Details of the SCM itself including any other Zymbit specific cofigurations can be found [here](/getting-started/scm/quickstart/):
+Inside the Secure Edge Node is the [Secure Compute Module](../../scm/quickstart/): a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure, encapsulated module. Details of the SCM itself including any other Zymbit specific cofigurations can be found [here](../../scm/quickstart/):
     
 #### Motherboard Reference
-[SCM Developer Kit2](../../scm-dev-kit2)
+[SCM Developer Kit2](../../scm-dev-kit2/quickstart)
 
 #### Using Secure Edge Node/SCM: API and Examples
     
