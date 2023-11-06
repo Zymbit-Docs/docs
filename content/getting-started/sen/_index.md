@@ -6,7 +6,7 @@ aliases:
     - /getting-started/scn
 draft: false
 images: []
-weight: 10
+weight: 14
 headless: true
 ---
 
