@@ -19,5 +19,7 @@ weight: 40
 
 ![SCM A1 CAD Drawing](ZYMBIT-SCM-Mechanical-Connectors-2023.01.png)
 
+## SCM Rev B1 Mechanical/Connectors
+
 ![SCM B1 CAD Drawing](ZYMBIT-SCM-B1-Mechanical.png)
 
