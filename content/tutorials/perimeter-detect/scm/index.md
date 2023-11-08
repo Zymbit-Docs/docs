@@ -45,7 +45,7 @@ For released product, prior to permanently binding your SCM to a specific host d
 ##### Response Choices
 
 A)  Do nothing (disable)  
-B)  Notify host when perimeter breach occurs (default as shipped for SCM Beta)  
+B)  Notify host when perimeter breach occurs (default as shipped)  
 C)  Destroy all key material (this essentially destroys any encrypted data or file system.  
 
 ### Test Perimeter Detect 
@@ -53,7 +53,7 @@ C)  Destroy all key material (this essentially destroys any encrypted data or fi
 
 To quickly test your perimeter detect setup, here is sample code using the Python API. The program will wait for ten seconds to detect any perimeter breaches. Before running this script, connect the circuits with the provided yellow and blue wires and during the ten second pause in the script, breach the perimeter by unplugging the circuit wires. The wait function should immediately detect the event.
 
-In the API, perimeter circuit 2 (as shown in the above images) is defined as channel 1 and perimeter circuit 1 is defined as channel 0. As noted, for SCM Beta, channel 0 and channel 1 have already been set to action_notify=True. 
+In the API, perimeter circuit 2 (as shown in the above images) is defined as channel 1 and perimeter circuit 1 is defined as channel 0. Channel 0 and channel 1 have been set to action_notify=True. 
 
 Example for monitoring Perimeter Events:
 <details>
