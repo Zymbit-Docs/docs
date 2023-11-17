@@ -34,6 +34,7 @@ HSM6 HAT provides four pin header and FPC connectors to interface to perimeter c
 
 (For high volume applications, different connector types are available.  [Contact Zymbit](https://www.zymbit.com/contact-us/) for more details.)
 
+If you are incorporating the HSM6 directly into you motherboard, see [Engineering Note 20221011 HSM4/HSM6 - Using Perimeter Detect](../../../reference/reference/engineering-notes/Zymbit-Engineering-Note-20221011-HSM-Using-Perim-Detect.pdf)
 
 ### Electrical Circuit
 
