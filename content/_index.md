@@ -17,9 +17,12 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 #### December 2023
 -----
-We have added support for Bookworm (64-bit) on the Pi5, PI4 and CM4 for the ZYMKEY, HSM4, and HSM6. Follow the Getting Started guides to install and encrypt. List of supported OS platforms:
+We have added support for Bookworm (64-bit) on the Pi5, PI4 and CM4 for the ZYMKEY, HSM4, and HSM6. Follow the Getting Started guides to install and encrypt. 
+
+List of supported OS platforms:
 
 <br>
+
 ![supported OSs](supported-os-dots.png) 
 <br>
 
