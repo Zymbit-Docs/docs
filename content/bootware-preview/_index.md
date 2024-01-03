@@ -30,7 +30,7 @@ Bootware™ is a set of software tools and micro services for the Zymbit Secure 
 
 ### Bootware Release Schedule:  
 * Bootware Preview – Now. Limited functionality. **Not intended for Production**.
-* Bootware Full Standard Release – Q4 2023
+* Bootware Full Standard Release – Q1 2024
 
 ### BOOTWARE PREVIEW FEATURE SET (October 2023)
 #### Bootware Preview is designed for customers to do the following:
