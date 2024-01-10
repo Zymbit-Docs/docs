@@ -32,6 +32,11 @@ Bootware™ is a set of software tools and micro services for the Zymbit Secure 
 * Bootware Preview – Now. Limited functionality. **Not intended for Production**.
 * Bootware Full Standard Release – Q1 2024
 
+### Updates:
+Bootware Preview 2.1 (Jan 10, 2024)
+
+**Issue #140** : Bootware Preview 2.0 has an issue with uboot and cached environment variables. This is a uboot issue but it affects bootware during kernel/os upgrades that include device tree changes. It is highly likely that a device tree area change can leave the system in an unbootable state. u-boot will fail with a "Flattened Device Tree" error and fail to boot. This has been fixed in Preview 2.1 (01092024). zboot version in green will read 0.3.1. Bootware Preview has been updated to include the fix for this issue, along with the example image.
+
 ### BOOTWARE PREVIEW FEATURE SET (October 2023)
 #### Bootware Preview is designed for customers to do the following:
 
