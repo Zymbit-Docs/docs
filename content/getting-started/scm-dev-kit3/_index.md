@@ -1,9 +1,9 @@
 ---
-title: Secure Compute Module - Dev Kit 2
+title: Secure Compute Module - Dev Kit 3
 aliases:
-    - /quickstart/getting-started/scm-dev-kit2/
+    - /quickstart/getting-started/scm-dev-kit3/
 draft: false
 images: []
-weight: 12
+weight: 11
 headless: true
 ---

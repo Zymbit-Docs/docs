@@ -1,7 +1,7 @@
 ---
-title: "Quickstart - SCM Developer Kit 2"
+title: "Quickstart - SCM Developer Kit 3"
 linkTitle: "Quickstart"
-lastmod: "2023-10-31"
+lastmod: "2024-02-09"
 draft: false
 images: []
 weight: 5
@@ -9,9 +9,9 @@ toc: true
 ---
 
 -----
-## **SCM Developer Kit 2**
+## **SCM Developer Kit 3**
 
-The SCM Developer Kit2 provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart).
+The SCM Developer Kit3 provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart).
  * Zymbit [Secure Compute Module](../../scm/quickstart) (Zymbit Security Module and CM4)
  * Zymbit Secure Compute I/O Motherboard
  * Zymbit Perimeter Detect Cable for Channel 2
@@ -19,16 +19,34 @@ The SCM Developer Kit2 provides all the hardware and software components require
  * 12V Power Supply
 
 {{< cardpane >}}
-{{% card header="Contents of Dev Kit" %}}
-{{< figure 
-    src="scm-dev-kit2.png"
-    alt="SCM Dev Kit"
+{{% card header="Zymbit Dev Kit3 Motherboard - Top" %}}
+{{< figure
+    src="mobo2x1_top.png"
+    alt="Mobo2x1_top"
+    caption="The top and bottom of the Zymbit SCM Developer Kit3 Motherboard"
+    >}}
+{{% /card %}}
+{{% card header="Zymbit Dev Kit3 Motherboard - Bottom" %}}
+{{< figure
+    src="mobo2x1_bottom.png"
+    alt="Mobo2x1 Bottom"
     caption=""
     >}}
 {{% /card %}}
 {{< /cardpane >}}
 
-### **Configure and Setup your SCM Developer Kit2**
+
+{{< cardpane >}}
+{{% card header="Dev Kit3 - Motherboard2 Rev X1 Connectors" %}}
+{{< figure 
+    src="mobo2x1_table.png"
+    alt="MOBO2 Rev X1 Connectors"
+    caption=""
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
+
+### **Configure and Setup your SCM Developer Kit3**
 
 ##### Power On
  * Connect the included 12V Power Supply up to the front panel 12V barrel connector. Connect an ethernet cable to the gigabit ethernet port. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. The only access is via SSH.
