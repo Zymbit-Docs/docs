@@ -11,22 +11,24 @@ toc: true
 -----
 ## **SCM Developer Kit 3**
 
-The SCM Developer Kit3 provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart).
+The SCM Developer Kit3 provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart) with the latest revision motherboard (MOBO2) available engineering samples.
+ 
  * Zymbit [Secure Compute Module](../../scm/quickstart) (Zymbit Security Module and CM4)
- * Zymbit Secure Compute I/O Motherboard
- * Zymbit Perimeter Detect Cable for Channel 2
- * Zymbit External Battery (optional)
+ * Zymbit Secure Compute I/O Motherboard2 (MOBO2)
+ * Perimeter Detect wires for Channel 1, 2
+ * 40-Pin GPIO Header PIN connector
  * 12V Power Supply
+ * Zymbit External Battery (optional)
 
 {{< cardpane >}}
-{{% card header="Zymbit Dev Kit3 Motherboard - Top" %}}
+{{% card header="Zymbit Dev Kit3 Motherboard (MOBO2) - Top" %}}
 {{< figure
     src="mobo2x1_top.png"
     alt="Mobo2x1_top"
     caption="The top and bottom of the Zymbit SCM Developer Kit3 Motherboard"
     >}}
 {{% /card %}}
-{{% card header="Zymbit Dev Kit3 Motherboard - Bottom" %}}
+{{% card header="Zymbit Dev Kit3 Motherboard (MOBO2) - Bottom" %}}
 {{< figure
     src="mobo2x1_bottom.png"
     alt="Mobo2x1 Bottom"
@@ -37,7 +39,7 @@ The SCM Developer Kit3 provides all the hardware and software components require
 
 
 {{< cardpane >}}
-{{% card header="Dev Kit3 - Motherboard2 Rev X1 Connectors" %}}
+{{% card header="Dev Kit3 - Motherboard2 (MOBO2) Rev X1 Connectors" %}}
 {{< figure 
     src="mobo2x1_table.png"
     alt="MOBO2 Rev X1 Connectors"
