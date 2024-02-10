@@ -12,11 +12,11 @@ toc: true
 ## **SCM Developer Kit 3**
 
 {{< callout warning >}}
-The SCM Developer Kit 3 is currenly still under development. The Dev Kit 3 contains the MOBO2 which is available as an engineeering sample and is not meant for deployment. The items included in the Dev Kit 3 are subject to change.
+The SCM Developer Kit 3 is currently still under development. The Dev Kit 3 contains the MOBO2 which is available as an engineeering sample and is not meant for deployment. The items included in the Dev Kit 3 are subject to change.
 {{< /callout >}}
 
 
-The SCM Developer Kit3 provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart) with the latest revision motherboard (MOBO2) available as engineering samples. The kit includes:
+The SCM Developer Kit 3 provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart) with the latest revision motherboard (MOBO2) available as engineering samples. The kit includes:
  
  * Zymbit [Secure Compute Module](../../scm/quickstart) (Zymbit Security Module and CM4)
  * Zymbit Secure Compute I/O Motherboard2 (MOBO2)
@@ -26,14 +26,14 @@ The SCM Developer Kit3 provides all the hardware and software components require
  * Zymbit External Battery (optional)
 
 {{< cardpane >}}
-{{% card header="Zymbit Dev Kit3 Motherboard (MOBO2) - Top" %}}
+{{% card header="Zymbit Dev Kit 3 Motherboard (MOBO2) - Top" %}}
 {{< figure
     src="mobo2x1_top.png"
     alt="Mobo2x1_top"
     caption="The top and bottom of the Zymbit SCM Developer Kit3 Motherboard"
     >}}
 {{% /card %}}
-{{% card header="Zymbit Dev Kit3 Motherboard (MOBO2) - Bottom" %}}
+{{% card header="Zymbit Dev Kit 3 Motherboard (MOBO2) - Bottom" %}}
 {{< figure
     src="mobo2x1_bottom.png"
     alt="Mobo2x1 Bottom"
@@ -44,7 +44,7 @@ The SCM Developer Kit3 provides all the hardware and software components require
 
 
 {{< cardpane >}}
-{{% card header="Dev Kit3 - Motherboard2 (MOBO2) Rev X1 Connectors" %}}
+{{% card header="Dev Kit 3 - Motherboard2 (MOBO2) Rev X1 Connectors" %}}
 {{< figure 
     src="mobo2x1_table.png"
     alt="MOBO2 Rev X1 Connectors"
@@ -67,7 +67,7 @@ The SCM Developer Kit3 provides all the hardware and software components require
 
 -----
 
-### **Configure and Setup your SCM Developer Kit3**
+### **Configure and Setup your SCM Developer Kit 3**
 
 ##### Power On
  * Connect the included 12V Power Supply up to the front panel 12V barrel connector. Connect an ethernet cable to the gigabit ethernet port. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. The only access is via SSH.
