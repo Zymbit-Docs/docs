@@ -53,6 +53,20 @@ The SCM Developer Kit3 provides all the hardware and software components require
 {{% /card %}}
 {{< /cardpane >}}
 
+### GPIO Pinout Reference
+
+{{< cardpane >}}
+{{% card header="SCM Motherboard MOBO2 Rev X1 GPIO Pinout" %}}
+{{< figure
+    src="zymbit-scm-motherboard-2X1-bottom-gpio-pinout-1500px.jpg"
+    alt=""
+    caption="Note: the standard GPIO pinout is accessed on the bottom side of the D35 board."
+    >}}
+{{% /card %}}
+{{< /cardpane >}}
+
+-----
+
 ### **Configure and Setup your SCM Developer Kit3**
 
 ##### Power On
