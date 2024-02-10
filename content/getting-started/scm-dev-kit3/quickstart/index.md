@@ -11,6 +11,11 @@ toc: true
 -----
 ## **SCM Developer Kit 3**
 
+{{< callout warning >}}
+The SCM Developer Kit 3 is currenly in development state. The Dev Kit 3 contains the MOBO2 which is available as an engineeering sample and is not meant for deployment. The items included in the Dev Kit 3 are subject to change.
+{{< /callout >}}
+
+
 The SCM Developer Kit3 provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart) with the latest revision motherboard (MOBO2) available engineering samples.
  
  * Zymbit [Secure Compute Module](../../scm/quickstart) (Zymbit Security Module and CM4)
