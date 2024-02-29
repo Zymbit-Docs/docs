@@ -16,7 +16,7 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 {{< cardpane >}}
 {{% card header="Secure Edge Node" %}}
 {{< figure
-    src="scn.jpg"
+    src="scn.png"
     alt=""
     caption=""
     >}}
