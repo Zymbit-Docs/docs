@@ -13,15 +13,9 @@ toc: true
 
 Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates Zymbit’s secure motherboard, [Secure Compute Module](/getting-started/scm/quickstart/)  and a choice of accessories.  
 
-{{< cardpane >}}
-{{% card header="Secure Edge Node" %}}
-{{< figure
-    src="scn.png"
-    alt=""
-    caption=""
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
+<br />
+<img src="scn.png" width="60%">
+<br />
 
 -----
 
