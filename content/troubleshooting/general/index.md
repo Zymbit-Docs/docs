@@ -165,6 +165,24 @@ See [Power Quality]( https://docs.zymbit.com/reference/power-quality/) for more 
 
 </details>
 
+##### Q: What curves are supported for Zymbit products?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+Zymkey and HSM4: NIST P-256 and secp256r1
+
+SCM and HSM6: NIST P-256, secp256r1, secp256k1, X25519, ED25519
+
+All Products: Only EC curves are supported. No RSA support is provided in hardware. RSA support is provided via hardware lock/unlock of PKCS11 store on host.
+
+-----
+
+</details>
+
 ##### Q: Do Zymbit Products work with Arduino?
 
 <details>
