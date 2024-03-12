@@ -269,7 +269,7 @@ lsblk
 sudo umount /media*
 
 # re-run service
-sudo systemctl restart 
+sudo systemctl restart cfg_SD_crfs
 
 # monitor progress
 journalctl -fu cfg_SD_crfs
