@@ -5,14 +5,34 @@ description: ""
 aliases:
     - /quickstart/getting-started/zymkey4/
 date: ""
-lastmod: "06-06-2023"
+lastmod: "03-13-2024"
 draft: false
 images: []
 weight: 1
 toc: true
 ---
 
-ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi. It connects to the GPIO header of the SBC and uses the {{< term/i2c >}} bus and `GPIO4` to communicate with the SBC CPU via an encrypted channel.
+ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi. It connects to the GPIO header of the SBC and uses the {{< term/i2c >}} bus and `GPIO4` as a WAKE_PIN to communicate with the SBC CPU via an encrypted channel.
+
+{{% callout notice %}}
+Raspberry PI OS Bookworm updated the kernel to version 6.6.y in March 2024. The kernel no longer overrides an upstream kernel decision to force the base number of the main GPIO controller to be global GPIO 0. For RPI4, RPI5, and CM4 platforms, you will need to set the WAKE_PIN in the following manner:
+
+Determine the numbering for GPIO4 by examining /sys/kernel/debug/gpio for the number associated with GPIO4, then set an environment variable in the Zymbit environment variable file:
+
+```
+sudo su
+wake_pi=`grep GPIO4 /sys/kernel/debug/gpio | sed -r 's/[^0-9]*([0-9]*).*/\1/'`
+echo "wake_pin=$wake_pin"
+echo "ZK_GPIO_WAKE_PIN=$wake_pin" > /var/lib/zymbit/zkenv.conf
+systemctl restart zkifc
+```
+As of 6.6.20, the numbering is:
+RPI4=516
+RPI5=575
+CM4=516
+
+{{% /callout %}}
+
 
 In this *Getting Started* guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspberry PI OS or Ubuntu. The installation process is the same for both of these Linux distributions.
 
