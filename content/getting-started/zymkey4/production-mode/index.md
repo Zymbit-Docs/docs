@@ -24,7 +24,7 @@ If you decide that you are not ready for permanent binding, leave the ZYMKEY4 in
 
 {{< /callout >}}
 
-When you have completed your devlopment work with the ZYMKEY4 and are ready to deploy your system into the field, we recommend that you permanently bind your ZYMKEY4 to a specific host device and SD card.
+When you have completed your development work with the ZYMKEY4 and are ready to deploy your system into the field, we recommend that you permanently bind your ZYMKEY4 to a specific host device and SD card.
 
 {{< resource_link "reference/binding" >}}
 ZYMKEY4 generates a unique Device ID by measuring certain attributes of the specific host and the ZYMKEY4 itself to permanently associate the two devices.
