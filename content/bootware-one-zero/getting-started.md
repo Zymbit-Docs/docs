@@ -4,7 +4,7 @@ linkTitle: "Getting Started"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2023-10-30"
+date: "2024-04-02"
 draft: false
 images: []
 type: docs
@@ -26,31 +26,34 @@ Bootware™ is a set of software tools and micro services for the Zymbit Secure 
 
 ## Using zboot - Hardened Zymbit boot utility
 
-Zboot is Zymbit's boot utility included with Bootware that pulls and reflashes a device with a new user image. In the current Preview, the image can be downloaded two ways:
+Zboot is Zymbit's boot utility included with Bootware that pulls and reflashes a device with a new user image. The image can be downloaded two ways:
 
 * over the network via https  
 * from a USB storage device
 
 
-{{< callout warning >}}
-The current Preview of zboot does not have bare metal recovery. The boot process must make it at least to zboot in order to take action to recover.
-{{< /callout >}}
-
 ## Getting Started - Download and Install Bootware Software
+
+### Steps to get up and running
+
+1. Download the Bootware tar package and unpack
+2. Create a Zymbit image file (zi file)
+3. Run zb-wizard to configure Partitions and Recovery strategy
+4. Run zboot install to load zi images into Partitions
 
 Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
 
 ```
-curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/zymbit-ota-preview.tgz --output zymbit-ota-preview.tgz
+curl https://s3.amazonaws.com/bootware/bootware1.0.tgz --output bootware1.0.tgz
 ```
 
 Once the tar file is downloaded, untar:
 
 ```
-tar xvzf zymbit-ota-preview.tgz
+tar xvzf bootware1.0.tgz
 ```
 
-The contents will be extracted into zymbit-ota-preview/. Files extracted: 
+The contents will be extracted into bootware1.0. Files extracted: 
 
 | Item | Description |
 | ----- | ----- |
@@ -63,7 +66,7 @@ The contents will be extracted into zymbit-ota-preview/. Files extracted:
 Run the following install script on the SCM to install the zboot utilities:
 
 ```
-cd zymbit-ota-preview
+cd bootware1.0
 sudo ./install_zboot_tools.sh
 ```
 
@@ -80,12 +83,12 @@ Reboot to complete the installation process. Once completed, all necessary files
 
 ## Installing and running zboot to reflash an image
 
-zboot requires images in a particular format unique to zboot. An image conversion tool is provided. Input images can be either complete binary images of your entire eMMC or tarballs of your /boot and /rootfs partitions. NOTE: This does not have to be done on the running device. The script can be run on any workstation.
+zboot requires images in a particular format unique to zboot. An image conversion tool is provided. Input images can be either complete binary images of your entire eMMC or tarballs of your /boot and /rootfs partitions. 
 
 > If you would like to get started with a sample image, we've converted the base image installed on the SCM for the preview to a zboot format. Otherwise, continue on to create your own image. Our example image can be downloaded from here, or you can use the URL as a valid endpoint to load a known good image:
 
 ```
-curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_preview.zi --output base_preview.zi
+curl https://s3.amazonaws.com/bootware/base_bullseye.zi --output base_bullseye.zi
 ```
 
 The script used to convert to a zboot image is: 
@@ -108,8 +111,8 @@ sudo zymbit-image-converter -z
 ```
 | Item | Description |
 | ----- | ----- |
-| Name of Image?: base_preview             | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
-| Version?: 2.1                                 | An arbitrary version number for your reference. |
+| Name of Image?: base_bullseye            | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
+| Version?: 1.0                                 | An arbitrary version number for your reference. |
 
 ### Example to convert a binary image file (created from `dd if=/dev/sda bs=4M of=my.img`):
 
@@ -141,12 +144,12 @@ The script will prompt for information:
 
 | Item | Description |
 | ----- | ----- |
-|Name of Image?: base_preview | Name of the converted output file. A zi extension will be added to the name. |
-| Version?: 2.1 | An arbitrary version number for your reference.
+|Name of Image?: base_bullseye | Name of the converted output file. A zi extension will be added to the name. |
+| Version?: 1.0 | An arbitrary version number for your reference.
 
 The script extracts the boot/root tarballs of the binary image. It will then package it up in a Zymbit image and output it to:
 
-`/etc/zymbit/zboot/update_artifacts/output/base_preview.zi`
+`/etc/zymbit/zboot/update_artifacts/output/base_bullseye.zi`
 
 Put the .zi image from the script on a server or USB drive for download. Zboot downloads images from either a USB storage device or the internet via curl requests.
 
@@ -200,7 +203,7 @@ Choose your settings as described below.
 **Save** and **Exit**. You may also choose to Revert to the default configuration.
 
 
-## Use zboot to Install the New Image
+### Use zboot to Install the New Image
 Once you have completed using the Wizard to configure your Bootware, run `zboot-install-new-update` to complete the process by repartitioning and loading your image.
 
 ```
@@ -226,19 +229,19 @@ The script will prompt for a reboot to complete the process.
 
 The Zboot process will now take place. 
 
-{{< callout warning >}}The initial configuration process can take up to 45 minutes to complete. The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
+{{< callout warning >}}The initial configuration process can take up to 2 hours to complete. The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
 
 On the console, you will see:
 
 * “Loading: Encrypted zboot please wait…” message, which takes around 4-5min.
 * The A/B partitions will be configured and setup for LUKS encryption protected by the Zymbit SCM
 * It will then take a few minutes to get/unpack tarballs from the image.
-* It will take some time to unpack the image into the A/B root partitions - approximately 7 minutes, each.
+* It will take some time to unpack the image into the A/B root partitions depending on the size of the image.
 * Once it's done unpacking the image to the A and B partitions, it will boot into the updated ACTIVE partition. You can use `lsblk` to examine the partitions.
 
 ## Reload all utilities
 
-The Bootware utilities are needed for Bootware to function. If not included in your newly loaded image, you will need to load the utilities into your partition(s). Our example zi file base_preview.zi has the Bootware Utilities pre-loaded.
+The Bootware utilities are needed for Bootware to function. If not included in your newly loaded image, you will need to load the utilities into your partition(s). Our example zi file base_bullseye.zi has the Bootware Utilities pre-loaded.
 
 ## Recovery
 
@@ -246,7 +249,7 @@ Each successful boot will clear a max_boot_failure counter. A max_boot_failure c
 
 ## Force Failover (Change Active/Backup partitions)
 
-A failover from Active to Backup is done with the -r option to `zboot-install-new-update`
+A failover from Active to Backup is done with the `-r` option to `zboot-install-new-update`
 
 ```
 sudo zboot-install-new-update -r
