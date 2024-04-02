@@ -164,7 +164,7 @@ Choose your settings as described below.
 {{< cardpane >}}
 {{% card header="Bootware Wizard -Main Screen" %}}
 {{< figure
-    src="bootware-one-zero/wizmain.png"
+    src="wizmain.png"
     alt="Bootware Wizard"
     caption="Choose your options, save and exit."
     >}}
