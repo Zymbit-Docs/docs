@@ -16,14 +16,16 @@ mermaid: true
 ---
 
 
-### Bootware 1.0 Coming Soon
+### Bootware 1.0 
 
 Bootware™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). 
 
-If you are participating in the Bootware Preview program, please see: [Bootware Preview](/bootware-preview)
-
-
 ### Additional Information and Support
     
+If you are participating in the Bootware Preview program, please see: [Bootware Preview](/bootware-preview)
+
 [Contact Support](mailto:support@zymbit.com)
+
+
+## Bootware 1.0 User Guide
 
