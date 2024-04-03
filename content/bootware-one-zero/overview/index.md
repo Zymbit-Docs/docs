@@ -33,7 +33,9 @@ Bootware™ is a set of software tools and micro services for the Zymbit Secure 
 + Optimized for ARMv8 CPUs.
 
 
-## [DETAILS ON BOOTWARE 1.0 SERVICES](https://www.zymbit.com/bootware/)
+### [Click for Details on Bootware 1.0 Services](https://www.zymbit.com/bootware/)
+
+-----
 
 ### Additional Information and Support
     
