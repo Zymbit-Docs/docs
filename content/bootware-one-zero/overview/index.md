@@ -16,18 +16,24 @@ toc: false
 ### WHAT IS BOOTWARE?
 Bootware™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). Bootware™ includes:
 
-* Trusted execution layer with secure, supervised boot chain   
-* Secure image rollback and recovery (Encrypted A/B partitions)
-* Optional Zymbit distribution/recovery service  
++ A/B updates managed in secure silicon.
+
++ Encrypted files system and user kernel.
+
++ Signed images and updates.
+
++ Fallback and bare metal recovery options.
+
++ Seamless integration with Raspberry Pi OS and Ubuntu.
+
++ Easy upgrade path from standard RPi products.
+
++ Available on Zymbit HSM, compute and edge node products. 
+
++ Optimized for ARMv8 CPUs.
 
 
-## Using zboot - Hardened Zymbit boot utility
-
-Zboot is Zymbit's boot utility included with Bootware that pulls and reflashes a device with a new user image. The image can be downloaded two ways:
-
-* over the network via https  
-* from a USB storage device
-
+## [DETAILS ON BOOTWARE 1.0 SERVICES](https://www.zymbit.com/bootware/)
 
 ### Additional Information and Support
     
