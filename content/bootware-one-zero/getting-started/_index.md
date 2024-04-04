@@ -6,11 +6,11 @@ lastmod:
 #    - /zboot-preview/
 date: "2024-04-02"
 draft: false
-images: []
 type: docs
-layout: single
+images: []
 weight: 20
-toc: false
+headless: true
+
 ---
 
 -----
