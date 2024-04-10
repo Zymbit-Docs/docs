@@ -9,7 +9,7 @@ draft: false
 type: docs
 images: []
 weight: 20
-headless: false
+headless: true
 
 ---
 
