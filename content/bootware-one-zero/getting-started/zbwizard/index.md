@@ -1,6 +1,6 @@
 ---
-title: Zymbit Image Converter
-linkTitle: "zymbit-image-converter"
+title: Zymbit ZB-Wizard"
+linkTitle: "zb-wizard"
 lastmod:
 #aliases:
 #    - /zboot-preview/
@@ -9,7 +9,7 @@ draft: false
 images: []
 type: docs
 layout: single
-weight: 20
+weight: 30
 toc: true
 
 ---
