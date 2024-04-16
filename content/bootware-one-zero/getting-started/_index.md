@@ -163,11 +163,11 @@ sudo zb-update
 The script will show your configuration for review and confirmation, or give you the option to change the configuration. This method can be used as an alternative to using the Wizaard.
 
 {{< cardpane >}}
-{{% card header="zboot-install-new-update" %}}
+{{% card header="zb-update" %}}
 {{< figure
     src="zbwizard/updatemain.png"
-    alt="zboot update"
-    caption="Review and continue for zboot update"
+    alt="zb-update"
+    caption="Review and continue for Bootware update"
     >}}
 {{% /card %}}
 {{< /cardpane >}}
@@ -189,15 +189,7 @@ On the console, you will see:
 * It will take some time to unpack the image into the A/B root partitions depending on the size of the image.
 * Once it's done unpacking the image to the A and B partitions, it will boot into the updated ACTIVE partition. You can use `lsblk` to examine the partitions.
 
-## Reload all utilities
-
-The Bootware utilities are needed for Bootware to function. If not included in your newly loaded image, you will need to load the utilities into your partition(s). Our example zi file base_bullseye.zi has the Bootware Utilities pre-loaded.
-
-## Recovery
-
-Each successful boot will clear a max_boot_failure counter. A max_boot_failure count of 3 will trigger the recovery mechanism. The BACKUP partition will become the ACTIVE partition. If neither can boot, the endpoint with a good image will be loaded. A ROLLOVER notification message will be added to the MOTD.
-
-## Force Failover (Change Active/Backup partitions)
+## Quickcheck - Force Failover (Change Active/Backup partitions)
 
 A failover from Active to Backup is done with the `-r` option to `zb-update`
 
