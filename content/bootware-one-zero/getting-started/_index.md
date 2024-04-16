@@ -114,7 +114,7 @@ Choose your settings as described below.
 {{< cardpane >}}
 {{% card header="Bootware Wizard -Main Screen" %}}
 {{< figure
-    src="wizmain.png"
+    src="zbwizard/wizmain.png"
     alt="Bootware Wizard"
     caption="Choose your options, save and exit."
     >}}
@@ -165,7 +165,7 @@ The script will show your configuration for review and confirmation, or give you
 {{< cardpane >}}
 {{% card header="zboot-install-new-update" %}}
 {{< figure
-    src="updatemain.png"
+    src="zbwizard/updatemain.png"
     alt="zboot update"
     caption="Review and continue for zboot update"
     >}}
