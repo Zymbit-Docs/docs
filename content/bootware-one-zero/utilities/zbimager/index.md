@@ -1,5 +1,5 @@
 ---
-title: Zymbit Image Converter
+title: Zymbit Bootware Image Converter
 linkTitle: "zb-imager"
 lastmod:
 #aliases:

@@ -19,9 +19,9 @@ toc: true
 
 ### See also:
 
-[zb-manifest utility](../../utilities/zb-manifest)
-[zb-imager utility](../../utilities/zb-imager)
-[zb-update utility](../../utilities/zb-update)
+[zb-manifest utility](../../utilities/zbmanifest)
+[zb-imager utility](../../utilities/zbimager)
+[zb-update utility](../../utilities/zbupdate)
 
 
 ### Additional Information and Support

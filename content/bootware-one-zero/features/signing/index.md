@@ -18,8 +18,8 @@ toc: true
 
 ### See also:
 
-[zb-imager utility](../../utilities/zb-imager)
-[zb-update utility](../../utilities/zb-update)
+[zb-imager utility](../../utilities/zbimager)
+[zb-update utility](../../utilities/zbupdate)
 
 
 ### Additional Information and Support
