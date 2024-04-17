@@ -20,9 +20,9 @@ toc: true
 ## zb-update - Utility to perform Bootware Updates
 
 ```
- zb-update -h
+zb-update -h
 
-Usage: zymbit_install_new_update [ [-k <key-slot>] [--key-file=<filepath>] [-w] | [-y] [-r] ]
+Usage: zb-update [ [-k <key-slot>] [--key-file=<filepath>] [-w] | [-y] [-r] ]
 
 
 Flags                Description
@@ -44,15 +44,6 @@ Flags                Description
 
 ### Examples of Bootware updates:
 
-```
-sudo zb-imager -z
-```
-| Item | Description |
-| ----- | ----- |
-| Name of Image?: base_bullseye            | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
-| Version?: 1.0                                 | An arbitrary version number for your reference. |
-
-### Example to convert a binary image file (created from `dd if=/dev/sda bs=4M of=my.img`):
 
 ```
 sudo zb-update
@@ -73,9 +64,9 @@ The script will show your configuration for review and confirmation, or give you
 The script will prompt for a reboot to complete the process. 
 
 
-## zboot Boot Process
+## Bootware Boot Process
 
-The Zboot process will now take place. 
+The Bootware Update process will now take place. 
 
 {{< callout warning >}}The initial configuration process can take up to 2 hours to complete. The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
 

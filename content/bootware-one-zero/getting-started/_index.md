@@ -78,19 +78,12 @@ You will the correct public key in order to verify the downloaded image. The pub
 
 curl https:///bootware.s3.amazonaws.com/base_bullseye_pubkey.bin --output base_bullseye_pubkey.bin
 
-The script used to convert to a zboot image is: 
-```
-zb-imager
-    test.img	      Binary image file of eMMC (e.g. created from dd). Name of output image need not match.  
-    -b	<boot.tar>    Use this boot tarball as input. Must include -r option.  
-    -r  <root.tar>    Use this root tarball as input. Must include -b option.  
-    -o  <directory>   Output directory for new .zi image.  
-    -z                Creates a zi image from your current running root file system.  
-```
 
 ### Quickstart to create a zi image from your current running root file system
 
-If you would like to create your own zi image, the most straightforware way to start would be with a snapshot of your known good, running system. You can do this in situ with the `-z` option. Additional examples of zb-imager usage can be found here: [zb-imager usage](zb-imager)
+If you would like to create your own zi image, the most straightforware way to start would be with a snapshot of your known good, running system. You can do this in situ with the `-z` option. Additional examples of zb-imager usage can be found here: [zb-imager usage](utilities/zbimager)
+
+You will also need to provide a Public/Private key pair to sign your image. The `zb-update` utility will prompt you through that process.
 
 ```
 sudo zb-imager -z
@@ -99,6 +92,8 @@ sudo zb-imager -z
 | ----- | ----- |
 | Name of Image?: base_bullseye            | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
 | Version?: 1.0                                 | An arbitrary version number for your reference. |
+
+TODO: Add quickstart signing choices
 
 Put the .zi image from the script on a server reachable vi an HTTPS GET or LOCAL EXTERNAL STORAGE such as an nVME drive or USB for download. 
 
@@ -114,30 +109,20 @@ Choose your settings as described below.
 {{< cardpane >}}
 {{% card header="Bootware Wizard -Main Screen" %}}
 {{< figure
-    src="zbwizard/wizmain.png"
+    src="../utilities/zbwizard/wizmain.png"
     alt="Bootware Wizard"
     caption="Choose your options, save and exit."
     >}}
 {{% /card %}}
 {{< /cardpane >}}
 
-**Partition Setup** – Specifies the device partition layout after an update. The root file system will be re-partitioned with your chosen configuration. Filesystem sizes estimates are based off of 32GB CM4s.
-
-*	1  A Only [HALF DISK] – This will take the remaining disk space available after the boot partition and create an encrypted partition that will use half of this space as the root partition (around 14.4 GB). This leaves half the disk empty on purpose for dev usage.
-
-*	2  A only [FULL DISK] – This will take the remaining disk space available after the boot partition (around ~29GB) and create an encrypted partition that will use almost all of this space as the root partition.
+**Partition Setup** – Specifies the device partition layout after an update. The root file system will be re-partitioned with your chosen configuration. Filesystem sizes estimates are based off of 32GB CM4s. Choose the recommended Option 3 A/B.
 
 *	3  A/B – RECOMMENDED This will take the remaining disk space available after the boot partition and create two encrypted partitions, each taking up half of the remaining space (around 14.4 GB). Most useful for rollback and recovery with an Active/Backup configuration.
 
-**Update Policy** – The update policies are centered around how a new update gets applied to the filesystems on the device. The update policies listed below are only related to (A)ctive/(B)ackup partitioned devices, as (A)ctive only devices only have one filesystem to update.
+**Update Policy** – The update policies are centered around how a new update gets applied to the filesystems on the device. The update policies listed below are only related to (A)ctive/(B)ackup partitioned devices, as (A)ctive only devices only have one filesystem to update. Choose the recommeded Option 1 - Backup. This way you know you have a good Active partition for fallback.
 
-*	1  Backup – RECOMMENDED Apply new updates to current backup filesystem and swap to booting the new updated backup partition as the active partition now. If the new update is bad, it will rollback into the previous stable active partition. Only relevant when configured with A/B partitions.
-  
-*	2  Active – Apply new updates to only the current active filesystem and keep the backup partition untouched. Only relevant when configured with A/B partitions.
-
-*	3  Both – Apply new updates to both filesystems and always boot on the first root partition as the active partition. Warning: A bad update will have nothing to rollback to; the device will have to go through a recovery process.
-
-**Endpoint Setup** – The configured endpoint ready with a new update(.zi image). The endpoint can be either an https URL or an external mass storage device like a USB stick. 
+**Endpoint Setup** – The configured endpoint ready with a new update(.zi image). The endpoint can be either an https URL or a local external mass storage device like a USB stick or nVME drive. 
 
 *	Endpoint – Type the endpoint where the .zi image resides for the device to pull updates from. The endpoint will be checked for validity.
 
@@ -160,12 +145,12 @@ Once you have completed using the Wizard to configure your Bootware, run `zb-upd
 sudo zb-update
 ```
 
-The script will show your configuration for review and confirmation, or give you the option to change the configuration. This method can be used as an alternative to using the Wizaard.
+The script will show your configuration for review and confirmation and give you the option to change the configuration. This method can be used as an alternative to using the Wizaard.
 
 {{< cardpane >}}
 {{% card header="zb-update" %}}
 {{< figure
-    src="zbwizard/updatemain.png"
+    src="../utilities/zbwizard/updatemain.png"
     alt="zb-update"
     caption="Review and continue for Bootware update"
     >}}
@@ -177,7 +162,7 @@ The script will prompt for a reboot to complete the process.
 
 ## zboot Boot Process
 
-The Zboot process will now take place. 
+The Bootware boot process will now take place, using zboot to boot your system. 
 
 {{< callout warning >}}The initial configuration process can take up to 2 hours to complete. The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
 
@@ -197,15 +182,7 @@ A failover from Active to Backup is done with the `-r` option to `zb-update`
 sudo zb-update -r
 ```
 
-## Uninstall Bootware
-
-A utility is included to uninstall bootware, returning to the standard linux boot process. The uninstall process will leave you in the current encrypted active partition and preserve the contents of that partion as well as the overall partition layout.
-
-```
-cd ~/bootware-1.0
-sudo ./zb-uninstall.sh
-```
-The script will confirm you would like to uninstall the bootware scripts and artifacts, as well as a required reboot.
+You should now have Active and Backup partitions with working images ready for your development.
 
 ### Additional Information and Support
     
