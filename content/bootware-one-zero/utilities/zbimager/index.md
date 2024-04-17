@@ -122,8 +122,6 @@ The script extracts the boot/root tarballs of the binary image. It will then pac
 Put the .zi image from the script on a server or USB drive for download. Zboot downloads images from either a USB storage device or the internet via curl requests.
 
 
-```
-
 ### Additional Information and Support
     
 [Contact Support](mailto:support@zymbit.com)
