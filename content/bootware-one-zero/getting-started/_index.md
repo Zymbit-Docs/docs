@@ -17,19 +17,19 @@ headless: false
 
 ## Quickstart - Download and Install Bootware Software
 
-In this Getting Started guide we describe how to bring up a common use case for Bootware - an A/B partitioned scenarion for fallback and recovery. The default SCM/SEN as shipped has Zymbit software pre-installed. The Zymbit product should be up and running with the blue LED flashing once every three seconds.
+In this Getting Started guide we describe how to bring up a common use case for Bootware - an A/B partitioning for fallback and recovery. The default SCM/SEN as shipped has Zymbit software pre-installed. The Zymbit product should be up and running with the blue LED flashing once every three seconds.
 
 Details of the features in this Quickstart are linked in line. See the Features section for other examples of how to use Bootware.
 
 ### Overview of steps to get up and running
 
 1. Download the Bootware tools package and untar. Run zb-install to install the Bootware tools
-2. Run zb-imager to create and sign a Zymbit image file (zi image) of your current root file system. 
+2. Run zb-imager to create and sign a Zymbit image file (zi image) of your current root file system as a backup. 
 3. Run zb-wizard to configure Partitions and Recovery strategy. For this Quickstart, we will setup A/B partitions.
-4. Run zb-update to load an example zi image into the Backup (B) partition, and set to as the Active partition.
+4. Run zb-update to load a known good example zi image into the Backup (B) partition; set B to as the Active partition.
 5. Use the "-r" option to force a Rollback to your original partition to verify your A/B setup is working.
 
-### Download Bootware
+### 1. Download Bootware
 
 Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
 ```
@@ -72,7 +72,7 @@ Reboot to complete the installation process. Once completed, all necessary files
 
 ### Bootware-ready Zymbit Image (zi image)
 
-Bootware requires images in a secure, signed format for loading with zboot. An image conversion tool zb-imager, takes care of creating the zi image. Input images can be either complete binary images of your entire eMMC or tarballs of your /boot and /rootfs partitions. 
+Bootware requires images in a secure, signed format for loading with zboot. An image conversion tool, `zb-imager`, creates the zi image. Input images can be either complete binary images of your entire eMMC or tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called Overlay images.
 
 TODO - Explain Full and Overlay images
 
@@ -81,9 +81,31 @@ This Quickstart will include creating a snapshot image of your running image as 
 
 #### Create a zi image backup from your current running root file system
 
-The first zi image will serve as a backup of your current, running system. Once created, the zi image can be propogated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation, and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. See KEYS for detailed information.
+ First, we will use zb-imager to create a zi image backup of your current running system. Once created, the zi image can be propagated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation, and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. See KEYS for detailed information.
+
+```
+sudo zb-imager
+```
+Make the following selections:
+| ----- | ----- |
+| Image Type?\n1. Full Image\n2.Overlay Image  | Choose 1. for a Full Image |
+| Name of Image?: myImage            | Name of the converted output file. A zi extension will be added to the name. |
+| Version?: 1.0                                 | Optional. An arbitrary version number for your reference. |
 
 
+Next, you will be prompted for Signing Keys. Keys can be Software or Hardware based. You can use an existing key or the script will create keys for you. For this Quickstart, we will assume you need to generate Software keys,
+
+| ----- | ----- |
+| Use software-based keys? | Yes |
+| Key?\n1. Create new key\n2Use existing key? | 1. Create new software key |
+
+The i`zb-imager` script will now build your zi image.
+
+The imager takes 15-20 minutes or longer, depending on the size of your file system. Once completed, the zi image and Private/Public key will be saved in `/etc/zymbit/zboot/update_artifacts/output/. Keep your private key private. The zi image can be copied to either a local stoage device, such as a USB stick or a remote service accessible via HTTPS. 
+
+
+
+#### 
 > For this quickstart, we will get started with a sample image. We've converted the pre-installed base image on the SCM to the zi format. A public key is also provided to verify the image. Download our example image can be downloaded from here:
 
 
