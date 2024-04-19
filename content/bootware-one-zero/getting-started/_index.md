@@ -4,7 +4,7 @@ linkTitle: "Getting Started"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2024-04-15"
+date: "2024-04-19"
 draft: false
 type: docs
 images: []
@@ -15,15 +15,21 @@ headless: false
 
 -----
 
-
 ## Quickstart - Download and Install Bootware Software
+
+In this Getting Started guide we describe how to bring up a common use case for Bootware - an A/B partitioned scenarion for fallback and recovery. The default SCM/SEN as shipped has Zymbit software pre-installed. The Zymbit product should be up and running with the blue LED flashing once every three seconds.
+
+Details of the features in this Quickstart are linked in line. See the Features section for other examples of how to use Bootware.
 
 ### Overview of steps to get up and running
 
 1. Download the Bootware tools package and untar. Run zb-install to install the Bootware tools
-2. Run zb-imager to create and sign a Zymbit image file (zi image)
-3. Run zb-wizard to configure Partitions and Recovery strategy
-4. Run zb-update to load zi image into Partitions
+2. Run zb-imager to create and sign a Zymbit image file (zi image) of your current root file system. 
+3. Run zb-wizard to configure Partitions and Recovery strategy. For this Quickstart, we will setup A/B partitions.
+4. Run zb-update to load an example zi image into the Backup (B) partition, and set to as the Active partition.
+5. Use the "-r" option to force a Rollback to your original partition to verify your A/B setup is working.
+
+### Download Bootware
 
 Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
 ```
@@ -46,7 +52,6 @@ The contents will be extracted into bootware1.0. Files extracted:
 | zb-uninstall.sh        | Shell script to uninstall Bootware tools     |
 
 
-
 Run the following install script on the SCM to install the zboot utilities:
 
 ```
@@ -65,21 +70,31 @@ After installing the zboot tools. A reboot is required. Reboot now? (Y/n)
 ```
 Reboot to complete the installation process. Once completed, all necessary files required for loading new images via zboot will be installed.
 
-## Installing and running zboot to reflash an image
+### Bootware-ready Zymbit Image (zi image)
 
-zboot requires images in a particular format unique to zboot, and signed. An image conversion tool is provided. Input images can be either complete binary images of your entire eMMC or tarballs of your /boot and /rootfs partitions. 
+Bootware requires images in a secure, signed format for loading with zboot. An image conversion tool zb-imager, takes care of creating the zi image. Input images can be either complete binary images of your entire eMMC or tarballs of your /boot and /rootfs partitions. 
 
-> If you would like to get started with a sample image, we've converted the base image pre-installed on the SCM zi format. A public key is also provided to verify the image. Our example image can be downloaded from here, or you can use the URL as a valid endpoint to load a known good image:
+TODO - Explain Full and Overlay images
+
+This Quickstart will include creating a snapshot image of your running image as well as loading a known good default image.
+
+
+#### Create a zi image backup from your current running root file system
+
+The first zi image will serve as a backup of your current, running system. Once created, the zi image can be propogated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation, and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. See KEYS for detailed information.
+
+
+> For this quickstart, we will get started with a sample image. We've converted the pre-installed base image on the SCM to the zi format. A public key is also provided to verify the image. Download our example image can be downloaded from here:
+
 
 ```
 curl https:///bootware.s3.amazonaws.com/base_bullseye.zi --output base_bullseye.zi
 ```
-You will the correct public key in order to verify the downloaded image. The public key is available as binary file,
+You will need the corresponding public key in order to verify the downloaded image. The public key is in PEM format can be downloaded here:
 
 curl https:///bootware.s3.amazonaws.com/base_bullseye_pubkey.bin --output base_bullseye_pubkey.bin
 
-
-### Quickstart to create a zi image from your current running root file system
+---------------------------------------------------------------
 
 If you would like to create your own zi image, the most straightforware way to start would be with a snapshot of your known good, running system. You can do this in situ with the `-z` option. Additional examples of zb-imager usage can be found here: [zb-imager usage](utilities/zbimager)
 
