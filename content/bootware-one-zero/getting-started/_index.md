@@ -184,7 +184,7 @@ The script will show your configuration for review and confirmation and give you
 {{< cardpane >}}
 {{% card header="zb-update" %}}
 {{< figure
-    src="../utilities/zbwizard/updatemain.png"
+    src="zb-update2.png"
     alt="zb-update"
     caption="Review and continue for Bootware update"
     >}}
