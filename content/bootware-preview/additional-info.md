@@ -4,10 +4,9 @@ linkTitle: "Additional Bootware File Info"
 lastmod:
 draft: false
 images: []
-type: docs
-layout: single
 weight: 0
 toc: false
+
 ---
 
 -----

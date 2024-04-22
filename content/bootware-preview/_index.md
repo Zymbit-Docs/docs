@@ -10,8 +10,8 @@ lastmod: ""
 draft: false
 weight: 10
 images: []
-headless: true
 toc: False
+
 ---
 
 
