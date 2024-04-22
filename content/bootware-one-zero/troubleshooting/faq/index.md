@@ -26,7 +26,7 @@ A: Bootware 1.0 runs on the Secure Compute Module based products - the Secure Ed
 
 </details>
 
-##### Q: What operation systems are supported.
+##### Q: What Operating Systems are supported?
 
 <details>
 
