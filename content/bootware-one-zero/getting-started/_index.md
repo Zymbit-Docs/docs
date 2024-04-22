@@ -70,7 +70,7 @@ Installing zboot...
 Done!
 After installing the zboot tools. A reboot is required. Reboot now? (Y/n)
 ```
-Reboot to complete the installation process. Once completed, all necessary files required for loading new images via zboot will be installed.
+Reboot to complete the installation process. The process will actually complete two reboots. Once completed, all necessary files required for loading new images via zboot will be installed. The install process will change the boot sequence to use u-boot and Zymbit's zboot, but will not alter your filesystem.
 
 ### 2. Run zb-imager to create Bootware-ready Zymbit Image backup (zi image)
 

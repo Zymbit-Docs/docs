@@ -20,7 +20,7 @@ toc: false
 
 <br>
 
-A: Bootware 1.0 exclusively run on the Secure Compute Module based products, such as the Secure Edge Node.
+A: Bootware 1.0 runs on the Secure Compute Module based products - the Secure Edge Node, SCM Development kits, SCM modules.
 
 -----
 
@@ -73,7 +73,7 @@ A: Bootware 1.0 primarily consists of three partitioning schemes:
 
 </details>
 
-##### Q: Are the partitions encruypted?
+##### Q: Are the partitions encrypted?
 
 <details>
 
@@ -87,7 +87,7 @@ A: Yes, the Root partitions are encrypted with LUKS encryption, protected by sep
 
 </details>
 
-##### Q: What types of curves are used to protect zi imagest?
+##### Q: What types of curves are used to sign and verify zi images?
 
 <details>
 
@@ -101,7 +101,7 @@ A: The sign/verify process relies on ECDSA-based curves, in particular secp256k1
 
 </details>
 
-##### Q: Is there Bare Metal REcovery?
+##### Q: Is there Bare Metal Recovery?
 
 <details>
 
@@ -114,6 +114,4 @@ A: Bare metal recovery is not currently available.
 -----
 
 </details>
-
-
 
