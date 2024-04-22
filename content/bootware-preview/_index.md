@@ -12,9 +12,8 @@ weight: 10
 images: []
 headless: true
 toc: False
-# layout: "docs"
-mermaid: true
 ---
+
 
 {{< callout warning >}}
 This an Engineering/Developer Preview Feature! This is not meant for Production. Bootware Preview features are not standard product. Only load this feature if you are working directly with Zymbit as a Preview customer.
