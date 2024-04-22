@@ -1,13 +1,14 @@
 ---
 title: Frequently Asked Questions
-linkTitle: "Bootware 1.0 FAQ
+linkTitle: "Bootware 1.0 FAQ"
 lastmod:
 draft: false
 images: []
 type: docs
 layout: single
-weight: 0
+weight: 10
 toc: false
+
 ---
 
 -----
