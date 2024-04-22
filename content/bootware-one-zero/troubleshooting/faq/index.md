@@ -42,6 +42,20 @@ A: Bootware 1.0 supports the standard SCM OS options:
 
 </details>
 
+##### Q: Can I use Bootware to switch from Bullseye to Ubuntu 22.04?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+A: Yes, you can switch between Bullseye and Ubuntu 22.04.  Note: The CM4/SCM firmware must include bootloader version 2023/01/11 or later in order to work with Ubuntu 22.04. The version can be verified with the `vcgencmd bootloader_version` command.
+
+-----
+
+</details>
+
 ##### Q: Can I use a custom kernel build?
 
 <details>
