@@ -62,7 +62,7 @@ cd bootware-1.0
 sudo ./zb-install.sh
 ```
 
-The installation script will do two reboots. with everything in place, you can now run `zb-imager` to create an image. 
+The installation script will do two reboots. With everything in place, you can now run `zb-imager` to create an image. 
 
 ### 4. Run `zb-imager` and sign with a software-based key
 

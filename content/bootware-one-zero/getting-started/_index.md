@@ -76,7 +76,7 @@ Reboot to complete the installation process. The process will actually complete 
 
 Bootware requires images in a secure, signed format for loading with zboot. An image conversion tool, `zb-imager`, creates the zi image. Input images can be either complete binary images of your entire eMMC or tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called Overlay images.
 
-TODO - Explain Full and Overlay images
+> If you are Developing on a CM4 directly and need to transition to the SCM, See [Developing on the CM4](../features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
 
 
 #### Create a zi image backup from your current running root file system
