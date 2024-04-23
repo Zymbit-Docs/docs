@@ -35,10 +35,11 @@ Follow the standard instructions from Raspberry PI Foundation using `rpiboot` an
 
 ### 2. Load the Zymbit software
 
-Once the image is put together and loaded on the SCM, the Zymbit software will be necessary. For now, Zymbit hardware is not needed. You only need to complete the software installation. The following will load all packages, reboot, and be sufficient to continue.
+Once the image is put together and loaded on the SCM, load Zymbit software. For now, Zymbit hardware is not needed. You only need to complete the software installation. The following will load all packages and reboot to complete the software installation.
 
 ```
 curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
+```
 
 ### 3. Install Bootware 1.0 Tools
 
