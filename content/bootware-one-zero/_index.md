@@ -22,7 +22,7 @@ Bootware™ is a set of software tools and micro services for the Zymbit Secure 
 
 ### Additional Information and Support
     
-If you are participating in the Bootware Preview program, please see: [Bootware Preview](/bootware-preview)
+If you are participating in the Bootware Preview program, please see: [Bootware Preview](../bootware-preview)
 
 [Contact Support](mailto:support@zymbit.com)
 
