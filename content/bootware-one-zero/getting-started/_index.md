@@ -4,7 +4,7 @@ linkTitle: "Getting Started"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2024-04-19"
+date: "2024-04-23"
 draft: false
 type: docs
 images: []
@@ -122,7 +122,7 @@ curl https:///bootware.s3.amazonaws.com/pub_key.pem --output pub_key.pem
 We will configure the zi image to be accessed remotely via HTTPS. If you wish to run from a local source such as a USB stick, our example image can be downloaded from here:
 
 ```
-curl https:///bootware.s3.amazonaws.com/base_bullseye.zi --output base_bullseye.zi
+curl https:///bootware.s3.amazonaws.com/zymbit_bullseye.zi --output zymbit_bullseye.zi
 ```
 
 #### Use the Bootware Wizard to Configure your System
@@ -155,10 +155,10 @@ Choose your settings as described below.
 **Endpoint Setup** – The configured endpoint with .zi image. The endpoint can be either an HTTPS URL or a local external mass storage device like a USB stick or nVME drive. We are going to use the URL of our known good image:
 
 ```
-https:///bootware.s3.amazonaws.com/base_bullseye.zi
+https:///bootware.s3.amazonaws.com/zymbit_bullseye.zi
 ```
 
-If you opted to download the `base_bullseye.zi` image to a local device, enter that instead.
+If you opted to download the `zymbit_bullseye.zi` image to a local device, enter the device endpoint name instead.
 
 ```
 /dev/sda1
