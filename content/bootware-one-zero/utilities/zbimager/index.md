@@ -169,7 +169,7 @@ Creating headers...
 Creating Zymbit Image...
 ```
 
-`zb-imager` will also need a private key. It can generate one for you if you do not have one. The key can either be software-based or Zymbit HSM-based. See [Signing/Verifying Images](../features/signing) for more information.
+`zb-imager` will also need a private key. It can generate one for you if you do not have one. The key can either be software-based or Zymbit HSM-based. See [Signing/Verifying Images](../../features/signing) for more information.
 
 ### Output
 
