@@ -85,7 +85,36 @@ sudo zb-imager
 | Name of Image?: myImage            | Name of the converted output file. A zi extension will be added to the name. |
 | Version?: 1.0                                 | An arbitrary version number for your reference. |
 
-### Example to convert boot/root tarballs (created from `tar cvf my_boot.tar <boot_part>`, `tar cvf my_rfs.tar <root_part>`)
+#### Example to create a zi image from a binary image created via dd (from dd if=/dev/sda bs=4M of=my.img):
+
+You will need the path to the image file.
+
+```
+sudo zb-imager --binary-image /home/zymbit/my.img
+```
+
+The script will prompt for information:
+
+```
+Checking for zymbit scm...
+Image Name?: bullseye
+Version? [OPTIONAL]: 0.1.0
+Boot File System Partition Number? (EX: 1): 1
+Root File System Partition Number? (EX: 2): 2
+Note:Software/Hardware keys are not interchangeable. Stick with one method.
+Use software-based keys for Signing?
+(No for hardware-based keys) (Y/n):
+Y
+Key?
+   1. Create new software key files
+   2. Use a pre-existing software key files
+: 2
+Existing private key file? (Pem format): /home/zymbit/keys/private_key.pem
+Setting up environment...
+Copying boot files from binary image...
+```
+
+#### Example to convert boot/root tarballs (created from `tar cvf my_boot.tar <boot_part>`, `tar cvf my_rfs.tar <root_part>`)
 
 You will need to provide the names and paths to your tarballs. Run the script:
 
