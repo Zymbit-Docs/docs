@@ -48,15 +48,16 @@ All necessary Zymbit software has been pre-installed. No further installation is
 
 #### Pre-loaded OS options
 * Raspberry PI OS Lite 64-bit (Bullseye) - DEFAULT
-* Raspberry PI OS Lite 32-bit (Bullseye) - OPTIONAL
+* Ubuntu Server 22.04 64-bit LTS (jammy) 
 
-#### Modifications from beta
+#### Recent Changes
+
 * Now allow initial SSH via password (use zymbit/zymbit). Please change once logged in.
 * No longer providing SSH key on USB stick; as noted above, you can use password.
 * No longer necessary to register product; no SSH key necessary so no need for key passphrase.
 * sudo for user zymbit with password in standard PI OS manner allowed; no need to supply password every time.
 
-#### Changes
+* FW 01.03.00 - April 2024. Update bootcode.bin to 1/11/2023 version. You can verify with `vcgencmd bootloader_version`. Should say 1/11/2023. Necessary to support Ubuntu 22.04.
 * FW 01.03.00 - Supports B1 revision of SCM
 * FW 01.00.00 - Supports A1 revision of SCM
 * FW 01.00.00 - Fixed:  #117 Stored tamper event on shutdown has incorrect timestamp
@@ -80,11 +81,11 @@ All necessary Zymbit software has been pre-installed. No further installation is
 * 100% pin compatible with RPi CM4, all configurations.
 * 100% code compatible with RPi
 * Easy to Scale
-* Pre-fuzzed, pre-encrypted file system
+* Pre-encrypted file system
 {{% callout notice %}}
-The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
+The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Bootware 1.0 can be used to replace Bullseye or Ubuntu 22.04 based Operating System images. See [Bootware](../../../bootware-one-zero) for details.
 {{% /callout %}}
-* Pre-loaded Linux kernel (bullseye 64-bit or 32-bit)
+* Pre-loaded Linux kernel (bullseye 64-bit or Ubuntu 22.04 64-bit)
 * Optionally Pre-load with customer software
 * Pre-defined file manifest & policies
 * Custom MAC OUID blocks available

@@ -15,6 +15,18 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 ### Recent Activity
 <br>
 
+#### April 2024
+-----
+Bootware 1.0 is now released for General Availability. Along with Bootware 1.0 GA, The SCM/SEN product line now officially supports both Bullseye 64-bit and Ubuntu 22.04 64-bit.
+
+Updated Product Matrix:
+
+<br>
+
+![supported OSs](supported-os-dots.png) 
+<br>
+
+
 #### March 2024
 -----
 Raspberry PI OS updated kernels to 6.6.y on March 12th. The kernel no longer overrides an upstream kernel decision to force the base number of the main GPIO controller to be global GPIO 0. If the ZYMKEY4 WAKE_PIN number is not set, the ZYMKEY will not bind. The install_zk_sw.sh script has been updated to set the WAKE_PIN number for you if it detects a kernel version of 6.6.x or later. If you update the kernel on an existing installation without making the change below, you will see 5 flashes per second continuously.
@@ -39,13 +51,6 @@ You do not need to do anything for new installations as the install_zk_sw.sh wil
 #### December 2023
 -----
 We have added support for Bookworm (64-bit) on the Pi5, PI4 and CM4 for the ZYMKEY, HSM4, and HSM6. Follow the Getting Started guides to install and encrypt. 
-
-List of supported OS platforms:
-
-<br>
-
-![supported OSs](supported-os-dots.png) 
-<br>
 
 #### October 2023
 -----

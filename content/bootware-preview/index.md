@@ -1,6 +1,6 @@
 ---
 title: "Bootware Preview"
-linkTitle: "Bootware Preview"
+linkTitle: "Bootware Preview (deprecated)"
 icon: ""
 description: ""
 aliases:
@@ -10,27 +10,38 @@ lastmod: ""
 draft: false
 weight: 10
 images: []
-# headless: true
-# layout: "docs"
-mermaid: true
+toc: True
+
 ---
 
+
 {{< callout warning >}}
-This an Engineering/Developer Preview Feature! This is not meant for Production. Bootware Preview features are not standard product. Only load this feature if you are working directly with Zymbit as a Preview customer.
+[Bootware 1.0](../bootware-one-zero) GA Release is now available.
+
+Bootware Preview is an Engineering/Developer Preview. This is not meant for Production. Bootware Preview features are not standard product. Only load this feature if you are working directly with Zymbit as a Preview customer.
 
 We recommend attaching an HDMI console when using Bootware Preview. The process of repartitioning and populating partitions can take substantial time, upwards of 45 minutes and the console serves as a point of reference of activity.
 {{< /callout >}}
 
-### WHAT IS BOOTWARE?
-Bootware™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). Bootware™ includes:
-
-* Trusted execution layer with secure, supervised boot chain   
-* Secure image rollback and recovery (Encrypted A/B partitions)
-* Optional Zymbit distribution/recovery service  
 
 ### Bootware Release Schedule:  
-* Bootware Preview – Now. Limited functionality. **Not intended for Production**.
-* Bootware Full Standard Release – Q1 2024
+* Bootware 1.0 - April 2024
+* Bootware Preview (deprecated) – February 2024. Limited functionality. **Not intended for Production**.
+
+### Notable changes from Bootware Preview to GA Bootware 1.0
+
+Utility name changes: The following utilities changed names:
+
+| Item | Preview | 1.0 |
+| ---- | ------- | ------- |
+| Download location |  https://zk-sw-repo.s3.amazonaws.com/ota_preview/ | https://bootware.s3.amazonaws.com/ |
+| Bootware tarball | zymbit-ota-preview.tgz | bootware-1.0.tgz |
+| Bootware Install | install_zboot_tools.sh | zb-install.sh |
+| Bootware Imager | zymbit-image-converter | zb-imager |
+| Bootware Updater | zboot-install-new-update | zb-update |
+| Bootware Uninstall | uninstall_zboot.sh | zb-uninstall.sh |
+
+
 
 ### Updates:
 Bootware Preview 2.1 (Jan 10, 2024)
