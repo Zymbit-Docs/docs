@@ -18,7 +18,7 @@ toc: true
 The SCM ships with a pre-installed version of either Raspberry PI OS Lite (bullseye 64bit) or Ubuntu Server 22.04 (jammy) with a more secure configuration.
 
 {{% callout notice %}}
-The pre-installed image is encrypted and cannot be replaced via `rpiboot`. Once Bootware is installed, Bootware can install new images based off Bullseye or Jammy in the Zymbit `zi` image format. See the [Getting Started](../getting-started) section and the [zb-update](../utiitiies/zb-update) tool.  
+The pre-installed image is encrypted and cannot be replaced via `rpiboot`. Once Bootware is installed, Bootware can install new images based off Bullseye or Jammy in the Zymbit `zi` image format. See the [Getting Started](../getting-started) section and the [zb-update](../utiitiies/zbupdate) tool.  
 
 {{% /callout %}}
 
