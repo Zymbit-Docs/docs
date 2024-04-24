@@ -1,6 +1,6 @@
 ---
-title: Development path from CM4
-linkTitle: Development path from CM4"
+title: Developing on the CM4
+linkTitle: Developing on the CM4"
 lastmod:
 #aliases:
 #    - /zboot-preview/
