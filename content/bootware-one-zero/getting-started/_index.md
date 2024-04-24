@@ -19,11 +19,11 @@ headless: false
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-The default SCM/SEN as shipped has Zymbit software pre-installed. The Zymbit product should be up and running with the blue LED flashing once every three seconds. All of the default images will have a hostname of zymbit-dev and a login of zymbit/zymbit. Please change the hostname and login during your development.
+The default SCM/SEN as shipped has Zymbit software pre-installed. The Zymbit product should be up and running with the blue LED flashing once every three seconds. All of the default images will have a hostname of zymbit-dev and a login of zymbit/zymbit. Change the hostname and login during your development.
 
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
-Details of the features in this Quickstart are linked in line. See the Features section for other examples of how to use Bootware.
+Details of the commands in this Quickstart are linked in line. See the [Features](../features) section for more information on how to use Bootware.
 
 ### Overview of steps to get up and running
 
@@ -46,7 +46,7 @@ Once the tar file is downloaded, untar:
 tar xvzf bootware-1.0.tgz
 ```
 
-The contents will be extracted into bootware1.0. Files extracted: 
+The contents will be extracted into `bootware-1.0`. Files extracted: 
 
 | Item | Description |
 | ----- | ----- |
@@ -72,18 +72,18 @@ Installing zboot...
 Done!
 After installing the zboot tools. A reboot is required. Reboot now? (Y/n)
 ```
-Reboot to complete the installation process. The process will actually complete two reboots. Once completed, all necessary files required for loading new images via zboot will be installed. The install process will change the boot sequence to use u-boot and Zymbit's zboot, but will not alter your filesystem.
+Reboot to complete the installation process. The process takes two reboots. Once completed, all necessary files required for loading new images via zboot will be installed. The install process will change the boot sequence to use u-boot and Zymbit's zboot, but does not alter your filesystem.
 
 ### 2. Run zb-imager to create Bootware-ready Zymbit Image backup (zi image)
 
-Bootware requires images in a secure, signed format for loading with zboot. An image conversion tool, `zb-imager`, creates the zi image. Input images can be either complete binary images of your entire eMMC or tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called Overlay images.
+Bootware requires images in a secure, signed format for loading with zboot. An image conversion tool, [`zb-imager`](../utilities/zbimager), creates the zi image. `zb-imager` can take a snapshot of your running system or input can be tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../features/overlays).
 
 > If you are Developing on a CM4 directly and need to transition to the SCM, See [Developing on the CM4](../features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
 
 
 #### Create a zi image backup from your current running root file system
 
-Use `zb-imager` to create a zi image backup of your current running system. Once created, the zi image can be propagated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation, and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. See KEYS for detailed information.
+Use `zb-imager` to create a Zymbit Image (zi) backup of your current running system. Once created, the zi image can be propagated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../features/signing).
 
 ```
 sudo zb-imager
@@ -107,7 +107,7 @@ Next, you will be prompted for Signing Keys. Keys can be Software or Hardware ba
 
 The `zb-imager` script will now build your zi image.
 
-The imager takes 15-20 minutes, or longer depending on the size of your file system. Once completed, the zi image and Private/Public key will be saved in `/etc/zymbit/zboot/update_artifacts/output/`. Keep your private key private. The zi image can be copied to either a local stoage device, such as a USB stick or a remote service accessible via HTTPS. The public key file will be needed to load the zi image. 
+The imager takes 20 minutes or longer depending on the size of your file system. Once completed, the zi image and Private/Public key will be saved in `/etc/zymbit/zboot/update_artifacts/output/`. Keep your private key private. The zi image can be copied to either a local storage device such as a USB stick or a remote server accessible via HTTPS. The public key file will be needed to load the zi image. 
 
 Additional examples of zb-imager usage can be found here: [zb-imager usage](../utilities/zbimager)
 
@@ -115,23 +115,31 @@ Additional examples of zb-imager usage can be found here: [zb-imager usage](../u
 ### 3. Run zb-wizard to configure the Partitioning and Image loading
 
 For this quickstart, we will use a known-good zi image. We've converted the pre-installed base image on the SCM to the zi format. 
-You will need the corresponding public key in order to verify the downloaded image. The public key in PEM format can be downloaded here:
+We will configure the zi image to be accessed remotely via HTTPS.
+
+If you wish to run from a local source such as a USB stick, our example image can be downloaded from here:
+
+For bullseye,
+```
+curl https:///bootware.s3.amazonaws.com/zymbit_bullseye.zi --output zymbit_bullseye.zi
+```
+
+For ubuntu,
+```
+curl https:///bootware.s3.amazonaws.com/zymbit_ubuntu.zi --output zymbit_ubuntu.zi
+```
+
+You will need the corresponding public key in order to verify the downloaded image. The public key in PEM format for either the bullseye image or the ubuntu image can be downloaded here:
 
 ```
 curl https:///bootware.s3.amazonaws.com/pub_key.pem --output pub_key.pem
-```
-
-We will configure the zi image to be accessed remotely via HTTPS. If you wish to run from a local source such as a USB stick, our example image can be downloaded from here:
-
-```
-curl https:///bootware.s3.amazonaws.com/zymbit_bullseye.zi --output zymbit_bullseye.zi
 ```
 
 #### Use the Bootware Wizard to Configure your System
 
 Bootware includes a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zb-wizard` can be found [here](../utilities/zbwizard). 
 
-We are going to configure with A/B schema to have a stable backup partition for fallback. To start the wizard,
+We are going to configure with A/B partitioning to have a stable backup partition for fallback. To start the wizard,
 
 ```
 sudo zb-wizard
@@ -152,15 +160,21 @@ Choose your settings as described below.
 
 *	3  A/B – RECOMMENDED This will take the remaining disk space available after the boot partition and create two encrypted partitions, each taking up half of the remaining space (around 14.4 GB). 
 
-**Update Policy** – The update policies define if image updates are applied to the Backup, Active, or Both partitions. Choose the recommeded Option 1 - Backup. This way you know you have a good Active partition for fallback.
+**Update Policy** – The update policies define if image updates are applied to the Backup, Active, or Both partitions. Choose the recommended **Option 1 - Backup.** This way you know you have a good Active partition for fallback.
 
 **Endpoint Setup** – The configured endpoint with .zi image. The endpoint can be either an HTTPS URL or a local external mass storage device like a USB stick or nVME drive. We are going to use the URL of our known good image:
 
+For bullseye,
 ```
 https:///bootware.s3.amazonaws.com/zymbit_bullseye.zi
 ```
 
-If you opted to download the `zymbit_bullseye.zi` image to a local device, enter the device endpoint name instead.
+For ubuntu,
+```
+https:///bootware.s3.amazonaws.com/zymbit_ubuntu.zi
+```
+
+If you opted to download one of the zi images to a local device, enter the device endpoint name instead.
 
 ```
 /dev/sda1
@@ -183,24 +197,28 @@ sudo zb-update
 
 The script will show your configuration for review and confirmation and give you the option to change the configuration. 
 
-{{< cardpane >}}
-{{% card header="zb-update" %}}
-{{< figure
-    src="zb-update2.png"
-    alt="zb-update"
-    caption="Review and continue for Bootware update"
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
+| Parameter | Setting | Notes |
+| ------ | ------ | ------ |
+| update_endpoint | https://bootware.s3.amazonaws.com/zymbit_bullseye.zi | or zymbit_ubuntu.zi for ubuntu |
+| endpoint_type | HTTPS | if you are using a local endpoint, adjust, e.g. /dev/sda1 |
+| one_root_fs | false | We are using A/B: two root partitions |
+| update_mode | UPDATE_BACKUP | We are only going to load the image onto the BACKUP partition |
+| resize_a | false | We are not going to make one big A partition. We are making an A and B |
 
-Hit return or Y to start the download process. Once completed, `zb-update` will ask you to confirm the name of the image, and the verification public key information. For this example, that will be the software-based public key PEM file downloaded earlier.
+Hit return or Y to start the download process.
 
+Once completed, `zb-update` will ask you to confirm the name of the image, and the verification public key information. For this example, that will be the software-based public key PEM file downloaded earlier.
+
+| Parameter | Setting | Notes |
+| ------ | ------ | ------ |
+| Use software-based keys for verifying | Y | Use software keys |
+| Existing key path? | pub_key.pem | Adjust if not downloaded to your local directory |
 
 The script will prompt for a reboot to complete the process. 
 
 #### zboot Boot Process
 
-The Bootware boot process will now take place, using zboot to boot your system. Upon reboot, an encrypted B partition will be created and the zi image will be loaded onto B. The A partition will remain untouched.
+The Bootware boot process will now take place. zboot will boot your system. Upon reboot, an encrypted B partition will be created and the zi image will be loaded onto B. The A partition will remain untouched.
 
 {{< callout warning >}}The initial configuration process can take up to an hour to complete, depending on the size of the image. The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
 
@@ -214,7 +232,7 @@ On the console, you will see:
 
 ### 4. Quickcheck - Force Failover (Change Active/Backup partitions)
 
-A failover from Active to Backup is done with the `-r` option to `zb-update`
+To verify you now have your A partition intact, force a failover from Active to Backup with the `-r` option to `zb-update`
 
 ```
 sudo zb-update -r

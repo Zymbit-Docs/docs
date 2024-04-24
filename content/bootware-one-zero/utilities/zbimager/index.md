@@ -72,8 +72,6 @@ Flags                Description
 
 ### Examples
 
-An image conversion tool is provided. `zb-imager` can take a snapshot of your running system or input tarballs of your /boot and /rootfs partitions.
-
 
 #### Example to create a zi image from your current running root file system
 
@@ -82,7 +80,7 @@ sudo zb-imager
 ```
 | Item | Description |
 | ----- | ----- |
-| Name of Image?: base_bullseye            | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
+| Name of Image?: myImage            | Name of the converted output file. A zi extension will be added to the name. |
 | Version?: 1.0                                 | An arbitrary version number for your reference. |
 
 ### Example to convert boot/root tarballs (created from `tar cvf my_boot.tar <boot_part>`, `tar cvf my_rfs.tar <root_part>`)
@@ -97,15 +95,16 @@ The script will prompt for information:
 
 | Item | Description |
 | ----- | ----- |
-|Name of Image?: base_bullseye | Name of the converted output file. A zi extension will be added to the name. |
-| Version?: 1.0 | An arbitrary version number for your reference.
+|Name of Image?: myImage | Name of the converted output file. A zi extension will be added to the name. |
+| Version?: 1.0 | An arbitrary version number for your reference. |
 
-The script extracts the boot/root tarballs of the binary image. It will then package it up in a Zymbit image and output it to:
-
-`/etc/zymbit/zboot/update_artifacts/output/base_bullseye.zi`
-
-Put the .zi image from the script on a server or USB drive for download. Zboot downloads images from either a USB storage device or the internet via curl requests.
+The script extracts the boot/root tarballs. It will then package it up in a Zymbit image and output it to:
 
 
-`zb-imager` will also need a key provided. The key can either be software-based or Zymbit HSM-based. See [Signing/Verifying Images](../features/signing) for more information.
+`zb-imager` will also need a private key. It can generate one for you if you do not have one. The key can either be software-based or Zymbit HSM-based. See [Signing/Verifying Images](../features/signing) for more information.
+
+### Output
+
+`zb-imager` will output the private and public key if using software keys along with the zi image. If you do not specify an output location, the files will be placed in `/etc/zymbit/zboot/update_artifacts/output`.
+
 

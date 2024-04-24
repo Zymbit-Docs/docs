@@ -20,7 +20,7 @@ toc: true
 ## zb-uninstall.sh
 
 
-## Uninstall Bootware
+### Description
 
 Requires superuser privilege. Resides in the original bootware untar directory.
 

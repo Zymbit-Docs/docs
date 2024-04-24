@@ -19,9 +19,9 @@ toc: true
 
 ## zb-manifest
 
-### Desription
+### Description
 
-- Requires superuser privilege.
+Requires superuser privilege.
 
 Utility to perform Bootware Overlay Manifest Updates. Overlay images provide a way to selectively add and delete files or directories from your deployed images.
 
@@ -33,7 +33,7 @@ zb-manifest [-a <file_path> ] | [-r <file_path> ] | [-d <file_path> ] | [-p] [-c
 
 Flags                Description
 
----------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
 
 -a, --add                   Add file or directory to update manifest
 
@@ -45,10 +45,13 @@ Flags                Description
 
 -p, --print                 Print out the file manifest for additions and deletions
 
----------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
 
 ```
 
-See [Overlay updates](../features/overlay) for more information. `zb-manifest` will need a key. The key can either be software-based or hardware-based. See [Signing/Verifying Images](../features/signing) for more information on keys.
+### More information
+
+See [Overlay updates](../../features/overlay) for more information. `zb-manifest` will need a key. The key can either be software-based or hardware-based. See [Signing/Verifying Images](../../features/signing) for more information on keys.
 
 

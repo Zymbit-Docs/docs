@@ -24,15 +24,15 @@ To get started with Bootware, you should have an SCM based product (Secure Edge 
 
 It is also recommended to have an HDMI console attached when using Bootware. The process of repartitioning and populating partitions can take substantial time, upwards of 45 minutes and the console serves as a point of reference of activity.
 
-[Bootware 1.0 overview](https://www.zymbit.com/bootware/)
+### [More information on Bootware 1.0 from zymbit.com](https://www.zymbit.com/bootware/)
 
 
-### Additional Information and Support
+#### Early Preview Customers and Support
     
-If you are participating in the Bootware Preview program, please see: [Bootware Preview](../bootware-preview)
+If you were participating in the Bootware Preview program, please see: [Bootware Preview](../bootware-preview)
 
 [Contact Support](mailto:support@zymbit.com)
 
 
-## Bootware 1.0 User Guide
+## Bootware 1.0 User Information
 

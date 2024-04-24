@@ -47,27 +47,17 @@ Flags                Description
 
 ---------------------------------------------------------------------------------------------------------------------
 
+```
 
 ### Examples
-
 
 ```
 sudo zb-update
 ```
 
-The script will show your configuration for review and confirmation, or give you the option to change the configuration. This method can be used as an alternative to using the Wizaard.
+The script will show your configuration for review and confirmation, or give you the option to change the configuration. This method can be used as an alternative to using the Wizard.
 
-{{< cardpane >}}
-{{% card header="zb-update" %}}
-{{< figure
-    src="updatemain.png"
-    alt="zboot update"
-    caption="Review and continue for zboot update"
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
-
-The script will prompt for a reboot to complete the process. 
+After correction and confirmation of the config partameters, the script will prompt for a reboot to complete the process. 
 
 
 #### Bootware Update Process
@@ -91,7 +81,6 @@ A failover from Active to Backup is done with the `-r` option to `zb-update`
 ```
 sudo zb-update -r
 ```
-
 
 ### See Also
 [zb-wizard](../zbwizard)

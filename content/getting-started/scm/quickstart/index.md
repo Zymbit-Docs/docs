@@ -50,13 +50,13 @@ All necessary Zymbit software has been pre-installed. No further installation is
 * Raspberry PI OS Lite 64-bit (Bullseye) - DEFAULT
 * Ubuntu Server 22.04 64-bit LTS (jammy) 
 
-#### Modifications from beta
+#### Recent Changes
+
 * Now allow initial SSH via password (use zymbit/zymbit). Please change once logged in.
 * No longer providing SSH key on USB stick; as noted above, you can use password.
 * No longer necessary to register product; no SSH key necessary so no need for key passphrase.
 * sudo for user zymbit with password in standard PI OS manner allowed; no need to supply password every time.
 
-#### Changes
 * FW 01.03.00 - April 2024. Update bootcode.bin to 1/11/2023 version. You can verify with `vcgencmd bootloader_version`. Should say 1/11/2023. Necessary to support Ubuntu 22.04.
 * FW 01.03.00 - Supports B1 revision of SCM
 * FW 01.00.00 - Supports A1 revision of SCM
