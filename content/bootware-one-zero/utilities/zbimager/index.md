@@ -39,6 +39,8 @@ Flags                Description
 
 --root-tarball                   Use this root tarball
 
+--binary-image                   Convert a binary image to a zymbit image
+
 --image-name                     The image name of the zymbit image
 
 --image-version                  The image version of the zymbit image
