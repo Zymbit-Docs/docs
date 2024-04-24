@@ -52,6 +52,6 @@ Flags                Description
 
 ### More information
 
-See [Overlay updates](../../features/overlay) for more information. `zb-manifest` will need a key. The key can either be software-based or hardware-based. See [Signing/Verifying Images](../../features/signing) for more information on keys.
+See [Overlay updates](../../features/overlays) for more information. `zb-manifest` will need a key. The key can either be software-based or hardware-based. See [Signing/Verifying Images](../../features/signing) for more information on keys.
 
 
