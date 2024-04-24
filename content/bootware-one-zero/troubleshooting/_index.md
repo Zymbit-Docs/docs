@@ -22,6 +22,27 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot`. Once 
 
 {{% /callout %}}
 
+### Precautions
+
+- HTTPS endpoints are limited to a zi image of approximately 6GB. The zi images are compressed, so this is not normally a limitation with A/B configurations. If you have zi imagest larger tha 6MB, download the image to a local device with 3x the image size space and use the local device endpoint.
+
+- Important boot files to not delete.
+    - Boot.scr
+    - zboot.enc
+    - u-boot.bin
+    - config.txt
+    - [After bootware update] usr-kernel.enc
+    - [Before bootware] cmdline.txt
+    - [Before bootware] kernel8.img for rpiOS and vmlinuz for ubuntu
+
+- The `/boot` filesystem should be partitioned for 512MB of space or more. Our default configuration as shipped uses a `/boot` partition of 512MB. Ubuntu in particular creates backups of all files on updates that may exceed free space with Bootware.
+- Turn off unattended-upgrades. `/boot/firmware/boot.scr` in ubuntu gets replaced by updates from apt and other services. This will brick the device if its booted on the ubuntu made boot.scr. Ubuntu does not use u-boot on the Pi but writes over `boot.scr`. If ever doing a kernel update/upgrade, you must `cp boot.scr.bak boot.scr` prior to rebooting.
+- In config.txt, otg_mode=1 can’t be set. DWC2 needs to be enabled. This is set at our factory and by bootware (and is the default with ubuntu), but if changed, the system will not boot.
+- Non Bootware: Ubuntu requires the initrd.img on their system to boot up. Be wary of replacing this file or removing it
+- Be cautious around the policies set in the supervised boot and the files put in the manifest. This follows hardware not images. This also applies to the other tamper policies.
+
+### Changes to our standard images
+
 The table below summarizes changes made to the standard image. 
 
 | Default | As Shipped |
@@ -30,9 +51,7 @@ The table below summarizes changes made to the standard image.
 | Console login allowed | Disabled |
 | SSH optionally enabled |SSH with password allowed |
 | Hostname is `raspberrypi` | Hostname changed to `zymbit-dev` |
-| Default user of `pi` | Default user is `zymbit`. User `pi` removed |
-| MAC with Pi OID | MAC uses Zymbit OID |
-| sudo password free | sudo requires a password (zymkey) |
+| Default user of `pi` | Default user is `zymbit`. User `pi` removed. Passwd set to zymbit |
 
 -----
 
