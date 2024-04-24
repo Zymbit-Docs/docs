@@ -19,15 +19,29 @@ toc: true
 
 ## zb-install.sh
 
-```
-sudo ~/zb-install.sh
-```
 
 ### Description
 
-Installs all of the Bootware sofware. 
+Requires superuser privilege.  Resides in the original bootware untar directory.
 
-### Additional Information and Support
-    
-[Contact Support](mailto:support@zymbit.com)
+Installs the Bootware sofware. 
+
+### Usage
+
+```
+zb-install.sh [-y]
+
+-y	Answers Yes to all prompts. Warning: will reboot without confirmation.
+```
+
+### Example
+
+```
+cd ~/bootware-1.0
+sudo ./zb-install
+```
+
+### See also
+
+[zb-uninstall](../zbuninstall)
 

@@ -19,7 +19,9 @@ headless: false
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-The default SCM/SEN as shipped has Zymbit software pre-installed. The Zymbit product should be up and running with the blue LED flashing once every three seconds.
+The default SCM/SEN as shipped has Zymbit software pre-installed. The Zymbit product should be up and running with the blue LED flashing once every three seconds. All of the default images will have a hostname of zymbit-dev and a login of zymbit/zymbit. Please change the hostname and login during your development.
+
+An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
 Details of the features in this Quickstart are linked in line. See the Features section for other examples of how to use Bootware.
 

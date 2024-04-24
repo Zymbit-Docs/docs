@@ -17,19 +17,18 @@ toc: true
 -----
 
 
-## Installing and running zboot to reflash an image
+## zb-imager
 
-Bootware requires images in a particular format unique to zboot. An image conversion tool is provided. Input images can be either complete binary images of your entire eMMC or tarballs of your /boot and /rootfs partitions.  You can also take a snapshot and convert from you running system.
+### Description
 
+Requires superuser privilege. 
 
-The script used to convert to a zboot image is: 
+Bootware requires images in a particular format. Use `zb-imager` to convert images into Zymbit Image (zi) format.
+
+### Usage
 
 ```
-sudo zb-imager -h
-Version: 0.4.7
-
-
-Usage: zb-imager [-k <key slot> ] | [--output-directory=<output dir>]
+zb-imager [-k <key slot> ] | [--output-directory=<output dir>]
 
 
 Flags                Description
@@ -70,42 +69,28 @@ Flags                Description
 
 ```
 
-### Examples of Image conversions:
 
-### Example to create a zi image from your current running root file system
+### Examples
+
+An image conversion tool is provided. `zb-imager` can take a snapshot of your running system or input tarballs of your /boot and /rootfs partitions.
+
+
+#### Example to create a zi image from your current running root file system
 
 ```
-sudo zb-imager -z
+sudo zb-imager
 ```
 | Item | Description |
 | ----- | ----- |
 | Name of Image?: base_bullseye            | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
 | Version?: 1.0                                 | An arbitrary version number for your reference. |
 
-### Example to convert a binary image file (created from `dd if=/dev/sda bs=4M of=my.img`):
-
-```
-sudo zb-imager my.img
-```
-The script will prompt for information:
-
-| Item | Description |
-| ----- | ----- |
-| Name of Image?: base_preview             | Name of the converted output file. A zi extension will be added to the name.  The name does not need to match the name given on the command line. |
-| Version?: 2.1                                 | An arbitrary version number for your reference. |
-| Boot File System Partition Number? (EX: 1): 1 | Partition number of boot filesystem in binary image file. Must be provided; no default. |
-| Root File System Partition Number? (EX: 2): 2 | Partition number of root filesystem in binary image file. Must be provided; no default. |
-
-The script extracts the boot/root tarballs of the binary image. It will then packages it up in a Zymbit image and output it to:
-
-`/etc/zymbit/zboot/update_artifacts/output/base_preview.zi`
-
 ### Example to convert boot/root tarballs (created from `tar cvf my_boot.tar <boot_part>`, `tar cvf my_rfs.tar <root_part>`)
 
 You will need to provide the names and paths to your tarballs. Run the script:
 
 ```
-sudo zb-imager -b ./boot.tar -r ./root.tar
+sudo zb-imager --boot-tarball ./boot.tar --root-tarball ./root.tar
 ```
 
 The script will prompt for information:
@@ -122,7 +107,5 @@ The script extracts the boot/root tarballs of the binary image. It will then pac
 Put the .zi image from the script on a server or USB drive for download. Zboot downloads images from either a USB storage device or the internet via curl requests.
 
 
-### Additional Information and Support
-    
-[Contact Support](mailto:support@zymbit.com)
+`zb-imager` will also need a key provided. The key can either be software-based or Zymbit HSM-based. See [Signing/Verifying Images](../features/signing) for more information.
 

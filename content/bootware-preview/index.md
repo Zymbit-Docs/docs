@@ -30,7 +30,7 @@ We recommend attaching an HDMI console when using Bootware Preview. The process 
 
 ### Notable changes from Bootware Preview to GA Bootware 1.0
 
-Utility name changes: The following utities changed names:
+Utility name changes: The following utilities changed names:
 
 | Item | Preview | 1.0 |
 | ---- | ------- | ------- |

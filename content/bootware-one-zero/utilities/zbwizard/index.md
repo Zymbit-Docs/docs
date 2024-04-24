@@ -16,13 +16,18 @@ toc: true
 
 -----
 
-## Use the Bootware Wizard to Configure your System
+## zb-wizard
 
-Bootware Preview includes a a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to set your device environment up for pulling down updates from a configured endpoint and the update policies for how to apply those updates. Bootware recommends update policies with A/B schema to have a stable backup partition for rollback. To start the wizard,
+### Description
+
+Bootware Preview includes a dialog enabled tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to set your device environment up for pulling down updates from a configured endpoint and the update policies for how to apply those updates prior to running `zb-update`.  To start the wizard,
+
+### Example 
 
 ```
 sudo zb-wizard
 ```
+
 Choose your settings as described below.
 
 {{< cardpane >}}
@@ -66,7 +71,8 @@ Choose your settings as described below.
 **Save** and **Exit**. You may also choose to Revert to the default configuration.
 
 
-### Additional Information and Support
+### See also
     
-[Contact Support](mailto:support@zymbit.com)
+[zb-update](../zbupdate)
+
 

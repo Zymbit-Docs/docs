@@ -17,12 +17,18 @@ toc: true
 -----
 
 
-## zb-update - Utility to perform Bootware Updates
+## zb-update
+
+### Description
+
+Requires superuser privilege.
+
+Utility to perform Bootware Updates; re-partitions and loads images into the Active, Backup or Both partitions
+
+### Usage
 
 ```
-zb-update -h
-
-Usage: zb-update [ [-k <key-slot>] [--key-file=<filepath>] [-w] | [-y] [-r] ]
+zb-update [ [-k <key-slot>] [--key-file=<filepath>] [-w] | [-y] [-r] ]
 
 
 Flags                Description
@@ -42,7 +48,7 @@ Flags                Description
 ---------------------------------------------------------------------------------------------------------------------
 
 
-### Examples of Bootware updates:
+### Examples
 
 
 ```
@@ -64,11 +70,11 @@ The script will show your configuration for review and confirmation, or give you
 The script will prompt for a reboot to complete the process. 
 
 
-## Bootware Boot Process
+#### Bootware Update Process
 
 The Bootware Update process will now take place. 
 
-{{< callout warning >}}The initial configuration process can take up to 2 hours to complete. The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
+{{< callout warning >}}The initial configuration process can take over an hour to complete, depending on partitioning and the size of the image(s). The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
 
 On the console, you will see:
 
@@ -78,15 +84,7 @@ On the console, you will see:
 * It will take some time to unpack the image into the A/B root partitions depending on the size of the image.
 * Once it's done unpacking the image to the A and B partitions, it will boot into the updated ACTIVE partition. You can use `lsblk` to examine the partitions.
 
-## Reload all utilities
-
-The Bootware utilities are needed for Bootware to function. If not included in your newly loaded image, you will need to load the utilities into your partition(s). Our example zi file base_bullseye.zi has the Bootware Utilities pre-loaded.
-
-## Recovery
-
-Each successful boot will clear a max_boot_failure counter. A max_boot_failure count of 3 will trigger the recovery mechanism. The BACKUP partition will become the ACTIVE partition. If neither can boot, the endpoint with a good image will be loaded. A ROLLOVER notification message will be added to the MOTD.
-
-## Force Failover (Change Active/Backup partitions)
+#### Force Failover (Change Active/Backup partitions)
 
 A failover from Active to Backup is done with the `-r` option to `zb-update`
 
@@ -95,7 +93,6 @@ sudo zb-update -r
 ```
 
 
-### Additional Information and Support
-    
-[Contact Support](mailto:support@zymbit.com)
+### See Also
+[zb-wizard](../zbwizard)
 
