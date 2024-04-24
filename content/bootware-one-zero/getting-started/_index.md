@@ -1,5 +1,5 @@
 ---
-title: Bootware Getting Started
+title: "Getting Started"
 linkTitle: "Getting Started"
 lastmod:
 #aliases:

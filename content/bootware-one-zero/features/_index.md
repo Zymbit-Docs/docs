@@ -1,5 +1,5 @@
 ---
-title: Bootware 1.0 Features and Implementation
+title: Features and Implementation
 linkTitle: "Features"
 lastmod:
 #aliases:

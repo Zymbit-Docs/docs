@@ -1,5 +1,5 @@
 ---
-title: Bootware 1.0 Utilities and Scripts
+title: Utilities and Scripts
 linkTitle: "Utilities"
 lastmod:
 #aliases:
