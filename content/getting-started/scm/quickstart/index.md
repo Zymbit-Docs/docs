@@ -61,7 +61,7 @@ To mitigate this issue, remove the service unattended-upgrades:
 
 `apt remove unattended-upgrades -y`
 
-Our Ubuntu image as shipped after 5/9 have `unattended-upgrades` removed by default.
+Our Ubuntu images as shipped after 5/9 have `unattended-upgrades` removed by default.
 
 {{< /callout >}}
 
