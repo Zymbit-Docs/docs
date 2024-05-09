@@ -120,7 +120,9 @@ To mitigate this issue, remove the service unattended-upgrades:
 
 `systemctl stop unattended-upgrades`
 
-`systemctl disable unattended-upgrade`
+`systemctl disable unattended-upgrades`
+
+`apt remove unattende-upgrades -y`
     
 {{< /callout >}}
 
