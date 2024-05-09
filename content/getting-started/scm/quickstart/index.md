@@ -48,7 +48,22 @@ All necessary Zymbit software has been pre-installed. No further installation is
 
 #### Pre-loaded OS options
 * Raspberry PI OS Lite 64-bit (Bullseye) - DEFAULT
-* Ubuntu Server 22.04 64-bit LTS (jammy) 
+* Ubuntu Server 22.04 64-bit LTS (jammy)
+
+{{< callout warning >}}
+We highly recommend turning off unattended-upgrades prior to the encryption process. In some cases primarily with Ubuntu, during an update/upgrade after encryption, the update-initramfs process may fail and leave the system unable to boot.
+
+To mitigate this issue, remove the service unattended-upgrades:
+
+`systemctl stop unattended-upgrades`
+
+`systemctl disable unattended-upgrades`
+
+`apt remove unattended-upgrades -y`
+
+Our Ubuntu image as shipped after 5/9 have `unattended-upgrades` removed by default.
+
+{{< /callout >}}
 
 #### Recent Changes
 
