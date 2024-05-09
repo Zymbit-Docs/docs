@@ -1,4 +1,4 @@
----
+/---
 title : "Encrypting Root File System with Zymbit Security Modules"
 linkTitle: "Encrypt Root File System"
 aliases:
@@ -114,7 +114,7 @@ Using this ID / Authentication feature, the Zymbit Security Module can be used t
 LUKS is very versatile and can be applied to both SD Card and external storage media. Lets review the pros and cons of each option:
     
 {{< callout warning >}}
-When encrypting your rootfs, we highly recommend turning off unattended-upgrades prior to the encryption process. In some cases primarily with Ubuntu 20.04, during an update/upgrade after encryption, the update-initramfs process may fail and leave the system unable to boot.
+When encrypting your rootfs, we highly recommend turning off unattended-upgrades prior to the encryption process. In some cases primarily with Ubuntu, during an update/upgrade after encryption, the update-initramfs process may fail and leave the system unable to boot.
 
 To mitigate this issue, remove the service unattended-upgrades:
 
