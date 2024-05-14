@@ -22,7 +22,7 @@ sudo pip3 install zku --upgrade
 
 #### Zymbit Host Side Code Versions (view with `dpkg -l | grep -i zym`):
 * libzk 1.1-22
-* libzymkeyssl 1.0-10
+* libzymkeyssl 1.0-11
 * zkapputilslib 1.1-25
 * zkbootrtc 1.1-15
 * zkifc 1.2-36
