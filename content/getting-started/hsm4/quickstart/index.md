@@ -201,6 +201,7 @@ In production mode, HSM generates a unique Device ID by measuring certain attrib
 The quickest way to get started is to see the HSM's various features at work by running these test scripts that were installed with the client software:
 
 `python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`
+
 `python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
 
 The example scripts are missing in focal and bullseye distributions. You can get the example scripts from here:
