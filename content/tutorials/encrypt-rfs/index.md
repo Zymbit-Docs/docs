@@ -1,4 +1,4 @@
-/---
+---
 title : "Encrypting Root File System with Zymbit Security Modules"
 linkTitle: "Encrypt Root File System"
 aliases:
