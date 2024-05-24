@@ -18,7 +18,16 @@ mermaid: true
 
 ### Bootware 1.0 
 
-Bootware™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). 
+Bootware™ is a set of software tools and micro services for the Zymbit Security Modules. The following matrix of platforms and Operating Systems support Bootware™:
+
+| Platform | Zymbit Module | OS Support |
+| ----- | ----- | ----- |
+| Pi Zero 2W | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| Pi4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| Pi5 | ZYMKEY4 | Bookworm 64-bit, Ubuntu 22.04 (jammy) |
+| CM4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| CM4 | SCM | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+
 
 To get started with Bootware, you should have an SCM based product (Secure Edge Node or Dev Kit) up and running. The default hostname is zymbit-dev and the default login is zymbit with a password of zymbit. We recommend you change those during your development process.
 
