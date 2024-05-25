@@ -24,7 +24,7 @@ Bootware™ is a set of software tools and micro services for the Zymbit Securit
 | ----- | ----- | ----- |
 | Pi Zero 2W | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
 | Pi4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
-| Pi5 | ZYMKEY4 | Bookworm 64-bit, Ubuntu 22.04 (jammy) |
+| Pi5 | ZYMKEY4 | Bookworm 64-bit |
 | CM4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
 | CM4 | SCM | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
 
