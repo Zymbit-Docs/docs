@@ -15,16 +15,24 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 ### Recent Activity
 <br>
 
+
+#### June 2024
+-----
+Bookworm 64-bit support added as an option for the SCM.
+
+Bootware 1.0 Full includes support for Bookworm 64-bit; Also includes cross-platform support for ZYMKEY on CM4 and RPi4.The Product Matrix has been updated.
+
+<br>
+![supported OSs](supported-os-dots.png) 
+<br>
+
+<br>
+![Bootware Platform Support](supported-bootware-dots.png) 
+<br>
+
 #### April 2024
 -----
 Bootware 1.0 is now released for General Availability. Along with Bootware 1.0 GA, The SCM/SEN product line now officially supports both Bullseye 64-bit and Ubuntu 22.04 64-bit.
-
-Updated Product Matrix:
-
-<br>
-
-![supported OSs](supported-os-dots.png) 
-<br>
 
 
 #### March 2024
