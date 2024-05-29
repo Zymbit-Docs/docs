@@ -23,10 +23,12 @@ Bookworm 64-bit support added as an option for the SCM.
 Bootware 1.0 Full includes support for Bookworm 64-bit; Also includes cross-platform support for ZYMKEY on CM4 and RPi4.The Product Matrix has been updated.
 
 <br>
+
 ![supported OSs](supported-os-dots.png) 
 <br>
 
 <br>
+
 ![Bootware Platform Support](supported-bootware-dots.png) 
 <br>
 
