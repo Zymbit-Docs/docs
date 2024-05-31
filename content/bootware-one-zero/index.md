@@ -1,18 +1,17 @@
 ---
-title: "Bootware 1.0"
-linkTitle: "Bootware 1.0"
+title: "Bootware 1.x Limited (deprecated)"
+linkTitle: "Bootware 1.x (deprecated)"
 icon: ""
 description: ""
 #aliases:
 #    - /zboot-preview/
-date: "2024-03-27"
+date: "2024-06-01"
 lastmod: ""
 draft: false
-weight: 10
+weight: 9
 images: []
-# headless: true
-# layout: "docs"
-mermaid: true
+toc: True
+
 ---
 
 

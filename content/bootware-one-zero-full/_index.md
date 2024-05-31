@@ -1,18 +1,17 @@
 ---
-title: "Bootware 1.0 Full"
-linkTitle: "Bootware 1.0 Full"
+title: "Bootware 1.x General"
+linkTitle: "Bootware 1.x General"
 icon: ""
 description: ""
-#aliases:
-#    - /zboot-preview/
-date: "2024-05-24"
+aliases:
+    - /bootware/
+date: "2024-05-31"
 lastmod: ""
 draft: false
 weight: 5
 images: []
-# headless: true
-# layout: "docs"
-mermaid: true
+toc: True
+
 ---
 
 
