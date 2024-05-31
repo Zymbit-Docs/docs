@@ -3,9 +3,7 @@ title: "Bootware 1.x Limited (deprecated)"
 linkTitle: "Bootware 1.x (deprecated)"
 icon: ""
 description: ""
-#aliases:
-#    - /zboot-preview/
-date: "2024-06-01"
+date: "2024-05-31"
 lastmod: ""
 draft: false
 weight: 9
@@ -15,7 +13,11 @@ toc: True
 ---
 
 
-### Bootware 1.0 
+### Bootware 1.0 Limited 
+
+{{< callout warning >}}
+[Bootware 1.0](../bootware-one-zero-general) General Release is now available. The General Release adds support for using ZYMKEY4 on Pi platforms. Bootware 1.x Limited only supports SCM-based products.
+{{< /callout >}}
 
 Bootware™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). 
 

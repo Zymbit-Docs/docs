@@ -15,7 +15,7 @@ toc: True
 ---
 
 
-{{< callout warning >}}
+{{< callout notice >}}
 [Bootware 1.0](../bootware-one-zero-general) GA Release is now available.
 
 Bootware Preview is an Engineering/Developer Preview. This is not meant for Production. Bootware Preview features are not standard product. Only load this feature if you are working directly with Zymbit as a Preview customer.
