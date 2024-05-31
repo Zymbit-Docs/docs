@@ -1,6 +1,6 @@
 ---
-title: "Bootware 1.x General"
-linkTitle: "Bootware 1.x General"
+title: "Bootware 1.0 General"
+linkTitle: "Bootware 1.0 General"
 icon: ""
 description: ""
 aliases:
@@ -23,6 +23,7 @@ Bootware™ is a set of software tools and micro services for the Zymbit Securit
 | ----- | ----- | ----- |
 | CM4 | SCM | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
 | CM4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| Pi5 | ZYMKEY4 | Bookworm 64-bit |
 | Pi4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
 | Pi Zero 2W | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
 
@@ -32,5 +33,5 @@ It is also recommended to have an HDMI console attached when using Bootware. The
 
 ### [More information on Bootware 1.0 from zymbit.com](https://www.zymbit.com/bootware/)
 
-## Bootware 1.0 Full Guide Information
+## Bootware 1.0 User's Guide and Information
 
