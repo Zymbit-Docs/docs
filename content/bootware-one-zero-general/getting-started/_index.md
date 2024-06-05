@@ -4,7 +4,7 @@ linkTitle: "Getting Started"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2024-04-23"
+date: "2024-06-06"
 draft: false
 type: docs
 images: []
@@ -37,16 +37,16 @@ Details of the commands in this Quickstart are linked in line. See the [Features
 
 Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
 ```
-curl https://bootware.s3.amazonaws.com/bootware-1.0.tgz --output bootware-1.0.tgz
+curl https://bootware.s3.amazonaws.com/bootware-1.1.tgz --output bootware-1.1.tgz
 ```
 
 Once the tar file is downloaded, untar:
 
 ```
-tar xvzf bootware-1.0.tgz
+tar xvzf bootware-1.1.tgz
 ```
 
-The contents will be extracted into `bootware-1.0`. Files extracted: 
+The contents will be extracted into `bootware-1.1`. Files extracted: 
 
 | Item | Description |
 | ----- | ----- |
@@ -59,7 +59,7 @@ The contents will be extracted into `bootware-1.0`. Files extracted:
 Run the following install script on the SCM to install the zboot utilities:
 
 ```
-cd bootware-1.0
+cd bootware-1.1
 sudo ./zb-install.sh
 ```
 
@@ -95,7 +95,7 @@ Make the following selections:
 | ----- | ----- |
 | Image Type?   | Choose 1. for a Full Image |
 | Name of Image?: | Any name. Ex. `myImage`. Name of the converted output file. A zi extension will be added to the name. |
-| Version?: 1.0                                 | Optional. An arbitrary version number for your reference. |
+| Version?: 1.1                                 | Optional. An arbitrary version number for your reference. |
 
 
 Next, you will be prompted for Signing Keys. Keys can be Software or Hardware based. You can use an existing key or the script will create keys for you. For this Quickstart, we will assume you need to generate Software keys,
