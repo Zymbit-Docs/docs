@@ -1,22 +1,23 @@
 ---
-title: "Bootware 1.0"
-linkTitle: "Bootware 1.0"
+title: "Bootware 1.0 Limited (deprecated)"
+linkTitle: "Bootware 1.0 (deprecated)"
 icon: ""
 description: ""
-#aliases:
-#    - /zboot-preview/
-date: "2024-03-27"
+date: "2024-05-31"
 lastmod: ""
 draft: false
-weight: 10
+weight: 9
 images: []
-# headless: true
-# layout: "docs"
-mermaid: true
+toc: True
+
 ---
 
 
-### Bootware 1.0 
+### Bootware 1.0 Limited 
+
+{{< callout notice >}}
+[Bootware 1.1](../bootware-one-zero-general) General Release is now available. The General Release adds support for using ZYMKEY4 on Pi platforms. Bootware 1.0 Limited only supports SCM-based products.
+{{< /callout >}}
 
 Bootware™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). 
 
@@ -24,7 +25,7 @@ To get started with Bootware, you should have an SCM based product (Secure Edge 
 
 It is also recommended to have an HDMI console attached when using Bootware. The process of repartitioning and populating partitions can take substantial time, upwards of 45 minutes and the console serves as a point of reference of activity.
 
-### [More information on Bootware 1.0 from zymbit.com](https://www.zymbit.com/bootware/)
+### [More information on Bootware from zymbit.com](https://www.zymbit.com/bootware/)
 
 
 #### Early Preview Customers and Support
@@ -34,5 +35,4 @@ If you were participating in the Bootware Preview program, please see: [Bootware
 [Contact Support](mailto:support@zymbit.com)
 
 
-## Bootware 1.0 User Information
 

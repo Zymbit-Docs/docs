@@ -1,7 +1,7 @@
 ---
 title: "Quickstart - Secure Compute Module (SCM)"
 linkTitle: "Quickstart"
-lastmod: "2023-10-31"
+lastmod: "2024-06-05"
 draft: false
 images: []
 weight: 5
@@ -47,8 +47,9 @@ All necessary Zymbit software has been pre-installed. No further installation is
 [<img src="LED_image.png" width="30%">](https://user-images.githubusercontent.com/78050323/230241994-473fc680-41da-4412-bf58-e3c0e4a5ed6c.mp4)
 
 #### Pre-loaded OS options
-* Raspberry PI OS Lite 64-bit (Bullseye) - DEFAULT
-* Ubuntu Server 22.04 64-bit LTS (jammy)
+* Raspberry PI OS Lite (64-bit Bookworm)
+* Raspberry PI OS Lite (Legacy 64-bit Bullseye)
+* Ubuntu Server 22.04 LTS (64-bit jammy)
 
 {{< callout warning >}}
 We highly recommend turning off unattended-upgrades prior to the encryption process. In some cases primarily with Ubuntu, during an update/upgrade after encryption, the update-initramfs process may fail and leave the system unable to boot.

@@ -1,5 +1,5 @@
 ---
-title: "Zymbit Documentation"
+title: "STAGING AREA DRAFT -- Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
 lastmod: 2023-03-14
@@ -15,16 +15,27 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 ### Recent Activity
 <br>
 
-#### April 2024
------
-Bootware 1.0 is now released for General Availability. Along with Bootware 1.0 GA, The SCM/SEN product line now officially supports both Bullseye 64-bit and Ubuntu 22.04 64-bit.
 
-Updated Product Matrix:
+#### June 2024
+-----
+
+Bootware 1.1 General Platform Support - Along with the SCM-based products, Bootware 1.1 includes cross-platform support for ZYMKEY on CM4 and RPi4. 
+
+The Zymbit Products also include Bookworm 64-bit support.
+
 
 <br>
+
+##### Latest Platform and OS Support
 
 ![supported OSs](supported-os-dots.png) 
 <br>
+
+<br>
+
+#### April 2024
+-----
+Bootware 1.0 is now released for General Availability. Along with Bootware 1.0 GA, The SCM/SEN product line now officially supports both Bullseye 64-bit and Ubuntu 22.04 64-bit.
 
 
 #### March 2024
@@ -60,7 +71,3 @@ See the [Troubleshooting/FAQ](troubleshooting/scm) for more information on the c
 <br>
 <br>
 
-#### September 2023
------
-We recently pushed up a Preview for Bootware evaluation. This is for Development pur
-oses and not meant for Production. More details on the Preview can be found here:  [Bootware Preview](bootware-preview)

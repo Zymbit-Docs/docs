@@ -1,0 +1,35 @@
+---
+title: "Bootware 1.1 General"
+linkTitle: "Bootware 1.1 General"
+icon: ""
+description: ""
+aliases:
+    - /bootware/
+date: "2024-05-31"
+lastmod: ""
+draft: false
+weight: 5
+images: []
+toc: True
+
+---
+
+
+### Bootware 1.1: General Platform Release
+
+Bootware™ is a set of software tools and micro services for the Zymbit Security Modules. Bootware 1.1 adds support for the ZYMKEY across additional platforms. The following matrix of platforms and Operating Systems support Bootware™:
+
+| Platform | Zymbit Module | OS Support |
+| ----- | ----- | ----- |
+| CM4 | SCM | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| CM4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| Pi4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+
+To get started with Bootware, you should have your plaform OS installed and the Zymbit SCM up and running. For our example images, the default hostname is zymbit-dev and the default login is zymbit with a password of zymbit. We recommend you change those during your development process.
+
+It is also recommended to have an HDMI console attached when using Bootware. The process of repartitioning and populating partitions can take substantial time, upwards of 45 minutes and the console serves as a point of reference of activity.
+
+### [More information on Bootware  from zymbit.com](https://www.zymbit.com/bootware/)
+
+## Bootware 1.1 User's Guide and Information
+
