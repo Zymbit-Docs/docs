@@ -90,7 +90,7 @@ Image type?
    2. Overlay image from files added with zb-manifest
 : 1
 Image Name?: myFullImage
-Version? [OPTIONAL]: 1.0
+Version? [OPTIONAL]: 1.1
 Note:Software/Hardware keys are not interchangeable. Stick with one method.
 Use software-based keys for Signing?
 (No for hardware-based keys) (Y/n):
@@ -117,7 +117,7 @@ The script will prompt for information:
 ```
 Checking for zymbit scm...
 Image Name?: bullseye
-Version? [OPTIONAL]: 0.1.0
+Version? [OPTIONAL]: 1.1
 Boot File System Partition Number? (EX: 1): 1
 Root File System Partition Number? (EX: 2): 2
 Note:Software/Hardware keys are not interchangeable. Stick with one method.
@@ -150,7 +150,7 @@ Image type?
    2. Overlay image from files added with zb-manifest
 : 1
 Image Name?: myImage
-Version? [OPTIONAL]: 1.0
+Version? [OPTIONAL]: 1.1
 Note:Software/Hardware keys are not interchangeable. Stick with one method.
 Use software-based keys for Signing?
 (No for hardware-based keys) (Y/n):

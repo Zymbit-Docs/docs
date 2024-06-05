@@ -4,7 +4,7 @@ linkTitle: Developing on the CM4"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2024-04-22"
+date: "2024-06-05"
 draft: false
 images: []
 type: docs
@@ -41,24 +41,24 @@ Once the image is put together and loaded on the SCM, load Zymbit software. For 
 curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
 ```
 
-### 3. Install Bootware 1.0 Tools
+### 3. Install Bootware 1.1 Tools
 
 Load the Bootware software. Part of the zi image creation includes all of the Bootware software. Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
 
 ```
-curl https://bootware.s3.amazonaws.com/bootware-1.0.tgz --output bootware-1.0.tgz
+curl https://bootware.s3.amazonaws.com/bootware-1.1.tgz --output bootware-1.1.tgz
 ```
 
 Once the tar file is downloaded, untar:
 
 ```
-tar xvzf bootware-1.0.tgz
+tar xvzf bootware-1.1.tgz
 ```
 
 Run the following install script on the SCM to install the zboot utilities:
 
 ```
-cd bootware-1.0
+cd bootware-1.1
 sudo ./zb-install.sh
 ```
 
@@ -78,7 +78,7 @@ Make the following selections:
 | ----- | ----- |
 | Image Type?   | Choose 1. for a Full Image |
 | Name of Image?: | Any name. Ex. `myImage`. Name of the converted output file. A zi extension will be added to the name. |
-| Version?: 1.0                                 | Optional. An arbitrary version number for your reference. |
+| Version?: 1.1                                 | Optional. An arbitrary version number for your reference. |
 
 
 Next, you will be prompted for Signing Keys. Hit return to choose the default Software option. Choose to let theh script create keys for you. 

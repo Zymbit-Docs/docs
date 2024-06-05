@@ -4,7 +4,7 @@ linkTitle: "zb-install"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2024-04-17"
+date: "2024-06-05"
 draft: false
 images: []
 type: docs
@@ -37,7 +37,7 @@ zb-install.sh [-y]
 ### Example
 
 ```
-cd ~/bootware-1.0
+cd ~/bootware-1.1
 sudo ./zb-install
 ```
 

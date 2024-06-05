@@ -1,6 +1,6 @@
 ---
 title: Frequently Asked Questions
-linkTitle: "Bootware 1.0 FAQ"
+linkTitle: "Bootware 1.1 FAQ"
 lastmod:
 draft: false
 images: []
@@ -12,7 +12,7 @@ toc: false
 ---
 
 -----
-##### Q: What Zymbit products support Bootware 1.0?
+##### Q: What Zymbit products support Bootware 1.1?
 
 <details>
 
@@ -20,7 +20,7 @@ toc: false
 
 <br>
 
-A: Bootware 1.0 runs on the Secure Compute Module based products - the Secure Edge Node, SCM Development kits, SCM modules.
+A: Bootware 1.1 runs on the Secure Compute Module based products - the Secure Edge Node, SCM Development kits, SCM modules. Bootware 1.1 can also run with a ZYMKEY4 on a Dev Kit with an SCM, or with a ZYMKEY on a Raspberry Pi4.
 
 -----
 
@@ -34,7 +34,8 @@ A: Bootware 1.0 runs on the Secure Compute Module based products - the Secure Ed
 
 <br>
 
-A: Bootware 1.0 supports the standard SCM OS options:
+A: Bootware 1.1 supports the following OS options:
+- Bookworm 64-bit
 - Bullseye 64-bit
 - Ubuntu 22.04 (jammy) 64-bit
 
@@ -42,7 +43,7 @@ A: Bootware 1.0 supports the standard SCM OS options:
 
 </details>
 
-##### Q: Can I use Bootware to switch from Bullseye to Ubuntu 22.04?
+##### Q: Can I use Bootware to switch Operating Systems from Bookworm to Bullseye or Ubuntu 22.04?
 
 <details>
 
@@ -50,7 +51,7 @@ A: Bootware 1.0 supports the standard SCM OS options:
 
 <br>
 
-A: Yes, you can switch between Bullseye and Ubuntu 22.04.  Note: The CM4/SCM firmware must include bootloader version 2023/01/11 or later in order to work with Ubuntu 22.04. The version can be verified with the `vcgencmd bootloader_version` command.
+A: Yes, you can switch between the supported Operating Systems.  Note: The CM4/SCM firmware must include bootloader version 2023/01/11 or later in order to work with Ubuntu 22.04. The version can be verified with the `vcgencmd bootloader_version` command.
 
 -----
 
@@ -64,7 +65,7 @@ A: Yes, you can switch between Bullseye and Ubuntu 22.04.  Note: The CM4/SCM fir
 
 <br>
 
-A: Yes, if it is based off of one of the supported OS images - Bullseye or Ubuntu 22.04. You will need to supply your kernel and the corresponding modules from your build.
+A: Yes, if it is based off of one of the supported OS images - Bullseye or Ubuntu 22.04. You will need to supply your kernel and the corresponding modules from your build. You will need to link or rename your kernel image `kernel8.img` for Bookworm/Bullseye, or `vmlinuz` for Ubuntu.
 
 -----
 
@@ -78,10 +79,10 @@ A: Yes, if it is based off of one of the supported OS images - Bullseye or Ubunt
 
 <br>
 
-A: Bootware 1.0 primarily consists of three partitioning schemes:
-- Boot 512MB, RootA: Approximately 50%, RootB: Approximately 50%, Data partition 512MB
-- Boot 512MB, RootA: Approximately 100%, Data partition 512MB
-- Boot 512MB, RootA: Approximately 50%, Data partition 512MB
+A: Bootware 1.1 primarily consists of three partitioning schemes:
+- Boot 512MB, RootA: Approximately 50%, RootB: Approximately 50%, Encrypted Data partition 512MB
+- Boot 512MB, RootA: Approximately 100%, Encrypted Data partition 512MB
+- Boot 512MB, RootA: Approximately 50%, Encrypted Data partition 512MB
 
 -----
 
@@ -95,7 +96,7 @@ A: Bootware 1.0 primarily consists of three partitioning schemes:
 
 <br>
 
-A: Yes, the Root partitions are encrypted with LUKS encryption, protected by separate keys, i.e. RootA can only be unlocked with its key; the same key cannot unlock RootB. The Boot and Data partitions are not encrypted.
+A: Yes, the Root and Data partitions are encrypted with LUKS encryption. The Root partitions are protected by separate keys, i.e. RootA can only be unlocked with its key; the same key cannot unlock RootB. The Data partition is encrypted with a shared key between A and B; the Data partition is accessible by both RootA and RootB. The Boot partition is not encrypted.
 
 -----
 
@@ -109,7 +110,7 @@ A: Yes, the Root partitions are encrypted with LUKS encryption, protected by sep
 
 <br>
 
-A: The sign/verify process relies on ECDSA-based curves, in particular secp256k1. Public/Private key pairs can be generated in either software or Zymbit HSM hardware.
+A: The sign/verify process relies on ECDSA-based curves, in particular secp256k1. Public/Private key pairs can be generated in either software or Zymbit HSM hardware. The ZYMKEY uses software keys.
 
 -----
 

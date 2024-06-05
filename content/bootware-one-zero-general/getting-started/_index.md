@@ -132,7 +132,7 @@ curl https:///bootware.s3.amazonaws.com/zymbit_ubuntu.zi --output zymbit_ubuntu.
 You will need the corresponding public key in order to verify the downloaded image. The public key in PEM format for either the bullseye image or the ubuntu image can be downloaded here:
 
 ```
-curl https:///bootware.s3.amazonaws.com/pub_key.pem --output pub_key.pem
+curl https:///bootware.s3.amazonaws.com/pub_key_1.1.pem --output pub_key_1.1.pem
 ```
 
 #### Use the Bootware Wizard to Configure your System
@@ -212,7 +212,7 @@ Once completed, `zb-update` will ask you to confirm the name of the image, and t
 | Parameter | Setting | Notes |
 | ------ | ------ | ------ |
 | Use software-based keys for verifying | Y | Use software keys |
-| Existing key path? | pub_key.pem | Adjust if not downloaded to your local directory |
+| Existing key path? | pub_key_1.1.pem | Adjust if not downloaded to your local directory |
 
 The script will prompt for a reboot to complete the process. 
 
