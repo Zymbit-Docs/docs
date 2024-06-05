@@ -19,17 +19,14 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 #### June 2024
 -----
 
-Bootware 1.0 Full includes includes cross-platform support for ZYMKEY on CM4 and RPi4. Also added Bookworm 64-bit support.
+Bootware 1.1 General Platform Support - Along with the SCM-based products, Bootware 1.1 includes cross-platform support for ZYMKEY on CM4 and RPi4. 
+
+The Zymbit Products also include Bookworm 64-bit support.
+
 
 <br>
 
-![Bootware Platform Support](supported-bootware-dots.png)
-<br>
-
-
-Bookworm 64-bit support added as an option for the SCM.
-
-<br>
+##### Latest Platform and OS Support
 
 ![supported OSs](supported-os-dots.png) 
 <br>
@@ -74,7 +71,3 @@ See the [Troubleshooting/FAQ](troubleshooting/scm) for more information on the c
 <br>
 <br>
 
-#### September 2023
------
-We recently pushed up a Preview for Bootware evaluation. This is for Development pur
-oses and not meant for Production. More details on the Preview can be found here:  [Bootware Preview](bootware-preview)
