@@ -52,7 +52,7 @@ Choose your settings as described below.
 
 *	1  Backup – RECOMMENDED Apply new updates to current backup filesystem and swap to booting the new updated backup partition as the active partition now. If the new update is bad, it will rollback into the previous stable active partition. Only relevant when configured with A/B partitions.
   
-*	2  Active – Apply new updates to only the current active filesystem and keep the backup partition untouched. Only relevant when configured with A/B partitions.
+*	2  Active – Apply new updates to only the current active filesystem. If the backup filesystem exists, keep the backup filesystem untouched. 
 
 *	3  Both – Apply new updates to both filesystems and always boot on the first root partition as the active partition. Warning: A bad update will have nothing to rollback to; the device will have to go through a recovery process.
 
