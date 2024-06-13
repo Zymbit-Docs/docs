@@ -23,13 +23,18 @@ Bootware 1.1 General Platform Support - Along with the SCM-based products, Bootw
 
 The Zymbit Products also include Bookworm 64-bit support.
 
-
-<br>
-
 ##### Latest Platform and OS Support
 
 ![supported OSs](supported-os-dots.png) 
 <br>
+
+#### Other significant enhancements in Bootware 1.1:
+
+**Issue #142** - OS updates that change boot.scr can prevent future boot. Affects Ubuntu. Although the PI version of Ubuntu does not use U-Boot, Ubuntu's dpkg kernel update re-writes the file /boot/firmware/boot.scr. boot.scr was used by Bootware 1.0, and a re-write of the file could leave the system unable to boot. Bootware 1.1 no longer relies on the file.
+
+**Enhancement** - The common data partition is now encrypted and the LUKS key is locked by the Zymbit HSM.
+
+---
 
 <br>
 
