@@ -60,7 +60,7 @@ Choose your settings as described below.
 
 *	Endpoint – Type the endpoint where the .zi image resides for the device to pull updates from. The endpoint will be checked for validity.
 
-    > Example https URL: https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_preview.zi  
+    > Example https URL: https://bootware.s3.amazonaws.com/zymbit_bookworm64_1.1.zi  
     > Example USB stick: /dev/sda1
 
 **Wireless Setup** – Bootware supports pulling updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
