@@ -4,7 +4,7 @@ linkTitle: "Getting Started"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2024-06-06"
+date: "2024-06-19"
 draft: false
 type: docs
 images: []
@@ -121,12 +121,17 @@ If you wish to run from a local source such as a USB stick, our example image ca
 
 For bullseye,
 ```
-curl https:///bootware.s3.amazonaws.com/zymbit_bullseye.zi --output zymbit_bullseye.zi
+curl https:///bootware.s3.amazonaws.com/zymbit_bullseye64_1.1.zi --output zymbit_bullseye64_1.1.zi
+```
+
+For bookworm,
+```
+curl https:///bootware.s3.amazonaws.com/zymbit_bookworm64_1.1.zi --output zymbit_bookworm64_1.1.zi
 ```
 
 For ubuntu,
 ```
-curl https:///bootware.s3.amazonaws.com/zymbit_ubuntu.zi --output zymbit_ubuntu.zi
+curl https:///bootware.s3.amazonaws.com/zymbit_ubuntu64_22.04_1.1.zi --output zymbit_ubuntu64_22.04_1.1.zi
 ```
 
 You will need the corresponding public key in order to verify the downloaded image. The public key in PEM format for either the bullseye image or the ubuntu image can be downloaded here:
@@ -162,16 +167,20 @@ Choose your settings as described below.
 
 **Update Policy** – The update policies define if image updates are applied to the Backup, Active, or Both partitions. Choose the recommended **Option 1 - Backup.** This way you know you have a good Active partition for fallback.
 
-**Endpoint Setup** – The configured endpoint with .zi image. The endpoint can be either an HTTPS URL or a local external mass storage device like a USB stick or nVME drive. We are going to use the URL of our known good image:
+**Endpoint Setup** – The configured endpoint with  image. The endpoint can be either an HTTPS URL or a local external mass storage device like a USB stick or nVME drive. We are going to use the URL of our known good image:
 
 For bullseye,
 ```
-https:///bootware.s3.amazonaws.com/zymbit_bullseye.zi
+https:///bootware.s3.amazonaws.com/zymbit_bullseye64_1.1
+```
+For bookworm,
+```
+https:///bootware.s3.amazonaws.com/zymbit_bookworm64_1.1
 ```
 
 For ubuntu,
 ```
-https:///bootware.s3.amazonaws.com/zymbit_ubuntu.zi
+https:///bootware.s3.amazonaws.com/zymbit_ubuntu64_22.04_1.1
 ```
 
 If you opted to download one of the zi images to a local device, enter the device endpoint name instead.
@@ -199,7 +208,7 @@ The script will show your configuration for review and confirmation and give you
 
 | Parameter | Setting | Notes |
 | ------ | ------ | ------ |
-| update_endpoint | https://bootware.s3.amazonaws.com/zymbit_bullseye.zi | or zymbit_ubuntu.zi for ubuntu |
+| update_endpoint | https://bootware.s3.amazonaws.com/zymbit_bullseye64_1.1 | or the endpoint for bookworm or ubuntu from above|
 | endpoint_type | HTTPS | if you are using a local endpoint, adjust, e.g. /dev/sda1 |
 | one_root_fs | false | We are using A/B: two root partitions |
 | update_mode | UPDATE_BACKUP | We are only going to load the image onto the BACKUP partition |
