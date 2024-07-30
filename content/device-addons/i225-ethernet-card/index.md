@@ -16,11 +16,11 @@ images: []
 
 This page outlines the steps required to get PCIe ethernet chips using the Intel I225-V controller up and running on the Zymbit Secure Edge Node (SEN). These controllers use the in-tree `igc` Linux driver, which is not included by default as part of the Raspberry Pi Foundation's official kernel packages. The process has been tested and validated for the 6.1.93 Raspberry Pi kernel paired with an IOCrest SY-PEX24075 M.2 adapter card, though most any sub-7 watt M.2 card using the I225-V controller should theoretically work (mileage may vary).
 
-# Installation.
+## Installation.
 
 There are two options for installation: [using prebuilt `.deb` packages](#option-1-install-from-prebuilt-debian-packages), which target kernel 6.1.93, or [building and installing from source](#option-2-build-and-install-from-source).
 
-## Option 1: Install from Prebuilt Debian Packages.
+### Option 1: Install from Prebuilt Debian Packages.
 
 This option will install a prebuilt kernel 6.1.93 package, including the necessary `igc` module, and will work on any existing Debian-based SEN. As part of the installation process, the system's initramfs (if one is present) will be regenerated, allowing the use of LUKS-encrypted root filesystems to continue working.
 
@@ -37,7 +37,7 @@ dpkg -i *.deb
 
 3. Edit `/boot/config.txt` to boot from the correct kernel image. The prebuilt packages will install the kernel at `/boot/vmlinuz-6.1.93-v8+`. You must either manually copy/rename this file to `/boot/kernel8.img`, or edit `/boot/config.txt` to change (or add, if it's missing) the line `kernel=vmlinuz-6.1.93-v8+`, otherwise the system will not boot the correct kernel image.
 
-## Option 2: Build and Install from Source.
+### Option 2: Build and Install from Source.
 
 This option is much more flexible than the alternative and allows working with custom kernels, but requires a suitable kernel build environment. You will need to build the entire kernel in order to obtain the `System.map` and other files required for depmod, as well as to ensure the `igc` module version matches that of the core kernel.
 
@@ -76,7 +76,7 @@ scripts/config --module CONFIG_IGC
 make ARCH=arm64 CROSS_COMPILE=$TOOLCHAIN_PREFIX -j$(nproc)
 ```
 
-# Performance Information.
+## Performance Information.
 
 The M.2 slot on the SEN is a PCIe Gen. 2 x1 bus, which has a bandwidth cap of 4 Gib/s--enough to support the SY-PEX24075 card's maximum link speed of 2.5Gib/s. Note, however, that it is not quite enough to achieve maximum bandwidth for simultaneous send/receive operations. In such cases, the driver will prioritize Rx bandwidth (as it should), and allocate whatever remains to Tx. Performance metrics from `iperf3` are shown below. The SEN was connected via a LAN cable directly to the 2.5G ethernet port on a Linux PC, and two `iperf3` client-server sessions were established, one for each direction of communication.
 
