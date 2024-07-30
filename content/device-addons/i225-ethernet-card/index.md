@@ -24,11 +24,13 @@ There are two options for installation: [using prebuilt `.deb` packages](#option
 
 This option will install a prebuilt kernel 6.1.93 package, including the necessary `igc` module, and will work on any existing Debian-based SEN. As part of the installation process, the system's initramfs (if one is present) will be regenerated, allowing the use of LUKS-encrypted root filesystems to continue working.
 
-  - On some newer systems (Debian Bookworm and later), the kernel image and config.txt files may instead be located in the `/boot/firmware` directory; check the mount point of the first partition on your SD card/eMMC to determine whether this is the case. The prebuilt 6.1.93 kernel package will always install to `/boot`, so depending on your exact setup, you may have to either remount `/dev/mmcblk0p1` at `/boot` before running `dpkg`, or else move the installed files from `/boot` into `/boot/firmware` after the installation is complete.
+{{% callout notice %}}
+Note: On some newer systems (Debian Bookworm and later), the kernel image and config.txt files may instead be located in the `/boot/firmware` directory; check the mount point of the first partition on your SD card/eMMC to determine whether this is the case. The prebuilt 6.1.93 kernel package will always install to `/boot`, so depending on your exact setup, you may have to either remount `/dev/mmcblk0p1` at `/boot` before running `dpkg`, or else move the installed files from `/boot` into `/boot/firmware` after the installation is complete.
+{{% /callout %}}
 
 1. Copy the `linux-image-*_arm64.deb`, `linux-libc-dev_*_arm64.deb`, and (optionally), `linux-headers-*_arm64.deb` files onto the target system.
 
-  - The `linux-headers` package is required if you plan on doing any out-of-tree kernel module-related development. Othwerwise, it may be omitted from the installation.
+    - The `linux-headers` package is required if you plan on doing any out-of-tree kernel module-related development. Othwerwise, it may be omitted from the installation.
 
 2. As root, install the packages using `dpkg`:
 ```
@@ -44,33 +46,37 @@ This option is much more flexible than the alternative and allows working with c
 It is highly recommended that you build the kernel using cross compilation on a non-Pi workstation. The Pi can do it, but it will take upwards of 1-2 hours on the Cortex-A72 CPU and require several GiB of disk space. If cross compiling, ensure you have an `aarch64` cross toolchain installed on the build machine; you can install one from `apt`/`dnf`/`pacman` on most x86_64 Linux distributions, or [download a prebuilt tarball directly from ARM](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads). Either of the bare-metal or GNU/Linux targets should work. Also be sure to install your distribution's required Linux build dependencies; specifics will vary.
 
 1. Obtain RPi Linux sources for kernel 6.1.93 and checkout the appropriate commit:
+    
+    - As of this writing, the commit is at the HEAD of the `rpi-6.1.y` branch, but the exact ID is `fbd8b3facb36ce888b1cdcf5f45a78475a8208f2`. Adding the `--depth 1` argument to the clone command will therefore yield the correct commit HEAD and save significant time, but this will change should more commits be added to this branch in the future.
+  
+    - If you wish to clone the entire source tree and history, the `gix` command will do to so much faster than `git` (it can be installed with `cargo install gitoxide`), though note that `gix` does not support the `--branch` option.
+
 ```
 git clone --branch rpi-6.1.y https://github.com/raspberrypi/linux.git
 git checkout fbd8b3facb36ce888b1cdcf5f45a78475a8208f2 
 ```
-  - As of this writing, the commit is at the HEAD of the `rpi-6.1.y` branch, but the exact ID is `fbd8b3facb36ce888b1cdcf5f45a78475a8208f2`. Adding the `--depth 1` argument to the clone command will therefore yield the correct commit HEAD and save significant time, but this will change should more commits be added to this branch in the future.
-
-  - If you wish to clone the entire source tree and history, the `gix` command will do to so much faster than `git` (it can be installed with `cargo install gitoxide`), though note that `gix` does not support the `--branch` option.
 
 2. Create a KBuild `.config` file to target the CM4 inside of the SEN. If not cross compiling, omit the `ARCH` and `CROSS_COMPILE` flags from the below command.
 
-  - `$TOOLCHAIN_PREFIX` should be the prefix of your cross toolchain, such that invoking `${TOOLCHAIN_PREFIX}gcc` from the command line will launch the cross GCC.
+    - `$TOOLCHAIN_PREFIX` should be the prefix of your cross toolchain, such that invoking `${TOOLCHAIN_PREFIX}gcc` from the command line will launch the cross GCC.
 
 ```
 make ARCH=arm64 CROSS_COMPILE=$TOOLCHAIN_PREFIX bcm2711_defconfig
 ```
 
 3. Modify the generated `.config` file to add support for the `igc` driver module (`CONFIG_IGC`).
+
+    - Alternatively, the option can be found within the KConfig interactive interface under "Device Drivers > Network device support > Ethernet driver support > Intel devices > Intel(R) Ethernet Controller I225-LM/I225-V support."
+
 ```
 scripts/config --module CONFIG_IGC
 ```
-  - Alternatively, the option can be found within the KConfig interactive interface under "Device Drivers > Network device support > Ethernet driver support > Intel devices > Intel(R) Ethernet Controller I225-LM/I225-V support."
 
 4. Build the kernel and modules.
 
-  - To create `.deb` packages containing the kernel, modules, headers, and libc, you can instead specify the `bindeb-pkg` target to `make`. This requires building on either a Debian-based host system, or installing the necessary Debian packaging development tools onto your system. The `.deb` files themselves will be output into your current **parent** directory. You can then install them onto the target system by following the above steps for [Option 1: Install from Prebuilt Debian Packages](#option-1-install-from-prebuilt-debian-packages).
+    - To create `.deb` packages containing the kernel, modules, headers, and libc, you can instead specify the `bindeb-pkg` target to `make`. This requires building on either a Debian-based host system, or installing the necessary Debian packaging development tools onto your system. The `.deb` files themselves will be output into your current **parent** directory. You can then install them onto the target system by following the above steps for [Option 1: Install from Prebuilt Debian Packages](#option-1-install-from-prebuilt-debian-packages).
 
-  - If building directly on the target SEN system, you can invoke `make modules_install install` after the build is completed to install the kernel & modules into their appropriate locations.
+    - If building directly on the target SEN system, you can invoke `make modules_install install` after the build is completed to install the kernel & modules into their appropriate locations.
 
 ```
 make ARCH=arm64 CROSS_COMPILE=$TOOLCHAIN_PREFIX -j$(nproc)
