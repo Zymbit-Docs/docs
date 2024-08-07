@@ -9,6 +9,53 @@ toc: true
 ---
 
 -----
+
+{{% callout notice %}}
+
+### Issue Number #159 - Major
+Affects SCM, Firmware version: 01.02.02release (not in earlier firmware releases)
+
+On B1 versions of the SCM with firmware version 01.02.02release, generated key pairs created with `gen_key_pair()` are removed during reboot.
+
+You can determine the version with:
+
+```
+python3 -c "import zymkey; print(zymkey.client.get_firmware_version())"
+```
+
+### Details and Workaround:
+
+`gen_key_pair(key_type)` creates key pairs for slots 16 and up, but a reboot removes the key slots. Keys generated using the BIP32 wallet with `gen_wallet_master_seed()`/`gen_wallet_child_key()` keys are not removed on reboot. The BIP32 wallet keys can be used as a workaround for B1 units.
+
+For example,
+
+Instead of:
+```
+key_slot = gen_key_pair("secp256k1")
+```
+
+Use:
+
+```
+seed = zymkey.client.gen_wallet_master_seed("secp256k1", "", "wallet_name")
+key_slot = zymkey.client.gen_wallet_child_key(seed, 0, False)
+```
+
+From this point on you can use the `key_slot` in the same manner to `get_public_key(key_slot)` or `remove_key(key_slot)`
+
+### Notes:
+
+* The problem does not affect the use of slots 0 through 15.
+* The problem does not affect public keys stored in the Foreign key store.
+* BIP32 wallets are hierarchical key stores, meaning removing the wallet master seed will remove all the keys in that wallet; removing a parent will remove all child slots of the parent. See BIP32 for more information.
+* BIP32 wallets can be recovered if you setup a recovery method using either BIP39 mnemonics, or SLIP39 Shamir's Secret Sharing of mnemonics. Zymbit supports both methods.
+* Your particular application of keys may lend itself to different key hierarchy strategies - you could put one key in each wallet and create many wallets or put many keys in one wallet. For details on wallets, you can see https://docs.zymbit.com/tutorials/digital-wallet/
+* If you are creating multiple wallets, each wallet must have a unique name.
+* 
+This only affects SCMs with firmware 01.02.02release. This does not affect the HSM6. (edited) 
+
+{{% /callout %}}
+
 ### Updated Release 10/10/2023 (RC-23.01 base software unchanged)
 
 Updated the SCM release to support the Rev B release of the SCM hardware. 
