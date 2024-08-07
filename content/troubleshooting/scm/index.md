@@ -84,7 +84,7 @@ This only affects SCMs with firmware 01.02.02release. This does not affect the H
  - zkapputilslib 1.1-25
  - zkbootrtc 1.1-15
  - zkifc 1.2-35
- - zkpkcs11 1.0-2 
+ - zkpkcs11 1.0-3
  - zksaapps 1.0-16
  - zku 1.0.33
 
