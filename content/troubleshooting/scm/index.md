@@ -55,6 +55,7 @@ Instead of:
 Use:
 
 `seed = zymkey.client.gen_wallet_master_seed("secp256k1", "", "wallet_name")`
+
 `key_slot = zymkey.client.gen_wallet_child_key(seed, 0, False)`
 
 From this point on you can use the `key_slot` in the same manner to `get_public_key(key_slot)` or `remove_key(key_slot)`
