@@ -96,6 +96,7 @@ You can determine the version with:
 For example,
 
 Instead of:
+
 `key_slot = gen_key_pair("secp256k1")`
 
 Use:
