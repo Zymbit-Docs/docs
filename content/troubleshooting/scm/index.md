@@ -26,7 +26,7 @@ Summary of changes:
 
 #### SCM Hardware changes
 
-* FW 01.02.02 - Supports SCM Rev B.
+* FW 01.02.02release - Supports SCM Rev B.
 * SCM Rev B has different boot timing as compared to Rev A. This has to do with additional checks and with new requirements related to Zymbit bootware(tm). Average boots times are similar, however, some boot times may be longer by approximately 50 seconds. This is normal behavior for SCM Rev B units.
 * SCM Rev. B has one new 40-pin connector and a different connector for tamper detect and battery backer. Please see the ECN for complete details. The new tamper/battery connector improves physical security of the SCM, improves compatibility with generic CM4 boards, and provides additional features. The new 40-pin expansion connector provides access to additional USB ports as well as additional security and integration features in future versions of the SCM.
 

@@ -71,8 +71,8 @@ To mitigate this issue, remove the service unattended-upgrades:
 * No longer necessary to register product; no SSH key necessary so no need for key passphrase.
 * sudo for user zymbit with password in standard PI OS manner allowed; no need to supply password every time.
 
-* FW 01.02.00 - April 2024. Update bootcode.bin to 1/11/2023 version. You can verify with `vcgencmd bootloader_version`. Should say 1/11/2023. Necessary to support Ubuntu 22.04.
-* FW 01.02.00 - Supports B1 revision of SCM
+* FW 01.02.02release - April 2024. Update bootcode.bin to 1/11/2023 version. You can verify with `vcgencmd bootloader_version`. Should say 1/11/2023. Necessary to support Ubuntu 22.04.
+* FW 01.02.02release - Supports B1 revision of SCM
 * FW 01.00.00 - Supports A1 revision of SCM
 * FW 01.00.00 - Fixed:  #117 Stored tamper event on shutdown has incorrect timestamp
 * zkifc 1.2-36 - Fixed: #120 get_public_key() with a very large number crashes zkifc
