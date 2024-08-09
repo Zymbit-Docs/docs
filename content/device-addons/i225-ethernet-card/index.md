@@ -28,6 +28,7 @@ This option will install a prebuilt kernel 6.1.93 package, including the necessa
 On some newer systems (Debian Bookworm and later), the kernel image and config.txt files may instead be located in the `/boot/firmware` directory; check the mount point of the first partition on your SD card/eMMC to determine whether this is the case. The prebuilt 6.1.93 kernel package will always install to `/boot`, so depending on your exact setup, you may have to either remount `/dev/mmcblk0p1` at `/boot` before running `dpkg`, or else move the installed files from `/boot` into `/boot/firmware` after the installation is complete.
 {{% /callout %}}
 
+
 1. [Download the prebuilt packages](https://zymbit-addons.s3.amazonaws.com/linux-igc-6.1.93-v8%2B.tar.xz), then copy the `linux-image-*_arm64.deb`, `linux-libc-dev_*_arm64.deb`, and (optionally) `linux-headers-*_arm64.deb` files onto the target system.
 
     - The `linux-headers` package is required if you plan on doing any out-of-tree kernel module-related development. Otherwise, it is not required for the system to properly run.
@@ -89,6 +90,7 @@ make ARCH=arm64 CROSS_COMPILE=$TOOLCHAIN_PREFIX -j$(nproc)
 ## Performance Information.
 
 The M.2 slot on the SEN Devkit board is a PCIe Gen. 2 x1 bus, which has a bandwidth cap of 4 Gib/s---enough to support the SY-PEX24075 card's maximum link speed of 2.5Gib/s. Note, however, that it is not quite enough to achieve maximum bandwidth for simultaneous send/receive operations. In such cases, the driver will prioritize Rx bandwidth (as it should), and allocate whatever remains to Tx. Performance metrics from `iperf3` are shown below. The SEN was connected via a LAN cable directly to the 2.5G ethernet port on a Linux PC and two `iperf3` client-server sessions were established, one for each direction of communication.
+e
 
 ON PC:
 ```
