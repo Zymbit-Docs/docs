@@ -16,7 +16,7 @@ The SCM Developer Kit 3 is currently still under development. The Dev Kit 3 cont
 {{< /callout >}}
 
 The SCM Developer Kit 3 provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart) with the MOBO2 motherboard engineering samples. This motherboard is used in the [SEN Pro](https://www.zymbit.com/secure-edge-node-pro/) (Secure Edge Node Pro) product.  The Dev Kit includes:
- 
+
  * Zymbit [Secure Compute Module](../../scm/quickstart) (Zymbit Security Module and CM4)
  * Zymbit Secure Compute I/O Motherboard2 (MOBO2)
  * Perimeter Detect wires for Channels 1, 2
@@ -25,43 +25,43 @@ The SCM Developer Kit 3 provides all the hardware and software components requir
  * Zymbit External Battery (optional)
 
 {{< cardpane >}}
-{{% card header="Zymbit Dev Kit 3 Motherboard (MOBO2) - Top" %}}
+{{< card header="Zymbit Dev Kit 3 Motherboard (MOBO2) - Top" >}}
 {{< figure
     src="mobo2x1_top.png"
     alt="Mobo2x1_top"
     caption="The top and bottom of the Zymbit SCM Developer Kit3 Motherboard"
     >}}
-{{% /card %}}
-{{% card header="Zymbit Dev Kit 3 Motherboard (MOBO2) - Bottom" %}}
+{{< /card >}}
+{{< card header="Zymbit Dev Kit 3 Motherboard (MOBO2) - Bottom" >}}
 {{< figure
     src="mobo2x1_bottom.png"
     alt="Mobo2x1 Bottom"
     caption=""
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
 
 {{< cardpane >}}
-{{% card header="Dev Kit 3 - Motherboard2 (MOBO2) Rev X1 Connectors" %}}
-{{< figure 
+{{< card header="Dev Kit 3 - Motherboard2 (MOBO2) Rev X1 Connectors" >}}
+{{< figure
     src="mobo2x1_table.png"
     alt="MOBO2 Rev X1 Connectors"
     caption=""
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
 ### GPIO Pinout Reference
 
 {{< cardpane >}}
-{{% card header="SCM Motherboard MOBO2 Rev X1 GPIO Pinout" %}}
+{{< card header="SCM Motherboard MOBO2 Rev X1 GPIO Pinout" >}}
 {{< figure
     src="zymbit-scm-motherboard-2X1-bottom-gpio-pinout-1500px.jpg"
     alt=""
     caption="Note: the standard GPIO pinout is accessed on the bottom side of the D35 board."
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
 -----
@@ -86,15 +86,15 @@ Once the boot sequence completes and the Blue LED is blinking once every three s
 See [Quickstart for SCM](../../scm/quickstart) for more information on how to proceed.
 
 ### Additional information - Using SCM: API and Examples
-    
- * [See API Documentation](../../../api/)   
+
+ * [See API Documentation](../../../api/)
  * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
  * [Securing the SCM further with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
-    
+
 ### Support
-    
+
  * [Release Notes](../../../troubleshooting/scm/)
  * [Contact Support](mailto:support@zymbit.com)
 

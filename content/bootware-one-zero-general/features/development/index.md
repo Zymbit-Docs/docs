@@ -37,7 +37,7 @@ Follow the standard instructions from Raspberry PI Foundation using `rpiboot` an
 
 Once the image is put together and loaded on the SCM, load Zymbit software. For now, Zymbit hardware is not needed. You only need to complete the software installation. The following will load all packages and reboot to complete the software installation.
 
-```
+```bash
 curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
 ```
 
@@ -45,30 +45,30 @@ curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
 
 Load the Bootware software. Part of the zi image creation includes all of the Bootware software. Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
 
-```
+```bash
 curl https://bootware.s3.amazonaws.com/bootware-1.1.tgz --output bootware-1.1.tgz
 ```
 
 Once the tar file is downloaded, untar:
 
-```
+```bash
 tar xvzf bootware-1.1.tgz
 ```
 
 Run the following install script on the SCM to install the zboot utilities:
 
-```
+```bash
 cd bootware-1.1
 sudo ./zb-install.sh
 ```
 
-The installation script will do two reboots. With everything in place, you can now run `zb-imager` to create an image. 
+The installation script will do two reboots. With everything in place, you can now run `zb-imager` to create an image.
 
 ### 4. Run `zb-imager` and sign with a software-based key
 
 The next step will be to create the zi image to load with Bootware onto your SCM. Use the Software Key choices since there is no Zymbit HSM hardware involved at this point. `zb-imager` will default to prompt you to use a software key, and will create one for you.
 
-```
+```bash
 sudo zb-imager
 ```
 
@@ -81,7 +81,7 @@ Make the following selections:
 | Version?: 1.1                                 | Optional. An arbitrary version number for your reference. |
 
 
-Next, you will be prompted for Signing Keys. Hit return to choose the default Software option. Choose to let theh script create keys for you. 
+Next, you will be prompted for Signing Keys. Hit return to choose the default Software option. Choose to let the script create keys for you.
 
 | Item | Description |
 | ----- | ----- |
@@ -107,6 +107,6 @@ If successful, the SCM will end up successfully bound, and up and running on an 
 
 
 ### Additional Information and Support
-    
+
 [Contact Support](mailto:support@zymbit.com)
 

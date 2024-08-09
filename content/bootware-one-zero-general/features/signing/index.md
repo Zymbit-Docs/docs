@@ -18,7 +18,7 @@ Bootware applies updates through zymbit images or *.zi files. These files are cr
 
 ### Hardware key generation:
 
-Zb-imager leverages the BIP32/BIP39 wallet APIs of the SCM for key generation. The wallet is named “bootware” and will generate the signing key pair with the wallet address of “m/0/n” (where n is a random number between 0-100). The wallet address “m/0/n” info will be stored in the zymbit image: header.txt. After the zb-imager finishes signing the image with the signing key, the tool will say what slot the “m/0/n” key is residing in, as well as prompt the user for saving the bip39 mnemonic to file. The BIP39 mnemonic is a 24 word sentence that can be used to regenerate the master keypair or “m” of the wallet. So this is one way to re-clone the same hardware generated key between different publishing nodes. To verify the image on the node that needs to apply the update, zb-update will ask for an existing key slot number to verify with. 
+Zb-imager leverages the BIP32/BIP39 wallet APIs of the SCM for key generation. The wallet is named “bootware” and will generate the signing key pair with the wallet address of “m/0/n” (where n is a random number between 0-100). The wallet address “m/0/n” info will be stored in the zymbit image: header.txt. After the zb-imager finishes signing the image with the signing key, the tool will say what slot the “m/0/n” key is residing in, as well as prompt the user for saving the bip39 mnemonic to file. The BIP39 mnemonic is a 24 word sentence that can be used to regenerate the master keypair or “m” of the wallet. So this is one way to re-clone the same hardware generated key between different publishing nodes. To verify the image on the node that needs to apply the update, zb-update will ask for an existing key slot number to verify with.
 
 The best way to transport the key over from the publishing node to the receiving node:
 
@@ -38,7 +38,7 @@ foreign_key_slot = zymkey.client.store_foreign_public_key("secp256k1", public_ke
 
 Using zb-update on receiving node:
 
-```python
+```bash
 sudo zb-update --key-slot=foreign_key_slot
 ```
 
@@ -50,7 +50,7 @@ Warning: If using the “LOCAL DEVICE” configuration of zb-update. Do not use 
 
 Using zb-update on receiving node:
 
-```python
+```bash
 sudo zb-update --key-file=/home/zymbit/pub_key.pem
 ```
 

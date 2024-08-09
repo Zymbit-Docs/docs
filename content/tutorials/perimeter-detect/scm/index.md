@@ -13,18 +13,18 @@ toc: true
 
 ## Scope
 
-This describes the perimeter detect feature on SCM. 
+This describes the perimeter detect feature on SCM.
 
 <!-- ![HSM Perimeter Detect](../HSM-PD-perimter.png) -->
 
-Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended or in high risk environments. 
+Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended or in high risk environments.
 
-The SCM includes two independent Perimeter Loops that can be configured to meet different applications. 
+The SCM includes two independent Perimeter Loops that can be configured to meet different applications.
 
-![HSM Perimeter Detect](../SCM-perim-detect-cable.png) 
+![HSM Perimeter Detect](../SCM-perim-detect-cable.png)
 
 
-When a Perimeter Loop is breached, SCM can be configured (at time of binding) to respond with different "Actions", depending upon your security policy. 
+When a Perimeter Loop is breached, SCM can be configured (at time of binding) to respond with different "Actions", depending upon your security policy.
 
 ### Connecting Perimeter Loop Circuits
 
@@ -34,33 +34,33 @@ Alternatively, the SCM has a four pin connector to interface to perimeter circui
 
 ### Electrical Circuit
 
-Each perimeter loop should be connected with a 30 AWG wire or thicker and nominal length of 2 feet. For longer lengths contact Zymbit. The wire should be electrically insulated for all applications. A shielded cable may be necessary for electrically noisy or industrial applications. 
+Each perimeter loop should be connected with a 30 AWG wire or thicker and nominal length of 2 feet. For longer lengths contact Zymbit. The wire should be electrically insulated for all applications. A shielded cable may be necessary for electrically noisy or industrial applications.
 
 Custom flex PCBs and rigid PCBs may also be used to complete a perimeter loop circuit.
 
 ### Perimeter Breach Response Actions
 
-For released product, prior to permanently binding your SCM to a specific host device, it can be configured through the API to respond to a perimeter breach event in one of three ways. After permanent binding is completed, the selected configuration is locked and immutable. 
+For released product, prior to permanently binding your SCM to a specific host device, it can be configured through the API to respond to a perimeter breach event in one of three ways. After permanent binding is completed, the selected configuration is locked and immutable.
 
 ##### Response Choices
 
-A)  Do nothing (disable)  
-B)  Notify host when perimeter breach occurs (default as shipped)  
-C)  Destroy all key material (this essentially destroys any encrypted data or file system.  
+A)  Do nothing (disable)
+B)  Notify host when perimeter breach occurs (default as shipped)
+C)  Destroy all key material (this essentially destroys any encrypted data or file system.
 
-### Test Perimeter Detect 
+### Test Perimeter Detect
 **Developer Mode only**
 
 To quickly test your perimeter detect setup, here is sample code using the Python API. The program will wait for ten seconds to detect any perimeter breaches. Before running this script, connect the circuits with the provided yellow and blue wires and during the ten second pause in the script, breach the perimeter by unplugging the circuit wires. The wait function should immediately detect the event.
 
-In the API, perimeter circuit 2 (as shown in the above images) is defined as channel 1 and perimeter circuit 1 is defined as channel 0. Channel 0 and channel 1 have been set to action_notify=True. 
+In the API, perimeter circuit 2 (as shown in the above images) is defined as channel 1 and perimeter circuit 1 is defined as channel 0. Channel 0 and channel 1 have been set to action_notify=True.
 
 Example for monitoring Perimeter Events:
 <details>
 
 <summary>For Python</summary>
 
-```
+```python
 #!/usr/bin/python3
 
 import zymkey
@@ -101,7 +101,7 @@ while input('Enter or (q)uit: ') != 'q':
 
 ### Perimeter Detect Circuit Examples
 
-For best practices and examples of how to physically configure perimeter circuits: 
+For best practices and examples of how to physically configure perimeter circuits:
 [Learn more>](../examples)
 
 ### Additional Self Destruct Policies
@@ -109,6 +109,6 @@ For best practices and examples of how to physically configure perimeter circuit
 SCM has additional self destruct policies independent of Perimeter Detect: Supervised Boot, Low/High Temperature and Low Voltage level monitoring. For more information, visit [Python documentation](https://docs.zymbit.com/api/python_api/#setbatteryvoltageaction-45bcda8a) or [C documentation](https://docs.zymbit.com/api/c_api/#int--zkSetBatteryVoltageAction-f90f5fd1).
 
 ## Troubleshooting
-[Troubleshooting](../../../troubleshooting/)  
+[Troubleshooting](../../../troubleshooting/)
 [Community](https://community.zymbit.com/)
 

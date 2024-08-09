@@ -19,13 +19,13 @@ The SCM Developer Kit2 provides all the hardware and software components require
  * 12V Power Supply
 
 {{< cardpane >}}
-{{% card header="Contents of Dev Kit" %}}
-{{< figure 
+{{< card header="Contents of Dev Kit" >}}
+{{< figure
     src="scm-dev-kit2.png"
     alt="SCM Dev Kit"
     caption=""
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
 ### **Configure and Setup your SCM Developer Kit2**
@@ -48,15 +48,15 @@ Once the boot sequence completes and the Blue LED is blinking once every three s
 See [Quickstart for SCM](../../scm/quickstart) for more information on how to proceed.
 
 ### Additional information - Using SCM: API and Examples
-    
- * [See API Documentation](../../../api/)   
+
+ * [See API Documentation](../../../api/)
  * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
  * [Securing the SCM further with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
-    
+
 ### Support
-    
+
  * [Release Notes](../../../troubleshooting/scm/)
  * [Contact Support](mailto:support@zymbit.com)
 

@@ -1,6 +1,6 @@
 ---
 title: "Troubleshooting and FAQ"
-linkTitle: "Troubleshooting/FAQ" 
+linkTitle: "Troubleshooting/FAQ"
 lastmod: "2024-06-18"
 draft: false
 images: []
@@ -17,16 +17,16 @@ toc: true
 
 The SCM ships with a pre-installed with the following options for Operating System:
 
-* Raspberry PI OS Lite (bookworm 64bit) 
-* Raspberry PI OS Lite (bullseye 64bit) 
+* Raspberry PI OS Lite (bookworm 64bit)
+* Raspberry PI OS Lite (bullseye 64bit)
 * Ubuntu Server LTS 22.04 (jammy 64bit)
 
-{{% callout notice %}}
-The pre-installed image is encrypted and cannot be replaced via `rpiboot`. Once Bootware is installed, Bootware can install new images based off Bullseye or Jammy in the Zymbit `zi` image format. See the [Getting Started](../getting-started) section and the [zb-update](../utilities/zbupdate) tool.  
+{{< callout notice >}}
+The pre-installed image is encrypted and cannot be replaced via `rpiboot`. Once Bootware is installed, Bootware can install new images based off Bullseye or Jammy in the Zymbit `zi` image format. See the [Getting Started](../getting-started) section and the [zb-update](../utilities/zbupdate) tool.
 
 Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or later in order to work with Ubuntu 22.04. The version can be verified with the `vcgencmd bootloader_version` command. The firmware is not field upgradeable. If you have a CM4/SCM with an earlier version of the bootloader and need to run Ubuntu 22.04, please contact support@zymbit.com.
 
-{{% /callout %}}
+{{< /callout >}}
 
 ### Precautions
 
@@ -54,7 +54,7 @@ Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or la
 
 ### Changes to our standard images
 
-The table below summarizes changes made to the standard image. 
+The table below summarizes changes made to the standard image.
 
 | Default | As Shipped |
 |------------------|--------------------------|

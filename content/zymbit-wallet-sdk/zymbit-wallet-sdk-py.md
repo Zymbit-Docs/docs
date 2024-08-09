@@ -22,7 +22,7 @@ toc: true
 To see examples of the Python SDK in use, check out [this tutorial](https://docs.zymbit.com/tutorials/digital-wallet/zymbit-wallet-python-sdk/)
 
 ## <span class="markdown-h2 include-toc">Installation</span>
-```
+```bash
 pip install zymbitwalletsdk
 ```
 
@@ -37,14 +37,14 @@ pip install zymbitwalletsdk
     - If you want your keyring to work with KeyringManager, your keyring implementation must be a subclass of keyring
 
 ### <span class="markdown-h3 include-toc">Classes</span>
- 
+
 1. EthAccount
     - A subclass of Account which represents an Ethereum account in the context of Zymbit's hardware wallet
 2. EllipticCurve
     - An enum which represents the elliptic curves supported on Zymbit's hardware wallet.
 2. ZymbitEthKeyring
     - A subclass of Keyring which represents a keyring of Ethereum accounts
-    - Can be used to create, manage, use (sign transactions and messages), and delete Ethereum accounts 
+    - Can be used to create, manage, use (sign transactions and messages), and delete Ethereum accounts
 3. KeyringManager
     - A class used to create, manage, and delete multiple Keyrings (must be a subclass of Keyring)
 4. EthTransaction

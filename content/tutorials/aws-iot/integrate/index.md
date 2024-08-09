@@ -59,7 +59,11 @@ If you want to create a CA on your own device, follow these instructions.
 On the device you want to hold your private CA and sign certificate requests, do the following.
 - Run `git clone https://github.com/zymbit-applications/aws-credentials-provider.git`
 - Run `cd aws-credentials-provider`
-- Run the mk_ca script: ```bash mk_ca.sh```
+- Run the mk_ca script:
+
+```bash
+mk_ca.sh
+```
 
 There are now three files in the directory (~/aws-credentials-provider/CA_files).
   - zk_ca.key
@@ -83,25 +87,25 @@ Steps 2-5 must be done on the private CA.
 
 1. Copy the registration code for generating CA cert.
 
-```
+```bash
 aws iot get-registration-code
 ```
 
 2. Create a private key for AWS CA to verify against.
 
-```
+```bash
 openssl genrsa -out verificationCert.key 2048
 ```
 
 3. Create a CSR for your CA to sign
 
-```
+```bash
 openssl req -new -key verificationCert.key -out verificationCert.csr
 ```
 
 4. Put registration code in the Common Name field
 
-```
+```bash
 Country Name (2 letter code) [AU]:
 State or Province Name (full name) [Some-State]:
 Locality Name (eg, city) []:
@@ -118,7 +122,7 @@ An optional company name []:
 
 5. Create a private key verification certificate for your CA. If you didn't follow our CA creation section, then the -CA and -CAkey file paths are likely different.
 
-```
+```bash
 openssl x509 -req -in verificationCert.csr -CA CA_files/zk_ca.pem \
 -CAkey CA_files/zk_ca.key -CAcreateserial -out verificationCert.crt \
 -days 500 -sha256
@@ -127,7 +131,7 @@ openssl x509 -req -in verificationCert.csr -CA CA_files/zk_ca.pem \
 6. Register CA certificate, set it as active and allow device certificates to
 auto register.
 
-```
+```bash
 aws iot register-ca-certificate --ca-certificate file://CA_files/zk_ca.crt \
                                 --verification-certificate file://verificationCert.crt \
                                 --set-as-active \
@@ -191,9 +195,9 @@ All of these steps happen on the **provisioning** device
 ---
 ### Provisioning an IoT Device
 
-{{% callout notice %}}
+{{< callout notice >}}
 The following procedure was done with Raspberry PI OS Buster 32bit. The current version of cURL included in bullseye (7.74.0) seems to have an issue using the openssl engine import feature.
-{{% /callout %}}
+{{< /callout >}}
 
 1. On the **IoT** device
      - Run ```openssl req -key nonzymkey.key -new -out zymkey.csr -engine zymkey_ssl -keyform e```
@@ -207,7 +211,7 @@ The following procedure was done with Raspberry PI OS Buster 32bit. The current 
        - Role Alias name, we used deviceRoleAlias.
        - The Thing name, whatever you want to name this IoT device.
 
-```
+```bash
 Country Name (2 letter code) [AU]:
 State or Province Name (full name) [Some-State]: <IOT-POLICY>
 Locality Name (eg, city) []: <REGION>

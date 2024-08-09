@@ -1,6 +1,6 @@
 ---
 title: "SCM FAQ and Troubleshooting"
-linkTitle: "SCM" 
+linkTitle: "SCM"
 lastmod: "2023-10-10"
 draft: false
 images: []
@@ -11,7 +11,7 @@ toc: true
 -----
 ### Updated Release 10/10/2023 (RC-23.01 base software unchanged)
 
-Updated the SCM release to support the Rev B release of the SCM hardware. 
+Updated the SCM release to support the Rev B release of the SCM hardware.
 
 Summary of changes:
 
@@ -65,7 +65,7 @@ Oct 1, 2022
 
 * Numerous improvements in stability regarding tamper settings and events
 
-* Added permanent slots 14 and 15 as pre-configured ed25519 slots. 
+* Added permanent slots 14 and 15 as pre-configured ed25519 slots.
 
 * Added a default slot for Supervised Boot manifest using slot 15. Switched the order of the filename and slot to accommodate the default. Example for python:
 
@@ -97,7 +97,7 @@ Is:  `add_or_update_supervised_boot_file(filepath ="" , slot = 15)`
 **Fixed from Alpha to Beta - Issue #88**: SCM: Master Wallet Seed remove times out from host side. Timeout can vary but happens with approximately 20 derived child key entries per wallet. Workaround for now is to limit individual wallet size / depth.
 
 
-#### Firmware: 
+#### Firmware:
  - SCM: 00.00.51beta, 00.00.34beta
 
 #### Zymbit Host Side Code:
@@ -106,7 +106,7 @@ Is:  `add_or_update_supervised_boot_file(filepath ="" , slot = 15)`
  - zkapputilslib 1.1-25
  - zkbootrtc 1.1-15
  - zkifc 1.2-35
- - zkpkcs11 1.0-2 
+ - zkpkcs11 1.0-2
  - zksaapps 1.0.-16
  - zku 1.0.33
 
@@ -117,11 +117,11 @@ Is:  `add_or_update_supervised_boot_file(filepath ="" , slot = 15)`
 
 The SCM ships with a pre-installed version of Raspberry PI OS Lite (bullseye 64bit) with a more secure configuration.
 
-{{% callout notice %}}
+{{< callout notice >}}
 The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com if you require a different image.
-{{% /callout %}}
+{{< /callout >}}
 
-The table below summarizes changes made to the standard image. 
+The table below summarizes changes made to the standard image.
 
 | Default | As Shipped |
 |------------------|--------------------------|
@@ -148,16 +148,16 @@ Unlike the Alpha program, the Beta units allow the user to bind lock the unit in
 Common LED patterns:
 
 * Once every 3 seconds
-   * This indicates that your SCM is working and running.  
+   * This indicates that your SCM is working and running.
 
 * Three rapid blinks every 3 seconds
-   * This indicates the SCM is in Production Mode and is working and running.  
+   * This indicates the SCM is in Production Mode and is working and running.
 
 * Constant rapid blinking (waiting for host to connect)
-   * This indicates that your SCM is operational but has not bound to the host. If the SCM continues to blink this pattern, it could mean that there is a problem with the host Pi or that the SCM is not seen by the Pi.  
+   * This indicates that your SCM is operational but has not bound to the host. If the SCM continues to blink this pattern, it could mean that there is a problem with the host Pi or that the SCM is not seen by the Pi.
 
 * Rapid blinking then LED off permanently
-   * This indicates the SCM is in Production Mode but cannot bind with the RPi.  In Production Mode the binding with a particular Pi becomes permanent. Most likely cause for this is that the SCM or the PI has been swapped out. Also can indicate an improper salt file.  
+   * This indicates the SCM is in Production Mode but cannot bind with the RPi.  In Production Mode the binding with a particular Pi becomes permanent. Most likely cause for this is that the SCM or the PI has been swapped out. Also can indicate an improper salt file.
 
 The Zymkey has the following fatal LED structure.
 

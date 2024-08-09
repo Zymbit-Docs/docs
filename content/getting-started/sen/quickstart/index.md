@@ -11,7 +11,7 @@ toc: true
 -----
 ### **Overview**
 
-Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates Zymbit’s secure motherboard, [Secure Compute Module](/getting-started/scm/quickstart/)  and a choice of accessories.  
+Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates Zymbit’s secure motherboard, [Secure Compute Module](/getting-started/scm/quickstart/)  and a choice of accessories.
 
 <br />
 <img src="scn.png" width="60%">
@@ -22,8 +22,8 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 ### **Configure and Setup your Secure Edge Node**
 
 #### Power On
- * Connect 12V Power Supply (available for purchase from Zymbit) up to the front panel 12V barrel connector. Optionally, supply power via PoE to the ethernet connector, or via the SATA edge connector. 
- * Connect an ethernet cable to the front panel gigabit ethernet port. 
+ * Connect 12V Power Supply (available for purchase from Zymbit) up to the front panel 12V barrel connector. Optionally, supply power via PoE to the ethernet connector, or via the SATA edge connector.
+ * Connect an ethernet cable to the front panel gigabit ethernet port.
  * The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. The only access is via SSH.
 
 <br />
@@ -84,28 +84,30 @@ The quickest way to get started is to see the Secure Edge Node's various feature
 
 [Download example files](https://community.zymbit.com/t/installation-missing-files/1331/2?u=bob_of_zymbit)
 
-`python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`  
-`python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
+```bash
+python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py
+python3 /usr/local/share/zymkey/examples/zk_crypto_test.py
+```
 
-Now you're ready to start developing with the Zymbit Secure Compute Module. 
+Now you're ready to start developing with the Zymbit Secure Compute Module.
 
 #### Secure Compute Module
 
 Inside the Secure Edge Node is the [Secure Compute Module](../../scm/quickstart/): a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure, encapsulated module. Details of the SCM itself including any other Zymbit specific cofigurations can be found [here](../../scm/quickstart/):
-    
+
 #### Motherboard Reference
 [SCM Developer Kit2](../../scm-dev-kit2/quickstart)
 
 #### Using Secure Edge Node/SCM: API and Examples
-    
- * [See API Documentation](../../../api/)   
+
+ * [See API Documentation](../../../api/)
  * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
  * [Securing the SCM further with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
-    
+
 #### Support
-    
+
  * [Release Notes](../../../troubleshooting/scm/)
  * [Contact Support](mailto:support@zymbit.com)
 

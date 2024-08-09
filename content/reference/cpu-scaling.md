@@ -23,16 +23,16 @@ The PI sets the **scaling governor** to be `ondemand` by default. We recommend s
 
 #### Set to `performance` for current boot; not persistent on reboot:
 
- 1. Run as root:  
-    `sudo su`  
-    `echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor`  
+ 1. Run as root:
+    `sudo su`
+    `echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor`
 
 #### Set `performance` to be persistent on reboot with a systemd service:
 
  1. Create a .service file in /etc/systemd/system/. You can name it whatever you wish. We will use `cpu-governor.service`.
  2. Write this code to `/etc/systemd/system/cpu-governor.service` file:
 
-```
+```bash
 [Unit]
 
 Description=Set scaling governor to performance
@@ -54,9 +54,9 @@ WantedBy=multi-user.target
 
  3. Enable the service:  `sudo systemctl enable cpu-governor`
  4. Start the service: `sudo systemctl start cpu-governor`
- 
+
  #### Verifying the setting
- 
- You can use `cat` to verify the current setting. It should return `performance`.  
-`sudo cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor`  
+
+ You can use `cat` to verify the current setting. It should return `performance`.
+`sudo cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor`
 

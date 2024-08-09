@@ -9,7 +9,7 @@ images: []
 toc: true
 ---
 
-### Introduction 
+### Introduction
 
 While all Zymbit modules make it trivial to verify data signed on the device with that module, verifying
 the signature of data on other devices using the exportable public key requires a little more explanation.
@@ -51,7 +51,7 @@ All these examples will be done via Python using the Python-ECDSA library.
 
 ## Prerequisites
 
- 1. Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software. 
+ 1. Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all baseline software.
  2. If you wish to try Signature validation on AWS, you need a [valid device certificate](https://docs.zymbit.com/tutorials/aws-iot/tls/) attached to your AWS account.
 3. The device certificate needs to have a policy attached giving it permission to publish data.
 
@@ -62,9 +62,9 @@ All these examples will be done via Python using the Python-ECDSA library.
 For the verification of ECDSA-NIST256 signatures, we will be using the
 [Python-ECDSA library](https://github.com/warner/python-ecdsa). Using Pip, the library can be
 installed simply by running the following command:
-	
+
 	sudo pip3 install ecdsa
-	
+
 #### Simple Signature Verification with Public Key
 
 Below is a simple Python program demonstrating how to verify a Zymbit module signature with a
@@ -142,7 +142,7 @@ if __name__ == "__main__":
         'signature': signature.hex()
     }
 
-    
+
     # Convert python dictionary to JSON string format
     received_payload = json.dumps(json_dictionary)
     print("\nJSON string:")
@@ -150,7 +150,7 @@ if __name__ == "__main__":
 
 ```
 
-**Python Code to Verify Signature with Data Generated above**  
+**Python Code to Verify Signature with Data Generated above**
 Either substitute in your `pub_key` and `JSON data` from the previous example or use as is.
 
 ```python
@@ -167,10 +167,10 @@ def verify_ecdsa_signature(data, sig, pub_key):
 
 
 if __name__ == "__main__":
-    # Zymkey public key in hex string format. Converted to byte_array, public key storage/exchange up to user. 
+    # Zymkey public key in hex string format. Converted to byte_array, public key storage/exchange up to user.
     pub_key = bytearray.fromhex('6cd0b8b14963f6712877eb50a3f5afa9c0e39483e560f58eb795e634df53f399ba370dbceb71ea87cba5e2fca4f23ef73b8e683a9946758829f76521e7a19e5a')
 
-    ''' 
+    '''
     The variable received_payload will be the JSON string sent over to this device from the Zymkey.
     It contains 1.the data and 2.the signature for this data. See next code example to create an example.
     Here is how it will be formatted:
@@ -202,9 +202,9 @@ the data into JSON format, and sign and send to send to AWS IoT.
 The function `read_temp()` will return an array containing random values for
 `temp_c` and `temp_f`.
 
-{{% callout notice %}}
+{{< callout notice >}}
 If you wish to use an actual DS18B20 OneWire probe to collect temperature data,
-you can follow the instructions at this link. 
+you can follow the instructions at this link.
 {{< resource_link "https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware" >}}
 Using a DS18B20 OneWire Probe to Collect Temperature Data
 {{< /resource_link >}}
@@ -233,11 +233,11 @@ def read_temp():
             temp_c = float(temp_string) / 1000.0
             temp_f = temp_c * 9.0 / 5.0 + 32.0
             return temp_c, temp_f
-```  
+```
 
-{{% /callout %}}
+{{< /callout >}}
 
-**Collect data in JSON format, sign, and prepare for AWS**  
+**Collect data in JSON format, sign, and prepare for AWS**
 
 ```python
 #!/usr/bin/python3
@@ -310,7 +310,7 @@ should be done.
 
 Next we will publish the temperature data signed and saved from the last section to AWS IoT using PyCurl.
 **Make sure to find and change your AWS IoT endpoint in the following code. Information on how
-to do this can be found in the tutorial linked above.** 
+to do this can be found in the tutorial linked above.**
 
 ```python
 #!/usr/bin/python3
@@ -320,7 +320,7 @@ import pycurl
 import random
 import time
 import zymkey
-	
+
 
 def read_temp():
     temp_c = float(random.randint(0,100))
@@ -334,22 +334,22 @@ def ZK_AWS_Publish(url, post_field, CA_Path, Cert_Path,):
     # Set Curl to use zymkey_ssl engine
     c.setopt(c.SSLENGINE, "zymkey_ssl")
     c.setopt(c.SSLVERSION, c.SSLVERSION_TLSv1_2)
-	
+
     # Set certificates for HTTPS connection
     c.setopt(c.SSLCERT, Cert_Path)
     c.setopt(c.CAINFO, CA_Path)
-	
+
     # Set endpoint and HTTPS type, here it is a POST
     c.setopt(c.URL, url)
     c.setopt(c.POSTFIELDS, post_field)
-    
+
     # Tell Curl to do client and host authentication
     c.setopt(c.SSL_VERIFYPEER, 1)
     c.setopt(c.SSL_VERIFYHOST, 2)
-    
+
     # Turn on Verbose output and set key as placeholder, not actually a real file.
     c.setopt(c.VERBOSE, 1)
-    c.setopt(c.SSLKEYTYPE, "ENG")	
+    c.setopt(c.SSLKEYTYPE, "ENG")
     c.setopt(c.SSLKEY, "nonzymkey.key")
 
     c.perform()
@@ -362,18 +362,18 @@ if __name__ == '__main__':
         temp_C, temp_F = read_temp()
         deviceID = 1
         myIP= '192.168.100.100'
-        
+
         # Package the data in Python dictionary, then convert to JSON string.
         data = {'temp_F': temp_F, 'temp_C': temp_C, 'deviceIP': myIP, 'deviceID': deviceID}
-        
+
         # sign the JSON string
         json_str = json.dumps(data)
         json_str_bytes = bytearray(json_str, 'utf-8')
         signature = zymkey.client.sign(json_str)
-        
+
         # Make a new dictionary to hold the hex_strings of the data and signature, and then turn into JSON
         json_data = json.dumps({'data': json_str_bytes.hex(), 'signature': signature.hex()})
-        
+
         # make sure and substitute you AWS endpoint as well as the paths to your certificate
         AWS_ENDPOINT = 'https://<endpoint>.amazonaws.com:8443/topics/pub_key_validate?qos=1'
         ZK_AWS_Publish(url=AWS_ENDPOINT, post_field=json_data, CA_Path='/home/pi/verify-sig/AWS_CA.pem', Cert_Path='/home/pi/verify-sig/zymkey.crt')
@@ -386,7 +386,7 @@ if __name__ == '__main__':
 If all the previous steps have been done correctly, then you should be able to see the JSON string
 you published on the AWS IoT console. It will be published to the topic **pub_key_validate**. This
 is encoded in the endpoint link you can see in the code. The topic can be changed to whatever
-you want. **Here's how to check the data from the AWS IoT console**:  
+you want. **Here's how to check the data from the AWS IoT console**:
 
 1. From the **AWS console**, select **AWS IoT**.
 2. On the **left hand bar**, select **Test**. If MQTT Test is shown choose that.
@@ -400,7 +400,7 @@ An AWS Lambda function is code that runs on the cloud based on a configured trig
 For this demonstration, the trigger will be data published to a specific topic, `pub_key_validate`,
 on AWS IoT. From there the lambda function can validate signatures and talk with any other AWS service.
 
-The function is written in terms of a **lambda_handler**. The **event** that it gets passed is 
+The function is written in terms of a **lambda_handler**. The **event** that it gets passed is
 the JSON string published to AWS IoT. The Python lambda context automatically converts **event** from
 a JSON string to Python dictionary.
 
@@ -439,7 +439,7 @@ Python-ECDSA package, and then print and log its success status.
 
 To set up the lambda function on AWS, we must first package the code with the ECDSA package, since
 it is not part of the Python STL. To do this we zip up the lambda code with the ECDSA package in the
-build directory. 
+build directory.
 
 **Packaging function with Python-ECDSA**
 
@@ -455,7 +455,7 @@ project by running this build command while inside the project directory.
      python setup.py build
 
 Find the **ecdsa** directory inside  the **build** directory, and zip up that directory with your code.
- 
+
 **Now, follow these steps to upload and activate your code on AWS:**
 
 1. From the **AWS Console**, select **Lambda**
@@ -499,7 +499,7 @@ It should **return and print a success message**.
 The final step is to create  a trigger for the Lambda function. Here we will make a Rule in AWS IoT,
 so that all data published to pub_key_readings are routed to and trigger your Lambda function.
 
-1. From your **AWS Console**, click on the **AWS IoT service**. 
+1. From your **AWS Console**, click on the **AWS IoT service**.
 2. On the left hand side, select **Rules** and then click the blue **Create button**.
 3. Give it an **appropriate Name and Description**.
 4. Using **SQL version 2016-03-23** use the following settings:
@@ -517,9 +517,9 @@ The whole data pipeline goes like this:
 
 **python collects data -> zymkey signs data -> python packages data to json -> pycurl publish
 data to AWS IoT -> AWS IoT rule routs data and triggers lambda -> Lambda validates signature
-and logs the success/failure.** 
+and logs the success/failure.**
 
-If you've tested that data is being published and the lambda function is working properly, it should all work when you run the program to publish data. 
+If you've tested that data is being published and the lambda function is working properly, it should all work when you run the program to publish data.
 
 From your AWS Console, select **CloudWatch**. Under **Logs** you shoud see something like
 **/aws/lambda/Signature_Validation**. Check the logs for proper validation, if you have no

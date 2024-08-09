@@ -43,7 +43,7 @@ Follow these instructions to set up the [boto3 module](http://boto3.readthedocs.
 The boto3 module authenticates with AWS based on a IAM Access ID and Secret Key. The boto3 tutorial will ask you to setup an IAM user, here are some instructions on how to do so:
 
 1. From the **AWS console**, choose the **IAM service**.
-2. Go to **Users** and select **Add User** 
+2. Go to **Users** and select **Add User**
 3. Choose a **username** and check the **Programmatic access box**
 4. For simplicity, choose **Attach existing policies directly** and select **AdministratorAccess**
 5. If you wish to better manage your IAM credentials, feel free to customize your Access Policy.
@@ -67,7 +67,7 @@ The following section will show how to generate your own CA using OpenSSL and re
 ### Create CA
 
 **Copy the lines below into a script called mk_ca.sh.**
-```bash 
+```bash
 #!/bin/bash
 set -e
 mkdir CA_files
@@ -80,7 +80,7 @@ OPENSSL_CONF=/etc/ssl/openssl.cnf openssl req \
   -subj "/C=US/ST=California/L=Santa Barbara/O=Zymkey/CN=zymkey-verify.zymbit.com.dev"
 
 cp zk_ca.crt zk_ca.pem
-``` 
+```
 **You can then run the script in the command line by being in the same directory with the following command:**
 
 	bash mk_ca.sh
@@ -99,19 +99,19 @@ cp zk_ca.crt zk_ca.pem
 2. Click **register CA**
 3. Follow the directions on the following screen to create a verification certificate.
 4. When signing the verification certificate with your CA in **Step 4** run the following command:
-		
+
 		openssl x509 -req -in verificationCert.csr -CA CA_files/zk_ca.pem -CAkey CA_files/zk_ca.key -CAcreateserial -out verificationCert.crt -days 500 -sha256
 	Note that if you a different CA and not the demo one we generated, to change the **-CA** and **-CAkey** paths appropriately.
 
 5. Click **Select CA certificate** and point to the correct **.pem file**. If you use the OpenSSL generated SSL point to **CA_files/zk_ca.pem**
 6. Click **Select verification certificate** and point to **verificationCert.crt** which was created in Step 4.
-7. Select **Active CA certificate** and **Enable auto-registration of device certificates** 
+7. Select **Active CA certificate** and **Enable auto-registration of device certificates**
 
 ---
 **Programatically:**
 The following python script will **automatically create a verification cert with a registration code** and **automatically active your Certificate Authority**. While it may look a bit intimidating, all you have to worry about is the **very last line**, where you can **change to point to your CA files**.
 
-```python 
+```python
 import OpenSSL
 import boto3
 import os
@@ -122,7 +122,7 @@ def gen_AWS_verification_csr(registrationCode):
 	req = OpenSSL.crypto.X509Req()
 	req.get_subject().CN = registrationCode
 	req.set_pubkey(key)
-	req.sign(key, "sha256")	
+	req.sign(key, "sha256")
 	return OpenSSL.crypto.dump_certificate_request(OpenSSL.crypto.FILETYPE_PEM, req)
 
 def sign_CSR_with_CA(verification_csr, CA_cert_path, CA_key_path):
@@ -141,13 +141,13 @@ def sign_CSR_with_CA(verification_csr, CA_cert_path, CA_key_path):
 
 def register_CA_AWS(CA_cert_path, CA_key_path):
 	client = boto3.client('iot')
-	
+
 	response = client.get_registration_code()
 	registration_key = response['registrationCode']
-	
+
 	verification_pem = gen_AWS_verification_csr(registrationCode=registration_key)
 	verification_cert = sign_CSR_with_CA(verification_csr=verification_pem, CA_cert_path=CA_cert_path, CA_key_path=CA_key_path)
-	
+
 	response = client.register_ca_certificate(
 		caCertificate=open(CA_cert_path).read(),
 		verificationCertificate=verification_cert,
@@ -157,12 +157,12 @@ def register_CA_AWS(CA_cert_path, CA_key_path):
 
 	return response
 
-register_CA_AWS(CA_cert_path='CA_files/zk_ca.crt', CA_key_path='CA_files/zk_ca.key')	
+register_CA_AWS(CA_cert_path='CA_files/zk_ca.crt', CA_key_path='CA_files/zk_ca.key')
 ```
 **Copy the above lines into a file called activate_aws_ca.py and run with the following command:**
-	
-	python activate_aws_ca.py
-
+```bash
+python activate_aws_ca.py
+```
 </details>
 
 ---
@@ -172,14 +172,16 @@ register_CA_AWS(CA_cert_path='CA_files/zk_ca.crt', CA_key_path='CA_files/zk_ca.k
 The first thing we will do is generate a device certificate using Zymkey's private key. We will watch as this certificate gets activated on your AWS IoT console automatically on first connect. Make sure that you do not already have a Zymkey certificate registered on your AWS IoT console.
 
 **Generate a Certificate Signing Request with Zymkey's private key using the following command**:
-	
-	openssl req -key nonzymkey.key -new -out zymkey.csr -engine zymkey_ssl -keyform e -subj "/C=US/ST=California/L=Santa Barbara/O=Zymbit/OU=Zymkey/CN=rpi.edge.zymbit.com"
+
+```bash
+openssl req -key nonzymkey.key -new -out zymkey.csr -engine zymkey_ssl -keyform e -subj "/C=US/ST=California/L=Santa Barbara/O=Zymbit/OU=Zymkey/CN=rpi.edge.zymbit.com"
+```
 
 Note that the **-subj** line can be omitted or modified with your own information. If it is omitted, you will be prompted to enter your information on the command line.
 
 **Signing the CSR to get a valid Zymkey certificate:**
 
-Next we'll sign this CSR with your Certificate Authority. Save the following script in a file called **sign_csr.sh**. Make sure to change the **-CA** and **-CAkey** paths to point to the private key and certificate file for your certificate authority: 
+Next we'll sign this CSR with your Certificate Authority. Save the following script in a file called **sign_csr.sh**. Make sure to change the **-CA** and **-CAkey** paths to point to the private key and certificate file for your certificate authority:
 ```bash
 #!/bin/bash
 set -e
@@ -195,8 +197,10 @@ openssl x509 -req -SHA256 -days 3650 \
   -in ${csr} -out ${crt}
 ```
 Now run the script with the following command, where the first argument is the path to your CSR and the second argument the name you wish to give the signed Zymkey Certificate file.
-	
-	bash sign_csr.sh zymkey.csr zymkey.crt
+
+```bash
+bash sign_csr.sh zymkey.csr zymkey.crt
+```
 
 ---
 
@@ -223,22 +227,22 @@ Now we need to create and register the lambda function that will activate new ce
 10. This should take you to the IAM console. Click **Attach policies**
 11. Click **Create policy**, then the **JSON** tab.
 12. Input the following policy
-```
-{ 
+```json
+{
    "Version":"2012-10-17",
-   "Statement":[ 
-      { 
+   "Statement":[
+      {
          "Effect":"Allow",
-         "Action":[  
+         "Action":[
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents"
          ],
          "Resource":"arn:aws:logs:*:*:*"
       },
-      { 
+      {
          "Effect":"Allow",
-         "Action":[  
+         "Action":[
             "iot:UpdateCertificate",
             "iot:CreatePolicy",
             "iot:AttachPrincipalPolicy"
@@ -263,7 +267,7 @@ The creation of an AWS lambda function through python scripts is a little more i
 1. Creating a new IAM role for the lambda function.
 2. Creating a new Policy for this IAM role.
 3. Attaching the Policy to the IAM role.
-4. Create the lambda function, attaching the IAM role to this function. 
+4. Create the lambda function, attaching the IAM role to this function.
 
 <details="Details">
 
@@ -274,7 +278,7 @@ The first thing we need to do is create an IAM Role. This role gives the Lambda 
 **Creating this IAM role furthermore requires you to specify 2 things**:
 
 **IAM Trust Document**: This is a document that details what AWS resources are allowed to assume this IAM role. Below is an example IAM trust document we will use that allows lambda services to assume this JITR role. Save the document in a file called **trust_document.txt**.
-```	
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -289,22 +293,22 @@ The first thing we need to do is create an IAM Role. This role gives the Lambda 
 }
 ```
 **Role Policy**: This is a document describing what actions an IAM role may take. This policy is created and then attached to whatever role you wish. The following policy will allow the JITR role to create AWS logs as well as register/activate new certificates and attach policies to them. Save the document in a file called **policy_document.txt**.
-```
-{ 
+```json
+{
    "Version":"2012-10-17",
-   "Statement":[ 
-      { 
+   "Statement":[
+      {
          "Effect":"Allow",
-         "Action":[  
+         "Action":[
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents"
          ],
          "Resource":"arn:aws:logs:*:*:*"
       },
-      { 
+      {
          "Effect":"Allow",
-         "Action":[  
+         "Action":[
             "iot:UpdateCertificate",
             "iot:CreatePolicy",
             "iot:AttachPrincipalPolicy"
@@ -313,12 +317,12 @@ The first thing we need to do is create an IAM Role. This role gives the Lambda 
       }
    ]
 }
-``` 
+```
 
 Finally, this is the python code that will take care of the creation of the IAM role. The first thing it does is create an IAM role with the specified Trust settings. Then it creates an IAM policy with the aforementioned policy settings. Finally it will attach the policy to the role. This role will be used by the JITR lambda. **By default it'll read the two documents trust_document.txt and policy_document.txt from the same directory that the code is executed in. So save the python script in a file called create_jitr_lambda.py in the same directory as these files, or modify the path to these files in the code. They can be either relative or absolute**
 ```python
 import boto3
-	
+
 iam_client = boto3.client('IAM')
 with open('trust_document.txt') as trust_role:
 	trust_document = trust_role.read()
@@ -326,7 +330,7 @@ with open('trust_document.txt') as trust_role:
 with open('policy_document.txt') as policy:
 	policy_document = policy.read()
 
-# Creating the IAM role with the specified Trust 
+# Creating the IAM role with the specified Trust
 create_role_response = iam_client.create_role(
 	RoleName='jitr_role',
 	AssumeRolePolicyDocument=trust_document,
@@ -338,26 +342,26 @@ create_policy_resopnse = iam_client.create_policy(
 	PolicyName=policy_name,
 	PolicyDocument=policy_document,
 	Description'Policy that allows JITR lambda to execute actions.'
-)	
-	
-# Attaching the IAM policy to the IAM role	
+)
+
+# Attaching the IAM policy to the IAM role
 attach_response = iam_client.attach_role_policy(
 	RoleName=role_name,
 	PolicyArn=create_policy_response['Policy']['Arn']
 )
 ```
 **After saving the code in a file called create_jitr_lambda.py, you can execute by running the following command:**
-
-	python create_jitr_lambda.py
-
+```bash
+python create_jitr_lambda.py
+```
 ##### Creating Lambda function
 
-The lambda function will then be created with the following script. The code for the lambda function will be in a zipped file named **jitr_lambda.zip**. Download the lambda code [here](https://github.com/awslabs/aws-iot-examples/blob/master/justInTimeRegistration/deviceActivation.js) **and make sure to modify the region-name in the code to your approrpiate region**. 
+The lambda function will then be created with the following script. The code for the lambda function will be in a zipped file named **jitr_lambda.zip**. Download the lambda code [here](https://github.com/awslabs/aws-iot-examples/blob/master/justInTimeRegistration/deviceActivation.js) **and make sure to modify the region-name in the code to your approrpiate region**.
 
 Next, zip up the code in a file called **jitr_lambda.zip** and keep it in the same directory as the following python script.
 ```python
 #Download the zip file with the lambda code and save it in the same directory as this script.
-with open('jitr_lambda.zip', mode='rb') as file:   
+with open('jitr_lambda.zip', mode='rb') as file:
 	filecontent = file.read()
 
 lambda_client = boto3.client('lambda')
@@ -371,7 +375,7 @@ create_lambda_response = lambda_client.create_function(
 		'ZipFile': filecontent
 	},
 	Description='Lambda function for Just-in-time-Registration',
-)	
+)
 ```
 **Note that this script requires the Role ARN for the IAM role you just created. If you append this script to the file create_jitr_lambda.py, it will already be included in the response from attaching the policy to the jitr_role, and you won't have to do anything.**
 ```python
@@ -411,12 +415,12 @@ arn:aws:iot:us-east-2:302973482904:cacert/<caCertificateID>
 
 
 Now to create the rule
-1. From your **AWS Console**, click on the **AWS IoT** service. 
+1. From your **AWS Console**, click on the **AWS IoT** service.
 2. On the left hand side, select **Act** and then click **Rules**.
 3. Click **Create** then give an appropriate Name and Description.
 4. Using **SQL version 2016-03-23** use the following Rule query statement:
-```
-SELECT * FROM '$aws/events/certificates/registered/<caCertificateID>' 
+```sql
+SELECT * FROM '$aws/events/certificates/registered/<caCertificateID>'
 ```
 5. Click **Add action**.
 6. Click **Send a message to a Lambda function** and **Configure Action**.
@@ -426,7 +430,7 @@ SELECT * FROM '$aws/events/certificates/registered/<caCertificateID>'
 
 ## Testing JITR with TLS Connection
 
-You can now test your JITR setup by doing a TLS connection with your AWS IoT endpoint and presenting your Zymkey device certificate. 
+You can now test your JITR setup by doing a TLS connection with your AWS IoT endpoint and presenting your Zymkey device certificate.
 
 <details>
 
@@ -441,9 +445,10 @@ You can now test your JITR setup by doing a TLS connection with your AWS IoT end
 4. Under **Subscribe** and **Subscription Topic**, type in **hello/world**.
 5. Test your TLS connection with the following **CURL** command pointing to your **CA file** and your **Zymkey certificate**:
 
-6. Use **CURL** to test your TLS connection, **pointing to your CA file**:	
-
-	   	curl --tlsv1.2 --cacert zk_ca.pem --cert zymkey.crt --key nonzymkey.key --engine zymkey_ssl --key-type ENG -v -X POST -d "{ \"hello\": \"world\"}" "https://endpoint.iot.region.amazonaws.com:8443/topics/hello/world"
+6. Use **CURL** to test your TLS connection, **pointing to your CA file**:
+```bash
+curl --tlsv1.2 --cacert zk_ca.pem --cert zymkey.crt --key nonzymkey.key --engine zymkey_ssl --key-type ENG -v -X POST -d "{ \"hello\": \"world\"}" "https://endpoint.iot.region.amazonaws.com:8443/topics/hello/world"
+```
 
 The TLS connection should go through, and you should see something like this in your command line:
 

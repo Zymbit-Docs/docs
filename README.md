@@ -1,5 +1,15 @@
 # Zymbit User Documentation
 
+## Documentation standards
+
+We try to adhere to the following standards when writing documentation:
+
+* When calling a partial, ensure that you use `{{< /partial >}}` instead of `{{% /partial %}}`. This is because the former is more flexible and allows for the partial to be called from within a block element.
+* **Always** enclose code or bash commands in 3 back-ticks (```) to ensure that it is rendered as a code block.
+* When writing a code block, ensure that you specify the language of the code block. This is done by adding the language name after the first set of back-ticks. Having the language specified enables the `copy` button in the rendered code. For example, to specify a code block in bash, you would write:
+  ```bash
+  echo "Hello, World!"
+  ```
 ## Developing locally
 
 ### Dependencies

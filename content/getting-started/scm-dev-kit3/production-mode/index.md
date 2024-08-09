@@ -105,7 +105,7 @@ The API function lock_binding puts the SCM into Production Mode. Below are three
 <summary>C - zkLockBinding</summary>
 <br>
 
-```
+```c
 // gcc example_binding.c -I /usr/include/zymkey -l zk_app_utils -o example_binding
 
 #include <stdio.h>
@@ -183,7 +183,7 @@ int main()
 <summary>C++ - lockBinding</summary>
 <br>
 
-```
+```cpp
 #include <stdio.h>
 #include <zkAppUtilsClass.h>
 

@@ -15,21 +15,21 @@ Updated: 2022-04-18
 
 Zymbit's Hardware Wallet conforms to [BIP32](https://github.com/bitcoin/BIPs/blob/master/BIP-0032.mediawiki), [BIP39](https://github.com/bitcoin/BIPs/blob/master/BIP-0039.mediawiki), [BIP44](https://github.com/bitcoin/BIPs/blob/master/BIP-0044.mediawiki) documents for Hierarchical Deterministic (HD) wallets. An HD wallet derives all new addresses/keys from a master seed, thus creating a hierarchical wallet structure. BIP32 is the first seed standard for HD wallets, while BIP39 is a standard that converts a mnemonic sentence (a sentence of random words) into a 512 bit seed used for Master Seed recovery. BIP44 allows for multiple accounts in the form of children derivations from the master seed.
 
-A Hardware Wallet, or cold storage wallet, allows you to connect online and access your digital assets, and then safely store the referenced asset in the hardware wallet. The asset does not need to be stored on online servers or platforms. The private keys of the Hardware wallet remain on the device and are never exposed. 
+A Hardware Wallet, or cold storage wallet, allows you to connect online and access your digital assets, and then safely store the referenced asset in the hardware wallet. The asset does not need to be stored on online servers or platforms. The private keys of the Hardware wallet remain on the device and are never exposed.
 
 A Software Wallet, also known as a Soft Wallet or Desktop Wallet locally stores your keys on your desktop or in some other online location. The disadvantage of a Soft Wallet is that the presence of the keys online makes them far more susceptible to attacks.
 
 ## What is the Zymbit Embedded Hardware Wallet?
 
-Zymbit Embedded Hardware Wallet functionality is available in Zymbit products, HSM6 and SCM. These products are designed to easily integrate into IoT and blockchain appliances that manage large numbers of keys and/or participate in blockchain and crypto transactions.  
- 
-The core features of Zymbit Embedded Hardware Wallets are: 
+Zymbit Embedded Hardware Wallet functionality is available in Zymbit products, HSM6 and SCM. These products are designed to easily integrate into IoT and blockchain appliances that manage large numbers of keys and/or participate in blockchain and crypto transactions.
+
+The core features of Zymbit Embedded Hardware Wallets are:
  * BIP32 – Hierarchical Deterministic Wallet
  * BIP39 – Master Seed Mnemonic Code Generator
  * BIP44 – Multi-Account Hierarchy Support
  * SLIP39 – Shamirs Secret Sharing [See example](../../../tutorials/digital-wallet/slip39-example/)
  * [APIs](../../../api/) for secure easy integration with host computer (Python, C, C++)
- * Dedicated secure hardware with tamper protection and response. 
+ * Dedicated secure hardware with tamper protection and response.
 
 
 ![Zymbit hardware wallet](Zymbit-hardware-wallet-graphic-1c.png)
@@ -52,7 +52,7 @@ safe and locked away!
 
 * Zymbit Modules that support this feature:
     * [HSM6](https://www.zymbit.com/hsm6/)
-    * [SCM ](https://www.zymbit.com/secure-compute-platform/)  
+    * [SCM ](https://www.zymbit.com/secure-compute-platform/)
 
 * Follow the [Getting Started guide](../../../getting-started/) first, installing all baseline software.
 
@@ -62,7 +62,7 @@ safe and locked away!
 
 Example code snippet to show how to use the Zymbit wallet API
 
-```
+```python
 #!/usr/bin/python3
 
 import zymkey
@@ -113,7 +113,7 @@ Make sure to write the BIP39 mnemonic and store it somewhere safe! The master se
 
 The function `gen_wallet_master_seed` returns the allocated master seed slot and the BIP39 mnemonic if the bool flag is set True
 
-```
+```python
 # Create a master seed and return the BIP39 mnemonic
 master_key_generator = bytearray("3xampleM@sterK3Y", 'utf-8')
 wallet_name = "MyExampleWallet"
@@ -129,7 +129,7 @@ Child key pairs are generated from **both** the slot and index of another key pa
 
 The function `gen_wallet_child_key` returns allocated slot on success.
 
-```
+```python
 # Generate a child key from the master seed
 child_slot = zymkey.client.gen_wallet_child_key(master_slot, 3, True)
 child_pub_key = zymkey.client.get_public_key(child_slot)
@@ -148,7 +148,7 @@ If the user knows the key slot, they can get the node index and wallet name with
 
 The function `get_wallet_node_addr(int slot)` returns an array [node index string, wallet name, master seed slot number].
 
-```
+```python
 # Get node address of the child key slot
 node_addr = zymkey.client.get_wallet_node_addr(child_slot)
 print("Node address:'%s' Wallet Name:'%s' Master Slot:'%s'" % (node_addr[0], node_addr[1], node_addr[2]))
@@ -163,7 +163,7 @@ but if neither are filled, then it will throw an exception.
 
 The function `get_wallet_key_slot(string node_index, string wallet_name, int master_slot)` returns the key slot on success.
 
-```
+```python
 # Get the key slot of the child key using our previous master key slot and wallet name
 key_slot = zymkey.client.get_wallet_key_slot(node_addr[0],"MyExampleWallet", master_slot)
 print("Key Slot:%s" % (key_slot,))
@@ -180,7 +180,7 @@ Keep in mind that this only restores the master seed. The children nodes will ha
 
 The function `restore_wallet_master_seed` returns the allocated key slot on success.
 
-```
+```python
 # Remove the master seed
 zymkey.client.remove_key(master_slot)
 
