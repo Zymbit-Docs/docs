@@ -25,7 +25,8 @@ An HDMI console is highly recommended for setting up your unit with Bootware. Th
 
 Bootware 1.2 includes a new, consolidated User Interface. The process of installation and configuration has changed since 1.1.
 
-Details of the commands in this Quickstart are linked in line. See the [Features](../features) section for more information on how to use Bootware.
+Details of the commands in this Quickstart are linked in line.
+See the [Features](../../bootware-one-zero-general/features) section for more information on how to use Bootware.
 
 ### Overview of steps to get up and running
 
@@ -63,14 +64,14 @@ Reboot to complete the installation process and to boot into zboot. Once complet
 
 ### 3. Run `zbcli imager` to create Bootware-ready Zymbit Image backup (zi image)
 
-Bootware requires images in a secure, signed format for loading with zboot. We refer to these images as `zi` images. An image conversion tool, [`zbcli imager`](../utilities/zbimager), creates the zi image. `zbcli imager` can take a snapshot of your running system or input can be tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../features/overlays).
+Bootware requires images in a secure, signed format for loading with zboot. We refer to these images as `zi` images. An image conversion tool, [`zbcli imager`](../utilities/zbimager), creates the zi image. `zbcli imager` can take a snapshot of your running system or input can be tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../../bootware-one-zero-general/features/overlays).
 
-> If you are Developing on a CM4 directly and need to transition to the SCM, See [Developing on the CM4](../features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
+> If you are Developing on a CM4 directly and need to transition to the SCM, See [Developing on the CM4](../../bootware-one-zero-general/features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
 
 
 #### Create a zi image backup from your current running root file system
 
-Use `zb-imager` to create a Zymbit Image (zi) backup of your current running system. Once created, the zi image can be propagated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../features/signing).
+Use `zb-imager` to create a Zymbit Image (zi) backup of your current running system. Once created, the zi image can be propagated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../../bootware-one-zero-general/features/signing).
 
 ```
 sudo zb-imager
@@ -96,7 +97,7 @@ The `zb-imager` script will now build your zi image.
 
 The imager takes 20 minutes or longer depending on the size of your file system. Once completed, the zi image and Private/Public key will be saved in `/etc/zymbit/zboot/update_artifacts/output/`. Keep your private key private. The zi image can be copied to either a local storage device such as a USB stick or a remote server accessible via HTTPS. The public key file will be needed to load the zi image. 
 
-Additional examples of zb-imager usage can be found here: [zb-imager usage](../utilities/zbimager)
+Additional examples of zb-imager usage can be found here: [zb-imager usage](../../bootware-one-zero-general/utilities/zbimager)
 
 
 ### 3. Run zb-wizard to configure the Partitioning and Image loading
@@ -129,7 +130,7 @@ curl https:///bootware.s3.amazonaws.com/pub_key_1.1.pem --output pub_key_1.1.pem
 
 #### Use the Bootware Wizard to Configure your System
 
-Bootware includes a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zb-wizard` can be found [here](../utilities/zbwizard). 
+Bootware includes a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zb-wizard` can be found [here](../../bootware-one-zero-general/utilities/zbwizard). 
 
 We are going to configure with A/B partitioning to have a stable backup partition for fallback. To start the wizard,
 
@@ -141,7 +142,7 @@ Choose your settings as described below.
 {{< cardpane >}}
 {{% card header="Bootware Wizard -Main Screen" %}}
 {{< figure
-    src="../utilities/zbwizard/wizmain.png"
+    src="../../bootware-one-zero-general/utilities/zbwizard/wizmain.png"
     alt="Bootware Wizard"
     caption="Choose your options, save and exit."
     >}}
@@ -228,10 +229,10 @@ On the console, you will see:
 
 ### 4. Quickcheck - Force Failover (Change Active/Backup partitions)
 
-To verify you now have your A partition intact, force a failover from Active to Backup with the `-r` option to `zb-update`
+To verify you now have your A partition intact, force a failover from Active to Backup with `zbcli rollback-swap`
 
 ```
-sudo zb-update -r
+sudo zbcli rollback-swap
 ```
 
 You should now have Active and Backup partitions with working images ready for your development.
