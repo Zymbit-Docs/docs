@@ -39,11 +39,13 @@ dpkg -i *.deb
 
 3. Edit `/boot/config.txt` to boot from the newly installed kernel image. The prebuilt packages will install the kernel at `/boot/vmlinuz-6.1.93-v8+`. You must either manually copy/rename this file to `/boot/kernel8.img`, or edit `/boot/config.txt` to change (or add, if it's missing) the line `kernel=vmlinuz-6.1.93-v8+`, otherwise the system will not boot the correct kernel image.
 
+4. Depending on which versions of the kernel you are coming from and moving to, you may also need to install an updated devicetree blob. If the kernel was installed from the prebuilt Debian packages, this can be done by copying `/usr/lib/linux-image-6.1.93-v8+/broadcom/bcm2711-rpi-cm4.dtb` into `/boot` (or `/boot/firmware`, depending on your system's layout). 
+
 ### Option 2: Build and Install from Source.
 
 This option is much more flexible than the alternative and allows working with custom kernels, but requires a suitable Linux kernel build environment. You will need to build the entire kernel in order to obtain the `System.map` and other files required for depmod, as well as to ensure the `igc` module version matches that of the core kernel.
 
-It is highly recommended that you compile the kernel on a non-Pi workstation. The CM4 is capable of building it's own Linux kernel, but doing so will take upwards of 1-2 hours on the Cortex-A72 CPU and require several GiB of disk space. If building on a non-aarch64 host, ensure you have an `aarch64` cross toolchain installed on the build machine; you can install one from `apt`, `dnf`, or `pacman` on most x86_64 Linux distributions, or [download a prebuilt tarball directly from ARM](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads). Either of the bare-metal or GNU/Linux targets will work. Also, be sure to install your distribution's required Linux build dependencies; consult your distro's documentation for specifics.
+It is highly recommended that you compile the kernel on a non-Pi workstation. The CM4 is capable of building its own Linux kernel, but doing so will take upwards of 1-2 hours on the Cortex-A72 CPU and require several GiB of disk space. If building on a non-aarch64 host, ensure you have an `aarch64` cross toolchain installed on the build machine; you can install one from `apt`, `dnf`, or `pacman` on most x86_64 Linux distributions, or [download a prebuilt tarball directly from ARM](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads). Either of the bare-metal or GNU/Linux targets will work. Also, be sure to install your distribution's required Linux build dependencies; consult your distro's documentation for specifics.
 
 1. Obtain RPi Linux sources and checkout the appropriate commit for kernel 6.1.93:
     
