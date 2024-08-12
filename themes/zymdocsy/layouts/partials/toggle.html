@@ -185,18 +185,25 @@ input {
 <script>
   var body = document.body;
   var switcher = document.getElementsByClassName('switch__input')[0];
-
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  const hasdark = localStorage.getItem('darkMode');
+  //Check if user prefers dark mode
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches && hasdark) {
+      switcher.setAttribute('checked', true);
+      body.classList.add('dark-mode');
+      setTimeout(function () {
+        localStorage.setItem('darkMode', true);
+      }, 100);
+  } else if (hasdark && hasdark == "true") {
     switcher.setAttribute('checked', true);
-    // switcher.classList.toggle('js-toggle--checked');
-    // switcher.classList.add('js-toggle--focus');
     body.classList.add('dark-mode');
+  } else if (hasdark && hasdark == "false") {
+    switcher.removeAttribute('checked');
+    body.classList.remove('dark-mode');
   } else {
     switcher.removeAttribute('checked');
-    // switcher.classList.toggle('js-toggle--checked');
     body.classList.remove('dark-mode');
     setTimeout(function () {
-      localStorage.removeItem('darkMode');
+      localStorage.setItem('darkMode', false);
     }, 100);
   }
   //Click on dark mode icon. Add dark mode classes and wrappers. Store user preference through sessions
@@ -214,7 +221,7 @@ input {
       body.classList.remove('dark-mode');
       switcher.setAttribute('checked', false);
       setTimeout(function () {
-        localStorage.removeItem('darkMode');
+        localStorage.setItem('darkMode', false);
       }, 100);
     }
   })
