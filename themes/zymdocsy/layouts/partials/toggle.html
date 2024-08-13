@@ -1,6 +1,6 @@
 <div class="js-toggle-wrapper">
   <label class="switch">
-    <input class="switch__input" type="checkbox" role="switch">
+    <input class="switch__input" type="checkbox" role="switch" onChange="setTheme(this.checked)">
     <svg class="switch__icon switch__icon--light" viewBox="0 0 12 12" width="12px" height="12px" aria-hidden="true">
       <g fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round">
         <circle cx="6" cy="6" r="2" />
@@ -182,55 +182,3 @@ input {
 }
 
 </style>
-<script>
-  var body = document.body;
-  var switcher = document.getElementsByClassName('switch__input')[0];
-  const hasdark = localStorage.getItem('darkMode');
-  //Check if user prefers dark mode
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches && hasdark) {
-      switcher.setAttribute('checked', true);
-      body.classList.add('dark-mode');
-      setTimeout(function () {
-        localStorage.setItem('darkMode', true);
-      }, 100);
-  } else if (hasdark && hasdark == "true") {
-    switcher.setAttribute('checked', true);
-    body.classList.add('dark-mode');
-  } else if (hasdark && hasdark == "false") {
-    switcher.removeAttribute('checked');
-    body.classList.remove('dark-mode');
-  } else {
-    switcher.removeAttribute('checked');
-    body.classList.remove('dark-mode');
-    setTimeout(function () {
-      localStorage.setItem('darkMode', false);
-    }, 100);
-  }
-  //Click on dark mode icon. Add dark mode classes and wrappers. Store user preference through sessions
-  switcher.addEventListener("click", function () {
-    const f = this.classList.contains('switch__input:checked');
-
-    const cl = switcher.getAttribute('checked');
-    //If dark mode is selected
-    if (cl == "false") {
-      body.classList.add('dark-mode');
-      switcher.setAttribute('checked', true);
-      //Save user preference in storage
-      localStorage.setItem('darkMode', 'true');
-    } else {
-      body.classList.remove('dark-mode');
-      switcher.setAttribute('checked', false);
-      setTimeout(function () {
-        localStorage.setItem('darkMode', false);
-      }, 100);
-    }
-  })
-
-  //Check Storage. Keep user preference on page reload
-  if (localStorage.getItem('darkMode')) {
-    //body.classList.add('dark-mode');
-    switcher.classList.add('js-toggle--checked');
-    body.classList.add('dark-mode');
-  }
-
-</script>

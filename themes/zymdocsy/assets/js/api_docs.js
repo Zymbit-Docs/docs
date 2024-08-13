@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             const boxHeight = signatureBox.clientHeight
             const textElem = signatureBox.querySelector(".name")
             const textElemHeight = textElem.offsetHeight
-            console.log([boxHeight, textElemHeight])
+            // console.log([boxHeight, textElemHeight])
             if (boxHeight >= (textElemHeight * 2.5)) {
                 signatureBox.classList.add("wrapped-method-signature")
                 // signatureBox.querySelectorAll(".param-list .param").forEach(
