@@ -2,9 +2,7 @@
 title: "update - Schedules device to perform OTA update on the next reboot"
 linkTitle: "update"
 lastmod:
-#aliases:
-#    - /zboot-preview/
-date: "2024-04-17"
+date: "2024-08-14"
 draft: false
 images: []
 type: docs
@@ -16,49 +14,34 @@ toc: true
 
 -----
 
-
-## zb-update
+## zbcli update
 
 ### Description
 
 Requires superuser privilege.
 
-Utility to perform Bootware Updates; re-partitions and loads images into the Active, Backup or Both partitions
+Utility to perform Bootware updates; re-partitions and loads images into the Active, Backup or Both partitions
 
 ### Usage
 
 ```
-zb-update [ [-k <key-slot>] [--key-file=<filepath>] [-w] | [-y] [-r] ]
+zbcli update [OPTIONS]
 
-
-Flags                Description
-
----------------------------------------------------------------------------------------------------------------------
-
--k, --key-slot [int]      Key-slot of HSM for verifying the update. Uses HSM.
-
--w, --not-foreign         Key slot is not a foreign key slot
-
--f, --key-file [str]      Public pem file verifying the update. Uses software.
-
--y                        Say yes to all prompts
-
--r                        Perform rollback swap between active and non-active root partitions
-
----------------------------------------------------------------------------------------------------------------------
-
+Options:
+  -f, --key-file <KEY_FILE>  Public pem file verifying the update (software signed)
+  -y                         Says `yes` to all prompts. This includes rebooting your system
+  -h, --help                 Print help
 ```
 
 ### Examples
 
 ```
-sudo zb-update
+sudo zbcli update
 ```
 
-The script will show your configuration for review and confirmation, or give you the option to change the configuration. This method can be used as an alternative to using the Wizard.
+The script will show your configuration for review and confirmation.
 
-After correction and confirmation of the config partameters, the script will prompt for a reboot to complete the process. 
-
+After confirmation of the config parameters, the script will prompt for a reboot to complete the process. 
 
 #### Bootware Update Process
 
@@ -74,14 +57,7 @@ On the console, you will see:
 * It will take some time to unpack the image into the A/B root partitions depending on the size of the image.
 * Once it's done unpacking the image to the A and B partitions, it will boot into the updated ACTIVE partition. You can use `lsblk` to examine the partitions.
 
-#### Force Failover (Change Active/Backup partitions)
-
-A failover from Active to Backup is done with the `-r` option to `zb-update`
-
-```
-sudo zb-update -r
-```
 
 ### See Also
-[zb-wizard](../zbwizard)
+[zbcli update-config](../update-config)
 

@@ -2,9 +2,7 @@
 title: "uninstall - Uninstalls Bootware tools"
 linkTitle: "uninstall"
 lastmod:
-#aliases:
-#    - /zboot-preview/
-date: "2024-04-17"
+date: "2024-08-14"
 draft: false
 images: []
 type: docs
@@ -17,27 +15,29 @@ toc: true
 -----
 
 
-## zb-uninstall.sh
+## zbcli uninstall
 
 
 ### Description
 
-Requires superuser privilege. Resides in the original bootware untar directory.
+Requires superuser privilege. 
 
 Uninstalls Bootware, returning to the standard linux boot process. The uninstall process will leave you in the current encrypted active partition and preserve the contents of that partion as well as the overall partition layout.
 
-### Usage Example
+### Usage 
 
 ```
-cd ~/bootware-1.1
-sudo ./zb-uninstall.sh
+zbcli uninstall [OPTIONS]
+
+Options:
+  -y, --yes   Says `yes` to all prompts. This includes rebooting your system
+  -h, --help  Print help
 ```
 
 The script will confirm you would like to uninstall the bootware scripts and artifacts, as well as a required reboot.
 
 
-
 ### See also
 
-[zb-install](../zbinstall)
+[zbcli install](../install)
 

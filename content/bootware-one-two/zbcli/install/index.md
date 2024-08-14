@@ -4,7 +4,7 @@ linkTitle: "install"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2024-06-05"
+date: "2024-08-14"
 draft: false
 images: []
 type: docs
@@ -16,32 +16,31 @@ toc: true
 
 -----
 
-
-## zb-install.sh
-
+## zbcli install
 
 ### Description
 
-Requires superuser privilege.  Resides in the original bootware untar directory.
+Requires superuser privilege.  
 
 Installs the Bootware sofware. 
 
 ### Usage
 
 ```
-zb-install.sh [-y]
+zbcli install [OPTIONS]
 
--y	Answers Yes to all prompts. Warning: will reboot without confirmation.
+Options:
+  -y, --yes   Says `yes` to all prompts. This includes rebooting your system
+  -h, --help  Print help
 ```
 
 ### Example
 
 ```
-cd ~/bootware-1.1
-sudo ./zb-install
+sudo zbcli install
 ```
 
 ### See also
 
-[zb-uninstall](../zbuninstall)
+[zbcli uninstall](../uninstall)
 

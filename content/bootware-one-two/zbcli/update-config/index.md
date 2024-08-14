@@ -4,7 +4,7 @@ linkTitle: "update-config"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2024-04-02"
+date: "2024-08-14"
 draft: false
 images: []
 type: docs
@@ -16,29 +16,40 @@ toc: true
 
 -----
 
-## zb-wizard
+## zbcli update-config
 
 ### Description
 
 Bootware Preview includes a dialog enabled tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to set your device environment up for pulling down updates from a configured endpoint and the update policies for how to apply those updates prior to running `zb-update`.  To start the wizard,
 
+### Usage:
+```
+zbcli update-config [OPTIONS]
+
+Options:
+      --partition <PARTITION>
+          Configures partition layout [possible values: a/b, a-half-disk, a-full-disk]
+      --update-policy <UPDATE_POLICY>
+          Configures update mode [possible values: backup, active, both]
+      --update-endpoint <UPDATE_ENDPOINT>
+          Configures update endpoint either as HTTPS URL or external mass storage device
+      --wifi-ssid <WIFI_SSID>
+          Configures Wi-Fi SSID
+      --wifi-passphrase <WIFI_PASSPHRASE>
+          Configures Wi-Fi passphrase
+      --revert
+          Reverts to default config
+  -h, --help
+          Print help
+```
+
 ### Example 
 
 ```
-sudo zb-wizard
+sudo zbcli update-config
 ```
 
 Choose your settings as described below.
-
-{{< cardpane >}}
-{{% card header="Bootware Wizard -Main Screen" %}}
-{{< figure
-    src="wizmain.png"
-    alt="Bootware Wizard"
-    caption="Choose your options, save and exit."
-    >}}
-{{% /card %}}
-{{< /cardpane >}}
 
 **Partition Setup** – Specifies the device partition layout after an update. The root file system will be re-partitioned with your chosen configuration. Filesystem sizes estimates are based off of 32GB CM4s.
 
@@ -73,6 +84,6 @@ Choose your settings as described below.
 
 ### See also
     
-[zb-update](../zbupdate)
+[zbcli update](../update)
 
 

@@ -16,14 +16,13 @@ toc: true
 
 -----
 
-
 ## zbcli imager
 
 ### Description
 
 Requires superuser privilege. 
 
-Bootware requires images in a particular format. Use `zbcli imager` to convert images into Zymbit Image (zi) format. The script will prompt you for all required information. The Flags in the Usage below can be used to provide that information from the command line and skip that prompt.
+Bootware requires images in a particular format. Use `zbcli imager` to convert images into Zymbit Image (zi) format. The script will prompt you for all required information. The Flags in the Usage below can be used to provide that information from the command line and skip prompts.
 
 ### Usage
 
