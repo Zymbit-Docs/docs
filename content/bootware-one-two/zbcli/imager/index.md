@@ -1,5 +1,5 @@
 ---
-title: "imager		Generates zi images"
+title: "imager &emsp; - Generates zi images"
 linkTitle: "imager"
 lastmod:
 #aliases:
