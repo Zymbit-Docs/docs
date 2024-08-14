@@ -25,7 +25,7 @@ The IOCrest unit ships with a CD containing working driver code for pre-6.x kern
 sudo apt install build-essential linux-headers patch
 ```
 
-2. Obtain and extract the `xr17_linux_driver_v2.6.zip`.
+2. Obtain and extract `xr17_linux_driver_v2.6.zip`.
 
 3. Edit the `Makefile` and change `SUBDIRS` to `M` in line 13.
 
@@ -61,9 +61,9 @@ sudo make install
 sudo depmod -a
 ```
 
-2. Create a file with the following contents called `00-xrserial.rules` in `/etc/udev/rules.d` to ensure device works across reboots. This will unbind the PCIe device from linux's generic PCI serial driver and then reload the vendor-specific driver module.
+2. Create a file with the following contents called `00-xrserial.rules` in `/etc/udev/rules.d` to ensure device the works across reboots. This will unbind the PCIe device from linux's generic PCI serial driver and then reload the vendor-specific driver module.
 
-- If more than one PCIe serial device is present and the below rule doesn't work, try adding `KERNEL==<path>, ` to the beginning of the line below, where `<path>` is the value used in step 3.2.A of the driver package's `readme`.
+- If more than one PCIe serial device is present and the below rule doesn't work, try adding `KERNEL==<path>, ` to the beginning of the line below, where `<path>` is the PCI bus path value used in step 3.2.A of the driver package's `readme`.
 
 ```
 # MaxLinear PCIe dual DB-9 serial port
