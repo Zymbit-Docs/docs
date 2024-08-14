@@ -67,7 +67,7 @@ sudo depmod -a
 
 ```
 # MaxLinear PCIe dual DB-9 serial port
-SUBSYSTEM=="pci", ATTR{class}=="0x070002", ATTR{vendor}=="0x13a8", ATTR{device}=="0x0352", ATTR{revision}=="0x03", \
+ACTION=="add", SUBSYSTEM=="pci", ATTR{class}=="0x070002", ATTR{vendor}=="0x13a8", ATTR{device}=="0x0352", ATTR{revision}=="0x03", \
         ATTR{driver_override}="xrserial", \
         RUN+="/bin/sh -c 'echo $kernel > /sys/$devpath/driver/unbind'", \
         RUN+="/sbin/modprobe -r xr17v35x", \
