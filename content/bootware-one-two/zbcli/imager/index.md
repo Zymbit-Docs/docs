@@ -1,6 +1,6 @@
 ---
-title: imager
-linkTitle: "imager	Generates zi images"
+title: "imager		Generates zi images"
+linkTitle: "imager"
 lastmod:
 #aliases:
 #    - /zboot-preview/
