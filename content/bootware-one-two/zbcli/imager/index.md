@@ -1,6 +1,6 @@
 ---
-title: Zymbit Bootware zbcli imager utility
-linkTitle: "zbcli imager"
+title: imager
+linkTitle: "imager"
 lastmod:
 #aliases:
 #    - /zboot-preview/
