@@ -4,7 +4,7 @@ linkTitle: "Getting Started"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2024-08-13"
+date: "2024-08-14"
 draft: false
 type: docs
 images: []
@@ -30,7 +30,7 @@ See the [Features](../../bootware-one-zero-general/features) section for more in
 
 ### Overview of steps to get up and running
 
-1. Download the Bootware 1.2 executable. 
+1. Download the Bootware 1.2 executable, `zbcli`. 
 2. Run `zbcli install` to install the Bootware tools and artifacts
 3. Run `zbcli imager` to create and sign a Zymbit image file (zi image) of your current root file system as a backup. 
 4. Run `zbcli update-config` to configure Partitions and Recovery strategy. For this Quickstart, we will setup A/B partitions.
@@ -52,14 +52,10 @@ The install will identify your PI and OS and then prompt you to select a version
 
 ### 2. Run `zbcli install`
 
-ADD SCREEN CAP OF INSTALL
+![Run zbcli install](zbcli_install_2.png)
 
 
 After installing the zboot tools and artifacts, you will need to reboot into zboot. You will be prompted for confirmation to reboot.
-
-```
-A reboot into zboot is required. Reboot now? - yes
-```
 
 Reboot to complete the installation process and to boot into zboot. Once completed, all necessary files required for loading new images via Bootware will be installed. The install process will change the boot sequence to use u-boot and Zymbit's zboot but does not alter your filesystem.
 
