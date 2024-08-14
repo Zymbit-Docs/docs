@@ -18,7 +18,7 @@ This page outlines the steps required to get PCIe DB9 serial ports up and runnin
 
 ## Installation.
 
-The IOCrest unit ships with a CD containing working driver code for pre-6.x kernels, located in the `EXAR` directory on the disc. For convenience, a link to the driver is provided [here](TODO). For kernels 6.0 and later, a patch file is provided below.
+The IOCrest unit ships with a CD containing working driver code for pre-6.x kernels, located in the `EXAR` directory on the disc. For convenience, a link to the driver package is also provided [here](https://zymbit-addons.s3.amazonaws.com/xr17_linux_driver_v2.6.zip). For kernels 6.0 and later, a patch file is provided below.
 
 1. Install the required build tools. On Debian-based systems:
 ```
@@ -29,7 +29,7 @@ sudo apt install build-essential linux-headers patch
 
 3. Edit the `Makefile` and change `SUBDIRS` to `M` in line 13.
 
-- If installing on a 6.0 or newer kernel, apply [this patch](TODO) to `xr17v35x.c`.
+- If installing on a 6.0 or newer kernel, apply [this patch](https://zymbit-addons.s3.amazonaws.com/xr17v23x.patch) to `xr17v35x.c`.
 
 4. Build the module by running `make`.
 
