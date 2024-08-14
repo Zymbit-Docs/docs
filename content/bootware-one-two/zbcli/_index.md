@@ -21,6 +21,7 @@ zbcli is a standalone binary executable for carrying out all necessary Bootware 
 #### Options:
 
   -h, --help     Print help
+
   -V, --version  Print version
 
 #### Commands:

@@ -1,6 +1,6 @@
 ---
 title: imager
-linkTitle: "imager"
+linkTitle: "imager	Generates zi images"
 lastmod:
 #aliases:
 #    - /zboot-preview/
@@ -28,49 +28,37 @@ Bootware requires images in a particular format. Use `zbcli imager` to convert i
 ### Usage
 
 ```
-zbcli imager [-k <key slot> ] | [--output-directory=<output dir>]
+zbcli imager [OPTIONS]
 
-
-Flags                Description
-
----------------------------------------------------------------------------------------------------------------------
-
---boot-tarball                   Use this boot tarball
-
---root-tarball                   Use this root tarball
-
---binary-image                   Convert a binary image to a zymbit image
-
---image-name                     The image name of the zymbit image
-
---image-version                  The image version of the zymbit image
-
---full-image                     Generate a image of update type:FULL
-
---overlay-image                  Generate a image of update type:OVERLAY
-
---use-hardware                   Use Zymbit HSM to sign/verify the image
-
---use-software                   Use priv/pub key pem files to sign/verify the image
-
---new-key                        Generate a new key for signing/verifying
-
---save-wallet-info               If a new HSM wallet slot was generated. Save the mnemonic and public key
-
--k, --key-slot                   The HSM key slot to sign the image with
-
--f, --key-file                   The private key pem to sign the image with
-
--o, --output-directory           Output directory for new .zi images
-
--z, --take-snapshot              Create a .zi snapshot of current running system.
-
--h, --help                       To view the manual.
-
----------------------------------------------------------------------------------------------------------------------
+Options:
+      --boot-tarball <BOOT_TARBALL>
+          Path of boot tarball
+      --root-tarball <ROOT_TARBALL>
+          Path of root tarball
+      --binary-image <BINARY_IMAGE>
+          Path of binary image to convert to Zymbit image
+      --image-name <IMAGE_NAME>
+          Zymbit image name
+      --image-version <IMAGE_VERSION>
+          Zymbit image version
+      --full-image
+          Generate image of update type: FULL
+      --overlay-image
+          Generate image of update type: OVERLAY
+      --new-key
+          Generate a new key for signing/verifying
+      --save-wallet-info
+          If a new HSM wallet slot was generated, saves the mnemonic and public key
+  -f, --key-file <KEY_FILE>
+          Path of HSM key slot to sign the image with
+  -o, --output-directory <OUTPUT_DIRECTORY>
+          Output directory for new .zi images
+      --exclude <EXCLUDE>
+          Files or directories to exclude from image
+  -h, --help
+          Print help
 
 ```
-
 
 ### Examples
 
