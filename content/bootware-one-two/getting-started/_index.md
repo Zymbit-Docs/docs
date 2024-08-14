@@ -4,7 +4,7 @@ linkTitle: "Getting Started"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2024-08-11"
+date: "2024-08-13"
 draft: false
 type: docs
 images: []
@@ -40,13 +40,14 @@ See the [Features](../../bootware-one-zero-general/features) section for more in
 ### 1. Download Bootware
 
 Download the Bootware 1.2 executable. The Bootware executable can be downloaded with curl:
+
 ```
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sh
+curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
 ```
 
 The install will identify your PI and OS and then prompt you to select a version of the `zbcli` from the last three versions to install. In most cases, you will want to select the latest version. Use the up and down arrows to select the version. You can use ctrl-c to exit at any time.
 
-ADD PICTURE OF ZBCLI DOWNLOAD SCREEN
+![Initial tool install](zbinstall_1.png)
 
 
 ### 2. Run `zbcli install`
