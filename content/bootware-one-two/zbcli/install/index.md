@@ -2,8 +2,6 @@
 title: "install - Installs Bootware tools"
 linkTitle: "install"
 lastmod:
-#aliases:
-#    - /zboot-preview/
 date: "2024-08-14"
 draft: false
 images: []
