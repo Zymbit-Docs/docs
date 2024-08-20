@@ -41,7 +41,7 @@
 {{ if .Site.Params.prism_syntax_highlighting }}
 <!-- stylesheet for Prism -->
 <link rel="stylesheet" href='{{ "/css/prism.css" | relURL }}'/>
-{{ partial "post-hog.html" }}
+{{ partial "post-hog.html" . }}
 {{ end }}
 {{ partial "hooks/head-end.html" . }}
 
