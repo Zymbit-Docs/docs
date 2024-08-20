@@ -37,7 +37,7 @@ The process is very simple:
 
 Below is a sample script you can use to encrypt sensor data. Most of the code is for data acquisition, not encryption. For the most part, we are only interested in the lines toward the bottom using `zymkey.client` .
 
-```
+```python
 import base64
 import time
 import zymkey
@@ -125,7 +125,7 @@ if __name__ == '__main__':
 
 The takeaways here are the `zymbit.client.lock` method and the flow of data types. Specifically, we want to lock a measurement of type `float` , the zymkey app utils library expects a `bytearray` , and the data needs to be `base64.encode` d so the blob can be written to a file on disk. This may sound like a lot but it can all be contained in two simple lines of code:
 
-```
+```python
 locked_data = zymkey.client.lock(bytearray(payload))
 encrypted_file.write(base64.b64encode(locked_data)+'\n')
 ```
@@ -134,7 +134,9 @@ See! HSM is super easy to use!
 
 To see this in action copy this to your pi, save it as sensor_lock.py for consistency, and run the command:
 
-`python sensor_lock.py --zymkey --sleep=5`
+```bash
+python sensor_lock.py --zymkey --sleep=5
+```
 
 You should see encrypted data flowing and the new file `/tmp/encrypted.bin` , where your data is saved on disk.
 
@@ -142,7 +144,7 @@ You should see encrypted data flowing and the new file `/tmp/encrypted.bin` , wh
 
 With the data we locked to disk above, lets unlock the data now so it is human and machine readable. A simple script such as the one pasted below will read the encrypted file, `decode` with base64, `unlock` with HSM and write to a `decrypted.txt` file so data is legible.
 
-```
+```python
 import base64
 import logging
 import zymkey
@@ -179,18 +181,20 @@ decrypted_file.close()
 
 Copy this to your Raspberry Pi, save as `sensor_unlock.py` and run as is with:
 
-`python sensor_unlock.py`
+```bash
+python sensor_unlock.py
+```
 
 Your data will be unlocked and saved to disk at `/tmp/decrypted.txt` . It should look something like this:
 
-```
+```text
 action=data, key=temperature, tags.unit=c, tags.sensor_id=ds18b20:28000006151b77,timestamp=2016-12-13 22:55:02, value= 19.5
 action=data, key=temperature, tags.unit=c, tags.sensor_id=ds18b20:280000061543fd,timestamp=2016-12-13 22:55:03, value= 19.6
 action=data, key=temperature, tags.unit=c, tags.sensor_id=ds18b20:28000006156310,timestamp=2016-12-13 22:55:04, value= 19.3
 action=data, key=temperature, tags.unit=c, tags.sensor_id=ds18b20:28000006e10735,
 ```
 ## Troubleshooting
-[Troubleshooting](https://docs.zymbit.com/troubleshooting/)  
+[Troubleshooting](https://docs.zymbit.com/troubleshooting/)
 [Community](https://community.zymbit.com/)
 
 </ul>

@@ -14,12 +14,12 @@ toc: true
 
 The HSM4 is a ‘snap in’ security module designed for easy integration within a secure manufacturing environment. All connections are through a single, 30 pin connector that is hidden underneath the module. It is designed specifically to work with Raspberry Pi embedded applications. A PiZero HAT (Hardware Attached on Top) adapter is available for easy integration to the standard GPIO pins of the Pi.
 
-{{% callout notice %}}
+{{< callout notice >}}
 Raspberry PI OS Bookworm updated the kernel to version 6.6.y in March 2024. The kernel no longer overrides an upstream kernel decision to force the base number of the main GPIO controller to be global GPIO 0. If the WAKE_PIN number is not set, the ZYMKEY will not bind. You will see 5 flashes per second continuously.For RPI4, RPI5, and CM4 platforms, you will need to set the WAKE_PIN in the following manner:
 
 Determine the numbering for GPIO4 by examining /sys/kernel/debug/gpio for the number associated with GPIO4, then set an environment variable in the Zymbit environment variable file:
 
-```
+```bash
 sudo su
 wake_pin=`grep GPIO4 /sys/kernel/debug/gpio | sed -r 's/[^0-9]*([0-9]*).*/\1/'`
 echo "wake_pin=$wake_pin"   # sanity check value is set
@@ -31,19 +31,19 @@ RPI4=516
 RPI5=575
 CM4=516
 
-{{% /callout %}}
+{{< /callout >}}
 
 In this Getting Started guide we describe how to install your HSM to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.
 
 
 {{< cardpane >}}
-{{% card header="HSM4 Hardware" %}}
-{{< figure 
+{{< card header="HSM4 Hardware" >}}
+{{< figure
     src="HSM-install-to-hat.png"
     alt="HSM4 to HAT hardware"
     caption="Diagram of HSM placement on PiZero HAT"
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
 ### Summary of Setup Steps
@@ -73,7 +73,7 @@ Battery installation is not required for the HSM to function, but it is highly r
 {{< /callout >}}
 
 
-To maintain the real-time clock (RTC) and tamper detection features in the event of power loss, your PiZero HAT can be fitted with a **3V CR2032  coincell**. This battery should last 3-5 years. We recommend using a high quality one like [this](https://www.amazon.com/Batteries-Panasonic-Lithium-Battery-Blister/dp/B002U00ZNK/ref=sr_1_5?crid=1YG7IIRUM96SP&dchild=1&keywords=panasonic+cr2032+3v+battery&qid=1602709891&sprefix=panasonic%2Caps%2C180&sr=8-5). 
+To maintain the real-time clock (RTC) and tamper detection features in the event of power loss, your PiZero HAT can be fitted with a **3V CR2032  coincell**. This battery should last 3-5 years. We recommend using a high quality one like [this](https://www.amazon.com/Batteries-Panasonic-Lithium-Battery-Blister/dp/B002U00ZNK/ref=sr_1_5?crid=1YG7IIRUM96SP&dchild=1&keywords=panasonic+cr2032+3v+battery&qid=1602709891&sprefix=panasonic%2Caps%2C180&sr=8-5).
 
 
 ##### **Primary Battery Holder (Recommended)**
@@ -81,7 +81,7 @@ To maintain the real-time clock (RTC) and tamper detection features in the event
 **IMPORTANT:** Note the correct polarity with **+ve  facing upwards !!**
 
 ![HSM4 Battery Installation](HSM-battery-install.jpg)
- 
+
 ##### **Optional Battery Connector (Alternative)**
 **Caution**: Ensure you select the right connector type-- Molex 51021-0200-B (1.25mm Pitch). You can purchase the battery [here](https://www.amazon.com/CR2032-Battery-51021-0200-B-1-25mm-Connector/dp/B07TS54R42/ref=b2b_nav_d_bia_2/133-6806428-1529144?_encoding=UTF8&pd_rd_i=B07TS54R42&pd_rd_r=d30b0d19-eeab-4b5c-a2ee-0ceef542a1a2&pd_rd_w=ZXBat&pd_rd_wg=U87Gu&pf_rd_p=4a93c781-cfc8-46bb-85fa-dc304a3c96a9&pf_rd_r=91SXE6T1J2V2ZYD7C6FD&psc=1&refRID=91SXE6T1J2V2ZYD7C6FD).
 
@@ -91,7 +91,7 @@ Battery should look like this:
 Mating component specifications:
 ![HSM-Molex-specs](HSM-molex-specs.png)
 
-Plug wired CR2032 battery into optional battery connector, located below. 
+Plug wired CR2032 battery into optional battery connector, located below.
 ![Optional Battery Connector Location](HSM-battery-plugin.png)
 
 
@@ -130,7 +130,7 @@ The default configuration uses GPIO4. This can be reconfigured to use another GP
 
 #### Power on and confirm operation
 
-Power up the Pi and you will see a blue LED blinking rapidly and consistently (5 blinks per second). This indicates the HSM is operational but not configured. 
+Power up the Pi and you will see a blue LED blinking rapidly and consistently (5 blinks per second). This indicates the HSM is operational but not configured.
 
 <img src="HSM4-LED-5times-per-second.gif" alt="HSM4-LED-5times-per-second" width="25%">
 
@@ -144,9 +144,9 @@ Power quality matters to the reliable and secure operation of your system and Zy
 
 For Raspian-based operating systems, you must configure the state of the {{< term/i2c >}}.
 
-1. Log in to your Raspberry Pi and run `sudo raspi-config`.  
-1. Navigate to Interfacing Options -> I2C -> Would you like the ARM I2C interface to be enabled?  
-1. Select yes, and confirm this choice.  
+1. Log in to your Raspberry Pi and run `sudo raspi-config`.
+1. Navigate to Interfacing Options -> I2C -> Would you like the ARM I2C interface to be enabled?
+1. Select yes, and confirm this choice.
 
 Your {{< term/i2c >}} bus is now configured and ready to talk to the HSM. The default {{< term/i2c >}} address for the HSM is 0x30.
 
@@ -155,26 +155,26 @@ Your {{< term/i2c >}} bus is now configured and ready to talk to the HSM. The de
 
 Your I2C bus is now on and ready to talk to the HSM.
 
-{{% callout notice %}}
+{{< callout notice >}}
 The default mode for the cpu scaling governor is ondemand. There have been some issues with the interaction between the HSM and the I2C bus, when the governor is set to ondemand. We highly recommend to switching the governor to performance to get the most out of the HSM.
 
 {{< resource_link "reference/cpu-scaling/" >}}
 How to set cpu governor to performance.
 {{< /resource_link >}}
 
-{{% /callout %}}
+{{< /callout >}}
 
 
 ## Install the client software
 
 Login to your host device and follow these steps to install the HSM's client software.
 
-{{% callout notice %}}
+{{< callout notice >}}
 As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
 
 `arm_64bit=0`
 
-{{% /callout %}}
+{{< /callout >}}
 
 The HSM will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
 
@@ -183,11 +183,15 @@ The HSM will require a number of packages to be installed from the Raspbian and 
 
 Ensure that `curl` is installed on your host:
 
-`sudo apt install curl`
+```bash
+sudo apt install curl
+```
 
 Download and install the necessary Zymbit services onto your device.
 
-`curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash`
+```bash
+curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
+```
 
 
 ## Test the installation
@@ -200,9 +204,11 @@ In production mode, HSM generates a unique Device ID by measuring certain attrib
 
 The quickest way to get started is to see the HSM's various features at work by running these test scripts that were installed with the client software:
 
-`python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`
+```bash
+python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py
 
-`python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
+python3 /usr/local/share/zymkey/examples/zk_crypto_test.py
+```
 
 The example scripts are missing in focal and bullseye distributions. You can get the example scripts from here:
 

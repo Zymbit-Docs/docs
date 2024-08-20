@@ -14,12 +14,12 @@ toc: true
 
 ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi. It connects to the GPIO header of the SBC and uses the {{< term/i2c >}} bus and `GPIO4` as a WAKE_PIN to communicate with the SBC CPU via an encrypted channel.
 
-{{% callout notice %}}
+{{< callout notice >}}
 Raspberry PI OS Bookworm updated the kernel to version 6.6.y in March 2024. The kernel no longer overrides an upstream kernel decision to force the base number of the main GPIO controller to be global GPIO 0. If the WAKE_PIN number is not set, the ZYMKEY will not bind. You will see 5 flashes per second continuously.For RPI4, RPI5, and CM4 platforms, you will need to set the WAKE_PIN in the following manner:
 
 Determine the numbering for GPIO4 by examining /sys/kernel/debug/gpio for the number associated with GPIO4, then set an environment variable in the Zymbit environment variable file:
 
-```
+```bash
 sudo su
 wake_pin=`grep GPIO4 /sys/kernel/debug/gpio | sed -r 's/[^0-9]*([0-9]*).*/\1/'`
 echo "wake_pin=$wake_pin"   # sanity check value is set
@@ -31,7 +31,7 @@ RPI4=516
 RPI5=575
 CM4=516
 
-{{% /callout %}}
+{{< /callout >}}
 
 
 In this *Getting Started* guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspberry PI OS or Ubuntu. The installation process is the same for both of these Linux distributions.
@@ -44,20 +44,20 @@ The ZYMKEY4 occupies 10 pins on the GPIO header. It can also be used with other 
 
 <!-- TODO: Make a shortcode that can style things like this more consistent between cards. -->
 {{< cardpane >}}
-{{% card header="ZYMKEY4 Hardware" %}}
+{{< card header="ZYMKEY4 Hardware" >}}
 {{< figure
     src="ZK4-top-bottom.png"
     alt="Diagram of the ZYMKEY4 hardware"
     caption="The top and bottom of the ZYMKEY4 hardware showing the location of the GPIO header and other connectors."
     >}}
-{{% /card %}}
-{{% card header="ZYMKEY4 Pinout" %}}
+{{< /card >}}
+{{< card header="ZYMKEY4 Pinout" >}}
 {{< figure
     src="ZK4-pinout.png"
     alt="Diagram of the ZYMKEY4 pinout"
     caption="The pinout of the header of the ZYMKEY4. ZYMKEY4 requires exclusive access to `GPIO4`, which can be remapped to another GPIO pin. It also share the {{< term/i2c >}} bus with the default address of `0x30`."
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
 ### Summary of Setup Steps
@@ -97,6 +97,7 @@ Installing your hardware correctly is important to avoid destroying your SBC or 
 * Pay close attention to the images below to ensure the SBC's GPIO pins are **properly aligned** with the ZYMKEY4's header.
 * Ensure that your **Raspberry Pi is powered down** before proceeding.
 * Ensure that the coincell battery (if installed) is installed with the positive side (marked with `+`) facing upward.
+
 {{< /callout >}}
 
 #### Before installing
@@ -145,25 +146,25 @@ Your {{< term/i2c >}} bus is now configured and ready to talk to the ZYMKEY4. Th
 The default I2C address for ZYMKEY4 is 0x30. If this conflicts with another device in your system, you can reconfigure the ZYMKEY4 to use another address of your choice.
 {{< /resource_link >}}
 
-{{% callout notice %}}
+{{< callout notice >}}
 The default mode for the cpu scaling governor is ondemand. There have been some issues with the interaction between the zymkey and the I2C bus, when the governor is set to ondemand. We highly recommend to switching the governor to performance to get the most out of the zymkey.
 
 {{< resource_link "reference/cpu-scaling/" >}}
 How to set cpu governor to performance.
 {{< /resource_link >}}
 
-{{% /callout %}}
+{{< /callout >}}
 
 ## Install the client software
 
 Login to your host device and follow these steps to install the ZYMKEY4's client software.
 
-{{% callout notice %}}
+{{< callout notice >}}
 As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
 
 `arm_64bit=0`
 
-{{% /callout %}}
+{{< /callout >}}
 
 The ZYMKEY4 will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
 
@@ -172,11 +173,15 @@ The ZYMKEY4 will require a number of packages to be installed from the Raspbian 
 
 Ensure that `curl` is installed on your host:
 
-`sudo apt install curl`
+```bash
+sudo apt install curl
+```
 
 Download and install the necessary Zymbit services onto your device.
 
-`curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash`
+```bash
+curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
+```
 
 
 ## Test the installation
@@ -189,8 +194,10 @@ In production mode, ZYMKEY4 generates a unique Device ID by measuring certain at
 
 The quickest way to get started is to see the ZYMKEY4's various features at work by running these test scripts that were installed with the client software:
 
-`python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`  
-`python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
+```bash
+python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py
+python3 /usr/local/share/zymkey/examples/zk_crypto_test.py
+```
 
 The example scripts are missing in focal and bullseye distributions. You can get the example scripts from here:
 

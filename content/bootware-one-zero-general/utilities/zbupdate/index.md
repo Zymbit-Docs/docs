@@ -51,18 +51,18 @@ Flags                Description
 
 ### Examples
 
-```
+```bash
 sudo zb-update
 ```
 
 The script will show your configuration for review and confirmation, or give you the option to change the configuration. This method can be used as an alternative to using the Wizard.
 
-After correction and confirmation of the config partameters, the script will prompt for a reboot to complete the process. 
+After correction and confirmation of the config partameters, the script will prompt for a reboot to complete the process.
 
 
 #### Bootware Update Process
 
-The Bootware Update process will now take place. 
+The Bootware Update process will now take place.
 
 {{< callout warning >}}The initial configuration process can take over an hour to complete, depending on partitioning and the size of the image(s). The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
 
@@ -78,7 +78,7 @@ On the console, you will see:
 
 A failover from Active to Backup is done with the `-r` option to `zb-update`
 
-```
+```bash
 sudo zb-update -r
 ```
 

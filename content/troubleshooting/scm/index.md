@@ -14,7 +14,7 @@ toc: true
 
 ### Updated Release 10/10/2023 (RC-23.01 base software unchanged)
 
-Updated the SCM release to support the Rev B release of the SCM hardware. 
+Updated the SCM release to support the Rev B release of the SCM hardware.
 
 Summary of changes:
 
@@ -95,11 +95,11 @@ This only affects SCMs with firmware 01.02.02release. This does not affect the H
 
 The SCM ships with a pre-installed version of Raspberry PI OS Lite (bookworm 64bit) with a more secure configuration.
 
-{{% callout notice %}}
+{{< callout notice >}}
 The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com if you require a different image.
-{{% /callout %}}
+{{< /callout >}}
 
-The table below summarizes changes made to the standard image. 
+The table below summarizes changes made to the standard image.
 
 | Default | As Shipped |
 |------------------|--------------------------|
@@ -113,13 +113,13 @@ The table below summarizes changes made to the standard image.
 Common LED patterns:
 
 * Once every 3 seconds
-   * This indicates that your SCM is working and running.  
+   * This indicates that your SCM is working and running.
 
 * Three rapid blinks every 3 seconds
-   * This indicates the SCM is in Production Mode and is working and running.  
+   * This indicates the SCM is in Production Mode and is working and running.
 
 * Constant rapid blinking (waiting for host to connect)
-   * This indicates that your SCM is operational but has not bound to the host. If the SCM continues to blink this pattern, it could mean that there is a problem with the host Pi or that the SCM is not seen by the Pi.  
+   * This indicates that your SCM is operational but has not bound to the host. If the SCM continues to blink this pattern, it could mean that there is a problem with the host Pi or that the SCM is not seen by the Pi.
 
 * Rapid blinking then LED off permanently
    * This indicates the SCM is in Production Mode but cannot bind with the CM4.  In Production Mode the binding with a particular Pi becomes permanent. Can indicate an improper salt file, sometimes due to a major OS upgrade.  

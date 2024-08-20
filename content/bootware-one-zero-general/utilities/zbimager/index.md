@@ -21,7 +21,7 @@ toc: true
 
 ### Description
 
-Requires superuser privilege. 
+Requires superuser privilege.
 
 Bootware requires images in a particular format. Use `zb-imager` to convert images into Zymbit Image (zi) format. The script will prompt you for all required information. The Flags in the Usage below can be used to provide that information from the command line and skip that prompt.
 
@@ -77,13 +77,13 @@ Flags                Description
 
 #### Example to create a zi image from your current running root file system
 
-```
+```bash
 sudo zb-imager
 ```
 
 The script will prompt for information.
 
-```
+```bash
 Checking for zymbit scm...
 Image type?
    1. Full image of this live system
@@ -108,13 +108,13 @@ Copying boot from live system...
 
 You will need the path to the image file.
 
-```
+```bash
 sudo zb-imager --binary-image /home/zymbit/my.img
 ```
 
 The script will prompt for information:
 
-```
+```bash
 Checking for zymbit scm...
 Image Name?: bullseye
 Version? [OPTIONAL]: 1.1
@@ -137,13 +137,13 @@ Copying boot files from binary image...
 
 You will need to provide the names and paths to your tarballs. Run the script:
 
-```
+```bash
 sudo zb-imager --boot-tarball ./boot.tar --root-tarball ./root.tar
 ```
 
 The script will prompt for information:
 
-```
+```bash
 Checking for zymbit scm...
 Image type?
    1. Full image of this live system

@@ -1,6 +1,6 @@
 ---
 title: "SCM Motherboard D35 FAQ and Troubleshooting"
-linkTitle: "SCM Motherboard D35" 
+linkTitle: "SCM Motherboard D35"
 lastmod: "2023-10-17"
 draft: false
 images: []
@@ -12,13 +12,13 @@ toc: true
 ### GPIO Pinout Reference
 
 {{< cardpane >}}
-{{% card header="SCM Motherboard D35 GPIO Pinout" %}}
+{{< card header="SCM Motherboard D35 GPIO Pinout" >}}
 {{< figure
     src="SCM-motherboard-revA1-gpio-pinout-SPI-example.jpg"
     alt=""
     caption="Note the standard GPIO pinout is accessed on the bottom side of the D35 board."
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
 

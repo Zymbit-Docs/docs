@@ -9,3 +9,4 @@ resources
 .GHA-LOG
 .NEW_COMMIT_MSG
 /.gtm/
+.DS_Store

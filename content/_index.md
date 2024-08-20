@@ -19,13 +19,13 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 #### June 2024
 -----
 
-Bootware 1.1 General Platform Support - Along with the SCM-based products, Bootware 1.1 includes cross-platform support for ZYMKEY on CM4 and RPi4. 
+Bootware 1.1 General Platform Support - Along with the SCM-based products, Bootware 1.1 includes cross-platform support for ZYMKEY on CM4 and RPi4.
 
 The Zymbit Products also include Bookworm 64-bit support.
 
 ##### Latest Platform and OS Support
 
-![supported OSs](supported-os-dots.png) 
+![supported OSs](supported-os-dots.png)
 <br>
 
 #### Other significant enhancements in Bootware 1.1:
@@ -51,7 +51,7 @@ For RPI4, RPI5, and CM4 platforms, you will need to set the WAKE_PIN in the foll
 
 Determine the numbering for GPIO4 by examining /sys/kernel/debug/gpio for the number associated with GPIO4, then set an environment variable in the Zymbit environment variable file:
 
-```
+```bash
 sudo su
 wake_pin=`grep GPIO4 /sys/kernel/debug/gpio | sed -r 's/[^0-9]*([0-9]*).*/\1/'`
 echo "wake_pin=$wake_pin"   # sanity check value is set
@@ -66,11 +66,11 @@ You do not need to do anything for new installations as the install_zk_sw.sh wil
 
 #### December 2023
 -----
-We have added support for Bookworm (64-bit) on the Pi5, PI4 and CM4 for the ZYMKEY, HSM4, and HSM6. Follow the Getting Started guides to install and encrypt. 
+We have added support for Bookworm (64-bit) on the Pi5, PI4 and CM4 for the ZYMKEY, HSM4, and HSM6. Follow the Getting Started guides to install and encrypt.
 
 #### October 2023
 -----
-Secure Compute Module moved from Revision A to Revision B. The Zymbit Software did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required. 
+Secure Compute Module moved from Revision A to Revision B. The Zymbit Software did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required.
 
 See the [Troubleshooting/FAQ](troubleshooting/scm) for more information on the changes from Rev A to Rev B of the SCM itself.
 <br>

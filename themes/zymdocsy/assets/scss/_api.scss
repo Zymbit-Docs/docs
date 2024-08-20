@@ -61,7 +61,7 @@ $h6-api-size: $font-size-base !default;
 
   .signature::before {
     margin: auto;
-    background-color: none;
+    background-color: transparent;
     height: 0;
   }
 
@@ -80,7 +80,7 @@ $h6-api-size: $font-size-base !default;
   .type {
     .signature {
       font-size: $h5-api-size;
-
+      font-family: monospace;
       .name {
         margin-left: 0.5em;
       }
@@ -194,7 +194,7 @@ div.method {
     margin-bottom: 4em;
     margin-left: 2rem;
 
-    & > .returns, .parameters, .exceptions {
+    & > .returns, .parameters, .exceptions, .examples {
 
       margin-top: 2em;
 

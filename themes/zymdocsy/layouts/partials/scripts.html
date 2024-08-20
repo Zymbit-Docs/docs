@@ -44,6 +44,8 @@ window.markmap = {
 {{ $jsBase := resources.Get "js/base.js" }}
 {{ $jsMenu := resources.Get "js/menu.js" }}
 {{ $jsApi := resources.Get "js/api_docs.js" }}
+{{ $jsDark := resources.Get "js/dark-mode.js" }}
+
 {{ $jsAnchor := resources.Get "js/anchor.js" }}
 {{ $jsSearch := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" .Site.Home }}
 {{ $jsMermaid := resources.Get "js/mermaid.js" | resources.ExecuteAsTemplate "js/mermaid.js" . }}
@@ -52,7 +54,7 @@ window.markmap = {
 {{ if .Site.Params.offlineSearch }}
 {{ $jsSearch = resources.Get "js/offline-search.js" }}
 {{ end }}
-{{ $js := (slice $jsBase $jsMenu $jsApi $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap) | resources.Concat "js/main.js" }}
+{{ $js := (slice $jsBase $jsMenu $jsApi $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDark) | resources.Concat "js/main.js" }}
 {{ if not hugo.IsProduction }}
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}

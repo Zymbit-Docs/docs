@@ -14,7 +14,7 @@ toc: true
 
 We updated the common Zymbit software release common to all products: ZYMKEY4, HSM4, HSM6, and the new SCM-based product line. Existing customers can do an update/upgrade to get the latest code.
 
-```
+```bash
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo pip3 install zku --upgrade
@@ -49,7 +49,7 @@ sudo pip3 install zku --upgrade
 
 The Zymbit GPG key expired and was renewed on September 30, 2022. New installations should not have any problems. `apt-get update` may complain that the GPG key has expired. To update your local key, do the following:
 
-```
+```bash
 sudo su
 curl -L https://zk-sw-repo.s3.amazonaws.com/apt-zymkey-pubkey.gpg | apt-key add -
 ```
@@ -136,14 +136,14 @@ See [Power Quality]( https://docs.zymbit.com/reference/power-quality/) for more 
 ### **Compatibility**
 
 ##### Q: Which operating systems does Zymbit support?
- 
+
 <details>
 
 <summary>Expand for Answer</summary>
 
 <br>
 
-![supported OSs](../supported-os-dots.png) 
+![supported OSs](../supported-os-dots.png)
 
 -----
 

@@ -13,16 +13,16 @@ toc: true
 
 ## Scope
 
-This describes the perimeter detect feature on HSM6. 
+This describes the perimeter detect feature on HSM6.
 
-![HSM Perimeter Detect](../HSM-PD-perimter.png) 
+![HSM Perimeter Detect](../HSM-PD-perimter.png)
 
-Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended  or in high risk environments. 
+Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended  or in high risk environments.
 
 HSM6 includes two independent Perimeter Loops that can be configured to meet different applications.
 
 
-When a Perimeter Loop is breached, HSM6 can be configured (at time of binding) to respond with different "Actions", depending upon your security policy. 
+When a Perimeter Loop is breached, HSM6 can be configured (at time of binding) to respond with different "Actions", depending upon your security policy.
 
 
 ### Connecting Perimeter Loop Circuits
@@ -30,7 +30,7 @@ When a Perimeter Loop is breached, HSM6 can be configured (at time of binding) t
 HSM6 HAT provides four pin header and FPC connectors to interface to perimeter circuits 1 and 2. This is convenient for rapid prototyping and small scale production situations.
 
 
-![HSM Perimeter Connector](../HSM-PD-connector.jpeg) 
+![HSM Perimeter Connector](../HSM-PD-connector.jpeg)
 
 (For high volume applications, different connector types are available.  [Contact Zymbit](https://www.zymbit.com/contact-us/) for more details.)
 
@@ -38,13 +38,13 @@ If you are incorporating the HSM6 directly into you motherboard, see [Engineerin
 
 ### Electrical Circuit
 
-Each perimeter loop should be connected with a 30 AWG wire or thicker and nominal length of 2 feet. For longer lengths contact Zymbit. The wire should be electrically insulated for all applications. A shielded cable may be necessary for electrically noisy or industrial applications. 
+Each perimeter loop should be connected with a 30 AWG wire or thicker and nominal length of 2 feet. For longer lengths contact Zymbit. The wire should be electrically insulated for all applications. A shielded cable may be necessary for electrically noisy or industrial applications.
 
 Custom flex PCBs and rigid PCBs may also be used to complete a perimeter loop circuit.
 
 
 ### Perimeter Breach Response Actions
-Prior to permanently binding your HSM6 to a specific host device, it can be configured through the API to respond to a perimeter breach event in one of three ways. After permanent binding is completed, the selected configuration is locked and immutable. 
+Prior to permanently binding your HSM6 to a specific host device, it can be configured through the API to respond to a perimeter breach event in one of three ways. After permanent binding is completed, the selected configuration is locked and immutable.
 
 ##### Response Choices
 
@@ -52,7 +52,7 @@ A)  Do nothing (disable)
 B)  Notify host when perimeter breach occurs
 C)  Destroy all key material (this essentially destroys any encrypted data or file system)
 
-### Test Perimeter Detect 
+### Test Perimeter Detect
 **Developer Mode only**
 
 To quickly test your perimeter detect setup, here are two samples of code using the Python and C API's. Both programs will wait for ten seconds to detect any perimeter breaches. So before running this script, connect the circuits using either the FPC or Pin headers and during the ten second pause in the script, breach the perimeter by unplugging the circuit wires from the Hat. The wait function should immediately exit and the script will finish.
@@ -66,7 +66,7 @@ Please specify the channel (0 or 1) you are testing in either set_perimeter_even
 <br>
 
 
-```
+```python
 import zymkey
 
 zymkey.client.clear_perimeter_detect_info()
@@ -92,7 +92,7 @@ print("Perimeter breach detected!\n" + perim_status_str)
 
 <br>
 
-```
+```c
 #include <stdio.h>
 #include "zk_app_utils.h"
 
@@ -148,11 +148,11 @@ int main()
 
 
 To compile
-```
+```bash
 gcc -I /usr/include/zymkey/ -l zk_app_utils <Your Program>
 ```
 If the perimeter is not breached, zkWaitForPerimeterEvent will return a failure code indicating a timeout occurred and no breach was detected.
-```
+```bash
 SUCCESS: zkOpen - 0
 SUCCESS: zkSetPerimeterEventAction - 0
 FAILURE: zkWaitForPerimeterEvent - -110
@@ -162,7 +162,7 @@ SUCCESS: zkClose - 0
 ```
 ----------
 ### Perimeter Detect Circuit Examples
-For best practices and examples of how to physically configure perimeter circuits: 
+For best practices and examples of how to physically configure perimeter circuits:
 [Learn more>](https://docs.zymbit.com/tutorials/perimeter-detect/examples)
 
 ### Additional Self Destruct Policies
@@ -170,6 +170,6 @@ For best practices and examples of how to physically configure perimeter circuit
 HSM6 has two additional self destruct policies, independent of Perimeter Detect-- temperature and voltage level monitoring. For more information, visit [Python documentation](https://docs.zymbit.com/api/python_api/#setbatteryvoltageaction-45bcda8a) or [C documentation](https://docs.zymbit.com/api/c_api/#int--zkSetBatteryVoltageAction-f90f5fd1).
 
 ## Troubleshooting
-[Troubleshooting](https://docs.zymbit.com/troubleshooting/)  
+[Troubleshooting](https://docs.zymbit.com/troubleshooting/)
 [Community](https://community.zymbit.com/)
 

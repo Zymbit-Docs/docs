@@ -30,7 +30,7 @@ Supervised Boot is Zymbit's method for insuring that the boot process is secure.
 ## The Manifest
 
 The Manifest is the list of files that will be tracked and verified by the Zymbit Secure Compute Module (SCM) during the boot process. The Manifest resides within the SCM itself. It does not live on any file system. Zymbit provides an API interface to add/update/delete entries in the Manifest as well as set the action to take if a signature verification of a file should fail.
- 
+
 All files in the Manifest must reside within the /boot partition. File paths in the Manifest all include `/boot/` by default. Only include the portion of the file path after `/boot/`. For instance, to include `/boot/config.txt`, you would call our API with the string `config.txt`.
 
 If any file exists in the Manifest, Supervised Boot is automatically enabled. To turn off Supervised Boot, remove all files from the Manifest.
@@ -139,7 +139,7 @@ if __name__ == "__main__":
 
 Running the example with no parameters will display the current contents of the Manifest. The default Manifest as shipped contains:
 
-```
+```python
 $ ./manifest.py
 Manifest:
 ---------
@@ -156,7 +156,7 @@ overlays/vc4-kms-v3d.dtbo
 
 To add a file to the Manifest, run the example script with the `--add` option and give it a filepath to a file in /boot. We'll create a sample file by copying `/etc/hosts`,
 
-```
+```bash
 $ sudo cp /etc/hosts /boot/sample.txt
 $ ./manifest.py --add sample.txt
 Manifest:
@@ -173,23 +173,25 @@ overlays/vc4-kms-v3d.dtbo
 sample.txt
 ```
 
-The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. In Development Mode (no bind lock), the SCM will "simulate" this process by flashing an LED sequence of 4 followed by 2 flashes, repeated three times, and then the SCM will boot normally. 
+The SCM will create a signature for the file `sample.txt` and store it internally. The SCM will verify that signature against the file upon the next boot. If the signature does not verify, the SCM will be held in reset and will not boot. In Development Mode (no bind lock), the SCM will "simulate" this process by flashing an LED sequence of 4 followed by 2 flashes, repeated three times, and then the SCM will boot normally.
 
 You can test this out:
 
  * First, after adding `sample.txt` to the Manifest and power cycle. The system should boot normally.
- * Next, edit `/boot/sample.txt` and power cycle. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 4 flashes followed by 2 flashes, three times. If left in Development Mode (no bind lock), the SCM will boot up and allow you to recover. 
+ * Next, edit `/boot/sample.txt` and power cycle. The sign/verify process will fail and the SCM will simulate a __Held in Reset__ condition with a sequence of 4 flashes followed by 2 flashes, three times. If left in Development Mode (no bind lock), the SCM will boot up and allow you to recover.
 
 There are three ways you can remedy the verification failure:
- 
+
  * Edit `/boot/sample.txt` and revert back to its original contents.
  * Update the Manifest to sync up the current contents of the file with the Manifest
+```bash
+./manifest.py --update sample.txt
+```
 
-    `./manifest.py --update sample.txt`
-    
  * Remove the file from the Manifest with `./manifest.py --delete
-
-    `./manifest.py --delete sample.txt`
+```bash
+./manifest.py --delete sample.txt
+```
 
 The next powercycle should boot with the normal sequence - it should not flash the 4 flashes followed by 2 flashes, three times sequence.
 

@@ -79,7 +79,7 @@ zymkey.client.clear_perimeter_detect_info()"
 
 If you intend to use your ZYMKEY4 to encrypt your root file system, you should complete that step now, using our guide. This step is highly recommended.
 
-{{< resource_link "tutorials/encrypt-rfs/zymkey4/" >}}
+{{< resource_link "tutorials/encrypt-rfs/" >}}
 Encrypt the root file system of your host device using LUKS and your ZYMKEY4.
 {{< /resource_link >}}
 

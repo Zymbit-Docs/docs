@@ -13,17 +13,17 @@ toc: true
 
 ## Scope
 
-This section explains the perimeter detect feature on Zymkey4 and how to use it in your software application with a simple two wire loop physical configuration. 
+This section explains the perimeter detect feature on Zymkey4 and how to use it in your software application with a simple two wire loop physical configuration.
 
 For alternative physical configurations and best practices: [Learn more >](https://docs.zymbit.com/tutorials/perimeter-detect/examples)
 
 ![Zymkey4-PD-thick-lines](../ZK4-perim-detect-thick-lines.png)
 
-Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended  or in high risk environments. 
+Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended  or in high risk environments.
 
 Zymkey4 includes two independent Perimeter Loops that can be configured to meet different applications.
 
-When a Perimeter Loop is breached, Zymkey4 can be configured (at time of binding) to respond with different "Actions", depending upon your security policy. 
+When a Perimeter Loop is breached, Zymkey4 can be configured (at time of binding) to respond with different "Actions", depending upon your security policy.
 
 
 ### Connecting Perimeter Loop Circuits
@@ -42,21 +42,21 @@ You can use a micro-usb EXTENSION cable, which carries all necessary signals, to
 
 ![Cable Pic 1](../ZK4-perim-detect-cable-pic.png)
 
-![Cable Pic 2](../ZK4-perim-detect-cable.png) 
+![Cable Pic 2](../ZK4-perim-detect-cable.png)
 
 
 **IMPORTANT:** do **NOT**  use standard micro-usb **charging cable**  it will not work, because it does not have a wire on pin 4.
 
 ### Electrical Circuit
 
-Each perimeter loop should be connected with a 30 AWG wire or thicker and nominal length of 2 feet. For longer lengths contact Zymbit. The wire should be electrically insulated for all applications. A shielded cable may be necessary for electrically noisy or industrial applications. 
+Each perimeter loop should be connected with a 30 AWG wire or thicker and nominal length of 2 feet. For longer lengths contact Zymbit. The wire should be electrically insulated for all applications. A shielded cable may be necessary for electrically noisy or industrial applications.
 
 Custom flex PCBs and rigid PCBs may also be used to complete a perimeter loop circuit.
 
 
 
 ### Perimeter Breach Response Actions
-Prior to permanently binding your Zymkey to a specific host device, it can be configured through the API to respond to a perimeter breach event in one of three ways. After permanent binding is completed, the selected configuration is locked and immutable. 
+Prior to permanently binding your Zymkey to a specific host device, it can be configured through the API to respond to a perimeter breach event in one of three ways. After permanent binding is completed, the selected configuration is locked and immutable.
 
 ##### Response Choices
 
@@ -66,7 +66,7 @@ C)  Destroy all key material (this essentially destroys any encrypted data or fi
 
 Refer to API documentation for more details.
 
-### Test Perimeter Detect 
+### Test Perimeter Detect
 
 **Developer Mode only**
 
@@ -80,7 +80,7 @@ Please specify the channel (0 or 1) you are testing in either set_perimeter_even
 
 <br>
 
-```
+```python
 import zymkey
 
 zymkey.client.set_perimeter_event_actions(0, action_notify=True, action_self_destruct=False)
@@ -110,7 +110,7 @@ zymkey.client.clear_perimeter_detect_info()
 
 <br>
 
-```
+```c
 #include <stdio.h>
 #include "zk_app_utils.h"
 
@@ -166,11 +166,11 @@ int main()
 
 
 To compile
-```
+```bash
 gcc -I /usr/include/zymkey/ -l zk_app_utils <Your Program>
 ```
 If the perimeter is not breached, zkWaitForPerimeterEvent will return a failure code indicating a timeout occurred and no breach was detected.
-```
+```bash
 SUCCESS: zkOpen - 0
 SUCCESS: zkSetPerimeterEventAction - 0
 FAILURE: zkWaitForPerimeterEvent - -110
@@ -180,10 +180,10 @@ SUCCESS: zkClose - 0
 ```
 ----------
 ### Perimeter Detect Circuit Examples
-For best practices and examples of how to physically configure perimeter circuits: 
+For best practices and examples of how to physically configure perimeter circuits:
 [Learn more>](https://docs.zymbit.com/tutorials/perimeter-detect/examples)
 
 ## Troubleshooting
-[Troubleshooting](https://docs.zymbit.com/troubleshooting/)  
+[Troubleshooting](https://docs.zymbit.com/troubleshooting/)
 [Community](https://community.zymbit.com/)
 

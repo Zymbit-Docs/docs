@@ -28,7 +28,7 @@ Uninstalls Bootware, returning to the standard linux boot process. The uninstall
 
 ### Usage Example
 
-```
+```bash
 cd ~/bootware-1.1
 sudo ./zb-uninstall.sh
 ```

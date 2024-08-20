@@ -11,16 +11,16 @@ toc: true
 -----
 ### **Overview**
 
-The Zymbit Secure Compute Module (SCM) is an all-in-one Linux compute module - secured and ready to deploy into your IoT and edge applications : a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure encapsulated module. 
+The Zymbit Secure Compute Module (SCM) is an all-in-one Linux compute module - secured and ready to deploy into your IoT and edge applications : a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure encapsulated module.
 
 {{< cardpane >}}
-{{% card header="SCM Physical Architecture" %}}
+{{< card header="SCM Physical Architecture" >}}
 {{< figure
     src="scm_layer.png"
     alt=""
     caption=""
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
 
@@ -29,10 +29,10 @@ The Zymbit Secure Compute Module (SCM) is an all-in-one Linux compute module - s
 
 #### Power On, Bootup, and SSH in
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
- 
-{{% callout notice %}}
+
+{{< callout notice >}}
 All necessary Zymbit software has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
-{{% /callout %}}
+{{< /callout >}}
 
  * Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured should take approximately 90 seconds from power on. It will go through the following stages:
     - one slow blink:    *initializing the SCM*
@@ -55,12 +55,11 @@ All necessary Zymbit software has been pre-installed. No further installation is
 We highly recommend turning off unattended-upgrades prior to the encryption process. In some cases primarily with Ubuntu, during an update/upgrade after encryption, the update-initramfs process may fail and leave the system unable to boot.
 
 To mitigate this issue, remove the service unattended-upgrades:
-
-`systemctl stop unattended-upgrades`
-
-`systemctl disable unattended-upgrades`
-
-`apt remove --purge unattended-upgrades -y`
+```bash
+systemctl stop unattended-upgrades
+systemctl disable unattended-upgrades
+apt remove --purge unattended-upgrades -y
+```
 
 {{< /callout >}}
 
@@ -123,23 +122,23 @@ This only affects SCMs with firmware 01.02.02release. This does not affect the H
 ## Secure Compute Module
 
 {{< cardpane >}}
-{{% card header="SCM Functional Architecture" %}}
+{{< card header="SCM Functional Architecture" >}}
 {{< figure
     src="scm_block.png"
     alt=""
     caption=""
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
-    
+
 ##### Highlights
 * 100% pin compatible with RPi CM4, all configurations.
 * 100% code compatible with RPi
 * Easy to Scale
 * Pre-encrypted file system
-{{% callout notice %}}
+{{< callout notice >}}
 The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Bootware 1.0 can be used to replace Bullseye or Ubuntu 22.04 based Operating System images. See [Bootware](../../../bootware-one-zero) for details.
-{{% /callout %}}
+{{< /callout >}}
 * Pre-loaded Linux kernel (bullseye 64-bit or Ubuntu 22.04 64-bit)
 * Optionally Pre-load with customer software
 * Pre-defined file manifest & policies
@@ -165,15 +164,15 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
  * [Zymbit Developer Kit 2](../../scm-dev-kit2/)
 
 ### Using SCM: API and Examples
-    
- * [See API Documentation](../../../api/)   
+
+ * [See API Documentation](../../../api/)
  * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
  * [Securing the SCM further with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
-    
+
 ### Support
-    
+
  * [Release Notes](../../../troubleshooting/scm/)
  * [Contact Support](mailto:support@zymbit.com)
 

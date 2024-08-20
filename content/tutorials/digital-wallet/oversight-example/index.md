@@ -38,7 +38,7 @@ This can be useful for handing a copy of a wallet to a financial advisor or some
 
 First create an example BIP32 master seed wallet as a reference for our oversight wallet.
 
-```plaintext
+```python
 # Create our BIP32 master seed
 print("Create our normal wallet...")
 master_seed_slot = zymkey.client.gen_wallet_master_seed(key_type = "secp256k1", master_gen_key = "", wallet_name = MyExampleWallet)
@@ -47,7 +47,7 @@ print("Done! Master seed slot:%i" % (master_seed_slot))
 
 Next for this example, we create children keys and derive a wallet address "m/44/60/0/0'". An oversight wallet is created by referencing the public key and chain code of the last hardened node of a wallet address. So in this example, grab the public key and chain code from the slot of the " 0' " index.
 
-```
+```python
 # Oversight wallet requires the public key and chain code of the last hardened node in a wallet address.
 # So for this example will use m/44/60/0/0' where the 0' is the last hardened node for our oversight wallet to start from.
 print("\nCreate a wallet derivation path m/44/60/0/0' ..")
@@ -62,7 +62,7 @@ print("Done! m/44/60/0/0' slot:%i" % (child_slot))
 
 Now generate an oversight wallet from the public key and chain code:
 
-```
+```python
 # Using the public key and chain code, create the oversight wallet.
 # Note that the oversight wallet can exist at the same time as our BIP32 wallet, but needs a different wallet name, as wallet names are unique.
 print("Create our oversight wallet...")
@@ -70,14 +70,14 @@ oversight_slot = zymkey.client.gen_oversight_wallet(key_type = "secp256k1", pub_
 print("Done! oversight_slot slot:%i" % (oversight_slot))
 ```
 
-The oversight wallet can generate child keys the same way as a normal BIP32 wallet. However this wallet contains no private keys, so no transaction will be able to be signed properly. 
+The oversight wallet can generate child keys the same way as a normal BIP32 wallet. However this wallet contains no private keys, so no transaction will be able to be signed properly.
 
 Also note that this oversight wallet starts from the " 0' " index of the previous wallet. It has no insight about the "m/44/60/0" key pairs that came before it.
 
 
 # Full Code Example
 
-```plaintext
+```python
 #!/usr/bin/python3
 
 import zymkey

@@ -19,17 +19,17 @@ These examples are derived from the [documentation](https://docs.zymbit.com/zymb
 
 ## Installation
 
-```
+```bash
 pip install zymbitwalletsdk
 ```
 
 ## ETH Keyring Examples
 
-### Creating an ETH Keyring 
+### Creating an ETH Keyring
 
 If you have an existing wallet on your module, you can initialize an ETH Keyring using either the wallet name or its corresponding master slot. Here's how:
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring
 
 keyring = ZymbitEthKeyring(wallet_name = "MyExampleWallet")
@@ -38,7 +38,7 @@ print(keyring)
 
 or
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring
 
 keyring = ZymbitEthKeyring(master_slot = 16)
@@ -47,7 +47,7 @@ print(keyring)
 
 Output:
 
-```
+```bash
 ZymbitEthKeyring(
         type = ETH
         base_path = m/44'/60'/0'/0
@@ -66,7 +66,7 @@ ZymbitEthKeyring(
 
 There are three methods you can use to add accounts. Here is how you use them:
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring
 
 keyring = ZymbitEthKeyring(master_slot=16)
@@ -79,7 +79,7 @@ print(keyring.get_accounts())
 
 Output:
 
-```
+```bash
 (Path: m/44'/60'/0'/0/12, Address: 0x092aa5e156F4FE5b3944B8A2421E45a23B8d1B00, Slot: 34)
 
 [(Path: m/44'/60'/0'/0/13, Address: 0xA4cfAD05453e3FBB98EFD9A68f71E71B331d9e8A, Slot: 35), (Path: m/44'/60'/0'/0/14, Address: 0xd1B6206a83401dc042c04C9A751a7eB65645f144, Slot: 36)]
@@ -93,7 +93,7 @@ Output:
 
 If you want to remove an account from a keyring, here is how to do it:
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager, EthConnect
 
 keyring = ZymbitEthKeyring(wallet_name = "MyExampleWallet")
@@ -109,7 +109,7 @@ print(accounts)
 
 Output:
 
-```
+```bash
 [(Path: m/44'/60'/0'/0/0, Address: 0x93D458d6B14A02943A07708a24D8A9F142Fc5A00, Slot: 26), (Path: m/44'/60'/0'/0/1, Address: 0x9fB80f688e4a4f68cd94e0DD4263B03cA7CC52ff, Slot: 27), (Path: m/44'/60'/0'/0/2, Address: 0x29e9f7D65886c6c1e164AFd4823A477eB0F1F75a, Slot: 28), (Path: m/44'/60'/0'/0/12, Address: 0x092aa5e156F4FE5b3944B8A2421E45a23B8d1B00, Slot: 34), (Path: m/44'/60'/0'/0/13, Address: 0xA4cfAD05453e3FBB98EFD9A68f71E71B331d9e8A, Slot: 35), (Path: m/44'/60'/0'/0/14, Address: 0xd1B6206a83401dc042c04C9A751a7eB65645f144, Slot: 36), (Path: m/44'/60'/0'/0/15, Address: 0xaDAC0304B9A471838a4e704d05C90Df36ad587C6, Slot: 37), (Path: m/44'/60'/0'/0/26, Address: 0x2fb995cd644992a9a838fe18Db818c83BdE719FD, Slot: 38)]
 
 [(Path: m/44'/60'/0'/0/0, Address: 0x93D458d6B14A02943A07708a24D8A9F142Fc5A00, Slot: 26), (Path: m/44'/60'/0'/0/1, Address: 0x9fB80f688e4a4f68cd94e0DD4263B03cA7CC52ff, Slot: 27), (Path: m/44'/60'/0'/0/12, Address: 0x092aa5e156F4FE5b3944B8A2421E45a23B8d1B00, Slot: 34), (Path: m/44'/60'/0'/0/13, Address: 0xA4cfAD05453e3FBB98EFD9A68f71E71B331d9e8A, Slot: 35), (Path: m/44'/60'/0'/0/14, Address: 0xd1B6206a83401dc042c04C9A751a7eB65645f144, Slot: 36), (Path: m/44'/60'/0'/0/15, Address: 0xaDAC0304B9A471838a4e704d05C90Df36ad587C6, Slot: 37), (Path: m/44'/60'/0'/0/26, Address: 0x2fb995cd644992a9a838fe18Db818c83BdE719FD, Slot: 38)]
@@ -119,7 +119,7 @@ Output:
 
 ### Initialize the keyring manager to manage multiple keyrings
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager
 
 keyring1 = ZymbitEthKeyring(wallet_name = "MyExampleWallet")
@@ -131,7 +131,7 @@ print(keyring_manager.get_keyrings())
 
 Output:
 
-```
+```bash
 [ZymbitEthKeyring(
         type = ETH
         base_path = m/44'/60'/0'/0
@@ -164,11 +164,11 @@ Output:
 
 ### Create a wallet and corresponding ETH keyring
 
-Create a wallet and its coressponding ETH keyring using the keyring manager. 
+Create a wallet and its coressponding ETH keyring using the keyring manager.
 
 **NOTE:** Store the mnemonic phrase securely
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager
 
 keyring1 = ZymbitEthKeyring(wallet_name = "MyExampleWallet")
@@ -183,7 +183,7 @@ print(keyring_manager.get_keyrings())
 
 Output:
 
-```
+```bash
 Master slot and Mnemonic: (28, 'all damp fire farm glad vital rich material infant shove tuna exist penalty simple choose time magnet shiver phone that idea grain merry accident')
 
 [ZymbitEthKeyring(
@@ -227,7 +227,7 @@ Master slot and Mnemonic: (28, 'all damp fire farm glad vital rich material infa
 
 ### Add a keyring
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager
 
 keyring1 = ZymbitEthKeyring(wallet_name = "MyExampleWallet")
@@ -243,7 +243,7 @@ print(keyring_manager.get_keyrings())
 
 Output:
 
-```
+```bash
 [ZymbitEthKeyring(
         type = ETH
         base_path = m/44'/60'/0'/0
@@ -285,7 +285,7 @@ Output:
 
 ### Get a keyring
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager
 
 keyring1 = ZymbitEthKeyring(wallet_name = "MyExampleWallet")
@@ -299,7 +299,7 @@ print(keyring_manager.get_keyring(wallet_name = "MyExampleWallet1"))
 
 Output:
 
-```
+```bash
 ZymbitEthKeyring(
         type = ETH
         base_path = m/44'/60'/0'/0
@@ -320,7 +320,7 @@ ZymbitEthKeyring(
 
 Removing a keyring using the keyring manager removes the keys permanently from the module and the keyring manager instance. If the remove_master flag is set to True, it removes the master key from the device as well.
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager
 
 keyring1 = ZymbitEthKeyring(wallet_name = "MyExampleWallet")
@@ -335,7 +335,7 @@ print(keyring_manager.get_keyrings())
 
 Output:
 
-```
+```bash
 [ZymbitEthKeyring(
         type = ETH
         base_path = m/44'/60'/0'/0
@@ -372,7 +372,7 @@ For this tutorial, we use the Sepolia test network to test sending our transacti
 
 ### Create and Broadcast an ETH Transaction (EIP-1559)
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager, EthConnect
 from web3 import Web3
 import binascii
@@ -401,7 +401,7 @@ print("Transaction broadcast hash:\n%s" % binascii.hexlify(transaction_result_ha
 
 Output:
 
-```
+```bash
 EthTransaction(chain_id=11155111, nonce=30, max_priority_fee_per_gas=1, max_fee_per_gas=1000000007, gas=21000, to=b'.W\xa1s\xb2\xbb\nIF\xa8\xaa\x7f\xd9\x9f7=K\xf3\x98 ', value=100000000000000, data=b'', access_list=())
 
 SignedEthTransaction(chain_id=11155111, nonce=30, max_priority_fee_per_gas=1, max_fee_per_gas=1000000007, gas=21000, to=b'.W\xa1s\xb2\xbb\nIF\xa8\xaa\x7f\xd9\x9f7=K\xf3\x98 ', value=100000000000000, data=b'', access_list=(), y_parity=True, r=44987742661489270771188443846316967428376177535265140127433627783003713851105, s=54741034043774433582032940802071398050179513067469791027144539380885541407020)
@@ -415,7 +415,7 @@ You can view the transaction details [here](https://sepolia.etherscan.io/tx/0x4c
 ### Contract Transactions (EIP-1559)
 
 For the deploying and executing contract examples, we will be using the following solidity contract:
-```
+```solidity
 pragma solidity >=0.7.0 <0.9.0;
 
 contract Counter {
@@ -439,7 +439,7 @@ contract Counter {
 
 To deploy a contract, you need to save the contract ABI as a JSON file and the hex encoded bytecode as a txt file on your Pi's local file system. Once you have done that, you can deploy a contract like this:
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager, EthConnect
 from web3 import Web3
 import binascii
@@ -465,7 +465,7 @@ print("Transaction broadcast hash:\n%s" % binascii.hexlify(transaction_result_ha
 
 Output:
 
-```
+```bash
 Transaction broadcast hash:
 d8163f20bd3baf0f59ee23091eda5b0160147b7a4e4eeb3988306e3534a7e03d
 ```
@@ -476,7 +476,7 @@ You can view the transaction details [here](https://sepolia.etherscan.io/tx/0xd8
 
 In this example, we are going to invoke the ```increment_counter``` function in our deployed contract. Here's how to do it:
 
-```
+```python
 from zymbitwalletsdk import ZymbitEthKeyring, ZymbitKeyringManager, EthConnect
 from web3 import Web3
 import binascii
@@ -502,7 +502,7 @@ print("Transaction broadcast hash:\n%s" % binascii.hexlify(transaction_result_ha
 
 Output:
 
-```
+```bash
 Transaction broadcast hash:
 ae5bc454c77405d6492e794a71fdb74342c8429091bc41967ba1f0ce3753c147
 ```
