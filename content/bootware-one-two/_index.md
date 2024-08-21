@@ -56,5 +56,7 @@ It is also recommended to have an HDMI console attached when using Bootware. The
 
 ### [More information on Bootware  from zymbit.com](https://www.zymbit.com/bootware/)
 
-## Bootware 1.2 User's Guide and Information
+-----
+
+## Bootware 1.2 User Guide and Information
 

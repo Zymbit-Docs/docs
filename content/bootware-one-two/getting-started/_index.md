@@ -26,7 +26,7 @@ An HDMI console is highly recommended for setting up your unit with Bootware. Th
 Bootware 1.2 includes a new, consolidated User Interface. The process of installation and configuration has changed since 1.1.
 
 Details of the commands in this Quickstart are linked in line.
-See the [Features](../../bootware-one-zero-general/features) section for more information on how to use Bootware.
+See the [Features](../../bootware-one-two/features) section for more information on how to use Bootware.
 
 ### Overview of steps to get up and running
 
@@ -61,20 +61,33 @@ Reboot to complete the installation process and to boot into zboot. Once complet
 
 ### 3. Run `zbcli imager` to create Bootware-ready Zymbit Image backup (zi image)
 
-Bootware requires images in a secure, signed format for loading with zboot. We refer to these images as `zi` images. An image conversion tool, [`zbcli imager`](../utilities/zbimager), creates the zi image. `zbcli imager` can take a snapshot of your running system or input can be tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../../bootware-one-zero-general/features/overlays).
+Bootware requires images in a secure, signed format for loading with zboot. We refer to these images as `zi` images. An image conversion tool, [`zbcli imager`](../zbcli/imager), creates the zi image. `zbcli imager` can take a snapshot of your running system or input can be tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../../bootware-one-two/features/overlays).
 
-> If you are Developing on a CM4 directly and need to transition to the SCM, See [Developing on the CM4](../../bootware-one-zero-general/features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
+> If you are Developing on a CM4 directly and need to transition to the SCM, See [Developing on the CM4](../../bootware-one-two/features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
 
 
 #### Create a zi image backup from your current running root file system
 
-Use `zb-imager` to create a Zymbit Image (zi) backup of your current running system. Once created, the zi image can be propagated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../../bootware-one-zero-general/features/signing).
+Use `zb-imager` to create a Zymbit Image (zi) backup of your current running system. Once created, the zi image can be propagated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../../bootware-one-two/features/signing).
 
 ```
 sudo zb-imager
 ```
+All necessary information will be prompted for starting with the output directory and the name of the image file. The output directory will be excluded from the image. A zi extension will be added to the image name provided.
 
-Make the following selections:
+```
+$ sudo zbcli imager
+   Validated bootware installation
+        ---------
+        Pi Module         Raspberry Pi 4
+        Operating System  Rpi-Bookworm
+        Zymbit module     Secure Compute Module
+        Kernel            kernel8.img
+        ---------
+     Cleaned '/etc/zymbit/zboot/update_artifacts/tmp'
+✔ Enter output directory · /mnt
+✔ Enter image name · my_image
+```
 
 | Item | Description |
 | ----- | ----- |
@@ -94,7 +107,7 @@ The `zb-imager` script will now build your zi image.
 
 The imager takes 20 minutes or longer depending on the size of your file system. Once completed, the zi image and Private/Public key will be saved in `/etc/zymbit/zboot/update_artifacts/output/`. Keep your private key private. The zi image can be copied to either a local storage device such as a USB stick or a remote server accessible via HTTPS. The public key file will be needed to load the zi image. 
 
-Additional examples of zb-imager usage can be found here: [zb-imager usage](../../bootware-one-zero-general/utilities/zbimager)
+Additional examples of zb-imager usage can be found here: [zb-imager usage](../../bootware-one-two/zbcli/imager)
 
 
 ### 3. Run zb-wizard to configure the Partitioning and Image loading
@@ -127,7 +140,7 @@ curl https:///bootware.s3.amazonaws.com/pub_key_1.1.pem --output pub_key_1.1.pem
 
 #### Use the Bootware Wizard to Configure your System
 
-Bootware includes a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zb-wizard` can be found [here](../../bootware-one-zero-general/utilities/zbwizard). 
+Bootware includes a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zb-wizard` can be found [here](../../bootware-one-two/zbcli/update-config). 
 
 We are going to configure with A/B partitioning to have a stable backup partition for fallback. To start the wizard,
 
@@ -137,10 +150,10 @@ sudo zb-wizard
 Choose your settings as described below.
 
 {{< cardpane >}}
-{{% card header="Bootware Wizard -Main Screen" %}}
+{{% card header="Bootware Update-Config -Main Screen" %}}
 {{< figure
-    src="../../bootware-one-zero-general/utilities/zbwizard/wizmain.png"
-    alt="Bootware Wizard"
+    src="../../bootware-one-two/zbcli/update-config/update-config1.png"
+    alt="zbcli update-config"
     caption="Choose your options, save and exit."
     >}}
 {{% /card %}}
