@@ -20,16 +20,16 @@ Perimeter Detect provides two additional layers of physical security that can be
 ### Connecting Perimeter Loop Circuits
 
 {{< cardpane >}}
-{{% card header="Secure Compute Motherboard Perimeter Loop Circuits" %}}
+{{< card header="Secure Compute Motherboard Perimeter Loop Circuits" >}}
 {{< figure
     src="scmio_bottom.png"
     alt=""
     caption=""
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
-The Secure Edge Node includes two independent Perimeter Loops that can be configured to meet different applications. The first perimeter loop connects to the four switches on the bottom of the motherboard. The four switches are in a closed position when the Secure Edge Node enclosure is screwed tightly. Opening the Node will open the switches, opening the first perimeter loop. 
+The Secure Edge Node includes two independent Perimeter Loops that can be configured to meet different applications. The first perimeter loop connects to the four switches on the bottom of the motherboard. The four switches are in a closed position when the Secure Edge Node enclosure is screwed tightly. Opening the Node will open the switches, opening the first perimeter loop.
 
 There is also a four pin connector labeled "Perimeter" on the underside of the IO board. The first perimeter loop can be controlled by the two center pins of the header; the second perimeter loop can be controlled by the outside two pins of the header.
 
@@ -65,7 +65,7 @@ Example for monitoring Perimeter Events:
 
 <summary>For Python</summary>
 
-```
+```python
 #!/usr/bin/python3
 
 import zymkey

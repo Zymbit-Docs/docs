@@ -28,7 +28,7 @@ Details of the commands in this Quickstart are linked in line. See the [Features
 ### Overview of steps to get up and running
 
 1. Download the Bootware tools package and untar. Run zb-install to install the Bootware tools
-2. Run zb-imager to create and sign a Zymbit image file (zi image) of your current root file system as a backup. 
+2. Run zb-imager to create and sign a Zymbit image file (zi image) of your current root file system as a backup.
 3. Run zb-wizard to configure Partitions and Recovery strategy. For this Quickstart, we will setup A/B partitions.
 4. Run zb-update to load a known good example zi image into the Backup (B) partition; set B to as the Active partition.
 5. Use the "-r" option to force a Rollback to your original partition to verify your A/B setup is working.
@@ -36,17 +36,17 @@ Details of the commands in this Quickstart are linked in line. See the [Features
 ### 1. Download Bootware
 
 Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
-```
+```bash
 curl https://bootware.s3.amazonaws.com/bootware-1.0.tgz --output bootware-1.0.tgz
 ```
 
 Once the tar file is downloaded, untar:
 
-```
+```bash
 tar xvzf bootware-1.0.tgz
 ```
 
-The contents will be extracted into `bootware-1.0`. Files extracted: 
+The contents will be extracted into `bootware-1.0`. Files extracted:
 
 | Item | Description |
 | ----- | ----- |
@@ -58,12 +58,12 @@ The contents will be extracted into `bootware-1.0`. Files extracted:
 
 Run the following install script on the SCM to install the zboot utilities:
 
-```
+```bash
 cd bootware-1.0
 sudo ./zb-install.sh
 ```
 
-```
+```bash
 Installing zboot tools...
 Reading package lists... Done
 Building dependency tree... Done
@@ -85,7 +85,7 @@ Bootware requires images in a secure, signed format for loading with zboot. An i
 
 Use `zb-imager` to create a Zymbit Image (zi) backup of your current running system. Once created, the zi image can be propagated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../features/signing).
 
-```
+```bash
 sudo zb-imager
 ```
 
@@ -107,76 +107,76 @@ Next, you will be prompted for Signing Keys. Keys can be Software or Hardware ba
 
 The `zb-imager` script will now build your zi image.
 
-The imager takes 20 minutes or longer depending on the size of your file system. Once completed, the zi image and Private/Public key will be saved in `/etc/zymbit/zboot/update_artifacts/output/`. Keep your private key private. The zi image can be copied to either a local storage device such as a USB stick or a remote server accessible via HTTPS. The public key file will be needed to load the zi image. 
+The imager takes 20 minutes or longer depending on the size of your file system. Once completed, the zi image and Private/Public key will be saved in `/etc/zymbit/zboot/update_artifacts/output/`. Keep your private key private. The zi image can be copied to either a local storage device such as a USB stick or a remote server accessible via HTTPS. The public key file will be needed to load the zi image.
 
 Additional examples of zb-imager usage can be found here: [zb-imager usage](../utilities/zbimager)
 
 
 ### 3. Run zb-wizard to configure the Partitioning and Image loading
 
-For this quickstart, we will use a known-good zi image. We've converted the pre-installed base image on the SCM to the zi format. 
+For this quickstart, we will use a known-good zi image. We've converted the pre-installed base image on the SCM to the zi format.
 We will configure the zi image to be accessed remotely via HTTPS.
 
 If you wish to run from a local source such as a USB stick, our example image can be downloaded from here:
 
 For bullseye,
-```
+```bash
 curl https:///bootware.s3.amazonaws.com/zymbit_bullseye.zi --output zymbit_bullseye.zi
 ```
 
 For ubuntu,
-```
+```bash
 curl https:///bootware.s3.amazonaws.com/zymbit_ubuntu.zi --output zymbit_ubuntu.zi
 ```
 
 You will need the corresponding public key in order to verify the downloaded image. The public key in PEM format for either the bullseye image or the ubuntu image can be downloaded here:
 
-```
+```bash
 curl https:///bootware.s3.amazonaws.com/pub_key.pem --output pub_key.pem
 ```
 
 #### Use the Bootware Wizard to Configure your System
 
-Bootware includes a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zb-wizard` can be found [here](../utilities/zbwizard). 
+Bootware includes a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zb-wizard` can be found [here](../utilities/zbwizard).
 
 We are going to configure with A/B partitioning to have a stable backup partition for fallback. To start the wizard,
 
-```
+```bash
 sudo zb-wizard
 ```
 Choose your settings as described below.
 
 {{< cardpane >}}
-{{% card header="Bootware Wizard -Main Screen" %}}
+{{< card header="Bootware Wizard -Main Screen" >}}
 {{< figure
     src="../utilities/zbwizard/wizmain.png"
     alt="Bootware Wizard"
     caption="Choose your options, save and exit."
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
 **Partition Setup** – Specifies the device partition layout after an update. The root file system will be re-partitioned with your chosen configuration. Filesystem sizes estimates are based off of 32GB CM4s. Choose the recommended Option 3 A/B.
 
-*	3  A/B – RECOMMENDED This will take the remaining disk space available after the boot partition and create two encrypted partitions, each taking up half of the remaining space (around 14.4 GB). 
+*	3  A/B – RECOMMENDED This will take the remaining disk space available after the boot partition and create two encrypted partitions, each taking up half of the remaining space (around 14.4 GB).
 
 **Update Policy** – The update policies define if image updates are applied to the Backup, Active, or Both partitions. Choose the recommended **Option 1 - Backup.** This way you know you have a good Active partition for fallback.
 
 **Endpoint Setup** – The configured endpoint with .zi image. The endpoint can be either an HTTPS URL or a local external mass storage device like a USB stick or nVME drive. We are going to use the URL of our known good image:
 
 For bullseye,
-```
+```bash
 https:///bootware.s3.amazonaws.com/zymbit_bullseye.zi
 ```
 
 For ubuntu,
-```
+```bash
 https:///bootware.s3.amazonaws.com/zymbit_ubuntu.zi
 ```
 
 If you opted to download one of the zi images to a local device, enter the device endpoint name instead.
 
-```
+```bash
 /dev/sda1
 ```
 
@@ -191,11 +191,11 @@ If you opted to download one of the zi images to a local device, enter the devic
 
 Once you have completed using the Wizard to configure your Bootware, run `zb-update` to complete the process of repartitioning and loading your image.
 
-```
+```bash
 sudo zb-update
 ```
 
-The script will show your configuration for review and confirmation and give you the option to change the configuration. 
+The script will show your configuration for review and confirmation and give you the option to change the configuration.
 
 | Parameter | Setting | Notes |
 | ------ | ------ | ------ |
@@ -214,7 +214,7 @@ Once completed, `zb-update` will ask you to confirm the name of the image, and t
 | Use software-based keys for verifying | Y | Use software keys |
 | Existing key path? | pub_key.pem | Adjust if not downloaded to your local directory |
 
-The script will prompt for a reboot to complete the process. 
+The script will prompt for a reboot to complete the process.
 
 #### zboot Boot Process
 
@@ -234,13 +234,13 @@ On the console, you will see:
 
 To verify you now have your A partition intact, force a failover from Active to Backup with the `-r` option to `zb-update`
 
-```
+```bash
 sudo zb-update -r
 ```
 
 You should now have Active and Backup partitions with working images ready for your development.
 
 ### Additional Information and Support
-    
+
 [Contact Support](mailto:support@zymbit.com)
 

@@ -24,7 +24,7 @@ Bootware Preview is an Engineering/Developer Preview. This is not meant for Prod
 We recommend attaching an HDMI console when using Bootware Preview. The process of repartitioning and populating partitions can take substantial time, upwards of 45 minutes and the console serves as a point of reference of activity.
 
 
-### Bootware Release Schedule:  
+### Bootware Release Schedule:
 * Bootware 1.x General - June 2024
 * Bootware 1.x Limited - April 2024
 * Bootware Preview (deprecated) – February 2024. Limited functionality. **Not intended for Production**.
@@ -79,7 +79,7 @@ second partition, allowing regression to the original golden image at will
 
 Zboot is Zymbit's boot utility included with Bootware that pulls and reflashes a device with a new user image. In the current Preview, the image can be downloaded two ways:
 
-* over the network via https  
+* over the network via https
 * from a USB storage device
 
 
@@ -91,17 +91,17 @@ The current Preview of zboot does not have bare metal recovery. The boot process
 
 Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
 
-```
+```bash
 curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/zymbit-ota-preview.tgz --output zymbit-ota-preview.tgz
 ```
 
 Once the tar file is downloaded, untar:
 
-```
+```bash
 tar xvzf zymbit-ota-preview.tgz
 ```
 
-The contents will be extracted into zymbit-ota-preview/. Files extracted: 
+The contents will be extracted into zymbit-ota-preview/. Files extracted:
 
 | Item | Description |
 | ----- | ----- |
@@ -113,12 +113,12 @@ The contents will be extracted into zymbit-ota-preview/. Files extracted:
 
 Run the following install script on the SCM to install the zboot utilities:
 
-```
+```bash
 cd zymbit-ota-preview
 sudo ./install_zboot_tools.sh
 ```
 
-```
+```bash
 Installing zboot tools...
 Reading package lists... Done
 Building dependency tree... Done
@@ -135,26 +135,26 @@ zboot requires images in a particular format unique to zboot. An image conversio
 
 > If you would like to get started with a sample image, we've converted the base image installed on the SCM for the preview to a zboot format. Otherwise, continue on to create your own image. Our example image can be downloaded from here, or you can use the URL as a valid endpoint to load a known good image:
 
-```
+```bash
 curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_preview.zi --output base_preview.zi
 ```
 
-The script used to convert to a zboot image is: 
+The script used to convert to a zboot image is:
 
 ```
-zymbit-image-converter [ test.img | {-b <boot.tar> -r <root.tar} | -z ] [-o <directory> ]  
-    test.img	      Binary image file of eMMC (e.g. created from dd). Name of output image need not match.  
-    -b	<boot.tar>    Use this boot tarball as input. Must include -r option.  
-    -r  <root.tar>    Use this root tarball as input. Must include -b option.  
-    -o  <directory>   Output directory for new .zi image.  
-    -z                Creates a zi image from your current running root file system.  
+zymbit-image-converter [ test.img | {-b <boot.tar> -r <root.tar} | -z ] [-o <directory> ]
+    test.img	      Binary image file of eMMC (e.g. created from dd). Name of output image need not match.
+    -b	<boot.tar>    Use this boot tarball as input. Must include -r option.
+    -r  <root.tar>    Use this root tarball as input. Must include -b option.
+    -o  <directory>   Output directory for new .zi image.
+    -z                Creates a zi image from your current running root file system.
 ```
 
 ### Examples of Image conversions:
 
 ### Example to create a zi image from your current running root file system
 
-```
+```bash
 sudo zymbit-image-converter -z
 ```
 | Item | Description |
@@ -164,7 +164,7 @@ sudo zymbit-image-converter -z
 
 ### Example to convert a binary image file (created from `dd if=/dev/sda bs=4M of=my.img`):
 
-```
+```bash
 sudo zymbit-image-converter my.img
 ```
 The script will prompt for information:
@@ -184,7 +184,7 @@ The script extracts the boot/root tarballs of the binary image. It will then pac
 
 You will need to provide the names and paths to your tarballs. Run the script:
 
-```
+```bash
 sudo zymbit-image-converter -b ./boot.tar -r ./root.tar
 ```
 
@@ -205,19 +205,19 @@ Put the .zi image from the script on a server or USB drive for download. Zboot d
 
 Bootware Preview includes a a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to set your device environment up for pulling down updates from a configured endpoint and the update policies for how to apply those updates. Bootware recommends update policies with A/B schema to have a stable backup partition for rollback. To start the wizard,
 
-```
+```bash
 sudo zb-wizard
 ```
 Choose your settings as described below.
 
 {{< cardpane >}}
-{{% card header="Bootware Wizard -Main Screen" %}}
+{{< card header="Bootware Wizard -Main Screen" >}}
 {{< figure
     src="wizmain.png"
     alt="Bootware Wizard"
     caption="Choose your options, save and exit."
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
 **Partition Setup** – Specifies the device partition layout after an update. The root file system will be re-partitioned with your chosen configuration. Filesystem sizes estimates are based off of 32GB CM4s.
@@ -231,16 +231,16 @@ Choose your settings as described below.
 **Update Policy** – The update policies are centered around how a new update gets applied to the filesystems on the device. The update policies listed below are only related to (A)ctive/(B)ackup partitioned devices, as (A)ctive only devices only have one filesystem to update.
 
 *	1  Backup – RECOMMENDED Apply new updates to current backup filesystem and swap to booting the new updated backup partition as the active partition now. If the new update is bad, it will rollback into the previous stable active partition. Only relevant when configured with A/B partitions.
-  
+
 *	2  Active – Apply new updates to only the current active filesystem and keep the backup partition untouched. Only relevant when configured with A/B partitions.
 
 *	3  Both – Apply new updates to both filesystems and always boot on the first root partition as the active partition. Warning: A bad update will have nothing to rollback to; the device will have to go through a recovery process.
 
-**Endpoint Setup** – The configured endpoint ready with a new update(.zi image). The endpoint can be either an https URL or an external mass storage device like a USB stick. 
+**Endpoint Setup** – The configured endpoint ready with a new update(.zi image). The endpoint can be either an https URL or an external mass storage device like a USB stick.
 
 *	Endpoint – Type the endpoint where the .zi image resides for the device to pull updates from. The endpoint will be checked for validity.
 
-    > Example https URL: https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_preview.zi  
+    > Example https URL: https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_preview.zi
     > Example USB stick: /dev/sda1
 
 **Wireless Setup** – Bootware supports pulling updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
@@ -254,28 +254,28 @@ Choose your settings as described below.
 ## Use zboot to Install the New Image
 Once you have completed using the Wizard to configure your Bootware, run `zboot-install-new-update` to complete the process by repartitioning and loading your image.
 
-```
+```bash
 sudo zboot-install-new-update
 ```
 
 The script will show your configuration for review and confirmation, or give you the option to change the configuration. This method can be used as an alternative to using the Wizaard.
 
 {{< cardpane >}}
-{{% card header="zboot-install-new-update" %}}
+{{< card header="zboot-install-new-update" >}}
 {{< figure
     src="updatemain.png"
     alt="zboot update"
     caption="Review and continue for zboot update"
     >}}
-{{% /card %}}
+{{< /card >}}
 {{< /cardpane >}}
 
-The script will prompt for a reboot to complete the process. 
+The script will prompt for a reboot to complete the process.
 
 
 ## zboot Boot Process
 
-The Zboot process will now take place. 
+The Zboot process will now take place.
 
 {{< callout warning >}}The initial configuration process can take up to 45 minutes to complete. The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
 
@@ -299,7 +299,7 @@ Each successful boot will clear a max_boot_failure counter. A max_boot_failure c
 
 A failover from Active to Backup is done with the -r option to `zboot-install-new-update`
 
-```
+```bash
 sudo zboot-install-new-update -r
 ```
 
@@ -307,13 +307,13 @@ sudo zboot-install-new-update -r
 
 A utility is included to uninstall bootware, returning to the standard linux boot process. The uninstall process will leave you in the current encrypted active partition and preserve the contents of that partion as well as the overall partition layout.
 
-```
+```bash
 cd ~/zymbit-ota-preview
 sudo ./uninstall_zboot.sh
 ```
 The script will confirm you would like to uninstall the bootware scripts and artifacts, as well as a required reboot.
 
 ### Additional Information and Support
-    
+
 [Contact Support](mailto:support@zymbit.com)
 

@@ -41,7 +41,7 @@ A: Check the following:
 
 3. If i2c support has been enabled correctly and the HSM4 LED is still rapidly blinking, check proper physical installation of the HSM4 as detailed in this "Getting Started" guide.
 
-4. HSM4 uses GPIO header pins 3 and 5 for i2c communications and pin 7 as an interrupt signal to the Pi. Pin 7 should preferably be dedicated exclusively to HSM4. Other devices may share the i2c bus with HSM4, but there may still be address conflicts. By default, HSM4 uses slave address 0x30. If the address conflict cannot be resolved on the other i2c devices, there is a way of changing the i2c address through an API call. Using this application, the HSM4 address can be changed anywhere in the ranges of 0x30-0x37 or 0x60-0x67. 
+4. HSM4 uses GPIO header pins 3 and 5 for i2c communications and pin 7 as an interrupt signal to the Pi. Pin 7 should preferably be dedicated exclusively to HSM4. Other devices may share the i2c bus with HSM4, but there may still be address conflicts. By default, HSM4 uses slave address 0x30. If the address conflict cannot be resolved on the other i2c devices, there is a way of changing the i2c address through an API call. Using this application, the HSM4 address can be changed anywhere in the ranges of 0x30-0x37 or 0x60-0x67.
 
 <details>
 
@@ -60,7 +60,7 @@ C: `int zkSetI2CAddr ( zkCTX ctx, int addr)`
 
 5. Oftentimes the 1-Wire interface relies on pin 7 (GPIO 4) for communication. If the 1-Wire interface is enabled, try disabling through raspi-config. If that resolves the problem take steps to either move the HSM4 interrupt signal from GPIO 4 or the 1-Wire interface from GPIO 4.
 
-6. if the directory at _/var/lib/zymbit_ or any of the files and/or subdirectories are corrupted or deleted, the HSM4 will fail to work. 
+6. if the directory at _/var/lib/zymbit_ or any of the files and/or subdirectories are corrupted or deleted, the HSM4 will fail to work.
 **IMPORTANT: if this happens when the HSM4 is locked (i.e. Production Mode), the HSM4 can never be used again.**
 
 -----
@@ -149,7 +149,7 @@ The I2C communication between the Zymkey and the Host is encrypted, but will not
 
 <br>
 
-A: HSM4 monitors the quality of 5V power coming into the host computer. If the voltage drops below a specified limit, even momentarily, then HSM4 will disable all security services to the host. This is a security feature to prevent power cycle and brown-own attacks. If you are powering a display, modem, or other power-hungry device from your Pi, then check the capacity and quality of your power supply. [**Learn more >**](https://docs.zymbit.com/reference/power-quality/) 
+A: HSM4 monitors the quality of 5V power coming into the host computer. If the voltage drops below a specified limit, even momentarily, then HSM4 will disable all security services to the host. This is a security feature to prevent power cycle and brown-own attacks. If you are powering a display, modem, or other power-hungry device from your Pi, then check the capacity and quality of your power supply. [**Learn more >**](https://docs.zymbit.com/reference/power-quality/)
 
 -----
 
@@ -163,7 +163,7 @@ A: HSM4 monitors the quality of 5V power coming into the host computer. If the v
 
 <br>
 
-A: Some people have become accustomed to using i2c-detect to do a first level check for correct installation and baseline functionality of i2c devices. However, these tools only really work if the i2c device communicates via a protocol that sits on top of i2c called SMBus or SMB ([System Management Bus](https://en.wikipedia.org/wiki/System_Management_Bus)). Instead, HSM4 communicates to the host at a much more fundamental level, in part because the HSM4 protocol traffic is encrypted. 
+A: Some people have become accustomed to using i2c-detect to do a first level check for correct installation and baseline functionality of i2c devices. However, these tools only really work if the i2c device communicates via a protocol that sits on top of i2c called SMBus or SMB ([System Management Bus](https://en.wikipedia.org/wiki/System_Management_Bus)). Instead, HSM4 communicates to the host at a much more fundamental level, in part because the HSM4 protocol traffic is encrypted.
 
 You can tell if you successfully installed it by observing the blue LED. If it is flashing once every 3 seconds, then binding completed. You can also use the systemctl command. It should say “active (running)”:
 
@@ -207,13 +207,13 @@ A: Yes, you should have no problem running it multiple times if it were to fail.
 
 A: `lsblk` will show you the partitions. Look for the name of your / partition (default is mmcblk0p2) and the USB device (default is sda). Example output:
 
-```
+```bash
 NAME         MAJ:MIN  RM   SIZE  RO TYPE  MOUNTPOINT
 mmcblk0      179:0    0   14.9G   0  disk
 |-mmcblk0p1  179:1    0    256M   0  part   /boot
 `-mmcblk0p2  179:2    0   14.6G   0  part   /
 sda            8:0    0   32.0G   0  disk
-|_sda1         8:1    0   32.0G   0  part   
+|_sda1         8:1    0   32.0G   0  part
 ```
 
 -----
@@ -228,7 +228,7 @@ sda            8:0    0   32.0G   0  disk
 
 <br>
 
-A: Once you get to the second phase and login, you can monitor progress with 
+A: Once you get to the second phase and login, you can monitor progress with
 
 `journalctl -fu cfg_SD_crfs`
 
@@ -262,7 +262,7 @@ A: The script is designed to re-use information on the USB stick to encrypt a "g
 
 A: The script attempts to unmount the external device, but in some cricumstances the device may stay mounted and the process will fail. You will get a message either on your screen or in `journalctl -fu cfg_SD_crfs` during the second phase indicating the drive was already mounted. Unmount the drive and try again.
 
-```
+```bash
 # Check /dev/sda* mount points for devices mounted to /media/*
 lsblk
 
@@ -270,7 +270,7 @@ lsblk
 sudo umount /media*
 
 # re-run service
-sudo systemctl restart 
+sudo systemctl restart
 
 # monitor progress
 journalctl -fu cfg_SD_crfs
@@ -335,7 +335,7 @@ A: The easiest way is to save the HSM4 key directly to a binary file, copy that 
 HSM4 side:
 
 
-```
+```python
 #!/usr/bin/python3
 import zymkey
 
@@ -351,7 +351,7 @@ with open(pub_key_file, "wb") as f:
 
 HSM6 side:
 
-```
+```python
 #!/usr/bin/python3
 import zymkey
 
@@ -438,7 +438,7 @@ A: The following table compares Zymkey and HSM operational modes while connected
 
 The battery is required to maintain the Real Time Clock and the perimeter detect circuits when the host power is removed. Without the battery, these two functions will not be active when the host power is removed.
 
-![external battery matrix](../external-battery.png) 
+![external battery matrix](../external-battery.png)
 
 -----
 
@@ -454,7 +454,7 @@ The battery is required to maintain the Real Time Clock and the perimeter detect
 
 A: If the battery dies and the host is not connected to power, some features will go out, such as Perimeter Detect and Real Time Clock. See the table below for more information.
 
-![external battery matrix](../external-battery.png) 
+![external battery matrix](../external-battery.png)
 
 With Zymkey and HSM4, if tamper detect is enabled and the battery dies or is removed, the device will self-destruct. This is an intentional security feature. If tamper detect is NOT enabled, you should connect the host device to power to change the battery.
 
@@ -653,19 +653,19 @@ A: Zymbit does not officially support the BeagleBoard platform at this time.
 
 
 ##### Q: Which operating systems does HSM4 support?
- 
+
 <details>
 
 <summary>Expand for Answer</summary>
 
 <br>
 
-![supported OSs](../supported-os-dots.png) 
+![supported OSs](../supported-os-dots.png)
 
 -----
 
 </details>
-  
+
 
 ##### Q: How much power does HSM4 consume?
 

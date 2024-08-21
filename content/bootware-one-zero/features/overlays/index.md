@@ -66,11 +66,11 @@ cat /etc/zymbit/zboot/update_artifacts/file_manifest
 >/boot/kernel8.img
 ```
 
-Create the overlay image with `zb-imager`. 
+Create the overlay image with `zb-imager`.
 
 This .zi is only filled with the files specified in `file_manifest`.
 
-```python
+```bash
 sudo zb-imager --overlay-image --image-name=overlay
 ...
 Created overlay.zi!
@@ -78,7 +78,7 @@ Created overlay.zi!
 
 Run `zb-update` with the correct endpoint and policies. Then point it at `overlay.zi`.
 
-```python
+```bash
 sudo zb-update
 ...
 Found these .zi Pick one?:

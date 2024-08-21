@@ -24,7 +24,7 @@ toc: true
 
 Requires superuser privilege.  Resides in the original bootware untar directory.
 
-Installs the Bootware sofware. 
+Installs the Bootware sofware.
 
 ### Usage
 
@@ -36,7 +36,7 @@ zb-install.sh [-y]
 
 ### Example
 
-```
+```bash
 cd ~/bootware-1.1
 sudo ./zb-install
 ```
