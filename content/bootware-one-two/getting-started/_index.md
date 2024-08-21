@@ -4,7 +4,7 @@ linkTitle: "Getting Started"
 lastmod:
 #aliases:
 #    - /zboot-preview/
-date: "2024-08-14"
+date: "2024-08-21"
 draft: false
 type: docs
 images: []

@@ -17,7 +17,7 @@ toc: True
 
 ### Bootware 1.2: General Platform Release
 
-Bootware™ is a set of software tools and micro services for the Zymbit Security Modules. Bootware 1.2 adds support for the ZYMKEY across additional platforms. Bootware 1.2 adds support for Raspberry Pi5 along with an entirely new User Interface consolidated into one executable.
+Bootware™ is a set of software tools and micro services for the Zymbit Security Modules. Bootware 1.2 adds support for the ZYMBIT products for Raspberry Pi5 along with an entirely new User Interface consolidated into one executable.
 
 The following matrix of platforms and Operating Systems support Bootware™:
 
@@ -25,14 +25,16 @@ The following matrix of platforms and Operating Systems support Bootware™:
 | ----- | ----- | ----- |
 | CM4 | SCM | Bookworm 64-bit (default), Bullseye 64-bit, Ubuntu 22.04 (jammy) |
 | CM4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
-| Pi5 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
 | Pi4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| Pi5 | ZYMKEY4 | Bookworm 64-bit |
 
 #### Other significant enhancements in Bootware 1.2:
 
 **Enhancement** - uboot updated to kernel 6.6 baseline.
 
-**Enhancement** - Baseline Pi images updated to 7/4/2024 release.
+**Enhancement** - Baseline Pi images updated to PI Foundation 7/4/2024 release.
+
+**Enhancement** - Added support for ZYMBIT HSM4 and HSM6.
 
 **Enhancement** - User can now specify the size of the common data partition. The common data partition is encrypted and the LUKS key (shared by A and B) is locked by the Zymbit HSM. The data partition is now mounted by default.
 
@@ -42,11 +44,11 @@ The following matrix of platforms and Operating Systems support Bootware™:
 
 **Issue #153** - New zi image loads of users other than the default user zymbit set permissions of /var/lib/zymbit files correctly.
 
-**Issue #xxx** - DNS failure in zboot now times out
+**Issue #160** - DNS failure in zboot now times out
 
 ---
 
-To get started with Bootware, you should have your plaform OS installed and the Zymbit SCM or ZYMKEY4 up and running. For our example images, the default hostname is zymbit-dev and the default login is zymbit with a password of zymbit. We recommend you change those during your development process. 
+To get started with Bootware, you should have your plaform OS installed and the Zymbit product up and running. For our example images, the default hostname is zymbit-dev and the default login is zymbit with a password of zymbit. We recommend you change those during your development process. 
 
 For any Bootware image, the PI RAM must exceed the size of the compressed zi image. We recommend the PI have at least 4MB RAM.
 
