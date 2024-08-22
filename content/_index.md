@@ -25,17 +25,17 @@ Bootware 1.2 Release:
 - uboot updated to linux 6.6 kernel
 - Bug fixes. See [Bootware](./bootware) for details.
 
+##### Latest Platform and OS Support
+
+![supported OSs](supported-os-dots.png)
+<br>
+
 #### June 2024
 -----
 
 Bootware 1.1 General Platform Support - Along with the SCM-based products, Bootware 1.1 includes cross-platform support for ZYMKEY on CM4 and RPi4.
 
 The Zymbit Products also include Bookworm 64-bit support.
-
-##### Latest Platform and OS Support
-
-![supported OSs](supported-os-dots.png)
-<br>
 
 #### Other significant enhancements in Bootware 1.1:
 
