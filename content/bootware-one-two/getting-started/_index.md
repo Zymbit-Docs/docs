@@ -26,7 +26,7 @@ An HDMI console is highly recommended for setting up your unit with Bootware. Th
 Bootware 1.2 includes a new, consolidated User Interface. The process of installation and configuration has changed since 1.1.
 
 Details of the commands in this Quickstart are linked in line.
-See the [Features](../../bootware-one-two/features) section for more information on how to use Bootware.
+See the [Features](../features) section for more information on how to use Bootware.
 
 ### Overview of steps to get up and running
 
@@ -61,14 +61,14 @@ Reboot to complete the installation process and to boot into zboot. Once complet
 
 ### 3. Run `zbcli imager` to create Bootware-ready Zymbit Image backup (zi image)
 
-Bootware requires images in a secure, signed format for loading with zboot. We refer to these images as `zi` images. An image conversion tool, [`zbcli imager`](../zbcli/imager), creates the zi image. `zbcli imager` can take a snapshot of your running system or input can be tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../../bootware-one-two/features/overlays).
+Bootware requires images in a secure, signed format for loading with zboot. We refer to these images as `zi` images. An image conversion tool, [`zbcli imager`](../zbcli/imager), creates the zi image. `zbcli imager` can take a snapshot of your running system or input can be tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../features/overlays).
 
-> If you are Developing on a CM4 directly and need to transition to the SCM, See [Developing on the CM4](../../bootware-one-two/features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
+> If you are Developing on a CM4 directly and need to transition to the SCM, See [Developing on the CM4](../features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
 
 
 #### Create a zi image backup from your current running root file system
 
-Use `zb-imager` to create a Zymbit Image (zi) backup of your current running system. Once created, the zi image can be propagated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../../bootware-one-two/features/signing).
+Use `zbcli imager` to create a Zymbit Image (zi) backup of your current running system. Once created, the zi image can be propagated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../features/signing).
 
 
 In this guide, we will output the image directly to a USB stick. Mount the USB stick for access,
@@ -194,9 +194,9 @@ my_image_private_key.pem  my_image_pub_key.pem  my_image.zi
 Additional examples of `zbcli imager` usage can be found here: [zbcli imager usage](../zbcli/imager)
 
 
-### 3. Run `zbcli update-config` to configure the Partitioning and Image loading
+### 4. Run `zbcli update-config` to configure the Partitioning and Image loading
 
-For this quickstart, we will use a known-good zi image. We've converted the pre-installed base image on the SCM to the zi format. 
+For this quickstart, we will use a known good zi image. We've converted the pre-installed base image on the SCM to the zi format. 
 We will configure the zi image to be accessed remotely via HTTPS.
 
 If you wish to run from a local source such as a USB stick, our example images can be downloaded from the links that follow. You can also use the zi image you created in the previous step.
@@ -224,9 +224,9 @@ curl https:///bootware.s3.amazonaws.com/pub_key_1.1.pem --output pub_key_1.2.pem
 
 #### Use the Bootware `zbcli update-config` to Configure your System
 
-Bootware includes a tool to help configure your system called `zbcli update-config`. `zbcli update-config` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zbcli update-config` can be found [here](../zbcli/update-config). Navigate through the menus with up and down arrows. Use ENTER to make a choice. Each Configure option will display the choice options with explanations.
+Bootware includes a tool to help configure your system called `zbcli update-config`. `zbcli update-config` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zbcli update-config` can be found [here](../zbcli/update-config). Navigate through the menus with up and down arrows. Use ENTER to make a choice. Each Configure option will display the available options with explanations.
 
-We are going to configure with A/B partitioning to have a stable backup partition for fallback. To start `zbcli update-config`,
+We are going to configure with A/B partitioning and UPDATE the BACKUP, leaving the A partition as the stable partition for fallback.
 
 ```
 $ sudo zbcli update-config
@@ -255,17 +255,17 @@ Choose your settings as described below.
 
 For bookworm,
 ```
-https:///bootware.s3.amazonaws.com/zymbit_bookworm64_1.1
+https:///bootware.s3.amazonaws.com/zymbit_bookworm64_1.2
 ```
 
 For bullseye,
 ```
-https:///bootware.s3.amazonaws.com/zymbit_bullseye64_1.1
+https:///bootware.s3.amazonaws.com/zymbit_bullseye64_1.2
 ```
 
 For ubuntu,
 ```
-https:///bootware.s3.amazonaws.com/zymbit_ubuntu64_22.04_1.1
+https:///bootware.s3.amazonaws.com/zymbit_ubuntu64_22.04_1.2
 ```
 
 If you opted to download one of the zi images to a local device, enter the device endpoint name instead.
@@ -281,43 +281,48 @@ If you opted to download one of the zi images to a local device, enter the devic
 **Save** and **exit** to save and exit `zbcli update-config`. You also have the choice to **Revert to default configuration**. This choice will reset your update configs to the default settings.
 
 
-##### TODO FROM HERE DOWN
 
+### 5. Run `zbcli update` to create the Backup partition and load the zi image.
 
-### 4. Run `zb-update` to create the Backup partition and load the zi image.
-
-Once you have completed using the Wizard to configure your Bootware, run `zb-update` to complete the process of repartitioning and loading your image.
+Once you have completed using the Wizard to configure your Bootware, run `zbcli update` to complete the process of repartitioning and loading your image.
 
 ```
-sudo zb-update
+$ sudo zbcli update
+   Validated bootware installation
+        ---------
+        Pi Module         Raspberry Pi 4
+        Operating System  Rpi-Bookworm
+        Zymbit module     Secure Compute Module
+        Kernel            kernel8.img
+        ---------
+     Cleaned '/etc/zymbit/zboot/update_artifacts/tmp'
+       Found update configs
+? Proceed with current configs? These can be modified through 'sudo zbcli update-config'
+        ---------
+        Update endpoint   https:///bootware.s3.amazonaws.com/zymbit_bookworm64_1.2
+        Update name       zymbit_bookworm64_1.2
+        Endpoint type     HTTPS
+        Partition layout  A/B
+        Update policy     UPDATE_BACKUP
+        ---------
+ (y/n) › yes
 ```
 
-The script will show your configuration for review and confirmation and give you the option to change the configuration. 
+The script will show your configuration for review and confirmation and give you the option to change the configuration. If not correct, enter `no` to exit and re-run `zbcli update-config` to correct the configuration. If the configuration is not valid, `zbcli update` will exit.
 
-| Parameter | Setting | Notes |
-| ------ | ------ | ------ |
-| update_endpoint | https://bootware.s3.amazonaws.com/zymbit_bullseye64_1.1 | or the endpoint for bookworm or ubuntu from above|
-| endpoint_type | HTTPS | if you are using a local endpoint, adjust, e.g. /dev/sda1 |
-| one_root_fs | false | We are using A/B: two root partitions |
-| update_mode | UPDATE_BACKUP | We are only going to load the image onto the BACKUP partition |
-| resize_a | false | We are not going to make one big A partition. We are making an A and B |
+Next, you need to enter the path to your Public Key file (in PEM format). If using one of our example images, this would be the Public key you downloaded earlier. 
 
-Hit return or Y to start the download process.
+```
+✔ Enter public key file (Pem format) · ./pub_key_1.2.pem
+```
 
-Once completed, `zb-update` will ask you to confirm the name of the image, and the verification public key information. For this example, that will be the software-based public key PEM file downloaded earlier.
-
-| Parameter | Setting | Notes |
-| ------ | ------ | ------ |
-| Use software-based keys for verifying | Y | Use software keys |
-| Existing key path? | pub_key_1.1.pem | Adjust if not downloaded to your local directory |
-
-The script will prompt for a reboot to complete the process. 
+If verification with the Public Key succeeds, `zbcli update` will continue with progress information, then prompt for a reboot to complete the process. 
 
 #### zboot Boot Process
 
 The Bootware boot process will now take place. zboot will boot your system. Upon reboot, an encrypted B partition will be created and the zi image will be loaded onto B. The A partition will remain untouched.
 
-{{< callout warning >}}The initial configuration process can take up to an hour to complete, depending on the size of the image. The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
+{{< callout warning >}}The initial configuration process can take up to an hour to complete depending on the size of the image. The process can be completed via ssh, but an HDMI console is helpful to follow the progress. During the process, the blue LED will be OFF.{{< /callout >}}
 
 On the console, you will see:
 
