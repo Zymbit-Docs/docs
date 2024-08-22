@@ -2,7 +2,7 @@
 title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2024-06-05
+lastmod: 2024-08-22
 draft: false
 images: []
 weight: 8
@@ -15,6 +15,15 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 ### Recent Activity
 <br>
 
+#### August 2024
+-----
+
+Bootware 1.2 Release:
+- Add support for Pi 5B
+- Adds all new rust-based user interface
+- Adds support for HSM4 and HSM6
+- uboot updated to linux 6.6 kernel
+- Bug fixes. See [Bootware](./bootware) for details.
 
 #### June 2024
 -----

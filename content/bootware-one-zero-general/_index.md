@@ -3,8 +3,8 @@ title: "Bootware 1.1 General"
 linkTitle: "Bootware 1.1 General"
 icon: ""
 description: ""
-aliases:
-    - /bootware/
+# aliases:
+#    - /bootware/
 date: "2024-07-23"
 lastmod: ""
 draft: false
