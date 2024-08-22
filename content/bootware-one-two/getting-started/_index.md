@@ -89,12 +89,8 @@ $ sudo zbcli imager
 ✔ Enter image name · my_image
 ```
 
-| Item | Description |
-| ----- | ----- |
-| Image Type?   | Choose 1. for a Full Image |
-| Name of Image?: | Any name. Ex. `myImage`. Name of the converted output file. A zi extension will be added to the name. |
-| Version?: 1.1                                 | Optional. An arbitrary version number for your reference. |
-
+-----------------
+-----------------
 
 Next, you will be prompted for Signing Keys. Keys can be Software or Hardware based. You can use an existing key or the script will create keys for you. For this Quickstart, we will assume you need to generate Software keys,
 
