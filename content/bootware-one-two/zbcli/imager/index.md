@@ -2,9 +2,7 @@
 title: "imager - Generates zi images"
 linkTitle: "imager"
 lastmod:
-#aliases:
-#    - /zboot-preview/
-date: "2024-08-14"
+date: "2024-08-22"
 draft: false
 images: []
 type: docs
@@ -74,7 +72,7 @@ The script will prompt for information.
 Checking for zymbit scm...
 Image type?
    1. Full image of this live system
-   2. Overlay image from files added with zb-manifest
+   2. Overlay image from files added with zbcli manifest
 : 1
 Image Name?: myFullImage
 Version? [OPTIONAL]: 1.1
@@ -134,7 +132,7 @@ The script will prompt for information:
 Checking for zymbit scm...
 Image type?
    1. Full image of this live system
-   2. Overlay image from files added with zb-manifest
+   2. Overlay image from files added with zbcli manifest
 : 1
 Image Name?: myImage
 Version? [OPTIONAL]: 1.1

@@ -101,7 +101,7 @@ Next, you will be prompted for what type of image to make: A full image of the l
 ```
 ? Select image type ›
 ❯ Full image of live system
-  Overlay image from files added with zb-manifest
+  Overlay image from files added with zbcli manifest
 ```
 
 You can Optionally provide an image version. This is for your use in helping to identify the image later. It is not used in the process. 
