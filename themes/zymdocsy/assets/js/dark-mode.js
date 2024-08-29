@@ -7,9 +7,7 @@ const prefersDark = localStorage.getItem('darkMode') != null
         : window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 function setSwitchTheme() {
-  console.log("Toggle checked: ", toggle.checked);
-  console.log("Stored dark: ", storedDark);
-    if (toggle.checked || prefersDark) {
+    if (prefersDark !== null && (prefersDark == "true" || prefersDark == true)) {
         setTheme(true);
     } else {
         setTheme(false);
@@ -19,23 +17,22 @@ function setTheme(mode) {
     if (mode) {
       darkTheme.classList.add('dark-mode');
       toggle.setAttribute('checked', true);
-        setTimeout(function () {
-            localStorage.setItem('darkMode', true);
-        }, 100);
-        //
+      setTimeout(function () {
+          localStorage.setItem('darkMode', true);
+      }, 100);
     } else if (!mode) {
       darkTheme.classList.remove('dark-mode');
-      toggle.setAttribute('checked', false);
+      toggle.removeAttribute('checked');
         setTimeout(function () {
             localStorage.setItem('darkMode', false);
         }, 100);
     }
 }
 
-if (prefersDark !== null && prefersDark == 'true') {
-    darkTheme.classList.add('dark-mode');
-     toggle.setAttribute('checked', true);
+if (prefersDark !== null && prefersDark == true) {
+  darkTheme.classList.add('dark-mode');
+  toggle.setAttribute('checked', true);
 } else {
-    darkTheme.classList.remove('dark-mode');
-   toggle.setAttribute('checked', false);
+  darkTheme.classList.remove('dark-mode');
+  toggle.removeAttribute('checked');
 }
