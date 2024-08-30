@@ -14,26 +14,6 @@ toc: true
 
 ZYMKEY4 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi. It connects to the GPIO header of the SBC and uses the {{< term/i2c >}} bus and `GPIO4` as a WAKE_PIN to communicate with the SBC CPU via an encrypted channel.
 
-{{< callout notice >}}
-Raspberry PI OS Bookworm updated the kernel to version 6.6.y in March 2024. The kernel no longer overrides an upstream kernel decision to force the base number of the main GPIO controller to be global GPIO 0. If the WAKE_PIN number is not set, the ZYMKEY will not bind. You will see 5 flashes per second continuously.For RPI4, RPI5, and CM4 platforms, you will need to set the WAKE_PIN in the following manner:
-
-Determine the numbering for GPIO4 by examining /sys/kernel/debug/gpio for the number associated with GPIO4, then set an environment variable in the Zymbit environment variable file:
-
-```bash
-sudo su
-wake_pin=`grep GPIO4 /sys/kernel/debug/gpio | sed -r 's/[^0-9]*([0-9]*).*/\1/'`
-echo "wake_pin=$wake_pin"   # sanity check value is set
-echo "ZK_GPIO_WAKE_PIN=$wake_pin" > /var/lib/zymbit/zkenv.conf
-systemctl restart zkifc
-```
-As of 6.6.20, the numbering is:
-RPI4=516
-RPI5=575
-CM4=516
-
-{{< /callout >}}
-
-
 In this *Getting Started* guide we describe how to install your ZYMKEY4 to a Raspberry Pi running Raspberry PI OS or Ubuntu. The installation process is the same for both of these Linux distributions.
 
 <!-- TODO: Update link -->
@@ -140,7 +120,7 @@ For Raspian-based operating systems, you must configure the state of the {{< ter
 1. Navigate to `Interfacing Options` -> `I2C` -> `Would you like the ARM I2C interface to be enabled?`
 1. Select yes, and confirm this choice.
 
-Your {{< term/i2c >}} bus is now configured and ready to talk to the ZYMKEY4. The default {{< term/i2c >}} address for the ZYMKEY4 is `0x30`.
+Your {{< term/i2c >}} bus is now configured and ready to talk to the ZYMKEY4. The default {{< term/i2c >}} address for the ZYMKEY4 is `0x30`. NOTE: The ZYMKEY4 will not show up in the display of tools such as `i2cdetect`. This is by design.
 
 {{< resource_link "troubleshooting/zymkey4/#q-how-do-i-set-an-alternative-i2c-address" >}}
 The default I2C address for ZYMKEY4 is 0x30. If this conflicts with another device in your system, you can reconfigure the ZYMKEY4 to use another address of your choice.
@@ -163,6 +143,8 @@ Login to your host device and follow these steps to install the ZYMKEY4's client
 As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
 
 `arm_64bit=0`
+
+You can check whether your root filesystem is 32-bit or 64-bit with `dpkg --print-architecture`. It will return arm64 for 64-bit filesystems or armhf for 32-bit filesystems.
 
 {{< /callout >}}
 
@@ -192,16 +174,18 @@ When the software installation has completed, reboot your device. After the rebo
 In production mode, ZYMKEY4 generates a unique Device ID by measuring certain attributes of the specific host and the ZYMKEY4 itself to permanently associate the two.
 {{< /resource_link >}}
 
-The quickest way to get started is to see the ZYMKEY4's various features at work by running these test scripts that were installed with the client software:
+The quickest way to get started is to see the ZYMKEY4's various features at work by running some example test scripts.
+
+You can get the example scripts from here:
+
+[Download example files](https://community.zymbit.com/t/installation-missing-files/1331/2?u=bob_of_zymbit)
+
+Run the scripts:
 
 ```bash
 python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py
 python3 /usr/local/share/zymkey/examples/zk_crypto_test.py
 ```
-
-The example scripts are missing in focal and bullseye distributions. You can get the example scripts from here:
-
-[Download example files](https://community.zymbit.com/t/installation-missing-files/1331/2?u=bob_of_zymbit)
 
 Now you're ready to start developing with ZYMKEY4 and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
 

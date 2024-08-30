@@ -19,7 +19,7 @@ headless: false
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds. All of the default Zymbit images (zi) will have a hostname of zymbit-dev and a login of zymbit/zymbit. Change the hostname and login during your development.
+The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. All of the default Zymbit images (zi) will have a hostname of zymbit-dev and a login of zymbit/zymbit. Change the hostname and login during your development.
 
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
@@ -39,7 +39,7 @@ See the [Features](../features) section for more information on how to use Bootw
 
 ### 1. Download Bootware
 
-Download the Bootware 1.2 executable. The Bootware executable can be downloaded with curl:
+Download the Bootware 1.2 executable. A boostrap utility to get the Bootware executable can be downloaded with curl:
 
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
