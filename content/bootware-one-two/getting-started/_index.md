@@ -10,6 +10,7 @@ type: docs
 images: []
 weight: 20
 headless: false
+ShowCodeCopyButtons: True
 
 ---
 
