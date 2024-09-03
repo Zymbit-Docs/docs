@@ -10,7 +10,6 @@ type: docs
 images: []
 weight: 20
 headless: false
-ShowCodeCopyButtons: True
 
 ---
 
@@ -42,7 +41,7 @@ See the [Features](../features) section for more information on how to use Bootw
 
 Download the Bootware 1.2 executable. A boostrap utility to get the Bootware executable can be downloaded with curl:
 
-```
+```bash
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
 ```
 
@@ -74,7 +73,7 @@ Use `zbcli imager` to create a Zymbit Image (zi) backup of your current running 
 
 In this guide, we will output the image directly to a USB stick. Mount the USB stick for access,
 
-```
+```bash
 sudo mount /dev/sda1 /mnt
 ```
 
@@ -83,8 +82,11 @@ Start the imager module of zbcli. We will run interactively. You can also run no
 
 All necessary information will be prompted for starting with the output directory and the name of the image file. The output directory will be excluded from the image. A zi extension will be added to the image name provided.
 
-```
+```bash
 $ sudo zbcli imager
+```
+
+```
    Validated bootware installation
         ---------
         Pi Module         Raspberry Pi 4
@@ -109,8 +111,11 @@ You can Optionally provide an image version. This is for your use in helping to 
 
 Next, you will be prompted for Signing Keys. Keys can be Software or Hardware based. Software keys are supported on all products. Hardware keys are supported with Secure Compute Module (SCM) or HSM6 products. You can use an existing key or the script will create keys for you. For this Quickstart, we will use a Software key and generate a new Software key. Select `Create new software key slot`
 
-```
+```bash
 $ sudo zbcli imager
+```
+
+```
    Validated bootware installation
         ---------
         Pi Module         Raspberry Pi 4
@@ -130,8 +135,11 @@ $ sudo zbcli imager
 
 The `zbcli imager` script will now build your zi image. Progress will be shown on the screen.
 
-```
+```bash
 $ sudo zbcli imager
+```
+
+```
    Validated bootware installation
         ---------
         Pi Module         Raspberry Pi 4
@@ -203,23 +211,23 @@ We will configure the zi image to be accessed remotely via HTTPS.
 If you wish to run from a local source such as a USB stick, our example images can be downloaded from the links that follow. You can also use the zi image you created in the previous step.
 
 For bookworm,
-```
+```bash
 curl https:///bootware.s3.amazonaws.com/zymbit_bookworm64_1.2.zi --output zymbit_bookworm64_1.2.zi
 ```
 
 For bullseye,
-```
+```bash
 curl https:///bootware.s3.amazonaws.com/zymbit_bullseye64_1.2.zi --output zymbit_bullseye64_1.2.zi
 ```
 
 For ubuntu,
-```
+```bash
 curl https:///bootware.s3.amazonaws.com/zymbit_ubuntu64_22.04_1.2.zi --output zymbit_ubuntu64_22.04_1.2.zi
 ```
 
 You will need the corresponding public key in order to verify the downloaded image. The public key in PEM format for the example images can be downloaded here:
 
-```
+```bash
 curl https:///bootware.s3.amazonaws.com/pub_key_1.1.pem --output pub_key_1.2.pem
 ```
 
@@ -229,8 +237,11 @@ Bootware includes a tool to help configure your system called `zbcli update-conf
 
 We are going to configure with A/B partitioning and UPDATE the BACKUP, leaving the A partition as the stable partition for fallback.
 
-```
+```bash
 $ sudo zbcli update-config
+```
+
+```
    Validated bootware installation
         ---------
         Pi Module         Raspberry Pi 4
@@ -252,26 +263,26 @@ Choose your settings as described below.
 
 **Configure update policy** – The update policy defines if image updates are applied to the Backup, Active, or Both partitions. Choose the [RECOMMENDED] BACKUP:** This way you know you have a good Active partition for fallback.
 
-**Configure update endpoint** – The configured endpoint with  image. The endpoint can be either an HTTPS URL or a local external mass storage device like a USB stick or nVME drive. We are going to use the URL of our known good example image:
+**Configure update endpoint** – The configured endpoint with image. The endpoint can be either an HTTPS URL or a local external mass storage device like a USB stick or nVME drive. We are going to use the URL of our known good example image:
 
 For bookworm,
-```
-https:///bootware.s3.amazonaws.com/zymbit_bookworm64_1.2
+```bash
+https:///bootware.s3.amazonaws.com/1.2/zymbit_bookworm64_1.2
 ```
 
 For bullseye,
-```
-https:///bootware.s3.amazonaws.com/zymbit_bullseye64_1.2
+```bash
+https:///bootware.s3.amazonaws.com/1.2/zymbit_bullseye64_1.2
 ```
 
 For ubuntu,
-```
-https:///bootware.s3.amazonaws.com/zymbit_ubuntu64_22.04_1.2
+```bash
+https:///bootware.s3.amazonaws.com/1.2/zymbit_ubuntu64_22.04_1.2
 ```
 
 If you opted to download one of the zi images to a local device, enter the device endpoint name instead.
 
-```
+```bash
 /dev/sda1
 ```
 
@@ -287,8 +298,11 @@ If you opted to download one of the zi images to a local device, enter the devic
 
 Once you have completed using the Wizard to configure your Bootware, run `zbcli update` to complete the process of repartitioning and loading your image.
 
-```
+```bash
 $ sudo zbcli update
+```
+
+```
    Validated bootware installation
         ---------
         Pi Module         Raspberry Pi 4
@@ -337,7 +351,7 @@ On the console, you will see:
 
 To verify you now have your A partition intact, force a failover from Active to Backup with `zbcli rollback-swap`
 
-```
+```bash
 sudo zbcli rollback-swap
 ```
 
