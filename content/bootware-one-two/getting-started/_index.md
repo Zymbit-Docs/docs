@@ -47,7 +47,7 @@ Download the Bootware 1.2 executable. A boostrap utility to get the Bootware exe
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
 ```
 
-The install will identify your PI and OS and then prompt you for `zbcli` whether you'd like to include a binary that supports hardware signing. All Zymbit products support software signing. Only the SCM and the HSM6 support hardware signing. For the purpose of this tutorial, we will software signing. Use the arrow keys to move the selection to `> No`.
+The install will identify your PI and OS and then prompt you for `zbcli` whether you'd like to include a binary that supports hardware signing. All Zymbit products support software signing. Only the SCM and the HSM6 support hardware signing. For the purpose of this tutorial, we usewill software signing. Use the arrow keys to move the selection to `> No`.
 
 ```
 zb-install.sh: bootstrapping the zbcli installer
@@ -165,9 +165,9 @@ Next, you will be prompted for what type of image to make: A full image of the l
   Overlay image from files added with zbcli manifest
 ```
 
-You can Optionally provide an image version. This is for your use in helping to identify the image later. It is not used in the process. 
+You can optionally provide an image version. This is for your use in helping to identify the image later. It is not used in the process. 
 
-Next, you will be prompted for Signing Keys. Keys can be Software or Hardware based. Software keys are supported on all Zymbit products. Hardware keys are supported with Secure Compute Module (SCM) or HSM6 products. Had we chosen earlier to include hardware key support, we would be asked to choose either hardware or software key support. We chose earlier to not include hardware key support. You can use an existing key or the script will create keys for you. For this Quickstart, we will generate a new Software key. Select `Create new software key slot`
+Next, you will be prompted for signing keys. Keys can be Software or Hardware based. Keys are used for signing and verification of images. Software keys are supported on all Zymbit products. Hardware keys are supported with Secure Compute Module (SCM) or HSM6 products. Had we chosen earlier to include hardware key support, we would be asked to choose either hardware or software key support. We chose earlier to not include hardware key support. You can use an existing key or the script will create keys for you. For this Quickstart, we will generate a new Software key. Select `Create new software key slot`
 
 ```
 ? Select key slot ›
@@ -284,7 +284,7 @@ $ sudo zbcli update-config
 
 Choose your settings as described below.
 
-For `Configure partition layout, choose `[RECOMMENDED] A/B:`
+For `Configure partition layout`, choose `[RECOMMENDED] A/B:`
 
 ```
 ❯   [RECOMMENDED] A/B: This will take the remaining disk space available after the boot partition and create two encrypted partitions, each taking up half of the remaining space. Most useful for rollback and recovery with an Active/Backup configuration.
@@ -350,7 +350,7 @@ $ sudo zbcli update
 
 The script will show your configuration for review and confirmation and give you the option to change the configuration. If not correct, enter `no` to exit and re-run `zbcli update-config` to correct the configuration. If the configuration is not valid, `zbcli update` will exit.
 
-Next, you need to enter the path to your Public Key file (in PEM format). If using one of our example images, this would be the Public key you downloaded earlier. 
+Next, you need to enter the path to your Public Key file (in PEM format). For this example, we will use the public key file we copied locally earlier.
 
 ```
 ✔ Enter public key file (Pem format) · ./my_image_pub_key.pem
@@ -358,7 +358,7 @@ Next, you need to enter the path to your Public Key file (in PEM format). If usi
 
 If verification with the Public Key succeeds, `zbcli update` will continue with progress information, then prompt for a reboot to complete the process. 
 
-#### zboot Boot Process
+#### Bootware Boot Process
 
 The Bootware boot process will now take place. zboot will boot your system. Upon reboot, an encrypted B partition will be created and the zi image will be loaded onto B. The A partition will remain untouched.
 
@@ -374,7 +374,7 @@ On the console, you will see:
 
 ### 4. Quickcheck - Force Failover (Change Active/Backup partitions)
 
-To verify you now have your A partition intact, force a failover from Active to Backup with `zbcli rollback-swap` You can use `lsblk` to verify your active partition. If your original partition was less than half the available space and the UPDATE_BACKUP completed, you should be on `cryptrfs_B`. If your original partition was more than half the available space and you were switched to UPDATE_BOTH, both A and B will be re-partitioned and your image loaded into both, and your active partition should be on `cryptrfs_A`. You can now force a rollback from the active partition to the backup partition with `zbcli rollback-swap`.
+To verify you now have two valid partitions, force a failover from Active to Backup with `zbcli rollback-swap`. You can use `lsblk` to verify your active partition. If your original partition was less than half the available space and the UPDATE_BACKUP completed, you should be on `cryptrfs_B`. If your original partition was more than half the available space and you were switched to UPDATE_BOTH, both A and B will be re-partitioned and your image loaded into both. Your active partition should be on `cryptrfs_A`. You can now force a rollback from the active partition to the backup partition with `zbcli rollback-swap`.
 
 ```bash
 sudo zbcli rollback-swap
