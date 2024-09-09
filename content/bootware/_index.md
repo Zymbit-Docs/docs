@@ -1,6 +1,6 @@
 ---
-title: "Bootware 1.2"
-linkTitle: "Bootware 1.2"
+title: "Bootware"
+linkTitle: "Bootware"
 icon: ""
 description: ""
 aliases:
