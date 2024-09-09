@@ -6,7 +6,7 @@ description: ""
 aliases:
     - /bootware/
 date: "2024-08-11"
-lastmod: ""
+lastmod: "2024-09-09"
 draft: false
 weight: 3
 images: []
@@ -17,16 +17,15 @@ toc: True
 
 ### Bootware 1.2: General Platform Release
 
-Bootware™ is a set of software tools and micro services for the Zymbit Security Modules. Bootware 1.2 adds support for the ZYMBIT products for Raspberry Pi5 along with an entirely new User Interface consolidated into one executable.
+Bootware™ is a set of software tools and micro services for the Zymbit Security Modules. Bootware 1.2 adds support for all ZYMBIT products including the HSM6 and HSM4. Bootware™ 1.2 adds platform support for Raspberry Pi5. Bootware™ 1.2 brings in an entirely new User Interface consolidated into one executable.
 
 The following matrix of platforms and Operating Systems support Bootware™:
 
 | Platform | Zymbit Module | OS Support |
 | ----- | ----- | ----- |
-| CM4 | SCM | Bookworm 64-bit (default), Bullseye 64-bit, Ubuntu 22.04 (jammy) |
-| CM4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
-| Pi4 | ZYMKEY4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
-| Pi5 | ZYMKEY4 | Bookworm 64-bit |
+| CM4 | SCM, ZYMKEY4, HSM6, HSM4 | Bookworm 64-bit (default), Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| Pi4 | ZYMKEY4, HSM6, HSM4 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| Pi5 | ZYMKEY4, HSM6, HSM4 | Bookworm 64-bit |
 
 #### Other significant enhancements in Bootware 1.2:
 
@@ -40,7 +39,7 @@ The following matrix of platforms and Operating Systems support Bootware™:
 
 **Enhancement** - More efficient handling of zi images in memory. Earlier images were limited to the size of the uncompressed image in RAM. Bootware 1.2 can accommodate zi images that are compressed up to the size of RAM.
 
-**Issue #145** - For the ZYMKEY4, the GPIO WAKE PIN is now set properly upon an OS image change.
+**Issue #145** - For the I2C-based products (ZYMKEY4, HSM6, HSM4), the GPIO WAKE PIN is now set properly upon an OS image change.
 
 **Issue #153** - New zi image loads of users other than the default user zymbit set permissions of /var/lib/zymbit files correctly.
 
