@@ -36,7 +36,7 @@ See the [Features](../features) section for more information on how to use Bootw
 2. Run `zbcli install` to install the Bootware tools and artifacts
 3. Run `zbcli imager` to create and sign a Zymbit image file (zi image) of your current root file system as a backup. 
 4. Run `zbcli update-config` to configure Partitions and Recovery strategy. For this Quickstart, we will setup A/B partitions.
-5. Run `zbcli update` to load a known good example zi image into the Backup (B) partition; set B to as the Active partition.
+5. Run `zbcli update` to load a known good example zi image into the Backup (B) partition; set B to the Active partition.
 6. Run `zbcli rollback-swap` to force a Rollback to your original partition to verify your A/B setup is working.
 
 ### 1. Download Bootware
