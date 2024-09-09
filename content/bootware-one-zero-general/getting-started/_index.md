@@ -2,8 +2,8 @@
 title: "Getting Started"
 linkTitle: "Getting Started"
 lastmod:
-#aliases:
-#    - /zboot-preview/
+aliases:
+    - /bootware/getting-started/
 date: "2024-06-19"
 draft: false
 type: docs
