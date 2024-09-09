@@ -14,7 +14,7 @@ headless: false
 -----
 zbcli is a standalone binary executable for carrying out all necessary Bootware installation and configuration tasks.
 
-#### Usage: zbcli \<COMMAND\>
+#### Usage: zbcli \<Command\>
 
 #### Options:
 
