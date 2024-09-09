@@ -62,34 +62,68 @@ Options:
 
 #### Example to create a zi image from your current running root file system
 
+This is an example of how you can create a snapshot image of your running system. You can perform your development and configuration on one system, and once you are satisfied your system is working correctly, create an image to use for backup purposes and for propogation to other units.
+
+First, mount a USB stick or some other external device to store the image.
+
+```
+$ sudo mount /dev/sda1 /mnt
+```
+
+Run the imager. Options can be provided on the command line to run without prompting. 
+
 ```
 sudo zbcli imager
 ```
 
-The script will prompt for information.
+The script will prompt for information. We will use the mount point of our USB stick, `/mnt`. Provide the mount point, a name for your image (without a zi extension, it will be added automatically), and choose `Full image of live system`.
 
 ```
-Checking for zymbit scm...
-Image type?
-   1. Full image of this live system
-   2. Overlay image from files added with zbcli manifest
-: 1
-Image Name?: myFullImage
-Version? [OPTIONAL]: 1.1
-Note:Software/Hardware keys are not interchangeable. Stick with one method.
-Use software-based keys for Signing?
-(No for hardware-based keys) (Y/n):
-Y
-Key?
-   1. Create new software key files
-   2. Use a pre-existing software key files
-: 2
-Existing private key file? (Pem format): private_key.pem
-Setting up environment...
-Copying boot from live system...
+$ sudo zbcli imager
+   Validated bootware installation
+        ---------
+        Pi Module:         Raspberry Pi 4
+        Operating System:  Rpi-Bookworm
+        Zymbit module:     Zymkey
+        Kernel:            kernel8.img
+        ---------
+     Cleaned '/etc/zymbit/zboot/update_artifacts/tmp'
+✔ Enter output directory · /mnt
+✔ Enter image name · myFullImage
+? Select image type ›
+❯ Full image of live system
+  Overlay image from files added with zb-manifest
 ```
 
-#### Example to create a zi image from a binary image created with dd (created from dd if=/dev/sda bs=4M of=my.img):
+The script will ask for an optional image version. This is entirely for your use. It is not used by Bootware.
+
+Next, the script will ask for a private key with which to sign the image. If you are using an SCM or an HSM6, hardware signing by a key from the SCM or HSM is available. Software signing is also available for all products. You can choose to create a new key, or use an existing key. Pre-existing software keys will require a key file in PEM format. Pre-existing hardware keys will require providing information as to which slot on the SCM or HSM6 that contains the key. Below, we selected to use a software key, and create a new software key.
+
+The image creation now has all required information and begins.
+
+```
+✔ Enter output directory · /mnt
+✔ Enter image name · myFullImage
+✔ Select image type · Full image of live system
+✔ (Optional) enter image version ·
+✔ Select key · Create new software key
+     Created signing key
+     Created '/etc/zymbit/zboot/update_artifacts/file_manifest'
+     Created '/etc/zymbit/zboot/update_artifacts/file_deletions'
+    Verified path unmounted '/etc/zymbit/zboot/mnt'
+     Cleaned '/etc/zymbit/zboot/mnt'
+    Verified disk size (required: 2.57 GiB, free: 11.01 GiB)
+      Copied file (/boot/firmware/zboot_bkup/kernel8.img.A) to (/boot/firmware/kernel8.img)
+     Created initramfs
+     Created snapshot of boot (/etc/zymbit/zboot/update_artifacts/tmp/.tmpQxuGnU/myFullImage_boot.tar)
+     Running [=======>                                ] 2/11 (00:16:36): taking snapshot of root        
+```
+
+The image creation time is dependent on the size of the boot and root filesystems. When completed, `/mnt` will contain your zi image, and if you chose to create a new software key, a private key file and a public key file. You can now distribute the zi image file and the public key for verification to load the zi image file on additional units.
+
+#### Example to create a zi image from a binary image .
+
+You can also make a zi image directly from a previously created image file, created with `dd` or some other imaging utility. This may be a preferred method if tied into a CI/CD procedure used to generate complete image files. This process assumes your image contains two partitions corresponding to a boot and root file system.
 
 You will need the path to the image file.
 
