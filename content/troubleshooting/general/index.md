@@ -143,7 +143,7 @@ See [Power Quality]( https://docs.zymbit.com/reference/power-quality/) for more 
 
 <br>
 
-![supported OSs](../supported-os-dots.png)
+![supported OSs](../../supported-os-dots.png)
 
 -----
 
