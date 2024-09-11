@@ -21,8 +21,6 @@ In this Getting Started guide we describe how to bring up a common use case for 
 
 The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). There is no need to setup encryption of your root filesystem as Bootware will do this for you. 
 
-All of the default Zymbit images (zi) will have a hostname of zymbit-dev and a login of zymbit/zymbit. Change the hostname and login during your development.
-
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
 Bootware 1.2 includes a new, consolidated User Interface. The process of installation and configuration has changed since 1.1.
