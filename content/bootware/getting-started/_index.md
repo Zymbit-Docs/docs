@@ -45,7 +45,7 @@ Download the Bootware 1.2 executable. A boostrap utility to get the Bootware exe
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
 ```
 
-The install will identify your PI and OS and then prompt you for `zbcli` whether you'd like to include a binary that supports hardware signing. All Zymbit products support software signing. Only the SCM and the HSM6 support hardware signing. For the purpose of this tutorial, we usewill software signing. Use the arrow keys to move the selection to `> No`.
+The install will identify your PI and OS and then prompt you for `zbcli` whether you'd like to include a binary that supports hardware signing. All Zymbit products support software signing. Only the SCM and the HSM6 support hardware signing. For the purpose of this tutorial, we will use software signing. Use the arrow keys to move the selection to `> No`.
 
 ```
 zb-install.sh: bootstrapping the zbcli installer
