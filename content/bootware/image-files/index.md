@@ -1,7 +1,8 @@
 ---
 title: "Image Files"
 linkTitle: "Image Files" 
-lastmod: "2024-08-29"
+description: "Links to pre-prepared download image files and keys"
+lastmod: "2024-09-16"
 draft: false
 images: []
 weight: 70

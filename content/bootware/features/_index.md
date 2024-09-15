@@ -1,10 +1,9 @@
 ---
 title: Features and Implementation
 linkTitle: "Features"
-lastmod:
-#aliases:
-#    - /zboot-preview/
+description: "Additional information on Bootware features and implementation"
 date: "2024-04-17"
+lastmod: "2024-09-16"
 draft: false
 type: docs
 images: []

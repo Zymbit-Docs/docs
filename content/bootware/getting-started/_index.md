@@ -1,10 +1,11 @@
 ---
 title: "Getting Started: Bootware 1.2"
 linkTitle: "Getting Started"
-lastmod: "2024-09-08"
+description: Getting Started tutorial to get Bootware up and running
+date: "2024-08-21"
+lastmod: "2024-09-16"
 aliases:
     - /bootware/getting-started/
-date: "2024-08-21"
 draft: false
 type: docs
 images: []
