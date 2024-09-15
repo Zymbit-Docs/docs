@@ -124,7 +124,7 @@ The image creation time is dependent on the size of the boot and root filesystem
 
 #### Example to create a zi image from a binary image .
 
-You can also make a zi image directly from a previously created image file, created with `dd` or some other imaging utility. This may be a preferred method if tied into a CI/CD procedure used to generate complete image files. This process assumes your image contains two partitions corresponding to a boot and root file system.
+You can also make a zi image directly from a previously created image file, created with `dd` or some other imaging utility. This may be a preferred method if tied into a CI/CD procedure used to generate complete image files. This process assumes your image contains two partitions corresponding to a boot and root file system. `zbcli imager` will assume the boot partition is partition 1 and the root partition is partition 2.
 
 You will need the path to the image file.
 
@@ -138,8 +138,6 @@ The script will prompt for information:
 Checking for zymbit scm...
 Image Name?: bullseye
 Version? [OPTIONAL]: 1.1
-Boot File System Partition Number? (EX: 1): 1
-Root File System Partition Number? (EX: 2): 2
 Note:Software/Hardware keys are not interchangeable. Stick with one method.
 Use software-based keys for Signing?
 (No for hardware-based keys) (Y/n):
@@ -153,9 +151,9 @@ Setting up environment...
 Copying boot files from binary image...
 ```
 
-#### Example to convert boot/root tarballs (created from: tar cvf my_boot.tar <boot_part>;  tar cvf my_rfs.tar <root_part>)
+#### Example to convert boot/root tarballs
 
-You will need to provide the names and paths to your tarballs. Run the script:
+A zi image can be created by providing two tarballs - one of your boot filesystem and one of your root filesystem. You will need to provide the names and paths to your tarballs. Run the script:
 
 ```
 sudo zbcli imager --boot-tarball ./boot.tar --root-tarball ./root.tar
@@ -165,10 +163,6 @@ The script will prompt for information:
 
 ```
 Checking for zymbit scm...
-Image type?
-   1. Full image of this live system
-   2. Overlay image from files added with zbcli manifest
-: 1
 Image Name?: myImage
 Version? [OPTIONAL]: 1.1
 Note:Software/Hardware keys are not interchangeable. Stick with one method.
@@ -190,6 +184,8 @@ Creating Zymbit Image...
 ```
 
 `zbcli imager` will also need a private key. It can generate one for you if you do not have one. The key can either be software-based or Zymbit HSM-based. See [Signing/Verifying Images](../../features/signing) for more information.
+
+All necessary parameters for each type of image creation can be provided on the command line to prevent the need for interactive input.
 
 ### Output
 
