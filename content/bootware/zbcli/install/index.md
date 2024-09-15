@@ -1,8 +1,9 @@
 ---
-title: "install - Installs Bootware tools"
+title: "zbcli install"
 linkTitle: "install"
-lastmod:
+description: Installs the Bootware tools and artifacts
 date: "2024-08-14"
+lastmod: "2024-09-16"
 draft: false
 images: []
 type: docs

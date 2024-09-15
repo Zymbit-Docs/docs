@@ -1,8 +1,9 @@
 ---
-title: "imager - Generates zi images"
+title: "zbcli imager"
 linkTitle: "imager"
-lastmod:
+description: Generates signed zymbit images (zi) 
 date: "2024-08-22"
+lastmod: "2024-09-16"
 draft: false
 images: []
 type: docs

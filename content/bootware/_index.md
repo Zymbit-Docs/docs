@@ -32,6 +32,3 @@ Bootware is a set of tools providing robust management of secure boot, encrypted
 
 ### Bootware 1.2 
 
------
-
-

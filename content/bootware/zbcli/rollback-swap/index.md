@@ -1,8 +1,9 @@
 ---
-title: "rollback-swap - Performs rollback swap between active and backup root partitions"
+title: "zbcli rollback-swap"
 linkTitle: "rollback-swap"
-lastmod:
+description: "Performs rollback swap between active and backup root partitions"
 date: "2024-08-14"
+lastmod: "2024-09-16"
 draft: false
 images: []
 type: docs

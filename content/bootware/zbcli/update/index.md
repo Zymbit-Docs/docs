@@ -1,8 +1,9 @@
 ---
-title: "update - Schedules device to perform OTA update on the next reboot"
+title: "zbcli update"
 linkTitle: "update"
-lastmod:
+description: "Schedules device to perform OTA update on the next reboot"
 date: "2024-08-14"
+lastmod: "2024-09-16"
 draft: false
 images: []
 type: docs

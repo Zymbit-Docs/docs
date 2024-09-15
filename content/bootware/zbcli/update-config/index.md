@@ -1,10 +1,9 @@
 ---
-title: "update-config - Sets configs for installing updates"
+title: "zbcli update-config"
 linkTitle: "update-config"
-lastmod:
-#aliases:
-#    - /zboot-preview/
+description: "update-config - Sets configs for installing updates"
 date: "2024-08-14"
+lastmod: "2024-09-16"
 draft: false
 images: []
 type: docs
