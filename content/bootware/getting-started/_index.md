@@ -16,11 +16,11 @@ headless: false
 
 -----
 
-## Quickstart - Download and Install Bootware Software
+## Quickstart - Download and Install Bootware
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). There is no need to setup encryption of your root filesystem as Bootware will do this for you. 
+The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSM's, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). There is no need to setup encryption of your root filesystem as Bootware will do this for you. 
 
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
@@ -46,7 +46,7 @@ Download the Bootware 1.2 executable. A boostrap utility to get the Bootware exe
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
 ```
 
-The install will identify your PI and OS and then prompt you for `zbcli` whether you'd like to include a binary that supports hardware signing. All Zymbit products support software signing. Only the SCM and the HSM6 support hardware signing. For the purpose of this tutorial, we will use software signing. Use the arrow keys to move the selection to `> No`.
+The install will identify your Pi and OS and then prompt you for `zbcli` whether you'd like to include a binary that supports hardware signing. All Zymbit products support software signing. Only the SCM and the HSM6 support hardware signing. For the purpose of this tutorial, we will use software signing. Use the arrow keys to move the selection to `> No`.
 
 ```
 zb-install.sh: bootstrapping the zbcli installer
@@ -140,7 +140,7 @@ Start the imager module of zbcli. We will run interactively. You can also run no
 All necessary information will be prompted for starting with the output directory and the name of the image file. The output directory will be excluded from the image. A zi extension will be added to the image name provided.
 
 ```bash
-$ sudo zbcli imager
+sudo zbcli imager
 ```
 
 ```
@@ -262,7 +262,7 @@ Bootware includes a tool to help configure your system called `zbcli update-conf
 We are going to configure with A/B partitioning and UPDATE the BACKUP, leaving the A partition as the stable partition for fallback, setting the update option to BACKUP. Note: The A and B partitions will roughly split the disk space available. If your current partition size exceeds more than half the space, the update mode will be switched to UPDATE_BOTH, and your zi image will be loaded into both the A and B partition. You will be given notification that your UPDATE mode has switched from UPDATE_BACKUP to UPDATE_BOTH.
 
 ```bash
-$ sudo zbcli update-config
+sudo zbcli update-config
 ```
 
 ```
@@ -323,7 +323,7 @@ For `Configure update endpoint`, choose you USB stick that holds your zi file. T
 Once you have completed using the Wizard to configure your Bootware, run `zbcli update` to complete the process of repartitioning and loading your image.
 
 ```bash
-$ sudo zbcli update
+sudo zbcli update
 ```
 
 ```

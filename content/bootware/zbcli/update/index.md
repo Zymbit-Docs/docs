@@ -114,11 +114,29 @@ The Bootware Update process will now take place.
 
 On the console, you will see:
 
-* “Loading: Encrypted zboot please wait…” message, which takes around 4-5min.
-* The A/B partitions and the DATA partition will be configured and setup for LUKS encryption protected by the Zymbit SCM or HSM
-* Bootware will verify the zi image with your provided software or hardware key.
+* Bootware will load and decrypt the Zymbit hardened uboot and zboot. A message that an update will take place will be displayed.
+* The A/B partitions and the DATA partition will be configured and setup for LUKS encryption protected by the Zymbit SCM or HSM. NOTE: This process will use fdisk to repartition. fdisk will present warnings that the disk is in use, which can be ignored.
 * It will take some time to unpack the image into the A/B root partitions depending on the size of the image.
-* Once it's done unpacking the image to the A and B partitions, it will boot into the updated ACTIVE partition. You can use `lsblk` to examine the partitions.
+* Once it's done unpacking the image to the A and B partitions, it will boot into the updated ACTIVE partition. You can use `lsblk` to examine the partitions. For instance, 
+
+```bash
+lsblk
+```
+
+```
+NAME              MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINTS
+mmcblk0           179:0    0 29.7G  0 disk
+├─mmcblk0p1       179:1    0  512M  0 part  /boot/firmware
+├─mmcblk0p2       179:2    0 14.4G  0 part
+│ └─cryptrfs_A    254:0    0 14.3G  0 crypt /          
+├─mmcblk0p3       179:3    0 14.4G  0 part
+└─mmcblk0p4       179:4    0  512M  0 part
+  └─cryptrfs_DATA 254:1    0  496M  0 crypt
+```
+
+where mmcblk0p2 is partition A, mmcblk0p3 is partition B, and mmcblk0p4 is the shared data partition.
+
+If the ACTIVE partition is partition A, you will see cryptrfs_A (encrypted partition A) mounted at /. If the ACTIVE partition is partition B, you will see cryptrfs_B mounted at /.
 
 #### Options to run non-interactively
 
