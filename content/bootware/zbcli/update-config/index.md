@@ -21,7 +21,7 @@ toc: true
 
 Requires superuser privilege.
 
-Bootware includes a tool to help configure your system called `zbcli update-config`. `zbcli update-config` is meant to setup your device environment for pulling down updates from a configured endpoint and the update policies for how to apply those updates prior to running `zbcli update`.  To start the `zbcli update-config`,
+Bootware includes a tool to help configure your system called `zbcli update-config`. `zbcli update-config` is meant to setup your device environment for pulling down updates from a configured endpoint and specify the update policies for how to apply those updates. The tool can be run interactively or non-interactively by specifying options on its command line.
 
 ### Usage:
 ```
