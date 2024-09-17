@@ -24,9 +24,9 @@ The default SCM/SEN as shipped has Zymbit software pre-installed. For setups usi
 
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
-Bootware 1.2 includes a new, consolidated User Interface. The process of installation and configuration has changed since 1.1.
+Bootware 1.2 includes a new, consolidated user interface. The process of installation and configuration has changed since 1.1.
 
-Details of the commands in this Quickstart are linked in line.
+Details of the commands in this Quickstart are linked in-line.
 See the [Features](../features) section for more information on how to use Bootware.
 
 ### Overview of steps to get up and running
@@ -40,20 +40,20 @@ See the [Features](../features) section for more information on how to use Bootw
 
 ### 1. Download Bootware
 
-Download the Bootware 1.2 executable. A boostrap utility to get the Bootware executable can be downloaded with curl:
+Download the Bootware 1.2 executable. A bootstrap utility to get the Bootware executable can be downloaded with curl:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
 ```
 
-The install will identify your Pi and OS and then prompt you for `zbcli` whether you'd like to include a binary that supports hardware signing. All Zymbit products support software signing. Only the SCM and the HSM6 support hardware signing. For the purpose of this tutorial, we will use software signing. Use the arrow keys to move the selection to `> No`.
+The install will identify your Pi and OS and then prompt you for `zbcli` whether you'd like to include a binary that supports hardware signing. All Zymbit products support software signing, but only the SCM and the HSM6 support hardware signing. For the purpose of this tutorial, we will use software signing. Use the arrow keys to move the selection to `> No`.
 
 ```
 zb-install.sh: bootstrapping the zbcli installer
         ---------
         Pi Module:         Raspberry Pi 4/Compute Module 4
         Operating System:  Rpi-Bookworm
-        Zymbit module:     Zymkey
+        Zymbit module:     Secure Compute Module
         Kernel:            kernel8.img
         ---------
 
@@ -62,7 +62,7 @@ zb-install.sh: bootstrapping the zbcli installer
 ❯ No
 ```
 
-Next, you will be asked to select a version of the `zbcli` from a list of recent versions to install. In most cases, you will want to select the latest version. Use the up and down arrows to select the version. You can use ctrl-c to exit at any time.
+Next, you will be asked to select a version of the `zbcli` from a list of recent versions to install. In most cases, you will want to select the latest version. Use the up and down arrows to select the version. You can use Ctrl-C to exit at any time.
 
 ```
 ? Select version ›
@@ -81,19 +81,17 @@ zb-install.sh: cleaning up
 
 ### 2. Run `zbcli install`
 
-Install, Bootware. Answer `yes` when prompted to complete the installation.
+Install Bootware. Answer `yes` when prompted to complete the installation.
 
 ```bash
 sudo zbcli install
 ```
 
-
-
-
-After installing the zboot tools and artifacts, you will need to reboot into zboot. You will be prompted for confirmation to reboot.
+After installing the Bootware tools and artifacts, you will need to reboot into zboot. You will be prompted for confirmation to reboot.
 
 ```
-? Bootware installation will require 62.59 MiB in `/boot/firmware` and will modify config.txt and rc.local. The system w       Found kernel '/boot/firmware/kernel8.img'
+? Bootware installation will require 62.59 MiB in `/boot/firmware` and will modify config.txt and rc.local. The system will be configured to boot from U-Boot. No system data will be lost.
+       Found kernel '/boot/firmware/kernel8.img'
      Created '/etc/zymbit/zboot/mnt'
      Created '/etc/zymbit/zboot/scripts'
      Created '/etc/zymbit/zboot/zboot_backup'
@@ -114,18 +112,18 @@ After installing the zboot tools and artifacts, you will need to reboot into zbo
 ? A reboot into zboot is required. Reboot now? (y/n) › yes
 ```
 
-Reboot to complete the installation process and to boot into zboot. Once completed, all necessary files required for loading new images via Bootware will be installed. The install process will change the boot sequence to use u-boot and Zymbit's zboot but does not alter your filesystem.
+Reboot to complete the installation process and to boot into zboot. Once completed, all necessary files required for loading new images via Bootware will be installed. The install process will change the boot sequence to use U-Boot and Zymbit's zboot but does not alter your filesystem.
 
-### 3. Run `zbcli imager` to create Bootware-ready Zymbit Image backup (zi image)
+### 3. Run `zbcli imager` to create a Bootware-ready Zymbit Image backup (zi image)
 
-Bootware requires images in a secure, signed format for loading with zboot. We refer to these images as `zi` images. An image conversion tool, [`zbcli imager`](../zbcli/imager), creates the zi image. `zbcli imager` can take a snapshot of your running system or input can be tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../features/overlays).
+Bootware requires images in a secure, signed format for loading with zboot. We refer to these images as "zi images." An image conversion tool, [`zbcli imager`](../zbcli/imager), creates the zi image. `zbcli imager` can take a snapshot of your running system or read from tarballs of your bootfs and rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../features/overlays).
 
-> If you are Developing on a CM4 directly and need to transition to the SCM, See [Developing on the CM4](../features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
+> If you are Developing on a CM4 directly and need to transition to an SCM, See [Developing on the CM4](../features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
 
 
 #### Create a zi image backup from your current running root file system
 
-Use `zbcli imager` to create a Zymbit Image (zi) backup of your current running system. Once created, the zi image can be propagated to other disk partitions securely. A Private/Public key pair will be used for signing the zi image at time of creation and verifying at time of loading onto a new partition. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../features/signing).
+Use `zbcli imager` to create a zi image backup of your current system. Once created, the zi image can be propagated to other disk partitions securely. A private/public key pair will be used for signing the zi image at time of creation and verifying during the update process. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../features/signing).
 
 
 In this guide, we will output the image directly to a USB stick. Mount the USB stick for access,
@@ -137,7 +135,7 @@ sudo mount /dev/sda1 /mnt
 Start the imager module of zbcli. We will run interactively. You can also run non-interactively by supplying all necessary parameters on the command line. See [zbcli imager](../zbcli/imager) for details.
 
 
-All necessary information will be prompted for starting with the output directory and the name of the image file. The output directory will be excluded from the image. A zi extension will be added to the image name provided.
+All necessary information will be prompted for starting with the output directory and the name of the image file. The output directory will be excluded from the image. A `.zi` extension will be added to the image name provided.
 
 ```bash
 sudo zbcli imager
@@ -166,7 +164,7 @@ Next, you will be prompted for what type of image to make: A full image of the l
 
 You can optionally provide an image version. This is for your use in helping to identify the image later. It is not used in the process. 
 
-Next, you will be prompted for signing keys. Keys can be Software or Hardware based. Keys are used for signing and verification of images. Software keys are supported on all Zymbit products. Hardware keys are supported with Secure Compute Module (SCM) or HSM6 products. Had we chosen earlier to include hardware key support, we would be asked to choose either hardware or software key support. We chose earlier to not include hardware key support. You can use an existing key or the script will create keys for you. For this Quickstart, we will generate a new Software key. Select `Create new software key slot`
+Next, you will be prompted for signing keys. Keys can be Software or Hardware based and are used for signing and verification of images. Software keys are supported on all Zymbit products. Hardware keys are supported with Secure Compute Module (SCM) or HSM6 products. Had we chosen earlier to include hardware key support, we would be asked to choose either hardware or software key support. We chose earlier to not include hardware key support. You can use an existing key or instruct the imager to create new ones for you. For this Quickstart, we will generate a new Software key. Select `Create new software key`
 
 ```
 ? Select key slot ›
@@ -174,7 +172,7 @@ Next, you will be prompted for signing keys. Keys can be Software or Hardware ba
   Use pre-existing software key
 ```
 
-The `zbcli imager` script will now build your zi image. Progress will be shown on the screen.
+The imager will now build your zi image. Progress will be shown on the screen.
 
 ```
    Validated bootware installation
@@ -198,9 +196,9 @@ The `zbcli imager` script will now build your zi image. Progress will be shown o
      Running [====>                                   ] 1/10 (00:04:47): taking snapshot of boot             
 ```
 
-The imager will take some time, depending on the size of your file system. Progress will be reported on the screen. Once completed, the zi image and Private/Public key will be saved to your specified output directory (/mnt). Keep your private key private. The zi image can be used from the local storage device or a remote server accessible via HTTPS. The public key file will be needed to load the zi image. 
+The imager may take some time, depending on the size of your file system. Progress will be reported on the screen. Once completed, the zi image and private/public key will be saved to your specified output directory (`/mnt`). Keep your private key private. The zi image can be used from the local storage device or a remote server accessible via HTTPS. The public key file will be needed to load the zi image. 
 
-When complete, there will be three files in your output folder: the Public key, the Private key, and the zi image.
+When complete, there will be three files in your output folder: the public key, the private key, and the zi image.
 
 ```
      ...
@@ -249,7 +247,7 @@ Additional examples of `zbcli imager` usage can be found here: [zbcli imager usa
 
 Now we will use the zi image and public key we just created to configure an A/B partition and load the image into the BACKUP (B) partition.
 
-First, copy the public key file created earlier from /dev/sda1 to a location on your local filesystem,
+First, copy the public key file created earlier by the imager from `/dev/sda1` to a location on your local filesystem.
 
 ```bash
 cp /mnt/my_image_pub_key.pem .
@@ -257,9 +255,9 @@ cp /mnt/my_image_pub_key.pem .
 
 #### Use the Bootware `zbcli update-config` to Configure your System
 
-Bootware includes a tool to help configure your system called `zbcli update-config`. `zbcli update-config` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zbcli update-config` can be found [here](../zbcli/update-config). Navigate through the menus with up and down arrows. Use ENTER to make a choice. Each Configure option will display the available options with explanations.
+Bootware includes a tool to help configure your system called `zbcli update-config`. `zbcli update-config` is meant to setup your device environment to load a zi image from a configured endpoint, as well as choose an update policy for how to apply zi images. More information on `zbcli update-config` can be found [here](../zbcli/update-config). Navigate through the menus with up and down arrows. Use ENTER to make a choice. Each configuration option will display the available options with explanations.
 
-We are going to configure with A/B partitioning and UPDATE the BACKUP, leaving the A partition as the stable partition for fallback, setting the update option to BACKUP. Note: The A and B partitions will roughly split the disk space available. If your current partition size exceeds more than half the space, the update mode will be switched to UPDATE_BOTH, and your zi image will be loaded into both the A and B partition. You will be given notification that your UPDATE mode has switched from UPDATE_BACKUP to UPDATE_BOTH.
+We are going to set a configuration with A/B partitioning that will UPDATE the BACKUP, leaving the A partition as the stable partition for fallback. Note: The A and B partitions will roughly split the disk space available. If your current partition size exceeds more than half of the disk size, the update mode will be switched to UPDATE_BOTH, and your zi image will be loaded into both the A and B partition. You will be given notification that your UPDATE mode has switched from UPDATE_BACKUP to UPDATE_BOTH. After the update has been applied to the A & B partitions, you can switch back to UPDATE_BACKUP via `zbcli update-config`.
 
 ```bash
 sudo zbcli update-config
@@ -301,7 +299,7 @@ For `Configure data partition size in MB`, choose the size of the encrypted shar
 ? Enter size of data partition in MB ›  1024
 ```
 
-For `Configure update endpoint`, choose you USB stick that holds your zi file. The default of `/dev/sda1` most likely will be appropriate.
+For `Configure update endpoint`, choose the block device that holds your zi image file.
 
 ```
        Using update endpoint '/dev/sda1'
@@ -312,15 +310,15 @@ For `Configure update endpoint`, choose you USB stick that holds your zi file. T
 
 `zbcli update-config` will attempt to verify the zi image name if the endpoint is reachable.
 
-`Configure wireless network` - Along with local devices, such as a USB stick, Bootware supports pulling remote updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
+`Configure wireless network` - Along with local devices, such as a USB stick, Bootware supports pulling remote updates via Wi-Fi or LAN connections. Wi-Fi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
 
-**Save** and **exit** to save and exit `zbcli update-config`. You also have the choice to **Revert to default configuration**. This choice will reset your update configs to the default settings.
+**Save** and **exit** to save and exit `zbcli update-config`. You can Ctrl-C at any point before saving to exit the configurator without applying any changes.
 
 
 
 ### 5. Run `zbcli update` to create the Backup partition and load the zi image.
 
-Once you have completed using the Wizard to configure your Bootware, run `zbcli update` to complete the process of repartitioning and loading your image.
+Once you are satisfied with your Bootware configuration, run `zbcli update` to complete the process of repartitioning and loading your image.
 
 ```bash
 sudo zbcli update
@@ -359,9 +357,9 @@ If verification with the Public Key succeeds, `zbcli update` will continue with 
 
 #### Bootware Boot Process
 
-The Bootware boot process will now take place. zboot will boot your system. Upon reboot, an encrypted B partition will be created and the zi image will be loaded onto B. The A partition will remain untouched.
+The Bootware boot process will now take place. Upon reboot in UPDATE_BACKUP mode, zboot will create an encrypted B and load the zi image onto it. The A partition will remain untouched.
 
-{{< callout warning >}}The initial configuration process can take 30 to 60 minutes to complete depending on the size of the image. The process can be completed via ssh, but an HDMI console is helpful to follow the progress. The blue LED will return to flashing once every three seconds once the process completes.{{< /callout >}}
+{{< callout notice >}}The initial configuration process can take 30 to 60 minutes to complete depending on the size of the image. The process can be completed via ssh, but an HDMI console is helpful to follow the progress. The blue LED will return to flashing once every three seconds once the process completes.{{< /callout >}}
 
 On the console, you will see:
 
