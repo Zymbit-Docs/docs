@@ -257,7 +257,9 @@ cp /mnt/my_image_pub_key.pem .
 
 Bootware includes a tool to help configure your system called `zbcli update-config`. `zbcli update-config` is meant to setup your device environment to load a zi image from a configured endpoint, as well as choose an update policy for how to apply zi images. More information on `zbcli update-config` can be found [here](../zbcli/update-config). Navigate through the menus with up and down arrows. Use ENTER to make a choice. Each configuration option will display the available options with explanations.
 
-We are going to set a configuration with A/B partitioning that will UPDATE the BACKUP, leaving the A partition as the stable partition for fallback. Note: The A and B partitions will roughly split the disk space available. If your current partition size exceeds more than half of the disk size, the update mode will be switched to UPDATE_BOTH, and your zi image will be loaded into both the A and B partition. You will be given notification that your UPDATE mode has switched from UPDATE_BACKUP to UPDATE_BOTH. After the update has been applied to the A & B partitions, you can switch back to UPDATE_BACKUP via `zbcli update-config`.
+We are going to set a configuration with A/B partitioning that will UPDATE the BACKUP, leaving the A partition as the stable partition for fallback. 
+
+{{< callout notice >}} The A and B partitions will roughly split the disk space available. If your current partition size exceeds half of the total disk size, the update mode will be switched to UPDATE_BOTH, and your zi image will be loaded into both the A and B partitions. You will be notified that your UPDATE mode has switched from UPDATE_BACKUP to UPDATE_BOTH. After the update has been applied to the A & B partitions, you can then switch to UPDATE_BACKUP via `zbcli update-config`. {{< /callout >}}
 
 ```bash
 sudo zbcli update-config
@@ -345,9 +347,9 @@ sudo zbcli update
  (y/n) › yes
 ```
 
-The script will show your configuration for review and confirmation and give you the option to change the configuration. If not correct, enter `no` to exit and re-run `zbcli update-config` to correct the configuration. If the configuration is not valid, `zbcli update` will exit.
+The script will show your configuration for review and confirmation and give you the option to change the configuration. If not correct, enter `no` to exit. You may then  re-run `zbcli update-config` to correct the configuration. If the configuration is not valid, `zbcli update` will exit.
 
-Next, you need to enter the path to your Public Key file (in PEM format). For this example, we will use the public key file we copied locally earlier.
+Next, you need to enter the path to your public key file (in PEM format). For this example, we will use the public key file we copied locally earlier.
 
 ```
 ✔ Enter public key file (Pem format) · ./my_image_pub_key.pem
@@ -357,27 +359,31 @@ If verification with the Public Key succeeds, `zbcli update` will continue with 
 
 #### Bootware Boot Process
 
-The Bootware boot process will now take place. Upon reboot in UPDATE_BACKUP mode, zboot will create an encrypted B and load the zi image onto it. The A partition will remain untouched.
+The Bootware update process will now take place. Upon reboot in UPDATE_BACKUP mode, zboot will allocate, create, and encrypt a B partition, then load the contents of your zi image onto it. The A partition will remain untouched, and the system will come back online with partition B (`cryptrfs_B`) as its root filesystem. 
 
-{{< callout notice >}}The initial configuration process can take 30 to 60 minutes to complete depending on the size of the image. The process can be completed via ssh, but an HDMI console is helpful to follow the progress. The blue LED will return to flashing once every three seconds once the process completes.{{< /callout >}}
+If your original partition was more than half the available disk space and you were switched to UPDATE_BOTH during configuration, both A and B will have been created and your image loaded into both. In this case, the system will come back online after the update with its root filesystem on partition A (`cryptrfs_A`).
+
+{{< callout notice >}}The initial configuration process can take 30 to 60 minutes to complete depending on the size of the image. The setup process with `zbcli` can be completed via SSH, but an HDMI console is helpful to follow the progress from within zboot. The Zymkey's blue LED will return to flashing once every three seconds once the update process completes and the linux system has come back online.{{< /callout >}}
 
 On the console, you will see:
 
 * “Loading: Encrypted zboot please wait…” message, which takes around 4-5min.
 * The A/B partitions will be configured and setup for LUKS encryption protected by the Zymbit HSM.
-* It will then take a few minutes to get/unpack tarballs from the image, and verify the signature
-* It will take some time to unpack the image into the B root partition, depending on the size of the image.
-* Once it's done unpacking the image to the B partition, it will boot into the B partition as the ACTIVE partition. You can use `lsblk` to examine the partitions.
+* It will then take a few minutes to process and validate the image.
+* Depending on the size of the zi image, it may take a significant amount of time to load its contents into the root partition(s) being targeted for update.
+* Once zboot is done unpacking the image to the B partition, it will boot your system with the B (UPDATE_BACKUP mode) / A (UPDATE_BOTH mode) partition as the ACTIVE partition. You can use `lsblk` to examine the partition layout.
 
-### 4. Quickcheck - Force Failover (Change Active/Backup partitions)
+### 4. Quickcheck: Manual Rollback (Active/Backup partitions)
 
-To verify you now have two valid partitions, force a failover from Active to Backup with `zbcli rollback-swap`. You can use `lsblk` to verify your active partition. If your original partition was less than half the available space and the UPDATE_BACKUP completed, you should be on `cryptrfs_B`. If your original partition was more than half the available space and you were switched to UPDATE_BOTH, both A and B will be re-partitioned and your image loaded into both. Your active partition should be on `cryptrfs_A`. You can now force a rollback from the active partition to the backup partition with `zbcli rollback-swap`.
+To verify you now have two valid partitions, manually trigger a rollover from Active to Backup with `zbcli rollback-swap`. This will reboot your system into its non-active root partition. No update process will be invoked and the contents of both partitions will remain enchanged.
 
 ```bash
 sudo zbcli rollback-swap
 ```
 
-Once again, you can use `lsblk` to verify the active partition has moved. You should now have Active and Backup partitions with working images ready for your development.
+Once again, you can use `lsblk` to verify the active partition has changed. You should now have identical Active and Backup partitions with working images ready for your development. 
+
+If Bootware detects that the system has failed to reach a `systemd` init target for 3 consecutive attempts in a row, it will automatically initiate a rollback-swap of the root partitions upon the next reboot.
 
 ### Additional Information and Support
     

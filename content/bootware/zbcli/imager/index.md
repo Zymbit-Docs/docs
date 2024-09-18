@@ -61,7 +61,7 @@ Options:
 ### Examples
 
 
-#### Example to create a zi image from your current running root file system
+#### Example: create a zi image from your currently running root file system
 
 This is an example of how you can create a snapshot image of your running system. You can perform your development and configuration on one system, and once you are satisfied your system is working correctly, create an image to use for backup purposes and for propogation to other units.
 
@@ -98,7 +98,7 @@ $ sudo zbcli imager
 
 The script will ask for an optional image version. This is entirely for your use. It is not used by Bootware.
 
-Next, the script will ask for a private key with which to sign the image. If you are using an SCM or an HSM6, hardware signing by a key from the SCM or HSM is available. Software signing is also available for all products. You can choose to create a new key, or use an existing key. Pre-existing software keys will require a key file in PEM format. Pre-existing hardware keys will require providing information as to which slot on the SCM or HSM6 that contains the key. Below, we selected to use a software key, and create a new software key.
+Next, the script will ask for a private key with which to sign the image. If you are using an SCM or an HSM6, hardware signing by a key from the SCM or HSM is available. Software signing is also available for all products. You can choose to create a new key, or use an existing key. Pre-existing software keys will require a key file in PEM format. Pre-existing hardware keys will require providing information as to which slot on the SCM or HSM6 contains the key. Below, we selected to use and create a new software key.
 
 The image creation now has all required information and begins.
 
@@ -120,11 +120,11 @@ The image creation now has all required information and begins.
      Running [=======>                                ] 2/11 (00:16:36): taking snapshot of root        
 ```
 
-The image creation time is dependent on the size of the boot and root filesystems. When completed, `/mnt` will contain your zi image, and if you chose to create a new software key, a private key file and a public key file. You can now distribute the zi image file and the public key for verification to load the zi image file on additional units.
+The image creation time is dependent on the size of the boot and root filesystems. When completed, `/mnt` will contain your zi image, and, if you chose to create a new software key, a private key file and a public key file. You can now distribute the zi image file and the public key for verification to load the zi image file on additional units.
 
-#### Example to create a zi image from a binary image .
+#### Example: create a zi image from a binary disk image
 
-You can also make a zi image directly from a previously created image file, created with `dd` or some other imaging utility. This may be a preferred method if tied into a CI/CD procedure used to generate complete image files. This process assumes your image contains two partitions corresponding to a boot and root file system. `zbcli imager` will assume the boot partition is partition 1 and the root partition is partition 2.
+You can also make a zi image directly from a previously created disk image file, created with `dd` or some other imaging utility. This may be a preferred method if tied into a CI/CD procedure used to generate complete image files. This process assumes your image contains two partitions corresponding to a boot and root file system. `zbcli imager` will assume the boot partition is partition 1 and the root partition is partition 2.
 
 You will need the path to the image file.
 
@@ -132,8 +132,8 @@ You will need the path to the image file.
 sudo zbcli imager --binary-image /home/zymbit/my.img
 ```
 
-The script will prompt for information:
-
+The imager will prompt for information:
+<!-- FIXME -->
 ```
 Checking for zymbit scm...
 Image Name?: bullseye
@@ -150,17 +150,17 @@ Existing private key file? (Pem format): /home/zymbit/keys/private_key.pem
 Setting up environment...
 Copying boot files from binary image...
 ```
+<!-- END FIXME -->
+#### Example: create a zi image from boot & root tarballs
 
-#### Example to convert boot/root tarballs
-
-A zi image can be created by providing two tarballs - one of your boot filesystem and one of your root filesystem. You will need to provide the names and paths to your tarballs. Run the script:
+A zi image can be created by providing two tarballs - one of your boot filesystem and one of your root filesystem. You will need to provide the names and paths to your tarballs. Run the imager:
 
 ```
 sudo zbcli imager --boot-tarball ./boot.tar --root-tarball ./root.tar
 ```
 
-The script will prompt for information:
-
+The imager will prompt for information:
+<!-- FIXME -->
 ```
 Checking for zymbit scm...
 Image Name?: myImage
@@ -182,13 +182,12 @@ Done!
 Creating headers...
 Creating Zymbit Image...
 ```
-
+<!-- END FIXME -->
 `zbcli imager` will also need a private key. It can generate one for you if you do not have one. The key can either be software-based or Zymbit HSM-based. See [Signing/Verifying Images](../../features/signing) for more information.
 
 All necessary parameters for each type of image creation can be provided on the command line to prevent the need for interactive input.
 
 ### Output
 
-`zbcli imager` will output the private key and public key if using software keys, along with the zi image. If you do not specify an output location, the files will be placed in `/etc/zymbit/zboot/update_artifacts/output`.
-
+`zbcli imager` will output the private key and public key if using software keys, along with the zi image, into the specified output directory.
 
