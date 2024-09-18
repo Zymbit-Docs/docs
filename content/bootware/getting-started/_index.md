@@ -3,7 +3,7 @@ title: "Getting Started: Bootware 1.2"
 linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
-lastmod: "2024-09-16"
+lastmod: "2024-09-18"
 aliases:
     - /bootware/getting-started/
 draft: false
@@ -46,7 +46,7 @@ A bootstrap utility to detect and load the correct build of Bootware can be down
 curl -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
 ```
 
-The install will identify your Pi and OS and then prompt you for `zbcli` whether you'd like to include a binary that supports hardware signing. All Zymbit products support software signing, but only the SCM and the HSM6 support hardware signing. For the purpose of this tutorial, we will use software signing. Use the arrow keys to move the selection to `> No`.
+The install will identify your Pi and OS and then prompt you if you'd like to include hardware signing. The SCM and HSM6 support hardware signing. All Zymbit products support software signing. For the purpose of this tutorial, we will use software signing. Use the arrow keys to move the selection to `> No`.
 
 ```
 zb-install.sh: bootstrapping the zbcli installer
