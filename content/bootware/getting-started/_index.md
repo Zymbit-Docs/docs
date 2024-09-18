@@ -31,19 +31,19 @@ See the [Features](../features) section for more information on how to use Bootw
 
 ### Overview of steps to get up and running
 
-1. Download the Bootware 1.2 executable, `zbcli`. 
-2. Run `zbcli install` to install the Bootware tools and artifacts
+1. Download the Bootware management tool, `zbcli`. 
+2. Run `zbcli install` to install Bootware.
 3. Run `zbcli imager` to create and sign a Zymbit image file (zi image) of your current root file system as a backup. 
 4. Run `zbcli update-config` to configure Partitions and Recovery strategy. For this Quickstart, we will setup A/B partitions.
-5. Run `zbcli update` to load a known good example zi image into the Backup (B) partition; set B to the Active partition.
+5. Run `zbcli update` to load a known-good example zi image into the Backup (B) partition; set B to the Active partition.
 6. Run `zbcli rollback-swap` to force a Rollback to your original partition to verify your A/B setup is working.
 
 ### 1. Download Bootware
 
-Download the Bootware 1.2 executable. A bootstrap utility to get the Bootware executable can be downloaded with curl:
+A bootstrap utility to detect and load the correct build of Bootware can be downloaded with curl:
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
+curl -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
 ```
 
 The install will identify your Pi and OS and then prompt you for `zbcli` whether you'd like to include a binary that supports hardware signing. All Zymbit products support software signing, but only the SCM and the HSM6 support hardware signing. For the purpose of this tutorial, we will use software signing. Use the arrow keys to move the selection to `> No`.
@@ -69,14 +69,6 @@ Next, you will be asked to select a version of the `zbcli` from a list of recent
   zbcli-1.2.0-rc.24
   zbcli-1.2.0-rc.23
   zbcli-1.2.0-rc.22
-```
-
-The process will finish to load the `zbcli`.
-
-```
-Installing zbcli
-Installed zbcli. Run 'zbcli --help' for more options.
-zb-install.sh: cleaning up
 ```
 
 ### 2. Run `zbcli install`
@@ -112,7 +104,7 @@ After installing the Bootware tools and artifacts, you will need to reboot into 
 ? A reboot into zboot is required. Reboot now? (y/n) › yes
 ```
 
-Reboot to complete the installation process and to boot into zboot. Once completed, all necessary files required for loading new images via Bootware will be installed. The install process will change the boot sequence to use U-Boot and Zymbit's zboot but does not alter your filesystem.
+Reboot to complete the installation process and to boot through zboot. Once completed, all necessary files required for loading new images via Bootware will be installed.
 
 ### 3. Run `zbcli imager` to create a Bootware-ready Zymbit Image backup (zi image)
 

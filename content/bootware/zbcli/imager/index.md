@@ -67,20 +67,19 @@ This is an example of how you can create a snapshot image of your running system
 
 First, mount a USB stick or some other external device to store the image.
 
-```
-$ sudo mount /dev/sda1 /mnt
+```bash
+sudo mount /dev/sda1 /mnt
 ```
 
 Run the imager. Options can be provided on the command line to run without prompting. 
 
-```
+```bash
 sudo zbcli imager
 ```
 
 The script will prompt for information. We will use the mount point of our USB stick, `/mnt`. Provide the mount point, a name for your image (without a zi extension, it will be added automatically), and choose `Full image of live system`.
 
 ```
-$ sudo zbcli imager
    Validated bootware installation
         ---------
         Pi Module:         Raspberry Pi 4
@@ -128,7 +127,7 @@ You can also make a zi image directly from a previously created disk image file,
 
 You will need the path to the image file.
 
-```
+```bash
 sudo zbcli imager --binary-image /home/zymbit/my.img
 ```
 
