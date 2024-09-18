@@ -46,7 +46,6 @@ The script will show your configuration for review and confirmation.
 After confirmation of the config parameters, the script will prompt for a reboot to complete the process. 
 
 ```
-sudo zbcli update
    Validated bootware installation
         ---------
         Pi Module:         Raspberry Pi 5

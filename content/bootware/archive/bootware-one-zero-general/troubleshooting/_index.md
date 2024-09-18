@@ -13,12 +13,12 @@ toc: true
 ### Troubleshooting tips and FAQ
 
 
-#### Modifications from Standard Raspberry PI OS Lite
+#### Modifications from Standard Raspberry Pi OS Lite
 
 The SCM ships with a pre-installed with the following options for Operating System:
 
-* Raspberry PI OS Lite (bookworm 64bit)
-* Raspberry PI OS Lite (bullseye 64bit)
+* Raspberry Pi OS Lite (bookworm 64bit)
+* Raspberry Pi OS Lite (bullseye 64bit)
 * Ubuntu Server LTS 22.04 (jammy 64bit)
 
 {{< callout notice >}}

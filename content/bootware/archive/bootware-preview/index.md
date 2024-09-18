@@ -72,7 +72,7 @@ second partition, allowing regression to the original golden image at will
 3. Only load SCM or CM4 images that have been tested. The Preview unit cannot recover if it cannot access the zboot bootloader. “bare metal recovery” is not included in the Preview.
 4. The Zymbit SCM uses its own/boot/config.txt that both enables zboot and the dwc2 driver. Do not enable otg_mode in config.txt.
 5. USB storage devices most likely require a powered hub when using the Zymbit Secure Edge Node or Zymbit Dev IO board. Failure to do so may result in the SCM rebooting.
-6. Only RaspberryPI OS Bullseye64-based images are supported by the Preview. For other images, please contact Zymbit for verification
+6. Only Raspberry Pi OS Bullseye64-based images are supported by the Preview. For other images, please contact Zymbit for verification
 7. Image security features are not enabled in the Preview release. Secure image rollback and recovery features will be implemented in the final release.
 
 ## Using zboot - Hardened Zymbit boot utility

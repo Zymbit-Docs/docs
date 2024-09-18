@@ -31,7 +31,7 @@ Developing your applications on the CM4 allows you the freedom to start complete
 
 ### 1. Start with Bullseye or Ubuntu
 
-Follow the standard instructions from Raspberry PI Foundation using `rpiboot` and the PI Imager to load Bullseye Lite 64-bit or Ubuntu Server 22.04 (jammy). Load all of the necessary software and debug and test your application.
+Follow the standard instructions from Raspberry Pi Foundation using `rpiboot` and the Pi Imager to load Bullseye Lite 64-bit or Ubuntu Server 22.04 (jammy). Load all of the necessary software and debug and test your application.
 
 ### 2. Load the Zymbit software
 

@@ -35,7 +35,7 @@ Options:
 
 ### Example
 
-```
+```bash
 sudo zbcli install
 ```
 
