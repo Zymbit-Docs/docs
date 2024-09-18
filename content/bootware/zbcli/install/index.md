@@ -15,7 +15,7 @@ toc: true
 
 -----
 
-## zbcli install
+## `zbcli install`
 
 ### Description
 
