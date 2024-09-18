@@ -36,7 +36,7 @@ Options:
 
 ### Examples
 
-Before configuration. ACTIVE root partition is /dev/mmcblk0p2 -> cryptrfs_A.
+Use `lsblk` to see that the ACTIVE root partition (/) is mounted at /dev/mmcblk0p2 -> cryptrfs_A. Only the ACTIVE partition mount point will show up.
 
 ```bash
 lsblk
@@ -55,7 +55,7 @@ mmcblk0           179:0    0 29.7G  0 disk
   └─cryptrfs_DATA 254:1    0  496M  0 crypt
 ```
 
-Now run `zbcli rollback-swap`. Confirm reboot.
+Now run `zbcli rollback-swap`. Confirm reboot. 
 
 ```bash
 sudo zbcli rollback-swap
@@ -72,7 +72,7 @@ sudo zbcli rollback-swap
 ? Confirm swap active and non-active root partitions? This will reboot the device. (y/n) › yes
 ```
 
-After the reboot completes, look at the new partitioning. The ACTIVE partition should now be /dev/mmcblk0p3 -> cryptrfs_B.
+During the boot, Bootware will display an INFO message that it is Executing a Rollback. After the reboot completes, look at the new mount points. The ACTIVE root (/) partition should now be mounted at /dev/mmcblk0p3 -> cryptrfs_B.
 
 ```bash
 lsblk
