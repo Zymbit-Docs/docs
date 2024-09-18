@@ -15,7 +15,7 @@ toc: true
 
 -----
 
-## zbcli update-config
+## `zbcli update-config`
 
 ### Description
 

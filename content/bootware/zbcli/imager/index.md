@@ -15,7 +15,7 @@ toc: true
 
 -----
 
-## zbcli imager
+## `zbcli imager`
 
 ### Description
 

@@ -15,7 +15,7 @@ toc: true
 
 -----
 
-## zbcli rollback-swap
+## `zbcli rollback-swap`
 
 ### Description
 

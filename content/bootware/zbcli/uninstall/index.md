@@ -16,7 +16,7 @@ toc: true
 -----
 
 
-## zbcli uninstall
+## `zbcli uninstall`
 
 
 ### Description
