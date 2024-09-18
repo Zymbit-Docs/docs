@@ -132,24 +132,31 @@ sudo zbcli imager --binary-image /home/zymbit/my.img
 ```
 
 The imager will prompt for information:
-<!-- FIXME -->
+
 ```
-Checking for zymbit scm...
-Image Name?: bullseye
-Version? [OPTIONAL]: 1.1
-Note:Software/Hardware keys are not interchangeable. Stick with one method.
-Use software-based keys for Signing?
-(No for hardware-based keys) (Y/n):
-Y
-Key?
-   1. Create new software key files
-   2. Use a pre-existing software key files
-: 2
-Existing private key file? (Pem format): /home/zymbit/keys/private_key.pem
-Setting up environment...
-Copying boot files from binary image...
+   Validated bootware installation
+        ---------
+        Pi Module:         Raspberry Pi 5
+        Operating System:  Rpi-Bookworm
+        Zymbit module:     Zymkey
+        Kernel:            kernel_2712.img
+        ---------
+     Cleaned '/etc/zymbit/zboot/update_artifacts/tmp'
+✔ Enter output directory · /home/zymbit
+✔ Enter image name · myImage
+✔ (Optional) enter image version ·
+✔ Select key · Create new software key
+     Created signing key
+    Verified path unmounted '/etc/zymbit/zboot/mnt'
+     Cleaned '/etc/zymbit/zboot/mnt'
+    Verified disk size (required: 5.94 GiB, free: 22.76 GiB)
+       Moved (/boot/firmware/zbootrd) => (/etc/zymbit/zboot/mnt/zbootrd)
+   Unmounted '/etc/zymbit/zboot/mnt'
+     Running [                                        ] 0/8 (00:00:41):           
 ```
-<!-- END FIXME -->
+
+Upon completion, you will have a zi image based on your original image file in your specified output directory.
+
 #### Example: create a zi image from boot & root tarballs
 
 A zi image can be created by providing two tarballs - one of your boot filesystem and one of your root filesystem. You will need to provide the names and paths to your tarballs. Run the imager:
@@ -159,34 +166,38 @@ sudo zbcli imager --boot-tarball ./boot.tar --root-tarball ./root.tar
 ```
 
 The imager will prompt for information:
-<!-- FIXME -->
-```
-Checking for zymbit scm...
-Image Name?: myImage
-Version? [OPTIONAL]: 1.1
-Note:Software/Hardware keys are not interchangeable. Stick with one method.
-Use software-based keys for Signing?
-(No for hardware-based keys) (Y/n):
-Y
-Key?
-   1. Create new software key files
-   2. Use a pre-existing software key files
-: 2
-Existing private key file? (Pem format): private_key.pem
-Setting up environment...
-Verifying image...
-Checking for zymbit bootware..
-Checking for zymbit tools..
-Done!
-Creating headers...
-Creating Zymbit Image...
-```
-<!-- END FIXME -->
-`zbcli imager` will also need a private key. It can generate one for you if you do not have one. The key can either be software-based or Zymbit HSM-based. See [Signing/Verifying Images](../../features/signing) for more information.
 
-All necessary parameters for each type of image creation can be provided on the command line to prevent the need for interactive input.
+```
+   Validated bootware installation
+        ---------
+        Pi Module:         Raspberry Pi 5
+        Operating System:  Rpi-Bookworm
+        Zymbit module:     Zymkey
+        Kernel:            kernel_2712.img
+        ---------
+     Cleaned '/etc/zymbit/zboot/update_artifacts/tmp'
+✔ Enter output directory · /home/zymbit
+✔ Enter image name · myImage
+✔ (Optional) enter image version ·
+✔ Select key · Create new software key
+     Created signing key
+    Verified path unmounted '/etc/zymbit/zboot/mnt'
+     Cleaned '/etc/zymbit/zboot/mnt'
+    Verified disk size (required: 3.89 GiB, free: 24.81 GiB)
+      Copied file (./boot.tar) to (/etc/zymbit/zboot/update_artifacts/tmp/.tmpHLetYc/myImage_boot.tar)
+      Copied file (./root.tar) to (/etc/zymbit/zboot/update_artifacts/tmp/.tmpHLetYc/myImage_rfs.tar)
+    Verified boot tarball (/etc/zymbit/zboot/update_artifacts/tmp/.tmpHLetYc/myImage_boot.tar)
+    Verified zymbit and zboot tool installation
+     Created staging directory (/etc/zymbit/zboot/update_artifacts/tmp/.tmpsQODep)
+     Created '/etc/zymbit/zboot/update_artifacts/tmp/.tmpsQODep/header.txt'
+     Running [===============>                        ] 3/8 (00:00:44): creating update artifacts tarball                       
+```
+
+`zbcli imager` requires a private key. It can generate one for you if you do not have one. The key can either be software-based or Zymbit HSM-based. See [Signing/Verifying Images](../../features/signing) for more information.
+
+All necessary parameters for each type of image creation can be provided on the command line to circumvent the need for interactive input.
 
 ### Output
 
-`zbcli imager` will output the private key and public key if using software keys, along with the zi image, into the specified output directory.
+`zbcli imager` outputs the private key and public key if using software keys, along with the zi image, into the specified output directory.
 
