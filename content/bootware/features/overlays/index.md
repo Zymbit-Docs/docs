@@ -16,7 +16,7 @@ toc: true
 
 ## ZI Image Overlays
 
-Overlay Images are meant to update devices without nuking and remaking the LUKS encrypted partitions. Overlay updates can be much smaller in size than "FULL" updates, as they are meant to drop in a crate of files over an existing bootware enabled system. Overlay updates simply try and unpack the update over the system and overwrite any previous existing files of the same name. The files that are packed into an overlay image are specified by the user with the tool [`zbcli manifest`](../../zbcli/manifest).
+Overlay Images are meant to update devices without nuking and remaking the LUKS-encrypted partitions. Overlay updates can be much smaller in size than "FULL" updates, as they are meant to drop in a crate of files over an existing bootware enabled system. Overlay updates simply try and unpack the update over the system and overwrite any previous existing files of the same name. The files that are packed into an overlay image are specified by the user with the tool [`zbcli manifest`](../../zbcli/manifest).
 
 `zbcli manifest` is a simple tool that basically modifies two files:
 
@@ -63,16 +63,26 @@ Both FULL and OVERLAY image updates that contain a kernel will trigger a rebuild
 sudo zbcli manifest add /boot/firmware/kernel8.img
 ```
 
-You can see the the file path added here:
+You can see the the file path via the `zbcli manifest print` subcommand:
 
-```bash
-cat /etc/zymbit/zboot/update_artifacts/file_manifest
-> /boot/firmware/kernel8.img
+```
+   Validated bootware installation
+    ---------
+	Pi Module:         Raspberry Pi 5
+	Operating System:  Rpi-Bookworm
+	Zymbit module:     Hardware Security Module 6
+	Kernel:            kernel_2712.img
+	---------
+  Files to be overwritten
+    /boot/firmware/kernel_2712.img
+
+  No files to be deleted
+    Finished in 0s                                                  
 ```
 
 Create the overlay image with `zbcli imager`.
 
-This zi image is only filled with the files specified in `file_manifest`.
+This zi image is only populated with the files specified in `file_manifest`.
 
 ```bash
 sudo zbcli imager --overlay-image --image-name=overlay
