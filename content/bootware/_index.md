@@ -1,6 +1,6 @@
 ---
-title: "Welcome to Bootware"
-linkTitle: "Bootware"
+title: "Welcome to Bootware®"
+linkTitle: "Bootware®"
 icon: ""
 description: ""
 aliases:
@@ -16,7 +16,7 @@ toc: True
 
 -----
 
-Bootware is a set of tools providing robust management of secure boot, encrypted file system, updates and recovery.
+Bootware® is a set of tools providing robust management of secure boot, encrypted file system, updates and recovery.
 
 #### [Click here to Get Started!](getting-started)
 
@@ -24,13 +24,13 @@ Bootware is a set of tools providing robust management of secure boot, encrypted
 
 ### More information
 
-#### [Get Free Bootware Updates](https://www.zymbit.com/get-free-bootware/)
+#### [Get Free Bootware® Updates](https://www.zymbit.com/get-free-bootware/)
 
-#### [More information on Bootware  from zymbit.com](https://www.zymbit.com/bootware/)
+#### [More information on Bootware®  from zymbit.com](https://www.zymbit.com/bootware/)
 
-#### [Bootware Community](https://community.zymbit.com/c/bootware)
+#### [Bootware® Community](https://community.zymbit.com/c/bootware)
 
 -----
 
-### Bootware 1.2 
+### Bootware® 1.2 
 
