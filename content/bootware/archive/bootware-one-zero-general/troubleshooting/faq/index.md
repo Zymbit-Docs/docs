@@ -1,6 +1,6 @@
 ---
 title: Frequently Asked Questions
-linkTitle: "Bootware 1.1 FAQ"
+linkTitle: "Bootware® 1.1 FAQ"
 lastmod:
 draft: false
 images: []
@@ -12,7 +12,7 @@ toc: false
 ---
 
 -----
-##### Q: What Zymbit products support Bootware 1.1?
+##### Q: What Zymbit products support Bootware® 1.1?
 
 <details>
 
@@ -20,7 +20,7 @@ toc: false
 
 <br>
 
-A: Bootware 1.1 runs on the Secure Compute Module based products - the Secure Edge Node, SCM Development kits, SCM modules. Bootware 1.1 can also run with a ZYMKEY4 on a Dev Kit with an SCM, or with a ZYMKEY on a Raspberry Pi4.
+A: Bootware® 1.1 runs on the Secure Compute Module based products - the Secure Edge Node, SCM Development kits, SCM modules. Bootware® 1.1 can also run with a ZYMKEY4 on a Dev Kit with an SCM, or with a ZYMKEY on a Raspberry Pi4.
 
 -----
 
@@ -34,7 +34,7 @@ A: Bootware 1.1 runs on the Secure Compute Module based products - the Secure Ed
 
 <br>
 
-A: Bootware 1.1 supports the following OS options:
+A: Bootware® 1.1 supports the following OS options:
 - Bookworm 64-bit
 - Bullseye 64-bit
 - Ubuntu 22.04 (jammy) 64-bit
@@ -43,7 +43,7 @@ A: Bootware 1.1 supports the following OS options:
 
 </details>
 
-##### Q: Can I use Bootware to switch Operating Systems from Bookworm to Bullseye or Ubuntu 22.04?
+##### Q: Can I use Bootware® to switch Operating Systems from Bookworm to Bullseye or Ubuntu 22.04?
 
 <details>
 
@@ -79,7 +79,7 @@ A: Yes, if it is based off of one of the supported OS images - Bullseye or Ubunt
 
 <br>
 
-A: Bootware 1.1 primarily consists of three partitioning schemes:
+A: Bootware® 1.1 primarily consists of three partitioning schemes:
 - Boot 512MB, RootA: Approximately 50%, RootB: Approximately 50%, Encrypted Data partition 512MB
 - Boot 512MB, RootA: Approximately 100%, Encrypted Data partition 512MB
 - Boot 512MB, RootA: Approximately 50%, Encrypted Data partition 512MB

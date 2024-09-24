@@ -21,7 +21,7 @@ toc: true
 
 Requires superuser privilege.
 
-Bootware includes a tool to help configure your system called `zbcli update-config`. `zbcli update-config` is meant to setup your device environment for pulling down updates from a configured endpoint and specify the update policies for how to apply those updates. The tool can be run interactively or non-interactively by specifying options on its command line.
+Bootware® includes a tool to help configure your system called `zbcli update-config`. `zbcli update-config` is meant to setup your device environment for pulling down updates from a configured endpoint and specify the update policies for how to apply those updates. The tool can be run interactively or non-interactively by specifying options on its command line.
 
 ### Usage:
 ```
@@ -86,7 +86,7 @@ Choose your settings as described below.
 ❯   BOTH: Applies new updates to both filesystems and always boot on the first root partition as the active partition. Warning: a bad update will have nothing to rollback to and the device will have to go through a recovery process.
 ```
 
-**Configure data partition size in MB** - Along with A/B partitions for your root file system, Bootware includes a shared, encrypted data partition. The data partition can be accessed from either the Active or Backup partition. The default partition size is 512MB. Use this option to specify the size of the shared data partition in MegaBytes (MB).
+**Configure data partition size in MB** - Along with A/B partitions for your root file system, Bootware® includes a shared, encrypted data partition. The data partition can be accessed from either the Active or Backup partition. The default partition size is 512MB. Use this option to specify the size of the shared data partition in MegaBytes (MB).
 
 ```
 ? Enter size of data partition in MB ›
@@ -101,7 +101,7 @@ Choose your settings as described below.
 > Example https URL: https://bootware.s3.amazonaws.com/zymbit_bookworm64_1.1.zi  
 > Example USB stick: /dev/sda1
 
-**Configure wireless network** – Bootware supports pulling updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. These credentials are configured separately from the host OS wireless credentials as they run within Bootware. If no wireless credentials are provided, the wireless interface in Bootware is disabled.
+**Configure wireless network** – Bootware® supports pulling updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. These credentials are configured separately from the host OS wireless credentials as they run within Bootware®. If no wireless credentials are provided, the wireless interface in Bootware® is disabled.
 
 ```
  Enter Wi-Fi SSID · my_wifi

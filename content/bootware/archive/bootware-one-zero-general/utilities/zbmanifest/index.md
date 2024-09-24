@@ -1,5 +1,5 @@
 ---
-title: Zymbit Bootware Overlay Manifest Utility
+title: Zymbit Bootware® Overlay Manifest Utility
 linkTitle: "zb-manifest"
 lastmod:
 #aliases:
@@ -23,7 +23,7 @@ toc: true
 
 Requires superuser privilege.
 
-Utility to perform Bootware Overlay Manifest Updates. Overlay images provide a way to selectively add and delete files or directories from your deployed images.
+Utility to perform Bootware® Overlay Manifest Updates. Overlay images provide a way to selectively add and delete files or directories from your deployed images.
 
 ### Usage
 

@@ -1,6 +1,6 @@
 ---
 title: Frequently Asked Questions
-linkTitle: "Bootware 1.0 FAQ"
+linkTitle: "Bootware® 1.0 FAQ"
 lastmod:
 draft: false
 images: []
@@ -12,7 +12,7 @@ toc: false
 ---
 
 -----
-##### Q: What Zymbit products support Bootware 1.0?
+##### Q: What Zymbit products support Bootware® 1.0?
 
 <details>
 
@@ -20,7 +20,7 @@ toc: false
 
 <br>
 
-A: Bootware 1.0 runs on the Secure Compute Module based products - the Secure Edge Node, SCM Development kits, SCM modules.
+A: Bootware® 1.0 runs on the Secure Compute Module based products - the Secure Edge Node, SCM Development kits, SCM modules.
 
 -----
 
@@ -34,7 +34,7 @@ A: Bootware 1.0 runs on the Secure Compute Module based products - the Secure Ed
 
 <br>
 
-A: Bootware 1.0 supports the standard SCM OS options:
+A: Bootware® 1.0 supports the standard SCM OS options:
 - Bullseye 64-bit
 - Ubuntu 22.04 (jammy) 64-bit
 
@@ -42,7 +42,7 @@ A: Bootware 1.0 supports the standard SCM OS options:
 
 </details>
 
-##### Q: Can I use Bootware to switch from Bullseye to Ubuntu 22.04?
+##### Q: Can I use Bootware® to switch from Bullseye to Ubuntu 22.04?
 
 <details>
 
@@ -78,7 +78,7 @@ A: Yes, if it is based off of one of the supported OS images - Bullseye or Ubunt
 
 <br>
 
-A: Bootware 1.0 primarily consists of three partitioning schemes:
+A: Bootware® 1.0 primarily consists of three partitioning schemes:
 - Boot 512MB, RootA: Approximately 50%, RootB: Approximately 50%, Data partition 512MB
 - Boot 512MB, RootA: Approximately 100%, Data partition 512MB
 - Boot 512MB, RootA: Approximately 50%, Data partition 512MB

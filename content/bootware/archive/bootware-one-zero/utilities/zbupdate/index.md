@@ -1,5 +1,5 @@
 ---
-title: Zymbit Bootware Update Utility
+title: Zymbit Bootware® Update Utility
 linkTitle: "zb-update"
 lastmod:
 #aliases:
@@ -23,7 +23,7 @@ toc: true
 
 Requires superuser privilege.
 
-Utility to perform Bootware Updates; re-partitions and loads images into the Active, Backup or Both partitions
+Utility to perform Bootware® Updates; re-partitions and loads images into the Active, Backup or Both partitions
 
 ### Usage
 
@@ -60,9 +60,9 @@ The script will show your configuration for review and confirmation, or give you
 After correction and confirmation of the config partameters, the script will prompt for a reboot to complete the process.
 
 
-#### Bootware Update Process
+#### Bootware® Update Process
 
-The Bootware Update process will now take place.
+The Bootware® Update process will now take place.
 
 {{< callout warning >}}The initial configuration process can take over an hour to complete, depending on partitioning and the size of the image(s). The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
 

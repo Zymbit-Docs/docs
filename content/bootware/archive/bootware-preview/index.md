@@ -1,6 +1,6 @@
 ---
-title: "Bootware Preview (deprecated)"
-linkTitle: "Bootware Preview (deprecated)"
+title: "Bootware® Preview (deprecated)"
+linkTitle: "Bootware® Preview (deprecated)"
 icon: ""
 description: ""
 aliases:
@@ -16,48 +16,48 @@ toc: True
 
 
 {{< callout notice >}}
-[Bootware 1.0](../bootware-one-zero-general) GA Release is now available.
+[Bootware® 1.0](../bootware-one-zero-general) GA Release is now available.
 
-Bootware Preview is an Engineering/Developer Preview. This is not meant for Production. Bootware Preview features are not standard product. Only load this feature if you are working directly with Zymbit as a Preview customer.
+Bootware® Preview is an Engineering/Developer Preview. This is not meant for Production. Bootware® Preview features are not standard product. Only load this feature if you are working directly with Zymbit as a Preview customer.
 {{< /callout >}}
 
-We recommend attaching an HDMI console when using Bootware Preview. The process of repartitioning and populating partitions can take substantial time, upwards of 45 minutes and the console serves as a point of reference of activity.
+We recommend attaching an HDMI console when using Bootware® Preview. The process of repartitioning and populating partitions can take substantial time, upwards of 45 minutes and the console serves as a point of reference of activity.
 
 
-### Bootware Release Schedule:
-* Bootware 1.x General - June 2024
-* Bootware 1.x Limited - April 2024
-* Bootware Preview (deprecated) – February 2024. Limited functionality. **Not intended for Production**.
+### Bootware® Release Schedule:
+* Bootware® 1.x General - June 2024
+* Bootware® 1.x Limited - April 2024
+* Bootware® Preview (deprecated) – February 2024. Limited functionality. **Not intended for Production**.
 
-### Notable changes from Bootware Preview to GA Bootware 1.0
+### Notable changes from Bootware® Preview to GA Bootware® 1.0
 
 Utility name changes: The following utilities changed names:
 
 | Item | Preview | 1.0 |
 | ---- | ------- | ------- |
 | Download location |  https://zk-sw-repo.s3.amazonaws.com/ota_preview/ | https://bootware.s3.amazonaws.com/ |
-| Bootware tarball | zymbit-ota-preview.tgz | bootware-1.0.tgz |
-| Bootware Install | install_zboot_tools.sh | zb-install.sh |
-| Bootware Imager | zymbit-image-converter | zb-imager |
-| Bootware Updater | zboot-install-new-update | zb-update |
-| Bootware Uninstall | uninstall_zboot.sh | zb-uninstall.sh |
+| Bootware® tarball | zymbit-ota-preview.tgz | bootware-1.0.tgz |
+| Bootware® Install | install_zboot_tools.sh | zb-install.sh |
+| Bootware® Imager | zymbit-image-converter | zb-imager |
+| Bootware® Updater | zboot-install-new-update | zb-update |
+| Bootware® Uninstall | uninstall_zboot.sh | zb-uninstall.sh |
 
 
 
 ### Updates:
-Bootware Preview 2.1 (Jan 10, 2024)
+Bootware® Preview 2.1 (Jan 10, 2024)
 
-**Issue #140** : Bootware Preview 2.0 has an issue with uboot and cached environment variables. This is a uboot issue but it affects bootware during kernel/os upgrades that include device tree changes. It is highly likely that a device tree area change can leave the system in an unbootable state. u-boot will fail with a "Flattened Device Tree" error and fail to boot. This has been fixed in Preview 2.1 (01092024). zboot version in green will read 0.3.1. Bootware Preview has been updated to include the fix for this issue, along with the example image.
+**Issue #140** : Bootware® Preview 2.0 has an issue with uboot and cached environment variables. This is a uboot issue but it affects bootware during kernel/os upgrades that include device tree changes. It is highly likely that a device tree area change can leave the system in an unbootable state. u-boot will fail with a "Flattened Device Tree" error and fail to boot. This has been fixed in Preview 2.1 (01092024). zboot version in green will read 0.3.1. Bootware® Preview has been updated to include the fix for this issue, along with the example image.
 
 ### BOOTWARE PREVIEW FEATURE SET (October 2023)
-#### Bootware Preview is designed for customers to do the following:
+#### Bootware® Preview is designed for customers to do the following:
 
 1. Transfer a Raspberry Pi CM4 image to an SCM
 2. Replicate an SCM “golden image” to other SCMs
 3. Store an original golden image in one eMMC partition plus a copy for development in a
 second partition, allowing regression to the original golden image at will
 
-#### To achieve this functionality, Bootware Preview provides the following new SCM functionality:
+#### To achieve this functionality, Bootware® Preview provides the following new SCM functionality:
 
 1. The ability to make and update two partitions (A/B), managed by a partition supervisor called zboot.
 2. A zboot methodology to load (and subsequently reload) the A/B partitions from a USB or a URL endpoint
@@ -65,7 +65,7 @@ second partition, allowing regression to the original golden image at will
 4. Initial tools and scripts for creating and loading images into the A/B partitions.
 5. Automatic rollback and recovery of A/B partitions.
 
-#### Important Bootware Preview Restrictions
+#### Important Bootware® Preview Restrictions
 
 1. Two partitions (A/B) are supported. A shared data partition is not included in the Preview.
 2. In an A/B partition layout, the maximum SCM partition size is 14.4 GB. Images larger than 14.4 GB should not be attempted.
@@ -77,7 +77,7 @@ second partition, allowing regression to the original golden image at will
 
 ## Using zboot - Hardened Zymbit boot utility
 
-Zboot is Zymbit's boot utility included with Bootware that pulls and reflashes a device with a new user image. In the current Preview, the image can be downloaded two ways:
+Zboot is Zymbit's boot utility included with Bootware® that pulls and reflashes a device with a new user image. In the current Preview, the image can be downloaded two ways:
 
 * over the network via https
 * from a USB storage device
@@ -87,9 +87,9 @@ Zboot is Zymbit's boot utility included with Bootware that pulls and reflashes a
 The current Preview of zboot does not have bare metal recovery. The boot process must make it at least to zboot in order to take action to recover.
 {{< /callout >}}
 
-## Getting Started - Download and Install Bootware Software
+## Getting Started - Download and Install Bootware® Software
 
-Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
+Download the Bootware® software to the SCM. The Bootware® software can be downloaded with curl:
 
 ```bash
 curl https://zk-sw-repo.s3.amazonaws.com/ota_preview/zymbit-ota-preview.tgz --output zymbit-ota-preview.tgz
@@ -201,9 +201,9 @@ The script extracts the boot/root tarballs of the binary image. It will then pac
 
 Put the .zi image from the script on a server or USB drive for download. Zboot downloads images from either a USB storage device or the internet via curl requests.
 
-## Use the Bootware Wizard to Configure your System
+## Use the Bootware® Wizard to Configure your System
 
-Bootware Preview includes a a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to set your device environment up for pulling down updates from a configured endpoint and the update policies for how to apply those updates. Bootware recommends update policies with A/B schema to have a stable backup partition for rollback. To start the wizard,
+Bootware® Preview includes a a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to set your device environment up for pulling down updates from a configured endpoint and the update policies for how to apply those updates. Bootware® recommends update policies with A/B schema to have a stable backup partition for rollback. To start the wizard,
 
 ```bash
 sudo zb-wizard
@@ -211,10 +211,10 @@ sudo zb-wizard
 Choose your settings as described below.
 
 {{< cardpane >}}
-{{< card header="Bootware Wizard -Main Screen" >}}
+{{< card header="Bootware® Wizard -Main Screen" >}}
 {{< figure
     src="wizmain.png"
-    alt="Bootware Wizard"
+    alt="Bootware® Wizard"
     caption="Choose your options, save and exit."
     >}}
 {{< /card >}}
@@ -243,7 +243,7 @@ Choose your settings as described below.
     > Example https URL: https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_preview.zi
     > Example USB stick: /dev/sda1
 
-**Wireless Setup** – Bootware supports pulling updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
+**Wireless Setup** – Bootware® supports pulling updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
 
 *   SSID - Provide the Wifi SSID
 *   Passphrase - Provide the Wifi passphrase
@@ -252,7 +252,7 @@ Choose your settings as described below.
 
 
 ## Use zboot to Install the New Image
-Once you have completed using the Wizard to configure your Bootware, run `zboot-install-new-update` to complete the process by repartitioning and loading your image.
+Once you have completed using the Wizard to configure your Bootware®, run `zboot-install-new-update` to complete the process by repartitioning and loading your image.
 
 ```bash
 sudo zboot-install-new-update
@@ -289,7 +289,7 @@ On the console, you will see:
 
 ## Reload all utilities
 
-The Bootware utilities are needed for Bootware to function. If not included in your newly loaded image, you will need to load the utilities into your partition(s). Our example zi file base_preview.zi has the Bootware Utilities pre-loaded.
+The Bootware® utilities are needed for Bootware® to function. If not included in your newly loaded image, you will need to load the utilities into your partition(s). Our example zi file base_preview.zi has the Bootware® Utilities pre-loaded.
 
 ## Recovery
 
@@ -303,7 +303,7 @@ A failover from Active to Backup is done with the -r option to `zboot-install-ne
 sudo zboot-install-new-update -r
 ```
 
-## Uninstall Bootware
+## Uninstall Bootware®
 
 A utility is included to uninstall bootware, returning to the standard linux boot process. The uninstall process will leave you in the current encrypted active partition and preserve the contents of that partion as well as the overall partition layout.
 

@@ -15,27 +15,27 @@ headless: false
 
 -----
 
-## Quickstart - Download and Install Bootware Software
+## Quickstart - Download and Install Bootware® Software
 
-In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
+In this Getting Started guide we describe how to bring up a common use case for Bootware® - A/B partitioning for fallback and recovery.
 
 The default SCM/SEN as shipped has Zymbit software pre-installed. The Zymbit product should be up and running with the blue LED flashing once every three seconds. All of the default images will have a hostname of zymbit-dev and a login of zymbit/zymbit. Change the hostname and login during your development.
 
-An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
+An HDMI console is highly recommended for setting up your unit with Bootware®. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
-Details of the commands in this Quickstart are linked in line. See the [Features](../features) section for more information on how to use Bootware.
+Details of the commands in this Quickstart are linked in line. See the [Features](../features) section for more information on how to use Bootware®.
 
 ### Overview of steps to get up and running
 
-1. Download the Bootware tools package and untar. Run zb-install to install the Bootware tools
+1. Download the Bootware® tools package and untar. Run zb-install to install the Bootware® tools
 2. Run zb-imager to create and sign a Zymbit image file (zi image) of your current root file system as a backup.
 3. Run zb-wizard to configure Partitions and Recovery strategy. For this Quickstart, we will setup A/B partitions.
 4. Run zb-update to load a known good example zi image into the Backup (B) partition; set B to as the Active partition.
 5. Use the "-r" option to force a Rollback to your original partition to verify your A/B setup is working.
 
-### 1. Download Bootware
+### 1. Download Bootware®
 
-Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
+Download the Bootware® software to the SCM. The Bootware® software can be downloaded with curl:
 ```bash
 curl https://bootware.s3.amazonaws.com/bootware-1.1.tgz --output bootware-1.1.tgz
 ```
@@ -50,10 +50,10 @@ The contents will be extracted into `bootware-1.1`. Files extracted:
 
 | Item | Description |
 | ----- | ----- |
-| zb-install.sh          | Shell script to install Bootware tools       |
-| scripts/               | Scripts and configuration files for Bootware |
+| zb-install.sh          | Shell script to install Bootware® tools       |
+| scripts/               | Scripts and configuration files for Bootware® |
 | zboot_artifacts/       | zboot executable and boot artifacts          |
-| zb-uninstall.sh        | Shell script to uninstall Bootware tools     |
+| zb-uninstall.sh        | Shell script to uninstall Bootware® tools     |
 
 
 Run the following install script on the SCM to install the zboot utilities:
@@ -74,9 +74,9 @@ After installing the zboot tools. A reboot is required. Reboot now? (Y/n)
 ```
 Reboot to complete the installation process. The process takes two reboots. Once completed, all necessary files required for loading new images via zboot will be installed. The install process will change the boot sequence to use u-boot and Zymbit's zboot, but does not alter your filesystem.
 
-### 2. Run zb-imager to create Bootware-ready Zymbit Image backup (zi image)
+### 2. Run zb-imager to create Bootware®-ready Zymbit Image backup (zi image)
 
-Bootware requires images in a secure, signed format for loading with zboot. An image conversion tool, [`zb-imager`](../utilities/zbimager), creates the zi image. `zb-imager` can take a snapshot of your running system or input can be tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../features/overlays).
+Bootware® requires images in a secure, signed format for loading with zboot. An image conversion tool, [`zb-imager`](../utilities/zbimager), creates the zi image. `zb-imager` can take a snapshot of your running system or input can be tarballs of your /boot and /rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../features/overlays).
 
 > If you are Developing on a CM4 directly and need to transition to the SCM, See [Developing on the CM4](../features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
 
@@ -140,9 +140,9 @@ You will need the corresponding public key in order to verify the downloaded ima
 curl https:///bootware.s3.amazonaws.com/pub_key_1.1.pem --output pub_key_1.1.pem
 ```
 
-#### Use the Bootware Wizard to Configure your System
+#### Use the Bootware® Wizard to Configure your System
 
-Bootware includes a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zb-wizard` can be found [here](../utilities/zbwizard).
+Bootware® includes a tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to setup your device environment to load a zi image from a configured endpoint and the update policies for how to apply those updates. More information on `zb-wizard` can be found [here](../utilities/zbwizard).
 
 We are going to configure with A/B partitioning to have a stable backup partition for fallback. To start the wizard,
 
@@ -152,10 +152,10 @@ sudo zb-wizard
 Choose your settings as described below.
 
 {{< cardpane >}}
-{{< card header="Bootware Wizard -Main Screen" >}}
+{{< card header="Bootware® Wizard -Main Screen" >}}
 {{< figure
     src="../utilities/zbwizard/wizmain.png"
-    alt="Bootware Wizard"
+    alt="Bootware® Wizard"
     caption="Choose your options, save and exit."
     >}}
 {{< /card >}}
@@ -191,14 +191,14 @@ If you opted to download one of the zi images to a local device, enter the devic
 
 `zb-wizard` will attempt to verify the zi image is reachable.
 
-**Wireless Setup** – Bootware supports pulling updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
+**Wireless Setup** – Bootware® supports pulling updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
 
 **Save** and **Exit** to exit `zb-wizard`.
 
 
 ### 4. Run `zb-update` to create the Backup partition and load the zi image.
 
-Once you have completed using the Wizard to configure your Bootware, run `zb-update` to complete the process of repartitioning and loading your image.
+Once you have completed using the Wizard to configure your Bootware®, run `zb-update` to complete the process of repartitioning and loading your image.
 
 ```bash
 sudo zb-update
@@ -227,7 +227,7 @@ The script will prompt for a reboot to complete the process.
 
 #### zboot Boot Process
 
-The Bootware boot process will now take place. zboot will boot your system. Upon reboot, an encrypted B partition will be created and the zi image will be loaded onto B. The A partition will remain untouched.
+The Bootware® boot process will now take place. zboot will boot your system. Upon reboot, an encrypted B partition will be created and the zi image will be loaded onto B. The A partition will remain untouched.
 
 {{< callout warning >}}The initial configuration process can take up to an hour to complete, depending on the size of the image. The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
 

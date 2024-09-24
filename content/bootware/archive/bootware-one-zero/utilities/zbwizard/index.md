@@ -1,5 +1,5 @@
 ---
-title: Zymbit Bootware Configuration Wizard
+title: Zymbit Bootware® Configuration Wizard
 linkTitle: "zb-wizard"
 lastmod:
 #aliases:
@@ -20,7 +20,7 @@ toc: true
 
 ### Description
 
-Bootware Preview includes a dialog enabled tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to set your device environment up for pulling down updates from a configured endpoint and the update policies for how to apply those updates prior to running `zb-update`.  To start the wizard,
+Bootware® Preview includes a dialog enabled tool to help configure your system called `zb-wizard`. `zb-wizard` is meant to set your device environment up for pulling down updates from a configured endpoint and the update policies for how to apply those updates prior to running `zb-update`.  To start the wizard,
 
 ### Example
 
@@ -31,10 +31,10 @@ sudo zb-wizard
 Choose your settings as described below.
 
 {{< cardpane >}}
-{{< card header="Bootware Wizard -Main Screen" >}}
+{{< card header="Bootware® Wizard -Main Screen" >}}
 {{< figure
     src="wizmain.png"
-    alt="Bootware Wizard"
+    alt="Bootware® Wizard"
     caption="Choose your options, save and exit."
     >}}
 {{< /card >}}
@@ -63,7 +63,7 @@ Choose your settings as described below.
     > Example https URL: https://zk-sw-repo.s3.amazonaws.com/ota_preview/base_preview.zi
     > Example USB stick: /dev/sda1
 
-**Wireless Setup** – Bootware supports pulling updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
+**Wireless Setup** – Bootware® supports pulling updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
 
 *   SSID - Provide the Wifi SSID
 *   Passphrase - Provide the Wifi passphrase

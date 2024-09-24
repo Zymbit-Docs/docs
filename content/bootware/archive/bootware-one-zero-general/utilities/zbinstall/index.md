@@ -1,5 +1,5 @@
 ---
-title: Zymbit Bootware Install Utility
+title: Zymbit Bootware® Install Utility
 linkTitle: "zb-install"
 lastmod:
 #aliases:
@@ -24,7 +24,7 @@ toc: true
 
 Requires superuser privilege.  Resides in the original bootware untar directory.
 
-Installs the Bootware sofware.
+Installs the Bootware® sofware.
 
 ### Usage
 

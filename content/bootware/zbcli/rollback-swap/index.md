@@ -72,7 +72,7 @@ sudo zbcli rollback-swap
 ? Confirm swap active and non-active root partitions? This will reboot the device. (y/n) › yes
 ```
 
-During the boot, Bootware will display an INFO message that it is Executing a Rollback. After the reboot completes, look at the new mount points. The ACTIVE root (/) partition should now be mounted at /dev/mmcblk0p3 -> cryptrfs_B.
+During the boot, Bootware® will display an INFO message that it is Executing a Rollback. After the reboot completes, look at the new mount points. The ACTIVE root (/) partition should now be mounted at /dev/mmcblk0p3 -> cryptrfs_B.
 
 ```bash
 lsblk

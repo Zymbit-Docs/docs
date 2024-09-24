@@ -1,7 +1,7 @@
 ---
 title: zbcli 
 linkTitle: "zbcli"
-description: Description of zbcli executable, handling most Bootware operations
+description: Description of zbcli executable, handling most Bootware® operations
 date: "2024-08-14"
 lastmod: "2024-09-16"
 draft: false
@@ -13,7 +13,7 @@ headless: false
 ---
 
 -----
-zbcli is a standalone binary executable for carrying out all necessary Bootware installation and configuration tasks.
+zbcli is a standalone binary executable for carrying out all necessary Bootware® installation and configuration tasks.
 
 #### Usage: zbcli \<Command\>
 

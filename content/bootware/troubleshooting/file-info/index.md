@@ -1,6 +1,6 @@
 ---
-title: Bootware Additional Info
-linkTitle: "Additional Bootware File Info"
+title: Bootware® Additional Info
+linkTitle: "Additional Bootware® File Info"
 lastmod: "2024-08-22"
 draft: false
 images: []
@@ -11,9 +11,9 @@ toc: false
 ---
 
 -----
-### Bootware File Structure Overview:
+### Bootware® File Structure Overview:
 
-Brief description of Bootware files that complete the Bootware process.
+Brief description of Bootware® files that complete the Bootware® process.
 
 #### Location: /boot
 
@@ -51,10 +51,10 @@ Functions:
 -----
 Filename: `zboot.enc`
 
-Description: zboot (Bootware zboot Module)
+Description: zboot (Bootware® zboot Module)
 
 Functions:
-* Initialize Bootware
+* Initialize Bootware®
 * Perform Update
 * Perform Rollback
 * Perform Recovery

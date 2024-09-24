@@ -1,7 +1,7 @@
 ---
 title: "zbcli manifest"
 linkTitle: "manifest"
-description: Configures Bootware overlay image update; edits manifest files
+description: Configures Bootware® overlay image update; edits manifest files
 date: "2024-08-14"
 lastmod:
 draft: false

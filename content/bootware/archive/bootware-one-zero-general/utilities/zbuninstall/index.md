@@ -1,5 +1,5 @@
 ---
-title: Zymbit Bootware Uninstall Utility
+title: Zymbit Bootware® Uninstall Utility
 linkTitle: "zb-uninstall"
 lastmod:
 #aliases:
@@ -24,7 +24,7 @@ toc: true
 
 Requires superuser privilege. Resides in the original bootware untar directory.
 
-Uninstalls Bootware, returning to the standard linux boot process. The uninstall process will leave you in the current encrypted active partition and preserve the contents of that partion as well as the overall partition layout.
+Uninstalls Bootware®, returning to the standard linux boot process. The uninstall process will leave you in the current encrypted active partition and preserve the contents of that partion as well as the overall partition layout.
 
 ### Usage Example
 
