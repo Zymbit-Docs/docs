@@ -1,21 +1,18 @@
 ---
 title: Developing on the CM4
 linkTitle: Developing on the CM4
-lastmod:
-#aliases:
-#    - /zboot-preview/
+description: Outlines the process for developing on the CM4 and transitioning to the secure SCM
 date: "2024-08-22"
+lastmod: "2024-09-26"
 draft: false
 images: []
 type: docs
 layout: single
 weight: 10
 toc: true
-
 ---
 
 -----
-
 
 ### How to Develop on a CM4 and transfer your Image to an SCM
 
@@ -46,9 +43,10 @@ curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
 Load the Bootware® software. Part of the zi image creation includes all of the Bootware® software. Download the Bootware® software to the SCM. The Bootware® software can be downloaded with curl:
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
+curl -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
 ```
 
+```bash
 sudo zbcli install
 ```
 
@@ -70,12 +68,12 @@ Prepare your SCM with Bootware® and an A/B partition, and a known good image, s
 
 Copy your Public key file to a local folder. Run `sudo zbcli update` and double-check the settings are correct. Enter "n" to correct the configuration. Specify the ENDPOINT (USB or HTTPS) where the zi file is located. If you need to correct anything, use `zbcli update-config`. Let `zbcli update` continue. It will confirm your ENDPOINT and prompt for your public key file. Enter your public key file. The process will then continue to load your zi image onto your partitions and attempt to boot up on that partition.
 
-If successful, the SCM will end up successfully bound, and up and running on an encrypted partition. Use `lsblk` to verify the encrypted partition. The blue LED should be blinking once every three seconds. The CM4 image transfer is complete.
+If successful, the SCM will end up successfully bound, and up and running on an encrypted partition. Use `lsblk` to verify the encrypted partition. You should see four partitions, the root, the Active partition (mounted as cryptrfs_A or cryptrfs_B), the backup partition (not mounted), and the shared DATA partition. The blue LED should be blinking once every three seconds. The CM4 image transfer is complete.
 
 
 ### See also:
 
-[zbcli imager](../zbcli/imager)
+[zbcli imager](../../zbcli/imager)
 
 
 ### Additional Information and Support
