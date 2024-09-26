@@ -66,9 +66,9 @@ Next, you will be asked to select a version of the `zbcli` from a list of recent
 
 ```
 ? Select version ›
+  zbcli-1.2.0-rc.25
   zbcli-1.2.0-rc.24
   zbcli-1.2.0-rc.23
-  zbcli-1.2.0-rc.22
 ```
 
 ### 2. Run `zbcli install`
