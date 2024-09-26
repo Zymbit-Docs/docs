@@ -62,7 +62,7 @@ The table below summarizes changes made to the standard image coinciding with th
 | Boot partition of 256MB | 2x Boot partition size - 512MB |
 | SSH optionally enabled |SSH with password allowed |
 | Hostname is `raspberrypi` | Hostname changed to `zymbit-dev` |
-| Default user of `pi` | Default user is `zymbit`. User `pi` removed. Passwd set to zymbit |
+| Default user of `pi` | Default user is `zymbit`. User `pi` removed. Password is set to `zymbit` |
 
 -----
 

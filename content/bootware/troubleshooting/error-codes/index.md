@@ -1,6 +1,7 @@
 ---
 title: "Bootware® Error Codes"
 linkTitle: "Logging and Bootware® Error Codes"
+description: List of available Bootware® Error Codes
 lastmod: "9-22-2023"
 draft: false
 images: []
@@ -147,7 +148,7 @@ Cause: Unable to write to /boot/uboot.env
 </details>
 
 -----
-### **User Kernel FitImage Errors:**
+### **User Kernel FIT Image Errors:**
 
 ##### [FATAL] [0.2.0] [GEN_USR_KERNEL] [0x0501] generate_usr_kernel(): File Not Found /boot/kernel8.img
 <details>
@@ -181,7 +182,7 @@ Description: Failed to generate kernel8 FitImage
 
 <summary>Details</summary>
 
-Description: Failed to encrypt kernel8 FitImage
+Description: Failed to encrypt kernel8 FitImage (or kernel_2712 or vmlinuz)
 
 </details>
 
@@ -190,7 +191,7 @@ Description: Failed to encrypt kernel8 FitImage
 
 <summary>Details</summary>
 
-Description: Failed to move kernel8.enc to /boot/kernel8.enc
+Description: Failed to move kernel8.enc to /boot/kernel8.enc (or kernel_2712 or vmlinuz)
 
 Cause: Unable to write to /boot/kernel8.enc
 
@@ -199,12 +200,12 @@ Cause: Unable to write to /boot/kernel8.enc
 -----
 ### **Update Errors:**
 
-##### [FATAL] [0.2.0] [UPDATE] [0x0501] update(): File Not Found /boot/kernel8.img
+##### [FATAL] [0.2.0] [UPDATE] [0x0501] update(): File Not Found /boot/kernel8.img (or kernel_2712 or vmlinuz)
 <details>
 
 <summary>Details</summary>
 
-Description: /boot/kernel8.img not found
+Description: /boot/kernel8.img not found (or kernel_2712 or vmlinuz)
 
 </details>
 
@@ -217,25 +218,25 @@ Description: Unexpected ZBoot Update Failure
 
 </details>
 
-##### [FATAL] [0.2.0] [UPDATE] [0x0701] update(): Generate kernel8 FitImage
+##### [FATAL] [0.2.0] [UPDATE] [0x0701] update(): Generate kernel8 FitImage (or kernel_2712 or vmlinuz)
 <details>
 
 <summary>Details</summary>
 
-Description: Failed to generate kernel8 FitImage
+Description: Failed to generate kernel8 FitImage (or kernel_2712 or vmlinuz)
 
 </details>
 
-##### [FATAL] [0.2.0] [UPDATE] [0x0802] update(): Encrypt kernel8 FitImage
+##### [FATAL] [0.2.0] [UPDATE] [0x0802] update(): Encrypt kernel8 FitImage (or kernel_2712 or vmlinuz)
 <details>
 
 <summary>Details</summary>
 
-Description: Failed to encrypt kernel8 FitImage
+Description: Failed to encrypt kernel8 FitImage (or kernel_2712 or vmlinuz)
 
 </details>
 
-##### [FATAL] [0.2.0] [UPDATE] [0x0506] update(): mv /boot/kernel8.enc
+##### [FATAL] [0.2.0] [UPDATE] [0x0506] update(): mv /boot/kernel8.enc (or kernel_2712 or vmlinuz)
 <details>
 
 <summary>Details</summary>
@@ -258,7 +259,7 @@ Description: Maximum rollback attempts exceeded
 
 </details>
 
-##### [FATAL] [0.2.0] [UPDATE] [0x0501] rollback(): File Not Found File Not Found /boot/kernel8.img
+##### [FATAL] [0.2.0] [UPDATE] [0x0501] rollback(): File Not Found File Not Found /boot/kernel8.img (or kernel_2712 or vmlinuz)
 <details>
 
 <summary>Details</summary>
@@ -276,7 +277,7 @@ Description: Unexpected Rollback Failure
 
 </details>
 
-##### [FATAL] [0.2.0] [UPDATE] [0x0701] rollback(): File Not Found Generate kernel8 FitImage
+##### [FATAL] [0.2.0] [UPDATE] [0x0701] rollback(): File Not Found Generate kernel8 FitImage (or kernel_2712 or vmlinuz)
 <details>
 
 <summary>Details</summary>
@@ -285,7 +286,7 @@ Description: Failed to generate kernel8 FitImage
 
 </details>
 
-##### [FATAL] [0.2.0] [UPDATE] [0x0802] rollback(): File Not Found Encrypt kernel8 FitImage
+##### [FATAL] [0.2.0] [UPDATE] [0x0802] rollback(): File Not Found Encrypt kernel8 FitImage (or kernel_2712 or vmlinuz)
 <details>
 
 <summary>Details</summary>
@@ -294,7 +295,7 @@ Description: Failed to encrypt kernel8 FitImage
 
 </details>
 
-##### [FATAL] [0.2.0] [UPDATE] [0x0506] rollback(): File Not Found mv /boot/kernel8.enc
+##### [FATAL] [0.2.0] [UPDATE] [0x0506] rollback(): File Not Found mv /boot/kernel8.enc (or kernel_2712 or vmlinuz)
 <details>
 
 <summary>Details</summary>

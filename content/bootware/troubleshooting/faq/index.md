@@ -1,7 +1,8 @@
 ---
 title: Frequently Asked Questions
-linkTitle: "Bootware® 1.1 FAQ"
-lastmod:
+linkTitle: "Bootware® 1.2 FAQ"
+description: Answers to Frequently asked questions regarding Bootware
+lastmod: "2024-09-26"
 draft: false
 images: []
 type: docs
@@ -12,7 +13,7 @@ toc: false
 ---
 
 -----
-##### Q: What Zymbit products support Bootware® 1.1?
+##### Q: What Zymbit products support Bootware® 1.2?
 
 <details>
 
@@ -20,7 +21,7 @@ toc: false
 
 <br>
 
-A: Bootware® 1.1 runs on the Secure Compute Module based products - the Secure Edge Node, SCM Development kits, SCM modules. Bootware® 1.1 can also run with a ZYMKEY4 on a Dev Kit with an SCM, or with a ZYMKEY on a Raspberry Pi4.
+A: Bootware® 1.2 runs on all Zymbit products. Hardware signing is only available on Zymbit products that support the digital wallet: SCM and HSM6. Supported Pi platforms include CM4, Pi4, and Pi5.
 
 -----
 
@@ -34,7 +35,7 @@ A: Bootware® 1.1 runs on the Secure Compute Module based products - the Secure 
 
 <br>
 
-A: Bootware® 1.1 supports the following OS options:
+A: Bootware® 1.2 supports the following OS options:
 - Bookworm 64-bit
 - Bullseye 64-bit
 - Ubuntu 22.04 (jammy) 64-bit
@@ -65,7 +66,7 @@ A: Yes, you can switch between the supported Operating Systems.  Note: The CM4/S
 
 <br>
 
-A: Yes, if it is based off of one of the supported OS images - Bullseye or Ubuntu 22.04. You will need to supply your kernel and the corresponding modules from your build. You will need to link or rename your kernel image `kernel8.img` for Bookworm/Bullseye, or `vmlinuz` for Ubuntu.
+A: Yes, if it is based off of one of the supported OS images - Bullseye or Ubuntu 22.04. You will need to supply your kernel and the corresponding modules from your build. You will need to link or rename your kernel image `kernel8.img` for Bookworm/Bullseye on a CM4/SCM/Pi4, or `kernel_2712.img` for the Pi5, or `vmlinuz` for Ubuntu.
 
 -----
 
@@ -79,10 +80,10 @@ A: Yes, if it is based off of one of the supported OS images - Bullseye or Ubunt
 
 <br>
 
-A: Bootware® 1.1 primarily consists of three partitioning schemes:
-- Boot 512MB, RootA: Approximately 50%, RootB: Approximately 50%, Encrypted Data partition 512MB
-- Boot 512MB, RootA: Approximately 100%, Encrypted Data partition 512MB
-- Boot 512MB, RootA: Approximately 50%, Encrypted Data partition 512MB
+A: Bootware® 1.2 primarily consists of three partitioning schemes:
+- Boot 512MB, RootA: Approximately 50%, RootB: Approximately 50%, Encrypted Data partition is user configurable with `zbcli update-config` (default 512MB)
+- Boot 512MB, RootA: Approximately 100%, Encrypted Data partition is user configurable with `zbcli update-config` (default 512MB)
+- Boot 512MB, RootA: Approximately 50%, Encrypted Data partition is user configurable with `zbcli update-config` (default 512MB)
 
 -----
 
