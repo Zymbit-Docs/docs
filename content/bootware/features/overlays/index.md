@@ -38,7 +38,7 @@ The `file_manifest` tracks which files are specified by the user to wrap into an
 
 The `file_deletions` tracks which files are to be deleted after the `file_manifest` of files is dropped into the system. `file_deletions` can also contain both directory paths and file paths.
 
-> Do not include the zboot ramdisk `/boot/firmware/zboot.enc` in overlay updates. The imager will refuse to generate an overlay image that contains `zboot.enc`. {{< /callout >}}
+> Do not include the zboot ramdisk `/boot/firmware/zboot.enc` in overlay updates. The imager will refuse to generate an overlay image that contains `zboot.enc`.
 
 ### Overlay updates and system reboots
 
