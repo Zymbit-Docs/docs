@@ -51,8 +51,6 @@ Options:
           Path of HSM key slot to sign the image with
   -o, --output-directory <OUTPUT_DIRECTORY>
           Output directory for new .zi images
-      --exclude <EXCLUDE>
-          Files or directories to exclude from image
   -h, --help
           Print help
 
