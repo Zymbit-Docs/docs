@@ -15,7 +15,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 ### Recent Activity
 <br>
 
-#### August 2024
+#### September 2024
 -----
 
 Bootware® 1.2 Release:
