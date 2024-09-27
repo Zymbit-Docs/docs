@@ -19,10 +19,10 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 -----
 
 Bootware® 1.2 Release:
-- Add support for Pi 5B
+- Adds support for Pi 5B
 - Adds all new rust-based user interface
 - Adds support for HSM4 and HSM6
-- uboot updated to linux 6.6 kernel
+- u-boot updated to linux 6.6 kernel
 - Bug fixes. See [Bootware®](./bootware) for details.
 
 ##### Latest Platform and OS Support
