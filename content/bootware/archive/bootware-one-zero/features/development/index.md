@@ -41,9 +41,9 @@ Once the image is put together and loaded on the SCM, load Zymbit software. For 
 curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
 ```
 
-### 3. Install Bootware® 1.0 Tools
+### 3. Install Bootware 1.0 Tools
 
-Load the Bootware® software. Part of the zi image creation includes all of the Bootware® software. Download the Bootware® software to the SCM. The Bootware® software can be downloaded with curl:
+Load the Bootware software. Part of the zi image creation includes all of the Bootware software. Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
 
 ```bash
 curl https://bootware.s3.amazonaws.com/bootware-1.0.tgz --output bootware-1.0.tgz
@@ -66,7 +66,7 @@ The installation script will do two reboots. With everything in place, you can n
 
 ### 4. Run `zb-imager` and sign with a software-based key
 
-The next step will be to create the zi image to load with Bootware® onto your SCM. Use the Software Key choices since there is no Zymbit HSM hardware involved at this point. `zb-imager` will default to prompt you to use a software key, and will create one for you.
+The next step will be to create the zi image to load with Bootware onto your SCM. Use the Software Key choices since there is no Zymbit HSM hardware involved at this point. `zb-imager` will default to prompt you to use a software key, and will create one for you.
 
 ```
 sudo zb-imager
@@ -92,7 +92,7 @@ The `zb-imager` script will now build your zi image. At the end of the zi image 
 
 ### 5. Setup the SCM
 
-Prepare your SCM with Bootware® and an A/B partition, and a known good image, such as our example image. This is the safest way to insure should something go wrong loading your CM4 image, you will have a way to recover. The [Getting Started Guide](../../getting-started/) details the steps. Complete those steps first.
+Prepare your SCM with Bootware and an A/B partition, and a known good image, such as our example image. This is the safest way to insure should something go wrong loading your CM4 image, you will have a way to recover. The [Getting Started Guide](../../getting-started/) details the steps. Complete those steps first.
 
 ### 6. Load the zi file from your ENDPOINT to the SCM
 

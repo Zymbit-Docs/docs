@@ -1,5 +1,5 @@
 ---
-title: Zymbit Bootware® Overlay Image Updates
+title: Zymbit Bootware Overlay Image Updates
 linkTitle: "Overlay Image Updates"
 description: How to use Overlay (partial) image updates to update/modify/remove individual files
 lastmod: "2024-09-26"
@@ -57,7 +57,7 @@ Overlay updates expect the system to have already gone through a FULL update at 
 
 **Why doesn't `apt` upgrade the kernel on the system?**
 
-Bootware® creates a secure FIT (Flattened uImage Tree) image labeled `usr-kernel.enc` in `/boot/firmware`. This contains the kernel that is loaded by zboot on each boot. Only zboot is allowed to remake and sign/encrypt the FIT image.
+Bootware creates a secure FIT (Flattened uImage Tree) image labeled `usr-kernel.enc` in `/boot/firmware`. This contains the kernel that is loaded by zboot on each boot. Only zboot is allowed to remake and sign/encrypt the FIT image.
 
 The FIT image consists of two things:
 

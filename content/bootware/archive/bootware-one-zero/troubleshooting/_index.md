@@ -18,7 +18,7 @@ toc: true
 The SCM ships with a pre-installed version of either Raspberry Pi OS Lite (bullseye 64bit) or Ubuntu Server 22.04 (jammy) with a more secure configuration.
 
 {{< callout notice >}}
-The pre-installed image is encrypted and cannot be replaced via `rpiboot`. Once Bootware® is installed, Bootware® can install new images based off Bullseye or Jammy in the Zymbit `zi` image format. See the [Getting Started](../getting-started) section and the [zb-update](../utilities/zbupdate) tool.
+The pre-installed image is encrypted and cannot be replaced via `rpiboot`. Once Bootware is installed, Bootware can install new images based off Bullseye or Jammy in the Zymbit `zi` image format. See the [Getting Started](../getting-started) section and the [zb-update](../utilities/zbupdate) tool.
 
 Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or later in order to work with Ubuntu 22.04. The version can be verified with the `vcgencmd bootloader_version` command. The firmware is not field upgradeable. If you have a CM4/SCM with an earlier version of the bootloader and need to run Ubuntu 22.04, please contact support@zymbit.com.
 
@@ -37,10 +37,10 @@ Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or la
     - [Before bootware] cmdline.txt
     - [Before bootware] kernel8.img for rpiOS and vmlinuz for ubuntu
 
-- The `/boot` filesystem should be partitioned for 512MB of space or more. Our default configuration as shipped uses a `/boot` partition of 512MB. Ubuntu in particular creates backups of all files on updates that may exceed free space with Bootware®.
+- The `/boot` filesystem should be partitioned for 512MB of space or more. Our default configuration as shipped uses a `/boot` partition of 512MB. Ubuntu in particular creates backups of all files on updates that may exceed free space with Bootware.
 - Turn off unattended-upgrades. `/boot/firmware/boot.scr` in ubuntu gets replaced by updates from apt and other services. This will brick the device if its booted on the ubuntu made boot.scr. Ubuntu does not use u-boot on the Pi but writes over `boot.scr`. If ever doing a kernel update/upgrade, you must `cp boot.scr.bak boot.scr` prior to rebooting.
 - In config.txt, otg_mode=1 can’t be set. DWC2 needs to be enabled. This is set at our factory and by bootware (and is the default with ubuntu), but if changed, the system will not boot.
-- Non Bootware®: Ubuntu requires the initrd.img on their system to boot up. Be wary of replacing this file or removing it
+- Non Bootware: Ubuntu requires the initrd.img on their system to boot up. Be wary of replacing this file or removing it
 - Be cautious around the policies set in the supervised boot and the files put in the manifest. This follows hardware not images. This also applies to the other tamper policies.
 
 ### Changes to our standard images

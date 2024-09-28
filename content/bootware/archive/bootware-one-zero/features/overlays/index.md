@@ -1,5 +1,5 @@
 ---
-title: Zymbit Bootware® Overlay Image Updates
+title: Zymbit Bootware Overlay Image Updates
 linkTitle: "Overlay Image Updates"
 lastmod:
 date: "2024-04-17"

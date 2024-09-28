@@ -38,9 +38,9 @@ Once the image is put together and loaded on the SCM, load Zymbit software. For 
 curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
 ```
 
-### 3. Install Bootware® 1.2 Tools
+### 3. Install Bootware 1.2 Tools
 
-Load the Bootware® software. Part of the zi image creation includes all of the Bootware® software. Download the Bootware® software to the SCM. The Bootware® software can be downloaded with curl:
+Load the Bootware software. Part of the zi image creation includes all of the Bootware software. Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
 
 ```bash
 curl -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
@@ -62,7 +62,7 @@ sudo zbcli imager
 
 ### 5. Setup the SCM
 
-Prepare your SCM with Bootware® and an A/B partition, and a known good image, such as our example image. This is the safest way to insure should something go wrong loading your CM4 image, you will have a way to recover. The [Getting Started Guide](../../getting-started/) details the steps. Complete those steps first.
+Prepare your SCM with Bootware and an A/B partition, and a known good image, such as our example image. This is the safest way to insure should something go wrong loading your CM4 image, you will have a way to recover. The [Getting Started Guide](../../getting-started/) details the steps. Complete those steps first.
 
 ### 6. Load the zi file from your ENDPOINT to the SCM
 
