@@ -21,7 +21,7 @@ toc: true
 
 Requires superuser privilege. 
 
-Bootware® requires images in a particular format. Use `zbcli imager` to convert images into Zymbit Image (zi) format. The script will prompt you for all required information. The Flags in the Usage below can be used to provide that information from the command line and skip prompts.
+Bootware requires images in a particular format. Use `zbcli imager` to convert images into Zymbit Image (zi) format. The script will prompt you for all required information. The Flags in the Usage below can be used to provide that information from the command line and skip prompts.
 
 ### Usage
 
@@ -93,7 +93,7 @@ The script will prompt for information. We will use the mount point of our USB s
   Overlay image from files added with zb-manifest
 ```
 
-The script will ask for an optional image version. This is entirely for your use. It is not used by Bootware®.
+The script will ask for an optional image version. This is entirely for your use. It is not used by Bootware.
 
 Next, the script will ask for a private key with which to sign the image. If you are using an SCM or an HSM6, hardware signing by a key from the SCM or HSM is available. Software signing is also available for all products. You can choose to create a new key, or use an existing key. Pre-existing software keys will require a key file in PEM format. Pre-existing hardware keys will require providing information as to which slot on the SCM or HSM6 contains the key. Below, we selected to use and create a new software key.
 

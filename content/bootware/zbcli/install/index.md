@@ -1,7 +1,7 @@
 ---
 title: "zbcli install"
 linkTitle: "install"
-description: Installs the Bootware® tools and artifacts
+description: Installs the Bootware tools and artifacts
 date: "2024-08-14"
 lastmod: "2024-09-16"
 draft: false
@@ -21,7 +21,7 @@ toc: true
 
 Requires superuser privilege.  
 
-Installs the Bootware® sofware. 
+Installs the Bootware sofware. 
 
 ### Usage
 

@@ -1,7 +1,7 @@
 ---
 title: "zbcli update"
 linkTitle: "update"
-description: "Schedules Bootware® to perform device update on the next reboot"
+description: "Schedules Bootware to perform device update on the next reboot"
 date: "2024-08-14"
 lastmod: "2024-09-16"
 draft: false
@@ -21,7 +21,7 @@ toc: true
 
 Requires superuser privilege.
 
-Utility to perform Bootware® updates; re-partitions and loads images into the Active, Backup or Both partitions
+Utility to perform Bootware updates; re-partitions and loads images into the Active, Backup or Both partitions
 
 ### Usage
 
@@ -105,15 +105,15 @@ After verifying the contents of the zi image with your supplied public key, stat
 ```
 If you are ready to reboot, answer `yes` to start the update process.
 
-#### Bootware® Update Process
+#### Bootware Update Process
 
-The Bootware® Update process will now take place. 
+The Bootware Update process will now take place. 
 
 {{< callout warning >}}The initial configuration process can take over an hour to complete, depending on partitioning and the size of the image(s). The process can be completed via ssh, but an HDMI console is helpful to follow the process. During the process, the blue LED will be OFF.{{< /callout >}}
 
 On the console, you will see:
 
-* Bootware® will load and decrypt the Zymbit hardened uboot and zboot. A message that an update will take place will be displayed.
+* Bootware will load and decrypt the Zymbit hardened uboot and zboot. A message that an update will take place will be displayed.
 * The A/B partitions and the DATA partition will be configured and setup for LUKS encryption protected by the Zymbit SCM or HSM. NOTE: This process will use fdisk to repartition. fdisk will present warnings that the disk is in use, which can be ignored.
 * It will take some time to unpack the image into the A/B root partitions depending on the size of the image.
 * Once it's done unpacking the image to the A and B partitions, it will boot into the updated ACTIVE partition. You can use `lsblk` to examine the partitions. For instance, 
