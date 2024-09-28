@@ -54,6 +54,26 @@ sudo su
 curl -L https://zk-sw-repo.s3.amazonaws.com/apt-zymkey-pubkey.gpg | apt-key add -
 ```
 
+#### Wake-Pin Issues for upgrades to Kernel 6.6 and later
+
+The installation script takes care of the following for you. If you are doing a new installation, you should not have to worry about the following. If you already installed the Zymbit software and then upgraded the kernel to something beyond 6.6, please note the following.
+
+Raspberry PI OS Bookworm updated the kernel to version 6.6.y in March 2024. The kernel no longer overrides an upstream kernel decision to force the base number of the main GPIO controller to be global GPIO 0. If the WAKE_PIN number is not set, the ZYMKEY will not bind. You will see 5 flashes per second continuously.For RPI4, RPI5, and CM4 platforms, you will need to set the WAKE_PIN in the following manner:
+
+Determine the numbering for GPIO4 by examining /sys/kernel/debug/gpio for the number associated with GPIO4, then set an environment variable in the Zymbit environment variable file:
+
+```bash
+sudo su
+wake_pin=`grep GPIO4 /sys/kernel/debug/gpio | sed -r 's/[^0-9]*([0-9]*).*/\1/'`
+echo "wake_pin=$wake_pin"   # sanity check value is set
+echo "ZK_GPIO_WAKE_PIN=$wake_pin" > /var/lib/zymbit/zkenv.conf
+systemctl restart zkifc
+```
+As of 6.6.20, the numbering is:
+RPI4=516
+RPI5=575
+CM4=516
+
 
 #### CPU Scaling Governor
 We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. This sometimes causes the zymkey to be put into a odd state or return failures from operations that get optimized out by the governor. The raspberry pi sets the **scaling governor** to be "**ondemand**" by default. We recommend switching this mode to "**performance**" to get the best out of the zymkey. Details:
@@ -63,14 +83,24 @@ How to set cpu governor to performance.
 {{< /resource_link >}}
 
 #### Unattended-upgrades
-When encrypting your rootfs, we highly recommend turning off unattended-upgrades prior to the encryption process. In some cases primarily with Ubuntu 20.04, during an update/upgrade after encryption, the `update-initramfs` process may fail and leave the system unable to boot.
+When encrypting your rootfs, we highly recommend turning off unattended-upgrades prior to the encryption process. In some cases primarily with Ubuntu, during an update/upgrade after encryption, the `update-initramfs` process may fail and leave the system unable to boot.
 
 To mitigate this issue, remove the service unattended-upgrades:
 
-`systemctl stop unattended-upgrades`
+Check `/etc/apt/apt.conf.d/20auto-upgrades`. Make sure the following lines are set to 0,
 
-`systemctl disable unattended-upgrades`
+```
+APT::Periodic::Update-Package-Lists "0";
+APT::Periodic::Unattended-Upgrade "0";
+```
 
+Stop and remove the unattended-upgrade service:
+
+```
+sudo systemctl stop unattended-upgrades
+sudo systemctl disable unattended-upgrades
+sudo apt-get remove --purge -y unattended-upgrades
+```
 
 ### **Products**
 

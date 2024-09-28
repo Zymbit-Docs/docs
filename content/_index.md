@@ -2,7 +2,7 @@
 title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2024-06-05
+lastmod: 2024-08-22
 draft: false
 images: []
 weight: 8
@@ -15,22 +15,31 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 ### Recent Activity
 <br>
 
-
-#### June 2024
+#### September 2024
 -----
 
-Bootware 1.1 General Platform Support - Along with the SCM-based products, Bootware 1.1 includes cross-platform support for ZYMKEY on CM4 and RPi4.
-
-The Zymbit Products also include Bookworm 64-bit support.
+Bootware® 1.2 Release:
+- Adds support for Pi 5B
+- Adds all new rust-based user interface
+- Adds support for HSM4 and HSM6
+- u-boot updated to linux 6.6 kernel
+- Bug fixes. See [Bootware®](./bootware) for details.
 
 ##### Latest Platform and OS Support
 
 ![supported OSs](supported-os-dots.png)
 <br>
 
-#### Other significant enhancements in Bootware 1.1:
+#### June 2024
+-----
 
-**Issue #142** - FIXED. OS updates that change boot.scr can prevent future boot. Affects Ubuntu. Although the PI version of Ubuntu does not use U-Boot, Ubuntu's dpkg kernel update re-writes the file /boot/firmware/boot.scr. boot.scr was used by Bootware 1.0, and a re-write of the file could leave the system unable to boot. Bootware 1.1 no longer relies on the file.
+Bootware® 1.1 General Platform Support - Along with the SCM-based products, Bootware® 1.1 includes cross-platform support for ZYMKEY on CM4 and RPi4.
+
+The Zymbit Products also include Bookworm 64-bit support.
+
+#### Other significant enhancements in Bootware® 1.1:
+
+**Issue #142** - FIXED. OS updates that change boot.scr can prevent future boot. Affects Ubuntu. Although the PI version of Ubuntu does not use U-Boot, Ubuntu's dpkg kernel update re-writes the file /boot/firmware/boot.scr. boot.scr was used by Bootware® 1.0, and a re-write of the file could leave the system unable to boot. Bootware® 1.1 no longer relies on the file.
 
 **Enhancement** - The common data partition is now encrypted and the LUKS key is locked by the Zymbit HSM.
 
@@ -40,7 +49,7 @@ The Zymbit Products also include Bookworm 64-bit support.
 
 #### April 2024
 -----
-Bootware 1.0 is now released for General Availability. Along with Bootware 1.0 GA, The SCM/SEN product line now officially supports both Bullseye 64-bit and Ubuntu 22.04 64-bit.
+Bootware® 1.0 is now released for General Availability. Along with Bootware® 1.0 GA, The SCM/SEN product line now officially supports both Bullseye 64-bit and Ubuntu 22.04 64-bit.
 
 
 #### March 2024
@@ -70,7 +79,7 @@ We have added support for Bookworm (64-bit) on the Pi5, PI4 and CM4 for the ZYMK
 
 #### October 2023
 -----
-Secure Compute Module moved from Revision A to Revision B. The Zymbit Software did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required.
+Secure Compute Module moved from Revision A to Revision B. The Zymbit Software did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware®, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required.
 
 See the [Troubleshooting/FAQ](troubleshooting/scm) for more information on the changes from Rev A to Rev B of the SCM itself.
 <br>
