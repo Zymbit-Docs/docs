@@ -1,5 +1,5 @@
 ---
-title: Bootware® Overview
+title: Bootware Overview
 linkTitle: "Overview"
 lastmod:
 date: "2024-04-02"
@@ -14,7 +14,7 @@ toc: false
 -----
 
 ### WHAT IS BOOTWARE?
-Bootware®™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). Bootware®™ includes:
+Bootware™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). Bootware™ includes:
 
 + A/B updates managed in secure silicon.
 
@@ -33,7 +33,7 @@ Bootware®™ is a set of software tools and micro services for the Zymbit Secur
 + Optimized for ARMv8 CPUs.
 
 
-### [Click for Details on Bootware® 1.0 Services](https://www.zymbit.com/bootware/)
+### [Click for Details on Bootware 1.0 Services](https://www.zymbit.com/bootware/)
 
 -----
 
