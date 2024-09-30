@@ -403,7 +403,7 @@ A: For Zymkey and HSMs, kernel drivers and libraries for all of the devices are 
 
 A: You can update your existing key with the following command:
 
-`curl -L https://zk-sw-repo.s3.amazonaws.com/apt-zymkey-pubkey.gpg | apt-key add -`
+ curl -L https://zk-sw-repo.s3.amazonaws.com/apt-zymkey-pubkey.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/zymbit.gpg
 
 -----
 
