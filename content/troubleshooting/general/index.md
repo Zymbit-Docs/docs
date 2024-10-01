@@ -1,7 +1,7 @@
 ---
 title: "General FAQ & Troubleshooting"
 linkTitle: "General"
-lastmod: "03-21-2023"
+lastmod: "2024-09-30"
 draft: false
 images: []
 weight: 10
@@ -47,11 +47,10 @@ sudo pip3 install zku --upgrade
 
 #### Expired GPG Key Preventing Access to Repository
 
-The Zymbit GPG key expired and was renewed on September 30, 2022. New installations should not have any problems. `apt-get update` may complain that the GPG key has expired. To update your local key, do the following:
+The Zymbit GPG key expired and was renewed on September 30, 2024. New installations should not have any problems. `apt-get update` may complain that the GPG key has expired. To update your local key, do the following:
 
 ```bash
-sudo su
-curl -L https://zk-sw-repo.s3.amazonaws.com/apt-zymkey-pubkey.gpg | apt-key add -
+curl -L https://zk-sw-repo.s3.amazonaws.com/apt-zymkey-pubkey.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/zymbit.gpg
 ```
 
 #### Wake-Pin Issues for upgrades to Kernel 6.6 and later
