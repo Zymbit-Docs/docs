@@ -3,7 +3,7 @@ title: "Getting Started: Bootware 1.2"
 linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
-lastmod: "2024-09-18"
+lastmod: "2024-10-02"
 aliases:
     - /bootware/getting-started/
 draft: false
@@ -30,6 +30,8 @@ Details of the commands in this Quickstart are linked in-line.
 See the [Features](../features) section for more information on how to use Bootware.
 
 ### Overview of steps to get up and running
+
+> You must have the Zymbit SCM/HSM and libraries successfully installed before installing Bootware. The blue LED should blink once every three seconds.
 
 1. Download the Bootware management tool, `zbcli`. 
 2. Run `zbcli install` to install Bootware.

@@ -18,15 +18,20 @@ toc: True
 
 Bootware is a secure integrated tool for managing multiple Linux OS installations for edge / embedded Linux machines. Bootware 1.2 supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
 
-![Bootware Overview](with-bw.png "Bootware")
+-----
 
 #### If you want to jump right in, [Click here to Get Started!](getting-started)
+
+![Bootware Overview](with-bw.png "Bootware")
+
+
+### What is Bootware?
 
 - Bootware is full-featured native OS switcher/manager with first rate support for encrypted root and data partitions. Bootware is not a hypervisor.
 
 - Bootware supports both manual and automatic rollback between A and B installations. If rollback fails, Bootware is able to enter recovery to reload one of the installations from either a local image or a remote secure endpoint.
 
-- Bootware works with 64-bit versions of Raspbian and Ubuntu on Raspberry Pi 4 and 5 and the various compute module variants.
+- Bootware works with 64-bit versions of Raspberry Pi OS and Ubuntu on Raspberry Pi 4 and 5 and the various compute module variants.
 
 - Bootware is not an OS, therefore custom OS builds are generally supported. For larger orders, Zymbit is able to offer device programming and image validation services of custom user OS builds.
 
@@ -36,17 +41,17 @@ Bootware is a secure integrated tool for managing multiple Linux OS installation
 
 - Bootware fully isolates bootable root partitions with separate sets of LUKS credentials, which are securely injected into user s OS initramfs images. Bootware supports a shared data partition, for which the credentials are distributed to new installations. Each new installation gets a clean new set of keys and one root partition cannot access the other.
 
-- New installations are deployed from within Bootware s secure enclave, zboot, which boots straight via secure boot. zboot is able to download, validate and deploy updates without relying on a potentially compromised OS installation to install the next new clean image.
+- New installations are deployed from within Bootware's secure enclave, zboot, which boots straight via secure boot. zboot is able to download, validate, and deploy updates without relying on a potentially compromised OS installation to install the next new clean image.
 
 - Bootware has a robust workflow for update signing, which may use either hardware or software key options. Update signing occurs on a dedicated publishing node.
 
-- Bootware uses full image  forklift  updates for major OS installations. Partial  overlay  updates are also supported, and may be installed directly from user mode.
+- Bootware uses full image forklift updates for major OS installations. Partial overlay updates are also supported, and may be installed directly from user mode.
 
-- Bootware runs of top of Zymbit s security services package, which is required to use Zymbit security hardware.
+- Bootware runs of top of Zymbit's security services package, which is required to use Zymbit security hardware.
 
 - Bootware has additional integrations with Zymbit Secure Edge Nodes, which may be purchased to development and production use, or may be used as reference designs for custom hardware. For highly secure products, such as Secure Compute Modules, Bootware is almost essential in order to apply updates without the ability to use Pi burner tools, which are intentionally disabled.
 
-### Bootware installs itself into the following locations:
+#### Bootware installs itself into the following locations:
 
 - Bootware secure uboot and the secure enclave, zboot, along with encrypted configurations files are installed in into /boot.
 
@@ -54,7 +59,7 @@ Bootware is a secure integrated tool for managing multiple Linux OS installation
 
 - Bootware installs `zbcli` and Bootware scripts into user OS. User must ensure that these packages are present in user images to be deployed using Bootware. User mode tools manage Bootware settings and check for updates on USB drives or on remote endpoints. `zbcli` also allows user to trigger manual rollback and update installations. Once a suitable update is located, Bootware reboots into zboot to install.
 
-### Bootware boot sequence:
+#### Bootware boot sequence:
 
 - For Zymbit Secure Compute Modules only, supervisor-based pre-boot environment validates and repairs /boot partition. Zymkey and HSM products do not have this feature.
 
@@ -70,7 +75,7 @@ Bootware is a secure integrated tool for managing multiple Linux OS installation
 
   * Once in initramfs, zbunlock is invoked to connect to the HSM and to decrypt LUKS credentials that have been previously injected into initramfs. /root is mounted.
 
-  * Once boot is complete, boot counter is reset. If the boot fails, and the system reboots for whichever reason, the process is repeats with boot counter incrementing.
+  * Once boot is complete, boot counter is reset. If the boot fails, and the system reboots for whichever reason, the process repeats with boot counter incrementing.
 
 - If the boot counter has exceeded the threshold, rollback occurs:
 
@@ -80,7 +85,7 @@ Bootware is a secure integrated tool for managing multiple Linux OS installation
 
   * Uboot attempts to boot the backup boot partition in the same way it boots the active partition.
 
-  * Once boot is complete, boot counter is reset. If the boot fails, and the system reboots for whichever reason, the process is repeats with boot counter incrementing.
+  * Once boot is complete, boot counter is reset. If the boot fails, and the system reboots for whichever reason, the process repeats with boot counter incrementing.
 
 - If the boot counter for the backup partition also exceeds the threshold without a successful boot, the system enters recovery mode:
 
@@ -92,21 +97,19 @@ Bootware is a secure integrated tool for managing multiple Linux OS installation
 
   * If the image is not found, zboot enters console interactive mode and asks for endpoint information. Any image to be installed must have a proper signature.
 
-Bootware is designed with the singular goal to ensure that properly validated and installed image is booted successfully on user s machine. 
-
-
+Bootware is designed with the singular goal to ensure that properly validated and installed image is booted successfully on user's machine. 
 
 -----
 
-### More information
+### Additional Resources
 
 #### [Get Free Bootware Updates](https://www.zymbit.com/get-free-bootware/)
 
-#### [More information on Bootware  from zymbit.com](https://www.zymbit.com/bootware/)
+#### [More information on Bootware from zymbit.com](https://www.zymbit.com/bootware/)
 
 #### [Bootware Community](https://community.zymbit.com/c/bootware)
 
 -----
 
-### Bootware 1.2 
+### Links to Bootware 1.2 Documentation Sections
 
