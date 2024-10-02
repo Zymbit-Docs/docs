@@ -24,7 +24,7 @@ Bootware is a secure integrated tool for managing multiple Linux OS installation
 
 -----
 
-### What is Bootware?
+## What is Bootware?
 
 ![Bootware Overview](with-bw.png "Bootware")
 
