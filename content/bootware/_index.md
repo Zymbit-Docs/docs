@@ -20,13 +20,13 @@ Bootware is a secure integrated tool for managing multiple Linux OS installation
 
 -----
 
-#### If you want to jump right in, [Click here to Get Started!](getting-started), 
+#### If you want to jump right in, [Click here to Get Started!](getting-started)
 
 -----
 
 ## What is Bootware?
 
-![Bootware Overview](with-bw.png "Bootware")
+![Bootware Overview](with-bw.png "Bootware in A/B Configuration")
 
 
 - Bootware is full-featured native OS switcher/manager with first rate support for encrypted root and data partitions. Bootware is not a hypervisor.
