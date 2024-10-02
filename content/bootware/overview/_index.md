@@ -1,5 +1,5 @@
 ---
-title: "Overview: Bootware:registered: 1.2"
+title: "Overview: Bootware :registered: 1.2"
 linkTitle: "Overview"
 description: What is Bootware?
 date: "2024-10-02"
