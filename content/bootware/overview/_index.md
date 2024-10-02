@@ -14,7 +14,10 @@ headless: false
 
 -----
 
+
 Bootware is a secure integrated tool for managing multiple Linux OS installations for edge / embedded Linux machines. Bootware 1.2 supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
+
+![Bootware Overview](with-bw.png "Bootware")
 
 - Bootware is full-featured native OS switcher/manager with first rate support for encrypted root and data partitions. Bootware is not a hypervisor.
 
