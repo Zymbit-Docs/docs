@@ -3,7 +3,7 @@ title: "Getting Started: Bootware 1.2"
 linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
-lastmod: "2024-09-18"
+lastmod: "2024-10-02"
 aliases:
     - /bootware/getting-started/
 draft: false
@@ -18,6 +18,8 @@ headless: false
 
 ## Quickstart - Download and Install Bootware
 
+#### [Register for Bootware Technical Updates](https://www.zymbit.com/get-free-bootware/)
+
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
 The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). There is no need to setup encryption of your root filesystem as Bootware will do this for you. 
@@ -30,6 +32,8 @@ Details of the commands in this Quickstart are linked in-line.
 See the [Features](../features) section for more information on how to use Bootware.
 
 ### Overview of steps to get up and running
+
+> You must have the Zymbit SCM/HSM and libraries successfully installed before installing Bootware. The blue LED should blink once every three seconds.
 
 1. Download the Bootware management tool, `zbcli`. 
 2. Run `zbcli install` to install Bootware.
