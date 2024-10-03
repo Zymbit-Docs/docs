@@ -53,7 +53,7 @@ Bootware is a secure integrated tool for managing multiple Linux OS installation
 
 - Bootware has additional integrations with Zymbit Secure Edge Nodes, which may be purchased to development and production use, or may be used as reference designs for custom hardware. For highly secure products, such as Secure Compute Modules, Bootware is almost essential in order to apply updates without the ability to use Pi burner tools, which are intentionally disabled.
 
-#### Bootware installs itself into the following locations:
+#### Bootware installation locations:
 
 - Bootware secure uboot and the secure enclave, zboot, along with encrypted configurations files are installed in into /boot.
 
@@ -105,9 +105,9 @@ Bootware is designed with the singular goal to ensure that properly validated an
 
 ### Additional Resources
 
-#### [Register for Free Bootware Technical Updates](https://www.zymbit.com/get-free-bootware/)
+#### [Register for Bootware Technical Updates](https://www.zymbit.com/get-free-bootware/)
 
-#### [More information on Bootware from zymbit.com](https://www.zymbit.com/bootware/)
+#### [More information on Bootware on zymbit.com](https://www.zymbit.com/bootware/)
 
 #### [Bootware Community](https://community.zymbit.com/c/bootware)
 
