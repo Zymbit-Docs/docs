@@ -53,6 +53,16 @@ The Zymbit GPG key expired and was renewed on September 30, 2024. New installati
 curl -L https://zk-sw-repo.s3.amazonaws.com/apt-zymkey-pubkey.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/zymbit.gpg
 ```
 
+For those of you that are on older installations, make sure the `signed-by` option is included in the `/etc/apt/sources.list.d/zymbit.list`,  
+
+This parameter - `[signed-by=/usr/share/keyrings/zymbit.gpg]`
+
+The following will check and fix for you,
+
+```bash
+sudo sed -i 's/^deb https/deb [signed-by=\/usr\/share\/keyrings\/zymbit.gpg] https/' /etc/apt/sources.list.d/zymbit.list
+```
+
 #### Wake-Pin Issues for upgrades to Kernel 6.6 and later
 
 The installation script takes care of the following for you. If you are doing a new installation, you should not have to worry about the following. If you already installed the Zymbit software and then upgraded the kernel to something beyond 6.6, please note the following.
