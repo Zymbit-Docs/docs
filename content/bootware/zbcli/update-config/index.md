@@ -32,6 +32,8 @@ Options:
           Configures partition layout [possible values: a/b, a-half-disk, a-full-disk]
       --update-policy <UPDATE_POLICY>
           Configures update mode [possible values: backup, active, both]
+      --data-part-size-mb <DATA_PART_SIZE_MB>
+          Configures data partition of size MB
       --update-endpoint <UPDATE_ENDPOINT>
           Configures update endpoint either as HTTPS URL or external mass storage device
       --wifi-ssid <WIFI_SSID>
