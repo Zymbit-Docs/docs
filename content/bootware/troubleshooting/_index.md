@@ -23,7 +23,7 @@ The SCM ships with a pre-installed with the following options for Operating Syst
 * Ubuntu Server LTS 22.04 (jammy 64bit)
 
 {{< callout notice >}}
-The pre-installed image is encrypted and cannot be replaced via `rpiboot`. Once Bootware is installed, Bootware can install new images based off Bookworm, Bullseye or Jammy in the Zymbit `zi` image format. See the [Getting Started](../getting-started) section and the [zbcli update](../zbcli/update) tool.
+The SCM pre-installed image is encrypted and cannot be replaced via `rpiboot`. Once Bootware is installed, Bootware can install new images based off Bookworm, Bullseye or Jammy in the Zymbit `zi` image format. See the [Getting Started](../getting-started) section and the [zbcli update](../zbcli/update) tool.
 
 Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or later in order to work with Ubuntu 22.04. The version can be verified with the `vcgencmd bootloader_version` command. The firmware is not field upgradeable. If you have a CM4/SCM with an earlier version of the bootloader and need to run Ubuntu 22.04, please contact support@zymbit.com.
 
@@ -31,7 +31,7 @@ Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or la
 
 ### Precautions
 
-- HTTPS endpoints are limited to a zi image of approximately 6GB. The zi images are compressed, so this is not normally a limitation with A/B configurations. If you have zi imagest larger tha 6MB, download the image to a local device with 3x the image size space and use the local device endpoint.
+- HTTPS endpoints are limited to a zi image of approximately 2/3 of your total Pi RAM size. We recommend a Pi with at least 4GB of RAM. The zi images are compressed, so this is not normally a limitation with A/B configurations. If you have zi imagest larger than 2/3 your Pi RAM size, download the image to a local device with 3x the image size space and use the local device endpoint.
 
 - Important boot files to not delete.
     - Boot.scr
