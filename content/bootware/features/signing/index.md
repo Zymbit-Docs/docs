@@ -1,5 +1,5 @@
 ---
-title: Bootware<sup>&reg;</sup> Signing and Verifying
+title: Bootware Signing and Verifying
 linkTitle: "Sign and Verify"
 description: Overview of Hardware (SCM and HSM6) and Software sign and verify
 lastmod:
