@@ -14,9 +14,9 @@ toc: true
 ### Troubleshooting tips and FAQ
 
 
-#### Modifications to SCM image from Standard Raspberry Pi OS Lite
+#### Supported Platforms and Operating Systems
 
-The following matrix of platforms and Operating Systems support Bootware™ 1.2:
+The following matrix of platforms and Operating Systems support Bootware 1.2:
 
 | Platform | Zymbit Module | OS Support |
 | ----- | ----- | ----- |
@@ -25,7 +25,9 @@ The following matrix of platforms and Operating Systems support Bootware™ 1.2:
 | Pi4 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
 | Pi5 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit |
 
-> It is highly recommended to use a Pi model with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image processing and encryption. For HTTPS endpoints, the image must be less than 700MB smaller than your total RAM.
+> It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
+
+#### Pre-installed SCM Operating Systems
 
 The SCM ships with a pre-installed with the following options for Operating System:
 
@@ -41,8 +43,6 @@ Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or la
 {{< /callout >}}
 
 ### Precautions
-
-- HTTPS endpoints are limited to a zi image of approximately 2/3 of your total Pi RAM size. We recommend a Pi with at least 4GB of RAM. The zi images are compressed, so this is not normally a limitation with A/B configurations. If you have zi imagest larger than 2/3 your Pi RAM size, download the image to a local device with 3x the image size space and use the local device endpoint.
 
 - Important boot files to not delete.
     - Boot.scr

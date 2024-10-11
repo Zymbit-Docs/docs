@@ -20,6 +20,21 @@ headless: false
 
 #### [Register for Bootware Technical Updates](https://www.zymbit.com/get-free-bootware/)
 
+#### Supported Platforms and Operating Systems
+
+The following matrix of platforms and Operating Systems support Bootware 1.2:
+
+| Platform | Zymbit Module | OS Support |
+| ----- | ----- | ----- |
+| CM4 | SCM | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| CM4 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| Pi4 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| Pi5 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit |
+
+> It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
+
+-----
+
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
 The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). There is no need to setup encryption of your root filesystem as Bootware will do this for you. 
