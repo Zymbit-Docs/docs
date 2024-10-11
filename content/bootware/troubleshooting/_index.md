@@ -2,7 +2,7 @@
 title: "Troubleshooting and FAQ"
 linkTitle: "Troubleshooting/FAQ"
 description: Collection of Bootware troubleshooting tips and FAQ items
-lastmod: "2024-08-22"
+lastmod: "2024-10-11"
 draft: false
 images: []
 weight: 50
@@ -15,6 +15,17 @@ toc: true
 
 
 #### Modifications to SCM image from Standard Raspberry Pi OS Lite
+
+The following matrix of platforms and Operating Systems support Bootware™ 1.2:
+
+| Platform | Zymbit Module | OS Support |
+| ----- | ----- | ----- |
+| CM4 | SCM | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| CM4 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| Pi4 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
+| Pi5 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit |
+
+> It is highly recommended to use a Pi model with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image processing and encryption. For HTTPS endpoints, the image must be less than 700MB smaller than your total RAM.
 
 The SCM ships with a pre-installed with the following options for Operating System:
 
