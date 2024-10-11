@@ -14,9 +14,9 @@ headless: false
 
 ---
 
------
+## Quickstart - Download, Install, and Configure Bootware
 
-## Quickstart - Download and Install Bootware
+In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
 #### [Register for Bootware Technical Updates](https://www.zymbit.com/get-free-bootware/)
 
@@ -35,7 +35,6 @@ The following matrix of platforms and Operating Systems support Bootware 1.2:
 
 -----
 
-In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
 The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). There is no need to setup encryption of your root filesystem as Bootware will do this for you. 
 

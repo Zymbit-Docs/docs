@@ -16,8 +16,6 @@ toc: true
 
 #### Supported Platforms and Operating Systems
 
-The following matrix of platforms and Operating Systems support Bootware 1.2:
-
 | Platform | Zymbit Module | OS Support |
 | ----- | ----- | ----- |
 | CM4 | SCM | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
