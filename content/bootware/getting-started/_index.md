@@ -3,7 +3,7 @@ title: "Getting Started: Bootware 1.2"
 linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
-lastmod: "2024-10-02"
+lastmod: "2024-10-15"
 aliases:
     - /bootware/getting-started/
 draft: false
@@ -50,7 +50,7 @@ See the [Features](../features) section for more information on how to use Bootw
 > You must have the Zymbit SCM/HSM and libraries successfully installed before installing Bootware. The blue LED should blink once every three seconds.
 
 1. Download the Bootware management tool, `zbcli`. 
-2. Run `zbcli install` to install Bootware.
+2. Run [`zbcli install`](../zbcli/install) to install Bootware.
 3. Run `zbcli imager` to create and sign a Zymbit image file (zi image) of your current root file system as a backup. 
 4. Run `zbcli update-config` to configure Partitions and Recovery strategy. For this Quickstart, we will setup A/B partitions.
 5. Run `zbcli update` to load a known-good example zi image into the Backup (B) partition; set B to the Active partition.
