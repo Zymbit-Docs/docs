@@ -51,10 +51,10 @@ See the [Features](../features) section for more information on how to use Bootw
 
 1. Download the Bootware management tool, `zbcli`. 
 2. Run [`zbcli install`](../zbcli/install) to install Bootware.
-3. Run `zbcli imager` to create and sign a Zymbit image file (zi image) of your current root file system as a backup. 
-4. Run `zbcli update-config` to configure Partitions and Recovery strategy. For this Quickstart, we will setup A/B partitions.
-5. Run `zbcli update` to load a known-good example zi image into the Backup (B) partition; set B to the Active partition.
-6. Run `zbcli rollback-swap` to force a Rollback to your original partition to verify your A/B setup is working.
+3. Run [`zbcli imager`](../zbcli/imager) to create and sign a Zymbit image file (zi image) of your current root file system as a backup. 
+4. Run [`zbcli update-config`](../zbcli/update-config) to configure Partitions and Recovery strategy. For this Quickstart, we will setup A/B partitions.
+5. Run [`zbcli update`](../zbcli/update) to load a known-good example zi image into the Backup (B) partition; set B to the Active partition.
+6. Run [`zbcli rollback-swap`](../zbcli/rollback-swap) to force a Rollback to your original partition to verify your A/B setup is working.
 
 ### 1. Download Bootware
 
@@ -89,7 +89,7 @@ Next, you will be asked to select a version of the `zbcli` from a list of recent
   zbcli-1.2.0-rc.23
 ```
 
-### 2. Run `zbcli install`
+### 2. Run [`zbcli install`](../zbcli/install)
 
 Install Bootware. Answer `yes` when prompted to complete the installation.
 
@@ -124,7 +124,7 @@ After installing the Bootware tools and artifacts, you will need to reboot into 
 
 Reboot to complete the installation process and to boot through zboot. Once completed, all necessary files required for loading new images via Bootware will be installed.
 
-### 3. Run `zbcli imager` to create a Bootware-ready Zymbit Image backup (zi image)
+### 3. Run [`zbcli imager`](../zbcli/imager) to create a Bootware-ready Zymbit Image backup (zi image)
 
 Bootware requires images in a secure, signed format for loading with zboot. We refer to these images as "zi images." An image conversion tool, [`zbcli imager`](../zbcli/imager), creates the zi image. `zbcli imager` can take a snapshot of your running system or read from tarballs of your bootfs and rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../features/overlays).
 
@@ -133,7 +133,7 @@ Bootware requires images in a secure, signed format for loading with zboot. We r
 
 #### Create a zi image backup from your current running root file system
 
-Use `zbcli imager` to create a zi image backup of your current system. Once created, the zi image can be propagated to other disk partitions securely. A private/public key pair will be used for signing the zi image at time of creation and verifying during the update process. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../features/signing).
+Use [`zbcli imager`](../zbcli/imager) to create a zi image backup of your current system. Once created, the zi image can be propagated to other disk partitions securely. A private/public key pair will be used for signing the zi image at time of creation and verifying during the update process. Key pairs can either be created in software or using the Zymbit HSM hardware. For this Quickstart, we will use software keys. Details on signing and verifying can be found [here](../features/signing).
 
 
 In this guide, we will output the image directly to a USB stick. Mount the USB stick for access,
@@ -253,7 +253,7 @@ total 1134224
 Additional examples of `zbcli imager` usage can be found here: [zbcli imager usage](../zbcli/imager)
 
 
-### 4. Run `zbcli update-config` to configure the Partitioning and Image loading
+### 4. Run [`zbcli update-config`](../zbcli/update-config) to configure the Partitioning and Image loading
 
 Now we will use the zi image and public key we just created to configure an A/B partition and load the image into the BACKUP (B) partition.
 
@@ -263,13 +263,13 @@ First, copy the public key file created earlier by the imager from `/dev/sda1` t
 cp /mnt/my_image_pub_key.pem .
 ```
 
-#### Use the Bootware `zbcli update-config` to Configure your System
+#### Use the Bootware [`zbcli update-config`](../zbcli/update-config) to Configure your System
 
 Bootware includes a tool to help configure your system called `zbcli update-config`. `zbcli update-config` is meant to setup your device environment to load a zi image from a configured endpoint, as well as choose an update policy for how to apply zi images. More information on `zbcli update-config` can be found [here](../zbcli/update-config). Navigate through the menus with up and down arrows. Use ENTER to make a choice. Each configuration option will display the available options with explanations.
 
 We are going to set a configuration with A/B partitioning that will UPDATE the BACKUP, leaving the A partition as the stable partition for fallback. 
 
-{{< callout notice >}} The A and B partitions will roughly split the disk space available. If your current partition size exceeds half of the total disk size, the update mode will be switched to UPDATE_BOTH, and your zi image will be loaded into both the A and B partitions. You will be notified that your UPDATE mode has switched from UPDATE_BACKUP to UPDATE_BOTH. After the update has been applied to the A & B partitions, you can then switch to UPDATE_BACKUP via `zbcli update-config`. {{< /callout >}}
+{{< callout notice >}} The A and B partitions will roughly split the disk space available. If your current partition size exceeds half of the total disk size, the update mode will be switched to UPDATE_BOTH, and your zi image will be loaded into both the A and B partitions. You will be notified that your UPDATE mode has switched from UPDATE_BACKUP to UPDATE_BOTH. After the update has been applied to the A & B partitions, you can then switch to UPDATE_BACKUP via [`zbcli update-config`](../zbcli/update-config). {{< /callout >}}
 
 ```bash
 sudo zbcli update-config
@@ -328,9 +328,9 @@ For `Configure update endpoint`, choose the block device that holds your zi imag
 
 
 
-### 5. Run `zbcli update` to create the Backup partition and load the zi image.
+### 5. Run [`zbcli update`](../zbcli/update) to create the Backup partition and load the zi image.
 
-Once you are satisfied with your Bootware configuration, run `zbcli update` to complete the process of repartitioning and loading your image.
+Once you are satisfied with your Bootware configuration, run [`zbcli update`](../zbcli/update) to complete the process of repartitioning and loading your image.
 
 ```bash
 sudo zbcli update
@@ -385,7 +385,7 @@ On the console, you will see:
 
 ### 4. Quickcheck: Manual Rollback (Active/Backup partitions)
 
-To verify you now have two valid partitions, manually trigger a rollover from Active to Backup with `zbcli rollback-swap`. This will reboot your system into its non-active root partition. No update process will be invoked and the contents of both partitions will remain enchanged.
+To verify you now have two valid partitions, manually trigger a rollover from Active to Backup with [`zbcli rollback-swap`](../zbcli/rollback-swap). This will reboot your system into its non-active root partition. No update process will be invoked and the contents of both partitions will remain enchanged.
 
 ```bash
 sudo zbcli rollback-swap
@@ -397,5 +397,7 @@ If Bootware detects that the system has failed to reach a `systemd` init target 
 
 ### Additional Information and Support
     
+[zbcli commands](../zbcli)
+
 [Contact Support](mailto:support@zymbit.com)
 
