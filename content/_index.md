@@ -18,7 +18,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 #### September 2024
 -----
 
-Bootware® 1.2 Release:
+Bootware® 1.2.0 Release (1.2.0-27):
 - Adds support for Pi 5B
 - Adds all new rust-based user interface
 - Adds support for HSM4 and HSM6
