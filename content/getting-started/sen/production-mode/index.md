@@ -6,7 +6,7 @@ aliases:
     - /quickstart/production-mode/scn/
     - /getting-started/scn/production-mode/
 date: "2022-04-29"
-lastmod: "2023-03-16"
+lastmod: "2024-10-22"
 draft: false
 images: []
 weight: 1000
@@ -30,7 +30,7 @@ The table below summarizes the differences between Development Mode (no Bind Loc
 | Tamper Event| 6 flash + channel sub-flash | Destroy all keys | Immediately |
 | Low Temp Threshold | 20 flash + 1 sub-flash | Do Not Boot | Immediately |
 | High Temp Threshold | 20 flash + 2 sub-flash | Do Not Boot | Immediately |
-| Low Battery Voltage Threshold | 6 flash | Two Policies: Prevent Boot or Destroy all keys | Power Off |
+| Low Battery Voltage Threshold | 4 flash + 1 sub-flash | Two Policies: Prevent Boot or Destroy all keys | Power Off |
 | Supervised Boot Failure | 4 flash + 2 sub-flash | Two Policies: Prevent Boot or Destroy all keys | On Boot |
 
 
