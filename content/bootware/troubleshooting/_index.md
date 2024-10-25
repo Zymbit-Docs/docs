@@ -58,6 +58,11 @@ Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or la
 
 ### Issues
 
+* *Issue #163:*  Bootware: 1.2.0 version string changed from 1.2.0-rc.26 to 1.2.0-27.  Note: two small fixes included in the change.
+       
+   *   #164 Fix to allow https or http. #164 (closed)       
+   *   #165 Fix Rearranged how zbcli runs create-initramfs.sh from internally to filesystem (closed)
+  
 * *Fixed Issue #145:* Fixed in Bootware 1.2: Switching OS with Zymkey does not properly set GPIO WAKE PIN. For instance, if you install on Bookworm, the WAKE PIN is set at installation time to 516. If you then load a bullseye zi, bullseye with older kernels wants the WAKE PIN at 4. Bootware needs to take this into account. Workaround is to setup your Zymkey with the operating system you intend to use and create your Bootware zi image within that OS.
 
 * *Issue #147:* Bootware: Needs to identify the kernel file to be loaded for custom kernels named something other than kernel8.img or vmlinuz. Needed for supporting custom kernel versions. Workaround is to copy or link your custom kernel to either kernel8.img for Raspberry Pi based OS, or vmlinuz for Ubuntu based OS.
