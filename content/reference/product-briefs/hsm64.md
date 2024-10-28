@@ -17,7 +17,7 @@ toc: False
 
 * 1-to-3 USB Hub 2.0 support 
 
-* SEN 400 support with POE (suggested good POE injector, such as [tp-link POE160S](https://www.tp-link.com/us/business-networking/surveillance-switch/tl-poe160s/))
+* SEN 400 support with POE (suggested good POE injector: [tp-link POE160S](https://www.tp-link.com/us/business-networking/surveillance-switch/tl-poe160s/))
 
 * Optionally pre-loaded with Raspberry Pi OS Bookworm, Bullseye, or Ubuntu 22.04 Server; Zymbit software, root file system encrypted at factory. Ready to go out of the box.
 
