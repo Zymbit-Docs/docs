@@ -1,7 +1,6 @@
 ---
 title: "Quickstart - Secure Edge Node"
 linkTitle: "Quickstart"
-description: Secure Edge Node (SEN) Linux compute platform
 lastmod: "2023-10-29"
 draft: false
 images: []
