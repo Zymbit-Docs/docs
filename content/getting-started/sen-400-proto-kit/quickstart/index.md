@@ -10,7 +10,7 @@ toc: true
 
 -----
 
-![SEN 400 Enterprise Grade Secure Edge Node](sen400.png){ width=50% }
+![SEN 400 Enterprise Grade Secure Edge Node](sen400.png){ width=700 }
 
 The SEN 400 Prototype Kit provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart) with the SEN 400 Professional Baseboard. This baseboard is used in the [SEN Pro](https://www.zymbit.com/secure-edge-node-pro/) (Secure Edge Node 400) product.
 
