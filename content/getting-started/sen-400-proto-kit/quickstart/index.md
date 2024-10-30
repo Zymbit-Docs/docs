@@ -1,7 +1,7 @@
 ---
 title: "Quickstart - SEN 400 Prototype Kit"
 linkTitle: "Quickstart"
-lastmod: "2024-10-29"
+lastmod: "2024-10-30"
 draft: false
 images: []
 weight: 5
@@ -41,7 +41,7 @@ The Dev Kit includes:
 {{< cardpane >}}
 {{< card header="SEN 400 Baseboard Connectors" >}}
 {{< figure
-    src="mobo2x1_table.png"
+    src="bb400_table.png"
     alt="SEN 400 Connectors"
     caption=""
     >}}
@@ -64,10 +64,19 @@ The Dev Kit includes:
 
 ### **Configure and Setup your SEN 400 Prototype Kit**
 
-##### Power On
- * Connect the included 12V Power Supply up to the front panel 12V barrel connector. Connect an ethernet cable to the gigabit ethernet port. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. The preferred access is via SSH.
+#### Power On
+Connect the included 12V Power Supply up to the front panel 12V barrel connector. Connect an ethernet cable to the gigabit ethernet port. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. The preferred access is via SSH.
 
-Monitor the Blue LED on the either the SEN 400 baseboard or the Zymbit SCM module. The total boot time as configured should take approximately 90 seconds from power on. It will go through the following stages:
+#### Status LED Indicators
+
+| Order | Purpose | Legend | Type | Off | Red | Yellow or purple | Green or Blue |
+| ----- | ------- | ------ | ---- | --- | --- | ---------------- | ------------- |
+| Top | Security | SEC | Blue/Red | Not Secure | Critical security fault | Noncritical Security fault/incident | Blinking Zymbit Blue LED |
+| 3 | Activity | ACT | Green/Red | No Activity | Pi power error | Pi Power error but still operational | eMMC or PCIE activity |
+| 2 | Primary power | PWR | Green/Red | No primary power | Primary power error | Sleep/low power | Full primary power |
+| Bottom | Secondary power | PWR2 | Green/Red | No secondary power | Secondary power error | Secondary power is limited	full secondary power | 
+
+Monitor the Blue LED for the status of the Zymbit SCM module. The total boot time for an SCM should take approximately 90 seconds from power on. It will go through the following stages:
 
 - one slow blink:    *initializing the SCM*
 - one -> two -> three -> four blinks:   *Supervised Boot is verifying the signed file information*
