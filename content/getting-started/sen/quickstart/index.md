@@ -19,7 +19,7 @@ See available models and packages here:
 
 [Secure Edge Node 400](https://www.zymbit.com/secure-edge-node-400/)
 
-[Secure Edge Npde D35 (legacy)](https://www.zymbit.com/secure-edge-node-d35/)
+[Secure Edge Node D35 (legacy)](https://www.zymbit.com/secure-edge-node-d35/)
 
 -----
 
