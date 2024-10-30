@@ -1,7 +1,7 @@
 ---
 title: "Quickstart - Secure Edge Node"
 linkTitle: "Quickstart"
-lastmod: "2023-03-23"
+lastmod: "2023-10-29"
 draft: false
 images: []
 weight: 5
@@ -11,11 +11,15 @@ toc: true
 -----
 ### **Overview**
 
-Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates Zymbit’s secure motherboard, [Secure Compute Module](/getting-started/scm/quickstart/)  and a choice of accessories.
+Secure Edge Node (SEN)- secure Linux compute platform engineered for a lifetime of reliable and compliant operation in zero trust environments.
 
-<br />
-<img src="scn.png" width="60%">
-<br />
+Ideal for: Large-scale IoT deployments with edge gateways, edge servers, on-prem analytics and thin-clients.  
+
+See available models and packages here:
+
+[Secure Edge Node 400](https://www.zymbit.com/secure-edge-node-400/)
+
+[Secure Edge Npde D35 (legacy)](https://www.zymbit.com/secure-edge-node-d35/)
 
 -----
 
@@ -24,40 +28,9 @@ Secure Edge Node - Zymbit offers a standard baseline enclosure that accommodates
 #### Power On
  * Connect 12V Power Supply (available for purchase from Zymbit) up to the front panel 12V barrel connector. Optionally, supply power via PoE to the ethernet connector, or via the SATA edge connector.
  * Connect an ethernet cable to the front panel gigabit ethernet port.
- * The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. The only access is via SSH.
-
-<br />
-<img src="node_end1.png" width="60%">
-<br />
+ * The unit is designed to run headless. If you prefer, you do not need a monitor, keyboard, or mouse. Access is available via the conosole or SSH. The default hostname for Zymbit base images is zymbit-dev with a login/password of zymbit/zymbit. It is recommended that once you login, you set a unique hostname and change the password.
 
 -----
-
-## Summary of Features
-
-| Feature | Description |
-| ------- | ----------- |
-| Enclosure | Standard Type D35 Enclosure. Fits into standard 3.5″ drive bay caddy |
-| Dimensions | 1.04 x 3.95 x 5.80 inches,  26 x 100 x 148mm |
-| Power | 12V Barrel Style (standard) |
-|       | PoE PD (optional) |
-|       | SATA (optional) |
-| LEDs  | CM4 PWR (red), CM4 Activity (green), SCM Status (blue) |
-| Front I/O | 1x 1GbE LAN |
-|           | 1x HDMI |
-|           | 1x USB-A 2.0 |
-| Onboard Headers | 1x AUX USB 2.0 |
-|                 | 2x CSI Camera |
-|                 | 1x DSI Display |
-|                 | 1x M.2 B-Key |
-|                 | 1x 40-pin GPIO header |
-|                 | 1x Micro SIM port. For use with compatible M.2 modules. Push-push type connector |
-|                 | 1x Battery connector Molex 51021-0200-B (1.25mm Pitch) |
-|                 | 1x Zymbit Security Module for HSM4/HSM6 |
-|                 | 1x 5V Fan |
-| Tamper Circuits | 4x Switches complete Channel 1 tamper circuit |
-|                 | Header pins for Channel 1 and Channel 2 tamper circuits |
-| Pre-installed OS | Raspberry PI Bullseye Lite 64-bit (optional 32-bit) |
-| Operational Environment | Temperature: 0-60 degrees C |
 
 #### Boot Sequence
 
@@ -74,29 +47,18 @@ While powering up, monitor the Blue LED on end panel of the SEN. The total boot 
 [<img src="sen_led.png" width="40%">](https://user-images.githubusercontent.com/78050323/229965026-45de9c09-a55b-4999-8b14-98345570f972.mp4)
 <br />
 
-#### Login via SSH
 
-Once the boot sequence completes and the Blue LED is blinking once every three seconds, login remotely via SSH. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
+Now you're ready to start developing with the Zymbit Secure Compute Module. Follow along with the steps for the Protokits to get developing!
 
-#### Run example code
+[SEN 400 Proto Kit Getting Started](https://docs.zymbit.com/getting-started/sen-400-proto-kit/)
 
-The quickest way to get started is to see the Secure Edge Node's various features at work is by running these test scripts. You can get the example scripts from here:
+[SEN D35 (legacy)Proto Kit Getting Started](https://docs.zymbit.com/getting-started/sen-400-proto-kit/)
 
-[Download example files](https://community.zymbit.com/t/installation-missing-files/1331/2?u=bob_of_zymbit)
-
-```bash
-python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py
-python3 /usr/local/share/zymkey/examples/zk_crypto_test.py
-```
-
-Now you're ready to start developing with the Zymbit Secure Compute Module.
 
 #### Secure Compute Module
 
 Inside the Secure Edge Node is the [Secure Compute Module](../../scm/quickstart/): a Zymbit Security Module + Hardware Wallet + Raspberry Pi CM4 integrated into a secure, encapsulated module. Details of the SCM itself including any other Zymbit specific cofigurations can be found [here](../../scm/quickstart/):
 
-#### Motherboard Reference
-[SCM Developer Kit2](../../scm-dev-kit2/quickstart)
 
 #### Using Secure Edge Node/SCM: API and Examples
 

@@ -2,7 +2,7 @@
 title: "Troubleshooting and FAQ"
 linkTitle: "Troubleshooting/FAQ"
 description: Collection of Bootware troubleshooting tips and FAQ items
-lastmod: "2024-10-11"
+lastmod: "2024-10-29"
 draft: false
 images: []
 weight: 50
@@ -57,6 +57,12 @@ Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or la
 - Be cautious around the policies set in the supervised boot and the files put in the manifest. This follows hardware not images. This also applies to the other tamper policies.
 
 ### Issues
+
+#### Release 1.2.0-28
+
+* *Issue #166:*  `zbcli imager` excluded the create-initramfs script from /etc/zymbit/zboot/scripts. The change to fix Issue #165 (closed) moved create-iniramfs.sh out of the binary and back to the file system, meaning the imager now must include create-initramfs. Fixed in 1.2.0-28.
+
+#### Release 1.2.0-27
 
 * *Issue #163:*  Bootware: 1.2.0 version string changed from 1.2.0-rc.26 to 1.2.0-27.  Note: two small fixes included in the change.
        

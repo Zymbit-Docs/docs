@@ -1,7 +1,7 @@
 ---
-title: "Quickstart - SCM Developer Kit 2"
+title: "Quickstart - SEN D35 Prototype Kit"
 linkTitle: "Quickstart"
-lastmod: "2023-10-31"
+lastmod: "2024-10-29"
 draft: false
 images: []
 weight: 5
@@ -9,29 +9,30 @@ toc: true
 ---
 
 -----
-## **SCM Developer Kit 2**
+## **SEN D35 Prototype Kit**
 
-The SCM Developer Kit2 provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart).
+The SEN D35 Prototype Kit provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart).
+
  * Zymbit [Secure Compute Module](../../scm/quickstart) (Zymbit Security Module and CM4)
- * Zymbit Secure Compute I/O Motherboard
- * Zymbit Perimeter Detect Cable for Channel 2
- * Zymbit External Battery (optional)
- * 12V Power Supply
+ * Zymbit SEN D35 Baseboard
+ * Optional 12V Power Supply
+ * Optional Cellular Modem + SIM + Service in M2.M slot
+ * Optional 40 pin GPIO header extender and Perimeter jumper wires
 
 {{< cardpane >}}
-{{< card header="Contents of Dev Kit" >}}
+{{< card header="Contents of SEN D35 Prototype Kit" >}}
 {{< figure
     src="scm-dev-kit2.png"
-    alt="SCM Dev Kit"
+    alt="D35 Prototype Kit"
     caption=""
     >}}
 {{< /card >}}
 {{< /cardpane >}}
 
-### **Configure and Setup your SCM Developer Kit2**
+### **Configure and Setup your SEN D35 Prototype Kit**
 
 ##### Power On
- * Connect the included 12V Power Supply up to the front panel 12V barrel connector. Connect an ethernet cable to the gigabit ethernet port. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. The only access is via SSH.
+ * Connect a 12V Power Supply up to the front panel 12V barrel connector. Connect an ethernet cable to the gigabit ethernet port. The unit is designed to run headless. If you prefer, you do not need a monitor, keyboard, or mouse. Access is via SSH or the monitor.
 
 Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured should take approximately 90 seconds from power on. It will go through the following stages:
 
