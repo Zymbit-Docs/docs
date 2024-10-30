@@ -51,6 +51,7 @@ While powering up, monitor the Blue LED on end panel of the SEN. The total boot 
 Now you're ready to start developing with the Zymbit Secure Compute Module. Follow along with the steps for the Protokits to get developing!
 
 [SEN 400 Proto Kit Getting Started](https://docs.zymbit.com/getting-started/sen-400-proto-kit/)
+
 [SEN D35 (legacy)Proto Kit Getting Started](https://docs.zymbit.com/getting-started/sen-400-proto-kit/)
 
 
