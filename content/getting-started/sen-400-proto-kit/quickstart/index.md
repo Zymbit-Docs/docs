@@ -23,15 +23,15 @@ The Dev Kit includes:
 {{< cardpane >}}
 {{< card header="Zymbit SEN 400 Baseboard - Top" >}}
 {{< figure
-    src="mobo2x1_top.png"
-    alt="Mobo2x1_top"
+    src="bb400_top.png"
+    alt="Baseboard 400 top"
     caption="The top and bottom of the Zymbit SEN 400 Baseboard"
     >}}
 {{< /card >}}
 {{< card header="Zymbit SEN 400 Baseboard- Bottom" >}}
 {{< figure
-    src="mobo2x1_bottom.png"
-    alt="Mobo2x1 Bottom"
+    src="bb400_bottom.png"
+    alt="Baseboard 400 Bottom"
     caption=""
     >}}
 {{< /card >}}
