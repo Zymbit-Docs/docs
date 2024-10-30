@@ -9,8 +9,6 @@ toc: true
 ---
 
 -----
-## **SEN 400 Prototype Kit**
-
 
 {{< cardpane >}}
 {{< card header="SEN 400 - Enterprise grade Secure Edge Node" >}}
