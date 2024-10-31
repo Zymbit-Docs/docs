@@ -17,7 +17,7 @@ toc: true
 | [zymbit_bookworm64_1.2.zi](https://bootware.s3.amazonaws.com/1.2/zymbit_bookworm64_1.2.zi) | 1.2 GB | Base Bookworm 64bit zi image (bw 1.2.0-28) |
 | [zymbit_bullseye64_1.2.zi](https://bootware.s3.amazonaws.com/1.2/zymbit_bullseye64_1.2.zi) | 796 MB | Base Bullseye 64bit zi image (bw 1.2.0-28)  |
 | [zymbit_ubuntu64_22.04_1.2.zi](https://bootware.s3.amazonaws.com/1.2/zymbit_ubuntu64_22.04_1.2.zi) | 2.1 GB | Base Ubuntu 22.04 64bit zi image  (bw 1.2.0-28)  |
-| [zymbit_bookworm64_pi5_1.2.zi](https://bootware.s3.amazonaws.com/1.2/zymbit_bookworm64_pi5_1.2.zi) | 1.1GB | Base Bookworm 64bit zi image for Pi5 (bw 1.2.0-27) |
+| [zymbit_bookworm64_pi5_1.2.zi](https://bootware.s3.amazonaws.com/1.2/zymbit_bookworm64_pi5_1.2.zi) | 965 MB | Base Bookworm 64bit zi image for Pi5 (bw 1.2.0-28) |
 | [pub_key_1.2.pem](https://bootware.s3.amazonaws.com/1.2/pub_key_1.2.pem) | | Public Key - Common for all Bootware 1.2 zi images |
 
 -----
