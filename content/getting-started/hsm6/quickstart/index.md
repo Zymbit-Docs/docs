@@ -14,25 +14,6 @@ toc: true
 
 The HSM6 is a ‘snap in’ security module designed for easy integration within a secure manufacturing environment. All connections are through a single, 30 pin connector that is hidden underneath the module. It is designed specifically to work with Raspberry Pi embedded applications. A PiZero HAT (Hardware Attached on Top) adapter is available for easy integration to the standard GPIO pins of the Pi.
 
-{{< callout notice >}}
-Raspberry PI OS Bookworm updated the kernel to version 6.6.y in March 2024. The kernel no longer overrides an upstream kernel decision to force the base number of the main GPIO controller to be global GPIO 0. If the WAKE_PIN number is not set, the ZYMKEY will not bind. You will see 5 flashes per second continuously.For RPI4, RPI5, and CM4 platforms, you will need to set the WAKE_PIN in the following manner:
-
-Determine the numbering for GPIO4 by examining /sys/kernel/debug/gpio for the number associated with GPIO4, then set an environment variable in the Zymbit environment variable file:
-
-```bash
-sudo su
-wake_pin=`grep GPIO4 /sys/kernel/debug/gpio | sed -r 's/[^0-9]*([0-9]*).*/\1/'`
-echo "wake_pin=$wake_pin"   # sanity check value is set
-echo "ZK_GPIO_WAKE_PIN=$wake_pin" > /var/lib/zymbit/zkenv.conf
-systemctl restart zkifc
-```
-As of 6.6.20, the numbering is:
-RPI4=516
-RPI5=575
-CM4=516
-
-{{< /callout >}}
-
 In this Getting Started guide we describe how to install your HSM to a Raspberry Pi running Raspbian or Ubuntu. The installation process is the same for both of these Linux distributions.
 
 
@@ -153,25 +134,9 @@ Your {{< term/i2c >}} bus is now configured and ready to talk to the HSM. The de
 
 Your I2C bus is now on and ready to talk to the HSM.
 
-{{< callout notice >}}
-The default mode for the cpu scaling governor is ondemand. There have been some issues with the interaction between the HSM and the I2C bus, when the governor is set to ondemand. We highly recommend to switching the governor to performance to get the most out of the HSM.
-
-{{< resource_link "reference/cpu-scaling/" >}}
-How to set cpu governor to performance.
-{{< /resource_link >}}
-
-{{< /callout >}}
-
 ## Install the client software
 
 Login to your host device and follow these steps to install the HSM's client software.
-
-{{< callout notice >}}
-As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
-
-`arm_64bit=0`
-
-{{< /callout >}}
 
 The HSM will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
 
