@@ -140,13 +140,6 @@ Your I2C bus is now on and ready to talk to the HSM.
 
 Login to your host device and follow these steps to install the HSM's client software.
 
-{{< callout notice >}}
-As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
-
-`arm_64bit=0`
-
-{{< /callout >}}
-
 The HSM will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
 
 * Zymbit `.service` files located in the `/etc/systemd/system` directory
