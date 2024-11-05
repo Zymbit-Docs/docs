@@ -126,27 +126,9 @@ Your {{< term/i2c >}} bus is now configured and ready to talk to the ZYMKEY4. Th
 The default I2C address for ZYMKEY4 is 0x30. If this conflicts with another device in your system, you can reconfigure the ZYMKEY4 to use another address of your choice.
 {{< /resource_link >}}
 
-{{< callout notice >}}
-The default mode for the cpu scaling governor is ondemand. There have been some issues with the interaction between the zymkey and the I2C bus, when the governor is set to ondemand. We highly recommend to switching the governor to performance to get the most out of the zymkey.
-
-{{< resource_link "reference/cpu-scaling/" >}}
-How to set cpu governor to performance.
-{{< /resource_link >}}
-
-{{< /callout >}}
-
 ## Install the client software
 
 Login to your host device and follow these steps to install the ZYMKEY4's client software.
-
-{{< callout notice >}}
-As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
-
-`arm_64bit=0`
-
-You can check whether your root filesystem is 32-bit or 64-bit with `dpkg --print-architecture`. It will return arm64 for 64-bit filesystems or armhf for 32-bit filesystems.
-
-{{< /callout >}}
 
 The ZYMKEY4 will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
 

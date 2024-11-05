@@ -153,15 +153,6 @@ Your {{< term/i2c >}} bus is now configured and ready to talk to the HSM. The de
 
 Your I2C bus is now on and ready to talk to the HSM.
 
-{{< callout notice >}}
-The default mode for the cpu scaling governor is ondemand. There have been some issues with the interaction between the HSM and the I2C bus, when the governor is set to ondemand. We highly recommend to switching the governor to performance to get the most out of the HSM.
-
-{{< resource_link "reference/cpu-scaling/" >}}
-How to set cpu governor to performance.
-{{< /resource_link >}}
-
-{{< /callout >}}
-
 ## Install the client software
 
 Login to your host device and follow these steps to install the HSM's client software.
