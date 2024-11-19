@@ -12,6 +12,9 @@ toc: true
 -----
 ### Bootware 1.2.0 General Platform Support Image files available for download
 
+Example images all have the hostname of zymbit-dev and a login of zymbit/zymbit.
+
+
 | Item | Size | Description | 
 |------|------|--------------------------|
 | [zymbit_bookworm64_1.2.zi](https://bootware.s3.amazonaws.com/1.2/zymbit_bookworm64_1.2.zi) | 1.2 GB | Base Bookworm 64bit zi image (bw 1.2.0-28) |

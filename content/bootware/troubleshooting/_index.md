@@ -58,6 +58,24 @@ Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or la
 
 ### Issues
 
+#### Release 1.2.0-29
+
+*  *Issue #167:*  Syncing salt with the root filesystem after bootware update. Applies to Production Mode only.
+
+Bootware update in zboot doesn't sync up the good salt to the root filesystem after a full image update.
+This is an issue because when the device is put into production mode, it will reject bad salts and stop regenerating new ones. When the root filesystem doesn't have the correct salt it causes multiple errors for production mode.
+
+*How it works:*
+
+The zymkey will generate a salt (created from atecc id, rpi cpu id, memory id) in zkifc. The zymkey's atecc will store the latest salt it has opened a session with. While in developer mode, provided the salt file is not null and is in the correct serial number folder in /var/lib/zymbit, it will accept the salt file for opening a session even if it doesn't match the salt stored in the atecc. In production mode, it will not exhibit the same behavior and will be very strict with salt checking.
+
+For encrypted filesystems and bootware, the salt needs to be synced up to be the same in userspace and the initramfs. The initramfs needs a correct salt to open a session to the zymkey to decrypt the encrypted filesystems. If the zymkey regenerates a new salt in userspace, then the one in the initramfs must be updated as well. This must be true for production mode, but will be lenient and not throw an error in developer mode.
+
+*Example Issue:*
+
+In bootware 1.2.0-28. If an user makes an image on a different pi and zymkey (device fingerprint), then loads the image onto another pi/zymkey. The salt will not match up after a full image update. zkifc in developer mode will act without errors, but it will regenerate the salt file to be a correct one. Because the salt in initramfs has never been updated, if the zymkey is put into production mode, then it will not be able to boot up properly with the initramfs on next boot up.
+
+
 #### Release 1.2.0-28
 
 * *Issue #166:*  `zbcli imager` excluded the create-initramfs script from /etc/zymbit/zboot/scripts. The change to fix Issue #165 (closed) moved create-iniramfs.sh out of the binary and back to the file system, meaning the imager now must include create-initramfs. Fixed in 1.2.0-28.
