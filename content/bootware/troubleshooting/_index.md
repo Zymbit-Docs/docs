@@ -58,6 +58,18 @@ Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or la
 
 ### Issues
 
+#### Release 1.2.0-29
+
+*  *Issue #167:*  Syncing salt with the root filesystem after bootware update. Applies to Production Mode only.
+
+    Bootware update in zboot doesn't sync up the good salt file to the root filesystem after a full image update. When the device is put into Production Mode, it will reject bad salt files, and stop regenerating new ones. When the root filesystem doesn't have the correct salt file, it causes multiple errors for Production Mode.
+
+    The ZYMKEY will generate a salt (created from atecc id, rpi cpu id, memory id) in `zkifc`. The ZYMKEY's ATECC will store the latest salt. While in Developer Mode, provided the salt file is not null and is in the correct serial number folder in `/var/lib/zymbit`, it will accept the salt file for opening a session even if it doesn't match the salt stored in the ATECC. In Production Mode, it will be very strict with salt checking.
+
+    For encrypted filesystems and Bootware, the salt needs to be synced up to be the same in userspace and the initramfs. The initramfs needs a correct salt to open a session to the ZYMKEY to decrypt the encrypted filesystems. If the ZYMKEY regenerates a new salt in userspace, then the one in the initramfs must be updated as well. Production Mode requires a match. Development Mode is lenient and will not error off.
+
+    In previous versions, if a user makes an image on a different Pi and ZYMKEY, then loads the image onto another Pi/ZYMKEY. The salt file will not match up after a full image update. `zkifc` in Developer Mode will act without errors; it will regenerate the salt file. In Production Mode, because the salt in initramfs is not updated, the next reboot will fail.
+
 #### Release 1.2.0-28
 
 * *Issue #166:*  `zbcli imager` excluded the create-initramfs script from /etc/zymbit/zboot/scripts. The change to fix Issue #165 (closed) moved create-iniramfs.sh out of the binary and back to the file system, meaning the imager now must include create-initramfs. Fixed in 1.2.0-28.
