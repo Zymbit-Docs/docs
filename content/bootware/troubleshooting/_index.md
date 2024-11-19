@@ -62,19 +62,13 @@ Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or la
 
 *  *Issue #167:*  Syncing salt with the root filesystem after bootware update. Applies to Production Mode only.
 
-Bootware update in zboot doesn't sync up the good salt to the root filesystem after a full image update.
-This is an issue because when the device is put into production mode, it will reject bad salts and stop regenerating new ones. When the root filesystem doesn't have the correct salt it causes multiple errors for production mode.
+    Bootware update in zboot doesn't sync up the good salt to the root filesystem after a full image update. When the device is put into production mode, it will reject bad salts and stop regenerating new ones. When the root filesystem doesn't have the correct salt it causes multiple errors for production mode.
 
-*How it works:*
+    The ZYMKEY will generate a salt (created from atecc id, rpi cpu id, memory id) in `zkifc`. The ZYMKEY's ATECC will store the latest salt. While in Developer Mode, provided the salt file is not null and is in the correct serial number folder in `/var/lib/zymbit`, it will accept the salt file for opening a session even if it doesn't match the salt stored in the ATECC. In Production Mode, it will be very strict with salt checking.
 
-The zymkey will generate a salt (created from atecc id, rpi cpu id, memory id) in zkifc. The zymkey's atecc will store the latest salt it has opened a session with. While in developer mode, provided the salt file is not null and is in the correct serial number folder in /var/lib/zymbit, it will accept the salt file for opening a session even if it doesn't match the salt stored in the atecc. In production mode, it will not exhibit the same behavior and will be very strict with salt checking.
+For encrypted filesystems and Bootware, the salt needs to be synced up to be the same in userspace and the initramfs. The initramfs needs a correct salt to open a session to the ZYMKEY to decrypt the encrypted filesystems. If the ZYMKEY regenerates a new salt in userspace, then the one in the initramfs must be updated as well. Production Mode requires a match. Development Mode is lenient and will not error off.
 
-For encrypted filesystems and bootware, the salt needs to be synced up to be the same in userspace and the initramfs. The initramfs needs a correct salt to open a session to the zymkey to decrypt the encrypted filesystems. If the zymkey regenerates a new salt in userspace, then the one in the initramfs must be updated as well. This must be true for production mode, but will be lenient and not throw an error in developer mode.
-
-*Example Issue:*
-
-In bootware 1.2.0-28. If an user makes an image on a different pi and zymkey (device fingerprint), then loads the image onto another pi/zymkey. The salt will not match up after a full image update. zkifc in developer mode will act without errors, but it will regenerate the salt file to be a correct one. Because the salt in initramfs has never been updated, if the zymkey is put into production mode, then it will not be able to boot up properly with the initramfs on next boot up.
-
+    Example problem: In previous versions, if a user makes an image on a different Pi and ZYMKEY, then loads the image onto another Pi/ZYMKEY. The salt will not match up after a full image update. `zkifc` in Developer Mode will act without errors; it will regenerate the salt file. In Production Mode, because the salt in initramfs is not updated, the next reboot will fail.
 
 #### Release 1.2.0-28
 
