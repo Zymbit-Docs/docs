@@ -12,7 +12,7 @@ toc: true
 -----
 ### Bootware 1.2.0 General Platform Support Image files available for download
 
-Example images all have the hostname of zymbit-dev and a login of zymbit/zymbit.
+Example images all have the hostname of zymbit-dev and a login of zymbit and a password of zymbit. Please change if using for anything other than development examples.
 
 
 | Item | Size | Description | 
