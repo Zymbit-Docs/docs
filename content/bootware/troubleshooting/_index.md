@@ -2,7 +2,7 @@
 title: "Troubleshooting and FAQ"
 linkTitle: "Troubleshooting/FAQ"
 description: Collection of Bootware troubleshooting tips and FAQ items
-lastmod: "2024-10-29"
+lastmod: "2024-11-24"
 draft: false
 images: []
 weight: 50
@@ -58,6 +58,10 @@ Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or la
 
 ### Issues
 
+#### Release 1.2.0-30
+
+*  *Issue #168:*  Correction for change in latest Bookworm 11/19 update. /etc/initramfs-tools/initramfs.conf switched to MODULES=dep, which ended up not including all necessary modules in initramfs images. Bootware will change back to MODULES=most prior to creating images.
+*  
 #### Release 1.2.0-29
 
 *  *Issue #167:*  Syncing salt with the root filesystem after bootware update. Applies to Production Mode only.
