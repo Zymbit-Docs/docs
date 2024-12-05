@@ -15,6 +15,11 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 ### Recent Activity
 <br>
 
+##### Latest Platform and OS Support
+
+![supported OSs](supported-os-dots.png)
+<br>
+
 #### December 2024
 -----
 
@@ -38,11 +43,6 @@ Bootware® 1.2.0 Release (1.2.0-28):
 - Adds support for HSM4 and HSM6
 - u-boot updated to linux 6.6 kernel
 - Bug fixes. See [Bootware](./bootware) for details.
-
-##### Latest Platform and OS Support
-
-![supported OSs](supported-os-dots.png)
-<br>
 
 #### June 2024
 -----
