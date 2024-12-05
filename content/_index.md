@@ -2,7 +2,7 @@
 title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2024-11-01
+lastmod: 2024-12-05
 draft: false
 images: []
 weight: 8
@@ -14,6 +14,20 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 ### Recent Activity
 <br>
+
+#### December 2024
+-----
+
+Bootware® 1.2.2 Release (1.2.0-31):
+- Adds ZYMKEY support for CM5.
+- Adds certificate based authentication (dot1x) for ethernet and wifi. Includes method to import wpa_supplicant.conf formatted file.
+- Adds support for URLs that include additional parameters after a question mark, such as those often used with Azure SAS.
+- Allows either HTTPS or HTTP as valid endpoints.
+- Supports self-signed HTTPS endpoints.
+- Adds new feature to change hostname and specified user password on `zbcli update` post-install.
+- Adds new feature in recovery to override recovery mechanisms and "boot up anyway"; clears counters and attempts to boot.
+- Adds `-y` option to `zbcli rollback-swap` for non-interactive rollback.
+- Adds specifying platform as Pi4 or Pi5 to bootstrap install for DevOps systems that are not running on a real Pi. Allows non-interactive bootstrap of Bootware tools.
 
 #### September 2024
 -----
