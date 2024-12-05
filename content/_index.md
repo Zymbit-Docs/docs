@@ -12,18 +12,19 @@ layout: single
 
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
-### Recent Activity
-<br>
 
-##### Latest Platform and OS Support
+#### Latest Platform and OS Support
 
 ![supported OSs](supported-os-dots.png)
+<br>
+
+#### Recent Activity
 <br>
 
 #### December 2024
 -----
 
-Bootware® 1.2.2 Release (1.2.0-31):
+Bootware® 1.2.2 Release (1.2.2-01):
 - Adds ZYMKEY support for CM5.
 - Adds certificate based authentication (dot1x) for ethernet and wifi. Includes method to import wpa_supplicant.conf formatted file.
 - Adds support for URLs that include additional parameters after a question mark, such as those used with Azure SAS.

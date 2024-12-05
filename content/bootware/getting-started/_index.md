@@ -1,9 +1,9 @@
 ---
-title: "Getting Started: Bootware 1.2"
+title: "Getting Started: Bootware 1.2.2"
 linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
-lastmod: "2024-10-15"
+lastmod: "2024-12-05"
 aliases:
     - /bootware/getting-started/
 draft: false
@@ -22,14 +22,8 @@ In this Getting Started guide we describe how to bring up a common use case for 
 
 #### Supported Platforms and Operating Systems
 
-The following matrix of platforms and Operating Systems support Bootware 1.2:
-
-| Platform | Zymbit Module | OS Support |
-| ----- | ----- | ----- |
-| CM4 | SCM | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
-| CM4 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
-| Pi4 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
-| Pi5 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit |
+![supported OSs](../../supported-os-dots.png)
+<br>
 
 > It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
 
@@ -40,7 +34,7 @@ The default SCM/SEN as shipped has Zymbit software pre-installed. For setups usi
 
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
-Bootware 1.2 includes a new, consolidated user interface. The process of installation and configuration has changed since 1.1.
+Bootware 1.2.2 includes the same, consolidated user interface introduced in 1.2. The process of installation and configuration has changed since 1.1.
 
 Details of the commands in this Quickstart are linked in-line.
 See the [Features](../features) section for more information on how to use Bootware.
@@ -84,9 +78,9 @@ Next, you will be asked to select a version of the `zbcli` from a list of recent
 
 ```
 ? Select version ›
+  zbcli-1.2.2-01
   zbcli-1.2.0-30
   zbcli-1.2.0-29
-  zbcli-1.2.0-28
 ```
 
 ### 2. Run [`zbcli install`](../zbcli/install)

@@ -103,15 +103,15 @@ Bootware is designed with the singular goal to ensure that properly validated an
 
 -----
 
-### Additional Resources
+#### Additional Resources
 
-#### [Register for Bootware Technical Updates](https://www.zymbit.com/get-free-bootware/)
+[Register for Bootware Technical Updates](https://www.zymbit.com/get-free-bootware/)
 
-#### [More information on Bootware on zymbit.com](https://www.zymbit.com/bootware/)
+[More information on Bootware on zymbit.com](https://www.zymbit.com/bootware/)
 
-#### [Bootware Community](https://community.zymbit.com/c/bootware)
+[Bootware Community](https://community.zymbit.com/c/bootware)
 
 -----
 
-### Links to Bootware 1.2 Documentation Sections
+#### Links to Bootware 1.2 Documentation Sections
 
