@@ -21,7 +21,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 Bootware® 1.2.2 Release (1.2.0-31):
 - Adds ZYMKEY support for CM5.
 - Adds certificate based authentication (dot1x) for ethernet and wifi. Includes method to import wpa_supplicant.conf formatted file.
-- Adds support for URLs that include additional parameters after a question mark, such as those often used with Azure SAS.
+- Adds support for URLs that include additional parameters after a question mark, such as those used with Azure SAS.
 - Allows either HTTPS or HTTP as valid endpoints.
 - Supports self-signed HTTPS endpoints.
 - Adds new feature to change hostname and specified user password on `zbcli update` post-install.
