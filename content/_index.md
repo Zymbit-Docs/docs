@@ -18,12 +18,9 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 ![supported OSs](supported-os-dots.png)
 <br>
 
-#### Recent Activity
-<br>
-
+-----
 #### December 2024
 -----
-
 Bootware® 1.2.2 Release (1.2.2-01):
 - Adds ZYMKEY support for CM5.
 - Adds certificate based authentication (dot1x) for ethernet and wifi. Includes method to import wpa_supplicant.conf formatted file.
