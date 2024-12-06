@@ -28,6 +28,10 @@ toc: true
 
 ### Issues
 
+#### Release 1.2.2-01
+
+* Incorporates fixes from 1.2.0. There are no known open issues in 1.2.2 at this time.
+
 #### Release 1.2.0-30
 
 *  *Issue #168:*  Correction for change in latest Bookworm 11/19 update. /etc/initramfs-tools/initramfs.conf switched to MODULES=dep, which ended up not including all necessary modules in initramfs images. Bootware will change back to MODULES=most prior to creating images.
