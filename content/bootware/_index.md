@@ -6,7 +6,7 @@ description: ""
 aliases:
     - /bootware/
 date: "2024-08-11"
-lastmod: "2024-10-02"
+lastmod: "2024-12-06"
 draft: false
 weight: 3
 images: []
@@ -15,6 +15,8 @@ toc: True
 ---
 
 -----
+
+> NOTICE 12/06/2024 : We are in the process of pushing an updated release over this weekend. Please download the 1.2.0-30 release of Bootware if you must load Bootware this weekend.
 
 Bootware is a secure integrated tool for managing multiple Linux OS installations for edge / embedded Linux machines. Bootware 1.2 supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
 

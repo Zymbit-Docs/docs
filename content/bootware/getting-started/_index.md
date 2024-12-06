@@ -13,6 +13,7 @@ weight: 20
 headless: false
 
 ---
+> NOTICE 12/06/2024 : We are in the process of pushing an updated release over this weekend. Please download the 1.2.0-30 release of Bootware if you must load Bootware this weekend.
 
 ## Quickstart - Download, Install, and Configure Bootware
 
