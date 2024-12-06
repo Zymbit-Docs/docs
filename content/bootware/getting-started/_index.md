@@ -81,7 +81,11 @@ zb-install.sh: bootstrapping the zbcli installer
 ❯ No
 ```
 
-Next, you will be asked to select a version of the `zbcli` from a list of recent versions to install. In most cases, you will want to select the latest version. Use the up and down arrows to select the version. You can use Ctrl-C to exit at any time.
+Next, you will be asked to select a version of the `zbcli` from a list of recent versions to install. In most cases, you will want to select the latest version. 
+
+> NOTICE 12/06/2024 : We are in the process of pushing an updated release over this weekend. Please download the 1.2.0-30 release of Bootware if you must load Bootware this weekend.
+
+Use the up and down arrows to select the version. You can use Ctrl-C to exit at any time.
 
 ```
 ? Select version ›
