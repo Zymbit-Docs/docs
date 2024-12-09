@@ -98,11 +98,11 @@ After installing the Bootware tools and artifacts, you will need to reboot into 
        Found kernel '/boot/firmware/kernel8.img'
      Created '/etc/zymbit/zboot/mnt'
      Created '/etc/zymbit/zboot/scripts'
+     Created '/etc/zymbit/zboot/scripts/post_install'
      Created '/etc/zymbit/zboot/zboot_backup'
      Created '/boot/firmware/zboot_bkup'
    Installed 'u-boot-tools'
      Created '/etc/fw_env.config'
-     Created '/usr/bin/zb_get_root_dev.sh'
      Created '/usr/bin/zbconfig'
        Found OpenSSL 3
      Created '/boot/firmware/zb_config.enc'
@@ -110,10 +110,14 @@ After installing the Bootware tools and artifacts, you will need to reboot into 
    Installed zboot
     Modified '/etc/rc.local'
      Created '/lib/cryptsetup/scripts/zk_get_shared_key'
+     Created '/etc/zymbit/zboot/scripts/create-initramfs.sh'
+     Created '/etc/systemd/system/bootwarestartup.service'
+     Created '/etc/zymbit/zboot/scripts/bootware_startup.sh'
     Modified '/boot/firmware/config.txt'
      Created '/etc/update-motd.d/01-zymbit-fallback-message'
     Modified /etc/update-motd.d/01-zymbit-fallback-message
-? A reboot into zboot is required. Reboot now? (y/n) › yes
+   Installed bash completions to /usr/share/bash-completion/completions/zbcli.bash
+? A reboot into zboot is required. Reboot now? (y/n) › yes     
 ```
 
 Reboot to complete the installation process and to boot through zboot. Once completed, all necessary files required for loading new images via Bootware will be installed.
@@ -208,35 +212,37 @@ When complete, there will be three files in your output folder: the public key, 
      ...
 
      Created signing key
+    Modified /etc/initramfs-tools/initramfs.conf to use most modules.
      Created '/etc/zymbit/zboot/update_artifacts/file_manifest'
      Created '/etc/zymbit/zboot/update_artifacts/file_deletions'
     Verified path unmounted '/etc/zymbit/zboot/mnt'
      Cleaned '/etc/zymbit/zboot/mnt'
      Deleted '/etc/crypttab'
-    Verified disk size (required: 2.54 GiB, free: 10.05 GiB)
+    Verified disk size (required: 2.57 GiB, free: 26.14 GiB)
      Created initramfs
-     Created snapshot of boot (/etc/zymbit/zboot/update_artifacts/tmp/.tmpEyFuyt/my_image_boot.tar)
-     Created snapshot of root (/etc/zymbit/zboot/update_artifacts/tmp/.tmpEyFuyt/my_image_rfs.tar)
-    Verified boot tarball (/etc/zymbit/zboot/update_artifacts/tmp/.tmpEyFuyt/my_image_boot.tar)
-    Verified zymbit and zboot tool installation
-     Created staging directory (/etc/zymbit/zboot/update_artifacts/tmp/.tmpmwFylk)
-     Created '/etc/zymbit/zboot/update_artifacts/tmp/.tmpmwFylk/header.txt'
-     Created tarball (/etc/zymbit/zboot/update_artifacts/tmp/.tmpmwFylk/update_artifact.tar)
+     Created snapshot of boot (/etc/zymbit/zboot/update_artifacts/tmp/.tmpGeX4FT/my_image_boot.tar)
+     Created snapshot of root (/etc/zymbit/zboot/update_artifacts/tmp/.tmpGeX4FT/my_image_rfs.tar)
+     Created '/mnt/tmp'
+     Cleaned '/mnt/tmp'
+     Created staging directory (/mnt/tmp/.tmpZX0YgA)
+     Created '/mnt/tmp/.tmpZX0YgA/header.txt'
+     Created tarball (/mnt/tmp/.tmpZX0YgA/update_artifact.tar)
      Created header signature
      Created update artifact signature
      Created file manifest signature
      Created file deletions signature
-     Created '/etc/zymbit/zboot/update_artifacts/tmp/.tmpmwFylk/signatures'
-     Created signatures (/etc/zymbit/zboot/update_artifacts/tmp/.tmpmwFylk/signatures)
-      Copied file (/etc/zymbit/zboot/update_artifacts/file_manifest) to (/etc/zymbit/zboot/update_artifacts/tmp/.tmpmwFylk/file_manifest)
-      Copied file (/etc/zymbit/zboot/update_artifacts/file_deletions) to (/etc/zymbit/zboot/update_artifacts/tmp/.tmpmwFylk/file_deletions)
+     Created '/mnt/tmp/.tmpZX0YgA/signatures'
+     Created signatures (/mnt/tmp/.tmpZX0YgA/signatures)
+      Copied file (/etc/zymbit/zboot/update_artifacts/file_manifest) to (/mnt/tmp/.tmpZX0YgA/file_manifest)
+      Copied file (/etc/zymbit/zboot/update_artifacts/file_deletions) to (/mnt/tmp/.tmpZX0YgA/file_deletions)
      Created tarball (/mnt/my_image.zi)
      Created '/mnt/my_image_private_key.pem'
        Saved private key '/mnt/my_image_private_key.pem'
      Created '/mnt/my_image_pub_key.pem'
        Saved public key '/mnt/my_image_pub_key.pem'
-       Saved image '/mnt/my_image.zi' (2.54 GiB)
-    Finished in 894.5s
+     Cleaned '/mnt/tmp'
+       Saved image '/mnt/my_image.zi' (2.57 GiB)
+    Finished in 507.3s
 $ ls -l /mnt
 total 1134224
 -rwxr-xr-x 1 root root        242 Sep  8 11:55 my_image_private_key.pem
@@ -263,7 +269,7 @@ Bootware includes a tool to help configure your system called `zbcli update-conf
 
 We are going to set a configuration with A/B partitioning that will UPDATE the BACKUP, leaving the A partition as the stable partition for fallback. 
 
-{{< callout notice >}} The A and B partitions will roughly split the disk space available. If your current partition size exceeds half of the total disk size, the update mode will be switched to UPDATE_BOTH, and your zi image will be loaded into both the A and B partitions. You will be notified that your UPDATE mode has switched from UPDATE_BACKUP to UPDATE_BOTH. After the update has been applied to the A & B partitions, you can then switch to UPDATE_BACKUP via [`zbcli update-config`](../zbcli/update-config). {{< /callout >}}
+{{< callout notice >}} The A and B partitions will roughly split the disk space available, minus a common data partition size that you specify. If your current partition size exceeds half of the total disk size, the update mode will be switched to UPDATE_BOTH, and your zi image will be loaded into both the A and B partitions. You will be notified that your UPDATE mode has switched from UPDATE_BACKUP to UPDATE_BOTH. After the update has been applied to the A & B partitions, you can then switch to UPDATE_BACKUP via [`zbcli update-config`](../zbcli/update-config). {{< /callout >}}
 
 ```bash
 sudo zbcli update-config
@@ -279,9 +285,12 @@ sudo zbcli update-config
         ---------
 ❯ Configure partition layout
   Configure update policy
+  Configure data partition size in MB. Does not apply if there is an existing data partition.
   Configure update endpoint
-  Configure wireless network
-  Revert to default configuration
+  Configure wireless network manually with a ssid / psk
+  Configure wireless network automatically with a wpa supplicant conf file
+  Configure hostname for post-update
+  Configure password for post-update
   Save and exit
 ```
 
@@ -299,7 +308,7 @@ For `Configure update policy`, choose `[RECOMMENDED] BACKUP:`
 ❯   [RECOMMENDED] BACKUP: Applies new updates to current backup filesystem and swap to booting the new updated backup partition as the active partition now. If the new update is bad, it will rollback into the previous stable active partition.
 ```
 
-For `Configure data partition size in MB`, choose the size of the encrypted shared DATA partition. The default is 512MB.
+For `Configure data partition size in MB`, choose the size of the encrypted shared DATA partition. You can choose a size in Megabytes that you prefer. The default is 512MB. Note: If the partition exists, this option is ignored.
 
 ```
 ? Enter size of data partition in MB ›  1024
@@ -316,10 +325,15 @@ For `Configure update endpoint`, choose the block device that holds your zi imag
 
 `zbcli update-config` will attempt to verify the zi image name if the endpoint is reachable.
 
-`Configure wireless network` - Along with local devices, such as a USB stick, Bootware supports pulling remote updates via Wi-Fi or LAN connections. Wi-Fi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot.
+`Configure wireless network manually with a ssid / psk` - Along with local devices, such as a USB stick, Bootware supports pulling remote updates via Wi-Fi or LAN connections. Bootware Wi-Fi credentials are separate from the standard userspace Wi-fi credentials.  Wi-Fi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot. Here, you can simply supply your SSID and password. If you need to supply additional Wi-Fi security, the next option allows you to supply credentials in a standard, wpa_supplicant.conf format.
+
+`Configure wireless network automatically with a wpa supplicant conf file`  New in 1.2.2. - Bootware/zboot contains a functional wpa_supplicant implementation. This option allows the user to point to a standard wpa_supplicant.conf file in userspace that will be imported into Bootware directly. Use this option if your setup requires certificate-based authentication, or other more complicated setups.
+
+`Configure hostname for post-update` New in 1.2.2. - A post-update process is included to change your hostname to the specified name. This will be done for every future update until cleared or changed.
+
+`Configure password for post-update` New in 1.2.2. - A post-update process is included to change the password for a specified user. This will be done for every future update until cleared or changed.
 
 **Save** and **exit** to save and exit `zbcli update-config`. You can Ctrl-C at any point before saving to exit the configurator without applying any changes.
-
 
 
 ### 5. Run [`zbcli update`](../zbcli/update) to create the Backup partition and load the zi image.
@@ -332,21 +346,23 @@ sudo zbcli update
 
 ```
    Validated bootware installation
-        ---------
-        Pi Module         Raspberry Pi 4
-        Operating System  Rpi-Bookworm
-        Zymbit module     Secure Compute Module
-        Kernel            kernel8.img
+        ---------                                                                                                                         Pi Module:         Raspberry Pi 4
+        Operating System:  Rpi-Bookworm
+        Zymbit module:     Zymkey
+        Kernel:            kernel8.img
         ---------
      Cleaned '/etc/zymbit/zboot/update_artifacts/tmp'
        Found update configs
-? Proceed with current configs? These can be modified through 'sudo zbcli update-config'
+? Proceed with current configs? These can be modified through 'zbcli update-config'
         ---------
         Update endpoint   /dev/sda1
         Update name       my_image
         Endpoint type     LOCAL
         Partition layout  A/B
-        Update policy     UPDATE_BACKUP
+        Data partition    1024MB
+        Update policy     UPDATE_BOTH
+        Hostname          Not set
+        Password          Not set
         ---------
  (y/n) › yes
 ```
