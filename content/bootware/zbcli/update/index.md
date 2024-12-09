@@ -31,7 +31,7 @@ zbcli update [OPTIONS]
 Options:
   -f, --key-file <KEY_FILE>  Public pem file verifying the update (software signed)
   -y                         Says `yes` to all prompts. This includes rebooting your system
-  -n                         Do not the reboot the system when `yes` flag is enabled
+  --no-reboot                Do not the reboot the system when `yes` flag is enabled
   -h, --help                 Print help
 ```
 
@@ -47,21 +47,21 @@ After confirmation of the config parameters, the script will prompt for a reboot
 
 ```
    Validated bootware installation
-        ---------
-        Pi Module:         Raspberry Pi 5
+        ---------                                                                                                                         Pi Module:         Raspberry Pi 4
         Operating System:  Rpi-Bookworm
-        Zymbit module:     Zymkey
-        Kernel:            kernel_2712.img
-        ---------
-     Created '/etc/zymbit/zboot/update_artifacts/tmp'
+        Zymbit module:     Zymkey                                                                                                     Kernel:            kernel8.img
+        ---------                                                                                                                  Cleaned '/etc/zymbit/zboot/update_artifacts/tmp'
        Found update configs
 ? Proceed with current configs? These can be modified through 'zbcli update-config'
         ---------
         Update endpoint   /dev/sda1
-        Update name       zymbit_bookworm64_pi5_1.2
+        Update name       my_image
         Endpoint type     LOCAL
         Partition layout  A/B
+        Data partition    1024MB
         Update policy     UPDATE_BOTH
+        Hostname          Not set
+        Password          Not set
         ---------
  (y/n) › yes
 ```
@@ -145,10 +145,10 @@ The update process can be run non-interactively by providing the the public key 
 sudo zbcli update -f <my_pub_key_file.pem> -y
 ```
 
-To run non-interactively up to the point of reboot confirmation, include the `-n` along with `-y`.
+To run non-interactively up to the point of reboot confirmation, include the `--no-reboot` option along with `-y`.
 
 ```bash
-sudo zbcli update -y -n
+sudo zbcli update -f ,my_pub_key_file.pem -y --no-reboot
 ```
 
 ### See Also
