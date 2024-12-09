@@ -2,7 +2,7 @@
 title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2024-11-01
+lastmod: 2024-12-05
 draft: false
 images: []
 weight: 8
@@ -12,23 +12,38 @@ layout: single
 
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
-### Recent Activity
+
+#### Latest Platform and OS Support
+
+![supported OSs](supported-os-dots.png)
 <br>
+
+-----
+#### December 2024
+-----
+Standard Product
+- ZYMKEY/HSM4/HSM6 support for CM5 with Bookworm64
+
+Bootware® 1.2.2 Release (1.2.2-1):
+- Adds certificate based authentication (dot1x) for ethernet and wifi. Includes method to import wpa_supplicant.conf formatted file.
+- Adds support for URLs that include additional parameters after a question mark, such as those used with Azure SAS.
+- Allows either HTTPS or HTTP as valid endpoints.
+- Supports self-signed HTTPS endpoints.
+- Adds new feature to change hostname and specified user password on `zbcli update` post-install.
+- Adds new feature in recovery to override recovery mechanisms and "boot up anyway"; clears counters and attempts to boot.
+- Adds `-y` option to `zbcli rollback-swap` for non-interactive rollback.
+- Adds specifying platform as Pi4 or Pi5 to bootstrap install for DevOps systems that are not running on a real Pi. Allows non-interactive bootstrap of Bootware tools.
+- Bug fixes. See [Bootware Troubleshooting](./bootware/troubleshooting) for details.
 
 #### September 2024
 -----
 
-Bootware® 1.2.0 Release (1.2.0-28):
-- Adds support for Pi 5B
+Bootware® 1.2.0 Release (1.2.0-30):
+- Adds support for Pi 5
 - Adds all new rust-based user interface
 - Adds support for HSM4 and HSM6
 - u-boot updated to linux 6.6 kernel
-- Bug fixes. See [Bootware](./bootware) for details.
-
-##### Latest Platform and OS Support
-
-![supported OSs](supported-os-dots.png)
-<br>
+- Bug fixes. See [Bootware Troubleshooting](./bootware/troubleshooting) for details.
 
 #### June 2024
 -----

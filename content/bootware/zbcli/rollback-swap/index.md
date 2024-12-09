@@ -3,7 +3,7 @@ title: "zbcli rollback-swap"
 linkTitle: "rollback-swap"
 description: "Performs rollback swap between active and backup root partitions"
 date: "2024-08-14"
-lastmod: "2024-09-18"
+lastmod: "2024-12-08"
 draft: false
 images: []
 type: docs
@@ -29,6 +29,7 @@ Performs rollback swap between active and non-active root partitions.
 zbcli rollback-swap
 
 Options:
+  -y, --yes   Say yes and skip prompts and go straight to rebooting
   -h, --help  Print help
 ```
 

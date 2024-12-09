@@ -3,7 +3,7 @@ title: "zbcli update-config"
 linkTitle: "update-config"
 description: "update-config - Sets configs for installing updates"
 date: "2024-08-14"
-lastmod: "2024-09-16"
+lastmod: "2024-12-08"
 draft: false
 images: []
 type: docs
@@ -40,6 +40,16 @@ Options:
           Configures Wi-Fi SSID
       --wifi-passphrase <WIFI_PASSPHRASE>
           Configures Wi-Fi passphrase
+      --update-endpoint-cert <UPDATE_ENDPOINT_CERT>
+          Configures Wi-Fi ssl certificate for zboot
+      --wpa-supplicant-conf <WPA_SUPPLICANT_CONF>
+          Configures wpa supplicant for Wi-Fi
+      --hostname <HOSTNAME>
+          Configures Hostname for post-update
+      --user <USER>
+          Configures User for post-update password change
+      --password <PASSWORD>
+          Configures password for post-update
   -h, --help
           Print help
 ```
@@ -55,16 +65,19 @@ The command will validate your bootware installation and then present a list of 
 ```
    Validated bootware installation
         ---------
-        Pi Module:         Raspberry Pi 5
-        Operating System:  Rpi-Bookworm
-        Zymbit module:     Zymkey
-        Kernel:            kernel_2712.img
+        Pi Module         Raspberry Pi 4
+        Operating System  Rpi-Bookworm
+        Zymbit module     Secure Compute Module
+        Kernel            kernel8.img
         ---------
 ❯ Configure partition layout
   Configure update policy
-  Configure data partition size in MB
+  Configure data partition size in MB. Does not apply if there is an existing data partition.
   Configure update endpoint
-  Configure wireless network
+  Configure wireless network manually with a ssid / psk
+  Configure wireless network automatically with a wpa supplicant conf file
+  Configure hostname for post-update
+  Configure password for post-update
   Save and exit
 ```
 
@@ -88,22 +101,23 @@ Choose your settings as described below.
 ❯   BOTH: Applies new updates to both filesystems and always boot on the first root partition as the active partition. Warning: a bad update will have nothing to rollback to and the device will have to go through a recovery process.
 ```
 
-**Configure data partition size in MB** - Along with A/B partitions for your root file system, Bootware includes a shared, encrypted data partition. The data partition can be accessed from either the Active or Backup partition. The default partition size is 512MB. Use this option to specify the size of the shared data partition in MegaBytes (MB).
+**Configure data partition size in MB** - Along with A/B partitions for your root file system, Bootware includes a shared, encrypted data partition. The data partition can be accessed from either the Active or Backup partition. The default partition size is 512MB. Use this option to specify the size of the shared data partition in MegaBytes (MB). NOTE: If the partition already exists, this setting has no effect.
 
 ```
 ? Enter size of data partition in MB ›
 ```
 
-**Configure update endpoint** – The endpoint holding the update image (zi image). rUupdate endpoints can be either an HTTPS URL or an external mass storage device like a USB stick. The default endpoint is the local device /dev/sda1. The endpoint provided will be checked for a valid file with a 'zi' extension.
+**Configure update endpoint** – The endpoint holding the update image (zi image). Uupdate endpoints can be either an HTTPS URL or an external mass storage device like a USB stick. The default endpoint is the local device /dev/sda1. The endpoint provided will be checked for a valid file with a 'zi' extension.
 
 ```
 ? Enter update endpoint ›
 ```
 
-> Example https URL: https://bootware.s3.amazonaws.com/zymbit_bookworm64_1.1.zi  
-> Example USB stick: /dev/sda1
+Example https URL: https://bootware.s3.amazonaws.com/zymbit_bookworm64_1.1.zi  
 
-**Configure wireless network** – Bootware supports pulling updates via Wifi or LAN connections. Wifi credentials need to be provided in order for bootware to access the wifi during updates. These credentials are configured separately from the host OS wireless credentials as they run within Bootware. If no wireless credentials are provided, the wireless interface in Bootware is disabled.
+Example USB stick: /dev/sda1
+
+**Configure wireless network manually with a ssid / psk** – Along with local devices, such as a USB stick, Bootware supports pulling remote updates via Wi-Fi or LAN connections. Bootware Wi-Fi credentials are separate from the standard userspace Wi-fi credentials.  Wi-Fi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot. Here, you can simply supply your SSID and password. If you need to supply additional Wi-Fi security, the next option allows you to supply credentials in a standard, wpa_supplicant.conf format.
 
 ```
  Enter Wi-Fi SSID · my_wifi
@@ -111,6 +125,12 @@ Choose your settings as described below.
 ✔ Re-enter Wi-Fi passphrase · ********
        Wi-Fi configuration set
 ```
+
+**Configure wireless network automatically with a wpa supplicant conf file** New in 1.2.2. - Bootware/zboot contains a functional wpa_supplicant implementation. This option allows the user to point to a standard wpa_supplicant.conf file in userspace that will be imported into Bootware directly. Use this option if your setup requires certificate-based authentication, or other more complicated setups.
+
+**Configure hostname for post-update** New in 1.2.2. - A post-update process is included to change your hostname to the specified name. This will be done for every future update until cleared or changed.
+
+**Configure password for post-update** New in 1.2.2. - A post-update process is included to change the password for a specified user. This will be done for every future update until cleared or changed.
 
 **Save and exit**. The final step is Save all your configuration settings and exit. The settings will be used for future updates by executing the `zbcli update` command, or automatically during the rollback/recovery process.
 
