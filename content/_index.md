@@ -21,8 +21,10 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 -----
 #### December 2024
 -----
-Bootware® 1.2.2 Release (1.2.2-01):
-- Adds ZYMKEY/HSM4/HSM6 support for CM5.
+Standard Product
+- ZYMKEY/HSM4/HSM6 support for CM5 with Bookworm64
+
+Bootware® 1.2.2 Release (1.2.2-1):
 - Adds certificate based authentication (dot1x) for ethernet and wifi. Includes method to import wpa_supplicant.conf formatted file.
 - Adds support for URLs that include additional parameters after a question mark, such as those used with Azure SAS.
 - Allows either HTTPS or HTTP as valid endpoints.
