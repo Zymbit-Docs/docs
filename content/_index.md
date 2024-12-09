@@ -22,7 +22,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 #### December 2024
 -----
 Standard Product
-- ZYMKEY/HSM4/HSM6 support for CM5 with Bookworm64
+- Confirmed ZYMKEY/HSM4/HSM6 support for CM5 with Bookworm64
 
 Bootware® 1.2.2 Release (1.2.2-1):
 - Adds certificate based authentication (dot1x) for ethernet and wifi. Includes method to import wpa_supplicant.conf formatted file.
