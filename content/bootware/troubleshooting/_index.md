@@ -16,12 +16,7 @@ toc: true
 
 #### Supported Platforms and Operating Systems
 
-| Platform | Zymbit Module | OS Support |
-| ----- | ----- | ----- |
-| CM4 | SCM | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
-| CM4 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
-| Pi4 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit, Bullseye 64-bit, Ubuntu 22.04 (jammy) |
-| Pi5 | ZYMKEY4, HSM4, HSM6 | Bookworm 64-bit |
+![supported OSs](../../supported-os-dots.png)
 
 > It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
 
