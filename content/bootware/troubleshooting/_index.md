@@ -2,7 +2,7 @@
 title: "Troubleshooting and FAQ"
 linkTitle: "Troubleshooting/FAQ"
 description: Collection of Bootware troubleshooting tips and FAQ items
-lastmod: "2024-11-24"
+lastmod: "2024-12-08"
 draft: false
 images: []
 weight: 50
@@ -23,7 +23,7 @@ toc: true
 
 ### Issues
 
-#### Release 1.2.2-01
+#### Release 1.2.2-1
 
 * Incorporates fixes from 1.2.0. There are no known open issues in 1.2.2 at this time.
 
