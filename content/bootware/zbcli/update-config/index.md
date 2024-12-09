@@ -107,14 +107,15 @@ Choose your settings as described below.
 ? Enter size of data partition in MB ›
 ```
 
-**Configure update endpoint** – The endpoint holding the update image (zi image). rUupdate endpoints can be either an HTTPS URL or an external mass storage device like a USB stick. The default endpoint is the local device /dev/sda1. The endpoint provided will be checked for a valid file with a 'zi' extension.
+**Configure update endpoint** – The endpoint holding the update image (zi image). Uupdate endpoints can be either an HTTPS URL or an external mass storage device like a USB stick. The default endpoint is the local device /dev/sda1. The endpoint provided will be checked for a valid file with a 'zi' extension.
 
 ```
 ? Enter update endpoint ›
 ```
 
-> Example https URL: https://bootware.s3.amazonaws.com/zymbit_bookworm64_1.1.zi  
-> Example USB stick: /dev/sda1
+Example https URL: https://bootware.s3.amazonaws.com/zymbit_bookworm64_1.1.zi  
+
+Example USB stick: /dev/sda1
 
 **Configure wireless network manually with a ssid / psk** – Along with local devices, such as a USB stick, Bootware supports pulling remote updates via Wi-Fi or LAN connections. Bootware Wi-Fi credentials are separate from the standard userspace Wi-fi credentials.  Wi-Fi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot. Here, you can simply supply your SSID and password. If you need to supply additional Wi-Fi security, the next option allows you to supply credentials in a standard, wpa_supplicant.conf format.
 
