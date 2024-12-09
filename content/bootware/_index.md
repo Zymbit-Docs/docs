@@ -6,7 +6,7 @@ description: ""
 aliases:
     - /bootware/
 date: "2024-08-11"
-lastmod: "2024-10-02"
+lastmod: "2024-12-06"
 draft: false
 weight: 3
 images: []
