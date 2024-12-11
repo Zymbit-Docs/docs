@@ -66,7 +66,7 @@ Run the installer:
 ./zb-install [--with-hardware-signing | --with-software-signing] [--rpi-model <rpi4|rpi5>] [--zb-version <latest|VERSION_TAG>]
 ```
 
-**OR non-interactively via `curl` with options**
+### OR non-interactively via `curl` with options
 
 Add the `-s` flag to `bash` and specify installer arguments:
 ```
