@@ -25,6 +25,22 @@ Bootstraps the proper binary zbcli executable for installation. Can be called vi
 
 ### Usage
 
+```
+zb-install [OPTIONS]
+
+Options:
+    --with-hardware-signing
+        Choose the zbcli binary that supports hardware signing (SCM, HSM6 only)
+    --with-software-signing
+        Choose the zbcli binary that supports software signing (all Zymbit products)
+    --zb-version <latest|VERSION_TAG>
+        Specify the latest version of the zbcli release, or specify a particular version tag
+    --rpi-model <rpi4 or rpi5>
+        Specify the rpi model. Can be useful if not running natively. 
+    -h, --help
+        Print help
+```
+
 The most straight forward way to get started installing Bootware is to use curl to run the bootstrap install script. The install will identify your Pi and OS and then prompt you if you’d like to include hardware signing. The SCM and HSM6 support hardware signing. All Zymbit products support software signing. 
 
 ### To install interactively:
