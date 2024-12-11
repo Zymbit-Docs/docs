@@ -21,7 +21,7 @@ toc: true
 
 Requires superuser privilege.  
 
-Bootstraps the proper binary zbcli executable for installation. Can be called via curl (normally) or downloaded and run directly.
+Bootstraps the proper binary `zbcli` executable for installation. Can be called via `curl` (normally) or downloaded and run directly.
 
 ### Usage
 
@@ -66,7 +66,7 @@ Run the installer:
 ./zb-install [--with-hardware-signing | --with-software-signing] [--rpi-model <rpi4|rpi5>] [--zb-version <latest|VERSION_TAG>]
 ```
 
-**OR**
+**OR non-interactively via `curl` with options**
 
 Add the `-s` flag to `bash` and specify installer arguments:
 ```
@@ -81,7 +81,7 @@ curl -sSf \
 curl -sSf  https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash -s -- --rpi-model rpi4
 ```
 
-After running `zb-install`, the next command is almost always `zbcli install`.
+After running `zb-install`, the next step is almost always to complete the installation of the Bootware tools and artifacts with `zbcli install`.
 
 ### See also
 
