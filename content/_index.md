@@ -21,7 +21,12 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 -----
 #### December 2024
 -----
-Standard Product
+Standard Product:
+- Update SCM pre-installed OS images to latest available matching Pi Imager:
+  - Raspberry Pi OS Lite (64-bit) - Bookworm w/ no desktop. Released: 2024-11-19
+  - Raspberry Pi OS (Legacy, 64-bit) Lite - Bullseye w/ no desktop. Released: 2024-10-22
+  - Ubuntu Server 22.04.5 LTS (64-bit) - Jammy. Released: 2024-09-12
+
 - Confirmed ZYMKEY/HSM4/HSM6 support for CM5 with Bookworm64
 
 Bootware® 1.2.2 Release (1.2.2-1):
