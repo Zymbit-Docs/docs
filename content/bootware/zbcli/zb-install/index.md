@@ -1,6 +1,6 @@
 ---
-title: "install.sh"
-linkTitle: "install.sh"
+title: "zb-install"
+linkTitle: "zb-install"
 description: Bootstraps the proper binary zbcli executable for installation
 date: "2024-12-11"
 lastmod: "2024-12-11"
@@ -15,7 +15,7 @@ toc: true
 
 -----
 
-## `install.sh`
+## `zb-install`
 
 ### Description
 
@@ -25,9 +25,8 @@ Bootstraps the proper binary zbcli executable for installation. Can be called vi
 
 ### Usage
 
-```
-The most straight forward way to get started installing Bootware is to use curl to run the bootstrap install script. The script will attempt to determine whether you are running on an Pi4/CM4 platform or a Pi5/CM5 platform by examining the /sys directory.
-```
+The most straight forward way to get started installing Bootware is to use curl to run the bootstrap install script. The install will identify your Pi and OS and then prompt you if you’d like to include hardware signing. The SCM and HSM6 support hardware signing. All Zymbit products support software signing. 
+
 ### To install interactively:
 
 ```
@@ -36,8 +35,17 @@ curl -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/inst
 
 ### To install non-interactively:
 
-- Download the installer from the "releases" section of this repo or build it yourself
-- Run:
+If you prefer to run non-interactively, download the installer and run directly on your system or in you build environment. You can supply optional arguments for your choices of hardware or software signing, as well as specifying the rpi model if you are not on an actual Pi at the time of install, for instance, if you are building with Pi-Gen in a container.
+
+Download the installer:
+
+```
+curl -sSL https://github.com/zymbit-applications/zb-bin/releases/download/installer/installer --output zb-installer
+chmod +x zb-installer
+```
+
+Run the installer:
+
 ```
 ./zb-install [--with-hardware-signing | --with-software-signing] [--rpi-model <rpi4|rpi5>] [--zb-version <latest|VERSION_TAG>]
 ```
@@ -57,9 +65,9 @@ curl -sSf \
 curl -sSf  https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash -s -- --rpi-model rpi4
 ```
 
-After running `install.sh`, the next command is almost always `zbcli install`.
+After running `zb-install`, the next command is almost always `zbcli install`.
 
 ### See also
 
-[zbcli uninstall](../uninstall)
+[zbcli install](../install)
 
