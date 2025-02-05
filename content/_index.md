@@ -21,7 +21,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 -----
 #### February 2025
 -----
-Bootware® 1.3 Release (1.3):
+Bootware® 1.3 Release (1.3.0-1):
 - Features:
   - #173 Add support for CM5 (ZYMKEY, HSM4, HSM6)
   - #174 Add second layer key verification of zi image to zboot
