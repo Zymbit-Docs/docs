@@ -2,7 +2,7 @@
 title: "Image Files"
 linkTitle: "Image Files" 
 description: "Links to pre-prepared download image files and keys"
-lastmod: "2024-12-10"
+lastmod: "2025-02-09"
 draft: false
 images: []
 weight: 70
@@ -10,7 +10,20 @@ toc: true
 ---
 
 -----
-### Bootware 1.2.2 General Platform Support Image files available for download
+### Bootware 1.3.0 General Platform Support Image files available for download
+
+Example images all have the hostname of zymbit-dev and a login of zymbit and a password of zymbit. Please change if using for anything other than development examples.
+
+| Item | Size | Description | 
+|------|------|--------------------------|
+| [zymbit_bookworm64_1.3.0.zi](https://bootware.s3.amazonaws.com/1.3/zymbit_bookworm64_1.3.0.zi) | 1.0 GB | Base Bookworm 64bit zi image (bw 1.3.0-1) |
+| [zymbit_bullseye64_1.3.0.zi](https://bootware.s3.amazonaws.com/1.3/zymbit_bullseye64_1.3.0.zi) | 728 MB | Base Bullseye 64bit zi image (bw 1.3.0-1)  |
+| [zymbit_ubuntu64_22.04_1.3.0.zi](https://bootware.s3.amazonaws.com/1.3/zymbit_ubuntu64_22.04_1.3.0.zi) | 1.7 GB | Base Ubuntu 22.04 64bit zi image  (bw 1.3.0-1)  |
+| [pub_key_1.3.pem](https://bootware.s3.amazonaws.com/1.3/pub_key_1.3.pem) | | Public Key - For all Bootware 1.3 zi images |
+
+-----
+
+#### Bootware 1.2.2 General Platform Support Image files available for download
 
 Example images all have the hostname of zymbit-dev and a login of zymbit and a password of zymbit. Please change if using for anything other than development examples.
 
