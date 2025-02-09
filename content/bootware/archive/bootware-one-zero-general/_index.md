@@ -1,12 +1,12 @@
 ---
-title: "Bootware 1.1 General"
+title: "Bootware 1.1 General (deprecated)"
 linkTitle: "Bootware 1.1 General"
 icon: ""
 description: ""
 # aliases:
 #    - /bootware/
 date: "2024-07-23"
-lastmod: ""
+lastmod: "2025-01-31"
 draft: false
 weight: 5
 images: []
@@ -18,7 +18,7 @@ toc: True
 ### Bootware 1.1: General Platform Release
 
 {{< callout notice >}}
-[Bootware 1.2](../bootware) is now available. Bootware 1.2 adds support for all Zymbit devices and now includes the Pi5 platform. The user interface has been re-written from a series of scripts into one, coherent executable.
+[Bootware 1.3](../bootware) is now available. Bootware 1.3 adds support for all Zymbit devices and now includes the CM5 and Pi5 platforms. The user interface has been re-written from a series of scripts into one, coherent executable.
 {{< /callout >}}
 
 Bootware™ is a set of software tools and micro services for the Zymbit Security Modules. Bootware 1.1 adds support for the ZYMKEY across additional platforms. The following matrix of platforms and Operating Systems support Bootware™:

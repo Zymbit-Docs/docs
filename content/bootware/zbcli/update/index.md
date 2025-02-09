@@ -76,7 +76,7 @@ After verifying the contents of the zi image with your supplied public key, stat
 ```
 ✔ Enter public key file (Pem format) · pub_key.pem
      Mounted '/dev/sda1' to '/etc/zymbit/zboot/update_artifacts/tmp/.tmpUaPKTT'
-       Found image tarball (/etc/zymbit/zboot/update_artifacts/tmp/.tmpUaPKTT/zymbit_bookworm64_pi5_1.2.zi)
+       Found image tarball (/etc/zymbit/zboot/update_artifacts/tmp/.tmpUaPKTT/zymbit_bookworm64_pi5_1.3.zi)
     Unpacked '/etc/zymbit/zboot/update_artifacts/tmp/.tmpoPa4D2/file_deletions'
     Unpacked '/etc/zymbit/zboot/update_artifacts/tmp/.tmpoPa4D2/file_manifest'
     Unpacked '/etc/zymbit/zboot/update_artifacts/tmp/.tmpoPa4D2/signatures'

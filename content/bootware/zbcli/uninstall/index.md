@@ -3,7 +3,7 @@ title: "zbcli uninstall"
 linkTitle: "uninstall"
 description: "Uninstalls Bootware tools and artifacts"
 date: "2024-08-14"
-lastmod: "2024-09-16"
+lastmod: "2024-01-31"
 draft: false
 images: []
 type: docs
@@ -24,6 +24,8 @@ toc: true
 Requires superuser privilege. 
 
 Uninstalls Bootware, returning to the standard linux boot process. The uninstall process will leave you in the current encrypted active partition and preserve the contents of that partion as well as the overall partition layout.
+
+> NOTE: `zbcli uninstall` assumes that Bootware was previously installed and configured, meaning `zbcli uninstall` assumes an encrypted active partition.
 
 ### Usage 
 

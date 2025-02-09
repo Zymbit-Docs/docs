@@ -1,9 +1,9 @@
 ---
-title: "Getting Started: Bootware 1.2.2"
+title: "Getting Started: Bootware 1.3"
 linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
-lastmod: "2025-01-07"
+lastmod: "2025-01-31"
 aliases:
     - /bootware/getting-started/
 draft: false
@@ -36,7 +36,7 @@ A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Free 
 
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
-Bootware 1.2.2 includes the same, consolidated user interface introduced in 1.2. The process of installation and configuration has changed since 1.1.
+Bootware 1.3 includes the same, consolidated user interface introduced in 1.2. The process of installation and configuration has changed since 1.1.
 
 Details of the commands in this Quickstart are linked in-line.
 See the [Features](../features) section for more information on how to use Bootware.
@@ -82,7 +82,7 @@ Use the up and down arrows to select the version. You can use Ctrl-C to exit at 
 
 ```
 ? Select version ›
-  zbcli-1.2.2-01
+  zbcli-1.3.0-1
   zbcli-1.2.0-30
   zbcli-1.2.0-29
 ```
@@ -331,11 +331,11 @@ For `Configure update endpoint`, choose the block device that holds your zi imag
 
 `Configure wireless network manually with a ssid / psk` - Along with local devices, such as a USB stick, Bootware supports pulling remote updates via Wi-Fi or LAN connections. Bootware Wi-Fi credentials are separate from the standard userspace Wi-fi credentials.  Wi-Fi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot. Here, you can simply supply your SSID and password. If you need to supply additional Wi-Fi security, the next option allows you to supply credentials in a standard, wpa_supplicant.conf format.
 
-`Configure wireless network automatically with a wpa supplicant conf file`  New in 1.2.2. - Bootware/zboot contains a functional wpa_supplicant implementation. This option allows the user to point to a standard wpa_supplicant.conf file in userspace that will be imported into Bootware directly. Use this option if your setup requires certificate-based authentication, or other more complicated setups.
+`Configure wireless network automatically with a wpa supplicant conf file`  New in 1.3. - Bootware/zboot contains a functional wpa_supplicant implementation. This option allows the user to point to a standard wpa_supplicant.conf file in userspace that will be imported into Bootware directly. Use this option if your setup requires certificate-based authentication, or other more complicated setups.
 
-`Configure hostname for post-update` New in 1.2.2. - A post-update process is included to change your hostname to the specified name. This will be done for every future update until cleared or changed.
+`Configure hostname for post-update` New in 1.3. - A post-update process is included to change your hostname to the specified name. This will be done for every future update until cleared or changed.
 
-`Configure password for post-update` New in 1.2.2. - A post-update process is included to change the password for a specified user. This will be done for every future update until cleared or changed.
+`Configure password for post-update` New in 1.3. - A post-update process is included to change the password for a specified user. This will be done for every future update until cleared or changed.
 
 **Save** and **exit** to save and exit `zbcli update-config`. You can Ctrl-C at any point before saving to exit the configurator without applying any changes.
 

@@ -2,7 +2,7 @@
 title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2024-12-05
+lastmod: 2025-02-01
 draft: false
 images: []
 weight: 8
@@ -17,6 +17,20 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 ![supported OSs](supported-os-dots.png)
 <br>
+
+-----
+#### February 2025
+-----
+Bootware® 1.3 Release (1.3.0-1):
+- Features:
+  - #173 Add support for CM5 (ZYMKEY, HSM4, HSM6)
+  - #174 Add second layer key verification of zi image to zboot
+  - #175 Add splashscreen to zboot
+- Bug Fixes
+  - #171 SAS token truncated at first "="
+  - #170 update and update-config displays for DATA partition should reflect already exists
+  - #169 zbconfig with blank hostname and password set will change hostname to zymbit-dev
+  - #176 wpa_supplicant passthrough - certs were not read properly by zboot
 
 -----
 #### December 2024
