@@ -82,6 +82,7 @@ As of 6.6.20, the numbering is:
 RPI4=516
 RPI5=575
 CM4=516
+CM5=573
 
 
 #### CPU Scaling Governor
@@ -114,7 +115,7 @@ sudo apt-get remove --purge -y unattended-upgrades
 
 As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
 
-arm_64bit=0`
+`arm_64bit=0`
 
 
 ### **Products**
