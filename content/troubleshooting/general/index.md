@@ -111,7 +111,7 @@ sudo systemctl stop unattended-upgrades
 sudo systemctl disable unattended-upgrades
 sudo apt-get remove --purge -y unattended-upgrades
 ```
-#### Running a 32-bit version of Operating Sustem
+#### Running a 32-bit version of Operating System
 
 As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
 
