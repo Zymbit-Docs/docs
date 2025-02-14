@@ -409,7 +409,7 @@ While the Bootware update process takes place, a Bootware splash screen is displ
 
 On the console, you will see:
 
-* It will then take a few minutes to process and validate the image.
+* Bootware will process and validate the image.
 * The A/B partitions will be configured and setup for LUKS encryption protected by the Zymbit HSM.
 * Depending on the size of the zi image, it may take a significant amount of time to load its contents into the root partition(s) being targeted for update.
 * Once zboot is done unpacking the image to the B partition, it will boot your system with the B (UPDATE_BACKUP mode) / A (UPDATE_BOTH mode) partition as the ACTIVE partition.
