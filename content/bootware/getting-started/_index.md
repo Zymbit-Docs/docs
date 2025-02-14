@@ -3,7 +3,7 @@ title: "Getting Started: Bootware 1.3"
 linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
-lastmod: "2025-01-31"
+lastmod: "2025-02-14"
 aliases:
     - /bootware/getting-started/
 draft: false
@@ -30,7 +30,7 @@ In this Getting Started guide we describe how to bring up a common use case for 
 -----
 
 
-The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). There is no need to setup encryption of your root filesystem as Bootware will do this for you. 
+The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
 
 A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Free Bootware](https://www.zymbit.com/get-free-bootware)
 
@@ -179,7 +179,7 @@ You can optionally provide an image version. This is for your use in helping to 
 Next, you will be prompted for signing keys. Keys can be Software or Hardware based and are used for signing and verification of images. Software keys are supported on all Zymbit products. Hardware keys are supported with Secure Compute Module (SCM) or HSM6 products. Had we chosen earlier to include hardware key support, we would be asked to choose either hardware or software key support. We chose earlier to not include hardware key support. You can use an existing key or instruct the imager to create new ones for you. For this Quickstart, we will generate a new Software key. Select `Create new software key`
 
 ```
-? Select key slot ›
+? Select key ›
 ❯ Create new software key
   Use pre-existing software key
 ```
@@ -199,13 +199,18 @@ The imager will now build your zi image. Progress will be shown on the screen.
 ✔ Enter image name · my_image
 ✔ Select image type · Full image of live system
 ✔ (Optional) enter image version ·
-✔ Select key slot · Create new software key slot
+✔ Select key · Create new software key 
      Created signing key
+    Modified /etc/initramfs-tools/initramfs.conf to use most modules.
+     Created '/etc/zymbit/zboot/update_artifacts/file_manifest'
+     Created '/etc/zymbit/zboot/update_artifacts/file_deletions'
     Verified path unmounted '/etc/zymbit/zboot/mnt'
      Cleaned '/etc/zymbit/zboot/mnt'
-    Verified disk size (required: 3.97 GiB, free: 8.31 GiB)
+     Deleted '/etc/crypttab'
+    Verified disk size (required: 2.28 GiB, free: 11.77 GiB)
      Created initramfs
-     Running [====>                                   ] 1/10 (00:04:47): taking snapshot of boot             
+     Created snapshot of boot (/etc/zymbit/zboot/update_artifacts/tmp/.tmpwVB8Of/my_image_boot.tar)
+     Running [=======>                                ] 2/11 (00:03:27): taking snapshot of root 
 ```
 
 The imager may take some time, depending on the size of your file system. Progress will be reported on the screen. Once completed, the zi image and private/public key will be saved to your specified output directory (`/mnt`). Keep your private key private. The zi image can be used from the local storage device or a remote server accessible via HTTPS. The public key file will be needed to load the zi image. 
@@ -222,36 +227,40 @@ When complete, there will be three files in your output folder: the public key, 
     Verified path unmounted '/etc/zymbit/zboot/mnt'
      Cleaned '/etc/zymbit/zboot/mnt'
      Deleted '/etc/crypttab'
-    Verified disk size (required: 2.57 GiB, free: 26.14 GiB)
+    Verified disk size (required: 2.28 GiB, free: 11.77 GiB)
      Created initramfs
-     Created snapshot of boot (/etc/zymbit/zboot/update_artifacts/tmp/.tmpGeX4FT/my_image_boot.tar)
-     Created snapshot of root (/etc/zymbit/zboot/update_artifacts/tmp/.tmpGeX4FT/my_image_rfs.tar)
+     Created snapshot of boot (/etc/zymbit/zboot/update_artifacts/tmp/.tmpwVB8Of/my_image_boot.tar)
+     Created snapshot of root (/etc/zymbit/zboot/update_artifacts/tmp/.tmpwVB8Of/my_image_rfs.tar)
      Created '/mnt/tmp'
      Cleaned '/mnt/tmp'
-     Created staging directory (/mnt/tmp/.tmpZX0YgA)
-     Created '/mnt/tmp/.tmpZX0YgA/header.txt'
-     Created tarball (/mnt/tmp/.tmpZX0YgA/update_artifact.tar)
+     Created staging directory (/mnt/tmp/.tmptwQhAI)
+     Created '/mnt/tmp/.tmptwQhAI/header.txt'
+     Created tarball (/mnt/tmp/.tmptwQhAI/update_artifact.tar)
      Created header signature
      Created update artifact signature
      Created file manifest signature
      Created file deletions signature
-     Created '/mnt/tmp/.tmpZX0YgA/signatures'
-     Created signatures (/mnt/tmp/.tmpZX0YgA/signatures)
-      Copied file (/etc/zymbit/zboot/update_artifacts/file_manifest) to (/mnt/tmp/.tmpZX0YgA/file_manifest)
-      Copied file (/etc/zymbit/zboot/update_artifacts/file_deletions) to (/mnt/tmp/.tmpZX0YgA/file_deletions)
+     Created '/mnt/tmp/.tmptwQhAI/signatures'
+     Created '/mnt/tmp/.tmptwQhAI/header.der'
+     Created '/mnt/tmp/.tmptwQhAI/image.der'
+     Created '/mnt/tmp/.tmptwQhAI/manifest.der'
+     Created '/mnt/tmp/.tmptwQhAI/deletions.der'
+     Created signatures (/mnt/tmp/.tmptwQhAI/signatures)
+      Copied file (/etc/zymbit/zboot/update_artifacts/file_manifest) to (/mnt/tmp/.tmptwQhAI/file_manifest)
+      Copied file (/etc/zymbit/zboot/update_artifacts/file_deletions) to (/mnt/tmp/.tmptwQhAI/file_deletions)
      Created tarball (/mnt/my_image.zi)
      Created '/mnt/my_image_private_key.pem'
        Saved private key '/mnt/my_image_private_key.pem'
      Created '/mnt/my_image_pub_key.pem'
        Saved public key '/mnt/my_image_pub_key.pem'
      Cleaned '/mnt/tmp'
-       Saved image '/mnt/my_image.zi' (2.57 GiB)
-    Finished in 507.3s
-$ ls -l /mnt
-total 1134224
--rwxr-xr-x 1 root root        242 Sep  8 11:55 my_image_private_key.pem
--rwxr-xr-x 1 root root        178 Sep  8 11:55 my_image_pub_key.pem
--rwxr-xr-x 1 root root 1161410560 Sep  8 11:55 my_image.zi
+       Saved image '/mnt/my_image.zi' (2.28 GiB)
+    Finished in 546.6s                                                                                                                                      $ ls -lh /mnt
+total 851M
+-rwxr-xr-x 1 root root  242 Feb 14 09:56 my_image_private_key.pem
+-rwxr-xr-x 1 root root  178 Feb 14 09:56 my_image_pub_key.pem
+-rwxr-xr-x 1 root root 851M Feb 14 09:56 my_image.zi
+
 ```
 
 Additional examples of `zbcli imager` usage can be found here: [zbcli imager usage](../zbcli/imager)
@@ -311,6 +320,12 @@ For `Configure update policy`, choose `[RECOMMENDED] BACKUP:`
 ```
 ❯   [RECOMMENDED] BACKUP: Applies new updates to current backup filesystem and swap to booting the new updated backup partition as the active partition now. If the new update is bad, it will rollback into the previous stable active partition.
 ```
+ NOTE: If the existing root partition is too big to create a new backup partition, the update policy will be switched to BOTH. A WARNING! will be issued:
+```
+ Active partition won't be saved!!!
+ Changing update mode to UPDATE_BOTH!!!
+       Using update mode (UPDATE_BOTH)
+```
 
 For `Configure data partition size in MB`, choose the size of the encrypted shared DATA partition. You can choose a size in Megabytes that you prefer. The default is 512MB. Note: If the partition exists, this option is ignored.
 
@@ -318,7 +333,7 @@ For `Configure data partition size in MB`, choose the size of the encrypted shar
 ? Enter size of data partition in MB ›  1024
 ```
 
-For `Configure update endpoint`, choose the block device that holds your zi image file.
+For `Configure update endpoint`, choose the block device that holds your zi image file. Note: You must complete this step as the endpoint will be validated.
 
 ```
        Using update endpoint '/dev/sda1'
@@ -331,11 +346,11 @@ For `Configure update endpoint`, choose the block device that holds your zi imag
 
 `Configure wireless network manually with a ssid / psk` - Along with local devices, such as a USB stick, Bootware supports pulling remote updates via Wi-Fi or LAN connections. Bootware Wi-Fi credentials are separate from the standard userspace Wi-fi credentials.  Wi-Fi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot. Here, you can simply supply your SSID and password. If you need to supply additional Wi-Fi security, the next option allows you to supply credentials in a standard, wpa_supplicant.conf format.
 
-`Configure wireless network automatically with a wpa supplicant conf file`  New in 1.3. - Bootware/zboot contains a functional wpa_supplicant implementation. This option allows the user to point to a standard wpa_supplicant.conf file in userspace that will be imported into Bootware directly. Use this option if your setup requires certificate-based authentication, or other more complicated setups.
+`Configure wireless network automatically with a wpa supplicant conf file` - Bootware/zboot contains a functional wpa_supplicant implementation. This option allows the user to point to a standard wpa_supplicant.conf file in userspace that will be imported into Bootware directly. Use this option if your setup requires certificate-based authentication, or other more complicated setups.
 
-`Configure hostname for post-update` New in 1.3. - A post-update process is included to change your hostname to the specified name. This will be done for every future update until cleared or changed.
+`Configure hostname for post-update` - A post-update process is included to change your hostname to the specified name. This will be done for every future update until cleared or changed.
 
-`Configure password for post-update` New in 1.3. - A post-update process is included to change the password for a specified user. This will be done for every future update until cleared or changed.
+`Configure password for post-update` - A post-update process is included to change the password for a specified user. This will be done for every future update until cleared or changed.
 
 **Save** and **exit** to save and exit `zbcli update-config`. You can Ctrl-C at any point before saving to exit the configurator without applying any changes.
 
@@ -350,7 +365,8 @@ sudo zbcli update
 
 ```
    Validated bootware installation
-        ---------                                                                                                                         Pi Module:         Raspberry Pi 4
+        ---------
+        Pi Module:         Raspberry Pi 4
         Operating System:  Rpi-Bookworm
         Zymbit module:     Zymkey
         Kernel:            kernel8.img
@@ -383,19 +399,56 @@ If verification with the Public Key succeeds, `zbcli update` will continue with 
 
 #### Bootware Boot Process
 
-The Bootware update process will now take place. Upon reboot in UPDATE_BACKUP mode, zboot will allocate, create, and encrypt a B partition, then load the contents of your zi image onto it. The A partition will remain untouched, and the system will come back online with partition B (`cryptrfs_B`) as its root filesystem. 
+The Bootware update process will now take place. Upon reboot in UPDATE_BACKUP mode, zboot will allocate, create, and encrypt a B partition, then load the contents of your zi image onto it. If there was sufficient space to create the B partition, the A partition will remain untouched, and the system will come back online with partition B (`cryptrfs_B`) as its root filesystem.  
 
 If your original partition was more than half the available disk space and you were switched to UPDATE_BOTH during configuration, both A and B will have been created and your image loaded into both. In this case, the system will come back online after the update with its root filesystem on partition A (`cryptrfs_A`).
 
-{{< callout notice >}}The initial configuration process can take 30 to 60 minutes to complete depending on the size of the image. The setup process with `zbcli` can be completed via SSH, but an HDMI console is helpful to follow the progress from within zboot. The Zymkey's blue LED will return to flashing once every three seconds once the update process completes and the linux system has come back online.{{< /callout >}}
+While the Bootware update process takes place, a Bootware splash screen is displayed on the console, along with a progress bar.
+
+![Bootware Splash](zboot_splash.png)
 
 On the console, you will see:
 
-* “Loading: Encrypted zboot please wait…” message, which takes around 4-5min.
+* Bootware will process and validate the image.
 * The A/B partitions will be configured and setup for LUKS encryption protected by the Zymbit HSM.
-* It will then take a few minutes to process and validate the image.
 * Depending on the size of the zi image, it may take a significant amount of time to load its contents into the root partition(s) being targeted for update.
-* Once zboot is done unpacking the image to the B partition, it will boot your system with the B (UPDATE_BACKUP mode) / A (UPDATE_BOTH mode) partition as the ACTIVE partition. You can use `lsblk` to examine the partition layout.
+* Once zboot is done unpacking the image to the B partition, it will boot your system with the B (UPDATE_BACKUP mode) / A (UPDATE_BOTH mode) partition as the ACTIVE partition.
+
+{{< callout notice >}}The initial configuration process can take 30 to 60 minutes to complete depending on the size of the image. The setup process with `zbcli` can be completed via SSH, but an HDMI console is helpful to follow the progress from within zboot. The Zymkey's blue LED will return to flashing once every three seconds once the update process completes and the linux system has come back online.{{< /callout >}}
+
+You can use `lsblk` to examine the partition layout.
+
+With B ACTIVE,
+
+```
+ $ lsblk
+NAME              MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINTS
+sda                 8:0    1 57.7G  0 disk
+└─sda1              8:1    1 57.7G  0 part
+mmcblk0           179:0    0 14.8G  0 disk
+├─mmcblk0p1       179:1    0  512M  0 part  /boot/firmware
+├─mmcblk0p2       179:2    0  6.7G  0 part
+├─mmcblk0p3       179:3    0  6.7G  0 part
+│ └─cryptrfs_B    254:0    0  6.7G  0 crypt /         (B ACTIVE)
+└─mmcblk0p4       179:4    0    1G  0 part
+  └─cryptrfs_DATA 254:1    0 1008M  0 crypt
+```
+
+With A ACTIVE,
+
+```
+$ lsblk
+NAME              MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINTS
+sda                 8:0    1 57.7G  0 disk
+└─sda1              8:1    1 57.7G  0 part
+mmcblk0           179:0    0 14.8G  0 disk
+├─mmcblk0p1       179:1    0  512M  0 part  /boot/firmware
+├─mmcblk0p2       179:2    0  6.7G  0 part
+│ └─cryptrfs_A    254:0    0  6.7G  0 crypt /        (A ACTIVE)
+├─mmcblk0p3       179:3    0  6.7G  0 part
+└─mmcblk0p4       179:4    0    1G  0 part
+  └─cryptrfs_DATA 254:1    0 1008M  0 crypt
+```
 
 ### 4. Quickcheck: Manual Rollback (Active/Backup partitions)
 
