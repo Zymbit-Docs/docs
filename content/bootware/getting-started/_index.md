@@ -333,7 +333,7 @@ For `Configure data partition size in MB`, choose the size of the encrypted shar
 ? Enter size of data partition in MB ›  1024
 ```
 
-For `Configure update endpoint`, choose the block device that holds your zi image file. Note: You must complete this step as the endpoint will be validated.
+For `Configure update endpoint`, choose the block device or URL endpoint that holds your zi image file. Note: You must complete this step as the endpoint will be validated.
 
 ```
        Using update endpoint '/dev/sda1'
@@ -342,7 +342,7 @@ For `Configure update endpoint`, choose the block device that holds your zi imag
 ? Enter update endpoint › /dev/sda1     
 ```
 
-`zbcli update-config` will attempt to verify the zi image name if the endpoint is reachable.
+`zbcli update-config` will confirm the endpoint is reachable, and set the update image name found at the endpoint. If multiple images are found, a menu of available images is presented to choose from.
 
 `Configure wireless network manually with a ssid / psk` - Along with local devices, such as a USB stick, Bootware supports pulling remote updates via Wi-Fi or LAN connections. Bootware Wi-Fi credentials are separate from the standard userspace Wi-fi credentials.  Wi-Fi credentials need to be provided in order for bootware to access the wifi during updates. If no wireless credentials are provided, the wireless interface is disabled in zboot. Here, you can simply supply your SSID and password. If you need to supply additional Wi-Fi security, the next option allows you to supply credentials in a standard, wpa_supplicant.conf format.
 
