@@ -407,14 +407,14 @@ While the Bootware update process takes place, a Bootware splash screen is displ
 
 ![Bootware Splash](zboot_splash.png)
 
-{{< callout notice >}}The initial configuration process can take 30 to 60 minutes to complete depending on the size of the image. The setup process with `zbcli` can be completed via SSH, but an HDMI console is helpful to follow the progress from within zboot. The Zymkey's blue LED will return to flashing once every three seconds once the update process completes and the linux system has come back online.{{< /callout >}}
-
 On the console, you will see:
 
 * It will then take a few minutes to process and validate the image.
 * The A/B partitions will be configured and setup for LUKS encryption protected by the Zymbit HSM.
 * Depending on the size of the zi image, it may take a significant amount of time to load its contents into the root partition(s) being targeted for update.
 * Once zboot is done unpacking the image to the B partition, it will boot your system with the B (UPDATE_BACKUP mode) / A (UPDATE_BOTH mode) partition as the ACTIVE partition.
+
+{{< callout notice >}}The initial configuration process can take 30 to 60 minutes to complete depending on the size of the image. The setup process with `zbcli` can be completed via SSH, but an HDMI console is helpful to follow the progress from within zboot. The Zymkey's blue LED will return to flashing once every three seconds once the update process completes and the linux system has come back online.{{< /callout >}}
 
 You can use `lsblk` to examine the partition layout.
 
