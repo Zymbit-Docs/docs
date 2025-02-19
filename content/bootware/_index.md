@@ -31,7 +31,7 @@ A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Free 
 ![Bootware Overview](with-bw.png "Bootware in A/B Configuration")
 
 
-- Bootware is full-featured native OS switcher/manager with first rate support for encrypted root and data partitions. Bootware is not a hypervisor.
+- Bootware is a full-featured native OS switcher/manager with first rate support for encrypted root and data partitions. Bootware is not a hypervisor.
 
 - Bootware supports both manual and automatic rollback between A and B installations. If rollback fails, Bootware is able to enter recovery to reload one of the installations from either a local image or a remote secure endpoint.
 
