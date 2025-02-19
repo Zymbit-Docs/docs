@@ -18,7 +18,7 @@ headless: false
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-{< resource_link "bootware1.3/tutorials" >}}
+{{< resource_link "bootware1.3/tutorials" >}}
 Video tutorials to help you Getting Started are available if you prefer.
 {{< /resource_link >}}
 
