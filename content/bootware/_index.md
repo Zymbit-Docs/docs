@@ -6,7 +6,7 @@ description: ""
 aliases:
     - /bootware/
 date: "2024-08-11"
-lastmod: "2025-01-07"
+lastmod: "2025-02-19"
 draft: false
 weight: 3
 images: []
@@ -18,7 +18,7 @@ toc: True
 
 Bootware is a secure integrated tool for managing multiple Linux OS installations for edge / embedded Linux machines. Bootware supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
 
-A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Free Bootware](https://www.zymbit.com/get-free-bootware)
+A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootware](https://www.zymbit.com/get-bootware)
 
 -----
 
@@ -107,7 +107,7 @@ Bootware is designed with the singular goal to ensure that properly validated an
 
 #### Additional Resources
 
-[Register for Bootware Technical Updates](https://www.zymbit.com/get-free-bootware/)
+[Register for Bootware Technical Updates](https://www.zymbit.com/get-bootware/)
 
 [More information on Bootware on zymbit.com](https://www.zymbit.com/bootware/)
 
