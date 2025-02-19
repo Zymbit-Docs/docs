@@ -18,7 +18,7 @@ headless: false
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-#### [Register for Bootware Technical Updates](https://www.zymbit.com/get-free-bootware/)
+#### [Register for Bootware Technical Updates](https://www.zymbit.com/get-bootware/)
 
 #### Supported Platforms and Operating Systems
 
@@ -32,7 +32,7 @@ In this Getting Started guide we describe how to bring up a common use case for 
 
 The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
 
-A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Free Bootware](https://www.zymbit.com/get-free-bootware)
+A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootware](https://www.zymbit.com/get-bootware)
 
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
