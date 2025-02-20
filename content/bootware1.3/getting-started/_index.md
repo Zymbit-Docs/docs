@@ -3,7 +3,7 @@ title: "Getting Started: Bootware 1.3"
 linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
-lastmod: "2025-02-14"
+lastmod: "2025-02-19"
 aliases:
     - /bootware/getting-started/
 draft: false
@@ -17,6 +17,10 @@ headless: false
 ## Quickstart - Download, Install, and Configure Bootware
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
+
+{{< resource_link "bootware1.3/tutorials" >}}
+Step-by-step videos of this Getting-Started are also available. 
+{{< /resource_link >}}
 
 #### [Register for Bootware Technical Updates](https://www.zymbit.com/get-bootware/)
 
