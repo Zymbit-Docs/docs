@@ -15,6 +15,7 @@ toc: true
 -----
 ### Bootware 1.3.0 Tutorials and Videos
 
+{{< youtube "fYrgwXAxbHw08Csx" >}}
 
 | Item | Site | Time | 
 |------|------|--------------------------|
