@@ -15,11 +15,16 @@ toc: true
 -----
 ### Bootware 1.3.0 Tutorials and Videos
 
-{{< youtube "fYrgwXAxbHw08Csx" >}}
+{{< youtube UZtX2LrRCMI >}}
 
-| Item | Site | Time | 
-|------|------|--------------------------|
-| Getting Started with Bootware 1.3 video | Youtube link | Running time: 5 minutes |
+
+<iframe width="560" height="315"
+    src="https://www.youtube.com/embed/UZtX2LrRCMI"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
 
 -----
 
