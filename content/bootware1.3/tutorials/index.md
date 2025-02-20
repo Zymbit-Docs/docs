@@ -13,26 +13,14 @@ toc: true
 ---
 
 -----
-### Bootware 1.3.0 Tutorials and Videos
+### Bootware 1.3 Step-by-Step Getting Started
 
 {{< youtube UZtX2LrRCMI >}}
 
-----
 
-<iframe width="560" height="315"
-    src="https://www.youtube.com/embed/UZtX2LrRCMI"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-</iframe>
+{{< youtube gHyWR_hCGwQ >}}
 
 -----
 
-#### Other things:
-
-blah blah
-
------
 
 
