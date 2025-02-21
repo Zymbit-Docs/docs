@@ -3,6 +3,8 @@ title: "Troubleshooting and FAQ"
 linkTitle: "Troubleshooting/FAQ"
 description: Collection of Bootware troubleshooting tips and FAQ items
 lastmod: "2024-12-08"
+aliases:
+    - /bootware/troubleshooting/
 draft: false
 images: []
 weight: 50

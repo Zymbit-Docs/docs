@@ -3,6 +3,8 @@ title: "Image Files"
 linkTitle: "Image Files" 
 description: "Links to pre-prepared download image files and keys"
 lastmod: "2025-02-09"
+aliases:
+    - /bootware/image-files/
 draft: false
 images: []
 weight: 70
