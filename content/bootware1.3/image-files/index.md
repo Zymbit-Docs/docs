@@ -29,6 +29,8 @@ Example images all have the hostname of zymbit-dev and a login of zymbit and a p
 
 Example images all have the hostname of zymbit-dev and a login of zymbit and a password of zymbit. Please change if using for anything other than development examples.
 
+> NOTE: 1.3.0 requires additional signature information that is not present in 1.2.2 and earlier zi images. Signature verification of 1.2.2 and earlier images will fail verification in zboot 1.3.0. Run `zbcli imager` to create new images if moving your existing 1.2.2 zi images to 1.3.0.
+
 | Item | Size | Description | 
 |------|------|--------------------------|
 | [zymbit_bookworm64_1.2.2.zi](https://bootware.s3.amazonaws.com/1.2/zymbit_bookworm64_1.2.2.zi) | 1.0 GB | Base Bookworm 64bit zi image (bw 1.2.2-1) |
