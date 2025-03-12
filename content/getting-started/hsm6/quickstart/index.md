@@ -35,7 +35,7 @@ Installing the Hardware
 Establish an {{< term/i2c >}} connection
 :   Enable the {{< term/i2c >}} bus on the host device in order to be able to communicate with the HSM.
 
-Install the client software
+Install the Zymbit Core Software
 :   These utilities provided by Zymbit are necessary to interact with the hardware module.
 
 Test the installation
@@ -134,9 +134,9 @@ Your {{< term/i2c >}} bus is now configured and ready to talk to the HSM. The de
 
 Your I2C bus is now on and ready to talk to the HSM.
 
-## Install the client software
+## Install the Zymbit Core Software
 
-Login to your host device and follow these steps to install the HSM's client software.
+Login to your host device and follow these steps to install the HSM's Zymbit Core Software.
 
 The HSM will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
 
@@ -160,7 +160,7 @@ When the software installation has completed, the script will automatically rebo
 In production mode, HSM generates a unique Device ID by measuring certain attributes of the specific host and the HSM itself to permanently associate the two.
 {{< /resource_link >}}
 
-The quickest way to get started is to see the HSM's various features at work by running these test scripts that were installed with the client software:
+The quickest way to get started is to see the HSM's various features at work by running these test scripts that were installed with the Zymbit Core Software:
 
 `python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`
 

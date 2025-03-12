@@ -137,9 +137,9 @@ This only affects SCMs with firmware 01.02.02release. This does not affect the H
 * Easy to Scale
 * Pre-encrypted file system
 {{< callout notice >}}
-The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Bootware 1.0 can be used to replace Bullseye or Ubuntu 22.04 based Operating System images. See [Bootware](../../../bootware-one-zero) for details.
+The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Bootware can be used to replace supported Operating System images. See [Bootware](../../../bootware) for details.
 {{< /callout >}}
-* Pre-loaded Linux kernel (bullseye 64-bit or Ubuntu 22.04 64-bit)
+* Pre-loaded Operating System (bookworm, bullseye, or Ubuntu 22.04 64-bit)
 * Optionally Pre-load with customer software
 * Pre-defined file manifest & policies
 * Custom MAC OUID blocks available

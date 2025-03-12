@@ -49,7 +49,7 @@ Installing the hardware
 Establish an {{< term/i2c >}} connection
 :   Enable the {{< term/i2c >}} bus on the host device in order to be able to communicate with the ZYMKEY4.
 
-Install the client software
+Install the Zymbit Core Software
 :   These utilities provided by Zymbit are necessary to interact with the hardware module.
 
 Test the installation
@@ -126,9 +126,9 @@ Your {{< term/i2c >}} bus is now configured and ready to talk to the ZYMKEY4. Th
 The default I2C address for ZYMKEY4 is 0x30. If this conflicts with another device in your system, you can reconfigure the ZYMKEY4 to use another address of your choice.
 {{< /resource_link >}}
 
-## Install the client software
+## Install the Zymbit Core Software
 
-Login to your host device and follow these steps to install the ZYMKEY4's client software.
+Login to your host device and follow these steps to install the ZYMKEY4's Zymbit Core Software.
 
 The ZYMKEY4 will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
 
