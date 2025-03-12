@@ -20,7 +20,7 @@ Developing your applications on the CM4 allows you the freedom to start complete
 
 ### Steps
 1. Start with Bookworm, Bullseye or Ubuntu 22.04 image
-2. Load Zymbit software (a ZYMBIT HSM is not necessary)
+2. Load Zymbit Core Software (a ZYMBIT HSM is not necessary)
 3. Load/Install bootware tools
 4. Use `zbcli imager` to create a zi image signed with software key
 5. Pre-configure the SCM with a known good A/B partition. This is just in case the CM4 image has any problem
@@ -30,9 +30,9 @@ Developing your applications on the CM4 allows you the freedom to start complete
 
 Follow the standard instructions from Raspberry Pi Foundation using `rpiboot` and the Pi Imager to load Bookworm or Bullseye Lite 64-bit or Ubuntu Server 22.04 (jammy). Load all of the necessary software and debug and test your application.
 
-### 2. Load the Zymbit software
+### 2. Load the Zymbit Core Software
 
-Once the image is put together and loaded on the SCM, load Zymbit software. For now, Zymbit hardware is not needed. You only need to complete the software installation. The following will load all packages and reboot to complete the software installation.
+Once the image is put together and loaded on the SCM, load Zymbit Core Software. For now, Zymbit hardware is not needed. You only need to complete the software installation. The following will load all packages and reboot to complete the software installation.
 
 ```bash
 curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash

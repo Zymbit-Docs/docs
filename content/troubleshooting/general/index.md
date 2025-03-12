@@ -12,7 +12,7 @@ toc: true
 
 ### **Release Notes - Latest Release 1/13/2023 (RC-23.01)**
 
-We updated the common Zymbit software release common to all products: ZYMKEY4, HSM4, HSM6, and the new SCM-based product line. Existing customers can do an update/upgrade to get the latest code.
+We updated the common Zymbit Core Software release common to all products: ZYMKEY4, HSM4, HSM6, and the new SCM-based product line. Existing customers can do an update/upgrade to get the latest code.
 
 ```bash
 sudo apt-get update
@@ -65,7 +65,7 @@ sudo sed -i 's/^deb https/deb [signed-by=\/usr\/share\/keyrings\/zymbit.gpg] htt
 
 #### Wake-Pin Issues for upgrades to Kernel 6.6 and later
 
-The installation script takes care of the following for you. If you are doing a new installation, you should not have to worry about the following. If you already installed the Zymbit software and then upgraded the kernel to something beyond 6.6, please note the following.
+The installation script takes care of the following for you. If you are doing a new installation, you should not have to worry about the following. If you already installed the Zymbit Core Software and then upgraded the kernel to something beyond 6.6, please note the following.
 
 Raspberry PI OS Bookworm updated the kernel to version 6.6.y in March 2024. The kernel no longer overrides an upstream kernel decision to force the base number of the main GPIO controller to be global GPIO 0. If the WAKE_PIN number is not set, the ZYMKEY will not bind. You will see 5 flashes per second continuously.For RPI4, RPI5, and CM4 platforms, you will need to set the WAKE_PIN in the following manner:
 

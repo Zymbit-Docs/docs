@@ -40,7 +40,7 @@ Active production mode
 
 ## Develop your application
 
-To begin, ensure that you have followed the Getting Started guide for your HSM6 carefully to install the prerequisite client software:
+To begin, ensure that you have followed the Getting Started guide for your HSM6 carefully to install the prerequisite Zymbit Core Software:
 
 {{< resource_link "getting-started/hsm6" >}}
 Install your HSM6 to a Raspberry Pi running Raspbian or Ubuntu before moving to production mode.

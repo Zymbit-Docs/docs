@@ -44,7 +44,7 @@ SLIP39 generates groups and each of these groups can contain its own system of m
     * [HSM6](https://www.zymbit.com/hsm6/)
     * [SCM](https://www.zymbit.com/secure-compute-platform/) 
 
-*  Follow the [Getting Started guide](../../../getting-started/) first, installing all baseline software. 
+*  Follow the [Getting Started guide](../../../getting-started/) first, installing all Zymbit Core Software. 
 
 * All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](../../../api/)
 

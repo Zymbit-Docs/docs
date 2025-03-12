@@ -34,7 +34,7 @@ Step-by-step videos of this Getting-Started are also available.
 -----
 
 
-The default SCM/SEN as shipped has Zymbit software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
+The default SCM/SEN as shipped has Zymbit Core Software pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
 
 A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootware](https://www.zymbit.com/get-bootware)
 
@@ -180,7 +180,7 @@ Next, you will be prompted for what type of image to make: A full image of the l
 
 You can optionally provide an image version. This is for your use in helping to identify the image later. It is not used in the process. 
 
-Next, you will be prompted for signing keys. Keys can be Software or Hardware based and are used for signing and verification of images. Software keys are supported on all Zymbit products. Hardware keys are supported with Secure Compute Module (SCM) or HSM6 products. Had we chosen earlier to include hardware key support, we would be asked to choose either hardware or software key support. We chose earlier to not include hardware key support. You can use an existing key or instruct the imager to create new ones for you. For this Quickstart, we will generate a new Software key. Select `Create new software key`
+Next, you will be prompted for signing keys. Keys can be software or hardware based and are used for signing and verification of images. Software keys are supported on all Zymbit products. Hardware keys are supported with Secure Compute Module (SCM) or HSM6 products. Had we chosen earlier to include hardware key support, we would be asked to choose either hardware or software key support. We chose earlier to not include hardware key support. You can use an existing key or instruct the imager to create new ones for you. For this Quickstart, we will generate a new software key. Select `Create new software key`
 
 ```
 ? Select key ›

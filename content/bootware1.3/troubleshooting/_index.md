@@ -23,7 +23,16 @@ toc: true
 > It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
 
 
-### Issues
+### Issues and Notes
+
+#### Release 1.3.0-1
+
+* Bootware 1.3.0-1 requires updated images. zi images made with 1.2.2-1 or earlier will not work with 1.3.0-1, due to additional signature files in the 1.3.0-1 based images used for secondary verification step. Procedure for updating an image made with 1.2.2-1 or earlier:
+
+  1. Start with Bootware 1.2.2 installed on staging device.
+  2. Update staging device with existing 1.2.2 zi image.
+  3. Update staging device with Bootware 1.3.0-1
+  4. Create a new updated zi image with Bootware 1.3.0-1
 
 #### Release 1.2.2-1
 

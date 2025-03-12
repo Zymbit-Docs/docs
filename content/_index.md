@@ -2,7 +2,7 @@
 title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2025-02-01
+lastmod: 2025-03-12
 draft: false
 images: []
 weight: 8
@@ -24,7 +24,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 Bootware® 1.3 Release (1.3.0-1):
 - Features:
   - #173 Add support for CM5 (ZYMKEY, HSM4, HSM6)
-  - #174 Add second layer key verification of zi image to zboot. NOTE: This additional check requires updating 1.2.2 and earlier images by running `zbcli imager` from version 1.3.0-1.
+  - #174 Add second layer key verification of zi image to zboot. NOTE: This additional check requires updating 1.2.2 and earlier images by running `zbcli imager` from version 1.3.0-1. See [1.3.0 upgrade](./bootware1.3/troubleshooting/#release-130-1)
   - #175 Add splashscreen to zboot
 - Bug Fixes
   - #171 SAS token truncated at first "="
@@ -73,7 +73,7 @@ The Zymbit Products also include Bookworm 64-bit support.
 
 #### Other significant enhancements in Bootware 1.1:
 
-**Issue #142** - FIXED. OS updates that change boot.scr can prevent future boot. Affects Ubuntu. Although the PI version of Ubuntu does not use U-Boot, Ubuntu's dpkg kernel update re-writes the file /boot/firmware/boot.scr. boot.scr was used by Bootware 1.0, and a re-write of the file could leave the system unable to boot. Bootware 1.1 no longer relies on the file.
+**Issue #142** - FIXED. OS updates that change boot.scr can prevent future boot. Affects Ubuntu. Although the PI version of Ubuntu does not use U-Boot, Ubuntu's dpkg kernel update re-writes the file /boot/firmware/boot.scr. boot.scr was used by Bootware 1.0, and a re-write of the file could leave the system unable to boot. Bootware 1.1 no longer relies on the file. 
 
 **Enhancement** - The common data partition is now encrypted and the LUKS key is locked by the Zymbit HSM.
 
@@ -113,7 +113,7 @@ We have added support for Bookworm (64-bit) on the Pi5, PI4 and CM4 for the ZYMK
 
 #### October 2023
 -----
-Secure Compute Module moved from Revision A to Revision B. The Zymbit Software did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required.
+Secure Compute Module moved from Revision A to Revision B. The Zymbit Core Software did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required.
 
 See the [Troubleshooting/FAQ](troubleshooting/scm) for more information on the changes from Rev A to Rev B of the SCM itself.
 <br>
