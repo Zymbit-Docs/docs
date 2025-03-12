@@ -2,7 +2,7 @@
 title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2025-02-01
+lastmod: 2025-03-12
 draft: false
 images: []
 weight: 8
@@ -113,7 +113,7 @@ We have added support for Bookworm (64-bit) on the Pi5, PI4 and CM4 for the ZYMK
 
 #### October 2023
 -----
-Secure Compute Module moved from Revision A to Revision B. The Zymbit Software did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required.
+Secure Compute Module moved from Revision A to Revision B. The Zymbit Core Software did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required.
 
 See the [Troubleshooting/FAQ](troubleshooting/scm) for more information on the changes from Rev A to Rev B of the SCM itself.
 <br>
