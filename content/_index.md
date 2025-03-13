@@ -19,6 +19,13 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 <br>
 
 -----
+#### March 2025 - RELEASE CANDIDATE **NOT FOR PRODUCTION**
+-----
+Bootware® 1.3.1 Release Candidate (1.3.1-rc-01):
+- Features:
+  - #182 Add support for PiZero 2W (ZYMKEY, HSM4, HSM6)
+
+-----
 #### February 2025
 -----
 Bootware® 1.3 Release (1.3.0-1):
