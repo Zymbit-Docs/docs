@@ -3,7 +3,7 @@ title: Developing on the CM4
 linkTitle: Developing on the CM4
 description: Outlines the process for developing on the CM4 and transitioning to the secure SCM
 date: "2024-08-22"
-lastmod: "2024-09-26"
+lastmod: "2025-03-13"
 draft: false
 images: []
 type: docs
@@ -19,18 +19,18 @@ toc: true
 Developing your applications on the CM4 allows you the freedom to start completely over in a well-known environment before transitioning to the secure SCM. The steps below outline how to take your existing CM4 solution directly to an SCM using bootware. The end result of this procedure will be an image in zi format ready for transfer to an SCM.
 
 ### Steps
-1. Start with Bookworm, Bullseye or Ubuntu 22.04 image
-2. Load Zymbit Core Software (a ZYMBIT HSM is not necessary)
-3. Load/Install bootware tools
-4. Use `zbcli imager` to create a zi image signed with software key
-5. Pre-configure the SCM with a known good A/B partition. This is just in case the CM4 image has any problem
-6. Load zi image on SCM with `zbcli update`
+1. Start with Bookworm, Bullseye or Ubuntu 22.04 image on the CM4.
+2. Load Zymbit Core Software on the CM4 (a ZYMBIT HSM is not necessary).
+3. Load/Install Bootware on the CM4.
+4. Use `zbcli imager` to create a zi image signed with software key.
+5. Use Bootware to pre-configure the SCM with a known good A/B partition. This is just in case the CM4 image has any problem.
+6. Load zi image on SCM with `zbcli update`.
 
 ### 1. Start with Bookworm, Bullseye or Ubuntu
 
 Follow the standard instructions from Raspberry Pi Foundation using `rpiboot` and the Pi Imager to load Bookworm or Bullseye Lite 64-bit or Ubuntu Server 22.04 (jammy). Load all of the necessary software and debug and test your application.
 
-### 2. Load the Zymbit Core Software
+### 2. Load the Zymbit Core Software on the CM4
 
 Once the image is put together and loaded on the SCM, load Zymbit Core Software. For now, Zymbit hardware is not needed. You only need to complete the software installation. The following will load all packages and reboot to complete the software installation.
 
@@ -38,7 +38,7 @@ Once the image is put together and loaded on the SCM, load Zymbit Core Software.
 curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
 ```
 
-### 3. Install Bootware 1.2 Tools
+### 3. Install Bootware on the CM4
 
 Load the Bootware software. Part of the zi image creation includes all of the Bootware software. Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
 
@@ -52,7 +52,7 @@ sudo zbcli install
 
 The installation script will require a reboot. With everything in place, you can now run `zbcli imager` to create an image.
 
-### 4. Run `zbcli imager` and sign with a software-based key
+### 4. Run `zbcli imager` and sign with a software-based key on the CM4
 
 ```bash
 sudo zbcli imager
