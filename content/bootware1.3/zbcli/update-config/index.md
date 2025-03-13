@@ -128,9 +128,9 @@ Example USB stick: /dev/sda1
 
 **Configure wireless network automatically with a wpa supplicant conf file** New since 1.2.2. - Bootware/zboot contains a functional wpa_supplicant implementation. This option allows the user to point to a standard wpa_supplicant.conf file in userspace that will be imported into Bootware directly. Use this option if your setup requires certificate-based authentication, or other more complicated setups.
 
-**Configure hostname for post-update** New since 1.2.2. - A post-update process is included to change your hostname to the specified name. This will be done for every future update until cleared or changed.
+**Configure hostname for post-update** New since 1.2.2. - A post-update process is included to change your hostname to the specified name. This will be done for every future update until cleared or changed.   NOTE: The "@" character cannot be used.
 
-**Configure password for post-update** New since 1.2.2. - A post-update process is included to change the password for a specified user. This will be done for every future update until cleared or changed.
+**Configure password for post-update** New since 1.2.2. - A post-update process is included to change the password for a specified user. This will be done for every future update until cleared or changed.   NOTE: The "@" character cannot be used.
 
 **Save and exit**. The final step is Save all your configuration settings and exit. The settings will be used for future updates by executing the `zbcli update` command, or automatically during the rollback/recovery process.
 
