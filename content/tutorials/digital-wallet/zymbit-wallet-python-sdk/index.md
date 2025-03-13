@@ -3,19 +3,17 @@ title: "Working with Zymbit's Wallet Python SDK"
 linkTitle: "Zymbit Wallet Python SDK Tutorial"
 description: ""
 date: "2023-05-11"
-lastmod: "2023-05-11"
+lastmod: "2025-03-12"
 draft: false
 weight: 30
 images: []
 toc: true
 ---
-Updated: 2023-05-11
 
 ## What is Zymbit's Wallet SDK?
 
 Blockchain accounts, signatures, and transactions have an additional layer of complexity over traditional cryptographic keys and signatures. Our Wallet SDK aims to abstract away this complexity, enabling you to create and manage multiple blockchain wallets and seamlessly interact with smart contracts in your applicaitons without having to deal with their technical intricacies.
 
-These examples are derived from the [documentation](https://docs.zymbit.com/zymbit-wallet-sdk/zymbit-wallet-sdk-py/).
 
 ## Installation
 
