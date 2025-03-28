@@ -1,5 +1,5 @@
 ---
-title: "Welcome to Bootware 1.3.0"
+title: "Bootware 1.3.0"
 linkTitle: "Bootware 1.3.0"
 icon: ""
 description: ""
