@@ -2,7 +2,7 @@
 title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2025-03-25
+lastmod: 2025-03-28
 draft: false
 images: []
 weight: 8
@@ -19,9 +19,9 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 <br>
 
 -----
-#### March 2025 - RELEASE CANDIDATE **NOT FOR PRODUCTION**
+#### March 2025 
 -----
-Bootware® 1.3.1 Release Candidate (1.3.1-rc-01):
+Bootware® 1.3.1-1
 - Features:
   - #182 Add support for PiZero 2W (ZYMKEY, HSM4, HSM6)
     - Bookworm 64 bit and Bullseye 64 bit
