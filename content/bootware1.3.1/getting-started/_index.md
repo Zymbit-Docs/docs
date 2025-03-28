@@ -1,9 +1,9 @@
 ---
-title: "Getting Started: Bootware 1.3"
+title: "Getting Started: Bootware"
 linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
-lastmod: "2025-02-19"
+lastmod: "2025-03-28"
 aliases:
     - /bootware/getting-started/
 draft: false
@@ -18,7 +18,7 @@ headless: false
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-{{< resource_link "bootware1.3/tutorials" >}}
+{{< resource_link "bootware1.3.1/tutorials" >}}
 Step-by-step videos of this Getting-Started are also available. 
 {{< /resource_link >}}
 
@@ -40,7 +40,7 @@ A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootw
 
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
-Bootware 1.3 includes the same, consolidated user interface introduced in 1.2. The process of installation and configuration has changed since 1.1.
+Bootware 1.3.x includes the same, consolidated user interface introduced in 1.2. The process of installation and configuration has changed since 1.1.
 
 Details of the commands in this Quickstart are linked in-line.
 See the [Features](../features) section for more information on how to use Bootware.
@@ -80,13 +80,15 @@ zb-install.sh: bootstrapping the zbcli installer
 ❯ No
 ```
 
-Next, you will be asked to select a version of the `zbcli` from a list of recent versions to install. In most cases, you will want to select the latest version. 
+Next, select a version of the `zbcli` from a list of recent versions to install. In most cases, you will want to select the latest version. 
 
 Use the up and down arrows to select the version. You can use Ctrl-C to exit at any time.
 
 ```
 ? Select version ›
+  zbcli-1.3.1-1
   zbcli-1.3.0-1
+  zbcli-1.2.2-1
   zbcli-1.2.0-30
   zbcli-1.2.0-29
 ```
