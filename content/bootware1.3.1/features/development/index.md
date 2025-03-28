@@ -38,7 +38,7 @@ Once the image is put together and loaded on the SCM, load Zymbit Core Software.
 curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
 ```
 
-### 3. Install Bootware 1.2 Tools
+### 3. Install Bootware Tools
 
 Load the Bootware software. Part of the zi image creation includes all of the Bootware software. Download the Bootware software to the SCM. The Bootware software can be downloaded with curl:
 
