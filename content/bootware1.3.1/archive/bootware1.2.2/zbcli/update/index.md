@@ -48,17 +48,17 @@ After confirmation of the config parameters, the script will prompt for a reboot
 ```
    Validated bootware installation
         ---------
-        Pi Module:         Raspberry Pi 5
+        Pi Module:         Raspberry Pi 4
         Operating System:  Rpi-Bookworm
         Zymbit module:     Zymkey
-        Kernel:            kernel_2712.img
+        Kernel:            kernel_8.img
         ---------
      Created '/etc/zymbit/zboot/update_artifacts/tmp'
        Found update configs
 ? Proceed with current configs? These can be modified through 'zbcli update-config'
         ---------
         Update endpoint   /dev/sda1
-        Update name       zymbit_bookworm64_pi5_1.2
+        Update name       zymbit_bookworm64_1.2.2
         Endpoint type     LOCAL
         Partition layout  A/B
         Update policy     UPDATE_BOTH
@@ -76,7 +76,7 @@ After verifying the contents of the zi image with your supplied public key, stat
 ```
 ✔ Enter public key file (Pem format) · pub_key.pem
      Mounted '/dev/sda1' to '/etc/zymbit/zboot/update_artifacts/tmp/.tmpUaPKTT'
-       Found image tarball (/etc/zymbit/zboot/update_artifacts/tmp/.tmpUaPKTT/zymbit_bookworm64_pi5_1.2.zi)
+       Found image tarball (/etc/zymbit/zboot/update_artifacts/tmp/.tmpUaPKTT/zymbit_bookworm64_1.2.2.zi)
     Unpacked '/etc/zymbit/zboot/update_artifacts/tmp/.tmpoPa4D2/file_deletions'
     Unpacked '/etc/zymbit/zboot/update_artifacts/tmp/.tmpoPa4D2/file_manifest'
     Unpacked '/etc/zymbit/zboot/update_artifacts/tmp/.tmpoPa4D2/signatures'

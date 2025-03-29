@@ -91,7 +91,7 @@ Important: The CM4/SCM firmware must include bootloader version 2023/01/11 or la
 
 ### Changes to our standard images
 
-The table below summarizes changes made to the standard image coinciding with the release of Bootware 1.2.
+The table below summarizes changes made to the standard image coinciding with the release of Bootware 1.2 and later.
 
 | Default | As Shipped |
 |------------------|--------------------------|

@@ -1,11 +1,9 @@
 ---
-title: "Getting Started: Bootware 1.2"
+title: "Getting Started: Bootware 1.2.2"
 linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
 lastmod: "2024-10-15"
-aliases:
-    - /bootware/getting-started/
 draft: false
 type: docs
 images: []
@@ -22,7 +20,7 @@ In this Getting Started guide we describe how to bring up a common use case for 
 
 #### Supported Platforms and Operating Systems
 
-The following matrix of platforms and Operating Systems support Bootware 1.2:
+The following matrix of platforms and Operating Systems support Bootware 1.2.2:
 
 | Platform | Zymbit Module | OS Support |
 | ----- | ----- | ----- |
@@ -40,7 +38,7 @@ The default SCM/SEN as shipped has Zymbit software pre-installed. For setups usi
 
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
-Bootware 1.2 includes a new, consolidated user interface. The process of installation and configuration has changed since 1.1.
+Bootware 1.2.2 includes a new, consolidated user interface. The process of installation and configuration has changed since 1.1.
 
 Details of the commands in this Quickstart are linked in-line.
 See the [Features](../features) section for more information on how to use Bootware.
@@ -84,6 +82,7 @@ Next, you will be asked to select a version of the `zbcli` from a list of recent
 
 ```
 ? Select version ›
+  zbcli-1.2.2-1
   zbcli-1.2.0-30
   zbcli-1.2.0-29
   zbcli-1.2.0-28

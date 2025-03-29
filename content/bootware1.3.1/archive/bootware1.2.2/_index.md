@@ -1,12 +1,12 @@
 ---
-title: "Welcome to Bootware"
-linkTitle: "Bootware"
+title: "Bootware 1.2.2"
+linkTitle: "Bootware 1.2.2"
 icon: ""
 description: ""
 aliases:
     - /bootware/
 date: "2024-08-11"
-lastmod: "2024-10-02"
+lastmod: "2025-03-29"
 draft: false
 weight: 3
 images: []
@@ -16,7 +16,7 @@ toc: True
 
 -----
 
-Bootware is a secure integrated tool for managing multiple Linux OS installations for edge / embedded Linux machines. Bootware 1.2 supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
+Bootware is a secure integrated tool for managing multiple Linux OS installations for edge / embedded Linux machines. Bootware 1.2.2 supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
 
 -----
 
@@ -103,15 +103,5 @@ Bootware is designed with the singular goal to ensure that properly validated an
 
 -----
 
-### Additional Resources
-
-#### [Register for Bootware Technical Updates](https://www.zymbit.com/get-free-bootware/)
-
-#### [More information on Bootware on zymbit.com](https://www.zymbit.com/bootware/)
-
-#### [Bootware Community](https://community.zymbit.com/c/bootware)
-
------
-
-### Links to Bootware 1.2 Documentation Sections
+### Links to Bootware 1.2.2 Documentation Sections
 

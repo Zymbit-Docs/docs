@@ -1,6 +1,6 @@
 ---
 title: Frequently Asked Questions
-linkTitle: "Bootware 1.2 FAQ"
+linkTitle: "Bootware 1.2.2 FAQ"
 description: Answers to Frequently asked questions regarding Bootware
 lastmod: "2024-09-26"
 draft: false
@@ -13,7 +13,7 @@ toc: false
 ---
 
 -----
-##### Q: What Zymbit products support Bootware 1.2?
+##### Q: What Zymbit products support Bootware 1.2.2?
 
 <details>
 
@@ -21,7 +21,7 @@ toc: false
 
 <br>
 
-A: Bootware 1.2 runs on all Zymbit products. Hardware signing is only available on Zymbit products that support the digital wallet: SCM and HSM6. Supported Pi platforms include CM4, Pi4, and Pi5.
+A: Bootware 1.2.2 runs on all Zymbit products. Hardware signing is only available on Zymbit products that support the digital wallet: SCM and HSM6. Supported Pi platforms include CM4, Pi4, and Pi5.
 
 -----
 
@@ -35,7 +35,7 @@ A: Bootware 1.2 runs on all Zymbit products. Hardware signing is only available 
 
 <br>
 
-A: Bootware 1.2 supports the following OS options:
+A: Bootware 1.2.2 supports the following OS options:
 - Bookworm 64-bit
 - Bullseye 64-bit
 - Ubuntu 22.04 (jammy) 64-bit
@@ -80,7 +80,7 @@ A: Yes, if it is based off of one of the supported OS images - Bullseye or Ubunt
 
 <br>
 
-A: Bootware 1.2 primarily consists of three partitioning schemes:
+A: Bootware 1.2.2 primarily consists of three partitioning schemes:
 - Boot 512MB, RootA: Approximately 50%, RootB: Approximately 50%, Encrypted Data partition is user configurable with `zbcli update-config` (default 512MB)
 - Boot 512MB, RootA: Approximately 100%, Encrypted Data partition is user configurable with `zbcli update-config` (default 512MB)
 - Boot 512MB, RootA: Approximately 50%, Encrypted Data partition is user configurable with `zbcli update-config` (default 512MB)
