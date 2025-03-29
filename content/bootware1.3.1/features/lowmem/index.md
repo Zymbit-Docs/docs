@@ -24,9 +24,10 @@ The first time Bootware Updates, it creates A, B, and a DATA partition of a user
 
 When the Update runs from a URL Endpoint, the DATA partition will receive the image download. The signatures will be verified from the DATA partition and files will be copied from the DATA partition to the A, B, or both partitions as specified in the Update configuration.
 
-Note that the DATA partition will never be deleted during an Update process. If the DATA partition exists, Bootware will attempt to use it. If the existing DATA partition is too small, the Update process will fail and you will boot back into your existing configuration. To allow the future Updates to succeed, delete the DATA partition and the next run of Update will re-partition your A, B, and DATA partitions with sufficient space to complete the update process.
+Note that the DATA partition will never be deleted during an Update process. If the DATA partition exists, Bootware will attempt to use it. If the existing DATA partition is too small, the Update process will fail and you will boot back into your existing configuration. To allow the future Updates to succeed, delete the DATA partition and the next run of Update will re-partition your A, B, and DATA partitions with sufficient space to complete the update process. For standard Bootware installations, the DATA partition will be partition 4. To delete with parted, (WARNING! You will lose all data in partition 4)
 
-[steps to delete DATA partition]
+`sudo parted -s /dev/mmcblk0 rm 4`
+
 
 
 
