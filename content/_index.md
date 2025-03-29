@@ -35,7 +35,7 @@ Bootware® 1.3.1-1
 -----
 #### February 2025
 -----
-Bootware® 1.3 Release (1.3.0-1):
+Bootware® 1.3.0 Release (1.3.0-1):
 - Features:
   - #173 Add support for CM5 (ZYMKEY, HSM4, HSM6)
   - #174 Add second layer key verification of zi image to zboot. NOTE: This additional check requires updating 1.2.2 and earlier images by running `zbcli imager` from version 1.3.0-1. See [1.3.0 upgrade](./bootware1.3/troubleshooting/#release-130-1)
