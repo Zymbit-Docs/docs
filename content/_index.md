@@ -23,8 +23,14 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 -----
 Bootware® 1.3.1-1
 - Features:
-  - #182 Add support for PiZero 2W (ZYMKEY, HSM4, HSM6)
+  - #182 Add support for Pi Zero 2W (ZYMKEY, HSM4, HSM6)
     - Bookworm 64 bit and Bullseye 64 bit
+    - Uses the DATA partition as an alternative for Pis with limited RAM, like the Pi Zero 2W.
+    - Slight optimizations on Update writes to the encrypted A/B partitions.
+  - #184 `zbcli update` has a new `--no-pre-verify` flag. Normally the zi image is verified in userspace and also within zboot. Setting the `--no-pre-verify` flags skips the verify of the image/endpoint in userspace before launching into zboot, which saves some time. The images are always verified in zboot. WARNING: Setting this flag can lead to lost data, as the verification in zboot may require reformatting to make space for URL endpoints on limited RAM devices.
+  - #185 Additional information is logged in /boot/zboot.log.
+- Bug fixed:
+  - #180: zbcli update hostname/password cannot contain an @ character.
 
 -----
 #### February 2025
