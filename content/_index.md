@@ -38,7 +38,7 @@ Zymbit Core Software
 - Current Versions:
 
 | Name | Version | Description |
-|++++|++++|++++|
+|----|----|----|
 | libzk | 1.1-24 | Zymkey Base Communications Library |
 | libzymkeyssl | 1.0-12 | Zymkey SSL Engine Library |
 | zkapputilslib | 1.1-26 | Zymkey User API |
