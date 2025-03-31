@@ -37,6 +37,8 @@ Zymbit Core Software
   - #186: zkifc: Babbling with time sync issues. Setting the time forward or backwards caused zkifc to think it lost contact with the Zymkey. Babbling messages would result with the potential to fill logs with rapid messages. Babbling messages are now limited, and recovery has been improved. Fixed in zkifc 1.2-37.
 - Current Versions:
 
+| Name | Version | Description |
+|++++|++++|++++|
 | libzk | 1.1-24 | Zymkey Base Communications Library |
 | libzymkeyssl | 1.0-12 | Zymkey SSL Engine Library |
 | zkapputilslib | 1.1-26 | Zymkey User API |
