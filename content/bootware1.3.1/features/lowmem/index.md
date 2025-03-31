@@ -34,7 +34,6 @@ Note that the DATA partition will never be deleted during an Update process. If 
  - NEW for 1.3.1  For updates that are downloaded from an http/https endpoint: If Bootware detects insufficient RAM (currently set to less than 4GB), it will try to create and use the data partition as space to pull the image update.
    - If the DATA partition already exists, it will try to use that space.
    - If the DATA partition does not exist, like on the initial update, the DATA partition creation overrides the size given by the user - Bootware creates a partition the size of 1/3rd of the SD card. For this reason we recommend an SD card of at least 32GB.
-   - Be wary for bad images or bad endpoints for first time DATA partition creation. Creating the DATA partition requires re-partitioning the SD card with equal size partitions root-A, root-B, and the DATA partition. If the new image is bad or unreachable, the write to the newly created root partitions may fail. 
  - This partition always has the label /dev/mapper/cryptrfs_DATA created from /dev/mmcblk0p4.
  - The data partition will always be unlocked on boot up and will be available for the user to mount in userspace. I.E mount /dev/mapper/cryptrfs_DATA <directory>
  - This partition can be used like an external drive for zbcli update-config --update-endpoint=/dev/mapper/cryptrfs_DATA to pull a .zi update from.
