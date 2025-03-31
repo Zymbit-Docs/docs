@@ -30,7 +30,8 @@ Bootware® 1.3.1-1
   - #184 `zbcli update` has a new `--no-pre-verify` flag. Normally the zi image is verified in userspace and also within zboot. Setting the `--no-pre-verify` flags skips the verify of the image/endpoint in userspace before launching into zboot, which saves some time. The images are always verified in zboot. WARNING: Setting this flag can lead to lost data, as the verification in zboot may require reformatting to make space for URL endpoints on limited RAM devices.
   - #185 Additional information is logged in /boot/zboot.log.
 - Bug fixed:
-  - #180: zbcli update hostname/password cannot contain an @ character.
+  - #180: Bootware: zbcli update hostname/password cannot contain an @ character.
+  - #186: zkifc: Babbling with time sync issues. Setting the time forward or backwards caused zkifc to think it lost contact with the Zymkey. Babbling messages would result with the potential to fill logs with rapid messages. Babbling messages are now limited, and recovery has been improved. Fixed in zkifc 1.2-37.
 
 -----
 #### February 2025
