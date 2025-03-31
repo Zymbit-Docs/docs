@@ -2,7 +2,7 @@
 title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2025-03-12
+lastmod: 2025-03-28
 draft: false
 images: []
 weight: 8
@@ -19,9 +19,24 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 <br>
 
 -----
+#### March 2025 
+-----
+Bootware® 1.3.1-1
+- Features:
+  - #182 Add support for Pi Zero 2W (ZYMKEY, HSM4, HSM6)
+    - Bookworm 64 bit and Bullseye 64 bit
+    - Uses the DATA partition as an alternative for Pis with limited RAM, like the Pi Zero 2W.
+    - Slight optimizations on Update writes to the encrypted A/B partitions.
+  - #184 `zbcli update` has a new `--no-pre-verify` flag. Normally the zi image is verified in userspace and also within zboot. Setting the `--no-pre-verify` flags skips the verify of the image/endpoint in userspace before launching into zboot, which saves some time. The images are always verified in zboot. WARNING: Setting this flag can lead to lost data, as the verification in zboot may require reformatting to make space for URL endpoints on limited RAM devices.
+  - #185 Additional information is logged in /boot/zboot.log.
+- Bug fixed:
+  - #180: Bootware: zbcli update hostname/password cannot contain an @ character.
+  - #186: zkifc: Babbling with time sync issues. Setting the time forward or backwards caused zkifc to think it lost contact with the Zymkey. Babbling messages would result with the potential to fill logs with rapid messages. Babbling messages are now limited, and recovery has been improved. Fixed in zkifc 1.2-37.
+
+-----
 #### February 2025
 -----
-Bootware® 1.3 Release (1.3.0-1):
+Bootware® 1.3.0 Release (1.3.0-1):
 - Features:
   - #173 Add support for CM5 (ZYMKEY, HSM4, HSM6)
   - #174 Add second layer key verification of zi image to zboot. NOTE: This additional check requires updating 1.2.2 and earlier images by running `zbcli imager` from version 1.3.0-1. See [1.3.0 upgrade](./bootware1.3/troubleshooting/#release-130-1)

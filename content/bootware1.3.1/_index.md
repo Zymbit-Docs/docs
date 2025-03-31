@@ -1,12 +1,12 @@
 ---
-title: "Welcome to Bootware"
-linkTitle: "Bootware"
+title: "Welcome to Bootware 1.3.1"
+linkTitle: "Bootware 1.3.1"
 icon: ""
 description: ""
 aliases:
     - /bootware/
 date: "2024-08-11"
-lastmod: "2025-02-19"
+lastmod: "2025-03-28"
 draft: false
 weight: 3
 images: []
