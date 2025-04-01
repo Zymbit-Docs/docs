@@ -20,6 +20,7 @@ Example images all have the hostname of zymbit-dev and a login of zymbit and a p
 |------|------|--------------------------|
 | [zymbit_bookworm64_pi4_1.3.1.zi](https://bootware.s3.amazonaws.com/1.3.1/zymbit_bookworm64_pi4_1.3.1.zi) | 1.0 GB | Base Bookworm 64bit zi image for Pi4/CM4 (bw 1.3.1-1) |
 | [zymbit_bookworm64_pi5_1.3.1.zi](https://bootware.s3.amazonaws.com/1.3.1/zymbit_bookworm64_pi5_1.3.1.zi) | 826 MB | Base Bookworm 64bit zi image for Pi5/CM5 (bw 1.3.1-1) |
+| [zymbit_bookworm64_pi0_1.3.1.zi](https://bootware.s3.amazonaws.com/1.3.1/zymbit_bookworm64_pi0_1.3.1.zi) | 1.0 GB | Base Bookworm 64bit zi image for PiZero2w (bw 1.3.1-1) |
 | [pub_key_1.3.1.pem](https://bootware.s3.amazonaws.com/1.3.1/pub_key_1.3.1.pem) | | Public Key - For all Bootware 1.3.1 zi images |
 | *remaining image builds in process* | |  |
 
