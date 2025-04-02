@@ -1,7 +1,7 @@
 ---
 title: "General FAQ & Troubleshooting"
 linkTitle: "General"
-lastmod: "2024-09-30"
+lastmod: "2025-04-02"
 draft: false
 images: []
 weight: 10
@@ -10,36 +10,32 @@ toc: true
 
 -----
 
-### **Release Notes - Latest Release 1/13/2023 (RC-23.01)**
+### **Release Notes - Latest Release 3/28/2025 (Zymbit Ref: RC-25.01)**
 
-We updated the common Zymbit Core Software release common to all products: ZYMKEY4, HSM4, HSM6, and the new SCM-based product line. Existing customers can do an update/upgrade to get the latest code.
+Updated Zymbit Core Software release common to all products: ZYMKEY4, HSM4, HSM6, and SCM-based product line. Existing customers can do an update/upgrade to get the latest code.
 
 ```bash
 sudo apt-get update
-sudo apt-get upgrade -y
+sudo apt install --only-upgrade libzk libzymkeyssl zkbootrtc zkifc zkapputilslib zksaapps zkpkcs11
 sudo pip3 install zku --upgrade
-```
 
-#### Zymbit Host Side Code Versions (view with `dpkg -l | grep -i zym`):
-* libzk 1.1-22
-* libzymkeyssl 1.0-11
-* zkapputilslib 1.1-25
-* zkbootrtc 1.1-15
-* zkifc 1.2-36
-* zkpkcs11 1.0-3
-* zksaapps 1.0-16
-* zku 1.0.33
+#### Bug fixes:
 
-#### Changes
-* Added support for Raspberry OS Bullseye 64-bit and Ubuntu 22.04 Jammy 32-bit and 64-bit
-* Common code base supports across all products including SCM. See SCM release notes for details on SCM features.
-* Fixed: #120 get_public_key() with a very large number crashes zkifc
-* Fixed: #123 zk_pkcs11: Doesn't work with 64-bit OS
-* Fixed: #113 LED resets to default pattern after 5-10 minutes
-* Fixed: #110 Fixed memory leak in zkifc which eventually could lead to zkifc crashing
-* API functions that include Bip or Slip have been renamed to BIP and SLIP. See API docs for new syntax
+  - #186: zkifc: Babbling with time sync issues. Setting the time forward or backwards caused zkifc to think it lost contact with the Zymkey. Babbling messages would result with the potential to fill logs with rapid messages. Babbling messages are now limited, and recovery has been improved. Fixed in zkifc 1.2-37.
 
+#### Current Versions:
 
+| Name | Version | Description |
+|----|----|----|
+| libzk | 1.1-24 | Zymkey Base Communications Library |
+| libzymkeyssl | 1.0-12 | Zymkey SSL Engine Library |
+| zkapputilslib | 1.1-26 | Zymkey User API |
+| zkbootrtc | 1.1-16 | Zymkey RTC retrieval standalone app |
+| zkifc | 1.2-37 | Zymkey Interface Connector |
+| zkpkcs11 | 1.0-4 | Zymkey PKCS11 Library |
+| zksaapps | 1.0-18 | Stand alone zymkey apps |
+
+-----
 
 -----
 
