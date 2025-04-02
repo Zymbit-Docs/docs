@@ -18,6 +18,7 @@ Updated Zymbit Core Software release common to all products: ZYMKEY4, HSM4, HSM6
 sudo apt-get update
 sudo apt install --only-upgrade libzk libzymkeyssl zkbootrtc zkifc zkapputilslib zksaapps zkpkcs11
 sudo pip3 install zku --upgrade
+```
 
 #### Bug fixes:
 
