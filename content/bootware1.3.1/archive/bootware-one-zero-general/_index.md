@@ -3,8 +3,6 @@ title: "Bootware 1.1 General (deprecated)"
 linkTitle: "Bootware 1.1 General"
 icon: ""
 description: ""
-# aliases:
-#    - /bootware/
 date: "2024-07-23"
 lastmod: "2025-01-31"
 draft: false

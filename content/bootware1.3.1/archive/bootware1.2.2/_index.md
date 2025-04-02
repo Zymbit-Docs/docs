@@ -4,7 +4,7 @@ linkTitle: "Bootware 1.2.2"
 icon: ""
 description: ""
 aliases:
-    - /bootware/
+    - /bootware1.2.2/
 date: "2024-08-11"
 lastmod: "2025-03-29"
 draft: false

@@ -158,10 +158,6 @@ In production mode, ZYMKEY4 generates a unique Device ID by measuring certain at
 
 The quickest way to get started is to see the ZYMKEY4's various features at work by running some example test scripts.
 
-You can get the example scripts from here:
-
-[Download example files](https://community.zymbit.com/t/installation-missing-files/1331/2?u=bob_of_zymbit)
-
 Run the scripts:
 
 ```bash
