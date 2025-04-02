@@ -36,7 +36,7 @@ Bootware® 1.3.1-1
 - Bug fixes:
   - #180: Bootware: zbcli update hostname/password cannot contain an @ character.
 
-Zymbit Core Software 
+Zymbit Driver Package 
 - Bug fixes:
   - #186: zkifc: Babbling with time sync issues. Setting the time forward or backwards caused zkifc to think it lost contact with the Zymkey. Babbling messages would result with the potential to fill logs with rapid messages. Babbling messages are now limited, and recovery has been improved. Fixed in zkifc 1.2-37.
 - Current Versions:
@@ -146,7 +146,7 @@ We have added support for Bookworm (64-bit) on the Pi5, PI4 and CM4 for the ZYMK
 
 #### October 2023
 -----
-Secure Compute Module moved from Revision A to Revision B. The Zymbit Core Software did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required.
+Secure Compute Module moved from Revision A to Revision B. The Zymbit Driver Package did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required.
 
 See the [Troubleshooting/FAQ](troubleshooting/scm) for more information on the changes from Rev A to Rev B of the SCM itself.
 <br>

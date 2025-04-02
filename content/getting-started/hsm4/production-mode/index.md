@@ -40,7 +40,7 @@ Active production mode
 
 ## Develop your application
 
-To begin, ensure that you have followed the Getting Started guide for your HSM4 carefully to install the prerequisite Zymbit Core Software:
+To begin, ensure that you have followed the Getting Started guide for your HSM4 carefully to install the prerequisite Zymbit Driver Package:
 
 {{< resource_link "getting-started/hsm4" >}}
 Install your HSM4 to a Raspberry Pi running Raspbian or Ubuntu before moving to production mode.
