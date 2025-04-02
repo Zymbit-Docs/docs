@@ -21,7 +21,7 @@ toc: true
 
 ![supported OSs](../../supported-os-dots.png)
 
-To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](/bootware1.3.1/troubleshooting/pizero-bullseye/).
+To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](/bootware1.3.1/troubleshooting/pizero-bullseye).
 
 > It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
 
