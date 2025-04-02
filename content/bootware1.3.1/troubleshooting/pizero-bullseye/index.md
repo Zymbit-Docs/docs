@@ -1,7 +1,7 @@
 ---
-title: PiZero 2W and Bullseye: Boot Artifact Update
-linkTitle: "PiZero 2W and Bullseye: Boot Artifact Update"
-description: Steps necessary to update Bullseye with new Pi Boot Artifacts prior to installing Bootware
+title: "PiZero 2W with Bullseye: Boot Artifact Update"
+linkTitle: "PiZero 2W with Bullseye: Boot Artifact Update"
+description: "Steps necessary to update Bullseye with new Pi Boot Artifacts prior to installing Bootware"
 lastmod: "2025-04-02"
 draft: false
 images: []
