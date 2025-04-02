@@ -166,9 +166,6 @@ The quickest way to get started is to see the HSM's various features at work by 
 
 `python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
 
-The example scripts are missing in focal and bullseye distributions. You can get the example scripts from here:
-
-[Download example files](https://community.zymbit.com/t/installation-missing-files/1331/2?u=bob_of_zymbit)
 
 Now you're ready to start developing with HSM and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
 
