@@ -18,6 +18,8 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 ![supported OSs](supported-os-dots.png)
 <br>
 
+To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](/bootware1.3.1/troubleshooting/pizero-bullseye/).
+
 -----
 #### March 2025 
 -----
