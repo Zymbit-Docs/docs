@@ -19,7 +19,7 @@ toc: False
 
 * SEN 400 support with POE (suggested good POE injector: [tp-link POE160S](https://www.tp-link.com/us/business-networking/surveillance-switch/tl-poe160s/))
 
-* Optionally pre-loaded with Raspberry Pi OS Bookworm, Bullseye, or Ubuntu 22.04 Server; Zymbit Core Software, root file system encrypted at factory. Ready to go out of the box.
+* Optionally pre-loaded with Raspberry Pi OS Bookworm, Bullseye, or Ubuntu 22.04 Server; Zymbit Driver Package, root file system encrypted at factory. Ready to go out of the box.
 
 ### Useful Links for the HSM64
   * [Bootware](https://docs.zymbit.com/bootware). References for HSM6 will apply to the HSM 64.

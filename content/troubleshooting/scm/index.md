@@ -12,7 +12,7 @@ toc: true
 
 
 
-### Updated Release 10/10/2023 (RC-23.01 Zymbit Core Software unchanged)
+### Updated Release 10/10/2023 (RC-23.01 Zymbit Driver Package unchanged)
 
 Updated the SCM release to support the Rev B release of the SCM hardware.
 
