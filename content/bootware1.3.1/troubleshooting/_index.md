@@ -2,7 +2,7 @@
 title: "Troubleshooting and FAQ"
 linkTitle: "Troubleshooting/FAQ"
 description: Collection of Bootware troubleshooting tips and FAQ items
-lastmod: "2024-12-08"
+lastmod: "2025-04-13"
 aliases:
     - /bootware/troubleshooting/
 draft: false
@@ -27,6 +27,26 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 
 
 ### Issues and Notes
+
+#### Release 1.3.1-2
+
+- Bug fixes:
+  - #188: `sudo zbcli update-config --update-endpoint https://192.168.42.125/my.zi --update-endpoint-cert myCert.crt doesn't work. Endpoint certs now work.
+  - #187: Bootware: ` --data-part-size-mb` doesn’t apply correctly. Now works either interactively or non-interactively.
+
+-----
+
+#### Release 1.3.1-1
+
+- Features:
+  - #182 Add support for Pi Zero 2W (ZYMKEY, HSM4, HSM6)
+    - Bookworm 64 bit and Bullseye 64 bit
+    - Uses the DATA partition as an alternative for Pis with limited RAM, like the Pi Zero 2W.
+    - Slight optimizations on Update writes to the encrypted A/B partitions.
+  - #184 `zbcli update` has a new `--no-pre-verify` flag. Normally the zi image is verified in userspace and also within zboot. Setting the `--no-pre-verify` flags skips the verify of the image/endpoint in userspace before launching into zboot, which saves some time. The images are always verified in zboot. WARNING: Setting this flag can lead to lost data, as the verification in zboot may require reformatting to make space for URL endpoints on limited RAM devices.
+  - #185 Additional information is logged in /boot/zboot.log.
+- Bug fixes:
+  - #180: Bootware: zbcli update hostname/password cannot contain an @ character.
 
 #### Release 1.3.0-1
 
