@@ -90,6 +90,7 @@ Use the up and down arrows to select the version. You can use Ctrl-C to exit at 
 
 ```
 ? Select version ›
+  zbcli-1.3.1-2
   zbcli-1.3.1-1
   zbcli-1.3.0-1
   zbcli-1.2.2-1
