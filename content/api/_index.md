@@ -1,6 +1,6 @@
 ---
 title: "API Documentation"
-linkTitle: "API"
+linkTitle: "Zymbit Driver API"
 icon: ""
 description: ""
 aliases:
