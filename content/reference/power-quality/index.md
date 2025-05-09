@@ -5,7 +5,7 @@ description: ""
 aliases:
     - /technical_reference/power-quality/
 date: ""
-lastmod: ""
+lastmod: "2025-05-09"
 draft: false
 images: []
 weight: 40
@@ -21,13 +21,13 @@ Poor power quality can result in unstable and potentially insecure operation of 
 ----------
 ## Power Quality Management
 
-Unlike software which is digital, deterministic and repeatable, power is analog and subject to the laws of physics and electrical engineering. Fortunately, with good design and a basic understanding, power quality can also be deterministic and repeatable. We'll use the Raspberry Pi 3 to explain the basic concepts.
+Unlike software which is digital, deterministic and repeatable, power is analog and subject to the laws of physics and electrical engineering. Fortunately, with good design and a basic understanding, power quality can also be deterministic and repeatable. We'll use the Raspberry Pi to explain the basic concepts.
 
 ![power-graphic](power-graphic.png)
 
 ### Safe operating zone
 
-The Raspberry Pi 3 is designed to operate of a 5V (nominal) power supply, delivering 2A or more. (more on current rating later). This voltage is widely used in USB and mobile devices, making it easy to buy a power supply (and more on that later).  In reality, power supplies have a tolerance on the output voltage, typically ±5%, which means the output voltage can range from a low of 4.75V to a high of 5.25V.  The Raspberry Pi is designed to operate reliably in this **Safe Operating Zone.**
+The Raspberry Pi is designed to operate of a 5V (nominal) power supply, delivering 2A or more. (more on current rating later). This voltage is widely used in USB and mobile devices, making it easy to buy a power supply (and more on that later).  In reality, power supplies have a tolerance on the output voltage, typically ±5%, which means the output voltage can range from a low of 4.75V to a high of 5.25V.  The Raspberry Pi is designed to operate reliably in this **Safe Operating Zone.**
 
 
 ### Brown out zone - symptoms
@@ -55,13 +55,13 @@ _Catostrophic Failures_
 
 
 ## Why Good Power Design Matters
-A well designed SBC will include elements of power management that monitor what is happening to the input power supply using a layer of hardware protection and supervision.  In the case of the Raspberry Pi 3, there is a voltage monitor circuit that triggers a 'Low Voltage Warning' event when the supply voltage dips below 4.63V ±0.07V. This Low Voltage event is used to warn your software application of a potential loss of power  and **perhaps** initiate an orderly shutdown sequence **before a hard reset** of the CPU occurs. If a hard reset does occur it will  literally force the hardware to reset giving no time to store data or program cached in memory. In the case of the Pi, a hardware reset occurs at ~3.2V.
+A well designed SBC will include elements of power management that monitor what is happening to the input power supply using a layer of hardware protection and supervision.  In the case of the Raspberry Pi, there is a voltage monitor circuit that triggers a 'Low Voltage Warning' event when the supply voltage dips below 4.63V ±0.07V. This Low Voltage event is used to warn your software application of a potential loss of power  and **perhaps** initiate an orderly shutdown sequence **before a hard reset** of the CPU occurs. If a hard reset does occur it will  literally force the hardware to reset giving no time to store data or program cached in memory. In the case of the Pi, a hardware reset occurs at ~3.2V.
 
 ----------
 ## Secure Power Zone - Zymkey Power Quality Monitor
 Zymkey includes a similar power monitoring system although it's purpose is slightly different: it's purpose is to prevent access to cryptographic keys during unstable power conditions (resulting from an intentional power vector attack, or unintentional system failure).
 
-In the event of poor power quality the Zymkey instantaneosly shuts down access to the security API and communication channels and retreats into sleep mode (no sleep mode on Zymkey 4i lite). In sleep mode the Zymkey continues to monitor the quality of the 5V power rail and when conditions have stabilized it reactivates the security API and communicaiton channels.
+In the event of poor power quality the Zymkey instantaneosly shuts down access to the security API and communication channels and retreats into sleep mode (no sleep mode on Zymkey). In sleep mode the Zymkey continues to monitor the quality of the 5V power rail and when conditions have stabilized it reactivates the security API and communicaiton channels.
 
 ----------
 ## Other Considerations
@@ -99,4 +99,4 @@ No, not for standard products. This is an intentional design feature that protec
 
 ## Useful References
 
-* [Raspberry Pi 3 schematic with power supply details](https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/Raspberry-Pi-3B-V1.2-Schematics.pdf)
+* [Raspberry Pi Hardware reference, including schematics](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html)
