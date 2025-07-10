@@ -2,7 +2,7 @@
 title: "Zymbit Documentation"
 description: ""
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2025-04-01
+lastmod: 2025-07-10
 draft: false
 images: []
 weight: 8
@@ -20,11 +20,26 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](./bootware1.3.1/troubleshooting/pizero-bullseye).
 
+> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here:
+
+[Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
+
+-----
+#### July 2025 
+-----
+Bootware® 1.3.2
+- Features:
+  - Added static network configuration option
+  - Added flag to override low RAM decision to complete update in DATA partition
+- Bug fixes:
+  - Fixed wlan0 endpoints - updates now work over wifi
+    - Buildroot wifi related firmware added
+    - Proper revision of 2711 DTB included for Ubuntu 22.04
+    - System time recovery in place, should it be needed for wlan TLS completion.
+
 -----
 #### April 2025 
 -----
-> NOTICE (3/31/2025): Changes from the Pi foundation to the Pi5/CM5 firmware from last week are incompatible with Bootware. We are working on a solution to the problem. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 image, but you will if you upgrade to the latest from last week.
-
 Bootware® 1.3.1-2
 - Bug fixes:
   - #188: `sudo zbcli update-config --update-endpoint https://192.168.42.125/my.zi --update-endpoint-cert myCert.crt doesn't work. Endpoint certs now work.
