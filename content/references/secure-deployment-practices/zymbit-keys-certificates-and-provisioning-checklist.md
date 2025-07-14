@@ -1,5 +1,5 @@
 ---
-title: "Zymbit Resilient Node Integration Checklist"
+title: "Zymbit Keys, Certificates, and Provisioning Checklist"
 linkTitle: "Zymbit Keys, Certificates, and Provisioning Checklist"
 #manualLink: "./zymbit-keys-certificates-and-provisioning-checklist.pdf"
 #manualLinkTitle: ""
