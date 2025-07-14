@@ -1,5 +1,5 @@
 ---
-title: "Reference"
+title: "References"
 aliases:
     - /technical_reference/
 draft: false
