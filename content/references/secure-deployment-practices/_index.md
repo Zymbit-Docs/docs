@@ -5,5 +5,5 @@ description: Best practices guidelines and checklists for secure deployment
 #    - /technical_reference/engineering-notes/
 draft: false
 images: []
-weight: 15
+weight: 1
 ---

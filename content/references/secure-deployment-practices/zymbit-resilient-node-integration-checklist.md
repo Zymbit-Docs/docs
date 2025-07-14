@@ -5,6 +5,6 @@ manualLink: "./'Zymbit Resilient Node Integration Checklist.pdf'"
 manualLinkTitle: ""
 manualLinkTarget: "_blank"
 draft: false
-weight: 90
+weight: 70
 description: ""
 ---

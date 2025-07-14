@@ -5,6 +5,6 @@ manualLink: "./'CI-CD Tools Integration Guide - Ansible.pdf'"
 manualLinkTitle: ""
 manualLinkTarget: "_blank"
 draft: false
-weight: 70
+weight: 90
 description: ""
 ---
