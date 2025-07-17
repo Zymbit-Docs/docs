@@ -2,7 +2,7 @@
 title: "Zymbit Documentation"
 description: "Zymbit Documentation"
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2025-07-10
+lastmod: 2025-07-17
 draft: false
 images: []
 weight: 8
@@ -28,12 +28,14 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 Bootware® 1.3.2
 - Features:
   - #189: Add static network configuration option. See [Advanced Networking Options](bootware1.3.1/features/static-networking) for details.
-  - Add flag to override low RAM decision to complete update in DATA partition
+  - #190: Add ignore_low_ram=true flag. Ignores the low ram check in zboot to download images on devices that have less than 3GB RAM space. If not set (default) or set to false, a device with less that 3GB RAM space will attempt to use the DATA partition for download image processing.
+  - #191: Add feature to sync time from Zymbit HSM in zboot. Also add a flag to override. disable_cert_time_check=false. The new feature will try to sync the zboot system clock with the Zymbit HSM, whichever is later. If disable_cert_time_check=true and neither the zboot time nor the HSM time is reasonably current, a future time is set. This feature is included to cover situations where certificates need to be provided to bring up Wi-Fi interfaces, which will perform a system time verification before bringing up the wlan0 interface.
 - Bug fixes:
   - Fixed wlan0 endpoints - updates now work over wifi
     - Buildroot wifi related firmware added
     - Proper revision of 2711 DTB included for Ubuntu 22.04
     - System time recovery in place, should it be needed for wlan TLS completion.
+  - Fixed issues preventing overlay image support
 
 -----
 #### April 2025 
