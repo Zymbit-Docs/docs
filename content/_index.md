@@ -28,21 +28,21 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 Bootware® 1.3.2
 - Features:
   - #189: Add static network configuration option. See [Advanced Networking Options](bootware1.3.1/features/static-networking) for details.
-  - #190: Add ignore_low_ram=true flag. Ignores the low ram check in zboot to download images on devices that have less than 3GB RAM space. If not set (default) or set to false, a device with less that 3GB RAM space will attempt to use the DATA partition for download image processing.
-  - #191: Add feature to sync time from Zymbit HSM in zboot. Also add a flag to override. disable_cert_time_check=false. The new feature will try to sync the zboot system clock with the Zymbit HSM, whichever is later. If disable_cert_time_check=true and neither the zboot time nor the HSM time is reasonably current, a future time is set. This feature is included to cover situations where certificates need to be provided to bring up Wi-Fi interfaces, which will perform a system time verification before bringing up the wlan0 interface.
+  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images on devices that have less than 3GB RAM space. If not set (default) or set to false, a device with less that 3GB RAM space will attempt to use the DATA partition for download image processing. If the DATA partition does not exist, a DATA partition equivalent to a third of the overall space will be created for zboot use. A and B will be re-sized accordingly.  NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
+  - #191: Add feature to sync time from Zymbit HSM in zboot. Also add a flag to override, `disable_cert_time_check=false`. The new feature will try to sync the zboot system clock with the Zymbit HSM, whichever is later. If `disable_cert_time_check=true` and neither the zboot time nor the HSM time is reasonably current, a future time is set. This feature is included to cover situations where certificates need to be provided to bring up Wi-Fi interfaces, which will perform a system time verification before bringing up the wlan0 interface.
 - Bug fixes:
   - Fixed wlan0 endpoints - updates now work over wifi
     - Buildroot wifi related firmware added
     - Proper revision of 2711 DTB included for Ubuntu 22.04
     - System time recovery in place, should it be needed for wlan TLS completion.
-  - Fixed issues preventing overlay image support
+  - #193: zbcli overrides existing wifi related config values with defaults on some parameters. If the user Save and Exits the `zbcli update-config` menu without touching the wifi related parameters, existing wifi configs would be overriden with defaults. The default values turned off wifi and set the psk hash to an empty string. zbcli now only changes wifi configs when the user touches the wifi configs in the zbcli `update-config` menu.
 
 -----
 #### April 2025 
 -----
 Bootware® 1.3.1-2
 - Bug fixes:
-  - #188: `sudo zbcli update-config --update-endpoint https://192.168.42.125/my.zi --update-endpoint-cert myCert.crt doesn't work. Endpoint certs now work.
+  - #188: `sudo zbcli update-config --update-endpoint https://192.168.42.125/my.zi --update-endpoint-cert myCert.crt` doesn't work. Endpoint certs now work.
   - #187: Bootware: ` --data-part-size-mb` doesn’t apply correctly. Now works either interactively or non-interactively.
 
 -----
