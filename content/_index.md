@@ -16,7 +16,19 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 #### Latest Platform and OS Support
 
 ![supported OSs](supported-os-dots.png)
+
+|              |  CM5  |  CM4  | Col C | Col D | Col E | Col F | Col G |
+|              | Zymkey,HSM4   | B2    | C2    | D2    | E2    | F2    | G2    |
+|--------------|-------|-------|-------|-------|-------|-------|-------|
+|              | (U+2705) | (U+2705) | (U+2705) | (U+2705) | (U+2611) | (U+2705) | |
+| Row 1        | A2    | B2    | C2    | D2    | E2    | F2    | G2    |
+| Row 2        | A3    | B3    | C3    | D3    | E3    | F3    | G3    |
+| Row 3        | A4    | B4    | C4    | D4    | E4    | F4    | G4    |
+| Row 4        | A5    | B5    | C5    | D5    | E5    | F5    | G5    |
+| Row 5        | A6    | B6    | C6    | D6    | E6    | F6    | G6    |
+
 <br>
+
 
 To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](./bootware1.3.1/troubleshooting/pizero-bullseye).
 
