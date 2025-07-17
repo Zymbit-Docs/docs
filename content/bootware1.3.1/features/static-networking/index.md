@@ -28,15 +28,13 @@ Wi-Fi settings for access points are set via [zbcli update-config](../../zbcli/u
 | eth0_static_address | eth0 | <ip_address> | IP address of eth0 |
 | eth0_static_netmask | eth0 | netmask | Netmask of eth0 (ex. 255.255.255.0) |
 | eth0_static_gateway | eth0 | gateway | IP address of gateway for eth0 |
-|                     |      |         |                                |
 | is_wlan0_static | wlan0 | true\|false | Set to true to use static config for wlan0 (default: false) |
 | wlan0_static_address | wlan0 | <ip_address> | IP address of wlan0 |
 | wlan0_static_netmask | wlan0 | netmask | Netmask of wlan0 (ex. 255.255.255.0) |
 | wlan0_static_gateway | wlan0 | gateway | IP address of gateway for wlan0 |
-|                     |      |         |                                |
 | static_dns | | dns_server | IP address of DNS server (not device specific) |
 
-Values are set in userspace with the zbconfig utility, encrypted, and passed into zboot for use in the next update. 
+Values are set in userspace with the zbconfig utility, encrypted, and passed into zboot for use subsequent updates. 
 
 ### Example, to set static networking parameters for eth0 in zboot:
 
