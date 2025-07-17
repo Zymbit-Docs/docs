@@ -17,15 +17,18 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 ![supported OSs](supported-os-dots.png)
 
-|              |  CM5  |  CM4  | Col C | Col D | Col E | Col F | Col G |
-|--------------|-------|-------|-------|-------|-------|-------|-------|
-|              | Zymkey,HSM4   | B2    | C2    | D2    | E2    | F2    | G2    |
-|              | ✅ | ✅ | ✅ | ✅ | ☑️ | ✅ | |
-| Row 1        | A2    | B2    | C2    | D2    | E2    | F2    | G2    |
-| Row 2        | A3    | B3    | C3    | D3    | E3    | F3    | G3    |
-| Row 3        | A4    | B4    | C4    | D4    | E4    | F4    | G4    |
-| Row 4        | A5    | B5    | C5    | D5    | E5    | F5    | G5    |
-| Row 5        | A6    | B6    | C6    | D6    | E6    | F6    | G6    |
+|                                      |  CM5          |  CM4  | CM4 or Pi4  |   Pi5       | CM3 or Pi3  | PiZero 2W   | PiZero      |
+|--------------------------------------|---------------|-------|-------------|-------------|-------------|-------------|-------------|
+|                                      | Zymkey,HSM4   |  SCM  | Zymkey,HSM4 | Zymkey,HSM4 | Zymkey,HSM4 | Zymkey,HSM4 | Zymkey,HSM4 |
+| Raspberry Pi OS<br>Bookworm (64-bit) |      ✅       |  ✅   |     ✅      |     ✅      |     ☑️       |     ✅      |             |
+| Raspberry Pi OS<br>Bullseye (64-bit) |               |  ✅   |     ✅      |             |     ☑️       |     ✅      |             |
+| Ubuntu 24.04 LTS<br>Noble (64-bit)   |               |  ✅   |     ✅      |     ✅      |     ☑️       |     ☑️       |             |
+| Ubuntu 22.04 LTS<br>Jammy (64-bit)   |               |  ✅   |     ✅      |             |     ☑️       |     ✅      |             |
+| Raspberry Pi OS<br>Bullseye (32-bit) |               |       |     ☑️       |             |     ☑️       |             |     ☑️       |
+| Ubuntu 22.04 LTS<br>Jammy (32-bit)   |               |       |     ☑️       |             |     ☑️       |             |             |
+
+✅ Zymbit Core Software + Bootware
+☑️  Zymbit Core Software
 
 <br>
 
