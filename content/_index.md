@@ -27,7 +27,7 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 -----
 Bootware® 1.3.2
 - Features:
-  - Added static network configuration option
+  - Added static network configuration option. See [Advanced Networking Options](bootware1.3.1/features/static-networking) for details.
   - Added flag to override low RAM decision to complete update in DATA partition
 - Bug fixes:
   - Fixed wlan0 endpoints - updates now work over wifi

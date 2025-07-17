@@ -18,7 +18,7 @@ toc: true
 
 Static networking options are included in Bootware release 1.3.2 and later. The network ipv4 address, the netmask, and gateway can be configured for eth0 and wlan0. One DNS entry is also configurable. Static configuration is optional. The default settings for both eth0 and wlan0 is to use dhcp to configure the network.  
 
-Wi-Fi settings for access points are set via `zbcli update-config`
+Wi-Fi settings for access points are set via [zbcli update-config](bootware1.3.1/zbcli/update-config)
 
 ### Available parameters
 
