@@ -19,13 +19,13 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pi Platform: |  CM5            |  CM4    | CM4 or Pi4      |   Pi5           |   CM3 or Pi3    | PiZero 2W       | PiZero          |
 |:-------------------------------------|:---------------:|:-------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Zymbit HSMs:** | **Zymkey,HSM4** | **SCM** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
-| Raspberry Pi OS<br>Bookworm (64-bit) |      ✅         |   ✅    |       ✅        |       ✅        |      ☑️          |       ✅        |                 |
-| Raspberry Pi OS<br>Bullseye (64-bit) |                 |   ✅    |       ✅        |                 |      ☑️          |       ✅        |                 |
-| Ubuntu 24.04 LTS<br>Noble (64-bit)   |      ✅         |   ✅    |       ✅        |       ✅        |      ☑️          |       ☑️         |                 |
-| Ubuntu 22.04 LTS<br>Jammy (64-bit)   |                 |   ✅    |       ✅        |                 |      ☑️          |       ✅        |                 |
-| Raspberry Pi OS<br>Bullseye (32-bit) |                 |         |       ☑️         |                 |      ☑️          |                 |       ☑️         |
-| Ubuntu 22.04 LTS<br>Jammy (32-bit)   |                 |         |       ☑️         |                 |      ☑️          |                 |                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Zymbit HSMs:** | **Zymkey,HSM4** | **SCM** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
+| Raspberry Pi OS Bookworm (64-bit) |      ✅         |   ✅    |       ✅        |       ✅        |      ☑️          |       ✅        |                 |
+| Raspberry Pi OS Bullseye (64-bit) |                 |   ✅    |       ✅        |                 |      ☑️          |       ✅        |                 |
+| Ubuntu 24.04 LTS Noble (64-bit)   |      ✅         |   ✅    |       ✅        |       ✅        |      ☑️          |       ☑️         |                 |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                 |   ✅    |       ✅        |                 |      ☑️          |       ✅        |                 |
+| Raspberry Pi OS Bullseye (32-bit) |                 |         |       ☑️         |                 |      ☑️          |                 |       ☑️         |
+| Ubuntu 22.04 LTS Jammy (32-bit)   |                 |         |       ☑️         |                 |      ☑️          |                 |                 |
 
 ✅ Zymbit Core Software + Bootware
 
