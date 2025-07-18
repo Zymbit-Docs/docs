@@ -15,7 +15,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 #### Latest Platform and OS Support
 
-![supported OSs](supported-os-dots.png)
+<!-- ![supported OSs](supported-os-dots.png) -->
 
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pi Platform: |  CM5            |  CM4    | CM4 or Pi4      |   Pi5           |   CM3 or Pi3    | PiZero 2W       | PiZero          |
 |:-------------------------------------|:---------------:|:-------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
