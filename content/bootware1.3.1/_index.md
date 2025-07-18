@@ -1,6 +1,6 @@
 ---
-title: "Welcome to Bootware 1.3.1"
-linkTitle: "Bootware 1.3.1"
+title: "Welcome to Bootware"
+linkTitle: "Bootware 1.3.2"
 icon: ""
 description: ""
 aliases:
