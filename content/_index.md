@@ -17,9 +17,9 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 <!-- ![supported OSs](supported-os-dots.png) -->
 
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pi Platform: |  CM5            |  CM4    | CM4 or Pi4      |   Pi5           |   CM3 or Pi3    | PiZero 2W       | PiZero          |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pi Platform: |  CM5            |  CM4    | CM4 or Pi4      |   Pi5           |   CM3 or Pi3    | PiZero 2W       | PiZero          |
 |:-------------------------------------|:---------------:|:-------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Zymbit HSMs:** | **Zymkey,HSM4** | **SCM** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Zymbit HSMs:** | **Zymkey,HSM4** | **SCM** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
 | Raspberry Pi OS Bookworm (64-bit) |      ✅         |   ✅    |       ✅        |       ✅        |      ☑️          |       ✅        |                 |
 | Raspberry Pi OS Bullseye (64-bit) |                 |   ✅    |       ✅        |                 |      ☑️          |       ✅        |                 |
 | Ubuntu 24.04 LTS Noble (64-bit)   |      ✅         |   ✅    |       ✅        |       ✅        |      ☑️          |       ☑️         |                 |
@@ -44,7 +44,7 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 Bootware® 1.3.2
 - Features:
   - #189: Add static network configuration option. See [Advanced Networking Options](bootware1.3.1/features/static-networking) for details.
-  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images on devices that have less than 3GB RAM space. If not set (default) or set to false, a device with less that 3GB RAM space will attempt to use the DATA partition for download image processing. If the DATA partition does not exist, a DATA partition equivalent to a third of the overall space will be created for zboot use. A and B will be re-sized accordingly.  NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
+  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](bootware1.3.1/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
   - #191: Add feature to sync time from Zymbit HSM in zboot. Also add a flag to override, `disable_cert_time_check=false`. The new feature will try to sync the zboot system clock with the Zymbit HSM, whichever is later. If `disable_cert_time_check=true` and neither the zboot time nor the HSM time is reasonably current, a future time is set. This feature is included to cover situations where certificates need to be provided to bring up Wi-Fi interfaces, which will perform a system time verification before bringing up the wlan0 interface.
 - Bug fixes:
   - Fixed wlan0 endpoints - updates now work over wifi

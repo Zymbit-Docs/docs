@@ -1,9 +1,9 @@
 ---
-title: Bootware on the PiZero 2W 
-linkTitle: Bootware on the PiZero 2W 
-description: Installing on PiZero 2W or other memory resource limited Pi platforms
+title: Bootware on Low Memory Platforms
+linkTitle: Bootware on Low Memory Platforms
+description: Installing on memory resource limited Pi platforms, such as the PiZero 2W
 date: "2025-03-28"
-lastmod: "2025-03-28"
+lastmod: "2025-07-18"
 draft: false
 images: []
 type: docs
@@ -25,6 +25,16 @@ When the Update runs from a URL Endpoint, the DATA partition will receive the im
 Note that the DATA partition will never be deleted during an Update process. If the DATA partition exists, Bootware will attempt to use it. If the existing DATA partition is too small, the Update process will fail and you will boot back into your existing configuration. To allow the future Updates to succeed, delete the DATA partition and the next run of Update will re-partition your A, B, and DATA partitions with sufficient space to complete the update process. For standard Bootware installations, the DATA partition will be partition 4. To delete with parted, (WARNING! You will lose all data in partition 4)
 
 `sudo parted -s /dev/mmcblk0 rm 4`
+
+### Notes on ignore_low_ram flag:
+
+1.3.2 and later includes an `ignore_low_ram=true` flag. Setting the flag to true ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. If not set (default) or set to false, a device with less that 3GB RAM space will attempt to use the DATA partition for download image processing. If the DATA partition does not exist, a DATA partition equivalent to a third of the overall space will be created for zboot use. A and B will be re-sized accordingly.
+
+Use `zbconfig` to set the flag,
+
+```bash
+sudo zbconfig -set /boot/firmware/zb_config.enc ignore_low_ram=true
+```
 
 ### Notes on Bootware Shared Data Partition:
 
