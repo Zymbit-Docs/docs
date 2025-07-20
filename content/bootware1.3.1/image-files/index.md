@@ -18,13 +18,14 @@ Example images all have the hostname of zymbit-dev and a login of zymbit and a p
 
 #### 1.3.2-1 Images
 
-> Complete Example images that include 1.3.2 available soon. 
+> Example images that include 1.3.2 (remaining platforms in process)
 
 | Item | Size | Description |
 |------|------|--------------------------|
 | [zymbit_bookworm64_pi4_1.3.2-1.zi](https://bootware.s3.amazonaws.com/1.3.2/zymbit_bookworm64_pi4_1.3.2-1.zi) | 881 MB | Base Bookworm 64bit zi image for Pi4/CM4 1.3.2-1) |
 | [zymbit_ubuntu64_22.04_pi4_1.3.2-1.zi](https://bootware.s3.amazonaws.com/1.3.2/zymbit_ubuntu64_22.04_pi4_1.3.2-1.zi) | 1.6 GB | Base Ubuntu 64bit 22.04 zi image for Pi4/CM4 (bw 1.3.2-1) |
 | [pub_key_1.3.2.pem](https://bootware.s3.amazonaws.com/1.3.2/pub_key_1.3.2.pem) | | Public Key - For all Bootware 1.3.2 zi images |
+
 
 #### 1.3.1-2 Images
 
