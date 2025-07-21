@@ -34,8 +34,8 @@ Step-by-step videos of this Getting-Started are also available.
 |:-------------------------------------|:---------------:|:-------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Zymbit HSMs:** | **Zymkey,HSM4** | **SCM** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
 | Raspberry Pi OS Bookworm (64-bit) |      ☑️          |   ☑️         |       ☑️             |     ☑️           |      ✅         |       ☑️         |                 |
-| Raspberry Pi OS Bullseye (64-bit) |                 |   ☑️         |       ☑️             |                 |      ✅         |       ☑️[^1]   |                 |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                 |   ☑️[^2]   |       ☑️[^2]       |                 |      ✅         |       ☑️         |                 |
+| Raspberry Pi OS Bullseye (64-bit) |                 |   ☑️  [^2]        |       ☑️  [^2]            |                 |      ✅         |       ☑️ [^1]   |                 |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                 |   ☑️  [^2]   |       ☑️  [^2]       |                 |      ✅         |       ☑️         |                 |
 | Raspberry Pi OS Bullseye (32-bit) |                 |             |       ✅            |                 |      ✅         |                 |       ✅        |
 | Ubuntu 22.04 LTS Jammy (32-bit)   |                 |             |       ✅            |                 |      ✅         |                 |                 |
 
@@ -47,7 +47,7 @@ Step-by-step videos of this Getting-Started are also available.
 
 
 [^1]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](./bootware1.3.1/troubleshooting/pizero-bullseye).
-[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints, on Pi4/CM4 running Ubuntu 22.04 (jammy), you must use the latest dtb file, available [here:](../bootware1.3.1/troubleshooting/pi4-ubuntu).
+[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](../bootware1.3.1/troubleshooting/pi4-wifi).
 
 <br>
 
