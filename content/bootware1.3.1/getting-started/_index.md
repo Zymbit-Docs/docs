@@ -46,8 +46,8 @@ Step-by-step videos of this Getting-Started are also available.
 <br>
 
 
-[^1]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](./bootware1.3.1/troubleshooting/pizero-bullseye).
-[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](../bootware1.3.1/troubleshooting/pi4-wifi).
+[^1]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](../troubleshooting/pizero-bullseye).
+[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](../troubleshooting/pi4-wifi).
 
 <br>
 
