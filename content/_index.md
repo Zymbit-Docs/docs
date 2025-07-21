@@ -21,7 +21,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 |:-------------------------------------|:---------------:|:-------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Zymbit HSMs:** | **Zymkey,HSM4** | **SCM** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
 | Raspberry Pi OS Bookworm (64-bit) |      ☑️          |   ☑️         |       ☑️             |     ☑️           |      ✅         |       ☑️         |                 |
-| Raspberry Pi OS Bullseye (64-bit) |                 |   ☑️         |       ☑️             |                 |      ✅         |       ☑️  [^1]   |                 |
+| Raspberry Pi OS Bullseye (64-bit) |                 |   ☑️  [^2]        |       ☑️  [^2]            |                 |      ✅         |       ☑️ [^1]   |                 |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                 |   ☑️  [^2]   |       ☑️  [^2]       |                 |      ✅         |       ☑️         |                 |
 | Raspberry Pi OS Bullseye (32-bit) |                 |             |       ✅            |                 |      ✅         |                 |       ✅        |
 | Ubuntu 22.04 LTS Jammy (32-bit)   |                 |             |       ✅            |                 |      ✅         |                 |                 |
@@ -34,7 +34,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 
 [^1]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](./bootware1.3.1/troubleshooting/pizero-bullseye).
-[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints, on Pi4/CM4 running Ubuntu 22.04 (jammy), you must use the latest dtb file, available [here:](../bootware1.3.1/troubleshooting/pi4-ubuntu).
+[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](../bootware1.3.1/troubleshooting/pi4-ubuntu).
 > NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
 
 -----
