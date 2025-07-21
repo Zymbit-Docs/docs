@@ -1,6 +1,6 @@
 ---
 title: "Image Files"
-linkTitle: "Image Files" 
+linkTitle: "DOWNLOADS: Image Files" 
 description: "Links to pre-made Bootware example zi image files and keys"
 lastmod: "2025-07-20"
 aliases:
