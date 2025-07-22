@@ -28,10 +28,28 @@ Step-by-step videos of this Getting-Started are also available.
 
 #### Supported Platforms and Operating Systems
 
-![supported OSs](../../supported-os-dots.png)
+<!-- ![supported OSs](supported-os-dots.png) -->
+
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pi Platform: |  CM5            |  CM4    | CM4 or Pi4      |   Pi5           |   CM3 or Pi3    | PiZero 2W       | PiZero          |
+|:-------------------------------------|:---------------:|:-------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Zymbit HSMs:** | **Zymkey,HSM4** | **SCM** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
+| Raspberry Pi OS Bookworm (64-bit) |      ☑️          |   ☑️         |       ☑️             |     ☑️           |      ✅         |       ☑️         |                 |
+| Raspberry Pi OS Bullseye (64-bit) |                 |   ☑️  [^2]        |       ☑️  [^2]            |                 |      ✅         |       ☑️ [^1]   |                 |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                 |   ☑️  [^2]   |       ☑️  [^2]       |                 |      ✅         |       ☑️         |                 |
+| Raspberry Pi OS Bullseye (32-bit) |                 |             |       ✅            |                 |      ✅         |                 |       ✅        |
+| Ubuntu 22.04 LTS Jammy (32-bit)   |                 |             |       ✅            |                 |      ✅         |                 |                 |
+
+☑️  Zymbit Core Software + Bootware
+
+✅ Zymbit Core Software
+
 <br>
 
-To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](../troubleshooting/pizero-bullseye).
+
+[^1]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](../troubleshooting/pizero-bullseye).
+[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](../troubleshooting/pi4-wifi).
+
+<br>
 
 > It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
 
@@ -90,6 +108,7 @@ Use the up and down arrows to select the version. You can use Ctrl-C to exit at 
 
 ```
 ? Select version ›
+  zbcli-1.3.2-1
   zbcli-1.3.1-2
   zbcli-1.3.1-1
   zbcli-1.3.0-1

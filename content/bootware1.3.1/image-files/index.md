@@ -1,8 +1,8 @@
 ---
 title: "Image Files"
-linkTitle: "Image Files" 
-description: "Links to pre-prepared download image files and keys"
-lastmod: "2025-04-14"
+linkTitle: "DOWNLOADS: Image Files" 
+description: "Links to pre-made Bootware example zi image files and keys"
+lastmod: "2025-07-21"
 aliases:
     - /bootware/image-files/
 draft: false
@@ -12,16 +12,30 @@ toc: true
 ---
 
 -----
-### Bootware 1.3.1 General Platform Support Image files available for download
+### Bootware Image files available for download
 
 Example images all have the hostname of zymbit-dev and a login of zymbit and a password of zymbit. Please change if using for anything other than development examples.
+
+#### 1.3.2-1 Images
+
+> Example images that include 1.3.2 (remaining platforms in process)
+
+| Item | Size | Description |
+|------|------|--------------------------|
+| [zymbit_bookworm64_pi4_1.3.2-1.zi](https://bootware.s3.amazonaws.com/1.3.2/zymbit_bookworm64_pi4_1.3.2-1.zi) | 881 MB | Base Bookworm 64bit zi image for Pi4/CM4 (bw 1.3.2-1) |
+| [zymbit_bullseye64_pi4_1.3.2-1.zi](https://bootware.s3.amazonaws.com/1.3.2/zymbit_bullseye64_pi4_1.3.2-1.zi) | 714 MB | Base Bullseye 64bit zi image for Pi4/CM4 (bw 1.3.2-1) |
+| [zymbit_ubuntu64_22.04_pi4_1.3.2-1.zi](https://bootware.s3.amazonaws.com/1.3.2/zymbit_ubuntu64_22.04_pi4_1.3.2-1.zi) | 1.6 GB | Base Ubuntu 64bit 22.04 zi image for Pi4/CM4 (bw 1.3.2-1) |
+| [zymbit_bookworm64_pi5_1.3.2-1.zi](https://bootware.s3.amazonaws.com/1.3.2/zymbit_bookworm64_pi5_1.3.2-1.zi) | 809 MB | Base Bookworm 64bit (11/19/2024) zi image for Pi5/CM5 (bw 1.3.2-1) |
+| [zymbit_bookworm64_pi0_1.3.2-1.zi](https://bootware.s3.amazonaws.com/1.3.2/zymbit_bookworm64_pi0_1.3.2-1.zi) | 809 MB | Base Bookworm 64bit zi image for PiZero2w (bw 1.3.2-1) |
+| [pub_key_1.3.2.pem](https://bootware.s3.amazonaws.com/1.3.2/pub_key_1.3.2.pem) | | Public Key - For all Bootware 1.3.2 zi images |
+
 
 #### 1.3.1-2 Images
 
 | Item | Size | Description |
 |------|------|--------------------------|
-| [zymbit_bookworm64_pi5_1.3.1-2.zi](https://bootware.s3.amazonaws.com/1.3.1/zymbit_bookworm64_pi5_1.3.1-2.zi) | 826 MB | Base Bookworm 64bit zi image for Pi5/CM5 1.3.1-2) |
-| [zymbit_bookworm64_pi4_1.3.1-2.zi](https://bootware.s3.amazonaws.com/1.3.1/zymbit_bookworm64_pi4_1.3.1-2.zi) | 1.0 GB | Base Bookworm 64bit zi image for Pi4/CM4 1.3.1-2) |
+| [zymbit_bookworm64_pi5_1.3.1-2.zi](https://bootware.s3.amazonaws.com/1.3.1/zymbit_bookworm64_pi5_1.3.1-2.zi) | 826 MB | Base Bookworm 64bit zi image for Pi5/CM5 (bw 1.3.1-2) |
+| [zymbit_bookworm64_pi4_1.3.1-2.zi](https://bootware.s3.amazonaws.com/1.3.1/zymbit_bookworm64_pi4_1.3.1-2.zi) | 1.0 GB | Base Bookworm 64bit zi image for Pi4/CM4 (bw 1.3.1-2) |
 | [zymbit_bullseye64_pi4_1.3.1-2.zi](https://bootware.s3.amazonaws.com/1.3.1/zymbit_bullseye64_pi4_1.3.1-2.zi) | 716 MB | Base Bullseye 64bit zi image for Pi4/CM4 (bw 1.3.1-2) |
 | [zymbit_ubuntu64_22.04_pi4_1.3.1-2.zi](https://bootware.s3.amazonaws.com/1.3.1/zymbit_ubuntu64_22.04_pi4_1.3.1-2.zi) | 1.5 GB | Base Ubuntu 64bit 22.04 zi image for Pi4/CM4 (bw 1.3.1-2) |
 | [zymbit_bookworm64_pi0_1.3.1-2.zi](https://bootware.s3.amazonaws.com/1.3.1/zymbit_bookworm64_pi0_1.3.1-2.zi) | 1.0 GB | Base Bookworm 64bit zi image for PiZero2w (bw 1.3.1-2) |

@@ -1,8 +1,8 @@
 ---
 title: "Zymbit Documentation"
-description: ""
+description: "Zymbit Documentation"
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2025-04-01
+lastmod: 2025-07-17
 draft: false
 images: []
 weight: 8
@@ -15,19 +15,50 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 #### Latest Platform and OS Support
 
-![supported OSs](supported-os-dots.png)
+<!-- ![supported OSs](supported-os-dots.png) -->
+
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pi Platform: |  CM5            |  CM4    | CM4 or Pi4      |   Pi5           |   CM3 or Pi3    | PiZero 2W       | PiZero          |
+|:-------------------------------------|:---------------:|:-------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Zymbit HSMs:** | **Zymkey,HSM4** | **SCM** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
+| Raspberry Pi OS Bookworm (64-bit) |      ☑️          |   ☑️         |       ☑️             |     ☑️           |      ✅         |       ☑️         |                 |
+| Raspberry Pi OS Bullseye (64-bit) |                 |   ☑️  [^2]        |       ☑️  [^2]            |                 |      ✅         |       ☑️ [^1]   |                 |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                 |   ☑️  [^2]   |       ☑️  [^2]       |                 |      ✅         |       ☑️         |                 |
+| Raspberry Pi OS Bullseye (32-bit) |                 |             |       ✅            |                 |      ✅         |                 |       ✅        |
+| Ubuntu 22.04 LTS Jammy (32-bit)   |                 |             |       ✅            |                 |      ✅         |                 |                 |
+
+☑️  Zymbit Core Software + Bootware
+
+✅ Zymbit Core Software
+
 <br>
 
-To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](./bootware1.3.1/troubleshooting/pizero-bullseye).
+
+[^1]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](./bootware1.3.1/troubleshooting/pizero-bullseye).
+[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](../bootware1.3.1/troubleshooting/pi4-wifi).
+> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
+
+-----
+#### July 2025 
+-----
+Bootware® 1.3.2
+- Features:
+  - #189: Add static network configuration option. See [Advanced Networking Options](bootware1.3.1/features/static-networking) for details.
+  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](bootware1.3.1/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
+  - #191: Add feature to sync time from Zymbit HSM in zboot. Also add a flag to override, `disable_cert_time_check=false`. The new feature will try to sync the zboot system clock with the Zymbit HSM, whichever is later. If `disable_cert_time_check=true` and neither the zboot time nor the HSM time is reasonably current, a future time is set. This feature is included to cover situations where certificates need to be provided to bring up Wi-Fi interfaces, which will perform a system time verification before bringing up the wlan0 interface.
+- Bug fixes:
+  - #197: Buildroot Wi-Fi related firmware added for all platforms. Prevented wlan0 from showing up in zboot for platforms running Ubuntu 22.04.
+  - #193: zbcli overrides existing wifi related config values with defaults on some parameters. If the user Save and Exits the `zbcli update-config` menu without touching the wifi related parameters, existing wifi configs would be overriden with defaults. The default values turned off wifi and set the psk hash to an empty string. zbcli now only changes wifi configs when the user touches the wifi configs in the zbcli `update-config` menu.
+  - #194: dhcp or ntp timeout defaults were too long. By default both dhcp and ntp retried  up to 30 times at possibly a minute a interval, which could have a user sitting at a screen for 30min - 1 hr. Reduced timeouts to 3 retries.
+- Open bugs:
+  - #196: overlay .zi images saves files as root regardless of what it was owned by before.
+  - #195: If you delete the DATA partition with your update policy not set to BOTH, zboot does not inject the new data key into the non-updated partition's initramfs. If the user switches to the non-updated partition, the data key will return bad passphrase from initramfs. The system will timeout, boot up, and unlock the partition's LUKS volume. Access to the shared LUKS data partition will be unavailable.
 
 -----
 #### April 2025 
 -----
-> NOTICE (3/31/2025): Changes from the Pi foundation to the Pi5/CM5 firmware from last week are incompatible with Bootware. We are working on a solution to the problem. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 image, but you will if you upgrade to the latest from last week.
-
 Bootware® 1.3.1-2
 - Bug fixes:
-  - #188: `sudo zbcli update-config --update-endpoint https://192.168.42.125/my.zi --update-endpoint-cert myCert.crt doesn't work. Endpoint certs now work.
+  - #188: `sudo zbcli update-config --update-endpoint https://192.168.42.125/my.zi --update-endpoint-cert myCert.crt` doesn't work. Endpoint certs now work.
   - #187: Bootware: ` --data-part-size-mb` doesn’t apply correctly. Now works either interactively or non-interactively.
 
 -----
