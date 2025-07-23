@@ -16,9 +16,7 @@ toc: true
 
 Example images all have the hostname of zymbit-dev and a login of zymbit and a password of zymbit. Please change if using for anything other than development examples.
 
-#### 1.3.2-1 Images
-
-> Example images that include 1.3.2 (remaining platforms in process)
+#### 1.3.2-1 Images (latest)
 
 | Item | Size | Description |
 |------|------|--------------------------|
