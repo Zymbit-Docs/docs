@@ -1,6 +1,6 @@
 ---
-title: "zbcli install"
-linkTitle: "install"
+title: "Bootware 1.2.2 zbcli install"
+linkTitle: "Bootware 1.2.2 install"
 description: Installs the Bootware tools and artifacts
 date: "2024-08-14"
 lastmod: "2024-09-16"

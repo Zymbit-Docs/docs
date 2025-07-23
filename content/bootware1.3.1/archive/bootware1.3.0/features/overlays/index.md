@@ -1,6 +1,6 @@
 ---
-title: Zymbit Bootware Overlay Image Updates
-linkTitle: "Overlay Image Updates"
+title: Zymbit Bootware 1.3.0 Overlay Image Updates
+linkTitle: "Bootware 1.3.0 Overlay Image Updates"
 description: How to use Overlay (partial) image updates to update/modify/remove individual files
 lastmod: "2024-09-26"
 date: "2024-08-22"

@@ -1,6 +1,6 @@
 ---
-title: "zbcli update-config"
-linkTitle: "update-config"
+title: "Bootware 1.2.2 zbcli update-config"
+linkTitle: "Bootware 1.2.2 update-config"
 description: "update-config - Sets configs for installing updates"
 date: "2024-08-14"
 lastmod: "2024-09-16"

@@ -1,6 +1,6 @@
 ---
-title: "Getting Started"
-linkTitle: "Getting Started"
+title: "Bootware 1.0-general Getting Started"
+linkTitle: "Bootware 1.0-general Getting Started"
 lastmod:
 #aliases:
 #    - /bootware/getting-started/
