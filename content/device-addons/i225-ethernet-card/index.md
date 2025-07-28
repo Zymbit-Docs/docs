@@ -24,7 +24,7 @@ dtoverlay=pciex1-compat-pi5,mmio-hi
 ```
 
 
-## Older Installation instructions, necessary for older Bookworm distributions. 
+## Installation instructions, necessary for older Bookworm distributions. 
 
 There are two options for installation: [using prebuilt `.deb` packages](#option-1-install-from-prebuilt-debian-packages), which target kernel 6.1.93, or [building and installing from source](#option-2-build-and-install-from-source).
 
