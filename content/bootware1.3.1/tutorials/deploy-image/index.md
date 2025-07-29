@@ -1,10 +1,10 @@
 ---
-title: "Updating an image"
-linktitle: "Updating an image"
-description: "Covers updating and deploying images with Bootware"
+title: "Deploying an image"
+linktitle: "Deploying an image"
+description: "Covers updating and deploying an image with Bootware"
 lastmod: "2025-07-29"
 aliases:
-    - /bootware/tutorials/video2-updating
+    - /bootware/tutorials/deploy-image
 
 draft: false
 images: []
