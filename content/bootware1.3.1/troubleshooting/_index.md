@@ -19,7 +19,20 @@ toc: true
 
 #### Supported Platforms and Operating Systems
 
-![supported OSs](../../supported-os-dots.png)
+|                  Pi Platform:     |    CM5            |  CM4            | CM4 or Pi4      |   Pi5           | PiZero 2W       |
+|:----------------------------------|:-----------------:|:---------------:|:---------------:|:---------------:|:---------------:|
+|                  **Zymbit HSMs:** | **Zymkey,HSM4**   |   **SCM**       | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
+| Raspberry Pi OS Bookworm (64-bit) |      ☑            |   ☑️            |   ☑     ️       |     ☑️    ️     |       ☑️        |
+| Raspberry Pi OS Bullseye (64-bit) |                   |   ☑️ [^2]       |   ☑  [^2]       |                 |       ☑ [^1]    |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                   |   ☑️ [^2]       |   ☑️ [^2]       |                 |       ☑️        |
+| Raspberry Pi OS Bullseye (32-bit) |                   |                 |   ✅            |                 |                 |
+| Ubuntu 22.04 LTS Jammy (32-bit)   |                   |                 |   ✅            |                 |                 |
+
+☑  Zymbit Core Software + Bootware
+
+✅ Zymbit Core Software
+
+<br>
 
 To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](pizero-bullseye).
 
