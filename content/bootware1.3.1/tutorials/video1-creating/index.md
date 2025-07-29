@@ -1,6 +1,6 @@
 ---
-title: "Part 1 - Creating and image"
-linktitle: "Creating and image" 
+title: "Creating an image"
+linktitle: "Creating an image" 
 description: "Learn how to configure and use Bootware, including creating an image"
 lastmod: "2025-07-29"
 aliases:
@@ -13,7 +13,7 @@ toc: true
 ---
 
 -----
-#### Part 1 - Creating an Image
+#### Configuring and creating a Bootware image
 
 {{< youtube UZtX2LrRCMI >}}
 <br>

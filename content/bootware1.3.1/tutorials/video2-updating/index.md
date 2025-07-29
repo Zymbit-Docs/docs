@@ -1,5 +1,5 @@
 ---
-title: "Part 2 - Updating an image"
+title: "Updating an image"
 linktitle: "Updating an image"
 description: "Covers updating and deploying images with Bootware"
 lastmod: "2025-07-29"
@@ -13,7 +13,7 @@ toc: true
 ---
 
 -----
-#### Part 2 - Updating an Image
+#### Updating and deploying an image
 
 {{< youtube gHyWR_hCGwQ >}}
 <br>
