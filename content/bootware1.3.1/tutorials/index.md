@@ -1,6 +1,6 @@
 ---
 title: "Tutorials and Videos"
-linkTitle: "Tutorials" 
+linkTitle: "Tutorials and Videos" 
 description: "Links to on-line tutorials and video material"
 lastmod: "2025-03-12"
 aliases:
@@ -18,13 +18,13 @@ toc: true
 #### Learn how to configure and use Zymbit Bootware on Raspberry Pi 4, 5, CM4, and CM5 devices. Create images, set up keys, encrypt filesystems, deploy images, and experiment with A/B switching.
 
 -----
-#### Part 1
+#### Part 1 - Creating an Image
 
 {{< youtube UZtX2LrRCMI >}}
 <br>
 
 -----
-#### Part 2
+#### Part 2 - Updating an Image
 
 {{< youtube gHyWR_hCGwQ >}}
 <br>
