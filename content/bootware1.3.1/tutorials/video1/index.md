@@ -1,7 +1,7 @@
 ---
-title: "Part 1: Creating and image"
-linkTitle: "Creating and image" 
-description: "Learn how to configure and use Bootware, along with creating an image"
+title: "Part 1 - Creating and image"
+linktitle: "Creating and image" 
+description: "Learn how to configure and use Bootware, including creating an image"
 lastmod: "2025-07-29"
 
 draft: false
