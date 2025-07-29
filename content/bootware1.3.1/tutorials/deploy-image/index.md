@@ -1,7 +1,7 @@
 ---
 title: "Deploying an image"
 linktitle: "Deploying an image"
-description: "Covers updating and deploying an image with Bootware"
+description: "Covers how to update and deploy an image with Bootware"
 lastmod: "2025-07-29"
 aliases:
     - /bootware/tutorials/deploy-image
@@ -13,7 +13,7 @@ toc: true
 ---
 
 -----
-#### Updating and deploying an image
+#### Update and deploy an image
 
 {{< youtube gHyWR_hCGwQ >}}
 <br>
