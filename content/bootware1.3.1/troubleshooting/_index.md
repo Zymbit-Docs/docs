@@ -23,8 +23,8 @@ toc: true
 |:----------------------------------|:-----------------:|:---------------:|:---------------:|:---------------:|:---------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM4**   |   **SCM**       | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} | {{< supported >}} | {{< supported >}} | {{< supported >}} |
-| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}}[^2] | {{< supported >}}[^2] | {{< supported >}} | {{< supported >}}[^1] |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}}[^2] | {{< supported >}}[^2] |                   | {{< supported >}} |
+| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] | {{< supported >}} | {{< supported >}} [^1] |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} |
 | Raspberry Pi OS Bullseye (32-bit) |                   |                 | {{< coreonly >}} |                 |                 |
 | Ubuntu 22.04 LTS Jammy (32-bit)   | {{< supported >}} |                 | {{< coreonly >}} |                 |                 |
 
