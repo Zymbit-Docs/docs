@@ -26,7 +26,7 @@ toc: true
 | Raspberry Pi OS Bullseye (64-bit) |                   |   ☑️ [^2]       |   ☑  [^2]       |                 |       ☑ [^1]    |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   |   ☑️ [^2]       |   ☑️ [^2]       |                 |       ☑️        |
 | Raspberry Pi OS Bullseye (32-bit) |                   |                 |   ✅            |                 |                 |
-| Ubuntu 22.04 LTS Jammy (32-bit)   | ✅ **Supported**  |                 |   ✅            |                 |                 |
+| Ubuntu 22.04 LTS Jammy (32-bit)   | {{< supported >}} |                 |   ✅            |                 |                 |
 
 ☑  Zymbit Core Software + Bootware
 
