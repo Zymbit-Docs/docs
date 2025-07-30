@@ -15,14 +15,14 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 #### Latest Platform and OS Support
 
-|                  Pi Platform:     |    CM5            |  CM4            | CM4 or Pi4      |   Pi5           | PiZero 2W       |
-|:----------------------------------|:-----------------:|:---------------:|:---------------:|:---------------:|:---------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM4**   |   **SCM**       | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} | {{< supported >}} | {{< supported >}} | {{< supported >}} |
-| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] | {{< supported >}} | {{< supported >}} [^1] |
+|                  Pi Platform:     |    CM5            |  CM4                   | CM4 or Pi4             |   Pi5             | PiZero 2W       |
+|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|:---------------:|
+|                  **Zymbit HSMs:** | **Zymkey,HSM4**   |   **SCM**              | **Zymkey,HSM4**        | **Zymkey,HSM4**   | **Zymkey,HSM4** |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}}      | {{< supported >}}      | {{< supported >}} | {{< supported >}} |
+| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} [^1] |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} |
-| Raspberry Pi OS Bullseye (32-bit) |                   |                 | {{< coreonly >}} |                 |                 |
-| Ubuntu 22.04 LTS Jammy (32-bit)   | {{< supported >}} |                 | {{< coreonly >}} |                 |                 |
+| Raspberry Pi OS Bullseye (32-bit) |                   |                        | {{< coreonly >}}       |                   |                 |
+| Ubuntu 22.04 LTS Jammy (32-bit)   |                   |                        | {{< coreonly >}}       |                   |                 |
 
 {{< supported >}} Zymbit Core Software + Bootware
 
