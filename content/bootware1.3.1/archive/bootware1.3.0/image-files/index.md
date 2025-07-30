@@ -1,6 +1,6 @@
 ---
-title: "Image Files"
-linkTitle: "Image Files" 
+title: "1.3.0 Image Files"
+linkTitle: "1.3.0 Image Files" 
 description: "Links to pre-prepared download image files and keys"
 lastmod: "2025-03-12"
 aliases:

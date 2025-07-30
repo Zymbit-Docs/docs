@@ -1,6 +1,6 @@
 ---
-title: "Bootware Error Codes"
-linkTitle: "Logging and Bootware Error Codes"
+title: "Bootware 1.0-general Error Codes"
+linkTitle: "Logging and Bootware 1.0-general Error Codes"
 lastmod: "9-22-2023"
 draft: false
 images: []

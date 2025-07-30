@@ -1,6 +1,6 @@
 ---
-title: Developing on the CM4
-linkTitle: Developing on the CM4"
+title: Developing on the CM4 with Bootware 1.0-general
+linkTitle: Developing on the CM4 with Bootware 1.0-general
 lastmod:
 #aliases:
 #    - /zboot-preview/

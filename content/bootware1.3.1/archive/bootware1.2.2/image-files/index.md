@@ -1,6 +1,6 @@
 ---
-title: "Image Files"
-linkTitle: "Image Files" 
+title: "Bootware 1.2.2 Image Files"
+linkTitle: "Bootware 1.2.2 Image Files" 
 description: "Links to pre-prepared download image files and keys"
 lastmod: "2024-10-30"
 draft: false
