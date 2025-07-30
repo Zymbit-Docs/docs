@@ -22,22 +22,15 @@ toc: true
 |                  Pi Platform:     |    CM5            |  CM4            | CM4 or Pi4      |   Pi5           | PiZero 2W       |
 |:----------------------------------|:-----------------:|:---------------:|:---------------:|:---------------:|:---------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM4**   |   **SCM**       | **Zymkey,HSM4** | **Zymkey,HSM4** | **Zymkey,HSM4** |
-| Raspberry Pi OS Bookworm (64-bit) |      ☑            |   ☑️            |   ☑     ️       |     ☑️    ️     |       ☑️        |
-| Raspberry Pi OS Bullseye (64-bit) |                   |   ☑️ [^2]       |   ☑  [^2]       |                 |       ☑ [^1]    |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                   |   ☑️ [^2]       |   ☑️ [^2]       |                 |       ☑️        |
-| Raspberry Pi OS Bullseye (32-bit) |                   |                 |   ✅            |                 |                 |
-| Ubuntu 22.04 LTS Jammy (32-bit)   | {{< supported >}} |                 |   ✅            |                 |                 |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} | {{< supported >}} | {{< supported >}} | {{< supported >}} |
+| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}}[^2] | {{< supported >}}[^2] | {{< supported >}} | {{< supported >}}[^1] |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}}[^2] | {{< supported >}}[^2] |                   | {{< supported >}} |
+| Raspberry Pi OS Bullseye (32-bit) |                   |                 | {{< coreonly >}} |                 |                 |
+| Ubuntu 22.04 LTS Jammy (32-bit)   | {{< supported >}} |                 | {{< coreonly >}} |                 |                 |
 
-☑  Zymbit Core Software + Bootware
+{{< supported >}} Zymbit Core Software + Bootware
 
-✅ Zymbit Core Software
-
-Shortcode
-{{< figure src="https://img.shields.io/badge/-✓-green" alt="supported" >}}
-
-Markdown
-![supported](https://img.shields.io/badge/-✓-green)
-
+{{< coreonly >}} Zymbit Core Software Only
 
 <br>
 
