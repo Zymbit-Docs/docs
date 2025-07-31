@@ -12,6 +12,9 @@ layout: single
 
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
+<i class="far fa-circle" style="color:#0099ff;"></i> Regular
+<i class="fas fa-circle" style="color:#0099ff;"></i> Solid
+
 
 #### Latest Platform and OS Support
 
