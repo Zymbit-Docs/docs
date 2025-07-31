@@ -21,12 +21,12 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}}      | {{< supported >}}      | {{< supported >}} | {{< supported >}} |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} [^1] |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} |
-| Raspberry Pi OS Bullseye (32-bit) |                   |                        | {{< coreonly >}}       |                   |                 |
-| Ubuntu 22.04 LTS Jammy (32-bit)   |                   |                        | {{< coreonly >}}       |                   |                 |
+| Raspberry Pi OS Bullseye (32-bit) |                   |                        | {{< partially-supported >}}       |                   |                 |
+| Ubuntu 22.04 LTS Jammy (32-bit)   |                   |                        | {{< partially-supported >}}       |                   |                 |
 
-{{< supported >}} Zymbit Core Software + Bootware
+{{< supported >}} Full Bootware Support
 
-{{< coreonly >}} Zymbit Core Software Only
+{{< partially-supported >}} Bootware Not Supported
 
 <br>
 
