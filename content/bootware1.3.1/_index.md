@@ -9,7 +9,7 @@ aliases:
     - /bootware1.3.0/
     - /bootware1.3/
 date: "2024-08-11"
-lastmod: "2025-07-10"
+lastmod: "2025-07-31"
 draft: false
 weight: 3
 images: []
