@@ -1,7 +1,7 @@
 ---
-title: "HSM4"
-linkTitle: "HSM4"
-description: ""
+title: "HSM4 CAD Files"
+linkTitle: "HSM4 CAD Files"
+description: "Altium, KiCAD, and 3D Step Model files for the HSM4"
 aliases:
     - /technical_reference/cad/hsm4/
 draft: false

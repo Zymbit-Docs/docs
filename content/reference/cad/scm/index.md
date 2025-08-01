@@ -1,11 +1,11 @@
 ---
-title: "Secure Compute Module (SCM)"
-linkTitle: "Secure Compute Module (SCM)"
-description: ""
+title: "Secure Compute Module (SCM) CAD Files"
+linkTitle: "Secure Compute Module (SCM) CAD Files"
+description: "Step Model and CAD drawings for the Secure Compute Module (SCM) "
 aliases:
     - /technical_reference/cad/scm/
 date: ""
-lastmod: "2023-01-26"
+lastmod: "2025-07-31"
 draft: false
 images: []
 weight: 40

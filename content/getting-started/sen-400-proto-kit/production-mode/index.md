@@ -1,6 +1,6 @@
 ---
-title: Enabling Production Mode - SCM
-linkTitle: "Enabling Production Mode"
+title: Enabling Production Mode - SEN-400
+linkTitle: "Enabling Production Mode - SEN-400"
 description: ""
 aliases:
     - /quickstart/production-mode/scm/
