@@ -1,7 +1,7 @@
 ---
-title: "Zymkey4"
-linkTitle: "ZYMKEY4"
-description: ""
+title: "ZYMKEY4 CAD Files"
+linkTitle: "ZYMKEY4 CAD Files"
+description: "3D Step Model, drawings, and GPIO pinout for the ZYMKEY4"
 aliases:
     - /technical_reference/cad/zymkey4/
 date: ""

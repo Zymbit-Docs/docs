@@ -1,11 +1,11 @@
 ---
-title: "HSM6"
-linkTitle: "HSM6"
-description: ""
+title: "HSM6 CAD Files"
+linkTitle: "HSM6 CAD Files"
+description: "Altium, KiCAD, and 3D Step Model files for the HSM6"
 aliases:
     - /technical_reference/cad/hsm6/
 date: ""
-lastmod: "02-25-2022"
+lastmod: "07-31-2025"
 draft: false
 images: []
 weight: 3
