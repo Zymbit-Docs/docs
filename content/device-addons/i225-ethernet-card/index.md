@@ -1,12 +1,12 @@
 ---
-title: "Driver Installation/Configuration for M.2 Intel I225 Ethernet Controllers on Zymbit Secure Edge Node."
+title: "Driver Installation/Configuration for M.2 Intel I225 Ethernet Controllers on Zymbit Secure Edge Node"
 linkTitle: "Intel I225 2.5G PCIe Ethernet"
 icon: ""
 description: ""
 aliases:
     - /quickstart/addons/i225-ethernet
 date: ""
-lastmod: ""
+lastmod: "2025-09-01"
 draft: false
 weight: 10
 images: []
@@ -14,21 +14,24 @@ images: []
 # layout: "single"
 ---
 
-This page outlines the steps required to get PCIe ethernet chips using the Intel I225-V controller up and running on the Zymbit Secure Edge Node (SEN). These controllers use the in-tree `igc` Linux driver, which is not included by default as part of the Raspberry Pi Foundation's official kernel packages. The process has been tested and validated for the 6.1.93 Raspberry Pi kernel paired with an IOCrest SY-PEX24075 M.2 adapter card, though most any sub-7 watt M.2 card using the I225-V controller should theoretically work.
+This page outlines the steps required to get PCIe ethernet chips using the Intel I225-V controller up and running on the Zymbit Secure Edge Node (SEN). These controllers use the in-tree `igc` Linux driver, which is included in Ubuntu 24.04, but is not included by default as part of the Raspberry Pi Foundation's official kernel packages.
 
-> NOTE: If you are using Ubuntu 24.04 daily build with the CM5 and the Zymbit motherboard, you only need to copy the `pciex1-compat-pi5.dtbo` overlay from Bookworm and add the following to config.txt ( [see Github Issue 6134](https://github.com/raspberrypi/linux/issues/6134) ):
+## Installation instructions for Ubuntu 24.04
+ 
+If you are using Ubuntu 24.04 with the CM5 and the Zymbit motherboard, you only need to copy the `pciex1-compat-pi5.dtbo` overlay from Bookworm and add the following to config.txt ( [see Github Issue 6134](https://github.com/raspberrypi/linux/issues/6134) ):
 
 ```bash
 [cm5]
 dtoverlay=pciex1-compat-pi5,mmio-hi
 ```
 
+## Installation instructions for Bookworm 
 
-## Installation instructions, necessary for older Bookworm distributions. 
+For Bookworm, the in-tree `igc` Linux driver is not included by default as part of the Raspberry Pi Foundation's official kernel packages. The process below has been tested and validated for the 6.1.93 Raspberry Pi kernel paired with an IOCrest SY-PEX24075 M.2 adapter card, though most any sub-7 watt M.2 card using the I225-V controller should theoretically work.
 
 There are two options for installation: [using prebuilt `.deb` packages](#option-1-install-from-prebuilt-debian-packages), which target kernel 6.1.93, or [building and installing from source](#option-2-build-and-install-from-source).
 
-### Option 1: Install from Prebuilt Debian Packages.
+### Option 1: Install from Prebuilt Debian Packages
 
 This option will install a prebuilt kernel 6.1.93 package, including the necessary `igc` module, and will work on any existing Debian-based SEN. As part of the installation process, the system's initramfs (if one is present) will be regenerated, allowing the use of LUKS-encrypted root filesystems to continue working.
 
@@ -49,7 +52,7 @@ dpkg -i *.deb
 
 4. Depending on which versions of the kernel you are coming from and moving to, you may also need to install an updated devicetree blob. If the kernel was installed from the prebuilt Debian packages, this can be done by copying `/usr/lib/linux-image-6.1.93-v8+/broadcom/bcm2711-rpi-cm4.dtb` into `/boot` (or `/boot/firmware`, depending on your system's layout). 
 
-### Option 2: Build and Install from Source.
+### Option 2: Build and Install from Source
 
 This option is much more flexible than the alternative and allows working with custom kernels, but requires a suitable Linux kernel build environment. You will need to build the entire kernel in order to obtain the `System.map` and other files required for depmod, as well as to ensure the `igc` module version matches that of the core kernel.
 
@@ -96,7 +99,7 @@ scripts/config --module CONFIG_IGC
 make ARCH=arm64 CROSS_COMPILE=$TOOLCHAIN_PREFIX -j$(nproc)
 ```
 
-## Performance Information.
+## Performance Information
 
 The M.2 slot on the SEN Devkit board is a PCIe Gen. 2 x1 bus, which has a bandwidth cap of 4 Gib/s---enough to support the SY-PEX24075 card's maximum link speed of 2.5Gib/s. Note, however, that it is not quite enough to achieve maximum bandwidth for simultaneous send/receive operations. In such cases, the driver will prioritize Rx bandwidth (as it should), and allocate whatever remains to Tx. Performance metrics from `iperf3` are shown below. The SEN was connected via a LAN cable directly to the 2.5G ethernet port on a Linux PC and two `iperf3` client-server sessions were established, one for each direction of communication.
 
