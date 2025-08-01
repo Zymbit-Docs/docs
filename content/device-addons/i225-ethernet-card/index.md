@@ -6,7 +6,7 @@ description: ""
 aliases:
     - /quickstart/addons/i225-ethernet
 date: ""
-lastmod: ""
+lastmod: "2025-09-01"
 draft: false
 weight: 10
 images: []
@@ -14,9 +14,11 @@ images: []
 # layout: "single"
 ---
 
-This page outlines the steps required to get PCIe ethernet chips using the Intel I225-V controller up and running on the Zymbit Secure Edge Node (SEN). These controllers use the in-tree `igc` Linux driver, which is not included by default as part of the Raspberry Pi Foundation's official kernel packages. The process has been tested and validated for the 6.1.93 Raspberry Pi kernel paired with an IOCrest SY-PEX24075 M.2 adapter card, though most any sub-7 watt M.2 card using the I225-V controller should theoretically work.
+This page outlines the steps required to get PCIe ethernet chips using the Intel I225-V controller up and running on the Zymbit Secure Edge Node (SEN). These controllers use the in-tree `igc` Linux driver, which is included in Ubuntu 24.04 daily build, but is not included by default as part of the Raspberry Pi Foundation's official kernel packages. 
 
-> NOTE: If you are using Ubuntu 24.04 daily build with the CM5 and the Zymbit motherboard, you only need to copy the `pciex1-compat-pi5.dtbo` overlay from Bookworm and add the following to config.txt ( [see Github Issue 6134](https://github.com/raspberrypi/linux/issues/6134) ):
+## Installation instructions for Ubuntu 24.04
+ 
+If you are using Ubuntu 24.04 daily build with the CM5 and the Zymbit motherboard, you only need to copy the `pciex1-compat-pi5.dtbo` overlay from Bookworm and add the following to config.txt ( [see Github Issue 6134](https://github.com/raspberrypi/linux/issues/6134) ):
 
 ```bash
 [cm5]
@@ -24,7 +26,9 @@ dtoverlay=pciex1-compat-pi5,mmio-hi
 ```
 
 
-## Installation instructions, necessary for older Bookworm distributions. 
+## Installation instructions for Bookworm 
+
+For Bookworm, the in-tree `igc` Linux driver is not included by default as part of the Raspberry Pi Foundation's official kernel packages. The process below has been tested and validated for the 6.1.93 Raspberry Pi kernel paired with an IOCrest SY-PEX24075 M.2 adapter card, though most any sub-7 watt M.2 card using the I225-V controller should theoretically work.
 
 There are two options for installation: [using prebuilt `.deb` packages](#option-1-install-from-prebuilt-debian-packages), which target kernel 6.1.93, or [building and installing from source](#option-2-build-and-install-from-source).
 
