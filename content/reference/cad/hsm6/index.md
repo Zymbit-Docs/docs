@@ -2,7 +2,6 @@
 title: "HSM6 CAD Files"
 linkTitle: "HSM6 CAD Files"
 description: "Altium, KiCAD, and 3D Step Model files for the HSM6"
-description: ""
 aliases:
     - /technical_reference/cad/hsm6/
 date: ""

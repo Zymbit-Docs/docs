@@ -1,7 +1,7 @@
 ---
-title: "SCM Developer Kit 2 Assembly"
+title: "SCM Developer Kit 2 (D35 I/O Board) Assembly"
 linkTitle: "Developer Kit (D35 I/O Board)"
-description: ""
+description: "Developer Kit assembly 3D model"
 aliases:
     - /technical_reference/cad/developerkit2/
 date: ""
