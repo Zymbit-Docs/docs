@@ -161,7 +161,7 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 
 ### Zymbit Platform Reference
  * [Zymbit Secure Edge Node](../../sen/)
- * [Zymbit Developer Kit 2](../../scm-dev-kit2/)
+ * [Zymbit SEN-400 Proto Kit](../../scm-400-proto-kit/)
 
 ### Using SCM: API and Examples
 
