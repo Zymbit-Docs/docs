@@ -15,10 +15,6 @@ toc: True
 
 ### Bootware 1.0 Limited 
 
-{{< callout notice >}}
-[Bootware 1.1](../bootware-one-zero-general) General Release is now available. The General Release adds support for using ZYMKEY4 on Pi platforms. Bootware 1.0 Limited only supports SCM-based products.
-{{< /callout >}}
-
 Bootware™ is a set of software tools and micro services for the Zymbit Secure Compute Module [(SCM)](https://www.zymbit.com/scm/) based product line, including the Zymbit Secure Edge Node [(SEN)](https://www.zymbit.com/secure-compute-node/). 
 
 To get started with Bootware, you should have an SCM based product (Secure Edge Node or Dev Kit) up and running. The default hostname is zymbit-dev and the default login is zymbit with a password of zymbit. We recommend you change those during your development process.

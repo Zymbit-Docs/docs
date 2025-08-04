@@ -15,10 +15,6 @@ toc: True
 
 ### Bootware 1.1: General Platform Release
 
-{{< callout notice >}}
-[Bootware 1.3](../bootware) is now available. Bootware 1.3 adds support for all Zymbit devices and now includes the CM5 and Pi5 platforms. The user interface has been re-written from a series of scripts into one, coherent executable.
-{{< /callout >}}
-
 Bootware™ is a set of software tools and micro services for the Zymbit Security Modules. Bootware 1.1 adds support for the ZYMKEY across additional platforms. The following matrix of platforms and Operating Systems support Bootware™:
 
 | Platform | Zymbit Module | OS Support |
