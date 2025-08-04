@@ -5,6 +5,7 @@ description: "Learn how to configure and use Bootware, including how to create a
 lastmod: "2025-07-29"
 aliases:
     - /bootware/tutorials/create-image
+    - /bootware1.3.1/tutorials/create-image
 
 draft: false
 images: []
