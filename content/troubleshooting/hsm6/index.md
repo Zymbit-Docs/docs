@@ -1,6 +1,6 @@
 ---
 title: "HSM6 FAQ & Troubleshooting"
-linkTitle: "HSM6"
+linkTitle: "HSM6 FQA & Troubleshooting"
 lastmod:
 draft: false
 images: []

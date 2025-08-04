@@ -1,6 +1,6 @@
 ---
 title: Enabling Production Mode - HSM6
-linkTitle: "Enabling Production Mode"
+linkTitle: "Enabling Production Mode - HSM6"
 description: ""
 aliases:
     - /quickstart/production-mode/hsm6/

@@ -1,6 +1,6 @@
 ---
 title: Enabling Production Mode - Secure Edge Node
-linkTitle: "Enabling Production Mode"
+linkTitle: "Enabling Production Mode - Secure Edge Node"
 description: ""
 aliases:
     - /quickstart/production-mode/scn/

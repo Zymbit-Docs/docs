@@ -1,6 +1,6 @@
 ---
-title: "Zymkey4 Conformity Documents"
-toc_title: "Zymkey4"
+title: "ZYMKEY4 Conformity Documents"
+linktitle: "ZYMKEY4 Conformity Documents"
 description: ""
 aliases:
     - /technical_reference/conformity/zymkey4/

@@ -1,6 +1,6 @@
 ---
 title: "HSM4 Conformity Documents"
-toc_title: "HSM4"
+linktitle: "HSM4 Conformity Documents"
 description: ""
 aliases:
     - /technical_reference/conformity/hsm4/

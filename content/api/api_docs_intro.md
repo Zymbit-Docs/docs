@@ -1,6 +1,6 @@
 ---
 title: Intro to Zymkey Application Utilities
-description: []
+description: Intro to Zymkey Application Utilities
 draft: false
 images: []
 type: docs

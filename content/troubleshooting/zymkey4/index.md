@@ -1,6 +1,6 @@
 ---
 title: "ZYMKEY4 FAQ & Troubleshooting"
-linkTitle: "ZYMKEY4"
+linkTitle: "ZYMKEY4 FAQ & Troubleshooting"
 lastmod: "2024-09-16"
 draft: false
 images: []
