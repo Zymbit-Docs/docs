@@ -1,6 +1,6 @@
 ---
 title: Enabling Production Mode - SCM
-linkTitle: "Enabling Production Mode"
+linkTitle: "Enabling Production Mode - SCM"
 description: ""
 aliases:
     - /quickstart/production-mode/scm/

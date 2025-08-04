@@ -2,7 +2,7 @@
 title: "API Documentation"
 linkTitle: "Zymbit Driver API"
 icon: ""
-description: ""
+description: "Zymbit Driver API Documentation"
 aliases:
     - /quickstart/api/
 date: ""
