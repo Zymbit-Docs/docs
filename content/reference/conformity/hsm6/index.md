@@ -1,7 +1,7 @@
 ---
 title: "HSM6 Conformity Documents"
 linktitle: "HSM6 Conformity Documents"
-description: ""
+description: "HSM6 Conformity Documents"
 aliases:
     - /technical_reference/conformity/hsm6/
 date: ""

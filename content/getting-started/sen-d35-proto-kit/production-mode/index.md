@@ -1,7 +1,7 @@
 ---
 title: "Enabling Production Mode - SEN-D35"
 linkTitle: "Enabling Production Mode - SEN-D35"
-description: ""
+description: "Enabling Production Mode - SEN-D35"
 aliases:
     - /quickstart/production-mode/scm/
 date: "2022-04-29"

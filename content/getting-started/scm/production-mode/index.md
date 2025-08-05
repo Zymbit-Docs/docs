@@ -1,7 +1,7 @@
 ---
 title: Enabling Production Mode - SCM
 linkTitle: "Enabling Production Mode - SCM"
-description: ""
+description: "Enabling Production Mode - SCM"
 aliases:
     - /quickstart/production-mode/scm/
 date: "2022-04-29"
