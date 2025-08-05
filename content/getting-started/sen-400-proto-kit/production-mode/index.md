@@ -1,7 +1,7 @@
 ---
 title: Enabling Production Mode - SEN-400
 linkTitle: "Enabling Production Mode - SEN-400"
-description: ""
+description: "Enabling Production Mode - SEN-400"
 aliases:
     - /quickstart/production-mode/scm/
 date: "2022-04-29"

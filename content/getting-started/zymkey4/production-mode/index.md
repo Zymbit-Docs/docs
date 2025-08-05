@@ -1,7 +1,7 @@
 ---
 title: Enabling Production Mode - ZYMKEY4
 linkTitle: "Enabling Production Mode - ZYMKEY4"
-description: ""
+description: "Enabling Production Mode - ZYMKEY4"
 aliases:
     - /quickstart/production-mode/zymkey4/
 date: ""

@@ -1,7 +1,7 @@
 ---
 title: Enabling Production Mode - HSM4
 linkTitle: "Enabling Production Mode - HSM4"
-description: ""
+description: "Enabling Production Mode - HSM4"
 aliases:
     - /quickstart/production-mode/hsm4/
 date: "2022-03-08"
