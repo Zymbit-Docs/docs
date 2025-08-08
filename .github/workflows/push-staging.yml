@@ -156,9 +156,8 @@ jobs:
 
           # Remove the workflow that are specific to the `docs` repo (so they
           # don't run again when we push to the mirror).
-          wget https://raw.githubusercontent.com/newren/git-filter-repo/main/git-filter-repo
-          chmod +x git-filter-repo
-          ./git-filter-repo --force --path ".github" --invert-paths
+          pip install git-filter-repo
+          git filter-repo --force --path ".github" --invert-path
 
           # Replace the workflows on our current branch with the workflows
           # from the `main` branch of the staging repo. We do want these
