@@ -38,7 +38,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 -----
 #### July 2025 
 -----
-Bootware® 1.3.2
+Bootware® 1.3.2-1
 - Features:
   - #189: Add static network configuration option. See [Advanced Networking Options](bootware1.3.2/features/static-networking) for details.
   - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](bootware1.3.2/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
