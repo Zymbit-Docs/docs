@@ -6,9 +6,9 @@ aliases:
     - /getting-started/scm-dev-kit2/quickstart/
     - /quickstart/getting-started/scm-dev-kit2/
 
-toc: false
+notoc: true
 cascade:
-    toc: false
+    notoc: true
 
 draft: false
 images: []
