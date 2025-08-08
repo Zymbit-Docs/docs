@@ -5,6 +5,8 @@ description: SEN D35 Prototype Kit - Includes SEN D35 Baseboard and SCM (also kn
 aliases:
     - /getting-started/scm-dev-kit2/quickstart/
     - /quickstart/getting-started/scm-dev-kit2/
+
+toc: false
 cascade:
     toc: false
 
