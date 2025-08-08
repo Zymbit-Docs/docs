@@ -6,9 +6,11 @@ aliases:
     - /getting-started/scm-dev-kit2/quickstart/
     - /quickstart/getting-started/scm-dev-kit2/
 
-notoc: true
+toc_hide: true           # hides THIS section page from the left nav
+hide_summary: true       # also hides it from the section landing page tiles
 cascade:
-    notoc: true
+  toc_hide: true         # hide all child pages from the left nav
+  hide_summary: true     # hide children from section landing page lists
 
 draft: false
 images: []
