@@ -50,8 +50,7 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 -----
 Bootware® 1.3.2-2
 - Bug fixes:
-  - #201: Pi5 rev 1.1 changed the value assigned for GPIO4 from rev 1.0. Bootware used the old value for communication with the Zymbit HSM. Bootware now uses the proper value for either Pi5 rev 1.1 or rev 1.0.
-No other changes since 1.3.2-1.
+  - #201: Adds Bootware support for Pi5 Rev 1.1 hardware.
 
 -----
 #### July 2025
