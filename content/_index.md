@@ -3,7 +3,7 @@ title: "Zymbit Documentation"
 linktitle: "Zymbit Documentation"
 description: "Zymbit Documentation"
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2025-08-05
+lastmod: 2025-08-11
 draft: false
 images: []
 weight: 8
@@ -34,6 +34,13 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 [^1]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](./bootware1.3.2/troubleshooting/pizero-bullseye).
 [^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](../bootware1.3.2/troubleshooting/pi4-wifi).
 > NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
+
+-----
+#### August 2025 
+-----
+Bootware® 1.3.2-2
+- Bug fixes:
+  - #201: Adds Bootware support for Pi5 Rev 1.1 hardware.
 
 -----
 #### July 2025 

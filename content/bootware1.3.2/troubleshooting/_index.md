@@ -45,17 +45,41 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 
 
 ### Issues and Notes
+-----
+#### August 2025
+-----
+Bootware® 1.3.2-2
+- Bug fixes:
+  - #201: Adds Bootware support for Pi5 Rev 1.1 hardware.
 
-#### Release 1.3.1-2
+-----
+#### July 2025
+-----
+Bootware® 1.3.2-1
+- Features:
+  - #189: Add static network configuration option. See [Advanced Networking Options](bootware1.3.2/features/static-networking) for details.
+  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](bootware1.3.2/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
+  - #191: Add feature to sync time from Zymbit HSM in zboot. Also add a flag to override, `disable_cert_time_check=false`. The new feature will try to sync the zboot system clock with the Zymbit HSM, whichever is later. If `disable_cert_time_check=true` and neither the zboot time nor the HSM time is reasonably current, a future time is set. This feature is included to cover situations where certificates need to be provided to bring up Wi-Fi interfaces, which will perform a system time verification before bringing up the wlan0 interface.
+- Bug fixes:
+  - #197: Buildroot Wi-Fi related firmware added for all platforms. Prevented wlan0 from showing up in zboot for platforms running Ubuntu 22.04.
+  - #193: zbcli overrides existing wifi related config values with defaults on some parameters. If the user Save and Exits the `zbcli update-config` menu without touching the wifi related parameters, existing wifi configs would be overriden with defaults. The default values turned off wifi and set the psk hash to an empty string. zbcli now only changes wifi configs when the user touches the wifi configs in the zbcli `update-config` menu.
+  - #194: dhcp or ntp timeout defaults were too long. By default both dhcp and ntp retried  up to 30 times at possibly a minute a interval, which could have a user sitting at a screen for 30min - 1 hr. Reduced timeouts to 3 retries.
+- Open bugs:
+  - #196: overlay .zi images saves files as root regardless of what it was owned by before.
+  - #195: If you delete the DATA partition with your update policy not set to BOTH, zboot does not inject the new data key into the non-updated partition's initramfs. If the user switches to the non-updated partition, the data key will return bad passphrase from initramfs. The system will timeout, boot up, and unlock the partition's LUKS volume. Access to the shared LUKS data partition will be unavailable.
 
+-----
+#### April 2025
+-----
+Bootware® 1.3.1-2
 - Bug fixes:
   - #188: `sudo zbcli update-config --update-endpoint https://192.168.42.125/my.zi --update-endpoint-cert myCert.crt doesn't work. Endpoint certs now work.
   - #187: Bootware: ` --data-part-size-mb` doesn’t apply correctly. Now works either interactively or non-interactively.
 
 -----
-
-#### Release 1.3.1-1
-
+#### March 2025
+-----
+Bootware® 1.3.1-1
 - Features:
   - #182 Add support for Pi Zero 2W (ZYMKEY, HSM4, HSM6)
     - Bookworm 64 bit and Bullseye 64 bit
@@ -66,7 +90,10 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 - Bug fixes:
   - #180: Bootware: zbcli update hostname/password cannot contain an @ character.
 
-#### Release 1.3.0-1
+-----
+#### February 2025
+-----
+Bootware® 1.3.0-1
 
 * Bootware 1.3.0-1 requires updated images. zi images made with 1.2.2-1 or earlier will not work with 1.3.0-1, due to additional signature files in the 1.3.0-1 based images used for secondary verification step. Procedure for updating an image made with 1.2.2-1 or earlier:
 
@@ -75,11 +102,11 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
   3. Update staging device with Bootware 1.3.0-1
   4. Create a new updated zi image with Bootware 1.3.0-1
 
-#### Release 1.2.2-1
+#### Release 1.2.2-1 (December 2024)
 
 * Incorporates fixes from 1.2.0. There are no known open issues in 1.2.2 at this time.
 
-#### Release 1.2.0-30
+#### Release 1.2.0-30 (September 2024)
 
 *  *Issue #168:*  Correction for change in latest Bookworm 11/19 update. /etc/initramfs-tools/initramfs.conf switched to MODULES=dep, which ended up not including all necessary modules in initramfs images. Bootware will change back to MODULES=most prior to creating images.
 *  
