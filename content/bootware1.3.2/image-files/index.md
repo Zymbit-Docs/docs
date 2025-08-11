@@ -2,7 +2,7 @@
 title: "Image Files"
 linkTitle: "DOWNLOADS: Image Files" 
 description: "Links to pre-made Bootware example zi image files and keys"
-lastmod: "2025-07-23"
+lastmod: "2025-08-11"
 aliases:
     - /bootware/image-files/
 draft: false
@@ -16,7 +16,7 @@ toc: true
 
 Example images all have the hostname of zymbit-dev and a login of zymbit and a password of zymbit. Please change if using for anything other than development examples.
 
-#### 1.3.2-1 Images (latest)
+#### 1.3.2-2 Images (latest)
 
 | Item | Size | Description |
 |------|------|--------------------------|
