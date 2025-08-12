@@ -16,7 +16,7 @@ headless: false
 
 ## Quickstart - Download, Install, and Configure Bootware
 
-> NOTICE (3/31/2025): Changes from the Pi foundation to the Pi5/CM5 firmware from last week are incompatible with Bootware. We are working on a solution to the problem. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 image, but you will if you upgrade to the latest from last week.
+> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
