@@ -1,6 +1,6 @@
 ---
-title: Secure Edge Node (SEN) 500 
-linktitle: Secure Edge Node (SEN) 500  *draft*
+title: Secure Edge Node (SEN) 500 *Draft*
+linktitle: Secure Edge Node (SEN) 500 
 description: SEN 500 - Includes Zymbit motherboard and CM5 and HSM65 Interposer (pre-release)
 aliases:
     - /getting-started/sen500/quickstart/
