@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - api-docs-update
-      - api-docs-update*
+      - api-docs-update**
   workflow_dispatch:
 
 jobs:
