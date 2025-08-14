@@ -10,7 +10,7 @@ on:
 jobs:
   check-unprocessed-docs:
     name: Check for unprocessed raw XML-based API docs
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     outputs:
       has_unprocessed: ${{ steps.check.outputs.has_unprocessed }}
 
@@ -36,7 +36,7 @@ jobs:
 
   prepare-hugo-environment:
     name: Process raw XML-based API docs for Hugo
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: check-unprocessed-docs
     if: ${{ needs.check-unprocessed-docs.outputs.has_unprocessed == 'true' }}
     outputs:
@@ -110,7 +110,7 @@ jobs:
 
   create-pull-request:
     name: Create a pull request for changes in `api-docs-update`
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: prepare-hugo-environment
 
     if: ${{ github.ref == 'refs/heads/api-docs-update' }}
