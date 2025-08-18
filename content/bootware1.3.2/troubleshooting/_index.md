@@ -52,7 +52,7 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 #### August 2025
 -----
 Ubuntu 24.04.3 (Released 8/7/25)
-- Ubuntu released a point release, 24.04.3, on 8/7/25. 24.04.3 improved hardware support for the Pi5 and CM5. Ubuntu now works with Zymbit products on the platforms noted above (Pi5, CM5, Pi4, CM4).
+- The Ubuntu team released 24.04.3 (updated Noble) on 8/7/25. 24.04.3 improves hardware support for the Pi5 and CM5. Ubuntu 24.04.3 works with Zymbit products on the platforms noted above (Pi5, CM5, Pi4, CM4).
 
 Bootware® 1.3.2-2
 - Bug fixes:
