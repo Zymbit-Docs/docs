@@ -57,8 +57,8 @@ Bootware® 1.3.2-2
 -----
 Bootware® 1.3.2-1
 - Features:
-  - #189: Add static network configuration option. See [Advanced Networking Options](bootware1.3.2/features/static-networking) for details.
-  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](bootware1.3.2/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
+  - #189: Add static network configuration option. See [Advanced Networking Options](/bootware1.3.2/features/static-networking) for details.
+  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](/bootware1.3.2/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
   - #191: Add feature to sync time from Zymbit HSM in zboot. Also add a flag to override, `disable_cert_time_check=false`. The new feature will try to sync the zboot system clock with the Zymbit HSM, whichever is later. If `disable_cert_time_check=true` and neither the zboot time nor the HSM time is reasonably current, a future time is set. This feature is included to cover situations where certificates need to be provided to bring up Wi-Fi interfaces, which will perform a system time verification before bringing up the wlan0 interface.
 - Bug fixes:
   - #197: Buildroot Wi-Fi related firmware added for all platforms. Prevented wlan0 from showing up in zboot for platforms running Ubuntu 22.04.
