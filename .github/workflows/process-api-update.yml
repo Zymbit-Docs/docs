@@ -75,7 +75,7 @@ jobs:
                        el.text = " "       # make .strip() safe -> ""
                    changed = True
 
-              if changed:
+             if changed:
                  tree.write(str(xml_path), encoding="utf-8", xml_declaration=True)
            PY
 
