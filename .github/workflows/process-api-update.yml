@@ -48,15 +48,37 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-      - name: Sanitize empty exception tags in Doxygen XML (fix when moving to 22.04)
+      - name: Normalize exc_line nodes for hugoify
         run: |
-          set -euo pipefail
-          # Expand self-closing <exception/> or <throws/> to <exception> </exception> (and same for <throws>)
-          # Adjust the directory if your XML lands somewhere else.
-          find ./content/GENERATED -name '*.xml' -print0 | xargs -0 sed -i -E \
-            -e 's#<exception([^>/]*)/>#<exception\1> </exception>#g' \
-            -e 's#<throws([^>/]*)/>#<throws\1> </throws>#g'
-           grep -n "<exc_line" -n content/GENERATED/GENERATED_cpp_api.xml | head -50 || true
+          python - <<'PY'
+          from pathlib import Path
+          from lxml import etree
+
+          root_dir = Path("content/GENERATED")
+          for xml_path in root_dir.rglob("*.xml"):
+             try:
+                tree = etree.parse(str(xml_path))
+             except Exception:
+                continue
+
+             changed = False
+             for el in tree.findall(".//exc_line"):
+               # Grab *all* textual content under this node
+               # (hugoify uses .text only, so we hoist something into .text)
+               text_pieces = [t for t in el.itertext()]
+               hoisted = next((t for t in text_pieces if t and t.strip()), None)
+
+               if el.text is None:
+                   if hoisted:
+                       el.text = hoisted  # put real text where hugoify expects it
+                   else:
+                       el.text = " "       # make .strip() safe -> ""
+                   changed = True
+
+              if changed:
+                 tree.write(str(xml_path), encoding="utf-8", xml_declaration=True)
+           PY
+
 
       - name: Process XML-based API docs for use with Hugo
         id: hugoify
