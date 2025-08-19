@@ -47,7 +47,10 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
-
+          
+      - name: Install lxml
+        run: pip install lxml
+        
       - name: Normalize exc_line nodes for hugoify
         run: |
           python - <<'PY'
