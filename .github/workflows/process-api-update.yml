@@ -56,6 +56,7 @@ jobs:
           find ./content/GENERATED -name '*.xml' -print0 | xargs -0 sed -i -E \
             -e 's#<exception([^>/]*)/>#<exception\1> </exception>#g' \
             -e 's#<throws([^>/]*)/>#<throws\1> </throws>#g'
+           grep -n "<exc_line" -n content/GENERATED/GENERATED_cpp_api.xml | head -50 || true
 
       - name: Process XML-based API docs for use with Hugo
         id: hugoify
