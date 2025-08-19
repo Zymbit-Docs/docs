@@ -24,7 +24,7 @@ toc: true
 |                  **Zymbit HSMs:** | **Zymkey,HSM4**   |   **SCM**              | **Zymkey,HSM4**        | **Zymkey,HSM4**   | **Zymkey,HSM4** |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}}      | {{< supported >}}      | {{< supported >}} | {{< supported >}} |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} [^1] |
-| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}}      | {{< supported >}}      | {{< supported >}} |                   |
+| Ubuntu 24.04.3 LTS Noble (64-bit) | {{< supported >}} | {{< supported >}}      | {{< supported >}}      | {{< supported >}} | {{< partially-supported >}} |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} |
 | Raspberry Pi OS Bullseye (32-bit) |                   |                        | {{< partially-supported >}}       |                   |                 |
 | Ubuntu 22.04 LTS Jammy (32-bit)   |                   |                        | {{< partially-supported >}}       |                   |                 |
@@ -52,7 +52,7 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 #### August 2025
 -----
 Ubuntu 24.04.3 (Released 8/7/25)
-- The Ubuntu team released 24.04.3 (updated Noble) on 8/7/25. 24.04.3 improves hardware support for the Pi5 and CM5. Ubuntu 24.04.3 works with Zymbit products on the platforms noted above (Pi5, CM5, Pi4, CM4).
+- The Ubuntu team released 24.04.3 (updated Noble) on 8/7/25. The image straight from the Pi Imager can be used. There is no longer a need to use the daily image. 24.04.3 improves hardware support for the Pi5 and CM5. Ubuntu 24.04.3 works with Zymbit products on the platforms noted above (Pi5, CM5, Pi4, CM4).
 
 Bootware® 1.3.2-2
 - Bug fixes:
