@@ -77,7 +77,7 @@ jobs:
 
              if changed:
                  tree.write(str(xml_path), encoding="utf-8", xml_declaration=True)
-           PY
+          PY
 
 
       - name: Process XML-based API docs for use with Hugo
