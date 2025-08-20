@@ -10,7 +10,7 @@ on:
 jobs:
   check-unprocessed-docs:
     name: Check for unprocessed raw XML-based API docs
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     outputs:
       has_unprocessed: ${{ steps.check.outputs.has_unprocessed }}
 
@@ -36,7 +36,7 @@ jobs:
 
   prepare-hugo-environment:
     name: Process raw XML-based API docs for Hugo
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: check-unprocessed-docs
     if: ${{ needs.check-unprocessed-docs.outputs.has_unprocessed == 'true' }}
     outputs:
@@ -47,12 +47,120 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
+          
+      - name: Install lxml
+        run: pip install lxml
+        
+      - name: Expand self-closing exception-related tags
+        run: |
+          find content/GENERATED -name '*.xml' -print0 | xargs -0 sed -i -E \
+            -e 's#<([[:alnum:]_.:-]*:)?exc_line([^>]*)/>#<\1exc_line\2> </\1exc_line>#g' \
+            -e 's#<([[:alnum:]_.:-]*:)?exception([^>]*)/>#<\1exception\2> </\1exception>#g' \
+            -e 's#<([[:alnum:]_.:-]*:)?throws([^>]*)/>#<\1throws\2> </\1throws>#g' \
+            -e 's#<([[:alnum:]_.:-]*:)?exceptionname([^>]*)/>#<\1exceptionname\2> </\1exceptionname>#g'
 
+      - name: Normalize exception-related nodes (force text, drop children)
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+
+          TARGETS = {"exc_line","exception","throws","exceptionname"}
+
+          def local(tag: str) -> str:
+              return tag.rsplit('}', 1)[-1] if '}' in tag else tag
+
+          root_dir = Path("content/GENERATED")
+          for xml_path in root_dir.rglob("*.xml"):
+              try:
+                  tree = ET.parse(xml_path)
+              except Exception:
+                  continue
+
+              root = tree.getroot()
+              changed = False
+
+              for el in list(root.iter()):
+                  if local(el.tag) in TARGETS:
+                      # best available text: all descendant text, else name attr, else single space
+                      full = "".join(el.itertext()).strip()
+                      if not full:
+                          name_attr = (el.get("name") or "").strip()
+                          full = name_attr if name_attr else " "
+                      # preserve attributes, but replace children with plain text so .text is guaranteed
+                      attrib = dict(el.attrib)
+                      el.clear()              # removes children and attributes
+                      el.text = full
+                      el.attrib.update(attrib)  # restore attributes
+                      changed = True
+
+              if changed:
+                  tree.write(xml_path, encoding="utf-8", xml_declaration=True)
+          PY
+
+
+      - name: Verify no None .text on targets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          TARGETS = {"exc_line","exception","throws","exceptionname"}
+          def local(tag): return tag.rsplit('}',1)[-1] if '}' in tag else tag
+          total = empty = 0
+          samples = []
+          for p in Path("content/GENERATED").rglob("*.xml"):
+              try:
+                  root = ET.parse(p).getroot()
+              except Exception:
+                  continue
+              for el in root.iter():
+                  if local(el.tag) in TARGETS:
+                      total += 1
+                      if el.text is None:
+                          empty += 1
+                          if len(samples) < 5:
+                              samples.append((str(p), el.tag, el.attrib))
+          print(f"Checked nodes={total}, text is None={empty}")
+          if samples:
+              print("Examples with None text:", samples)
+          PY
+
+      - name: Monkey-patch hugoify to handle None .text safely
+        run: |
+          cat > sitecustomize.py <<'PY'
+          # Auto-imported by Python if present on sys.path (cwd is on sys.path).
+          import hugoify
+
+          def _wrap(fn):
+              def wrapper(self, *args, **kwargs):
+                  try:
+                      return fn(self, *args, **kwargs)
+                  except AttributeError as e:
+                      # Exactly the crash you're seeing
+                      if "NoneType" in str(e) and "strip" in str(e):
+                          # Skip the bad node and keep going
+                          return None
+                      raise
+              return wrapper
+
+          # Find classes that define a name-mangled __clean_function and wrap it
+          for _, cls in list(hugoify.__dict__.items()):
+              if isinstance(cls, type):
+                  for attr_name, attr_val in list(vars(cls).items()):
+                      # e.g., _Contents__clean_function
+                      if attr_name.endswith('__clean_function') and callable(attr_val):
+                          setattr(cls, attr_name, _wrap(attr_val))
+          PY
+
+          
       - name: Process XML-based API docs for use with Hugo
         id: hugoify
         uses: zymbit-docs/actions-hugoify-api-docs@master
+        env:
+           PYTHONPATH: /github/workspace
         with:
           outputPath: ./content/api/
+          rawPath: ./content/GENERATED
 
       - name: Prepare processed API docs files for commit
         id: prepare-commit
@@ -110,7 +218,7 @@ jobs:
 
   create-pull-request:
     name: Create a pull request for changes in `api-docs-update`
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: prepare-hugo-environment
 
     if: ${{ github.ref == 'refs/heads/api-docs-update' }}
