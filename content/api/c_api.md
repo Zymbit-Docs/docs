@@ -1,7 +1,7 @@
 ---
-title: C API Documentation
-linkTitle: C API Documentation
-description: C interface to Zymkey Application Utilities Library.
+title: "C API Documentation"
+linkTitle: "C API Documentation"
+description: "C interface to Zymkey Application Utilities Library."
 lastmod:
 draft: false
 images: []
