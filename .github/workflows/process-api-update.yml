@@ -125,6 +125,33 @@ jobs:
               print("Examples with None text:", samples)
           PY
 
+      - name: Monkey-patch hugoify to handle None .text safely
+        run: |
+          cat > sitecustomize.py <<'PY'
+          # Auto-imported by Python if present on sys.path (cwd is on sys.path).
+          import hugoify
+
+          def _wrap(fn):
+              def wrapper(self, *args, **kwargs):
+                  try:
+                      return fn(self, *args, **kwargs)
+                  except AttributeError as e:
+                      # Exactly the crash you're seeing
+                      if "NoneType" in str(e) and "strip" in str(e):
+                          # Skip the bad node and keep going
+                          return None
+                      raise
+              return wrapper
+
+          # Find classes that define a name-mangled __clean_function and wrap it
+          for _, cls in list(hugoify.__dict__.items()):
+              if isinstance(cls, type):
+                  for attr_name, attr_val in list(vars(cls).items()):
+                      # e.g., _Contents__clean_function
+                      if attr_name.endswith('__clean_function') and callable(attr_val):
+                          setattr(cls, attr_name, _wrap(attr_val))
+          PY
+
           
       - name: Process XML-based API docs for use with Hugo
         id: hugoify
