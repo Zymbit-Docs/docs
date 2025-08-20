@@ -156,8 +156,11 @@ jobs:
       - name: Process XML-based API docs for use with Hugo
         id: hugoify
         uses: zymbit-docs/actions-hugoify-api-docs@master
+        env:
+           PYTHONPATH: /github/workspace
         with:
           outputPath: ./content/api/
+          rawPath: ./content/GENERATED
 
       - name: Prepare processed API docs files for commit
         id: prepare-commit
