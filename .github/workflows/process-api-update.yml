@@ -59,7 +59,7 @@ jobs:
             -e 's#<([[:alnum:]_.:-]*:)?throws([^>]*)/>#<\1throws\2> </\1throws>#g' \
             -e 's#<([[:alnum:]_.:-]*:)?exceptionname([^>]*)/>#<\1exceptionname\2> </\1exceptionname>#g'
 
-      - name: Normalize exception-related nodes (namespace-safe)
+      - name: Normalize exception-related nodes (force text, drop children)
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -80,36 +80,34 @@ jobs:
               root = tree.getroot()
               changed = False
 
-              for el in root.iter():
+              for el in list(root.iter()):
                   if local(el.tag) in TARGETS:
-                      # Gather any descendant text we could hoist
-                      texts = [t.strip() for t in el.itertext() if t and t.strip()]
-                      # Fall back to a 'name' attribute if present
-                      if not texts:
-                          name_attr = el.get("name")
-                          if name_attr and name_attr.strip():
-                              texts = [name_attr.strip()]
-
-                      # If .text is missing or empty/whitespace, set something safe
-                      current = (el.text or "").strip() if el.text is not None else ""
-                      if not current:
-                          el.text = texts[0] if texts else " "
-                          changed = True
+                      # best available text: all descendant text, else name attr, else single space
+                      full = "".join(el.itertext()).strip()
+                      if not full:
+                          name_attr = (el.get("name") or "").strip()
+                          full = name_attr if name_attr else " "
+                      # preserve attributes, but replace children with plain text so .text is guaranteed
+                      attrib = dict(el.attrib)
+                      el.clear()              # removes children and attributes
+                      el.text = full
+                      el.attrib.update(attrib)  # restore attributes
+                      changed = True
 
               if changed:
                   tree.write(xml_path, encoding="utf-8", xml_declaration=True)
           PY
 
-      - name: Count empty exception-related nodes (post-fix)
+
+      - name: Verify no None .text on targets
         run: |
           python - <<'PY'
           from pathlib import Path
           import xml.etree.ElementTree as ET
-
           TARGETS = {"exc_line","exception","throws","exceptionname"}
           def local(tag): return tag.rsplit('}',1)[-1] if '}' in tag else tag
-
           total = empty = 0
+          samples = []
           for p in Path("content/GENERATED").rglob("*.xml"):
               try:
                   root = ET.parse(p).getroot()
@@ -120,8 +118,13 @@ jobs:
                       total += 1
                       if el.text is None:
                           empty += 1
+                          if len(samples) < 5:
+                              samples.append((str(p), el.tag, el.attrib))
           print(f"Checked nodes={total}, text is None={empty}")
+          if samples:
+              print("Examples with None text:", samples)
           PY
+
           
       - name: Process XML-based API docs for use with Hugo
         id: hugoify
