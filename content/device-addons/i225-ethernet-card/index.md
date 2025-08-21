@@ -6,7 +6,7 @@ description: ""
 aliases:
     - /quickstart/addons/i225-ethernet
 date: ""
-lastmod: "2025-09-01"
+lastmod: "2025-09-21"
 draft: false
 weight: 10
 images: []
@@ -18,7 +18,7 @@ This page outlines the steps required to get PCIe ethernet chips using the Intel
 
 ## Installation instructions for Ubuntu 24.04
  
-If you are using Ubuntu 24.04 with the CM5 and the Zymbit motherboard, you only need to copy the `pciex1-compat-pi5.dtbo` overlay from Bookworm and add the following to config.txt ( [see Github Issue 6134](https://github.com/raspberrypi/linux/issues/6134) ):
+If you are using Ubuntu 24.04 with the CM5 and the Zymbit motherboard, you only need to copy the [pciex1-compat-pi5.dtbo](https://bootware.s3.amazonaws.com/1.3.2/pciex1-compat-pi5.dtbo) overlay (from Bookworm firmware) into `/boot/firmware/overlays`, and add the following to config.txt ( [see Github Issue 6134 for background](https://github.com/raspberrypi/linux/issues/6134) ):
 
 ```bash
 [cm5]
