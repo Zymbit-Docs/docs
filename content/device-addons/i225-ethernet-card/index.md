@@ -14,20 +14,24 @@ images: []
 # layout: "single"
 ---
 
-This page outlines the steps required to get PCIe ethernet chips using the Intel I225-V controller up and running on the Zymbit Secure Edge Node (SEN). These controllers use the in-tree `igc` Linux driver, which is included in Ubuntu 24.04, but is not included by default as part of the Raspberry Pi Foundation's official kernel packages.
+This page outlines extra steps required to get PCIe ethernet chips using the Intel I225-V controller up and running on the Zymbit Secure Edge Node (SEN). 
 
-## Installation instructions for Ubuntu 24.04
+## Installation instructions for Bookworm with SEN-500/CM5
+
+The latest Bookworm images contain support for the I225 controller. There are no additional steps required.
  
-If you are using Ubuntu 24.04 with the CM5 and the Zymbit motherboard, you only need to copy the [pciex1-compat-pi5.dtbo](https://bootware.s3.amazonaws.com/1.3.2/pciex1-compat-pi5.dtbo) overlay (from Bookworm firmware) into `/boot/firmware/overlays`, and add the following to config.txt ( [see Github Issue 6134 for background](https://github.com/raspberrypi/linux/issues/6134) ):
+## Installation instructions for Ubuntu 24.04.3 with SEN-500/CM5
+ 
+If you are using Ubuntu 24.04.3 with the CM5 and the Zymbit motherboard, you only need to copy the [pciex1-compat-pi5.dtbo](https://bootware.s3.amazonaws.com/1.3.2/pciex1-compat-pi5.dtbo) overlay (from Bookworm firmware) into `/boot/firmware/overlays`, and add the following to config.txt ( [see Github Issue 6134 for background](https://github.com/raspberrypi/linux/issues/6134) ):
 
 ```bash
 [cm5]
 dtoverlay=pciex1-compat-pi5,mmio-hi
 ```
 
-## Installation instructions for Bookworm 
+## Installation instructions for Bookworm with older kernels
 
-For Bookworm, the in-tree `igc` Linux driver is not included by default as part of the Raspberry Pi Foundation's official kernel packages. The process below has been tested and validated for the 6.1.93 Raspberry Pi kernel paired with an IOCrest SY-PEX24075 M.2 adapter card, though most any sub-7 watt M.2 card using the I225-V controller should theoretically work.
+For Bookworm, the in-tree `igc` Linux driver is not included by default as part of the Raspberry Pi Foundation's older official kernel packages. The process below has been tested and validated for the 6.1.93 Raspberry Pi kernel paired with an IOCrest SY-PEX24075 M.2 adapter card, though most any sub-7 watt M.2 card using the I225-V controller should theoretically work.
 
 There are two options for installation: [using prebuilt `.deb` packages](#option-1-install-from-prebuilt-debian-packages), which target kernel 6.1.93, or [building and installing from source](#option-2-build-and-install-from-source).
 
