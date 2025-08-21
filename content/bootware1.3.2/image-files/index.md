@@ -17,7 +17,7 @@ toc: true
 Example images all have the hostname of zymbit-dev and a login of zymbit and a password of zymbit. Please change if using for anything other than development examples.
 > NOTE: There are different example images for the Pi5 depending on the revision. Pi5 rev 1.1 and CM5 are supported by one example image, and Pi5 rev 1.0 is supported by a different example image. You can determine the revision of your Pi5 with `cat /proc/cpuinfo`.
 
-#### 1.3.2-2 Images (latest)
+#### 1.3.2-2 Images (latest available)
 
 | Item | Size | Description |
 |------|------|--------------------------|

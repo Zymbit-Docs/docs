@@ -54,6 +54,10 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 Ubuntu 24.04.3 (Released 8/7/25)
 - The Ubuntu team released 24.04.3 (updated Noble) on 8/7/25. The image straight from the Pi Imager can be used. There is no longer a need to use the daily image. 24.04.3 improves hardware support for the Pi5 and CM5. Ubuntu 24.04.3 works with Zymbit products on the platforms noted above (Pi5, CM5, Pi4, CM4).
 
+Bootware® 1.3.2-3
+- Bug fixes:
+  - #202: Pi5/CM5 with 16GB RAM are showing up as 8GB when booting from u-boot
+
 Bootware® 1.3.2-2
 - Bug fixes:
   - #201: Adds Bootware support for Pi5 Rev 1.1 hardware.
