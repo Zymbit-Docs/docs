@@ -1,7 +1,8 @@
 ---
 title: "Quickstart - Secure Compute Module (SCM)"
 linkTitle: "Quickstart"
-lastmod: "2024-06-05"
+description: "Configure and setup your SCM"
+lastmod: "2025-08-29"
 draft: false
 images: []
 weight: 5
@@ -27,11 +28,15 @@ The Zymbit Secure Compute Module (SCM) is an all-in-one Linux compute module - s
 -----
 ## **Configure and Setup your SCM**
 
-#### Power On, Bootup, and SSH in
- * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
+#### Power On, Bootup, and login
+ * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for login either on the console or via SSH. The default password for zymbit is zymbit. Please change your password once you login. 
 
 {{< callout notice >}}
-All necessary Zymbit Driver Package has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
+All necessary Zymbit Driver Packages have been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Without `rpiboot`, a change that prevents the SCM from booting most likely cannot be corrected, as there is no way to access the boot partition. Also, the SCM only allows boot off the eMMC. Proceed with caution before changing boot files, such as config.txt. 
+{{< /callout >}}
+
+{{< callout danger >}}
+The SCM requires the `dtoverlay=dwc2,dr_mode=host` line in config.txt. DO NOT REMOVE or you will brick the unit. Do not use `otg_mode=1`.
 {{< /callout >}}
 
  * Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured should take approximately 90 seconds from power on. It will go through the following stages:
@@ -65,6 +70,7 @@ apt remove --purge unattended-upgrades -y
 
 #### Recent Changes
 
+* Now allow console login.
 * Now allow initial SSH via password (use zymbit/zymbit). Please change once logged in.
 * No longer providing SSH key on USB stick; as noted above, you can use password.
 * No longer necessary to register product; no SSH key necessary so no need for key passphrase.
