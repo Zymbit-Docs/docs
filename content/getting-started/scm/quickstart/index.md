@@ -1,7 +1,8 @@
 ---
 title: "Quickstart - Secure Compute Module (SCM)"
 linkTitle: "Quickstart"
-lastmod: "2024-06-05"
+description: "Configure and setup your SCM"
+lastmod: "2025-08-29"
 draft: false
 images: []
 weight: 5
@@ -31,7 +32,7 @@ The Zymbit Secure Compute Module (SCM) is an all-in-one Linux compute module - s
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
 
 {{< callout notice >}}
-All necessary Zymbit Driver Package has been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Please contact support@zymbit.com for assistance.
+All necessary Zymbit Driver Packages have been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. This means that a change that prevents the SCM from booting most likely cannot be corrected, as there is no way to access the boot partition without `rpiboot`. Further, alternate boot methods are not possible. The SCM will only boot off the eMMC. Proceed with caution before changing boot files such as config.txt. 
 {{< /callout >}}
 
  * Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured should take approximately 90 seconds from power on. It will go through the following stages:
