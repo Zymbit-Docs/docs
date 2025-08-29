@@ -32,7 +32,7 @@ The Zymbit Secure Compute Module (SCM) is an all-in-one Linux compute module - s
  * Connect up the ethernet and 12V power. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for login either on the console or via SSH. The default password for zymbit is zymbit. Please change your password once you login. 
 
 {{< callout notice >}}
-All necessary Zymbit Driver Packages have been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Without `rpiboot`, a change that prevents the SCM from booting most likely cannot be corrected, as there is no way to access the boot partition. Also, the SCM will only allows boot off the eMMC. Proceed with caution before changing boot files such as config.txt. 
+All necessary Zymbit Driver Packages have been pre-installed. No further installation is necessary. The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the field. Without `rpiboot`, a change that prevents the SCM from booting most likely cannot be corrected, as there is no way to access the boot partition. Also, the SCM only allows boot off the eMMC. Proceed with caution before changing boot files, such as config.txt. 
 {{< /callout >}}
 
 {{< callout danger >}}
