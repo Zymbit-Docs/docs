@@ -67,7 +67,7 @@ After these steps have been completed, you are ready to prepare your device for 
 
 ### Prepare *Perimeter Detect*
 
-The `Perimeter Event Actions` for your SCM should be set to `none` or `notify` only. If your SCM's action mode is set to `self_destruct`, you might render your unit /c/Users/bobgu/OneDrive/Desktop/Atom.lnkuseless while attempting to activate Production Mode.
+The `Perimeter Event Actions` for your SCM should be set to `none` or `notify` only. If your SCM's action mode is set to `self_destruct`, you might render your unit useless while attempting to activate Production Mode.
 
 {{< resource_link "tutorials/perimeter-detect/scm/" >}}
 Understand how to use the SCM's perimeter detect features.
