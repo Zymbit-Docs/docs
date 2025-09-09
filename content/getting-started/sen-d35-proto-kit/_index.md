@@ -7,6 +7,6 @@ aliases:
     - /quickstart/getting-started/scm-dev-kit2/
 draft: false
 images: []
-weight: 12
+weight: 35
 headless: true
 ---
