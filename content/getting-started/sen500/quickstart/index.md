@@ -1,5 +1,5 @@
 ---
-title: "Quickstart - SEN 400 Prototype Kit"
+title: "Quickstart - SEN 500"
 linkTitle: "Quickstart"
 lastmod: "2024-10-30"
 draft: false
@@ -10,29 +10,30 @@ toc: true
 
 -----
 
-<img src="sen400.png" alt="SEN 400" width="700"/>
+<img src="sen500.png" alt="SEN 500" width="700"/>
 
-The SEN 400 Prototype Kit provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart) with the SEN 400 Professional Baseboard. This baseboard is used in the [SEN 400](https://www.zymbit.com/secure-edge-node-pro/) (shown above) product.
+The SEN 500 provides all the hardware and software components required to get started implementing your secure application. 
 
 The Dev Kit includes:
 
- * Zymbit [Secure Compute Module](../../scm/quickstart) (Zymbit Security Module and CM4)
- * Zymbit Professional Baseboard 400
+ * Raspberry Pi CM5 module
+ * Zymbit HSM65 Security Module
+ * Zymbit Motherboard 
  * Optional 12V Power Supply
  * Optional PoE++ 802.bt, 55W. Customer supplied PoE power source.
 
 {{< cardpane >}}
-{{< card header="Zymbit SEN 400 Baseboard - Top" >}}
+{{< card header="Zymbit SEN 500 Motherboard - Top" >}}
 {{< figure
-    src="bb400_top.png"
-    alt="Baseboard 400 top"
-    caption="The top and bottom of the Zymbit SEN 400 Baseboard"
+    src="bb500_top.png"
+    alt="Motherboard 500 top"
+    caption="The top and bottom of the Zymbit SEN 500 Motherboard"
     >}}
 {{< /card >}}
-{{< card header="Zymbit SEN 400 Baseboard- Bottom" >}}
+{{< card header="Zymbit SEN 500 Motherboard- Bottom" >}}
 {{< figure
-    src="bb400_bottom.png"
-    alt="Baseboard 400 Bottom"
+    src="bb500_bottom.png"
+    alt="Motherboard 500 Bottom"
     caption=""
     >}}
 {{< /card >}}
@@ -40,10 +41,10 @@ The Dev Kit includes:
 
 
 {{< cardpane >}}
-{{< card header="SEN 400 Baseboard Connectors" >}}
+{{< card header="SEN 500 Motherboard Connectors" >}}
 {{< figure
-    src="bb400_table.png"
-    alt="SEN 400 Connectors"
+    src="bb500_table.png"
+    alt="SEN 500 Connectors"
     caption=""
     >}}
 {{< /card >}}
@@ -52,18 +53,18 @@ The Dev Kit includes:
 ### GPIO Pinout Reference
 
 {{< cardpane >}}
-{{< card header="SEN 400 Baseboard GPIO Pinout" >}}
+{{< card header="SEN 500 Motherboard GPIO Pinout" >}}
 {{< figure
     src="zymbit-scm-motherboard-2X1-bottom-gpio-pinout-1500px.jpg"
     alt=""
-    caption="Note: the standard GPIO pinout is accessed on the bottom side of the SEN 400 Baseboard."
+    caption="Note: the standard GPIO pinout is accessed on the bottom side of the SEN 500 Baseboard."
     >}}
 {{< /card >}}
 {{< /cardpane >}}
 
 -----
 
-### **Configure and Setup your SEN 400 Prototype Kit**
+### **Configure and Setup your SEN 500**
 
 #### Power On
 Connect the included 12V Power Supply up to the front panel 12V barrel connector. Connect an ethernet cable to the gigabit ethernet port. The unit is designed to run headless. You do not need a monitor, keyboard, or mouse. The preferred access is via SSH.
@@ -94,9 +95,6 @@ See [Quickstart for SCM](../../scm/quickstart) for more information on how to pr
 ### Additional information - Using SCM: API and Examples
 
  * [See API Documentation](../../../api/)
- * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
- * [Securing the SCM further with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
- * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
  * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
 
 ### Support
