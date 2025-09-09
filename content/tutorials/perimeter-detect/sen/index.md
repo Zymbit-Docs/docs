@@ -1,5 +1,5 @@
 ---
-title : "Perimeter Detect: Secure Edge Node"
+title : "Perimeter Detect: Secure Edge Nodes"
 linkTitle: "Secure Edge Node"
 description: ""
 date: "05-11-2022"
@@ -11,9 +11,11 @@ weight: -660
 toc: true
 ---
 
+> NOTICE Sept 2025: This page needs updating for the SEN 400 and the SEN 500 (pre-release). The functionality has not changed, but the tamper wiring connections are different. Contact support@zymbit.com if you need to configure tamper detect on your SEN 400 or SEN 500.
+
 ## Scope
 
-This describes the perimeter detect feature on the Secure Edge Node (SEN)
+This describes the perimeter detect feature on the D35 SEN.
 
 Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended or in high risk environments. When a Perimeter Loop is breached, the Secure Edge Node can be configured to respond with different "Actions", depending upon your security policy.
 
