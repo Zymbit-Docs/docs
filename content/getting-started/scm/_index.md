@@ -1,11 +1,11 @@
 ---
 title: Secure Compute Module - SCM 
-linktitle: Secure Compute Module - SCM 
+linktitle: SCM Module
 description: Hardened Raspberry Pi compute module for zero-trust environments
 aliases:
     - /quickstart/getting-started/scm/
 draft: false
 images: []
-weight: 10
+weight: 25
 headless: true
 ---
