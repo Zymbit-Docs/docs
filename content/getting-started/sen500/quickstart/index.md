@@ -95,7 +95,7 @@ See [Quickstart for SCM](../../scm/quickstart) for more information on how to pr
 ### Additional information - Using SCM: API and Examples
 
  * [See API Documentation](../../../api/)
- * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
+<!-- * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/) -->
 
 ### Support
 

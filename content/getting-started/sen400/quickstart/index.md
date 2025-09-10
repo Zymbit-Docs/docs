@@ -97,7 +97,7 @@ See [Quickstart for SCM](../../scm/quickstart) for more information on how to pr
  * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
  * [Securing the SCM further with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
  * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
- * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
+ <!-- * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/) -->
 
 ### Support
 
