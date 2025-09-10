@@ -1,3 +1,19 @@
+---
+title: "Quickstart - SEN 500"
+linkTitle: "Quickstart"
+lastmod: "2024-10-30"
+draft: false
+images: []
+weight: 5
+toc: true
+---
+
+-----
+
+<img src="sen500.png" alt="SEN 500" width="700"/>
+
+The SEN 500 provides all the hardware and software components required to get started implementing your secure application.
+
 # Zymbit Secure Base Board 500 Rev X4: An application board for the Zymbit Secure Compute Module
 
 **Last updated**: August 12, 2025 
