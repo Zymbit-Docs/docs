@@ -55,7 +55,7 @@ Add quickstart plug in as well as how to open the case to get access to the moth
 ### Status LED Indicators
 
 {{< cardpane >}}
-{{< card header="LED Designator>}}
+{{< card header="LED Designator">}}
 {{< figure
     src="led_brd.png"
     alt="LED Board Reference"
