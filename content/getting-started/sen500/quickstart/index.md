@@ -1,7 +1,7 @@
 ---
-title: "Quickstart - SEN 500"
+title: "Quickstart - SEN 500 *pre-release draft*"
 linkTitle: "Quickstart"
-lastmod: "2024-10-30"
+lastmod: "2025-09-10"
 draft: false
 images: []
 weight: 5
