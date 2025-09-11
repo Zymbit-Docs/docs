@@ -19,52 +19,63 @@ toc: true
 
 The SEN 500 provides all the hardware and software components required to get started implementing your secure application. Inside the SEN 500, includes a Raspberry PI CM5 along with the Zymbit Motherboard detailed below, as well as a Zymbit Interposer-based HSM.
 
-The Zymbit Motherboard is designed for products that make use of the Zymbit Secure Compute Module, and Zymbit Interposer-based HSMs.  The Zymbit Motherboard contains many of the interfaces that the Raspberry Pi Model 4B, Raspberry Pi Model 5, Raspberry Pi Compute Module 4 IO Board, and Raspberry Pi Compute Module 5 IO Board have, with the addition of interfaces and features that take advantage of Zymbit’s security hardware and software offerings.  The Zymbit Motherboard is available as both a reference design for the Zymbit SCM and as a product in the Secure Edge Node product lines with the possible addition of PCIe Cards Pi HATs, auxiliary, or expansion boards.
-
 -----
+## Secure Edge Node Cabling and Access
+
+Add quickstart plug in as well as how to open the case to get access to the motherboard.
 
 ## Overview of the Zymbit Motherboard
 
-![Zymbit Motherboard top side](bb500top.png)
+{{< cardpane >}}
+{{< card header="Zymbit SEN 500 Motherboard - Top" >}}
+{{< figure
+    src="bb500top.png"
+    alt="Motherboard 500 top"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
-Zymbit Motherboard top side
-
-![Zymbit Motherboard bottom side](bb500bottom.png)
-
-Zymbit Motherboard bottom side
+{{< cardpane >}}
+{{< card header="Zymbit SEN 500 Motherboard- Bottom" >}}
+{{< figure
+    src="bb500bottom.png"
+    alt="Motherboard 500 Bottom"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 ---
 
 ## Features
 
-### Configuration Options
-
-The Zymbit Motherboard is designed to accommodate several configurations depending on use case and security needs.  Depending on the configuration, some features may not be available or limited.  The following table details the different configurations and limitations, if any.
-
-| **Compute**  | Security Module | **Security Level**** | **Notes** |
-| --- | --- | --- | --- |
-| CM5 + Interposer | Interposer | S1 | USB3 |
-| CM5 (only)* | None | S0 | USB3 |
-
-**Zymbit Security Levels
-
-**S0     No Security Hardware**
-
-**S1      Secure** hardware and cryptographic engine.
-
-**S2     S1** + **Supervised** filesystem and boot chain.
-
-**S3     S2 + Safe** recovery to trusted state.
-
 ---
 
 ### Status LED Indicators
 
-![LED Board Reference](led_brd.png)
-
-![LED Lightpipe order](led_lightpipe.png)
-
-![LED Front Panel](led_sen.jpg)
+{{< cardpane >}}
+{{< card header="LED Designator>}}
+{{< figure
+    src="led_brd.png"
+    alt="LED Board Reference"
+    caption="LED Designator"
+    >}}
+{{< /card >}}
+{{< card header="Lightpipe (Top)" >}}
+{{< figure
+    src="led_lightpipe.png"
+    alt="Lightpipe Reference"
+    caption="Lightpipe (Bottom)"
+    >}}
+{{< card header="SEN 500 Enclosure" >}}
+{{< figure
+    src="led_sen.png"
+    alt="SEN 500 Enclosure LEDs"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 
 | Designator | Lightpipe Order | Purpose | Legend | Type | Off | Green or Blue | Red | Yellow or purple |
@@ -161,18 +172,18 @@ The POE_PSTAT voltage is a combination of two POE status lines. See the table be
 
 **Reading from ADCs Example:**
 
-<aside>
-💡
-
-*NOTE for CM5: you have to specifically enable I2C0 in /boot/firmware/config.txt*
-
-</aside>
+> *NOTE for CM5: you have to specifically enable I2C0 in /boot/firmware/config.txt*
 
 ```
 dtparam=i2c_csi_dsi0=on
 ```
 
-Example python program to read values:
+
+
+<details>
+
+<summary>Example python program to read values: </summary>
+<br>
 
 ```python
 #!/usr/bin/env python
@@ -329,6 +340,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+</details>
 
 #### Power Button
 
@@ -340,16 +352,19 @@ The Zymbit Motherboard has a button on board designed as a power button (SW5).  
 
 #### USB (J18 & J19)
 
-<aside>
-💡
-
 TO ENABLE EXTERNAL USB: POSITION 3 OF SW1 MUST BE CLOSED (DEFAULT IS ENABLED). 
 
 If SW1 if off, both USB power to the external USB connectors will be cut and the data lines will be disconnected. Externally powered USB devices can’t be forced to connect.
 
-![Enable External USB: Postition 3 of SW1 closed](sw1_pos3_closed.png)
-
-</aside>
+{{< cardpane >}}
+{{< card header="Enable external USB: Position 3 of SW1 closed" >}}
+{{< figure
+    src="sw1_pos3_closed.png"
+    alt="SW1 Position3 closed"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 The Zymbit Motherboard has a total of three USB ports available. Two ports are externally exposed via a dual stack USB connector (J18), and there is one internal ‘AUX USB’ exposed through a 5-pin connector (J19).  Each USB port has its own current limiting switch set to 1.2A.
 
@@ -361,16 +376,17 @@ The following table summarizes the configurations.
 | Bottom Port | USB3, shared EN, OC |
 | Auxiliary Port (internal) | USB2, no EN or OC |
 
-<aside>
-💡
-
-NOTE: CM5 and USB3 EN
-
 When using a CM5 as the host platform, USB3 is used and enabled by default with a weak pullup to signal that the USB3 ports should be powered.  If you would like to have the CM5 control USB3 enable, close position 2 on SW1.
 
-![Enable CM5 control of USB3](sw1_pos2_closed.png)
-
-</aside>
+{{< cardpane >}}
+{{< card header="Enable CM5 control of USB3" >}}
+{{< figure
+    src="sw1_pos2_closed.png"
+    alt="SW1 Position2 closed"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 #### Dual Mini HDMI 2.0 Connectors (J25 & J26)
 
@@ -402,18 +418,24 @@ J5 is a header for a standard 5V PWM fan.  This part is not populated on standar
 
 The Zymbit Motherboard has a standard Raspberry Pi 40-way HAT connector. Mounting holes are also provided so that standard HATs may be used.  
 
-<aside>
-💡 NOTE: THIS CONNECTOR IS DESIGNED TO HAVE HATS INSERTED ON THE BOTTOM SIDE AS INDICATED BY THE HAT OUTLINE AND NOTE ON THE TOP SIDE
+> NOTE: THIS CONNECTOR IS DESIGNED TO HAVE HATS INSERTED ON THE BOTTOM SIDE AS INDICATED BY THE HAT OUTLINE AND NOTE ON THE TOP SIDE
 
-</aside>
-
-![Top side note that HATs go on other side](hat_top.png)
-
-Top side note that HATs go on other side
-
-![Bottom side Pi HAT outline where Pi HATs go](hat_bottom.png)
-
-Bottom side Pi HAT outline where Pi HATs go
+{{< cardpane >}}
+{{< card header="Top side note that HATs go on other side" >}}
+{{< figure
+    src="hat_top.png"
+    alt="Motherboard 500 top"
+    caption="Pi HATs insert on the bottom Motherboard"
+    >}}
+{{< /card >}}
+{{< card header="Bottom side Pi HAT outline where Pi HATs go" >}}
+{{< figure
+    src="hat_bottom.png"
+    alt="Motherboard 500 Bottom silkscreen"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 ---
 
@@ -439,9 +461,22 @@ The second circuit, **Perimeter Loop 2**, is accessible through the connector la
 
 The pinout for J2:
 
-![J2 Pinout](j2_pinout.png)
-
-![J2 Picture](j2_picture.png)
+{{< cardpane >}}
+{{< card header="J2 Pinout" >}}
+{{< figure
+    src="j2_pinout.png"
+    alt="J2 connector pinout"
+    caption=""
+    >}}
+{{< /card >}}
+{{< card header="Connector" >}}
+{{< figure
+    src="j2_picture.png"
+    alt="Perim connector"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 To close a tamper loop, PERIM0 is the TX and PERIM1/PERIM2 are the RX. Connecting PERIM0 to either of the RX lines completes the tamper for the associated loop.  This is not simply a constant voltage, it is a pseudo random encoded sequence.
 
@@ -449,28 +484,61 @@ Perimeter 1:  To use perimeter loop 1 (connected to internal tamper switches) on
 
 If you do not plan to use PERIM1 on the external connector, consider cutting the tab with R120 off to prevent malicious access to the PERIM1 loop.
 
-![Perim1 CONNECT R120 tab](r120_tab.png)
-
 Perimeter 2:  To use perimeter loop 2 on the auxiliary connector, cut the tab in the picture below. This breaks the internal connection and exposes it to the auxiliary connector.  Then connecting P3 and P5 on J2 closes the loop.
 
-![Perim2 CUT tab](perim2_tab.png)
+{{< cardpane >}}
+{{< card header="PERIM1 loop enable" >}}
+{{< figure
+    src="r120_tab.png"
+    alt="PERIM1 loop enable"
+    caption="PERIM tabs"
+    >}}
+{{< /card >}}
+{{< card header="PERIM2 enable" >}}
+{{< figure
+    src="perim2_tab.png"
+    alt="PERIM2 enable"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 Perimeter 0 is the transmit, and the associated perimeters 1 and 2 are the receive loops.
 
 #### Auxiliary Connector (J2)
 
-![J2 Pinout](j2_pinout.png)
+{{< cardpane >}}
+{{< card header="J2 Pinout" >}}
+{{< figure
+    src="j2_pinout.png"
+    alt="J2 Pinout"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 - For tamper detection pins (pins 1, 3, 5) please see the previous section
 - ZIO pins (pins 4, 6) these are general purpose auxiliary pins passed through from the Zymbit HSM.  These pins are currently reserved for future use
 - 3V3 power (pin 8): This is the 3.3V power output that comes from the Raspberry Pi Compute Module
 - Security indicator signals (pins 9, 10): These are the signals used to drive the LEDs on the front panel.  Please see LED indicator section for details.  Example use to drive LEDs:
-    
-    ![Security LED Pinout](security_led_pinout.png)
-    
 - Power button input:  This pin connects to the Power button pin on the compute module after going through the HSM.  Pull this pin low to activate.  Please see the power button section for functionality.
     
-    ![Power Button pinout](pwr_button_pinout.png)
+{< cardpane >}}
+{{< card header="Security Header Pins" >}}
+{{< figure
+    src="security_led_pinout.png"
+    alt="Security LED pinout"
+    caption=""
+    >}}
+{{< /card >}}
+{{< card header="Power button Pins" >}}
+{{< figure
+    src="pwr_button_pinout.png"
+    alt="Power Button Pinout"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 ---
 
@@ -484,14 +552,18 @@ First, the CM5 must be removed, and R104 pads on the top side of the Zymbit HSM 
 
 Second, the header labeled “BOOT”, J20, must have a jumper installed across it.
 
-<aside>
-💡 NOTE: J20 should not be permanently installed as this prevents the compute module from booting off the eMMC and puts it in the MSD mode
+> NOTE: J20 should not be permanently installed as this prevents the compute module from booting off the eMMC and puts it in the MSD mode
 
-</aside>
 
-![Resistor pads to short, and jumper to install to enable MSD mode and flash a CM4](rpiboot_pads.png)
-
-Resistor pads to short, and jumper to install to enable MSD mode and flash a CM4
+{{< cardpane >}}
+{{< card header="Enable rpiboot or MSD" >}}
+{{< figure
+    src="rpiboot_pads.png"
+    alt="Enable rpiboot or MSD"
+    caption="Resistor pad to short and jumper to install"
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 The external USB ports are not available, and only the internal auxiliary USB is available.  To utilize this port, a USB-to-header pin cable is required, like [this](https://www.digikey.com/en/products/detail/adafruit-industries-llc/4449/11569127?utm_adgroup=&utm_source=google&utm_medium=cpc&utm_campaign=Pmax_Shopping_Product_Silicon%20Valley%20Category%20Awareness&utm_term=&utm_content=&utm_id=go_cmp-20773039395_adg-_ad-__dev-c_ext-_prd-11569127_sig-Cj0KCQjwlZixBhCoARIsAIC745CVoxIJEkOxfl64AdEkO4MartfLlQLmlU0pFNn-h9G3GV1_c1Y-bJ8aAl0XEALw_wcB&gad_source=1&gclid=Cj0KCQjwlZixBhCoARIsAIC745CVoxIJEkOxfl64AdEkO4MartfLlQLmlU0pFNn-h9G3GV1_c1Y-bJ8aAl0XEALw_wcB) or similar.
 
@@ -503,13 +575,30 @@ The CM5 has a built-in RTC that can be powered by an external battery.  There wi
 
 Advanced:  It is possible to connect the Zymbit RTC battery to the Pi RTC battery input and have both of them run at the same time.  If you would like to power the CM5 RTC as well as the Zymbit HSM and RTC from the same battery, bridge the R121 pads together and install the battery to the Zymbit battery connector J14.  Note that this will affect battery lifetime as the combined load from the CM5 and Zymbit HSM (although a few micro amps) :
 
-![CM5 RTC Enable](cm5_rtc.png)
+
+{{< cardpane >}}
+{{< card header="CM5 RTC Enable" >}}
+{{< figure
+    src="cm5_rtc.png"
+    alt="CM5 RTC Enable"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 #### CM5 Features DIP Switch
 
 The CM5 introduces new features not on the CM4, and the DIP switch (S1) on the top side of the board allows users to take advantage of these features.  
 
-![CM5 Features DIP Switch](cm5_features_dipswitch.png)
+{{< cardpane >}}
+{{< card header="CM5 Features DIP Switch" >}}
+{{< figure
+    src="cm5_features_dipswitch.png"
+    alt="CM5 Features DIP Switch"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 Position 1: The CM5 has a dedicated PCIe power enable pin.  Enabling this switch connects this signal to the enable the pin of the dedicated 3.3V supply for the M.2 PCIe connector.  On a CM4 or SCM4, this pin is designated as Reserved and therefore should not be enabled on the DIP switch, which leaves it unconnected.
 
@@ -523,7 +612,15 @@ Position 3: This is a hardware USB enable/disable switch.  When the switch is op
 
 The Zymbit Motherboard is designed to support expansion boards to offer additional functionality not natively integrated.  These connections come through connector J24.
 
-![J24 Pinout](j24_pinout.png)
+{< cardpane >}}
+{{< card header="External Power and Expansion Boards" >}}
+{{< figure
+    src="j24_pinout.png"
+    alt="External Power, Auxiliary, and Expansion Boards"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 | Signal Description | Signal Name | Pin Number | Pin Number | Signal Name | Signal Description |
 | --- | --- | --- | --- | --- | --- |
