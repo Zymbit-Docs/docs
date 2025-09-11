@@ -20,11 +20,35 @@ toc: true
 The SEN 500 provides all the hardware and software components required to get started implementing your secure application. Inside the SEN 500, includes a Raspberry PI CM5 along with the Zymbit Motherboard detailed below, as well as a Zymbit Interposer-based HSM.
 
 -----
-## Secure Edge Node Cabling and Access
+## Configure and Setup your SEN 500
 
-Add quickstart plug in as well as how to open the case to get access to the motherboard.
+{{< cardpane >}}
+{{< card header="Zymbit SEN 500 I/O ports" >}}
+{{< figure
+    src="sen500_edge_connections.png"
+    alt="SEN 500 I/O connections"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
-## Overview of the Zymbit Motherboard
+### Power On
+Connect the optional 24V/12V Power Supply up to the front panel barrel connector. Connect an Cat5e/Cat6 ethernet cable to the gigabit ethernet port. The unit is designed to run either headless via SSH, or, if you prefer, attach a monitor to one of the HDMI ports and a keyboard and mouse to the USB ports and login via the console.  
+
+Monitor the top LED (SEC) for the status of the Zymbit module. It will go through the following stages:
+
+- rapid blue blinking:   *Booting underway*
+- one blue blink every 3 seconds:   *zkifc has loaded and the system is ready to go*
+
+Once the boot sequence completes and the top LED (SEC) is blinking blue once every three seconds, login either via the console or remotely via SSH. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for login. The default password is zymbit. Please change your password once you login.
+
+That is all it takes to get up and running!
+
+### Accessing the inside of the SEN 500
+
+To gain access to the SEN 500, power down and remove the six torx screws. Carefully remove the lid. It does not void any warranty to open the unit in order to install Pi HATs, sensors, M.2 hardware, configure as a MSD/rpiboot, or arrange tamper prevention. If needed, remove the four nylon screws to separate the CM5 from the Zymbit HSM. Reverse the process to reassemble and close the unit. 
+
+## Overview of the features of the SEN 500 - Zymbit Motherboard
 
 {{< cardpane >}}
 {{< card header="Zymbit SEN 500 Motherboard - Top" >}}
