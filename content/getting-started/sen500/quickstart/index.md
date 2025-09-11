@@ -523,7 +523,7 @@ Perimeter 0 is the transmit, and the associated perimeters 1 and 2 are the recei
 - Security indicator signals (pins 9, 10): These are the signals used to drive the LEDs on the front panel.  Please see LED indicator section for details.  Example use to drive LEDs:
 - Power button input:  This pin connects to the Power button pin on the compute module after going through the HSM.  Pull this pin low to activate.  Please see the power button section for functionality.
     
-{< cardpane >}}
+{{< cardpane >}}
 {{< card header="Security Header Pins" >}}
 {{< figure
     src="security_led_pinout.png"
@@ -612,7 +612,7 @@ Position 3: This is a hardware USB enable/disable switch.  When the switch is op
 
 The Zymbit Motherboard is designed to support expansion boards to offer additional functionality not natively integrated.  These connections come through connector J24.
 
-{< cardpane >}}
+{{< cardpane >}}
 {{< card header="External Power and Expansion Boards" >}}
 {{< figure
     src="j24_pinout.png"
