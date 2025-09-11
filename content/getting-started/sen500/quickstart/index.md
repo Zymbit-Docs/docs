@@ -68,6 +68,7 @@ Add quickstart plug in as well as how to open the case to get access to the moth
     alt="Lightpipe Reference"
     caption="Lightpipe (Bottom)"
     >}}
+{{< /card >}}
 {{< card header="SEN 500 Enclosure" >}}
 {{< figure
     src="led_sen.png"
