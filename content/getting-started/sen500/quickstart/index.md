@@ -601,7 +601,7 @@ The CM5 has a built-in RTC that can be powered by an external battery.  There wi
 Advanced:  It is possible to connect the Zymbit RTC battery to the Pi RTC battery input and have both of them run at the same time.  If you would like to power the CM5 RTC as well as the Zymbit HSM and RTC from the same battery, bridge the R121 pads together and install the battery to the Zymbit battery connector J14.  Note that this will affect battery lifetime as the combined load from the CM5 and Zymbit HSM (although a few micro amps) :
 
 
-{{< cardpane >}}
+{{< cardpane size="50%" >}}
 {{< card header="CM5 RTC Enable" >}}
 {{< figure
     src="cm5_rtc.png"

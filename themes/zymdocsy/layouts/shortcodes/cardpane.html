@@ -1,3 +1,4 @@
-<div class="card-deck mb-4">
-{{- .Inner -}}
+{{ $size := .Get "size" | default "100%" }}
+<div class="card-deck mb-4" style="width: {{ $size }}">
+  {{- .Inner -}}
 </div>
