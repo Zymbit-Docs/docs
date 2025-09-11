@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Products
 aliases:
     - /quickstart/getting-started/
 draft: false
