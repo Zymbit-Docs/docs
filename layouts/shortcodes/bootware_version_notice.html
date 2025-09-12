@@ -6,7 +6,7 @@
   {{- range $root.Sections -}}
     {{- $sec := . -}}
     {{- with $sec.Params.version -}}
-      {{- $ver := . | strings.TrimSpace -}}
+      {{- $ver := . -}}  {{/* already a string like "1.3.2" */}}
       {{- $parts := split $ver "." -}}
       {{- $major := (index $parts 0) | int -}}
       {{- $minor := cond (ge (len $parts) 2) ((index $parts 1) | int) 0 -}}
