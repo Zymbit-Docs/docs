@@ -1,26 +1,18 @@
 {{/* Show a warning if the current page is not under the latest Bootware version */}}
 
-{{- define "semverWeight" -}}
-  {{- $v := . | strings.TrimSpace -}}
-  {{- $parts := split $v "." -}}
-  {{- $major := (index $parts 0) | int -}}
-  {{- $minor := cond (ge (len $parts) 2) ((index $parts 1) | int) 0 -}}
-  {{- $patch := cond (ge (len $parts) 3) ((index $parts 2) | int) 0 -}}
-  {{- add (mul $major 1000000) (mul $minor 1000) $patch -}}
-{{- end -}}
-
-{{/* Prefer explicit section lookup to avoid path oddities */}}
 {{- $root := site.GetPage "section" "products/bootware" -}}
 {{- if $root -}}
   {{- $cands := slice -}}
   {{- range $root.Sections -}}
-    {{- $sec := . -}}                {{/* capture the section page */}}
-    {{- with $sec.Params.version -}} {{/* dot is now the version string */}}
-      {{- $cands = $cands | append (dict
-          "p"   $sec
-          "w"   (template "semverWeight" .)
-          "ver" .
-        ) -}}
+    {{- $sec := . -}}
+    {{- with $sec.Params.version -}}
+      {{- $ver := . | strings.TrimSpace -}}
+      {{- $parts := split $ver "." -}}
+      {{- $major := (index $parts 0) | int -}}
+      {{- $minor := cond (ge (len $parts) 2) ((index $parts 1) | int) 0 -}}
+      {{- $patch := cond (ge (len $parts) 3) ((index $parts 2) | int) 0 -}}
+      {{- $w := add (mul $major 1000000) (mul $minor 1000) $patch -}}
+      {{- $cands = $cands | append (dict "p" $sec "w" $w "ver" $ver) -}}
     {{- end -}}
   {{- end -}}
 

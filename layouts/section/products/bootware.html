@@ -1,19 +1,16 @@
 {{/* Redirect section root to the highest semver version subsection based on .Params.version */}}
 
-{{- define "semverWeight" -}}
-  {{- $v := . | strings.TrimSpace -}}
-  {{- $parts := split $v "." -}}
-  {{- $major := (index $parts 0) | int -}}
-  {{- $minor := cond (ge (len $parts) 2) ((index $parts 1) | int) 0 -}}
-  {{- $patch := cond (ge (len $parts) 3) ((index $parts 2) | int) 0 -}}
-  {{- add (mul $major 1000000) (mul $minor 1000) $patch -}}
-{{- end -}}
-
 {{- $candidates := slice -}}
 {{- range .Sections -}}
   {{- $sec := . -}}
   {{- with $sec.Params.version -}}
-    {{- $candidates = $candidates | append (dict "p" $sec "w" (template "semverWeight" .)) -}}
+    {{- $ver := . | strings.TrimSpace -}}
+    {{- $parts := split $ver "." -}}
+    {{- $major := (index $parts 0) | int -}}
+    {{- $minor := cond (ge (len $parts) 2) ((index $parts 1) | int) 0 -}}
+    {{- $patch := cond (ge (len $parts) 3) ((index $parts 2) | int) 0 -}}
+    {{- $w := add (mul $major 1000000) (mul $minor 1000) $patch -}}
+    {{- $candidates = $candidates | append (dict "p" $sec "w" $w) -}}
   {{- end -}}
 {{- end -}}
 
