@@ -1,0 +1,30 @@
+{{/* Redirect section root to the highest semver version subsection based on .Params.version */}}
+
+{{- define "semverWeight" -}}
+  {{- $v := . | strings.TrimSpace -}}
+  {{- $parts := split $v "." -}}
+  {{- $major := (index $parts 0) | int -}}
+  {{- $minor := cond (ge (len $parts) 2) ((index $parts 1) | int) 0 -}}
+  {{- $patch := cond (ge (len $parts) 3) ((index $parts 2) | int) 0 -}}
+  {{- add (mul $major 1000000) (mul $minor 1000) $patch -}}
+{{- end -}}
+
+{{- $candidates := slice -}}
+{{- range .Sections -}}
+  {{- with .Params.version -}}
+    {{- $candidates = $candidates | append (dict "p" $. "w" (template "semverWeight" .)) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if gt (len $candidates) 0 -}}
+  {{- $sorted := sort $candidates "w" "desc" -}}
+  {{- $latest := index $sorted 0 -}}
+  {{- with $latest.p -}}
+    <meta http-equiv="refresh" content="0; url={{ .RelPermalink }}">
+    <link rel="canonical" href="{{ .RelPermalink }}">
+    <p>Redirecting to {{ .RelPermalink }}…</p>
+  {{- end -}}
+{{- else -}}
+  <p>No version subsections found. Ensure each version folder has an <code>_index.md</code> with a <code>version</code> param.</p>
+{{- end -}}
+

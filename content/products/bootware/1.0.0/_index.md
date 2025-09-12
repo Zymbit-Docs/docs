@@ -9,8 +9,10 @@ draft: false
 weight: 70
 images: []
 toc: True
-
+version: "1.0.0"
 ---
+
+{{< bootware_version_notice >}}
 
 
 ### Bootware 1.0 Limited 

@@ -9,11 +9,14 @@ draft: false
 weight: 60
 images: []
 toc: True
-
+version: "1.1.0"
 ---
 
 
 ### Bootware 1.1: General Platform Release
+
+{{< bootware_version_notice >}}
+
 
 Bootware™ is a set of software tools and micro services for the Zymbit Security Modules. Bootware 1.1 adds support for the ZYMKEY across additional platforms. The following matrix of platforms and Operating Systems support Bootware™:
 
