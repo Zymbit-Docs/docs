@@ -9,19 +9,26 @@
   {{- add (mul $major 1000000) (mul $minor 1000) $patch -}}
 {{- end -}}
 
-{{- $root := site.GetPage "/products/bootware" -}}
+{{/* Prefer explicit section lookup to avoid path oddities */}}
+{{- $root := site.GetPage "section" "products/bootware" -}}
 {{- if $root -}}
   {{- $cands := slice -}}
   {{- range $root.Sections -}}
-    {{- with .Params.version -}}
-      {{- $cands = $cands | append (dict "p" $. "w" (template "semverWeight" .) "ver" .) -}}
+    {{- $sec := . -}}                {{/* capture the section page */}}
+    {{- with $sec.Params.version -}} {{/* dot is now the version string */}}
+      {{- $cands = $cands | append (dict
+          "p"   $sec
+          "w"   (template "semverWeight" .)
+          "ver" .
+        ) -}}
     {{- end -}}
   {{- end -}}
+
   {{- if gt (len $cands) 0 -}}
     {{- $sorted := sort $cands "w" "desc" -}}
     {{- $latest := index $sorted 0 -}}
     {{- $latestPage := $latest.p -}}
-    {{- $latestVer := $latest.ver -}}
+    {{- $latestVer  := $latest.ver -}}
     {{- $cur := .Page.CurrentSection -}}
     {{- if and $cur (ne $cur.RelPermalink $latestPage.RelPermalink) -}}
       <div class="alert alert-warning" role="alert" style="margin:1rem 0;">

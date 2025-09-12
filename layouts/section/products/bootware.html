@@ -11,8 +11,9 @@
 
 {{- $candidates := slice -}}
 {{- range .Sections -}}
-  {{- with .Params.version -}}
-    {{- $candidates = $candidates | append (dict "p" $. "w" (template "semverWeight" .)) -}}
+  {{- $sec := . -}}
+  {{- with $sec.Params.version -}}
+    {{- $candidates = $candidates | append (dict "p" $sec "w" (template "semverWeight" .)) -}}
   {{- end -}}
 {{- end -}}
 
