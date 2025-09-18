@@ -1,15 +1,15 @@
 ---
-title: "Bootware 2.0.0"
-linkTitle: "Bootware 2.0.0"
+title: "Bootware"
+linkTitle: "Bootware"
 icon: ""
 description: ""
 date: "2024-08-11"
 lastmod: "2025-09-11"
 draft: false
-weight: 20
+weight: 10
 images: []
 toc: True
-version: "2.0.0"
+#version: "2.0.0"
 ---
 
 -----
