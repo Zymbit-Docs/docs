@@ -6,6 +6,6 @@ aliases:
     - /quickstart/getting-started/zymkey4/
 draft: false
 images: []
-weight: 20
+weight: 15
 headless: true
 ---

@@ -6,6 +6,6 @@ aliases:
     - /quickstart/getting-started/scm/
 draft: false
 images: []
-weight: 25
+weight: 50
 headless: true
 ---
