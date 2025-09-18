@@ -1,9 +1,9 @@
 ---
-title: ZYMKEY4
-linktitle: ZYMKEY4
-description: Plug in essential security module for Raspberry Pi
+title: ZYMKEY ZERO (NEW)
+linktitle: ZYMKEY ZERO (NEW)
+description: Basic security module for Raspberry Pi
 aliases:
-    - /quickstart/getting-started/zymkey4/
+    - /quickstart/getting-started/zymkey0/
 draft: false
 images: []
 weight: 15

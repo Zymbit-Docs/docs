@@ -1,6 +1,6 @@
 ---
-title: HSM4
-linktitle: HSM4
+title: HSM4 (legacy)
+linktitle: HSM4 (legacy)
 description: Embedded version of ZYMKEY4 for customer integration
 aliases:
     - /quickstart/getting-started/hsm4/
