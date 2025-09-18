@@ -1,6 +1,6 @@
 ---
 title: Intro to Zymkey Application Utilities
-description: Intro to Zymkey Application Utilities
+description: []
 draft: false
 images: []
 type: docs
@@ -86,7 +86,7 @@ Currently, C, C++ and Python are supported.
 
 Before a Zymkey can be effectively used on a host computer, it must be "bound" to it. Binding is a process where a "fingerprint" is made which is composed of the host computer and its SD card serial numbers as well as the Zymkey serial number. If the host computer or SD card is changed from the time of binding, the Zymkey will refuse to accept commands.
 
-To learn more about binding your zymkey, see [Binding, Device ID, and Authentication](/reference/binding/)
+To learn more about binding your zymkey, go to the Zymbit Community "Getting Started" page for your Zymkey model (e.g. [Getting Started with ZYMKEY](https://community.zymbit.com/t/getting-started-with-zymkey-4i)).
 
 ## HSM4
 

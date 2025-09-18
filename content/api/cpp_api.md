@@ -1,7 +1,7 @@
 ---
-title: "C++ API Documentation"
-linkTitle: "C++ API Documentation"
-description: "C++ interface to Zymkey Application Utilities Library."
+title: C++ API Documentation
+linkTitle: C++ API Documentation
+description: C++ interface to Zymkey Application Utilities Library.
 lastmod:
 draft: false
 images: []
@@ -2925,6 +2925,47 @@ toc: true
 <span class="return_value">
 <p>a string for the list of files in the manifest.</p>
 </span>
+</div>
+</div>
+</div>
+</div>
+<div class="context">
+<h4 class="context-name">Public Functions</h4>
+<div class="method">
+
+#### <span><span class="returns">void</span>  <span class="pointer-ref"></span> <span class="name">enableSelfRestart</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">bool</span> <span class="pointer-ref"></span> <span class="name">enabled</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">waitSec</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">maxNumRestart</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="void--enableSelfRestart-15b9b99c" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>RESTART.</p>
+<p>Enables automatic restart of zkifc/zymbit device (in case of fatal error).</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">enabled</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) Enable/disable.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">waitSec</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) Time in seconds to wait before attempting restart.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">maxNumRestart</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) Maximum number of restarts to attempt.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li>
+                    </li>
+</ul>
 </div>
 </div>
 </div>
