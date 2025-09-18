@@ -2,7 +2,9 @@
 title: "Bootware 2.0.0"
 linkTitle: "Bootware 2.0.0"
 icon: ""
-description: ""
+description: "Beta release. Includes seemless integration of Secure Boot."
+aliases:
+    - /bootware
 date: "2024-08-11"
 lastmod: "2025-09-11"
 draft: false

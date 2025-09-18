@@ -1,6 +1,6 @@
 ---
-title: "Bootware 1.1 General (deprecated)"
-linkTitle: "Bootware 1.1 General"
+title: "Bootware 1.1 (deprecated)"
+linkTitle: "Bootware 1.1 (deprecated)"
 icon: ""
 description: ""
 date: "2024-07-23"
