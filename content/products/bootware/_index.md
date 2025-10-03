@@ -4,6 +4,6 @@ linktitle: Bootware
 description: Zymbit core device security services
 draft: false
 images: []
-weight: 25
+weight: 50
 #headless: true
 ---
