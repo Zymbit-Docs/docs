@@ -1,24 +1,13 @@
-{{/* Standalone version selector you can place in Markdown: {{< version-menu >}} */}}
-{{ if gt (len .Site.Params.versions) 0 }}
-  {{ $menuLabel := default "Version" .Site.Params.version_menu }}
-  {{ $pagelinks := .Site.Params.version_menu_pagelinks }}
-  {{ $rel := .Page.RelPermalink }}
-
-  <div class="dropdown my-3">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="versionMenuBtn"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      {{ $menuLabel }}
-    </button>
-    <div class="dropdown-menu" aria-labelledby="versionMenuBtn">
-      {{ range .Site.Params.versions }}
-        {{ $target := .url }}
-        {{ if $pagelinks }}
-          {{/* Link to the same page path in the other version */}}
-          {{ $target = printf "%s%s" (trimRight "/" .url) $rel }}
-        {{ end }}
-        <a class="dropdown-item" href="{{ $target }}">{{ .version }}</a>
-      {{ end }}
-    </div>
-  </div>
-{{ end }}
+{{/* Use in content: {{< version-menu >}} or {{< version-menu show=true >}} */}}
+{{- $forced := .Get "show" -}}
+{{- $show := or $forced (.Page.Param "show_versions") -}}
+{{- if and (gt (len site.Params.versions) 0) $show -}}
+<div class="my-3 d-print-none">
+  <ul class="nav">
+    <li class="nav-item dropdown">
+      {{ partial "navbar-version-selector.html" . }}
+    </li>
+  </ul>
+</div>
+{{- end -}}
 
