@@ -1,6 +1,9 @@
 ---
 title: "Bootware 2.0.0"
 linkTitle: "Bootware 2.0.0"
+cascade:
+    params:
+        show_versions: true
 icon: ""
 description: "Beta release. Includes seemless integration of Secure Boot."
 aliases:
