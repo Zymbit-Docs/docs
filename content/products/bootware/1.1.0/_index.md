@@ -1,9 +1,13 @@
 ---
 title: "Bootware 1.1 (deprecated)"
 linkTitle: "Bootware 1.1 (deprecated)"
+toc_hide: true           # hides THIS section page from the left nav
+hide_summary: true       # also hides it from the section landing page tiles
 cascade:
-    params:
-        show_versions: true
+  toc_hide: true         # hide all child pages from the left nav
+  hide_summary: true     # hide children from section landing page lists
+  params:
+      show_versions: true
 icon: ""
 description: ""
 date: "2024-07-23"

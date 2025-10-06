@@ -1,9 +1,13 @@
 ---
 title: "Bootware 1.3.0"
 linkTitle: "Bootware 1.3.0"
+toc_hide: true           # hides THIS section page from the left nav
+hide_summary: true       # also hides it from the section landing page tiles
 cascade:
-    params:
-        show_versions: true
+  toc_hide: true         # hide all child pages from the left nav
+  hide_summary: true     # hide children from section landing page lists
+  params:
+      show_versions: true
 icon: ""
 description: ""
 date: "2024-08-11"
