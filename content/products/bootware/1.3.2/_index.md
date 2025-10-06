@@ -1,15 +1,15 @@
 ---
 title: "Bootware 1.3.2"
 linkTitle: "Bootware 1.3.2"
-toc_hide: true           # hides THIS section page from the left nav
-hide_summary: true       # also hides it from the section landing page tiles
+#toc_hide: true           # hides THIS section page from the left nav
+#hide_summary: true       # also hides it from the section landing page tiles
 cascade:
-  toc_hide: true         # hide all child pages from the left nav
-  hide_summary: true     # hide children from section landing page lists
+  #toc_hide: true         # hide all child pages from the left nav
+  #hide_summary: true     # hide children from section landing page lists
   params:
       show_versions: true
 icon: ""
-description: ""
+description: "Latest stable release."
 date: "2024-08-11"
 lastmod: "2025-09-11"
 draft: false
