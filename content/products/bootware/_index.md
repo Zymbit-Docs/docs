@@ -1,10 +1,13 @@
 ---
 title: Bootware Services
 linktitle: Bootware
+cascade:
+    params:
+        show_versions: true
 description: Zymbit core device security services
 draft: false
 images: []
 weight: 50
 #headless: true
 ---
-Older Bootware Versions: {{< version-menu >}}
+Other Bootware Versions: {{< version-menu >}}
