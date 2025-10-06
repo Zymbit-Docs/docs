@@ -19,11 +19,16 @@
 				<a class="nav-link{{if $active }} active{{end}}" href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>{{ with .Pre}}{{ $pre }}{{ end }}<span{{if $active }} class="active"{{end}}>{{ .Name }}</span>{{ with .Post}}{{ $post }}{{ end }}</a>
 			</li>
 			{{ end }}
-			{{ if  .Site.Params.versions }}
-			<li class="nav-item dropdown mr-4 d-none d-lg-block">
-				{{ partial "navbar-version-selector.html" . }}
-			</li>
-			{{ end }}
+			{{/* Show Docsy version selector only when:
+                               1) versions are defined, and
+                               2) this page (or an ancestor) set params.show_versions: true
+                        */}}
+                        {{ $showVersions := .Page.Param "show_versions" }}
+                        {{ if and (gt (len .Site.Params.versions) 0) $showVersions }}
+                        <li class="nav-item dropdown mr-4 d-none d-lg-block">
+                                {{ partial "navbar-version-selector.html" . }}
+                        </li>
+                        {{ end }}
 			{{ if  (gt (len .Site.Home.Translations) 0) }}
 			<li class="nav-item dropdown mr-4 d-none d-lg-block">
 				{{ partial "navbar-lang-selector.html" . }}
