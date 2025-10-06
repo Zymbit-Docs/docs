@@ -1,6 +1,9 @@
 ---
 title: "Bootware 1.3.0"
 linkTitle: "Bootware 1.3.0"
+cascade:
+    params:
+        show_versions: true
 icon: ""
 description: ""
 date: "2024-08-11"

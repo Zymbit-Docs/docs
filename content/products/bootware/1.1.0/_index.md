@@ -1,6 +1,9 @@
 ---
 title: "Bootware 1.1 (deprecated)"
 linkTitle: "Bootware 1.1 (deprecated)"
+cascade:
+    params:
+        show_versions: true
 icon: ""
 description: ""
 date: "2024-07-23"

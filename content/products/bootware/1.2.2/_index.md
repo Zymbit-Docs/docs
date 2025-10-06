@@ -1,6 +1,9 @@
 ---
 title: "Bootware 1.2.2"
 linkTitle: "Bootware 1.2.2"
+cascade:
+    params:
+        show_versions: true
 icon: ""
 description: ""
 aliases:
