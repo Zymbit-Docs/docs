@@ -16,30 +16,37 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 #### Latest Platform and OS Support
 
-## Raspberry Pi Support Matrix
+{{< tabpane text=true >}}
 
-{{< tabs >}}
-
-{{< tab "Raspberry Pi 3B+" >}}
-**Status legend:** <span class="badge badge-success">Active</span> <span class="badge badge-warning">Beta</span> <span class="badge badge-secondary">Deprecated</span>
+  {{% tab header="Raspberry Pi 3B+" %}}
+**Status legend:** <span class="badge bg-success">Active</span> <span class="badge bg-warning">Beta</span> <span class="badge bg-secondary">Deprecated</span>
 
 | Product | Supported OS Versions | Status | Notes |
 |---|---|---|---|
-| Product X | Raspberry Pi OS (Buster 32-bit) | <span class="badge badge-secondary">Deprecated</span> | Performance limits |
-| Product Y | Raspberry Pi OS (Bullseye 32-bit) | <span class="badge badge-warning">Beta</span> | Feature subset |
-{{< /tab >}}
+| Product X | Raspberry Pi OS (Buster 32-bit) | <span class="badge bg-secondary">Deprecated</span> | Performance limits |
+| Product Y | Raspberry Pi OS (Bullseye 32-bit) | <span class="badge bg-warning">Beta</span> | Feature subset |
+  {{% /tab %}}
 
-{{< tab "Raspberry Pi 4" >}}
-**Status legend:** <span class="badge badge-success">Active</span> <span class="badge badge-warning">Beta</span> <span class="badge badge-secondary">Deprecated</span>
+  {{% tab header="Raspberry Pi 4" %}}
+**Status legend:** <span class="badge bg-success">Active</span> <span class="badge bg-warning">Beta</span> <span class="badge bg-secondary">Deprecated</span>
 
 | Product | Supported OS Versions | Status | Notes |
 |---|---|---|---|
-| Product X | Raspberry Pi OS (Bullseye 32/64-bit), Ubuntu 22.04 | <span class="badge badge-success">Active</span> | Fully tested |
-| Product Z | Debian 11 (kernel ≥ 5.15) | <span class="badge badge-success">Active</span> | Requires Docker |
-{{< /tab >}}
+| Product X | Raspberry Pi OS (Bullseye 32/64-bit), Ubuntu 22.04 | <span class="badge bg-success">Active</span> | Fully tested |
+| Product Z | Debian 11 (kernel ≥ 5.15) | <span class="badge bg-success">Active</span> | Requires Docker |
+  {{% /tab %}}
 
-{{< tab "Raspberry Pi 5" >}}
-**Status legend:** <span class="badge badge-success">Active</span> <span class="badge badge-warning">Beta</span> <span class="badge badge-secondary">Deprecated</span>
+  {{% tab header="Raspberry Pi 5" %}}
+**Status legend:** <span class="badge bg-success">Active</span> <span class="badge bg-warning">Beta</span> <span class="badge bg-secondary">Deprecated</span>
+
+| Product | Supported OS Versions | Status | Notes |
+|---|---|---|---|
+| Product X | Raspberry Pi OS (Bookworm 64-bit) | <span class="badge bg-warning">Beta</span> | Driver validation in progress |
+| Product Y | Raspberry Pi OS (Bookworm 64-bit) | <span class="badge bg-success">Active</span> | Feature parity with Pi 4 |
+  {{% /tab %}}
+
+{{< /tabpane >}}
+
 
 | Product | Supported OS Versions | Status | Notes |
 |---|---|---|---|
