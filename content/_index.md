@@ -20,25 +20,36 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 {{< tabpane text=true >}}
 
-  {{% tab header="Raspberry Pi 3B+" %}}
-**Status legend:** <span class="badge bg-success">Active</span>
-| Product | Supported OS Versions |
-|---|---|
-| Product X | Raspberry Pi OS (Buster 32-bit) |
-  {{% /tab %}}
-
   {{% tab header="Raspberry Pi 4" %}}
-**Status legend:** <span class="badge bg-success">Active</span>
 | Product | Supported OS Versions |
 |---|---|
-| Product X | Raspberry Pi OS (Bullseye 32/64), Ubuntu 22.04 |
+| ZYMKEY4 | Raspberry Pi OS (Bookworm 64-bit) |
+| ZYMKEY5 | Raspberry Pi OS (Bookworm 64-bit) |
+| ZYMKEY ZERO | Raspberry Pi OS (Bookworm 64-bit) |
   {{% /tab %}}
 
   {{% tab header="Raspberry Pi 5" %}}
-**Status legend:** <span class="badge bg-success">Active</span>
 | Product | Supported OS Versions |
 |---|---|
-| Product X | Raspberry Pi OS (Bookworm 64-bit) |
+| ZYMKEY4 | Raspberry Pi OS (Bookworm 64-bit) |
+| ZYMKEY5 | Raspberry Pi OS (Bookworm 64-bit) |
+| ZYMKEY ZERO | Raspberry Pi OS (Bookworm 64-bit) |
+  {{% /tab %}}
+
+  {{% tab header="Raspberry CM4" %}}
+| Product | Supported OS Versions |
+|---|---|
+| ZYMKEY4 | Raspberry Pi OS (Bookworm 64-bit) |
+| ZYMKEY5 | Raspberry Pi OS (Bookworm 64-bit) |
+| ZYMKEY ZERO | Raspberry Pi OS (Bookworm 64-bit) |
+  {{% /tab %}}
+
+  {{% tab header="Raspberry CM5" %}}
+| Product | Supported OS Versions |
+|---|---|
+| ZYMKEY4 | Raspberry Pi OS (Bookworm 64-bit) |
+| ZYMKEY5 | Raspberry Pi OS (Bookworm 64-bit) |
+| ZYMKEY ZERO | Raspberry Pi OS (Bookworm 64-bit) |
   {{% /tab %}}
 
 {{< /tabpane >}}
