@@ -20,7 +20,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 {{< tabpane text=true >}}
 
-  {{& tab header="Raspberry Pi 4" &}}
+  {{% tab header="Raspberry Pi 4" %}}
 **Status legend:** <span class="badge bg-success">Active</span> <span class="badge bg-warning">Beta</span> <span class="badge bg-secondary">Deprecated</span>
 
 | Product | Supported OS Versions |
@@ -28,25 +28,25 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 | ZYMKEY4 | Raspberry Pi OS (Bookworm 64-bit) |
 | ZYMKEY5 | Raspberry Pi OS (Bookworm 64-bit) |
 | ZYMKEY ZERO | Raspberry Pi OS (Bookworm 64-bit) |
-  {{& /tab &}}
+  {{% /tab %}}
 
-  {{& tab header="Raspberry Pi 5" &}}
+  {{% tab header="Raspberry Pi 5" %}}
 **Status legend:** <span class="badge bg-success">Active</span> <span class="badge bg-warning">Beta</span> <span class="badge bg-secondary">Deprecated</span>
 | Product | Supported OS Versions |
 |---|---|
 | ZYMKEY4 | Raspberry Pi OS (Bookworm 64-bit) |
 | ZYMKEY5 | Raspberry Pi OS (Bookworm 64-bit) |
 | ZYMKEY ZERO | Raspberry Pi OS (Bookworm 64-bit) |
-  {{& /tab &}}
+  {{% /tab %}}
 
-  {{& tab header="Raspberry CM4" &}}
+  {{% tab header="Raspberry CM4" %}}
 **Status legend:** <span class="badge bg-success">Active</span> <span class="badge bg-warning">Beta</span> <span class="badge bg-secondary">Deprecated</span>
 | Product | Supported OS Versions |
 |---|---|
 | ZYMKEY4 | Raspberry Pi OS (Bookworm 64-bit) |
 | ZYMKEY5 | Raspberry Pi OS (Bookworm 64-bit) |
 | ZYMKEY ZERO | Raspberry Pi OS (Bookworm 64-bit) |
-  {{& /tab &}}
+  {{% /tab %}}
 
   {{< tab header="Raspberry CM5" >}}
 **Status legend:** <span class="badge bg-success">Active</span> <span class="badge bg-warning">Beta</span> <span class="badge bg-secondary">Deprecated</span>
