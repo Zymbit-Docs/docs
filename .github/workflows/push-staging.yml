@@ -95,6 +95,8 @@ jobs:
       WORKFLOW_TRIGGER: ${{ needs.get-trigger.outputs.workflow_trigger }}
       ORIGIN_TRIGGERED: ${{ needs.get-trigger.outputs.origin_triggered }}
       ORIGIN_BRANCH: ${{ needs.get-trigger.outputs.head_branch }}
+      HUGO_VERSION: "0.121.2"
+      HUGO_ENV: production
 
     steps:
       - name: Load deploy key for staging repo
@@ -111,6 +113,31 @@ jobs:
 
           git config --global user.name github-actions[bot]
           git config --global user.email github-actions[bot]@users.noreply.github.com
+
+       ##############################
+       - name: Set up Hugo (extended)
+         uses: peaceiris/actions-hugo@v2
+         with:
+           hugo-version: ${{ env.HUGO_VERSION }}
+           extended: true
+ 
+       - name: Set up Node (for PostCSS/Autoprefixer)
+         uses: actions/setup-node@v4
+         with:
+           node-version: "20"
+ 
+       - name: Install PostCSS deps
+         run: |
+           if [ -f package-lock.json ]; then
+             npm ci
+           else
+             npm init -y >/dev/null 2>&1
+             npm i -D postcss postcss-cli autoprefixer
+           fi
+ 
+       - name: Build site
+         run: hugo --minify
+       ##############################
 
       # Checkout repository under $GITHUB_WORKSPACE
       - name: Checkout origin branch
