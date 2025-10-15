@@ -95,7 +95,7 @@ jobs:
       WORKFLOW_TRIGGER: ${{ needs.get-trigger.outputs.workflow_trigger }}
       ORIGIN_TRIGGERED: ${{ needs.get-trigger.outputs.origin_triggered }}
       ORIGIN_BRANCH: ${{ needs.get-trigger.outputs.head_branch }}
-      HUGO_VERSION: "0.121.2"
+      HUGO_VERSION: "0.151.1"
       HUGO_ENV: production
 
     steps:
