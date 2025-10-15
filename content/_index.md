@@ -31,37 +31,6 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
   {{% /tab %}}
 
-  {{< tab header="Raspberry Pi 5" >}}
-
-<table>
-<thead>
-<tr>
-<th>Product</th>
-<th>Supported OS Versions</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ZYMKEY4</td>
-<td>Raspberry Pi OS (Bookworm 64-bit)</td>
-</tr>
-<tr>
-<td>ZYMKEY5</td>
-<td>Raspberry Pi OS (Bookworm 64-bit)</td>
-</tr>
-<tr>
-<td>ZYMKEY ZERO</td>
-<td>Raspberry Pi OS (Bookworm 64-bit)</td>
-</tr>
-<tr>
-<td>HSM4</td>
-<td>Raspberry Pi OS (Bookworm 64-bit)</td>
-</tr>
-</tbody>
-</table>
-
-  {{< /tab >}}
-
   {{% tab header="Raspberry CM4" %}}
 
 | Product | Supported OS Versions |
