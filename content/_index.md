@@ -27,7 +27,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 | ZYMKEY4 | Raspberry Pi OS (Bookworm 64-bit) |
 | ZYMKEY5 | Raspberry Pi OS (Bookworm 64-bit) |
 | ZYMKEY ZERO | Raspberry Pi OS (Bookworm 64-bit) |
-| HSM6 | Raspberry Pi OS (Bookworm 64-bit) |
+| HSM4 | Raspberry Pi OS (Bookworm 64-bit) |
 
   {{% /tab %}}
 
