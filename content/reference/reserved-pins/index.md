@@ -4,7 +4,7 @@ description: ""
 aliases:
     - /technical_reference/reserved-pins/
 date: ""
-lastmod: "2022-08-08"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 55

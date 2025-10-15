@@ -3,7 +3,7 @@ title: "Creating an Oversight (Read Only) Wallet"
 linkTitle: "Oversight Wallet"
 description: ""
 date: "2022-02-22"
-lastmod: "2022-04-28"
+lastmod: "2025-10-15"
 draft: false
 weight: 80
 images: []

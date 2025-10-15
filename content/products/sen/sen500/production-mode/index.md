@@ -5,7 +5,7 @@ description: "Enabling Production Mode - SEN-500"
 aliases:
     - /quickstart/production-mode/scm/
 date: "2022-04-29"
-lastmod: "2023-01-22"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 20

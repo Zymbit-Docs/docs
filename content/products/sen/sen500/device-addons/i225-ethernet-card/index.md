@@ -6,7 +6,7 @@ description: ""
 aliases:
     - /quickstart/addons/i225-ethernet
 date: ""
-lastmod: "2025-09-21"
+lastmod: "2025-10-15"
 draft: false
 weight: 10
 images: []

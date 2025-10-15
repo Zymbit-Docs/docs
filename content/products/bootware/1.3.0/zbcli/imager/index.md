@@ -3,7 +3,7 @@ title: "zbcli imager"
 linkTitle: "imager"
 description: Generates signed zymbit images (zi) 
 date: "2024-08-22"
-lastmod: "2024-09-16"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

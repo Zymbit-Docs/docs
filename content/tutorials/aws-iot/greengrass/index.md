@@ -3,7 +3,7 @@ title: "Getting Started with AWS IoT Greengrass"
 linkTitle: "Getting Started with AWS IoT Greengrass"
 description: ""
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 toc: true

@@ -3,7 +3,7 @@ title: "Working with the Zymbit Hardware Wallet"
 linkTitle: "Zymbit Hardware Wallet"
 description: ""
 date: "2022-02-08"
-lastmod: "2022-09-30"
+lastmod: "2025-10-15"
 draft: false
 weight: 20
 images: []

@@ -2,7 +2,7 @@
 title: "C API Documentation"
 linkTitle: "C API Documentation"
 description: "C interface to Zymkey Application Utilities Library."
-lastmod:
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

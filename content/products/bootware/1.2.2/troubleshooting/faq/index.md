@@ -2,7 +2,7 @@
 title: Frequently Asked Questions
 linkTitle: "Bootware 1.2.2 FAQ"
 description: Answers to Frequently asked questions regarding Bootware
-lastmod: "2024-09-26"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

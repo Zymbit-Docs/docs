@@ -5,7 +5,7 @@ description: ""
 aliases:
     - /technical_reference/power-quality/
 date: ""
-lastmod: "2025-05-09"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 40

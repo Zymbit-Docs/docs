@@ -2,7 +2,7 @@
 title: Bootware 1.2.2 Additional Info
 linkTitle: "Bootware 1.2.2 Additional File Info"
 description: Detailed information about important Bootware 1.2.2 files
-lastmod: "2024-09-26"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

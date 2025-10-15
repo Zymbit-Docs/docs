@@ -1,7 +1,7 @@
 ---
 title: Developing on the CM4
 linkTitle: Developing on the CM4"
-lastmod:
+lastmod: "2025-10-15"
 #aliases:
 #    - /zboot-preview/
 date: "2024-04-22"

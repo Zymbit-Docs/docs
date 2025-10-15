@@ -3,7 +3,7 @@ title: "zbcli update-config"
 linkTitle: "update-config"
 description: "update-config - Sets configs for installing updates"
 date: "2024-08-14"
-lastmod: "2024-12-08"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

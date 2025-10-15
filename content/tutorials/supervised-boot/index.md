@@ -5,7 +5,7 @@ description: ""
 aliases:
     - /tutorials/verified-boot/
 date: "2022-03-28"
-lastmod: "2023-01-22"
+lastmod: "2025-10-15"
 draft: false
 images: []
 toc: true

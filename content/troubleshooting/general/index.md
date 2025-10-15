@@ -1,7 +1,7 @@
 ---
 title: "General FAQ & Troubleshooting"
 linkTitle: "General"
-lastmod: "2025-04-02"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 10

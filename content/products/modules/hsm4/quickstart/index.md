@@ -5,7 +5,7 @@ description: ""
 aliases:
     - /quickstart/getting-started/hsm4/
 date: ""
-lastmod: "2022-03-08"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: -670

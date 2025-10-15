@@ -1,7 +1,7 @@
 ---
 title: "Quickstart - SEN 400 Prototype Kit"
 linkTitle: "Quickstart"
-lastmod: "2024-10-30"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 5

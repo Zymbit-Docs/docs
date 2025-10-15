@@ -5,7 +5,7 @@ description: "Enabling Production Mode - ZYMKEY FIVE"
 aliases:
     - /quickstart/production-mode/zymkey5/
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 1000

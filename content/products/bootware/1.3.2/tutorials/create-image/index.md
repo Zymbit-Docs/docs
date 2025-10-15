@@ -2,7 +2,7 @@
 title: "Creating an image"
 linktitle: "Creating an image" 
 description: "Learn how to configure and use Bootware, including how to create an image"
-lastmod: "2025-07-29"
+lastmod: "2025-10-15"
 aliases:
     - /bootware/tutorials/create-image
     - /bootware1.3.1/tutorials/create-image

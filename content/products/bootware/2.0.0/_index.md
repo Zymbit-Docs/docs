@@ -9,7 +9,7 @@ description: "Beta release. Includes seemless integration of Secure Boot."
 aliases:
     - /bootware
 date: "2024-08-11"
-lastmod: "2025-09-11"
+lastmod: "2025-10-15"
 draft: false
 weight: 20
 images: []

@@ -1,7 +1,7 @@
 ---
 title: "Image Files"
 linkTitle: "Image Files" 
-lastmod: "2024-04-23"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 70

@@ -2,7 +2,7 @@
 title: "Bootware 1.3.0 Tutorials and Videos"
 linkTitle: "Bootware 1.3.0 Tutorials" 
 description: "Links to on-line tutorials and video material"
-lastmod: "2025-03-12"
+lastmod: "2025-10-15"
 aliases:
     - /bootware/tutorials
 

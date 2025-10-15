@@ -5,7 +5,7 @@ description: "ZYMKEY4 Conformity Documents"
 aliases:
     - /technical_reference/conformity/zymkey4/
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 1

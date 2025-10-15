@@ -2,7 +2,7 @@
 title: Bootware Signing and Verifying
 linkTitle: "Sign and Verify"
 description: Overview of Hardware (SCM and HSM6) and Software sign and verify
-lastmod:
+lastmod: "2025-10-15"
 date: "2024-09-26"
 draft: false
 images: []

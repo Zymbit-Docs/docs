@@ -2,7 +2,7 @@
 title: "Troubleshooting and FAQ"
 linkTitle: "Troubleshooting/FAQ"
 description: Collection of Bootware troubleshooting tips and FAQ items
-lastmod: "2024-12-08"
+lastmod: "2025-10-15"
 aliases:
     - /bootware/troubleshooting/
 draft: false

@@ -11,7 +11,7 @@ cascade:
 icon: ""
 description: "Latest stable release."
 date: "2024-08-11"
-lastmod: "2025-09-11"
+lastmod: "2025-10-15"
 draft: false
 weight: 30
 images: []

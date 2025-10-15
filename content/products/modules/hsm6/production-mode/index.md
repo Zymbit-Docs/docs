@@ -5,7 +5,7 @@ description: "Enabling Production Mode - HSM6"
 aliases:
     - /quickstart/production-mode/hsm6/
 date: "2022-03-08"
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 1000

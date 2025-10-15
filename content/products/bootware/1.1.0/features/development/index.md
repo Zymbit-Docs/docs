@@ -1,7 +1,7 @@
 ---
 title: Developing on the CM4 with Bootware 1.0-general
 linkTitle: Developing on the CM4 with Bootware 1.0-general
-lastmod:
+lastmod: "2025-10-15"
 #aliases:
 #    - /zboot-preview/
 date: "2024-06-05"

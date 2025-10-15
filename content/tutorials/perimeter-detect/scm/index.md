@@ -2,8 +2,8 @@
 title : "Perimeter Detect: SCM"
 linkTitle: "SCM"
 description: ""
-date: "05-11-2022"
-lastmod: "09-29-2022"
+date: "2022-05-11"
+lastmod: "2025-10-15"
 draft: false
 images: []
 layout: "single"

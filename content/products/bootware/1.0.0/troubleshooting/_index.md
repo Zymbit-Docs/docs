@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting and FAQ"
 linkTitle: "Troubleshooting/FAQ"
-lastmod: "2024-04-22"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 50

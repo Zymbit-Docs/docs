@@ -1,7 +1,7 @@
 ---
 title: "SCM Motherboard D35 FAQ and Troubleshooting"
 linkTitle: "SCM Motherboard D35"
-lastmod: "2023-10-17"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 18

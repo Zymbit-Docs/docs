@@ -2,7 +2,7 @@
 title: "Bootware 1.3.0 Error Codes"
 linkTitle: "Logging and Bootware 1.3.0 Error Codes"
 description: List of available Bootware 1.3.0 Error Codes
-lastmod: "9-22-2023"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 10

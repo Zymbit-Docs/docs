@@ -2,7 +2,7 @@
 title: "Pi4/CM4 Wi-Fi Device Tree Blob Update"
 linkTitle: "Pi4/CM4 Wi-Fi: Device Tree Blob Update"
 description: "Steps necessary to update the Device Tree Blob file to allow Bootware Wi-Fi endpoint access"
-lastmod: "2025-07-18"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

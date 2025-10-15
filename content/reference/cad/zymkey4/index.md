@@ -5,7 +5,7 @@ description: "3D Step Model, drawings, and GPIO pinout for the ZYMKEY4"
 aliases:
     - /technical_reference/cad/zymkey4/
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 1

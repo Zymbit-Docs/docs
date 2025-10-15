@@ -2,7 +2,7 @@
 title: "Troubleshooting and FAQ"
 linkTitle: "Troubleshooting/FAQ"
 description: Collection of Bootware troubleshooting tips and FAQ items
-lastmod: "2024-11-24"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 50

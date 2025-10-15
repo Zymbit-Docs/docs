@@ -3,7 +3,7 @@ title: "SLIP39 and Shamir's Wallet Recovery Example"
 linkTitle: "SLIP39 and Shamir's"
 description: ""
 date: "2022-02-04"
-lastmod: "2022-09-30"
+lastmod: "2025-10-15"
 draft: false
 weight: 60
 images: []

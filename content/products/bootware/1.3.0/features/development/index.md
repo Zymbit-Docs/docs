@@ -3,7 +3,7 @@ title: Developing on the CM4
 linkTitle: Developing on the CM4
 description: Outlines the process for developing on the CM4 and transitioning to the secure SCM
 date: "2024-08-22"
-lastmod: "2025-03-13"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

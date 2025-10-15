@@ -5,7 +5,7 @@ description: "HSM6 Conformity Documents"
 aliases:
     - /technical_reference/conformity/hsm6/
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 3

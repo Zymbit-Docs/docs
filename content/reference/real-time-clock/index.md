@@ -5,7 +5,7 @@ description: ""
 aliases:
     - /technical_reference/real-time-clock/
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 60

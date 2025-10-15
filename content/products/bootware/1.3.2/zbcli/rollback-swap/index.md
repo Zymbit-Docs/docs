@@ -3,7 +3,7 @@ title: "zbcli rollback-swap"
 linkTitle: "rollback-swap"
 description: "Performs rollback swap between active and backup root partitions"
 date: "2024-08-14"
-lastmod: "2024-12-08"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

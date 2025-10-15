@@ -5,7 +5,7 @@ description: "Step Model and CAD drawings for the Secure Compute Module (SCM) "
 aliases:
     - /technical_reference/cad/scm/
 date: ""
-lastmod: "2025-07-31"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 40

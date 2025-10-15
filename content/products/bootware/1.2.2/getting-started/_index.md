@@ -3,7 +3,7 @@ title: "Getting Started: Bootware 1.2.2"
 linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
-lastmod: "2024-10-15"
+lastmod: "2025-10-15"
 draft: false
 type: docs
 images: []

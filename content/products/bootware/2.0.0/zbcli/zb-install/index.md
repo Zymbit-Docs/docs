@@ -3,7 +3,7 @@ title: "zb-install"
 linkTitle: "zb-install"
 description: Bootstraps the proper binary zbcli executable for installation
 date: "2024-12-11"
-lastmod: "2024-12-11"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

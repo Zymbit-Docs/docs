@@ -1,7 +1,7 @@
 ---
 title: "Bootware 1.0-general Getting Started"
 linkTitle: "Bootware 1.0-general Getting Started"
-lastmod:
+lastmod: "2025-10-15"
 #aliases:
 #    - /bootware/getting-started/
 date: "2024-06-19"

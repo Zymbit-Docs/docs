@@ -1,7 +1,7 @@
 ---
 title: "Bootware Error Codes"
 linkTitle: "Logging and Bootware Error Codes"
-lastmod: "9-22-2023"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 10

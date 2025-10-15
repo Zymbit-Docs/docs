@@ -2,7 +2,7 @@
 title: "Quickstart - Secure Compute Module (SCM)"
 linkTitle: "Quickstart"
 description: "Configure and setup your SCM"
-lastmod: "2025-08-29"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 5

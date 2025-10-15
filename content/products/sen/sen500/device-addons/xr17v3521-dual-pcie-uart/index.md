@@ -6,7 +6,7 @@ description: ""
 aliases:
     - /quickstart/addons/xr17v3521-pcie-serial
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 weight: 10
 images: []

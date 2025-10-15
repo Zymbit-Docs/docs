@@ -3,7 +3,7 @@ title: Bootware on Low Memory Platforms
 linkTitle: Bootware on Low Memory Platforms
 description: Installing on memory resource limited Pi platforms, such as the PiZero 2W
 date: "2025-03-28"
-lastmod: "2025-07-18"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

@@ -5,7 +5,7 @@ description: ""
 aliases:
     - /quickstart/getting-started/zymkey4/
 date: ""
-lastmod: "03-13-2024"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 1

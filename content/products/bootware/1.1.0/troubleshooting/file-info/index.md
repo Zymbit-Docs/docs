@@ -1,7 +1,7 @@
 ---
 title: Bootware Additional Info
 linkTitle: "Additional Bootware File Info"
-lastmod:
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

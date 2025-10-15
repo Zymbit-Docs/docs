@@ -1,7 +1,7 @@
 ---
 title: Frequently Asked Questions
 linkTitle: "Bootware 1.1 FAQ"
-lastmod:
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

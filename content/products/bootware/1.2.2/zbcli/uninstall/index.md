@@ -3,7 +3,7 @@ title: "zbcli uninstall"
 linkTitle: "uninstall"
 description: "Uninstalls Bootware tools and artifacts"
 date: "2024-08-14"
-lastmod: "2024-09-16"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

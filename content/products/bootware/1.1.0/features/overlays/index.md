@@ -1,7 +1,7 @@
 ---
 title: Zymbit Bootware 1.0-general Overlay Image Updates
 linkTitle: "Bootware 1.0-general Overlay Image Updates"
-lastmod:
+lastmod: "2025-10-15"
 date: "2024-04-17"
 draft: false
 images: []

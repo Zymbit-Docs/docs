@@ -2,8 +2,8 @@
 title : "Perimeter Detect: Secure Edge Nodes"
 linkTitle: "Secure Edge Node"
 description: ""
-date: "05-11-2022"
-lastmod: "03-20-2023"
+date: "2022-05-11"
+lastmod: "2025-10-15"
 draft: false
 images: []
 layout: "single"

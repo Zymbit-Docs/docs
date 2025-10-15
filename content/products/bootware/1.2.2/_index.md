@@ -13,7 +13,7 @@ description: ""
 aliases:
     - /bootware1.2.2/
 date: "2024-08-11"
-lastmod: "2025-03-29"
+lastmod: "2025-10-15"
 draft: false
 weight: 50
 images: []

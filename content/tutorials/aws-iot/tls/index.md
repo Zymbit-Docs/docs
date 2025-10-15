@@ -3,7 +3,7 @@ title : "AWS IoT - TLS Client Certificate Authentication"
 linkTitle: "Transport Level Security"
 description: ""
 date: "2022-01-24"
-lastmod: "2022-02-01"
+lastmod: "2025-10-15"
 draft: false
 images: []
 toc: true

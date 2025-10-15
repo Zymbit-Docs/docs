@@ -5,7 +5,7 @@ description: ""
 aliases:
     - /technical_reference/conformity/scm/
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 1

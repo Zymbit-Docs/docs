@@ -6,7 +6,7 @@ description: ""
 aliases:
     - /quickstart/addons/
 date: "2024-08-21"
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 weight: 30
 images: []

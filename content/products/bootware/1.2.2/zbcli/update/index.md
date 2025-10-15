@@ -3,7 +3,7 @@ title: "Bootware 1.2.2 zbcli update"
 linkTitle: "Bootware 1.2.2 update"
 description: "Schedules Bootware to perform device update on the next reboot"
 date: "2024-08-14"
-lastmod: "2024-09-16"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs

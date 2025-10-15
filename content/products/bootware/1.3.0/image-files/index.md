@@ -2,7 +2,7 @@
 title: "1.3.0 Image Files"
 linkTitle: "1.3.0 Image Files" 
 description: "Links to pre-prepared download image files and keys"
-lastmod: "2025-03-12"
+lastmod: "2025-10-15"
 aliases:
     - /bootware/image-files/
 draft: false

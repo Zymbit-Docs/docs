@@ -4,7 +4,7 @@ linkTitle: "Integrate Zymbit with AWS"
 icon: ""
 description: ""
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 ---

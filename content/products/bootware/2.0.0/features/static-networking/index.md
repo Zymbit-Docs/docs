@@ -2,7 +2,7 @@
 title: Zymbit Bootware Static Networking Configuration
 linkTitle: "Configuring Static Networking"
 description: Describes advanced networking configuration options
-lastmod: "2025-07-15"
+lastmod: "2025-10-15"
 date: "2025-07-15"
 draft: false
 aliases:

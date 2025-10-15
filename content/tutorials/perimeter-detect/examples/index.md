@@ -3,7 +3,7 @@ title : "Perimeter Detect Circuit Examples"
 linkTitle: "CIRCUIT EXAMPLES"
 description: ""
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 layout: "single"

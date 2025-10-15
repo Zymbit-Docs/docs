@@ -5,7 +5,7 @@ description: "Developer Kit assembly 3D model"
 aliases:
     - /technical_reference/cad/developerkit2/
 date: ""
-lastmod: "2023-10-18"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 50
