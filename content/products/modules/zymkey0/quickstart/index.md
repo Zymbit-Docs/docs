@@ -12,14 +12,14 @@ weight: 1
 toc: true
 ---
 
-ZYMKEY ZERO is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi. It connects to the GPIO header of the SBC and uses the {{< term/i2c >}} bus and `GPIO4` as a WAKE_PIN to communicate with the SBC CPU via an encrypted channel.
+ZYMKEY ZERO is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi. It connects to the GPIO header of the SBC and uses the {{% term/i2c %}} bus and `GPIO4` as a WAKE_PIN to communicate with the SBC CPU via an encrypted channel.
 
 In this *Getting Started* guide we describe how to install your ZYMKEY ZERO to a Raspberry Pi running Raspberry PI OS or Ubuntu. The installation process is the same for both of these Linux distributions.
 
 <!-- TODO: Update link -->
 <!-- **[Learn about Linux OS support for ZYMKEY ZERO.](https://community.zymbit.com/c/operating-system/23)** -->
 
-The ZYMKEY ZERO occupies 10 pins on the GPIO header. It can also be used with other GPIO devices attached, or other {{< term/i2c >}} devices attached. The correct address range and use of IO pins will be described in this guide as well.
+The ZYMKEY ZERO occupies 10 pins on the GPIO header. It can also be used with other GPIO devices attached, or other {{% term/i2c %}} devices attached. The correct address range and use of IO pins will be described in this guide as well.
 
 
 <!-- TODO: Make a shortcode that can style things like this more consistent between cards. -->
@@ -35,7 +35,7 @@ The ZYMKEY ZERO occupies 10 pins on the GPIO header. It can also be used with ot
 {{< figure
     src="ZK4-pinout.png"
     alt="Diagram of the ZYMKEY ZERO pinout"
-    caption="The pinout of the header of the ZYMKEY ZERO. ZYMKEY ZERO requires exclusive access to `GPIO4`, which can be remapped to another GPIO pin. It also share the {{< term/i2c >}} bus with the default address of `0x30`."
+    caption="The pinout of the header of the ZYMKEY ZERO. ZYMKEY ZERO requires exclusive access to `GPIO4`, which can be remapped to another GPIO pin. It also share the {{% term/i2c %}} bus with the default address of `0x30`."
     >}}
 {{< /card >}}
 {{< /cardpane >}}
@@ -46,8 +46,8 @@ The ZYMKEY ZERO occupies 10 pins on the GPIO header. It can also be used with ot
 Installing the hardware
 :   Install the battery on the ZYMKEY ZERO, and connect it to the host single-board computer (SBC).
 
-Establish an {{< term/i2c >}} connection
-:   Enable the {{< term/i2c >}} bus on the host device in order to be able to communicate with the ZYMKEY ZERO.
+Establish an {{% term/i2c %}} connection
+:   Enable the {{% term/i2c %}} bus on the host device in order to be able to communicate with the ZYMKEY ZERO.
 
 Install the Zymbit Driver Package
 :   These utilities provided by Zymbit are necessary to interact with the hardware module.
@@ -114,13 +114,13 @@ Power quality matters to the reliable and secure operation of your system and ZY
 
 ## Establish an I2C connection
 
-For Raspian-based operating systems, you must configure the state of the {{< term/i2c >}}.
+For Raspian-based operating systems, you must configure the state of the {{% term/i2c %}}.
 
 1. Log in to your Raspberry Pi and run `sudo raspi-config`.
 1. Navigate to `Interfacing Options` -> `I2C` -> `Would you like the ARM I2C interface to be enabled?`
 1. Select yes, and confirm this choice.
 
-Your {{< term/i2c >}} bus is now configured and ready to talk to the ZYMKEY ZERO. The default {{< term/i2c >}} address for the ZYMKEY ZERO is `0x30`. NOTE: The ZYMKEY ZERO will not show up in the display of tools such as `i2cdetect`. This is by design.
+Your {{% term/i2c %}} bus is now configured and ready to talk to the ZYMKEY ZERO. The default {{% term/i2c %}} address for the ZYMKEY ZERO is `0x30`. NOTE: The ZYMKEY ZERO will not show up in the display of tools such as `i2cdetect`. This is by design.
 
 {{< resource_link "troubleshooting/zymkey0/#q-how-do-i-set-an-alternative-i2c-address" >}}
 The default I2C address for ZYMKEY ZERO is 0x30. If this conflicts with another device in your system, you can reconfigure the ZYMKEY ZERO to use another address of your choice.

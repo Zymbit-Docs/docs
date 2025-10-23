@@ -32,8 +32,8 @@ In this Getting Started guide we describe how to install your HSM to a Raspberry
 Installing the Hardware
 :   Install the HSM on the PiZero HAT. Install the battery on the HAT. Connect the HAT to the host single-board computer.
 
-Establish an {{< term/i2c >}} connection
-:   Enable the {{< term/i2c >}} bus on the host device in order to be able to communicate with the HSM.
+Establish an {{% term/i2c %}} connection
+:   Enable the {{% term/i2c %}} bus on the host device in order to be able to communicate with the HSM.
 
 Install the Zymbit Driver Package
 :   These utilities provided by Zymbit are necessary to interact with the hardware module.
@@ -123,13 +123,13 @@ Power quality matters to the reliable and secure operation of your system and Zy
 
 ## Establish an I2C connection
 
-For Raspian-based operating systems, you must configure the state of the {{< term/i2c >}}.
+For Raspian-based operating systems, you must configure the state of the {{% term/i2c %}}.
 
 1. Log in to your Raspberry Pi and run `sudo raspi-config`.
 1. Navigate to Interfacing Options -> I2C -> Would you like the ARM I2C interface to be enabled?
 1. Select yes, and confirm this choice.
 
-Your {{< term/i2c >}} bus is now configured and ready to talk to the HSM. The default {{< term/i2c >}} address for the HSM is 0x30.
+Your {{% term/i2c %}} bus is now configured and ready to talk to the HSM. The default {{% term/i2c %}} address for the HSM is 0x30.
 
 {{< resource_link "troubleshooting/hsm4/#q-how-do-i-set-an-alternative-i2c-address" >}} The default I2C address for HSM is 0x30. If this conflicts with another device in your system, you can reconfigure the HSM4 to use another address of your choice.
 {{< /resource_link >}}
