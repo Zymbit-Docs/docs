@@ -18,7 +18,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 ## Raspberry Pi Support Matrix
 
-{{< tabpane text=true >}}
+{{% tabpane text=true %}}
 
   {{% tab header="Raspberry Pi 6" %}}
 
@@ -51,7 +51,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
   {{% /tab %}}
 
-{{< /tabpane >}}
+{{% /tabpane %}}
 
 
 
