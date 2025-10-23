@@ -20,7 +20,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 {{< tabpane text=true >}}
 
-  {{% tab header="Raspberry Pi 4" %}}
+  {{% tab header="Raspberry Pi 6" %}}
 
 | Product | Supported OS Versions |
 |---|---|
