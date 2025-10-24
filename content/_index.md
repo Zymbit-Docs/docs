@@ -7,14 +7,12 @@ lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 8
-type: docs
-#layout: single
+layout: single
 ---
 
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
 
-#### Latest Platform and OS Support
 
 ## Raspberry Pi Support Matrix
 
@@ -52,6 +50,17 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
   {{% /tab %}}
 
 {{% /tabpane %}}
+
+
+-----
+
+
+
+
+
+
+
+
 
 
 
