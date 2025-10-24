@@ -1,5 +1,9 @@
 {{ define "main" }}
   {{ with .Content }}{{ . }}{{ end }}
-  {{ partial "section-index.html" . }}
+
+  {{/* Only sections (_index.md) should render child pages */}}
+  {{ if .IsSection }}
+    {{ partial "section-index.html" . }}
+  {{ end }}
 {{ end }}
 
