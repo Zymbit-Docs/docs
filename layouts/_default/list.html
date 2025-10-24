@@ -1,15 +1,25 @@
+{{/* Works whether the theme uses "main" or "content" blocks */}}
+
 {{ define "main" }}
   {{ with .Content }}{{ . }}{{ end }}
+  {{ template "immediate-children" . }}
+{{ end }}
 
+{{ define "content" }}
+  {{ with .Content }}{{ . }}{{ end }}
+  {{ template "immediate-children" . }}
+{{ end }}
+
+{{ define "immediate-children" }}
   {{ if .IsSection }}
-    {{/* Collect immediate child sections + pages */}}
+    {{/* Immediate children: subsections + regular pages */}}
     {{ $children := union .Sections .RegularPages }}
     {{ $children = where $children ".Params.hide_summary" "!=" true }}
     {{ $children = where $children "Type" "!=" "search" }}
-    {{ $children = $children.ByWeight.Then.ByTitle }}
+    {{ $children = $children.ByWeight.ByTitle }}
 
     {{ if or .Params.no_list (eq (len $children) 0) }}
-      {{/* Do nothing if parent opts out or has no children */}}
+      {{/* do nothing */}}
     {{ else if .Params.simple_list }}
       <ul>
         {{ range $children }}
