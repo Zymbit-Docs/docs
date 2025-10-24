@@ -12,10 +12,18 @@
 
 {{ define "immediate-children" }}
   {{ if .IsSection }}
-    {{/* Immediate children: subsections + regular pages */}}
-    {{ $children := union .Sections .RegularPages }}
+    {{/* Gather subsections and pages */}}
+    {{ $secs  := .Sections }}
+    {{ $pages := .RegularPages }}
+
+    {{/* Merge while preserving order */}}
+    {{ $children := slice | append $secs $pages... }}
+
+    {{/* Filters */}}
     {{ $children = where $children ".Params.hide_summary" "!=" true }}
     {{ $children = where $children "Type" "!=" "search" }}
+
+    {{/* Sort: by weight first, then by Title */}}
     {{ $children = $children.ByWeight.ByTitle }}
 
     {{ if or .Params.no_list (eq (len $children) 0) }}
