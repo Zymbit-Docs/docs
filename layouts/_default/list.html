@@ -11,6 +11,7 @@
 {{ end }}
 
 {{ define "immediate-children" }}
+  {{ range $children }}<p>{{ .Title }} — Weight: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
   {{ if .IsSection }}
     {{/* Gather and merge */}}
     {{ $children := (union .Sections .RegularPages) }}
