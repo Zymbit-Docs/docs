@@ -1,60 +1,16 @@
 {{/* Works with themes that use "main" or "content" blocks */}}
 
 {{ define "main" }}
-  {{- with .Content }}{{ . }}{{ end -}}
-  {{- template "common-list-body" . -}}
+  {{ with .Content }}{{ . }}{{ end }}
+  {{ if .IsSection }}
+    {{ partial "children-list.html" . }}
+  {{ end }}
 {{ end }}
 
 {{ define "content" }}
-  {{- with .Content }}{{ . }}{{ end -}}
-  {{- template "common-list-body" . -}}
-{{ end }}
-
-{{ define "common-list-body" }}
-  {{- if .IsSection -}}
-    {{/* Immediate children: subsections + pages */}}
-    {{- $children := union .Sections .RegularPages -}}
-    {{- $children = where $children ".Params.hide_summary" "!=" true -}}
-    {{- $children = where $children "Type" "!=" "search" -}}
-
-    {{/* Stable multi-key sort: weight first, then title */}}
-    {{- $children = $children.ByWeight.ByTitle -}}
-
-    {{- if or .Params.no_list (eq (len $children) 0) -}}
-      {{/* nothing to list */}}
-    {{- else if .Params.simple_list -}}
-      <ul>
-        {{- range $children -}}
-          {{- $manualLink := cond (isset .Params "manuallink")
-              .Params.manualLink
-              (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) -}}
-          <li>
-            <a href="{{ $manualLink }}"
-               {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
-               {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
-              {{- .LinkTitle | default .Title -}}
-            </a>
-          </li>
-        {{- end -}}
-      </ul>
-    {{- else -}}
-      <hr class="panel-line">
-      {{- range $children -}}
-        {{- $manualLink := cond (isset .Params "manuallink")
-            .Params.manualLink
-            (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) -}}
-        <div class="entry">
-          <h5>
-            <a href="{{ $manualLink }}"
-               {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
-               {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
-              {{- .LinkTitle | default .Title -}}
-            </a>
-          </h5>
-          <p>{{ .Description | markdownify }}</p>
-        </div>
-      {{- end -}}
-    {{- end -}}
-  {{- end -}}
+  {{ with .Content }}{{ . }}{{ end }}
+  {{ if .IsSection }}
+    {{ partial "children-list.html" . }}
+  {{ end }}
 {{ end }}
 
