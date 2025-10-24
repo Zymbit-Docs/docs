@@ -1,0 +1,66 @@
+{{/* layouts/section/products.html */}}
+{{/* DEBUG counts; remove later */}}
+    <p>Sections: {{ len .Sections }} | Regular pages: {{ len .RegularPages }}</p>
+
+{{ define "main" }}
+  {{ with .Content }}{{ . }}{{ end }}
+  {{ template "immediate-children" . }}
+{{ end }}
+
+{{ define "content" }}
+  {{ with .Content }}{{ . }}{{ end }}
+  {{ template "immediate-children" . }}
+{{ end }}
+
+{{ define "immediate-children" }}
+  {{ warnf "HIT products.html → %s (Kind=%s, Type=%s, Section=%s)" .RelPermalink .Kind .Type .Section }}
+  {{ if .IsSection }}
+    {{ $children := (union .Sections .RegularPages) }}
+
+    {{/* DEBUG counts; remove later */}}
+    <p>Sections: {{ len .Sections }} | Regular pages: {{ len .RegularPages }}</p>
+
+    {{ $children = where $children ".Params.hide_summary" "!=" true }}
+    {{ $children = where $children "Type" "!=" "search" }}
+
+    {{/* Sort by Weight, then Title */}}
+    {{ $children = sort $children "Weight" "asc" "Title" "asc" }}
+
+    {{ if or .Params.no_list (eq (len $children) 0) }}
+      {{/* nothing */}}
+    {{ else if .Params.simple_list }}
+      <ul>
+        {{ range $children }}
+          {{ $manualLink := cond (isset .Params "manuallink")
+              .Params.manualLink
+              (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
+          <li>
+            <a href="{{ $manualLink }}"
+               {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
+               {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
+              {{- .LinkTitle | default .Title -}}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    {{ else }}
+      <hr class="panel-line">
+      {{ range $children }}
+        {{ $manualLink := cond (isset .Params "manuallink")
+            .Params.manualLink
+            (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
+        <div class="entry">
+          <h5>
+            <a href="{{ $manualLink }}"
+               {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
+               {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
+              {{- .LinkTitle | default .Title -}}
+            </a>
+          </h5>
+          <p>{{ .Description | markdownify }}</p>
+        </div>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
