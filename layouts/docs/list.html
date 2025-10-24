@@ -16,7 +16,9 @@
     {{- $children := union .Sections .RegularPages -}}
     {{- $children = where $children ".Params.hide_summary" "!=" true -}}
     {{- $children = where $children "Type" "!=" "search" -}}
-    {{- $children = $children.ByWeight.Then.ByTitle -}}
+
+    {{/* Stable multi-key sort: weight first, then title */}}
+    {{- $children = $children.ByWeight.ByTitle -}}
 
     {{- if or .Params.no_list (eq (len $children) 0) -}}
       {{/* nothing to list */}}
