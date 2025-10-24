@@ -1,9 +1,48 @@
 {{ define "main" }}
   {{ with .Content }}{{ . }}{{ end }}
 
-  {{/* Only sections (_index.md) should render child pages */}}
   {{ if .IsSection }}
-    {{ partial "section-index.html" . }}
+    {{/* Collect immediate child sections + pages */}}
+    {{ $children := union .Sections .RegularPages }}
+    {{ $children = where $children ".Params.hide_summary" "!=" true }}
+    {{ $children = where $children "Type" "!=" "search" }}
+    {{ $children = $children.ByWeight.Then.ByTitle }}
+
+    {{ if or .Params.no_list (eq (len $children) 0) }}
+      {{/* Do nothing if parent opts out or has no children */}}
+    {{ else if .Params.simple_list }}
+      <ul>
+        {{ range $children }}
+          {{ $manualLink := cond (isset .Params "manuallink")
+              .Params.manualLink
+              (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
+          <li>
+            <a href="{{ $manualLink }}"
+               {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
+               {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
+              {{- .LinkTitle | default .Title -}}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    {{ else }}
+      <hr class="panel-line">
+      {{ range $children }}
+        {{ $manualLink := cond (isset .Params "manuallink")
+            .Params.manualLink
+            (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
+        <div class="entry">
+          <h5>
+            <a href="{{ $manualLink }}"
+               {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
+               {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
+              {{- .LinkTitle | default .Title -}}
+            </a>
+          </h5>
+          <p>{{ .Description | markdownify }}</p>
+        </div>
+      {{ end }}
+    {{ end }}
   {{ end }}
 {{ end }}
 
