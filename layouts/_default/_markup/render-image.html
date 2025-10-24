@@ -3,18 +3,17 @@
 {{ $alt := .Text }}
 {{ $title := .Title }}
 
-{{/* Try to resolve the image as a Page Resource (works for page bundles) */}}
+{{/* Try to resolve as a page resource (works for page bundles) */}}
 {{ $res := .Page.Resources.GetMatch (printf "**%s" $src) }}
 
-{{/* If we found a resource, optionally resize to a max width for faster loads */}}
-{{ if $res }}
-  {{ $maxW := 1200 }} {{/* change to your preferred max width */}}
+{{ $maxW := 1200 }}
+
+{{ if and $res (eq $res.MediaType.MainType "image") (ne $res.MediaType.SubType "svg") }}
+  {{/* Raster image: optionally downsize by width only (keeps aspect) */}}
   {{ $img := $res }}
-  {{ with $res }}
-    {{ with .Width }}
-      {{ if gt . $maxW }}
-        {{ $img = $res.Fit (printf "%dx" $maxW) }}
-      {{ end }}
+  {{ with $res.Width }}
+    {{ if gt . $maxW }}
+      {{ $img = $res.Resize (printf "%dx" $maxW) }}
     {{ end }}
   {{ end }}
 
@@ -31,8 +30,7 @@
   </figure>
 
 {{ else }}
-
-  {{/* Fallback: use the raw URL if it isn't a Page Resource */}}
+  {{/* Fallback for non-resources, SVGs, or external URLs */}}
   <figure class="md-img">
     <img
       src="{{ $src | safeURL }}"
@@ -44,6 +42,5 @@
     />
     {{ with $title }}<figcaption>{{ . }}</figcaption>{{ end }}
   </figure>
-
 {{ end }}
 
