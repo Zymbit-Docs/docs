@@ -1,4 +1,8 @@
 {{/* Works whether the theme uses "main" or "content" blocks */}}
+{{/* DEBUG: prove this file is used */}}
+{{ warnf "HIT _default/list.html → %s (Kind=%s, Type=%s, Section=%s)" .RelPermalink .Kind .Type .Section }}
+<span style="display:none">HIT list.html</span>
+
 
 {{ define "main" }}
   {{ with .Content }}{{ . }}{{ end }}
