@@ -1,0 +1,49 @@
+{{/* layouts/_default/_markup/render-image.html */}}
+{{ $src := .Destination }}
+{{ $alt := .Text }}
+{{ $title := .Title }}
+
+{{/* Try to resolve the image as a Page Resource (works for page bundles) */}}
+{{ $res := .Page.Resources.GetMatch (printf "**%s" $src) }}
+
+{{/* If we found a resource, optionally resize to a max width for faster loads */}}
+{{ if $res }}
+  {{ $maxW := 1200 }} {{/* change to your preferred max width */}}
+  {{ $img := $res }}
+  {{ with $res }}
+    {{ with .Width }}
+      {{ if gt . $maxW }}
+        {{ $img = $res.Fit (printf "%dx" $maxW) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  <figure class="md-img">
+    <img
+      src="{{ $img.RelPermalink }}"
+      alt="{{ $alt }}"
+      title="{{ $title }}"
+      loading="lazy"
+      decoding="async"
+      style="max-width:100%;height:auto;"
+    />
+    {{ with $title }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+
+{{ else }}
+
+  {{/* Fallback: use the raw URL if it isn't a Page Resource */}}
+  <figure class="md-img">
+    <img
+      src="{{ $src | safeURL }}"
+      alt="{{ $alt }}"
+      title="{{ $title }}"
+      loading="lazy"
+      decoding="async"
+      style="max-width:100%;height:auto;"
+    />
+    {{ with $title }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+
+{{ end }}
+
