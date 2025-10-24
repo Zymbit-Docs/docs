@@ -7,5 +7,4 @@ aliases:
 draft: false
 images: []
 weight: 20
-headless: true
 ---

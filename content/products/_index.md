@@ -5,6 +5,4 @@ aliases:
 draft: false
 images: []
 weight: -1000
-type: docs
-# headless: true
 ---
