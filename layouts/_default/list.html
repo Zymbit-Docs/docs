@@ -11,10 +11,10 @@
 {{ end }}
 
 {{ define "immediate-children" }}
-  {{ range $children }}<p>{{ .Title }} — Weight: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
   {{ if .IsSection }}
     {{/* Gather and merge */}}
     {{ $children := (union .Sections .RegularPages) }}
+  {{ range $children }}<p>{{ .Title }} — Weight: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
 
     {{/* Filters */}}
     {{ $children = where $children ".Params.hide_summary" "!=" true }}
@@ -43,6 +43,7 @@
       </ul>
     {{ else }}
       <hr class="panel-line">
+      {{ range $children }}<p>{{ .Title }} — Weight2: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
       {{ range $children }}
         {{ $manualLink := cond (isset .Params "manuallink")
             .Params.manualLink
