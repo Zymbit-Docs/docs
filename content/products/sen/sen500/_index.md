@@ -7,5 +7,5 @@ aliases:
     - /quickstart/getting-started/sen500/
 draft: false
 images: []
-weight: 5
+weight: 8
 ---
