@@ -12,9 +12,19 @@
 
 {{ define "immediate-children" }}
   {{ if .IsSection }}
+    <p>DEBUG: Sections count: {{ len .Sections }}</p>
+    <p>Regular pages count: {{ len .RegularPages }}</p>
+
+    {{ range .Sections }}
+      <p>SECTION → {{ .Title }} ({{ .File.Path }})</p>
+    {{ end }}
+    {{ range .RegularPages }}
+      <p>PAGE → {{ .Title }} ({{ .File.Path }})</p>
+    {{ end }}
+
     {{/* Gather and merge */}}
     {{ $children := (union .Sections .RegularPages) }}
-  {{ range $children }}<p>{{ .Title }} — Weight: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
+  {{ range $children }}<p>DEBUG: {{ .Title }} — Weight: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
 
     {{/* Filters */}}
     {{ $children = where $children ".Params.hide_summary" "!=" true }}
