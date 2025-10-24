@@ -8,7 +8,7 @@ draft: false
 images: []
 weight: 8
 type: docs
-layout: single
+#layout: single
 ---
 
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
@@ -20,7 +20,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 {{% tabpane text=true %}}
 
-  {{% tab header="Raspberry Pi 6" %}}
+  {{% tab header="Raspberry Pi 5" %}}
 
 | Product | Supported OS Versions |
 |---|---|
