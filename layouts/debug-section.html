@@ -1,0 +1,39 @@
+{{/* layouts/debug-section.html */}}
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>DEBUG SECTION</title></head>
+<body>
+  <h1>DEBUG SECTION TEMPLATE</h1>
+  <p>RelPermalink: {{ .RelPermalink }}</p>
+  <p>Kind: {{ .Kind }} | Type: {{ .Type }} | Section: {{ .Section }}</p>
+
+  <h2>Children counts</h2>
+  <p>len(.Sections) = {{ len .Sections }} | len(.RegularPages) = {{ len .RegularPages }}</p>
+
+  <h2>Sections</h2>
+  <ul>
+    {{ range .Sections }}
+      <li>SECTION → {{ .Title }} (Weight={{ .Weight }}) — {{ with .File }}{{ .Path }}{{ end }}</li>
+    {{ end }}
+  </ul>
+
+  <h2>Regular Pages</h2>
+  <ul>
+    {{ range .RegularPages }}
+      <li>PAGE → {{ .Title }} (Weight={{ .Weight }}) — {{ with .File }}{{ .Path }}{{ end }}</li>
+    {{ end }}
+  </ul>
+
+  <h2>Merged + Sorted</h2>
+  {{ $children := (union .Sections .RegularPages) }}
+  {{ $children = where $children ".Params.hide_summary" "!=" true }}
+  {{ $children = where $children "Type" "!=" "search" }}
+  {{ $children = sort $children "Weight" "asc" "Title" "asc" }}
+  <ol>
+    {{ range $children }}
+      <li>{{ .Title }} — Weight={{ .Weight }} — Kind={{ .Kind }}</li>
+    {{ end }}
+  </ol>
+</body>
+</html>
+
