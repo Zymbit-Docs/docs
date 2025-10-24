@@ -17,7 +17,7 @@
     {{ $pages := .RegularPages }}
 
     {{/* Merge while preserving order */}}
-    {{ $children := slice | append $secs $pages... }}
+    {{ $children := append (slice) $secs $pages... }}
 
     {{/* Filters */}}
     {{ $children = where $children ".Params.hide_summary" "!=" true }}
