@@ -1,7 +1,6 @@
 {{/* Works whether the theme uses "main" or "content" blocks */}}
 
 {{ define "main" }}
-  <p>DEBUG1 → Type: {{ .Type }}, Section: {{ .Section }}, Kind: {{ .Kind }}</p>
   {{ with .Content }}{{ . }}{{ end }}
   {{ template "immediate-children" . }}
 {{ end }}
@@ -13,20 +12,14 @@
 
 {{ define "immediate-children" }}
   {{ if .IsSection }}
-    <p>DEBUG: Sections count: {{ len .Sections }}</p>
-    <p>Regular pages count: {{ len .RegularPages }}</p>
 
     {{ range .Sections }}
-      <p>SECTION → {{ .Title }} ({{ .File.Path }})</p>
     {{ end }}
     {{ range .RegularPages }}
-      <p>PAGE → {{ .Title }} ({{ .File.Path }})</p>
     {{ end }}
 
     {{/* Gather and merge (avoid union; keep as Pages) */}}
     {{ $children := slice | append .Sections | append .RegularPages }}
-
-    {{ range $children }}<p>DEBUG: {{ .Title }} — Weight: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
 
     {{/* Filters */}}
     {{ $children = where $children ".Params.hide_summary" "!=" true }}
@@ -56,7 +49,6 @@
       </ul>
     {{ else }}
       <hr class="panel-line">
-      {{ range $children }}<p>{{ .Title }} — Weight2: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
       {{ range $children }}
         {{ $hasManual := isset .Params "manualLink" }}
         {{ $manualLink := cond $hasManual
