@@ -2,17 +2,15 @@
   {{ with .Content }}{{ . }}{{ end }}
 
   {{ if .IsSection }}
-    {{ $children := (union .Sections .RegularPages) }}
+    {{/* Build a single slice and use Hugo's sort helpers */}}
+    {{ $children := slice | append .Sections | append .RegularPages }}
     {{ $children = where $children ".Params.hide_summary" "!=" true }}
     {{ $children = where $children "Type" "!=" "search" }}
-    {{/* Sort: weight asc, then title asc */}}
-    {{ $children = sort $children "Weight" "asc" "Title" "asc" }}
+    {{ $children = $children.ByWeight.ByTitle }}
 
     <ul>
       {{ range $children }}
-        <li>
-          <a href="{{ .RelPermalink }}">{{ .LinkTitle | default .Title }}</a>
-        </li>
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle | default .Title }}</a></li>
       {{ end }}
     </ul>
   {{ end }}
