@@ -32,9 +32,8 @@
     {{ $children = where $children ".Params.hide_summary" "!=" true }}
     {{ $children = where $children "Type" "!=" "search" }}
 
-    {{/* Sort: use Hugo’s built-ins for predictable behavior */}}
-    {{ $children = $children.ByWeight }}
-    {{ $children = $children.ByTitle }}
+    {{/* Sort: weight asc, then link title asc (or Title) */}}
+    {{ $children = sort $children "Weight" "asc" "LinkTitle" "asc" }}
 
     {{ if or .Params.no_list (eq (len $children) 0) }}
       {{/* nothing */}}
