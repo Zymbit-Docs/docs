@@ -26,26 +26,29 @@
       <p>PAGE → {{ .Title }} ({{ .File.Path }})</p>
     {{ end }}
 
-    {{/* Gather and merge */}}
-    {{ $children := (union .Sections .RegularPages) }}
-  {{ range $children }}<p>DEBUG: {{ .Title }} — Weight: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
+    {{/* Gather and merge (avoid union; keep as Pages) */}}
+    {{ $children := slice | append .Sections | append .RegularPages }}
+
+    {{ range $children }}<p>DEBUG: {{ .Title }} — Weight: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
 
     {{/* Filters */}}
     {{ $children = where $children ".Params.hide_summary" "!=" true }}
     {{ $children = where $children "Type" "!=" "search" }}
 
-    {{/* Sort: by Weight first, then by Title (or LinkTitle if you prefer) */}}
-    {{ $children = sort $children "Weight" "asc" "Title" "asc" }}
-    {{/* alt: {{ $children = sort $children "Weight" "asc" "LinkTitle" "asc" }} */}}
+    {{/* Sort: use Hugo’s built-ins for predictable behavior */}}
+    {{ $children = $children.ByWeight }}
+    {{ $children = $children.ByTitle }}
 
     {{ if or .Params.no_list (eq (len $children) 0) }}
       {{/* nothing */}}
     {{ else if .Params.simple_list }}
       <ul>
         {{ range $children }}
-          {{ $manualLink := cond (isset .Params "manuallink")
+          {{/* Fix param casing: check and read the same key */}}
+          {{ $hasManual := isset .Params "manualLink" }}
+          {{ $manualLink := cond $hasManual
               .Params.manualLink
-              (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
+              (cond (isset .Params "manualLinkRelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
           <li>
             <a href="{{ $manualLink }}"
                {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
@@ -59,9 +62,10 @@
       <hr class="panel-line">
       {{ range $children }}<p>{{ .Title }} — Weight2: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
       {{ range $children }}
-        {{ $manualLink := cond (isset .Params "manuallink")
+        {{ $hasManual := isset .Params "manualLink" }}
+        {{ $manualLink := cond $hasManual
             .Params.manualLink
-            (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
+            (cond (isset .Params "manualLinkRelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
         <div class="entry">
           <h5>
             <a href="{{ $manualLink }}"
