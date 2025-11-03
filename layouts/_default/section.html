@@ -1,4 +1,6 @@
 {{ define "main" }}
+  <p>DEBUG2 → Type: {{ .Type }}, Section: {{ .Section }}, Kind: {{ .Kind }}</p>
+
   {{ with .Content }}{{ . }}{{ end }}
 
   {{ if .IsSection }}

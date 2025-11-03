@@ -10,8 +10,6 @@ weight: 8
 layout: single
 ---
 
-<p>DEBUG → Type: {{ .Type }}, Section: {{ .Section }}, Kind: {{ .Kind }}</p>
-
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
 

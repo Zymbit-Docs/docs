@@ -7,5 +7,4 @@ images: []
 weight: 30
 ---
 
-<p>DEBUG → Type: {{ .Type }}, Section: {{ .Section }}, Kind: {{ .Kind }}</p>
 

@@ -1,6 +1,7 @@
 {{/* Works whether the theme uses "main" or "content" blocks */}}
 
 {{ define "main" }}
+  <p>DEBUG1 → Type: {{ .Type }}, Section: {{ .Section }}, Kind: {{ .Kind }}</p>
   {{ with .Content }}{{ . }}{{ end }}
   {{ template "immediate-children" . }}
 {{ end }}
