@@ -1,6 +1,6 @@
 ---
 title: "Bootware 2.0.0"
-linkTitle: "Bootware 2.0.0"
+linkTitle: "Bootware 2.0.0 (Beta)"
 cascade:
     params:
         show_versions: true

@@ -10,4 +10,7 @@ images: []
 weight: 50
 #headless: true
 ---
-Other Bootware Versions: {{< version-menu >}}
+Select the documentation for your Bootware Version from the following menu: {{< version-menu >}}
+
+-----
+Quick links to latest Beta and Stable versions:
