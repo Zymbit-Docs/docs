@@ -1,6 +1,6 @@
 ---
 title: Security Modules
-linktitle: Security Module
+linktitle: Security Modules
 description: Zymbit Security Modules 
 draft: false
 images: []
