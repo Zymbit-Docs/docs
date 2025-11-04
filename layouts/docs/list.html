@@ -1,12 +1,20 @@
 {{/* Works whether the theme uses "main" or "content" blocks */}}
 
 {{ define "main" }}
-  {{ if .Content }}{{ partial "content" . }}{{ end }}
+  {{ with .Content }}
+    <article class="markdown td-content">
+      {{ . }}
+    </article>
+  {{ end }}
   {{ template "immediate-children" . }}
 {{ end }}
 
 {{ define "content" }}
-  {{ if .Content }}{{ partial "content" . }}{{ end }}
+  {{ with .Content }}
+    <article class="markdown td-content">
+      {{ . }}
+    </article>
+  {{ end }}
   {{ template "immediate-children" . }}
 {{ end }}
 
