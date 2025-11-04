@@ -1,12 +1,12 @@
 {{/* Works whether the theme uses "main" or "content" blocks */}}
 
 {{ define "main" }}
-  {{ with .Content }}{{ . }}{{ end }}
+  {{ if .Content }}{{ partial "content" . }}{{ end }}
   {{ template "immediate-children" . }}
 {{ end }}
 
 {{ define "content" }}
-  {{ with .Content }}{{ . }}{{ end }}
+  {{ if .Content }}{{ partial "content" . }}{{ end }}
   {{ template "immediate-children" . }}
 {{ end }}
 
