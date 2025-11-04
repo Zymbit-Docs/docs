@@ -28,15 +28,13 @@ Step-by-step videos of this Getting-Started are also available.
 
 #### Supported Platforms and Operating Systems
 
-|                  Pi Platform:     |    CM5            |  CM4                   | CM4 or Pi4             |   Pi5             | PiZero 2W       |
-|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|:---------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM4**   |   **SCM**              | **Zymkey,HSM4**        | **Zymkey,HSM4**   | **Zymkey,HSM4** |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}}      | {{< supported >}}      | {{< supported >}} | {{< supported >}} |
-| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} [^1] |
-| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}}      | {{< supported >}}      | {{< supported >}} | {{< partially-supported >}} |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} |
-| Raspberry Pi OS Bullseye (32-bit) |                   |                        | {{< partially-supported >}}       |                   |                 |
-| Ubuntu 22.04 LTS Jammy (32-bit)   |                   |                        | {{< partially-supported >}}       |                   |                 |
+
+
+|                  Pi Platform:     |    CM5            |  CM4                   |  Pi4             |   Pi5             |
+|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey,HSM64**   |   **Zymkey,SCM**      | **Zymkey**        | **Zymkey**   |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
 
 
 {{< supported >}} Full Bootware Support
@@ -45,23 +43,19 @@ Step-by-step videos of this Getting-Started are also available.
 
 <br>
 
-[^1]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](../troubleshooting/pizero-bullseye).
-[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](../troubleshooting/pi4-wifi).
-
-<br>
 
 > It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
 
 -----
 
 
-The default SCM/SEN as shipped has Zymbit Driver Package pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
+The default SCM/SEN as shipped has Zymbit Driver Package pre-installed. For setups using the Zymkey or other Zymbit HSMs, the installation must be completed by the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
 
 A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootware](https://www.zymbit.com/get-bootware)
 
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
-Bootware 1.3.x includes the same, consolidated user interface introduced in 1.2. The process of installation and configuration has changed since 1.1.
+Bootware 2.0.0 BETA includes the same, user interface as 1.3.2, but with some additional questions regarding signing images and configuration of Raspberry Pi's Secure Boot. For 2.0.0 BETA, we recommend a completely fresh install, not an upgrade from an existing 1.3.2. 
 
 Details of the commands in this Quickstart are linked in-line.
 See the [Features](../features) section for more information on how to use Bootware.

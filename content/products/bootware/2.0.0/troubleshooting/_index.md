@@ -19,35 +19,59 @@ toc: true
 
 #### Supported Platforms and Operating Systems
 
-|                  Pi Platform:     |    CM5            |  CM4                   | CM4 or Pi4             |   Pi5             | PiZero 2W       |
-|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|:---------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM4**   |   **SCM**              | **Zymkey,HSM4**        | **Zymkey,HSM4**   | **Zymkey,HSM4** |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}}      | {{< supported >}}      | {{< supported >}} | {{< supported >}} |
-| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} [^1] |
-| Ubuntu 24.04.3 LTS Noble (64-bit) | {{< supported >}} | {{< supported >}}      | {{< supported >}}      | {{< supported >}} | {{< partially-supported >}} |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} |
-| Raspberry Pi OS Bullseye (32-bit) |                   |                        | {{< partially-supported >}}       |                   |                 |
-| Ubuntu 22.04 LTS Jammy (32-bit)   |                   |                        | {{< partially-supported >}}       |                   |                 |
+|                  Pi Platform:     |    CM5            |  CM4                   |  Pi4             |   Pi5             |
+|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey,HSM64**   |   **Zymkey,SCM**      | **Zymkey**        | **Zymkey**   |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
 
 
 {{< supported >}} Full Bootware Support
 
 {{< partially-supported >}} Bootware Not Supported
 
-
-[^1]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](/bootware1.3.2/troubleshooting/pizero-bullseye).
-[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](/bootware1.3.2/troubleshooting/pi4-wifi).
-
 > NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)                                                                    
 
 <br>
-
-To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](pizero-bullseye).
 
 > It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
 
 
 ### Issues and Notes
+-----
+#### November 2025
+-----
+Bootware® 2.0.0-1 Beta
+
+- Features
+  - Boot.img: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts for uboot/zboot, userspaceA, and userspaceB. Solution must seamlessly switch between zboot boots, boots on A and boots on B. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update
+  - Secure Boot: Seamless integration of Bootware into Raspberry Pi's Secure Boot process.
+
+- Platforms
+
+|                  Pi Platform:     |    CM5            |  CM4                   |  Pi4             |   Pi5             |
+|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey,HSM64**   |   **Zymkey,SCM**      | **Zymkey**        | **Zymkey**   |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
+
+
+- Limitations
+   - OSes NOT supported until refresh Beta: Bullseye, Jammy (Ubuntu 22), Trixie
+   - Zymkey Zero support not supported yet
+   - Cannot upgrade an existing image built from pre-v2.0 Bootware install (requires a clean Bootware reinstall)
+
+- Bug fixes
+   - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
+
+- zkifc
+   - Added support for new Zymbit HSM models: Zymkey5, Zymkey Zero
+
+- zkifc
+   - Added support for new Zymbit HSM models: Zymkey5, Zymkey Zero
+   - `zkifc -v` added to return version
+   - zkpkcs11 package build fixed for 64-bit OSs
+
 -----
 #### August 2025
 -----

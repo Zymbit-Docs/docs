@@ -13,7 +13,7 @@ layout: single
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
 
-### Latest Platform and OS Support
+### Latest STABLE Platform and OS Support
 
 
 |                  Pi Platform:     |    CM5            |  CM4                   | CM4 or Pi4             |   Pi5             | PiZero 2W       |
@@ -47,12 +47,16 @@ Bootware® 2.0.0-1 Beta
   - Secure Boot: Seamless integration of Bootware into Raspberry Pi's Secure Boot process.
 
 - Platforms
-  - Pi/CM-4, 5
-  - OS: Bookworm, Noble
-  - Zymbit Hardware: Zymkey4, SCM, All Interposers
+
+|                  Pi Platform:     |    CM5            |  CM4                   |  Pi4             |   Pi5             |
+|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey,HSM64**   |   **Zymkey,SCM**      | **Zymkey**        | **Zymkey**   |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
+
 
 - Limitations
-   - OSes NOT supported until refresh Beta, mid-cycle: Bullseye, Jammy (Ubuntu 22), Trixie
+   - OSes NOT supported until refresh Beta: Bullseye, Jammy (Ubuntu 22), Trixie
    - Zymkey Zero support not supported yet
    - Cannot upgrade an existing image built from pre-v2.0 Bootware install (requires a clean Bootware reinstall)
 

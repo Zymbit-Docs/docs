@@ -19,15 +19,16 @@ toc: true
 
 #### Supported Platforms and Operating Systems
 
-|                  Pi Platform:     |    CM5            |  CM4                   | CM4 or Pi4             |   Pi5             | PiZero 2W       |
+
+                  Pi Platform:     |    CM5            |  CM4                   | Pi4             |   Pi5             | PiZero 2W       |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|:---------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM4**   |   **SCM**              | **Zymkey,HSM4**        | **Zymkey,HSM4**   | **Zymkey,HSM4** |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}}      | {{< supported >}}      | {{< supported >}} | {{< supported >}} |
+|                  **Zymbit HSMs:** | **Zymkey**        |   **Zymkey,SCM**       | **Zymkey**        | **Zymkey**   | **Zymkey** |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} [^1] |
-| Ubuntu 24.04.3 LTS Noble (64-bit) | {{< supported >}} | {{< supported >}}      | {{< supported >}}      | {{< supported >}} | {{< partially-supported >}} |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} |
-| Raspberry Pi OS Bullseye (32-bit) |                   |                        | {{< partially-supported >}}       |                   |                 |
-| Ubuntu 22.04 LTS Jammy (32-bit)   |                   |                        | {{< partially-supported >}}       |                   |                 |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} | {{< partially-supported >}} &nbsp; |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} &nbsp; |
+| Raspberry Pi OS Bullseye (32-bit) |                   |                        | {{< partially-supported >}} &nbsp;      |                   |                 |
+| Ubuntu 22.04 LTS Jammy (32-bit)   |                   |                        | {{< partially-supported >}} &nbsp;      |                   |                 |
 
 
 {{< supported >}} Full Bootware Support
