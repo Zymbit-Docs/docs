@@ -13,55 +13,7 @@ layout: single
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
 
-
-## Raspberry Pi Support Matrix
-
-{{% tabpane text=true %}}
-
-  {{% tab header="Raspberry Pi 5" %}}
-
-| Product | Supported OS Versions |
-|---|---|
-| ZYMKEY4 | Raspberry Pi OS (Bookworm 64-bit) |
-| ZYMKEY5 | Raspberry Pi OS (Bookworm 64-bit) |
-| ZYMKEY ZERO | Raspberry Pi OS (Bookworm 64-bit) |
-| HSM4 | Raspberry Pi OS (Bookworm 64-bit) |
-
-  {{% /tab %}}
-
-  {{% tab header="Raspberry CM4" %}}
-
-| Product | Supported OS Versions |
-|---|---|
-| ZYMKEY4 | Raspberry Pi OS (Bookworm 64-bit) |
-| ZYMKEY5 | Raspberry Pi OS (Bookworm 64-bit) |
-| ZYMKEY ZERO | Raspberry Pi OS (Bookworm 64-bit) |
-
-  {{% /tab %}}
-
-  {{% tab header="Raspberry CM5" %}}
-
-| Product | Supported OS Versions |
-|---|---|
-| ZYMKEY4 | Raspberry Pi OS (Bookworm 64-bit) |
-| ZYMKEY5 | Raspberry Pi OS (Bookworm 64-bit) |
-| ZYMKEY ZERO | Raspberry Pi OS (Bookworm 64-bit) |
-
-  {{% /tab %}}
-
-{{% /tabpane %}}
-
-
------
-
-
-
-
-
-
-
-
-
+### Latest Platform and OS Support
 
 
 |                  Pi Platform:     |    CM5            |  CM4                   | CM4 or Pi4             |   Pi5             | PiZero 2W       |
@@ -84,6 +36,36 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 [^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](../bootware1.3.2/troubleshooting/pi4-wifi).
 
 > NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
+
+-----
+#### November 2025
+-----
+Bootware® 2.0.0-1 Beta
+
+- Features
+  - Boot.img: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts for uboot/zboot, userspaceA, and userspaceB. Solution must seamlessly switch between zboot boots, boots on A and boots on B. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update
+  - Secure Boot: Seamless integration of Bootware into Raspberry Pi's Secure Boot process.
+
+- Platforms
+  - Pi/CM-4, 5
+  - OS: Bookworm, Noble
+  - Zymbit Hardware: Zymkey4, SCM, All Interposers
+
+- Limitations
+   - OSes NOT supported until refresh Beta, mid-cycle: Bullseye, Jammy (Ubuntu 22), Trixie
+   - Zymkey Zero support not supported yet
+   - Cannot upgrade an existing image built from pre-v2.0 Bootware install (requires a clean Bootware reinstall)
+
+- Bug fixes
+   - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
+
+- zkifc
+   - Added support for new Zymbit HSM models: Zymkey5, Zymkey Zero
+
+- zkifc
+   - Added support for new Zymbit HSM models: Zymkey5, Zymkey Zero
+   - `zkifc -v` added to return version
+   - zkpkcs11 package build fixed for 64-bit OSs
 
 -----
 #### August 2025 
