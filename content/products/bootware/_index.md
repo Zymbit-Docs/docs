@@ -5,8 +5,8 @@ cascade:
     params:
         show_versions: false
 description: Zymbit core device security services
-alias:
-    - /bootware
+aliases:
+    - /bootware/
 draft: false
 images: []
 weight: 50
