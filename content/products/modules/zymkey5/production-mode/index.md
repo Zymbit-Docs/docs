@@ -1,10 +1,10 @@
 ---
-title: Enabling Production Mode - ZYMKEY FIVE
-linkTitle: "Enabling Production Mode - ZYMKEY FIVE"
-description: "Enabling Production Mode - ZYMKEY FIVE"
+title: Enabling Production Mode - ZYMKEY5
+linkTitle: "Enabling Production Mode - ZYMKEY5"
+description: "Enabling Production Mode - ZYMKEY5"
 aliases:
-    - /quickstart/production-mode/zymkey5/
-date: ""
+    - /quickstart/production-mode/hsm6/
+date: "2022-03-08"
 lastmod: "2025-10-15"
 draft: false
 images: []
@@ -15,58 +15,54 @@ toc: true
 {{< callout destructive >}}
 THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FOLLOWING:
 
-* Your specific ZYMKEY FIVE will be **permanently** locked to the specific host device.
-* It will be impossible to move or bind your ZYMKEY FIVE to another device. There are no factory resets, masterkeys, or other forms of recovery.
+* Your specific ZYMKEY5 will be **permanently** locked to the specific host device.
+* It will be impossible to move or bind your ZYMKEY5 to another device. There are no factory resets, masterkeys, or other forms of recovery.
 * If you are using the *Perimeter Detect* features, then the sequence in which you arm and disarm this feature is very important. Be sure to carefully follow the process steps below.
-* Once you have locked your ZYMKEY FIVE into production mode, Zymbit cannot guarantee its operation if you subsequently do a major distribution upgrade (e.g. Raspbian Jessie to Stretch). [Contact Zymbit for more information.](https://www.zymbit.com/contact-us/)
+* Once you have locked your ZYMKEY5 into production mode, Zymbit cannot guarantee its operation if you subsequently do a major distribution upgrade (e.g. Raspbian Jessie to Stretch). [Contact Zymbit for more information.](https://www.zymbit.com/contact-us/)
 
-If you decide that you are not ready for permanent binding, leave the ZYMKEY FIVE in developer mode, but beware this makes it easier for a bad actor to replace the host with rogue hardware.
+If you decide that you are not ready for permanent binding, leave the ZYMKEY5 in developer mode, but beware this makes it easier for a bad actor to replace the host with rogue hardware.
 
 {{< /callout >}}
 
-When you have completed your development work with the ZYMKEY FIVE and are ready to deploy your system into the field, we recommend that you permanently bind your ZYMKEY FIVE to a specific host device and SD card.
+When you have completed your development work with the ZYMKEY5 and are ready to deploy your system into the field, we recommend that you permanently bind your ZYMKEY5 to a specific host device and SD card.
 
 {{< resource_link "reference/binding" >}}
-ZYMKEY FIVE generates a unique Device ID by measuring certain attributes of the specific host and the ZYMKEY FIVE itself to permanently associate the two devices.
+ZYMKEY5 generates a unique Device ID by measuring certain attributes of the specific host and the ZYMKEY5 itself to permanently associate the two devices.
 {{< /resource_link >}}
 
 ### Summary of Steps
 
 Develop your application
-:   Ensure your host has all the necessary prerequisites in place to interface with the ZYMKEY FIVE and that it will be able to run your software application.
+* [ ] Ensure your host has all the necessary prerequisites in place to interface with the ZYMKEY5 and that it will be able to run your software application.
 
 Active production mode
-:   Permanently bind your ZYMKEY FIVE to the host device.
+* [ ] Permanently bind your ZYMKEY5 to the host device.
 
 ## Develop your application
 
-{{< callout destructive >}}
-*DO NOT* cut the lock tab yet.
-{{< /callout >}}
+To begin, ensure that you have followed the Getting Started guide for your ZYMKEY5 carefully to install the prerequisite Zymbit Driver Package:
 
-To begin, ensure that you have followed the Getting Started guide for your ZYMKEY FIVE carefully to install the prerequisite Zymbit Driver Package:
-
-{{< resource_link "getting-started/zymkey5" >}}
-Install your ZYMKEY FIVE to a Raspberry Pi running Raspbian or Ubuntu before moving to production mode.
+{{< resource_link "getting-started/hsm6" >}}
+Install your ZYMKEY5 to a Raspberry Pi running Raspbian or Ubuntu before moving to production mode.
 {{< /resource_link >}}
 
 To reiterate, before you continue, the following steps should be complete:
 
-* [ ] Install a battery on the ZYMKEY FIVE.
-* [ ] Connect the GPIO header of the ZYMKEY FIVE to the GPIO pins of the host board while the host is powered down.
-* [ ] Install ZYMKEY FIVE software on the host and establish temporary binding in development mode.
+* [ ] Install a battery on the ZYMKEY5.
+* [ ] Connect the GPIO header of the ZYMKEY5 to the GPIO pins of the host board while the host is powered down.
+* [ ] Install ZYMKEY5 software on the host and establish temporary binding in development mode.
 
 After these steps have been completed, you are ready to prepare your device for permanent binding.
 
 ### Prepare *Perimeter Detect*
 
-The `Perimeter Event Actions` for your ZYMKEY FIVE should be set to `none` or `notify` only. If your ZYMKEY FIVE's action mode is set to `selfdestruct`, you might render your ZYMKEY FIVE useless while attempting to activate production mode.
+The `Perimeter Event Actions` for your ZYMKEY5 should be set to `none` or `notify` only. If your ZYMKEY5's action mode is set to `selfdestruct`, you might render your ZYMKEY5 useless while attempting to activate production mode.
 
-{{< resource_link "tutorials/perimeter-detect/zymkey5/" >}}
-Understand how to use the ZYMKEY FIVE's perimeter detect features.
+{{< resource_link "tutorials/perimeter-detect/hsm6/" >}}
+Understand how to use the ZYMKEY5's perimeter detect features.
 {{< /resource_link >}}
 
-To do this quickly, with the ZYMKEY FIVE client libraries installed, you can run the following shell command to use the Python API to communicate with the ZYMKEY FIVE and set the `Perimeter Event Actions` to do nothing when triggered:
+To do this quickly, with the ZYMKEY5 client libraries installed, you can run the following shell command to use the Python API to communicate with the ZYMKEY5 and set the `Perimeter Event Actions` to do nothing when triggered:
 
 ```bash
 python3 -c "import zymkey;
@@ -77,10 +73,10 @@ zymkey.client.clear_perimeter_detect_info()"
 
 ### Prepare your application
 
-If you intend to use your ZYMKEY FIVE to encrypt your root file system, you should complete that step now, using our guide. This step is highly recommended.
+If you intend to use your ZYMKEY5 to encrypt your root file system, you should complete that step now, using our guide. This step is highly recommended.
 
 {{< resource_link "tutorials/encrypt-rfs/" >}}
-Encrypt the root file system of your host device using LUKS and your ZYMKEY FIVE.
+Encrypt the root file system of your host device using LUKS and your ZYMKEY5.
 {{< /resource_link >}}
 
 You should then install your application on your host SBC (in the encrypted volume, if applicable).
@@ -88,46 +84,172 @@ You should then install your application on your host SBC (in the encrypted volu
 ### Test, debug, and test again
 
 {{< callout danger >}}
-*DO NOT* skip this step. If you encounter a major issue with your application after your ZYMKEY FIVE has been permanently bound to your device and armed, you may not be able to fix it.
+*DO NOT* skip this step. If you encounter a major issue with your application after your ZYMKEY5 has been permanently bound to your device and armed, you may not be able to fix it.
 {{< /callout >}}
 
-Test the functionality of your application thoroughly to ensure it is free of major defects that will prevent it from functioning properly. After the ZYMKEY FIVE has been bound to your host SBC, especially if *Perimeter Detect* features are in use, it may be difficult to make significant chances to your configuration without locking youself out of the ZYMKEY FIVE, depending on the nature of your application and its configuration.
+Test the functionality of your application thoroughly to ensure it is free of major defects that will prevent it from functioning properly. After the ZYMKEY5 has been bound to your host SBC, especially if *Perimeter Detect* features are in use, it may be difficult to make significant chances to your configuration without locking youself out of the ZYMKEY5, depending on the nature of your application and its configuration.
 
 ## Activate production mode
 
-{{< callout danger >}}
-*DO NOT* cut the lock tab yet.
-{{< /callout >}}
+With the Zymkey, a physical tab was cut to go into production mode. In the HSM models, to go into production mode it only requires a function call followed by a reboot.
 
-Before proceeding, shut your host board down and disconnect it from power. Then, without removing the ZYMKEY FIVE's battery (if installed), remove the ZYMKEY FIVE from the host SBC.
+The API function lock binding puts the HSM into production mode. Below are three examples which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to production mode.
 
-### Cut the lock tab
+<details>
+
+<summary>C - zkLockBinding</summary>
+<br>
+
+```c
+// gcc example_binding.c -I /usr/include/zymkey -l zk_app_utils -o example_binding
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "zk_app_utils.h"
+#include "zk_b64.h"
+
+void check_code(int code, char* location){
+  if (code < 0)
+  {
+    fprintf(stderr, "FAILURE: %s - %s\n", location, strerror(code));
+  }
+  else if (code >= 0)
+  {
+    fprintf(stdout, "SUCCESS: %s - %d\n", location, code);
+  }
+}
+
+void HSM_soft_bind(zkCTX zk_ctx)
+{
+  bool binding_is_locked = false;
+  bool is_bound = false;
+  int ret = zkGetCurrentBindingInfo(zk_ctx, &binding_is_locked, &is_bound);
+  check_code(ret, "zkGetCurrentBindingInfo");
+  printf("Binding is locked: ");
+  printf(binding_is_locked ? "true" : "false");
+  printf("\n");
+  printf("HSM is bound: ");
+  printf(is_bound ? "true" : "false");
+  printf("\n\n");
+
+  //ret = zkLockBinding(zk_ctx);
+  //if(binding_is_locked && is_bound)
+  //{
+  //  check_code(ret, "zkLockBinding - Already Bound");
+  //}
+  //else
+  //{
+  //  check_code(ret, "zkLockBinding");
+  //}
+  //printf("\n");
+
+  ret = zkGetCurrentBindingInfo(zk_ctx, &binding_is_locked, &is_bound);
+  check_code(ret, "zkGetCurrentBindingInfo");
+  printf("Binding is locked: ");
+  printf(binding_is_locked ? "true" : "false");
+  printf("\n");
+  printf("HSM is bound: ");
+  printf(is_bound ? "true" : "false");
+  printf("\n\n");
+}
+
+int main()
+{
+  zkCTX zk_ctx;
+  int status = zkOpen(&zk_ctx);
+  check_code(status, "zkOpen");
+  printf("\n\n");
+
+  HSM_soft_bind(zk_ctx);
+
+  status = zkClose(zk_ctx);
+  check_code(status, "zkClose");
+  printf("\n");
+
+  return 0;
+}
+```
+</details>
+
+
+<details>
+<summary>C++ - lockBinding</summary>
+<br>
+
+```cpp
+#include <stdio.h>
+#include <zkAppUtilsClass.h>
+
+using namespace std;
+using namespace zkAppUtils;
+
+void HSM_soft_bind(zkClass* zk_inst)
+{
+  bool binding_is_locked = false;
+  bool is_bound = false;
+  zk_inst->getCurrentBindingInfo(binding_is_locked, is_bound);
+  printf("Binding is locked: ");
+  printf(binding_is_locked ? "true" : "false");
+  printf("\n");
+  printf("HSM is bound: ");
+  printf(is_bound ? "true" : "false");
+  printf("\n");
+
+  //zk_inst->lockBinding();
+  //printf("lockBinding successful\n");
+
+  zk_inst->getCurrentBindingInfo(binding_is_locked, is_bound);
+  printf("Binding is locked: ");
+  printf(binding_is_locked ? "true" : "false");
+  printf("\n");
+  printf("HSM is bound: ");
+  printf(is_bound ? "true" : "false");
+  printf("\n");
+}
+
+int main()
+{
+  zkClass* zk_inst;
+  zk_inst = new zkClass();
+
+  HSM_soft_bind(zk_inst);
+
+  delete zk_inst;
+  return 0;
+}
+```
+</details>
+
+
+<details>
+
+<summary>Python - lock_binding</summary>
+<br>
+
+```python
+import zymkey
+tup = zymkey.client.get_current_binding_info()
+print("HSM is bound: " + str(tup[1]))
+print("Binding is locked: " + str(tup[0]))
+
+#zymkey.client.lock_binding()
+
+tup = zymkey.client.get_current_binding_info()
+print("HSM is bound: " + str(tup[1]))
+print("Binding is locked: " + str(tup[0]))
+```
+</details>
 
 {{< callout warning >}}
-This procedure can be performed while the ZYMKEY FIVE is connected to the host SBC, but the host **must be disconnected from power**.
-
 Do not proceed without completing the steps outlined above, including setting the `Perimeter Event Actions` to `none` or `notify`.
 {{< /callout >}}
 
-Follow the procedure below carefully to move your ZYMKEY FIVE into production mode.
-
-{{< card header="**1. Use sharp diagonal cutter pliers**" >}}
-![ZYMKEY FIVE Cut Tab 1](ZK-cut-tab-1.png)
-{{< /card >}}
-
-{{< card header="**2. Cut the tab**" >}}
-Align the pliers with the guide lines on the Cut-2-Lock tab, and carefully cut the tab.
-![ZYMKEY FIVE Cut Tab 2](ZK-cut-tab-2.png)
-{{< /card >}}
-
-{{< card header="**3. Finish the cut**" >}}
-The resulting cut should leave the edge of the ZYMKEY FIVE motherboard flush. If portions of the tab remain attached to the board, you can remove them with the angle cutter pliers.
-![ZYMKEY FIVE Cut Tab 3](ZK-cut-tab-3.png)
-{{< /card >}}
 
 ### Finalize your device for deployment
 
-After cutting the lock tab, reinstall the ZYMKEY FIVE the host SBC, reconnect it to power, and boot into the host. The blink pattern on the ZYMKEY FIVE will change to 3 rapid blinks once every 3 seconds to indicate that ZYMKEY FIVE has bound to the host in production mode.
+After using the APIs to lock binding, reboot. The blink pattern on the ZYMKEY5 will change to 3 rapid blinks once every 3 seconds to indicate that ZYMKEY5 has bound to the host in production mode.
 
 If you are using the *Perimeter Detect* features, close your perimeter circuits (for example, by closing the enclosure's lid), and then clear any `Perimeter Detect Events` using the API:
 

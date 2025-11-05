@@ -28,7 +28,7 @@ Step-by-step videos of this Getting-Started are also available.
 
 
 
-|                  Pi Platform:     |    CM5            |  CM4                   |  Pi4             |   Pi5             |
+| Platform:                         |    SEN500/CM5     |  CM4                   |  Pi4             |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM64**   |   **Zymkey,SCM**      | **Zymkey**        | **Zymkey**   |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
@@ -63,6 +63,7 @@ See the [Features](../features) section for more information on how to use Bootw
 4. Run [`zbcli update-config`](../zbcli/update-config) to configure Partitions and Recovery strategy. For this Quickstart, we will setup A/B partitions.
 5. Run [`zbcli update`](../zbcli/update) to load a known-good example zi image into the Backup (B) partition; set B to the Active partition.
 6. Run [`zbcli rollback-swap`](../zbcli/rollback-swap) to force a Rollback to your original partition to verify your A/B setup is working.
+7. For 2.0.0, continue on to setup [Secure Boot](../secure-boot).
 
 ### 1. Download Bootware
 
@@ -480,6 +481,10 @@ sudo zbcli rollback-swap
 Once again, you can use `lsblk` to verify the active partition has changed. You should now have identical Active and Backup partitions with working images ready for your development. 
 
 If Bootware detects that the system has failed to reach a `systemd` init target for 3 consecutive attempts in a row, it will automatically initiate a rollback-swap of the root partitions upon the next reboot.
+
+### 5. Secure Boot
+
+Bootware 2.0.0 BETA introduces support for secure boot integration of signed boot images. To continue on and configure Secure Boot, follow the steps here: [Secure Boot](../secure-boot).
 
 ### Additional Information and Support
     
