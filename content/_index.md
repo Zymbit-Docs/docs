@@ -43,12 +43,12 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 Bootware® 2.0.0-1 Beta
 
 - Features
-  - Boot.img: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts for uboot/zboot, userspaceA, and userspaceB. Solution must seamlessly switch between zboot boots, boots on A and boots on B. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update
-  - Secure Boot: Seamless integration of Bootware into Raspberry Pi's Secure Boot process.
+  - Signed Boot Images: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update. Images securely signed with Bootware.
+  - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device.
 
 - Platforms
 
-|                  Pi Platform:     |    CM5            |  CM4                   |  Pi4             |   Pi5             |
+| Pi Platform:                      |  SEN500/CM5       |  CM4                   |  Pi4             |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM64**   |   **Zymkey,SCM**      | **Zymkey**        | **Zymkey**   |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
@@ -57,19 +57,22 @@ Bootware® 2.0.0-1 Beta
 
 - Limitations
    - OSes NOT supported until refresh Beta: Bullseye, Jammy (Ubuntu 22), Trixie
-   - Zymkey Zero support not supported yet
+   - Zymkey support not supported yet
    - Cannot upgrade an existing image built from pre-v2.0 Bootware install (requires a clean Bootware reinstall)
 
 - Bug fixes
    - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
 
 - zkifc
-   - Added support for new Zymbit HSM models: Zymkey5, Zymkey Zero
-
-- zkifc
-   - Added support for new Zymbit HSM models: Zymkey5, Zymkey Zero
+   - Added support for new Zymbit HSM model: Zymkey5 
    - `zkifc -v` added to return version
    - zkpkcs11 package build fixed for 64-bit OSs
+   - Installation script can now set the distribution via an environment variable. This allows pointing a newer distribution to use an older repo. For example, to point a `trixie` OS at the Zymbit `bookworm` repo, do the following on your Pi,
+
+```
+    export distro=bookworm
+    curl -fsSL https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo -E bash
+```
 
 -----
 #### August 2025 
