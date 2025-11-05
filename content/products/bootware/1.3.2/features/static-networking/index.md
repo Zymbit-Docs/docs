@@ -7,7 +7,6 @@ date: "2025-07-15"
 draft: false
 aliases:
     - /bootware/features/static-networking/
-    - /bootware1.3.1/features/static-networking/
 
 images: []
 type: docs

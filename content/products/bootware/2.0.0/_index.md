@@ -6,8 +6,6 @@ cascade:
         show_versions: true
 icon: ""
 description: "Beta release. Includes seemless integration of Secure Boot."
-aliases:
-    - /bootware
 date: "2024-08-11"
 lastmod: "2025-10-15"
 draft: false

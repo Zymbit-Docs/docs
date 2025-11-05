@@ -4,8 +4,6 @@ linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
 lastmod: "2025-10-15"
-aliases:
-    - /bootware/getting-started/
 draft: false
 type: docs
 images: []
@@ -20,7 +18,7 @@ headless: false
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-{{< resource_link "bootware2.0.0/tutorials" >}}
+{{< resource_link "products/bootware/2.0.0/tutorials" >}}
 Step-by-step videos of this Getting-Started are also available. 
 {{< /resource_link >}}
 
@@ -35,11 +33,6 @@ Step-by-step videos of this Getting-Started are also available.
 |                  **Zymbit HSMs:** | **Zymkey,HSM64**   |   **Zymkey,SCM**      | **Zymkey**        | **Zymkey**   |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
-
-
-{{< supported >}} Full Bootware Support
-
-{{< partially-supported >}} Bootware Not Supported
 
 <br>
 

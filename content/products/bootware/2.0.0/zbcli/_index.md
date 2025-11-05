@@ -4,8 +4,6 @@ linkTitle: "zbcli"
 description: Description of zbcli executable, handling most Bootware operations
 date: "2024-08-14"
 lastmod: "2025-10-15"
-aliases:
-    - /bootware/zbcli/
 draft: false
 type: docs
 images: []

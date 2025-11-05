@@ -2,8 +2,6 @@
 title: Zymbit Bootware Configuration Wizard
 linkTitle: "zb-wizard"
 lastmod: "2025-10-15"
-#aliases:
-#    - /zboot-preview/
 date: "2024-04-02"
 draft: false
 images: []

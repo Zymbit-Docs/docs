@@ -4,8 +4,6 @@ linkTitle: "Getting Started"
 description: Getting Started tutorial to get Bootware up and running
 date: "2024-08-21"
 lastmod: "2025-10-15"
-aliases:
-    - /bootware/getting-started/
 draft: false
 type: docs
 images: []
@@ -18,7 +16,7 @@ headless: false
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-{{< resource_link "bootware1.3/tutorials" >}}
+{{< resource_link "products/bootware/1.3.0/tutorials" >}}
 Step-by-step videos of this Getting-Started are also available. 
 {{< /resource_link >}}
 

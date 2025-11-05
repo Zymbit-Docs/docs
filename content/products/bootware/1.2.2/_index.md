@@ -10,8 +10,6 @@ cascade:
       show_versions: true
 icon: ""
 description: ""
-aliases:
-    - /bootware1.2.2/
 date: "2024-08-11"
 lastmod: "2025-10-15"
 draft: false
