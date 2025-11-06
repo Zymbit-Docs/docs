@@ -93,7 +93,7 @@ Test the functionality of your application thoroughly to ensure it is free of ma
 
 With the ZYMKEY FIVE models, to go into Production Mode it only requires a function call followed by a reboot.
 
-The API function lock binding puts the ZYMKEY5 into Production Mode. Below are three examples which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to Production Mode.
+The API function lock binding puts the ZYMKEY FIVE into Production Mode. Below are three examples which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to Production Mode.
 
 <details>
 

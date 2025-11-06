@@ -1,6 +1,6 @@
 ---
-title: ZYMKEY5 (NEW)
-linktitle: ZYMKEY5 (NEW)
+title: ZYMKEY FIVE (NEW)
+linktitle: ZYMKEY FIVE (NEW)
 description: Advanced plug in security module for Raspberry Pi
 aliases:
     - /quickstart/getting-started/zymkey5/

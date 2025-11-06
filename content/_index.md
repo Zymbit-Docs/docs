@@ -12,6 +12,14 @@ layout: single
 
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
+callout {{< info >}}
+We have released a Bootware 2.0.0 Beta, which includes:
+- Full boot artifact isolation
+- New Zymbit hardware integration
+- Integration with Pi's Secure Boot
+Details: [November 2025 Update](#november-2025)
+callout {{< /info >}}
+
 
 ### Latest STABLE Platform and OS Support
 
@@ -42,7 +50,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 -----
 **Bootware® 2.0.0-1 Beta**
 
-| Pi Platform:                      |  SEN500/CM5       |  CM4                   |  Pi4             |   Pi5             |
+| Pi Platform:                      |  SEN500       |  CM4                   |  Pi4             |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM64**   |   **Zymkey,SCM**      | **Zymkey**        | **Zymkey**   |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
@@ -63,7 +71,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
    - 
 
 - zkifc
-   - Added support for new Zymbit HSM model: Zymkey5 
+   - Added support for new Zymbit HSM model: ZYMKEY FIVE
    - `zkifc -v` added to return version
    - zkpkcs11 package build fixed for 64-bit OSs
    - Installation script can now set the distribution via an environment variable. This allows pointing a newer distribution to use an older repo. For example, to point a `trixie` OS at the Zymbit `bookworm` repo, do the following on your Pi,

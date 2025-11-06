@@ -2,7 +2,7 @@
 title: "Bootware 2.0.0"
 linkTitle: "Bootware 2.0.0 (Beta)"
 icon: ""
-description: "Beta release. Includes seemless integration of Secure Boot."
+description: "Beta release. Includes seamless integration of Secure Boot."
 date: "2024-08-11"
 lastmod: "2025-10-15"
 draft: false

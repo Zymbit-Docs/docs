@@ -13,8 +13,6 @@ toc: true
 -----
 ### Troubleshooting tips and FAQ
 
-> NOTICE (3/31/2025): Changes from the Pi foundation to the Pi5/CM5 firmware from last week are incompatible with Bootware. We are working on a solution to the problem. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 image, but you will if you upgrade to the latest from last week.
-
 #### Supported Platforms and Operating Systems
 
 |                  Pi Platform:     |    CM5            |  CM4                   |  Pi4             |   Pi5             |
@@ -27,8 +25,6 @@ toc: true
 {{< supported >}} Full Bootware Support
 
 {{< partially-supported >}} Bootware Not Supported
-
-> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)                                                                    
 
 <br>
 
@@ -55,18 +51,15 @@ Bootware® 2.0.0-1 Beta
 
 
 - Limitations
-   - OSes NOT supported until refresh Beta: Bullseye, Jammy (Ubuntu 22), Trixie
-   - Zymkey Zero support not supported yet
+   - OS's NOT supported until refresh Beta: Bullseye, Jammy (Ubuntu 22), Trixie
+   - ZYMKEY ZERO support not supported yet
    - Cannot upgrade an existing image built from pre-v2.0 Bootware install (requires a clean Bootware reinstall)
 
 - Bug fixes
    - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
 
 - zkifc
-   - Added support for new Zymbit HSM models: Zymkey5, Zymkey Zero
-
-- zkifc
-   - Added support for new Zymbit HSM models: Zymkey5, Zymkey Zero
+   - Added support for new Zymbit HSM models: ZYMKEY FIVE, ZYMKEY ZERO
    - `zkifc -v` added to return version
    - zkpkcs11 package build fixed for 64-bit OSs
 
