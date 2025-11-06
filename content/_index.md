@@ -20,7 +20,7 @@ We have released a Bootware 2.0.0 Beta, which includes:
 - Integration with Pi's Secure Boot
 
 Details: [November 2025 Update](#november-2025)
-{{% /note %}}
+{{% /callout %}}
 
 
 ### Latest STABLE Platform and OS Support
