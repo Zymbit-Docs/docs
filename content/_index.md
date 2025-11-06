@@ -40,13 +40,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 -----
 #### November 2025
 -----
-Bootware® 2.0.0-1 Beta
-
-- Features
-  - Signed Boot Images: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update. Images securely signed with Bootware.
-  - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device.
-
-- Platforms
+**Bootware® 2.0.0-1 Beta**
 
 | Pi Platform:                      |  SEN500/CM5       |  CM4                   |  Pi4             |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
@@ -54,14 +48,19 @@ Bootware® 2.0.0-1 Beta
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
 
+- Features
+  - Signed Boot Images: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update. Images securely signed with Bootware.
+  - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device.
 
 - Limitations
-   - OSes NOT supported until refresh Beta: Bullseye, Jammy (Ubuntu 22), Trixie
-   - Zymkey support not supported yet
-   - Cannot upgrade an existing image built from pre-v2.0 Bootware install (requires a clean Bootware reinstall)
+   - Operating Systems NOT supported until refresh Beta: Bullseye, Jammy (Ubuntu 22), Trixie
+   - Requires a clean Bootware install of 2.0.0 - cannot upgrade an existing from a Bootware 1.3.2.
 
 - Bug fixes
    - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
+
+- Bugs not fixed
+   - 
 
 - zkifc
    - Added support for new Zymbit HSM model: Zymkey5 

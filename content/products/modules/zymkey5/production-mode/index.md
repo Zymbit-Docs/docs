@@ -3,7 +3,7 @@ title: Enabling Production Mode - ZYMKEY5
 linkTitle: "Enabling Production Mode - ZYMKEY5"
 description: "Enabling Production Mode - ZYMKEY5"
 aliases:
-    - /quickstart/production-mode/hsm6/
+    - /quickstart/production-mode/zymkey5/
 date: "2022-03-08"
 lastmod: "2025-10-15"
 draft: false
