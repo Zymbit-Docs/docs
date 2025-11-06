@@ -29,7 +29,7 @@ The ZYMKEY FIVE occupies 10 pins on the GPIO header. It can also be used with ot
 {{< /card >}}
 {{< card header="ZYMKEY FIVE Pinout" >}}
 {{< figure
-    src="ZK4-pinout.png"
+    src="ZK5-pinout.png"
     alt="Diagram of the ZYMKEY FIVE pinout"
     caption="The pinout of the header of the ZYMKEY FIVE. ZYMKEY FIVE requires exclusive access to `GPIO4`, which can be remapped to another GPIO pin. It also share the {{% term/i2c %}} bus with the default address of `0x30`."
     >}}
