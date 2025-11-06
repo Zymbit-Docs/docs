@@ -12,13 +12,15 @@ layout: single
 
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
-{{% alert title="Update" color=info %}}
+{{% callout note %}}
+### Update
 We have released a Bootware 2.0.0 Beta, which includes:
 - Full boot artifact isolation
 - New Zymbit hardware integration
 - Integration with Pi's Secure Boot
+
 Details: [November 2025 Update](#november-2025)
-{{% /alert %}}
+{{% /note %}}
 
 
 ### Latest STABLE Platform and OS Support
