@@ -50,7 +50,7 @@ Step-by-step videos of this Getting-Started are also available.
 
 <br>
 
-> It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
+> It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM. Storage space is also dependent on your image. For A/B partitioning, it is recommended to use at least 16GB.
 
 -----
 
