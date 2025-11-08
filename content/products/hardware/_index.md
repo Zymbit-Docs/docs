@@ -13,26 +13,26 @@ Zymbit hardware line - Complete Secure Edge Nodes, components breakdown and modu
 ### Secure Edge Nodes
 | Model            | Pi CPU        | Zymbit Motherboard     | Zymbit HSM              |  Options                |
 |:-----------------|:-------------:|:-----------------------|:------------------------|:------------------------|
-| SEN500           | CM5           | Zymbit MOBO2           | HSM65                   | POE Module              |
-| SEN400           | CM4           | Zymbit MOBO2           | HSM64, SCM3.0           | POE Module              |
-| SEN D35 (legacy) | CM4           | Zymbit MOBO1           | HSM64, SCM3.0           | POE Module              |
+| SEN500           | CM5           | [MOBO2](mobos/mobo2/)           | [HSM65](modules/hsm65)   | POE Module    |
+| SEN400           | CM4           | [MOBO2](mobos/mobo2/)           | [HSM64](modules/hsm64), [SCM](modules/scm) | POE Module              |
+| SEN D35 (legacy) | CM4           | [MOBO1](mobos/mobo1/)           | [SCM](modules/scm)           |                         |
 
 ### Components
-| Model            | Pi CPU        | Zymbit HSM             |  Notes:
+| Model            | Pi CPU        | Zymbit HSM             | Description:
 |:-----------------|:-------------:|:-----------------------|:------------------------|
-| MOBO2            | CM5, CM4      | HSM65, HSM64           | MOBO2 Included in SEN500, SEN400. Not sold separately |
-| MOBO1            | CM4           | SCM                    | MOBO1 Included in SEN500, SEN400. Not sold separately |
+| [MOBO2](mobos/mobo2/)            | CM5, CM4      | [HSM65](modules/hsm65), [HSM64](modules/hsm64) | MOBO2 Included in SEN500, SEN400. Not sold separately |
+| [MOBO1](mobos/mobo1/)            | CM4           | [SCM](modules/scm)               | MOBO1 Included in D35. Not sold separately |
 
 ### Modules
-| Model            | Pi CPU        | Release Status         |  Notes:
+| Model            | Pi CPU        | Release Status         | Description:
 |:-----------------|:-------------:|:-----------------------|:------------------------|
-| ZYMKEY FIVE      | Pi5, Pi4      | Released - NEW         |:                        |
-| ZYMKEY ZERO      | Pi5, Pi4      | Coming soon            |:                        |
-| ZYMKEY4          | Pi5, Pi4      | Released               |:                        |
-| HSM65            | CM5           | Released - NEW         |: HSM for SEN500; not sold separately     |
-| HSM64            | CM4           | Released - NEW         |: HSM for SEN500, SEN400; not sold separately     |
-| HSM60            | CM5, CM4      | Released - NEW         |: HSM for non-Zymbit IO motherboards |
-| HSM6             | Pi5, Pi4      | Legacy                 |:                        |
-| HSM4             | Pi5, Pi4      | Legacy                 |:                        |
+| [ZYMKEY FIVE](modules/zymkey5)    | Pi5, Pi4      | Released - NEW         |                         |
+| [ZYMKEY ZERO](modules/zymkey0)    | Pi5, Pi4      | Coming soon            |                         |
+| [ZYMKEY4](modules/zymkey4)        | Pi5, Pi4      | Released               |                         |
+| [HSM65](modules/hsm65)            | CM5           | Released - NEW         | HSM for SEN500; not sold separately     |
+| [HSM64](modules/hsm64)            | CM4           | Released - NEW         | HSM for SEN500, SEN400; not sold separately     |
+| [HSM60](modules/hsm60)            | CM5, CM4      | Released - NEW         | HSM for non-Zymbit IO motherboards |
+| [HSM6](modules/hsm6)              | Pi5, Pi4      | Legacy                 |                         |
+| [HSM4](modules/hsm4)              | Pi5, Pi4      | Legacy                 |                         |
 
 
