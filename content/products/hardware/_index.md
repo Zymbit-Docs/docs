@@ -27,7 +27,7 @@ Zymbit hardware line - Complete Secure Edge Nodes, components breakdown and modu
 | Model            | Pi CPU        | Release Status         | Description:
 |:-----------------|:-------------:|:-----------------------|:------------------------|
 | [ZYMKEY FIVE](modules/zymkey5)    | Pi5, Pi4      | Released - NEW         |                         |
-| [ZYMKEY ZERO](modules/zymkey0)    | Pi5, Pi4      | Coming soon            |                         |
+| [ZYMKEY ZERO](modules/zymkey0)    | Pi5, Pi4      | Released - NEW           |                         |
 | [ZYMKEY4](modules/zymkey4)        | Pi5, Pi4      | Released               |                         |
 | [HSM65](modules/hsm65)            | CM5           | Released - NEW         | HSM for SEN500; not sold separately     |
 | [HSM64](modules/hsm64)            | CM4           | Released - NEW         | HSM for SEN500, SEN400; not sold separately     |
