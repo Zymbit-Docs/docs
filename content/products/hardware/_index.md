@@ -16,9 +16,9 @@ Fully integrated enterprise grade computers ready to deploy. Easy to customize w
 
 | Model            | Pi CPU        | Zymbit Motherboard     | Zymbit HSM              |  Options                |
 |:-----------------|:-------------:|:-----------------------|:------------------------|:------------------------|
-| SEN500           | CM5           | [Secure Base Board](mobos/sbb/)           | [HSM65](modules/hsm65)   | POE Module    |
-| SEN400           | CM4           | [Secure Base Board](mobos/sbb/)           | [HSM64](modules/hsm64), [SCM](modules/scm) | POE Module              |
-| SEN D35 (legacy) | CM4           | [Legacy Base Board D35](mobos/lbb-d35/)           | [SCM](modules/scm)           |                         |
+| [SEN500](sen500/)           | CM5           | [Secure Base Board](mobos/sbb/)           | [HSM65](modules/hsm65)   | POE Module    |
+| [SEN400](sen400/)           | CM4           | [Secure Base Board](mobos/sbb/)           | [HSM64](modules/hsm64), [SCM](modules/scm) | POE Module              |
+| [SEN D35 (legacy)](send35) | CM4           | [Legacy Base Board D35](mobos/lbb-d35/)           | [SCM](modules/scm)           |                         |
 
 ### Components
 

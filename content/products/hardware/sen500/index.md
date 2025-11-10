@@ -1,18 +1,17 @@
 ---
-title: Secure Edge Node - SEN 500
-linktitle: SEN 500 
-description: SEN 500 - Includes Zymbit motherboard, Raspberry Pi CM5, and ZYMBIT HSM64 Interposer
-aliases:
-    - /getting-started/sen500/quickstart/
-    - /quickstart/getting-started/sen500/
+title: "Quickstart - SEN 500"
+linkTitle: "Quickstart SEN 500"
+lastmod: "2025-10-15"
 draft: false
 images: []
-weight: 8
+weight: 5
+toc: true
 ---
 
 -----
 
 <img src="sen500.png" alt="SEN 500" width="700"/>
+
 
 -----
 
