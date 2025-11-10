@@ -13,18 +13,15 @@ layout: single
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
 {{% callout note %}}
-Recent Updates - November 2025, which includes:
-
+Recent Updates - November 2025:
 - Release of new HSM products
   - ZYMKEY FIVE
   - ZYMKEY ZERO
   - HSM 60 family
-
 - Release of Bootware 2.0 Beta
   - Full boot artifact isolation
   - New Zymbit hardware integration
   - Integration with Pi's Secure Boot
-
 - Update to Zymbit Driver Package
 
 Details: [November 2025 Update](#november-2025)
