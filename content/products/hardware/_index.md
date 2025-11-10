@@ -8,9 +8,12 @@ weight: 30
 layout: single
 ---
 
-Zymbit hardware line - Complete Secure Edge Nodes, components breakdown and module reference.
+Zymbit hardware line - Complete Secure Edge Nodes, components,and module reference.
 
 ### Secure Edge Nodes
+
+Fully integrated enterprise grade computers ready to deploy. Easy to customize with available dev kits. 
+
 | Model            | Pi CPU        | Zymbit Motherboard     | Zymbit HSM              |  Options                |
 |:-----------------|:-------------:|:-----------------------|:------------------------|:------------------------|
 | SEN500           | CM5           | [MOBO2](mobos/mobo2/)           | [HSM65](modules/hsm65)   | POE Module    |
@@ -18,12 +21,18 @@ Zymbit hardware line - Complete Secure Edge Nodes, components breakdown and modu
 | SEN D35 (legacy) | CM4           | [MOBO1](mobos/mobo1/)           | [SCM](modules/scm)           |                         |
 
 ### Components
+
+Components included in the SEN product line.
+
 | Model            | Pi CPU        | Zymbit HSM             | Description:
 |:-----------------|:-------------:|:-----------------------|:------------------------|
 | [MOBO2](mobos/mobo2/)            | CM5, CM4      | [HSM65](modules/hsm65), [HSM64](modules/hsm64) | MOBO2 Included in SEN500, SEN400. Not sold separately |
 | [MOBO1](mobos/mobo1/)            | CM4           | [SCM](modules/scm)               | MOBO1 Included in D35. Not sold separately |
 
 ### Modules
+
+Standalone secure elements included in Zymbit nodes, or for Raspberry Pi platforms.
+
 | Model            | Pi CPU        | Release Status         | Description:
 |:-----------------|:-------------:|:-----------------------|:------------------------|
 | [ZYMKEY FIVE](modules/zymkey5)    | Pi5, Pi4      | Released - NEW         |                         |
