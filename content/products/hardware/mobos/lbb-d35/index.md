@@ -1,6 +1,7 @@
 ---
 title: "Legacy Base Board - D35"
 linkTitle: "Legacy Base Board - D35"
+description: "Zymbit motherboard for the SEN D35 legacy product; carrier board for the Zymbit SCM."
 lastmod: "2025-11-08"
 draft: false
 images: []
