@@ -1,6 +1,6 @@
 ---
-title: "MOBO2 - SEN 500 Motherboard"
-linkTitle:  "MOBO2 - SEN 500 Motherboard"
+title: "Secure Base Board - SEN 500 Motherboard"
+linkTitle:  "Secure Base Board - SEN 500 Motherboard"
 description: "Reference for SEN500 and SEN400 Motherboard. NOTE: Not available for purchase separately"
 lastmod: "2025-11-08"
 draft: false

@@ -1,6 +1,6 @@
 ---
-title: "Mobo1 - SEN D35 Prototype Kit"
-linkTitle: "Mobo1 - SEN D35 Prototype Kit"
+title: "Legacy Base Board - D35"
+linkTitle: "Legacy Base Board - D35"
 lastmod: "2025-11-08"
 draft: false
 images: []

@@ -16,9 +16,9 @@ Fully integrated enterprise grade computers ready to deploy. Easy to customize w
 
 | Model            | Pi CPU        | Zymbit Motherboard     | Zymbit HSM              |  Options                |
 |:-----------------|:-------------:|:-----------------------|:------------------------|:------------------------|
-| SEN500           | CM5           | [MOBO2](mobos/mobo2/)           | [HSM65](modules/hsm65)   | POE Module    |
-| SEN400           | CM4           | [MOBO2](mobos/mobo2/)           | [HSM64](modules/hsm64), [SCM](modules/scm) | POE Module              |
-| SEN D35 (legacy) | CM4           | [MOBO1](mobos/mobo1/)           | [SCM](modules/scm)           |                         |
+| SEN500           | CM5           | [Secure Base Board](mobos/sbb/)           | [HSM65](modules/hsm65)   | POE Module    |
+| SEN400           | CM4           | [Secure Base Board](mobos/sbb/)           | [HSM64](modules/hsm64), [SCM](modules/scm) | POE Module              |
+| SEN D35 (legacy) | CM4           | [Legacy Base Board D35](mobos/lbb-d35/)           | [SCM](modules/scm)           |                         |
 
 ### Components
 
@@ -26,8 +26,8 @@ Components included in the SEN product line.
 
 | Model            | Pi CPU        | Zymbit HSM             | Description:
 |:-----------------|:-------------:|:-----------------------|:------------------------|
-| [MOBO2](mobos/mobo2/)            | CM5, CM4      | [HSM65](modules/hsm65), [HSM64](modules/hsm64) | MOBO2 Included in SEN500, SEN400. Not sold separately |
-| [MOBO1](mobos/mobo1/)            | CM4           | [SCM](modules/scm)               | MOBO1 Included in D35. Not sold separately |
+| [Secure Base Board](mobos/sbb/)            | CM5, CM4      | [HSM65](modules/hsm65), [HSM64](modules/hsm64) | Secure Base Board Included in SEN500, SEN400. Not sold separately |
+| [Legacy Base Board D35](mobos/lbb-d35/)            | CM4           | [SCM](modules/scm)               | Legacy Base Board D35 Included in D35. Not sold separately |
 
 ### Modules
 
