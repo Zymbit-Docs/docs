@@ -17,7 +17,7 @@ Recent Updates - November 2025:
 - Release of new HSM products
   - ZYMKEY FIVE
   - ZYMKEY ZERO
-  - HSM 60 family
+  - HSM 60 
 - Release of Bootware 2.0 Beta
   - Full boot artifact isolation
   - New Zymbit hardware integration
@@ -38,8 +38,6 @@ Details: [November 2025 Update](#november-2025)
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} [^1] |
 | Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} | {{< partially-supported >}} &nbsp; |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} &nbsp; |
-| Raspberry Pi OS Bullseye (32-bit) |                   |                        | {{< partially-supported >}} &nbsp;      |                   |                 |
-| Ubuntu 22.04 LTS Jammy (32-bit)   |                   |                        | {{< partially-supported >}} &nbsp;      |                   |                 |
 
 {{< supported >}} Full Bootware Support
 
