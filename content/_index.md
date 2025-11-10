@@ -57,9 +57,9 @@ Details: [November 2025 Update](#november-2025)
 -----
 **Bootware® 2.0.0-1 Beta**
 
-| Pi Platform:                      |  SEN500       |  CM4                   |  Pi4             |   Pi5             |
+| Pi Platform:                      |  SEN500       |  SEN400                   |  Pi4             |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM64**   |   **Zymkey,SCM**      | **Zymkey**        | **Zymkey**   |
+|                  **Zymbit HSMs:** | **HSM64**   |   **SCM**      | **Zymkey**        | **Zymkey**   |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
 
@@ -69,7 +69,7 @@ Details: [November 2025 Update](#november-2025)
 
 - Limitations
    - Operating Systems NOT supported until refresh Beta: Bullseye, Jammy (Ubuntu 22), Trixie
-   - Requires a clean Bootware install of 2.0.0 - cannot upgrade an existing from a Bootware 1.3.2.
+   - Requires a clean Bootware install of Beta 2.0.0 - cannot upgrade from an existing Bootware 1.3.2.
 
 - Bug fixes
    - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
