@@ -29,6 +29,7 @@ The SEN 500 provides all the hardware and software components required to get st
     src="sen500_edge_connections.png"
     alt="SEN 500 I/O connections"
     caption=""
+    width=700
     >}}
 {{< /card >}}
 {{< /cardpane >}}
