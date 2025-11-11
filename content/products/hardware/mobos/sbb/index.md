@@ -1,8 +1,8 @@
 ---
-title: "Secure Base Board - SEN 500 Motherboard"
-linkTitle:  "Secure Base Board - SEN 500 Motherboard"
-description: "Reference for SEN500 and SEN400 Motherboard. NOTE: Not available for purchase separately"
-lastmod: "2025-11-08"
+title: "Secure Base Board"
+linkTitle:  "Secure Base Board"
+description: "Secure Base Board I/O motherboard, Used in Zymbit SEN500 and SEN400. NOTE: Not available for purchase separately"
+lastmod: "2025-11-11"
 draft: false
 images: []
 weight: 5
@@ -11,61 +11,26 @@ toc: true
 
 -----
 
-<img src="sen500.png" alt="SEN 500" width="700"/>
-
-
------
-
 ## Introduction
 
-The SEN 500 provides all the hardware and software components required to get started implementing your secure application. Inside the SEN 500, includes a Raspberry PI CM5 along with the Zymbit Motherboard detailed below, as well as a Zymbit Interposer-based HSM.
+The Secure Base Board I/O is Zymbit's secure motherboard solution for use with Zymbit Secure Edge Node devices. It serves as a carrier board for a Raspberry Pi CM5 or CM4 Compute Module, along with a Zymbit HSM in the same form factor that physically sits between the Secure Base Board and the Pi Compute Module. 
 
------
-## Configure and Setup your SEN 500
+<< INSERT PICTURE OF PRODUCT STACK >>
 
-{{< cardpane >}}
-{{< card header="Zymbit SEN 500 I/O ports" >}}
-{{< figure
-    src="sen500_edge_connections.png"
-    alt="SEN 500 I/O connections"
-    caption=""
-    >}}
-{{< /card >}}
-{{< /cardpane >}}
-
-### Power On
-Connect the optional 24V/12V Power Supply up to the front panel barrel connector. Connect an Cat5e/Cat6 ethernet cable to the gigabit ethernet port. The unit is designed to run either headless via SSH, or, if you prefer, attach a monitor to one of the HDMI ports and a keyboard and mouse to the USB ports and login via the console.  
-
-Monitor the top LED (SEC) for the status of the Zymbit module. It will go through the following stages:
-
-- rapid blue blinking:   *Booting underway*
-- one blue blink every 3 seconds:   *zkifc has loaded and the system is ready to go*
-
-Once the boot sequence completes and the top LED (SEC) is blinking blue once every three seconds, login either via the console or remotely via SSH. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for login. The default password is zymbit. Please change your password once you login.
-
-That is all it takes to get up and running!
-
-### Accessing the inside of the SEN 500
-
-To gain access to the SEN 500, power down and remove the six torx screws. Carefully remove the lid. It does not void any warranty to open the unit in order to install Pi HATs, sensors, M.2 hardware, configure as a MSD/rpiboot, or arrange tamper prevention. If needed, remove the four nylon screws to separate the CM5 from the Zymbit HSM. Reverse the process to reassemble and close the unit. 
-
-## Overview of the features of the SEN 500 - Zymbit Motherboard
+## Overview of the features of the Secure Base Board
 
 {{< cardpane >}}
-{{< card header="Zymbit SEN 500 Motherboard - Top" >}}
+{{< card header="Zymbit Secure Base Board - Top" >}}
 {{< figure
     src="bb500top.png"
-    alt="Motherboard 500 top"
+    alt="Secure Base Board top"
     caption=""
     >}}
 {{< /card >}}
-{{< /cardpane >}}
-
-{{< cardpane >}}
-{{< card header="Zymbit SEN 500 Motherboard- Bottom" >}}
+{{< card header="Zymbit Secure Base Board- Bottom" >}}
 {{< figure
     src="bb500bottom.png"
-    alt="Motherboard 500 Bottom"
+    alt="Secure Base Board Bottom"
     caption=""
     >}}
 {{< /card >}}
@@ -85,6 +50,7 @@ To gain access to the SEN 500, power down and remove the six torx screws. Carefu
     src="led_brd.png"
     alt="LED Board Reference"
     caption="LED Designator"
+    height=300
     >}}
 {{< /card >}}
 {{< card header="Lightpipe (Top)" >}}
@@ -92,6 +58,7 @@ To gain access to the SEN 500, power down and remove the six torx screws. Carefu
     src="led_lightpipe.png"
     alt="Lightpipe Reference"
     caption="Lightpipe (Bottom)"
+    height=300
     >}}
 {{< /card >}}
 {{< card header="SEN 500 Enclosure" >}}
@@ -99,10 +66,10 @@ To gain access to the SEN 500, power down and remove the six torx screws. Carefu
     src="led_sen.jpg"
     alt="SEN 500 Enclosure LEDs"
     caption=""
+    height=300
     >}}
 {{< /card >}}
 {{< /cardpane >}}
-
 
 | Designator | Lightpipe Order | Purpose | Legend | Type | Off | Green or Blue | Red | Yellow or purple |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -116,19 +83,19 @@ The security LED is Zymbit HSM status LED.  This will normally blink a blue patt
 
 If the LED is illuminated red, that indicates a critical security fault and the system is not operational anymore.  If the LED is illuminated purple or blinking red-purple, this indicates a noncritical security fault/incident, and the system is still operational.
 
-- **Activity LED**
+#### Activity LED
 
 The activity green LED has several purposes.  It replicates the green LED on the Raspberry Pi CM5 (signifying eMMC access, or signifying error during boot with a [flash code](https://www.raspberrypi.com/documentation/computers/configuration.html#led-warning-flash-codes)), and it indicates activity on an M.2 drive if one is in use.
 
 If it is red, this indicates the Pi power status. If the light is OFF, it indicates that the device is getting enough power and should be performing correctly.  If it is blinking, the red light indicates the Pi is not being supplied enough power. If the red light is continuously on, this means there is inadequate power, and the Pi is keeping itself off to prevent damage.
 
-- **Primary Power LED**
+#### Primary Power LED
 
 This LED indicates the primary system power status.  If it is off, it indicates no power; green indicates full primary power, and red indicates primary power error.  A primary power error can occur if the eFuse on the primary power supply has a fault or if the onboard primary power supply is disabled by the Zymbit SCM. 
 
 A yellow indication means low power or sleep mode (not yet supported).
 
-- **Secondary Power LED**
+#### Secondary Power LED
 
 This LED indicates the secondary power status if one is present.  If this LED is off, it indicates that no secondary power is available.  If it is green, it indicates full secondary power.  If it indicates red there is a secondary power error (or it is not being used), and yellow indicates limited secondary power.  
 
@@ -203,8 +170,6 @@ The POE_PSTAT voltage is a combination of two POE status lines. See the table be
 ```
 dtparam=i2c_csi_dsi0=on
 ```
-
-
 
 <details>
 
@@ -388,6 +353,7 @@ If SW1 if off, both USB power to the external USB connectors will be cut and the
     src="sw1_pos3_closed.png"
     alt="SW1 Position3 closed"
     caption=""
+    height=300
     >}}
 {{< /card >}}
 {{< /cardpane >}}
@@ -410,6 +376,7 @@ When using a CM5 as the host platform, USB3 is used and enabled by default with 
     src="sw1_pos2_closed.png"
     alt="SW1 Position2 closed"
     caption=""
+    height=300
     >}}
 {{< /card >}}
 {{< /cardpane >}}
@@ -452,6 +419,7 @@ The Zymbit Motherboard has a standard Raspberry Pi 40-way HAT connector. Mountin
     src="hat_top.png"
     alt="Motherboard 500 top"
     caption="Pi HATs insert on the bottom Motherboard"
+    height=300
     >}}
 {{< /card >}}
 {{< card header="Bottom side Pi HAT outline where Pi HATs go" >}}
@@ -459,6 +427,7 @@ The Zymbit Motherboard has a standard Raspberry Pi 40-way HAT connector. Mountin
     src="hat_bottom.png"
     alt="Motherboard 500 Bottom silkscreen"
     caption=""
+    height=300
     >}}
 {{< /card >}}
 {{< /cardpane >}}
@@ -500,6 +469,7 @@ The pinout for J2:
     src="j2_picture.png"
     alt="Perim connector"
     caption=""
+    width=300
     >}}
 {{< /card >}}
 {{< /cardpane >}}
@@ -570,9 +540,9 @@ Perimeter 0 is the transmit, and the associated perimeters 1 and 2 are the recei
 
 ### Other Features
 
-#### Mass Storage Mount (MSD) and RPI Boot
+#### Mass Storage Mount (MSD) and `rpiboot`
 
-The Zymbit Motherboard has the ability to mass storage mount a plain CM5 in order to use the RPI Boot tools to flash an image.  Because this can be a security vulnerability, several measures have to be taken to enable this functionality, and boards with this functionality enabled should only be used for development purposes and not be used in production environments.
+The Zymbit Motherboard has the ability to mass storage mount a plain CM5 in order to use the `rpiboot` tools to flash an image.  Because this can be a security vulnerability, several measures have to be taken to enable this functionality, and boards with this functionality enabled should only be used for development purposes and not be used in production environments.
 
 First, the CM5 must be removed, and R104 pads on the top side of the Zymbit HSM must be shorted.  This can be accomplished by soldering a 0 ohm resistor or shorting the pads together with a solder blob or wire.
 
@@ -587,6 +557,7 @@ Second, the header labeled “BOOT”, J20, must have a jumper installed across 
     src="rpiboot_pads.png"
     alt="Enable rpiboot or MSD"
     caption="Resistor pad to short and jumper to install"
+    width=50%
     >}}
 {{< /card >}}
 {{< /cardpane >}}
@@ -608,6 +579,7 @@ Advanced:  It is possible to connect the Zymbit RTC battery to the Pi RTC batter
     src="cm5_rtc.png"
     alt="CM5 RTC Enable"
     caption=""
+    height=300
     >}}
 {{< /card >}}
 {{< /cardpane >}}
@@ -622,6 +594,7 @@ The CM5 introduces new features not on the CM4, and the DIP switch (S1) on the t
     src="cm5_features_dipswitch.png"
     alt="CM5 Features DIP Switch"
     caption=""
+    width=50
     >}}
 {{< /card >}}
 {{< /cardpane >}}
