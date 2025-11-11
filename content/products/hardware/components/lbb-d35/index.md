@@ -5,7 +5,7 @@ description: "Zymbit motherboard for the SEN D35 legacy product; carrier board f
 lastmod: "2025-11-08"
 draft: false
 images: []
-weight: 5
+weight: 20
 toc: true
 ---
 
