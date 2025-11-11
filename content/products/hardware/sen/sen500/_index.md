@@ -88,8 +88,9 @@ The activity green LED has several purposes.  It replicates the green LED on the
 
 If it is red, this indicates the Pi power status. If the light is OFF, it indicates that the device is getting enough power and should be performing correctly.  If it is blinking, the red light indicates the Pi is not being supplied enough power. If the red light is continuously on, this means there is inadequate power, and the Pi is keeping itself off to prevent damage.
 
-### Primary Power LED
-                                                                                                                                                        This LED indicates the primary system power status. If it is off, it indicates no power; green indicates full primary power, and red indicates primary power error.  A primary power error can occur if the eFuse on the primary power supply has a fault or if the onboard primary power supply is disabled by the Zymbit SCM.
+#### Primary Power LED
+
+This LED indicates the primary system power status. If it is off, it indicates no power; green indicates full primary power, and red indicates primary power error.  A primary power error can occur if the eFuse on the primary power supply has a fault or if the onboard primary power supply is disabled by the Zymbit SCM.
 
 A yellow indication means low power or sleep mode (not yet supported).
 
