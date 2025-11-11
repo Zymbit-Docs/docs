@@ -8,6 +8,7 @@ aliases:
 draft: false
 images: []
 weight: 10
+layout: single
 ---
 
 -----
