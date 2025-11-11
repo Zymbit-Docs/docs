@@ -103,9 +103,9 @@ Examples of limited or error secondary power indications could include a PoE inj
 
 ### Internal I/O Connections
 
-The node contains the Zymbit Secure Base Board, which includes an additional USB port, storage options, an M.2 Type M connector, Camera/DSI Display connector, 40 pin GPIO header, external battery, etc. Details of the functionality of the Zymbit [Secure Base Board](../components/sbb/).
+The node contains the Zymbit Secure Base Board, which includes an additional USB port, storage options, an M.2 Type M connector, Camera/DSI Display connector, 40 pin GPIO header, external battery, etc. Details of the functionality of the Zymbit [Secure Base Board](../../components/sbb/).
 
-### Accessing the inside of the SEN 500
+#### Accessing the inside of the SEN 500
 
 To gain access to the SEN 500, power down and remove the six torx screws. Carefully remove the lid. It does not void any warranty to open the unit in order to install Pi HATs, sensors, M.2 hardware, configure as a MSD/rpiboot, or arrange tamper prevention. If needed, remove the four nylon screws to separate the CM5 from the Zymbit HSM. Reverse the process to reassemble and close the unit. 
 

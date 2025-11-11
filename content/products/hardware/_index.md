@@ -8,7 +8,7 @@ weight: 30
 layout: single
 ---
 
-Zymbit hardware line - Complete Secure Edge Nodes, components,and module reference.
+Zymbit hardware line - Secure Edge Nodes, Security Module, and Component reference.
 
 ### [Secure Edge Nodes](sen)
 
