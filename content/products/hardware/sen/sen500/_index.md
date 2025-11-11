@@ -102,18 +102,21 @@ Examples of limited or error secondary power indications could include a PoE inj
 
 ### Internal I/O Connections
 
-Details of the functionality of the Zymbit [Secure Base Board](../mobos/sbb/).
+The node contains the Zymbit Secure Base Board, which includes an additional USB port, storage options, an M.2 Type M connector, Camera/DSI Display connector, 40 pin GPIO header, external battery, etc. Details of the functionality of the Zymbit [Secure Base Board](../components/sbb/).
 
 ### Accessing the inside of the SEN 500
 
 To gain access to the SEN 500, power down and remove the six torx screws. Carefully remove the lid. It does not void any warranty to open the unit in order to install Pi HATs, sensors, M.2 hardware, configure as a MSD/rpiboot, or arrange tamper prevention. If needed, remove the four nylon screws to separate the CM5 from the Zymbit HSM. Reverse the process to reassemble and close the unit. 
 
+## Troubleshooting and FAQ
+
+## Add-on Devices
+
+## Reference
+### CAD Files
+### Conformity docs
+### Engineering Notes
+
 ---
 
-## References
-
-- [Raspberry Pi Compute Module 4 IO Board Datasheet](https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf)
-- [Raspberry Pi CM4 Datasheet](https://datasheets.raspberrypi.com/cm4/cm4-datasheet.pdf)
-- [Raspberry Pi Compute Module 5 IO Board Datasheet](https://datasheets.raspberrypi.com/cm5/cm5io-datasheet.pdf)
-- [Raspberry Pi CM5 Datasheet](https://datasheets.raspberrypi.com/cm5/cm5-datasheet.pdf)
 
