@@ -38,7 +38,7 @@ The SEN 500 provides all the hardware and software components required to get st
 {{< /cardpane >}}
 
 ## Quickstart 
-1. Connect the 24V/12V Power Supply up to the front panel barrel connector.
+1. Connect the 12-24V Power Supply up to the front panel barrel connector.
 2. Connect an Cat5e/Cat6 ethernet cable to the gigabit ethernet port.
 3. The unit is designed to run either headless via SSH, or, if you prefer, attach a monitor to one of the HDMI ports and a keyboard and mouse to the USB ports and login via the console.  
 4. Monitor the top LED (SEC) for the status of the Zymbit module. It will go through the following stages:
@@ -114,8 +114,17 @@ To gain access to the SEN 500, power down and remove the six torx screws. Carefu
 ## Add-on Devices
 
 ## Reference
+
+### Product Brief
+[SEN 500](https://www.zymbit.com/datasheets/zymkey-4i)
+[HSM65](https://www.zymbit.com/datasheets/zymkey-4i)
+
 ### CAD Files
+  Coming Soon
+
 ### Conformity docs
+  Coming Soon
+
 ### Engineering Notes
 
 ---
