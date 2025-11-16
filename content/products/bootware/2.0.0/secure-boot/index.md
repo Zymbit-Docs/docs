@@ -66,7 +66,6 @@ NOTE! THIS NEXT STEP IS IRREVERSIBLE!
 7. When complete, re-connect your main power USB-C in place of the PC cable and power up. 
 
   {{% /tab %}}
-  {{% /tab %}}
 
   {{% tab header="Zymbit SEN500" %}}
 
