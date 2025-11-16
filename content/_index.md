@@ -31,30 +31,30 @@ Details: [November 2025 Update](#november-2025)
 ### Latest STABLE Platform and OS Support
 
 
-|                  Pi Platform:     |    CM5            |  CM4                   | CM4 or Pi4             |   Pi5             | PiZero 2W       |
-|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|:---------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM4**   |   **SCM**              | **Zymkey,HSM4**        | **Zymkey,HSM4**   | **Zymkey,HSM4** |
-| Raspberry Pi OS Trixie   (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
-| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} [^1] |
-| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} | {{< partially-supported >}} &nbsp; |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} &nbsp; |
+|                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
+|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey,HSM60*   | **Zymkey, HSM60m SCM** | **Zymkey,HSM4**        | **Zymkey,HSM4**    |
+| Raspberry Pi OS Trixie   (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
+| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
 
 {{< supported >}} Full Bootware 1.3.2 Support
 
-{{< partially-supported >}} Bootware Not Supported
+Contact [support](support@zymbit.com) for PiZero 2W.
 
 <br>
 
-[^1]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](/products/bootware/1.3.2/troubleshooting/pizero-bullseye).
-[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](/products/bootware/1.3.2/troubleshooting/pi4-wifi).
+[^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](/products/bootware/1.3.2/troubleshooting/pi4-wifi).
+[^2]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](/products/bootware/1.3.2/troubleshooting/pizero-bullseye).
 
 -----
 #### November 2025
 -----
 **Bootware® 2.0.0-1 Beta**
 
-| Pi Platform:                      |  SEN500       |  SEN400                   |  Pi4             |   Pi5             |
+| Pi Platform:                      |  SEN500/CM5       |  SEN400/CM4            |  Pi4                   |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **HSM64**   |   **SCM**      | **Zymkey**        | **Zymkey**   |
 | Raspberry Pi OS Trixie   (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
@@ -63,7 +63,7 @@ Details: [November 2025 Update](#november-2025)
 
 - Features
   - Signed Boot Images: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update. Images securely signed with Bootware.
-  - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device.
+  - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device. All products except SCM.
 
 - Limitations
    - Operating Systems NOT fully supported : Bullseye, Jammy (Ubuntu 22)
