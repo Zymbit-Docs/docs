@@ -77,25 +77,25 @@ On the top of the SEN 500 is a Power Button. This mirrors the functionality of t
 | LED10 | 2 | Primary power | PWR | Green/Red | No primary power | Full primary power | Primary power error | Sleep/low power |
 | LED11 | Bottom | Secondary power | PWR2 | Green/Red | No secondary power | Full secondary power | Secondary power error | Secondary power is limited |
 
-#### Security LED
+##### Security LED
 
 The security LED is Zymbit HSM status LED.  This will normally blink a blue pattern to give its status (see [SCM LED Reference](https://docs.zymbit.com/troubleshooting/scm/#led-reference) for details).
 
 If the LED is illuminated red, that indicates a critical security fault and the system is not operational anymore.  If the LED is illuminated purple or blinking red-purple, this indicates a noncritical security fault/incident, and the system is still operational.
 
-#### Activity LED
+##### Activity LED
 
 The activity green LED has several purposes.  It replicates the green LED on the Raspberry Pi CM5 (signifying eMMC access, or signifying error during boot with a [flash code](https://www.raspberrypi.com/documentation/computers/configuration.html#led-warning-flash-codes)), and it indicates activity on an M.2 drive if one is in use.
 
 If it is red, this indicates the Pi power status. If the light is OFF, it indicates that the device is getting enough power and should be performing correctly.  If it is blinking, the red light indicates the Pi is not being supplied enough power. If the red light is continuously on, this means there is inadequate power, and the Pi is keeping itself off to prevent damage.
 
-#### Primary Power LED
+##### Primary Power LED
 
 This LED indicates the primary system power status. If it is off, it indicates no power; green indicates full primary power, and red indicates primary power error.  A primary power error can occur if the eFuse on the primary power supply has a fault or if the onboard primary power supply is disabled by the Zymbit SCM.
 
 A yellow indication means low power or sleep mode (not yet supported).
 
-#### Secondary Power LED
+##### Secondary Power LED
 
 This LED indicates the secondary power status if one is present.  If this LED is off, it indicates that no secondary power is available.  If it is green, it indicates full secondary power.  If it indicates red there is a secondary power error (or it is not being used), and yellow indicates limited secondary power.
 
@@ -103,7 +103,9 @@ Examples of limited or error secondary power indications could include a PoE inj
 
 ### Internal I/O Connections
 
-The node contains the Zymbit Secure Base Board, which includes an additional USB port, storage options, an M.2 Type M connector, Camera/DSI Display connector, 40 pin GPIO header, external battery, etc. Details of the functionality of the Zymbit [Secure Base Board](../../components/sbb/).
+The SEN-500 contains the Zymbit Secure Base Board, which includes an additional USB port, storage options, an M.2 Type M connector, Camera/DSI Display connector, 40 pin GPIO header, external battery, etc.
+
+Details of the functionality of the Zymbit [Secure Base Board](../../components/sbb/).
 
 #### Accessing the inside of the SEN 500
 
