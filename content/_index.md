@@ -33,7 +33,7 @@ Details: [November 2025 Update](#november-2025)
 
 |                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM60*   | **Zymkey, HSM60m SCM** | **Zymkey,HSM4**        | **Zymkey,HSM4**    |
+|                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
 | Raspberry Pi OS Trixie   (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
@@ -43,8 +43,6 @@ Details: [November 2025 Update](#november-2025)
 {{< supported >}} Full Bootware 1.3.2 Support
 
 Contact [support](support@zymbit.com) for PiZero 2W.
-
-<br>
 
 [^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](/products/bootware/1.3.2/troubleshooting/pi4-wifi).
 [^2]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](/products/bootware/1.3.2/troubleshooting/pizero-bullseye).
@@ -56,7 +54,7 @@ Contact [support](support@zymbit.com) for PiZero 2W.
 
 | Pi Platform:                      |  SEN500/CM5       |  SEN400/CM4            |  Pi4                   |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
-|                  **Zymbit HSMs:** | **HSM64**   |   **SCM**      | **Zymkey**        | **Zymkey**   |
+|                  **Zymbit HSMs:** | **Zymkey,HSM60**   | **Zymkey,HSM60,SCM**  | **Zymkey**        | **Zymkey**   |
 | Raspberry Pi OS Trixie   (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
