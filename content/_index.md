@@ -3,7 +3,7 @@ title: "Zymbit Documentation"
 linktitle: "Zymbit Documentation"
 description: "Zymbit Documentation"
 date: 2020-10-06T08:47:36+00:00
-lastmod: "2025-10-15"
+lastmod: "2025-11-16"
 draft: false
 images: []
 weight: 8
@@ -16,13 +16,13 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 Recent Updates - November 2025:
 - Release of new HSM products
   - ZYMKEY FIVE
-  - ZYMKEY ZERO
+  - ZYMKEY ZERO (Soon)
   - HSM 60 
 - Release of Bootware 2.0 Beta
   - Full boot artifact isolation
   - New Zymbit hardware integration
   - Integration with Pi's Secure Boot
-- Update to Zymbit Driver Package
+- Update to Zymbit Driver Package - Add support for Trixie
 
 Details: [November 2025 Update](#november-2025)
 {{% /callout %}}
@@ -34,12 +34,13 @@ Details: [November 2025 Update](#november-2025)
 |                  Pi Platform:     |    CM5            |  CM4                   | CM4 or Pi4             |   Pi5             | PiZero 2W       |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|:---------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM4**   |   **SCM**              | **Zymkey,HSM4**        | **Zymkey,HSM4**   | **Zymkey,HSM4** |
+| Raspberry Pi OS Trixie   (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} [^1] |
 | Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} | {{< partially-supported >}} &nbsp; |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} &nbsp; |
 
-{{< supported >}} Full Bootware Support
+{{< supported >}} Full Bootware 1.3.2 Support
 
 {{< partially-supported >}} Bootware Not Supported
 
@@ -56,6 +57,7 @@ Details: [November 2025 Update](#november-2025)
 | Pi Platform:                      |  SEN500       |  SEN400                   |  Pi4             |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **HSM64**   |   **SCM**      | **Zymkey**        | **Zymkey**   |
+| Raspberry Pi OS Trixie   (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
 
@@ -64,17 +66,18 @@ Details: [November 2025 Update](#november-2025)
   - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device.
 
 - Limitations
-   - Operating Systems NOT supported until refresh Beta: Bullseye, Jammy (Ubuntu 22), Trixie
+   - Operating Systems NOT fully supported : Bullseye, Jammy (Ubuntu 22)
    - Requires a clean Bootware install of Beta 2.0.0 - cannot upgrade from an existing Bootware 1.3.2.
 
 - Bug fixes
    - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
 
 - zkifc
+   - Added support for Trixie
    - Added support for new Zymbit HSM model: ZYMKEY FIVE
    - `zkifc -v` added to return version
    - zkpkcs11 package build fixed for 64-bit OSs
-   - Installation script can now set the distribution via an environment variable. This allows pointing a newer distribution to use an older repo. For example, to point a `trixie` OS at the Zymbit `bookworm` repo, do the following on your Pi,
+   - Installation script can now set the distribution via an environment variable. This allows pointing a newer distribution to use an older repo. For example, to point any OS at the Zymbit `bookworm` repo, do the following on your Pi,
 
 ```
     export distro=bookworm
