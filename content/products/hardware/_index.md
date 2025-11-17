@@ -8,7 +8,7 @@ weight: 30
 layout: single
 ---
 
-Zymbit hardware line - Secure Edge Nodes, Security Module, and Component reference.
+Zymbit hardware line - Secure Edge Nodes, Security Modules, and Components reference.
 
 ### [Secure Edge Nodes](sen)
 
@@ -41,5 +41,6 @@ Components included in the SEN product line.
 
 | Model            | Pi CPU        | Zymbit HSM             | Description:
 |:-----------------|:-------------:|:-----------------------|:------------------------|
-| [Secure Base Board](components/sbb/)            | CM5, CM4      | [HSM65](modules/hsm65), [HSM64](modules/hsm64) | Secure Base Board Included in SEN500, SEN400. Not sold separately |
+| [Secure Base Board](components/sbb/)            | CM5, CM4      | [HSM65](modules/hsm65), [HSM64](modules/hsm64) | Secure Base Board included in SEN-500, SEN-400. Not sold separately |
 | [Legacy Base Board D35](components/lbb-d35/)            | CM4           | [SCM](modules/scm)               | Legacy Base Board D35 Included in D35. Not sold separately |
+| POE Module       |               |                        | For use as with the Secure Base Board included in the SEN 500, SEN 400.

@@ -113,7 +113,7 @@ To gain access to the SEN 500, power down and remove the six torx screws. Carefu
 
 ## Troubleshooting and FAQ
 
-[General troublshooting](/troubleshooting/general)
+[General troublshooting](../../../../troubleshooting/general)
 
 ## Add-on Devices
 
