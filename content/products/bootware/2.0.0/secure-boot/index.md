@@ -60,7 +60,7 @@ Quick overview:
   - The script's instructions neglect to mention removing the erase_eeprom=1 line from /boot/firmware/config.txt after the procedure is complete, since it assumes we are on the way to turning on SIGNED_BOOT, and the boot.img we will be using has its own config.txt that was created before erase_eeprom=1 was added to the one in /boot/firmware/. Probably a good idea to instruct people to delete it after the fact anyway, just to be on the safe side, but if they ignore that advice it shouldn't be an issue as long as the Pi will use a boot.img for the future.
   - You will need to enable the appropriate GPIO pins to act as a jumper to go into `rpiboot` mode. **ADD INSTRUCTION**
 
-{% alert title=WARNING color="danger" %}}
+{{% alert title="WARNING" color="danger" %}}
 NOTE! THIS NEXT STEP IS IRREVERSIBLE!
 {{% /alert %}}
 
