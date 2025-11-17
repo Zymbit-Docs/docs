@@ -20,9 +20,9 @@ Fully integrated enterprise grade computers ready to deploy. Easy to customize w
 | [SEN400](sen/sen400/)           | CM4           | [Secure Base Board](components/sbb/)           | [HSM64](modules/hsm64), [SCM](modules/scm) | POE Module              |
 | [SEN D35 (legacy)](sen/send35) | CM4           | [Legacy Base Board D35](components/lbb-d35/)           | [SCM](modules/scm)           |                         |
 
-### [Modules](modules)
+### [Security Modules](modules)
 
-Standalone secure elements included in Zymbit nodes, or for Raspberry Pi platforms.
+Standalone secure elements included in Zymbit nodes, or as add-ons for Raspberry Pi platforms.
 
 | Model            | Pi CPU        | Release Status         | Description:
 |:-----------------|:-------------:|:-----------------------|:------------------------|
