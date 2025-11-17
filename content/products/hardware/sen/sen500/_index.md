@@ -119,8 +119,7 @@ To gain access to the SEN 500, power down and remove the six torx screws. Carefu
 
 ### Product Brief
 
-[SEN 500](https://www.zymbit.com/datasheets/zymkey-4i)
-[HSM65](https://www.zymbit.com/datasheets/zymkey-4i)
+  Coming Soon!
 
 ### CAD Files
 
