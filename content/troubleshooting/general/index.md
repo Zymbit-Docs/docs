@@ -10,21 +10,17 @@ toc: true
 
 -----
 
-### **Release Notes - Latest Release 3/28/2025 (Zymbit Ref: RC-25.01)**
+### **Release Notes - Latest Release November 2025**
 
-Updated Zymbit Driver Package release common to all products: ZYMKEY4, HSM4, HSM6, and SCM-based product line. Existing customers can do an update/upgrade to get the latest code.
+To update to the latest Zymbit Driver Package, existing customers can do an update/upgrade to get the latest code.
 
 ```bash
 sudo apt-get update
 sudo apt install --only-upgrade libzk libzymkeyssl zkbootrtc zkifc zkapputilslib zksaapps zkpkcs11
 sudo pip3 install zku --upgrade
 ```
-
-#### Bug fixes:
-
-  - #186: zkifc: Babbling with time sync issues. Setting the time forward or backwards caused zkifc to think it lost contact with the Zymkey. Babbling messages would result with the potential to fill logs with rapid messages. Babbling messages are now limited, and recovery has been improved. Fixed in zkifc 1.2-37.
-
 #### Current Versions:
+TODO: BELOW NEEDS UPDATING
 
 | Name | Version | Description |
 |----|----|----|
