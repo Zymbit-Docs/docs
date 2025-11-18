@@ -16,8 +16,8 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 Recent Updates - November 2025:
 - Release of new HSM products
   - ZYMKEY FIVE
-  - ZYMKEY ZERO (Soon)
-  - HSM 60 
+  - ZYMKEY ZERO ([Pre-order](https://store.zymbit.com/products/zymkey-zero))
+  - HSM 60 ([Pre-order](https://store.zymbit.com/products/hsm60))
 - Release of Bootware 2.0 Beta
   - Full boot artifact isolation
   - New Zymbit hardware integration
@@ -41,6 +41,8 @@ Details: [November 2025 Update](#november-2025)
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
 
 {{< supported >}} Full Bootware 1.3.2 Support
+
+> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
 
 Contact [support](support@zymbit.com) for PiZero 2W.
 
