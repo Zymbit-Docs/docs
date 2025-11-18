@@ -1,6 +1,6 @@
 ---
-title: Bootware Services
-linktitle: Bootware Version
+title: Bootware
+linktitle: Bootware
 description: Zymbit core device security services
 aliases:
     - /bootware/
