@@ -1,0 +1,93 @@
+{{/* Works whether the theme uses "main" or "content" blocks */}}
+
+{{ define "main" }}
+  {{ with .Content }}
+    <article class="markdown td-content">
+      {{ . }}
+    </article>
+  {{ end }}
+  {{ template "immediate-children" . }}
+{{ end }}
+
+{{ define "content" }}
+  {{ with .Content }}
+    <article class="markdown td-content">
+      {{ . }}
+    </article>
+  {{ end }}
+  {{ template "immediate-children" . }}
+{{ end }}
+
+{{ define "immediate-children" }}
+  {{ if .IsSection }}
+
+    {{/* Gather and merge (avoid union; keep as Pages) */}}
+    {{ $children := slice | append .Sections | append .RegularPages }}
+
+    {{/* Filters */}}
+    {{ $children = where $children ".Params.hide_summary" "!=" true }}
+    {{ $children = where $children "Type" "!=" "search" }}
+
+    {{/* Sort: weight asc, then link title asc (or Title) */}}
+    {{ $children = sort $children "Weight" "asc" "LinkTitle" "asc" }}
+
+    {{ if or .Params.no_list (eq (len $children) 0) }}
+      {{/* nothing */}}
+
+    {{ else if .Params.simple_list }}
+      <ul>
+        {{ range $children }}
+          {{- $p := . -}}
+          {{- $manualLink := "" -}}
+          {{- if isset $p.Params "manualLink" -}}
+            {{- $manualLink = $p.Params.manualLink -}}
+          {{- else if isset $p.Params "manualLinkRelref" -}}
+            {{- $manualLink = relref $p $p.Params.manualLinkRelref -}}
+          {{- else -}}
+            {{- $manualLink = $p.RelPermalink -}}
+          {{- end -}}
+
+          {{- $manualTitle := $p.Params.manualLinkTitle | default ($p.LinkTitle | default $p.Title) -}}
+          {{- $manualTarget := $p.Params.manualLinkTarget | default "_self" -}}
+
+          <li>
+            <a href="{{ $manualLink | safeURL }}"
+               title="{{ $manualTitle }}"
+               {{ if eq $manualTarget "_blank" }}target="_blank" rel="noopener noreferrer"{{ end }}>
+              {{- $p.LinkTitle | default $p.Title -}}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+
+    {{ else }}
+      <hr class="panel-line">
+      {{ range $children }}
+        {{- $p := . -}}
+        {{- $manualLink := "" -}}
+        {{- if isset $p.Params "manualLink" -}}
+          {{- $manualLink = $p.Params.manualLink -}}
+        {{- else if isset $p.Params "manualLinkRelref" -}}
+          {{- $manualLink = relref $p $p.Params.manualLinkRelref -}}
+        {{- else -}}
+          {{- $manualLink = $p.RelPermalink -}}
+        {{- end -}}
+
+        {{- $manualTitle := $p.Params.manualLinkTitle | default ($p.LinkTitle | default $p.Title) -}}
+        {{- $manualTarget := $p.Params.manualLinkTarget | default "_self" -}}
+
+        <div class="entry">
+          <h5>
+            <a href="{{ $manualLink | safeURL }}"
+               title="{{ $manualTitle }}"
+               {{ if eq $manualTarget "_blank" }}target="_blank" rel="noopener noreferrer"{{ end }}>
+              {{- $p.LinkTitle | default $p.Title -}}
+            </a>
+          </h5>
+          <p>{{ $p.Description | markdownify }}</p>
+        </div>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+

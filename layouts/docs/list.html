@@ -21,11 +21,6 @@
 {{ define "immediate-children" }}
   {{ if .IsSection }}
 
-    {{ range .Sections }}
-    {{ end }}
-    {{ range .RegularPages }}
-    {{ end }}
-
     {{/* Gather and merge (avoid union; keep as Pages) */}}
     {{ $children := slice | append .Sections | append .RegularPages }}
 
@@ -38,39 +33,58 @@
 
     {{ if or .Params.no_list (eq (len $children) 0) }}
       {{/* nothing */}}
+
     {{ else if .Params.simple_list }}
       <ul>
         {{ range $children }}
-          {{/* Fix param casing: check and read the same key */}}
-          {{ $hasManual := isset .Params "manualLink" }}
-          {{ $manualLink := cond $hasManual
-              .Params.manualLink
-              (cond (isset .Params "manualLinkRelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
+          {{- $p := . -}}
+          {{- $manualLink := "" -}}
+          {{- if isset $p.Params "manualLink" -}}
+            {{- $manualLink = $p.Params.manualLink -}}
+          {{- else if isset $p.Params "manualLinkRelref" -}}
+            {{- $manualLink = relref $p $p.Params.manualLinkRelref -}}
+          {{- else -}}
+            {{- $manualLink = $p.RelPermalink -}}
+          {{- end -}}
+
+          {{- $manualTitle := $p.Params.manualLinkTitle | default ($p.LinkTitle | default $p.Title) -}}
+          {{- $manualTarget := $p.Params.manualLinkTarget | default "_self" -}}
+
           <li>
-            <a href="{{ $manualLink }}"
-               {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
-               {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
-              {{- .LinkTitle | default .Title -}}
+            <a href="{{ $manualLink | safeURL }}"
+               title="{{ $manualTitle }}"
+               {{ if eq $manualTarget "_blank" }}target="_blank" rel="noopener noreferrer"{{ end }}>
+              {{- $p.LinkTitle | default $p.Title -}}
             </a>
           </li>
         {{ end }}
       </ul>
+
     {{ else }}
       <hr class="panel-line">
       {{ range $children }}
-        {{ $hasManual := isset .Params "manualLink" }}
-        {{ $manualLink := cond $hasManual
-            .Params.manualLink
-            (cond (isset .Params "manualLinkRelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
+        {{- $p := . -}}
+        {{- $manualLink := "" -}}
+        {{- if isset $p.Params "manualLink" -}}
+          {{- $manualLink = $p.Params.manualLink -}}
+        {{- else if isset $p.Params "manualLinkRelref" -}}
+          {{- $manualLink = relref $p $p.Params.manualLinkRelref -}}
+        {{- else -}}
+          {{- $manualLink = $p.RelPermalink -}}
+        {{- end -}}
+
+        {{- $manualTitle := $p.Params.manualLinkTitle | default ($p.LinkTitle | default $p.Title) -}}
+        {{- $manualTarget := $p.Params.manualLinkTarget | default "_self" -}}
+
         <div class="entry">
           <h5>
-            <a href="{{ $manualLink }}"
-               {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
-               {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
-              {{- .LinkTitle | default .Title -}}
+            <a href="{{ $manualLink | safeURL }}"
+               title="{{ $manualTitle }}"
+               {{ if eq $manualTarget "_blank" }}target="_blank" rel="noopener noreferrer"{{ end }}>
+              {{- $p.LinkTitle | default $p.Title -}}
             </a>
           </h5>
-          <p>{{ .Description | markdownify }}</p>
+          <p>{{ $p.Description | markdownify }}</p>
         </div>
       {{ end }}
     {{ end }}
