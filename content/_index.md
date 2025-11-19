@@ -52,7 +52,7 @@ Contact [support](support@zymbit.com) for PiZero 2W.
 -----
 #### November 2025
 -----
-**Bootware® 2.0.0-1 Beta**
+**Bootware® 2.0.0 Beta**
 
 | Pi Platform:                      |  SEN500/CM5       |  SEN400/CM4            |  Pi4                   |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
