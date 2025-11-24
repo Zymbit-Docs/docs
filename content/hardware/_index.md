@@ -4,7 +4,7 @@ linktitle: Hardware
 description: Secure Edge Nodes (SEN), Components, and Modules
 draft: false
 images: []
-weight: 30
+weight: 10
 layout: single
 ---
 
