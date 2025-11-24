@@ -1,25 +1,55 @@
 ---
-title: "FAQ and Troubleshooting"
+title: "Zymbit Documentation"
+linktitle: "Zymbit Documentation"
+description: "Zymbit Documentation"
+date: 2020-10-06T08:47:36+00:00
+lastmod: "2025-11-16"
 draft: false
 images: []
-weight: 40
-# headless: true
+weight: 8
+layout: single
 ---
-### **Troubleshooting Checklist**
 
-Before contacting Zymbit with troubleshooting related questions, please read through the following troubleshooting checklist.
+Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit products.
 
-1. Power supply. Most of the problems we see are from a poor power source. Start with a good power supply from the PI foundation or Canakit, not a phone charger. The recommended power for the PI4 is 5V and 3 amps.  For a PI5, the recommended power supply should provide 5V, 5 amps.
-2. (For Zymkey, HSM4, HSM6) I2C enabled. Double check that you have enabled the I2C bus. An easy way to check is "ls -l /dev/i2c-1". If /dev/i2c-1 exists, the I2C bus is enabled.
-3. apt update and upgrade. Be sure that your software is up to date.
-4. Installation. The curl script will reboot your system once completed. After the reboot, the blue LED on your Zymbit device should blink once every 3 seconds. You must get to this step before proceeding to encryption, etc.
+{{% callout note %}}
+Recent Updates - November 2025:
+- Release of new HSM products
+  - ZYMKEY FIVE
+  - ZYMKEY ZERO ([Pre-order](https://store.zymbit.com/products/zymkey-zero))
+  - HSM 60 ([Pre-order](https://store.zymbit.com/products/hsm60))
+- Release of Bootware 2.0 Beta
+  - Full boot artifact isolation
+  - New Zymbit hardware integration
+  - Integration with Pi's Secure Boot
+- Update to Zymbit Driver Package - Add support for Trixie
 
-If your issue is not related to any of the above list, read through the FAQ below to see if your issue is answered. If you still do not see a solution to your problem, reach out on our [Community Forum](https://community.zymbit.com/). Thank you!
+Details: [November 2025 Update](#november-2025)
+{{% /callout %}}
+
+
+### Latest STABLE Platform and OS Support
+
+
+|                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
+|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
+| Raspberry Pi OS Trixie   (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
+| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
+
+{{< supported >}} Full Bootware 1.3.2 Support
+
+> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
+
+Contact [support](support@zymbit.com) for PiZero 2W.
+
+[^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](/products/bootware/1.3.2/troubleshooting/pi4-wifi).
+[^2]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](/products/bootware/1.3.2/troubleshooting/pizero-bullseye).
 
 -----
-### **Release Notes**
------
-
 #### November 2025
 -----
 **Bootware® 2.0.0 Beta**
@@ -219,5 +249,7 @@ We have added support for Bookworm (64-bit) on the Pi5, PI4 and CM4 for the ZYMK
 -----
 Secure Compute Module moved from Revision A to Revision B. The Zymbit Driver Package did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required.
 
-
+See the [Troubleshooting/FAQ](troubleshooting/scm) for more information on the changes from Rev A to Rev B of the SCM itself.
+<br>
+<br>
 
