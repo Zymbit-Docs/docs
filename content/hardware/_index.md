@@ -26,12 +26,10 @@ Standalone secure elements included in Zymbit nodes, or as add-ons for Raspberry
 
 | Model            | Pi CPU        | Release Status         | Description:
 |:-----------------|:-------------:|:-----------------------|:------------------------|
-| [ZYMKEY FIVE](modules/zymkey5)    | Pi5, Pi4      | Released - NEW         |                         |
-| [ZYMKEY ZERO](modules/zymkey0)    | Pi5, Pi4      | Released - NEW           |                         |
 | [ZYMKEY4](modules/zymkey4)        | Pi5, Pi4      | Released               |                         |
-| [HSM65](modules/hsm65)            | CM5           | Released - NEW         | HSM for SEN500; not sold separately     |
-| [HSM64](modules/hsm64)            | CM4           | Released - NEW         | HSM for SEN500, SEN400; not sold separately     |
 | [HSM60](modules/hsm60)            | CM5, CM4      | Released - NEW         | HSM for non-Zymbit IO motherboards |
+| [HSM65](modules/hsm65)            | CM5           | Released               | HSM for SEN500; not sold separately     |
+| [HSM64](modules/hsm64)            | CM4           | Released               | HSM for SEN500, SEN400; not sold separately     |
 | [HSM6](modules/hsm6)              | Pi5, Pi4      | Legacy                 |                         |
 | [HSM4](modules/hsm4)              | Pi5, Pi4      | Legacy                 |                         |
 
