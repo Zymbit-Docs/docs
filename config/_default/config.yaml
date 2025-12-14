@@ -35,8 +35,6 @@ params:
   version_menu: "Choose Bootware Version"
   version_menu_pagelinks: false
   versions:
-    - version: "2.0.0"
-      url: "https://zymbit-docs.github.io/docs-staging/branch/sen-reorg/products/bootware/2.0.0/"
     - version: "1.3.2"
       url: "https://zymbit-docs.github.io/docs-staging/branch/sen-reorg/products/bootware/1.3.2/"
     - version: "1.3.0"
