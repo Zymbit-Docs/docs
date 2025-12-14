@@ -13,18 +13,12 @@ layout: single
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit .
 
 {{% callout note %}}
-Recent Updates - November 2025:
+Recent Updates - December 2025:
 - Release of new HSM 
-  - ZYMKEY FIVE
-  - ZYMKEY ZERO ([Pre-order](https://store.zymbit.com//zymkey-zero))
-  - HSM 60 ([Pre-order](https://store.zymbit.com//hsm60))
-- Release of Bootware 2.0 Beta
-  - Full boot artifact isolation
-  - New Zymbit hardware integration
-  - Integration with Pi's Secure Boot
+  - HSM 60 ([Order](https://store.zymbit.com//hsm60))
 - Update to Zymbit Driver Package - Add support for Trixie
 
-Details: [November 2025 Update](#november-2025)
+Details: [December 2025 Update](#november-2025)
 {{% /callout %}}
 
 
@@ -34,13 +28,14 @@ Details: [November 2025 Update](#november-2025)
 |                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
-| Raspberry Pi OS Trixie   (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
+| Raspberry Pi OS Trixie   (64-bit) | {{< partially-supported >}} | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
 | Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
 
-{{< supported >}} Full Bootware 1.3.2 Support
+{{< supported >}} Full Bootware Support
+{{< partially-supported >}} Bootware Not Support
 
 > NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
 
