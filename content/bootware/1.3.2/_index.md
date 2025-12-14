@@ -20,8 +20,6 @@ version: "1.3.2"
 ---
 
 -----
-{{< bootware_version_notice >}}
-
 Bootware is a secure integrated tool for managing multiple Linux OS installations for edge / embedded Linux machines. Bootware supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
 
 A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootware](https://www.zymbit.com/get-bootware)
