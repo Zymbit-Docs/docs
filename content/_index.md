@@ -15,8 +15,8 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 {{% callout note %}}
 Recent Updates - December 2025:
 - Release of new HSM 
-  - HSM 60 ([Order](https://store.zymbit.com//hsm60))
-- Update to Zymbit Driver Package - Add support for Trixie
+  - HSM 60 ([Order](https://store.zymbit.com/products/hsm60)) - Security Module for Pi Compute Modules
+- Update to Zymbit Driver Package - Add support for Raspberry Pi OS Trixie 64-Bit
 
 Details: [December 2025 Update](#december-2025)
 {{% /callout %}}
