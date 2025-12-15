@@ -1,9 +1,9 @@
 ---
-title: Quickstart - HSM6
-linkTitle: Quickstart
+title: Integration - HSM60
+linkTitle: Integration
 description: ""
 aliases:
-    - /quickstart/getting-started/hsm6/
+    - /quickstart/getting-started/hsm60/
 date: ""
 lastmod: "2025-10-15"
 draft: false
@@ -65,7 +65,7 @@ This integration guide will walk you through how to install a Zymbit HSM60 Secur
     caption=""
     >}}
 {{< /card >}}
-{{< card header="" >}}
+{{< card header="HSM60 / IO Board Seated" >}}
 {{< figure
     src="mount4.png"
     alt="HSM60 IO final mount"
@@ -96,16 +96,16 @@ Simply follow the instructions for installing the [Zymbit Driver Package](https:
 This connector is a 12 pin JST SURS connector ([SM12B-SURS-TF(LF)(SN)](https://www.digikey.com/en/products/detail/jst-sales-america-inc/SM12B-SURS-TF/9920600?s=N4IgTCBcDaIMoFkCMYBCBaOBVASndAKgGIAUAMkQJQlwBylIAugL5A)) and mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-america-inc/12SUR-32S/1300329) ([premade cable harnesses](https://www.digikey.com/en/products/filter/rectangular-cable-assemblies/450?s=N4IgTCBcDaIMoFUBKIA0ICMZEoLoF8g))
 
 {{< cardpane >}}
-{{< card header="HSM60 Auxiliary Connector" >}}
+{{< card header="HSM60 Auxiliary Connector Pinout" >}}
 {{< figure
     src="pinout.png"
     alt="HSM60 auxiliary connector pinout"
     caption=""
     >}}
 {{< /card >}}
-{{< card header="" >}}
+{{< card header="HSM Auxiliary Connector" >}}
 {{< figure
-    src="aux_connector.jpg"
+    src="aux_connector.png"
     alt="HSM60 auxiliary connector"
     caption=""
     >}}
@@ -134,9 +134,16 @@ VEXT_MON | General purpose auxiliary recieve (future use) and external voltage m
     - nSECURE_FAIL: indicates a security fault
         - If there is a security fault but the LED_C2 is still active, this means a noncritical security failure.  If the LED_C2 is not active at the same time this means a critical security fault and the system is not operational anymore
     - LED_C2:  Zymbit’s security status LED.  When being used with the SCM4 or CM5 + Interposer, this will blink a pattern to give its status (see [SCM LED Reference](https://docs.zymbit.com/troubleshooting/scm/#led-reference) for details)
-    - Example use to drive LEDs:
     
-    ![led.png](led.png)
+{{< cardpane >}}
+{{< card header="Example use to drive LED" >}}
+{{< figure
+    src="led.png"
+    alt="HSM60 LED example circuit"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
     
 - Power button input (pin 12):  This pin connects to the power button pin on the compute module after going through the HSM.  Pull this pin low to activate.
 
