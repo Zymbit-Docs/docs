@@ -24,25 +24,68 @@ This integration guide will walk you through how to install a Zymbit HSM60 Secur
 
 - Remove the compute module from the IO board
 
-![mount0.jpg](mount0.jpg)
+{{< cardpane >}}
+{{< card header="HSM60 Pi CM5, CM5 IO Board" >}}
+{{< figure
+    src="mount0.jpg"
+    alt="HSM60, CM5, IO Board"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 - Install the HSM60 onto the IO board ensuring that both connectors click in and it sits flat
 
-![x.png](x.png)
+<!-- ![x.png](x.png)
 
-![check.png](check.png)
+![check.png](check.png) -->
 
-![mount1.png](mount1.png)
+{{< cardpane >}}
+{{< card header="HSM60 incorrect orientation" >}}
+{{< figure
+    src="mount1.jpg"
+    alt="HSM60 IO orientation"
+    caption=""
+    >}}
+{{< /card >}}
+{{< card header="HSM60 Correct orientation" >}}
+{{< figure
+    src="mount2.jpg"
+    alt="HSM60 IO correct orientation"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
-![mount2.jpg](mount2.jpg)
-
-![mount3.png](mount3.png)
-
-![mount4.png](mount4.png)
+{{< cardpane >}}
+{{< card header="HSM60 / IO Board Placement" >}}
+{{< figure
+    src="mount3.png"
+    alt="HSM60 IO mount"
+    caption=""
+    >}}
+{{< /card >}}
+{{< card header="" >}}
+{{< figure
+    src="mount4.png"
+    alt="HSM60 IO final mount"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 - Install the Raspberry pi Compute Module
 
-![mount5.jpg](mount5.jpg)
+{{< cardpane >}}
+{{< card header="HSM60 Pi CM5, CM5 IO Board installation complete" >}}
+{{< figure
+    src="mount5.jpg"
+    alt="HSM60, CM5, IO Board installation"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
+
 
 # Software Installation
 
@@ -52,9 +95,22 @@ Simply follow the instructions for installing the [Zymbit Driver Package](https:
 
 This connector is a 12 pin JST SURS connector ([SM12B-SURS-TF(LF)(SN)](https://www.digikey.com/en/products/detail/jst-sales-america-inc/SM12B-SURS-TF/9920600?s=N4IgTCBcDaIMoFkCMYBCBaOBVASndAKgGIAUAMkQJQlwBylIAugL5A)) and mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-america-inc/12SUR-32S/1300329) ([premade cable harnesses](https://www.digikey.com/en/products/filter/rectangular-cable-assemblies/450?s=N4IgTCBcDaIMoFUBKIA0ICMZEoLoF8g))
 
-![pinout.png](pinout.png)
-
-![aux_connector.jpg](aux_connector.jpg)
+{{< cardpane >}}
+{{< card header="HSM60 Auxiliary Connector" >}}
+{{< figure
+    src="pinout.png"
+    alt="HSM60 auxiliary connector pinout"
+    caption=""
+    >}}
+{{< /card >}}
+{{< card header="" >}}
+{{< figure
+    src="aux_connector.jpg"
+    alt="HSM60 auxiliary connector"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 | Pin Number | Pin Name | Description |
 | --- | --- | --- |
