@@ -41,14 +41,14 @@ This integration guide will walk you through how to install a Zymbit HSM60 Secur
 ![check.png](check.png) -->
 
 {{< cardpane >}}
-{{< card header="HSM60 incorrect orientation" >}}
+{{< card header="❌ HSM60 incorrect orientation" >}}
 {{< figure
     src="mount1.jpg"
     alt="HSM60 IO orientation"
     caption=""
     >}}
 {{< /card >}}
-{{< card header="HSM60 Correct orientation" >}}
+{{< card header="✅ HSM60 Correct orientation" >}}
 {{< figure
     src="mount2.jpg"
     alt="HSM60 IO correct orientation"
@@ -86,21 +86,7 @@ This integration guide will walk you through how to install a Zymbit HSM60 Secur
 {{< /card >}}
 {{< /cardpane >}}
 
-
-# Software Installation
-
-Simply follow the instructions for installing the [Zymbit Driver Package](https://docs.zymbit.com/getting-started/zymkey4/quickstart/#install-the-zymbit-driver-package)
-
-Establish an {{% term/i2c %}} connection
-:   Enable the {{% term/i2c %}} bus on the host device in order to be able to communicate with the HSM.
-
-Install the Zymbit Driver Package
-:   These utilities provided by Zymbit are necessary to interact with the hardware module.
-
-Test the installation
-:   Your HSM is now temporarily bound to your SBC and ready for use in developer mode.
-
-#### Power on and confirm operation
+### Power on and confirm operation
 
 Power up the Pi and you will see a blue LED blinking rapidly and consistently (5 blinks per second). This indicates the HSM is operational but not configured.
 
@@ -110,58 +96,6 @@ If the blue LED blinks erratically, or not at all, then there is an installation
 
 {{< resource_link "reference/power-quality/" >}}
 Power quality matters to the reliable and secure operation of your system and Zymkey.
-{{< /resource_link >}}
-
-## Establish an I2C connection
-
-For Raspian-based operating systems, you must configure the state of the {{% term/i2c %}}.
-
-1. Log in to your Raspberry Pi and run `sudo raspi-config`.
-1. Navigate to Interfacing Options -> I2C -> Would you like the ARM I2C interface to be enabled?
-1. Select yes, and confirm this choice.
-
-Your {{% term/i2c %}} bus is now configured and ready to talk to the HSM. The default {{% term/i2c %}} address for the HSM is 0x30.
-
-{{< resource_link "troubleshooting/hsm6/#q-how-do-i-set-an-alternative-i2c-address" >}} The default I2C address for HSM is 0x30. If this conflicts with another device in your system, you can reconfigure the HSM6 to use another address of your choice. {{< /resource_link >}}
-
-Your I2C bus is now on and ready to talk to the HSM.```
-
-## Install the Zymbit Driver Package
-
-Login to your host device and follow these steps to install the HSM's Zymbit Driver Package.
-
-The HSM will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
-
-* Zymbit `.service` files located in the `/etc/systemd/system` directory
-* `pip`
-
-Ensure that `curl` is installed on your host:
-
-`sudo apt install curl`
-
-Download and install the necessary Zymbit services onto your device.
-
-`curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash`
-
-
-## Test the installation
-
-When the software installation has completed, the script will automatically reboot your device. After the reboot has completed, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
-
-{{< resource_link "reference/binding" >}}
-In production mode, HSM generates a unique Device ID by measuring certain attributes of the specific host and the HSM itself to permanently associate the two.
-{{< /resource_link >}}
-
-The quickest way to get started is to see the HSM's various features at work by running these test scripts that were installed with the Zymbit Driver Package:
-
-`python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`
-
-`python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
-
-
-Now you're ready to start developing with HSM and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
-                                                                                                                      {{< resource_link "getting-started/hsm6/production-mode" >}}
-To permanently bind the HSM to a host board, generates a unique Device ID by measuring certain attributes of the host and the HSM itself to associate the two devices.
 {{< /resource_link >}}
 
 
@@ -233,3 +167,70 @@ VEXT_MON | General purpose auxiliary recieve (future use) and external voltage m
 # Battery Connector (J8)
 
 The battery connector is a 1.00mm Pitch, 2-pin, JST PCB header that mates with housings with [02SR-3S](https://www.digikey.com/en/products/detail/jst-sales-america-inc/02SR-3S/1300342?gclsrc=aw.ds&gad_source=1&gad_campaignid=17922795960&gbraid=0AAAAADrbLliwlFAtLOnu4vYnRkMIG6SK8&gclid=Cj0KCQiAi9rJBhCYARIsALyPDtt9lTPFIlJEf0wJDW97hiAQmPxFoRK7w1qn3IasFqn-Juu6-khD8VMaAhC3EALw_wcB) or similar headers.  This is the same battery connector that is on the Pi5.  It takes 3.3V batteries ([like the Pi5 battery](https://www.digikey.com/en/products/detail/raspberry-pi/SC1163/21658274?gclsrc=aw.ds&gad_source=1&gad_campaignid=20228387720&gbraid=0AAAAADrbLlhDWbqKh4-P4EF0aSO6unV-A&gclid=Cj0KCQjwqebEBhD9ARIsAFZMbfxdwRKiRkUYcolECpajh4qdoJvdAUH6vsefttLv7gQ-ObwtNwXfgVEaArlbEALw_wcB)) and is used to power the RTC on the ZYMBIT HSM as well as power the security supervisor on the HSM in a low-power state when there is no primary power.  See API documentation for uses.
+
+
+## Software Installation
+
+
+Establish an {{% term/i2c %}} connection
+:   Enable the {{% term/i2c %}} bus on the host device in order to be able to communicate with the HSM.
+
+Install the Zymbit Driver Package
+:   These utilities provided by Zymbit are necessary to interact with the hardware module.
+
+Test the installation
+:   Your HSM is now temporarily bound to your SBC and ready for use in developer mode.
+
+
+### Establish an I2C connection
+
+For Raspian-based operating systems, you must configure the state of the {{% term/i2c %}}.
+
+1. Log in to your Raspberry Pi and run `sudo raspi-config`.
+1. Navigate to Interfacing Options -> I2C -> Would you like the ARM I2C interface to be enabled?
+1. Select yes, and confirm this choice.
+
+Your {{% term/i2c %}} bus is now configured and ready to talk to the HSM. The default {{% term/i2c %}} address for the HSM is 0x30.
+
+{{< resource_link "troubleshooting/hsm6/#q-how-do-i-set-an-alternative-i2c-address" >}} The default I2C address for HSM is 0x30. If this conflicts with another device in your system, you can reconfigure the HSM6 to use another address of your choice. {{< /resource_link >}}
+
+Your I2C bus is now on and ready to talk to the HSM.```
+
+### Install the Zymbit Driver Package
+
+Login to your host device and follow these steps to install the HSM's Zymbit Driver Package.
+
+The HSM will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
+
+* Zymbit `.service` files located in the `/etc/systemd/system` directory
+* `pip`
+
+Ensure that `curl` is installed on your host:
+
+`sudo apt install curl`
+
+Download and install the necessary Zymbit services onto your device.
+
+`curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash`
+
+
+## Test the installation
+
+When the software installation has completed, the script will automatically reboot your device. After the reboot has completed, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
+
+{{< resource_link "reference/binding" >}}
+In production mode, HSM generates a unique Device ID by measuring certain attributes of the specific host and the HSM itself to permanently associate the two.
+{{< /resource_link >}}
+
+The quickest way to get started is to see the HSM's various features at work by running these test scripts that were installed with the Zymbit Driver Package:
+
+`python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`
+
+`python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
+
+
+Now you're ready to start developing with HSM and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
+                                                                                                                      {{< resource_link "getting-started/hsm6/production-mode" >}}
+To permanently bind the HSM to a host board, generates a unique Device ID by measuring certain attributes of the host and the HSM itself to associate the two devices.
+{{< /resource_link >}}
+
