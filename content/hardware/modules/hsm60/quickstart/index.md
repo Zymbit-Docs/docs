@@ -22,6 +22,8 @@ This integration guide will walk you through how to install a Zymbit HSM60 Secur
 
 ## Hardware Installation
 
+### Mount Assembly
+
 - Remove the compute module from the IO board
 
 {{< cardpane >}}
@@ -86,11 +88,15 @@ This integration guide will walk you through how to install a Zymbit HSM60 Secur
 {{< /card >}}
 {{< /cardpane >}}
 
-### Power on and confirm operation
+### Battery Connector (J8)
 
-Power up the Pi and you will see a blue LED blinking rapidly and consistently (5 blinks per second). This indicates the HSM is operational but not configured.
+{{< callout warning >}}
+Battery installation is not required for the HSM to function, but it is highly recommended if your device is vulnerable to physical access!
+{{< /callout >}}
 
-If the blue LED blinks erratically, or not at all, then there is an installation error and you should check your connections.
+The battery connector is a 1.00mm Pitch, 2-pin, JST PCB header that mates with housings with [02SR-3S](https://www.digikey.com/en/products/detail/jst-sales-america-inc/02SR-3S/1300342?gclsrc=aw.ds&gad_source=1&gad_campaignid=17922795960&gbraid=0AAAAADrbLliwlFAtLOnu4vYnRkMIG6SK8&gclid=Cj0KCQiAi9rJBhCYARIsALyPDtt9lTPFIlJEf0wJDW97hiAQmPxFoRK7w1qn3IasFqn-Juu6-khD8VMaAhC3EALw_wcB) or similar headers.  This is the same battery connector that is on the Pi5.  It takes 3.3V batteries ([like the Pi5 battery](https://www.digikey.com/en/products/detail/raspberry-pi/SC1163/21658274?gclsrc=aw.ds&gad_source=1&gad_campaignid=20228387720&gbraid=0AAAAADrbLlhDWbqKh4-P4EF0aSO6unV-A&gclid=Cj0KCQjwqebEBhD9ARIsAFZMbfxdwRKiRkUYcolECpajh4qdoJvdAUH6vsefttLv7gQ-ObwtNwXfgVEaArlbEALw_wcB)) and is used to power the RTC on the ZYMBIT HSM as well as power the security supervisor on the HSM in a low-power state when there is no primary power.  See API documentation for uses.
+
+
 
 ### Auxiliary Connector (J1)
 
@@ -149,17 +155,14 @@ VEXT_MON | General purpose auxiliary recieve (future use) and external voltage m
     
 - Power button input (pin 12):  This pin connects to the power button pin on the compute module after going through the HSM.  Pull this pin low to activate.
 
-### Battery Connector (J8)
+### Power on and confirm operation
 
-{{< callout warning >}}
-Battery installation is not required for the HSM to function, but it is highly recommended if your device is vulnerable to physical access!
-{{< /callout >}}
+Power up the Pi and you will see a blue LED blinking rapidly and consistently (5 blinks per second). This indicates the HSM is operational but not configured.
 
-The battery connector is a 1.00mm Pitch, 2-pin, JST PCB header that mates with housings with [02SR-3S](https://www.digikey.com/en/products/detail/jst-sales-america-inc/02SR-3S/1300342?gclsrc=aw.ds&gad_source=1&gad_campaignid=17922795960&gbraid=0AAAAADrbLliwlFAtLOnu4vYnRkMIG6SK8&gclid=Cj0KCQiAi9rJBhCYARIsALyPDtt9lTPFIlJEf0wJDW97hiAQmPxFoRK7w1qn3IasFqn-Juu6-khD8VMaAhC3EALw_wcB) or similar headers.  This is the same battery connector that is on the Pi5.  It takes 3.3V batteries ([like the Pi5 battery](https://www.digikey.com/en/products/detail/raspberry-pi/SC1163/21658274?gclsrc=aw.ds&gad_source=1&gad_campaignid=20228387720&gbraid=0AAAAADrbLlhDWbqKh4-P4EF0aSO6unV-A&gclid=Cj0KCQjwqebEBhD9ARIsAFZMbfxdwRKiRkUYcolECpajh4qdoJvdAUH6vsefttLv7gQ-ObwtNwXfgVEaArlbEALw_wcB)) and is used to power the RTC on the ZYMBIT HSM as well as power the security supervisor on the HSM in a low-power state when there is no primary power.  See API documentation for uses.
+If the blue LED blinks erratically, or not at all, then there is an installation error and you should check your connections.
 
 
 ## Software Installation
-
 
 Establish an {{% term/i2c %}} connection
 :   Enable the {{% term/i2c %}} bus on the host device in order to be able to communicate with the HSM.
@@ -203,7 +206,7 @@ Download and install the necessary Zymbit services onto your device.
 `curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash`
 
 
-## Test the installation
+### Test the installation
 
 When the software installation has completed, the script will automatically reboot your device. After the reboot has completed, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
 
