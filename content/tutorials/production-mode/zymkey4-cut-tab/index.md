@@ -20,11 +20,11 @@ THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FO
 
 {{< /callout >}}
 
-When you have completed your development work with the ZYMKEY4 and are ready to deploy your system into the field, we recommend that you permanently bind your ZYMKEY4 to a specific host device and SD card by putting the ZYMKEY4 into Production Mode. The common steps for all Zymbit products can be found here: [Production Mode](tutorials/production-mode).  For the ZYMKEY4, Production Mode involves physically cutting the tab on the ZYMKEY4, as outlined below.
+When you have completed your development work with the ZYMKEY4 and are ready to deploy your system into the field, we recommend that you permanently bind your ZYMKEY4 to a specific host device and SD card by putting the ZYMKEY4 into Production Mode. The common steps for all Zymbit products can be found here: [Production Mode](/tutorials/production-mode).  For the ZYMKEY4, Production Mode involves physically cutting the tab on the ZYMKEY4, as outlined below.
 
 
 {{< callout destructive >}}
-*DO NOT* cut the lock tab yet. Make sure you have completed the [common steps](tutorials/production-mode) before proceeding here. 
+*DO NOT* cut the lock tab yet. Make sure you have completed the [common steps](/tutorials/production-mode) before proceeding here. 
 {{< /callout >}}
 
 Before proceeding, shut your host board down and disconnect it from power. Then, without removing the ZYMKEY4's battery (if installed), remove the ZYMKEY4 from the host SBC.
@@ -57,6 +57,6 @@ The resulting cut should leave the edge of the ZYMKEY4 motherboard flush. If por
 
 After cutting the lock tab, reinstall the ZYMKEY4 the host SBC, reconnect it to power, and boot into the host. The blink pattern on the ZYMKEY4 will change to 3 rapid blinks once every 3 seconds to indicate that ZYMKEY4 has bound to the host in production mode.
 
-You can now return to the guide for [enabling Production Mode](tutorials/production-mode).
+You can now return to the guide for [enabling Production Mode](/tutorials/production-mode).
 
 

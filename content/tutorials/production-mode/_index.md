@@ -60,7 +60,7 @@ After these steps have been completed, you are ready to prepare your device for 
 
 The `Perimeter Event Actions` for your Zymbit SEN or HSM should be set to `none` or `notify` only. If your Zymbit SEN or HSM's action mode is set to `selfdestruct`, you might render your Zymbit SEN or HSM useless while attempting to activate Production Mode.
 
-{{< resource_link "tutorials/perimeter-detect/hsm6/" >}}
+{{< resource_link "tutorials/perimeter-detect/" >}}
 Understand how to use the Zymbit SEN or HSM's perimeter detect features.
 {{< /resource_link >}}
 
@@ -95,7 +95,7 @@ Test the functionality of your application thoroughly to ensure it is free of ma
 
 For all Zymbit SEN and HSM models, to go into Production Mode only requires a function call followed by a reboot.  With the Zymkey, a physical tab was cut to go into Production Mode. 
 
-See [Cutting ZYMKEY4 Production Mode tab](zymkey4-tab.md) for instructions for activating Production Mode on the ZYMKEY4.
+See [Cutting ZYMKEY4 Production Mode tab](zymkey4-tab/) for instructions for activating Production Mode on the ZYMKEY4.
 
 The API function lock binding puts the HSM into Production Mode. Below are three examples which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to Production Mode.
 
