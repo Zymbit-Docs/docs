@@ -1,7 +1,7 @@
 ---
 title: "Secure Base Board"
-linkTitle:  "Secure Base Board"
-description: "Secure Base Board I/O motherboard, Used in Zymbit SEN500 and SEN400. NOTE: Not available for purchase separately"
+linkTitle:  "Secure Base Board - Not available to purchase separately"
+description: "Secure Base Board I/O motherboard, Used in Zymbit SEN500 and SEN400."
 lastmod: "2025-11-11"
 draft: false
 images: []

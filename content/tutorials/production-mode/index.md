@@ -1,9 +1,11 @@
 ---
-title: Enabling Production Mode - HSM6
-linkTitle: "Production Mode - HSM60"
+title: Enabling Production Mode 
+linkTitle: "Production Mode"
 description: ""
 aliases:
+    - /quickstart/production-mode/hsm4/
     - /quickstart/production-mode/hsm6/
+    - /quickstart/production-mode/zymkey4/
 date: "2022-03-08"
 lastmod: "2025-10-15"
 draft: false
@@ -15,54 +17,54 @@ toc: true
 {{< callout destructive >}}
 THE BINDING PROCESS IS PERMANENT AND CANNOT BE REVERSED. PAY ATTENTION TO THE FOLLOWING:
 
-* Your specific HSM6 will be **permanently** locked to the specific host device.
-* It will be impossible to move or bind your HSM6 to another device. There are no factory resets, masterkeys, or other forms of recovery.
+* Your specific Zymbit SEN or HSM will be **permanently** locked to the specific host device.
+* It will be impossible to move or bind your Zymbit SEN or HSM to another device. There are no factory resets, masterkeys, or other forms of recovery.
 * If you are using the *Perimeter Detect* features, then the sequence in which you arm and disarm this feature is very important. Be sure to carefully follow the process steps below.
-* Once you have locked your HSM6 into production mode, Zymbit cannot guarantee its operation if you subsequently do a major distribution upgrade (e.g. Raspbian Jessie to Stretch). [Contact Zymbit for more information.](https://www.zymbit.com/contact-us/)
+* Once you have locked your Zymbit SEN or HSM into Production Mode, Zymbit cannot guarantee its operation if you subsequently do a major distribution upgrade (e.g. Raspbian Bullseye to Bookworm). [Contact Zymbit for more information.](https://www.zymbit.com/contact-us/)
 
-If you decide that you are not ready for permanent binding, leave the HSM6 in developer mode, but beware this makes it easier for a bad actor to replace the host with rogue hardware.
+If you decide that you are not ready for permanent binding, leave the Zymbit SEN or HSM in developer mode, but beware this makes it easier for a bad actor to replace the host with rogue hardware.
 
 {{< /callout >}}
 
-When you have completed your development work with the HSM6 and are ready to deploy your system into the field, we recommend that you permanently bind your HSM6 to a specific host device and SD card.
+When you have completed your development work with the Zymbit SEN or HSM and are ready to deploy your system into the field, we recommend that you permanently bind your Zymbit SEN or HSM to a specific host device and SD card.
 
 {{< resource_link "reference/binding" >}}
-HSM6 generates a unique Device ID by measuring certain attributes of the specific host and the HSM6 itself to permanently associate the two devices.
+Zymbit SEN or HSM generates a unique Device ID by measuring certain attributes of the specific host and the Zymbit SEN or HSM itself to permanently associate the two devices.
 {{< /resource_link >}}
 
 ### Summary of Steps
 
 Develop your application
-* [ ] Ensure your host has all the necessary prerequisites in place to interface with the HSM6 and that it will be able to run your software application.
+* Ensure your host has all the necessary prerequisites in place to interface with the Zymbit SEN or HSM and that it will be able to run your software application.
 
-Active production mode
-* [ ] Permanently bind your HSM6 to the host device.
+Active Production Mode
+* Permanently bind your Zymbit SEN or HSM to the host device.
 
 ## Develop your application
 
-To begin, ensure that you have followed the Getting Started guide for your HSM6 carefully to install the prerequisite Zymbit Driver Package:
+To begin, ensure that you have followed the Getting Started guide for your Zymbit SEN or HSM carefully to install the prerequisite Zymbit Driver Package:
 
-{{< resource_link "getting-started/hsm6" >}}
-Install your HSM6 to a Raspberry Pi running Raspbian or Ubuntu before moving to production mode.
+{{< resource_link "hardware/" >}}
+Install your Zymbit SEN or HSM hardware and software before moving to Production Mode.
 {{< /resource_link >}}
 
 To reiterate, before you continue, the following steps should be complete:
 
-* [ ] Install a battery on the HSM6.
-* [ ] Connect the GPIO header of the HSM6 to the GPIO pins of the host board while the host is powered down.
-* [ ] Install HSM6 software on the host and establish temporary binding in development mode.
+* Install your Zymbit SEN or HSM hardware.
+* Install a battery on the Zymbit SEN or HSM.
+* Install Zymbit SEN or HSM software on the host and establish temporary binding in development mode.
 
 After these steps have been completed, you are ready to prepare your device for permanent binding.
 
 ### Prepare *Perimeter Detect*
 
-The `Perimeter Event Actions` for your HSM6 should be set to `none` or `notify` only. If your HSM6's action mode is set to `selfdestruct`, you might render your HSM6 useless while attempting to activate production mode.
+The `Perimeter Event Actions` for your Zymbit SEN or HSM should be set to `none` or `notify` only. If your Zymbit SEN or HSM's action mode is set to `selfdestruct`, you might render your Zymbit SEN or HSM useless while attempting to activate Production Mode.
 
 {{< resource_link "tutorials/perimeter-detect/hsm6/" >}}
-Understand how to use the HSM6's perimeter detect features.
+Understand how to use the Zymbit SEN or HSM's perimeter detect features.
 {{< /resource_link >}}
 
-To do this quickly, with the HSM6 client libraries installed, you can run the following shell command to use the Python API to communicate with the HSM6 and set the `Perimeter Event Actions` to do nothing when triggered:
+To do this quickly, with the Zymbit SEN or HSM client libraries installed, you can run the following shell command to use the Python API to communicate with the Zymbit SEN or HSM and set the `Perimeter Event Actions` to do nothing when triggered:
 
 ```bash
 python3 -c "import zymkey;
@@ -73,10 +75,10 @@ zymkey.client.clear_perimeter_detect_info()"
 
 ### Prepare your application
 
-If you intend to use your HSM6 to encrypt your root file system, you should complete that step now, using our guide. This step is highly recommended.
+One of the main uses of the Zymbit HSM is to protect an encrypted root filesystem. If you are using Bootware, encryption is done for you. If you intend to use your Zymbit SEN or HSM to encrypt your root file system without Bootware, you should complete that step now, using our guide. This step is highly recommended.
 
 {{< resource_link "tutorials/encrypt-rfs/" >}}
-Encrypt the root file system of your host device using LUKS and your HSM6.
+Encrypt the root file system of your host device using LUKS and your Zymbit SEN or HSM.
 {{< /resource_link >}}
 
 You should then install your application on your host SBC (in the encrypted volume, if applicable).
@@ -84,16 +86,18 @@ You should then install your application on your host SBC (in the encrypted volu
 ### Test, debug, and test again
 
 {{< callout danger >}}
-*DO NOT* skip this step. If you encounter a major issue with your application after your HSM6 has been permanently bound to your device and armed, you may not be able to fix it.
+*DO NOT* skip this step. If you encounter a major issue with your application after your Zymbit SEN or HSM has been permanently bound to your device and armed, you may not be able to fix it.
 {{< /callout >}}
 
-Test the functionality of your application thoroughly to ensure it is free of major defects that will prevent it from functioning properly. After the HSM6 has been bound to your host SBC, especially if *Perimeter Detect* features are in use, it may be difficult to make significant chances to your configuration without locking youself out of the HSM6, depending on the nature of your application and its configuration.
+Test the functionality of your application thoroughly to ensure it is free of major defects that will prevent it from functioning properly. After the Zymbit SEN or HSM has been bound to your host SBC, especially if *Perimeter Detect* features are in use, it may be difficult to make significant chances to your configuration without locking youself out of the Zymbit SEN or HSM, depending on the nature of your application and its configuration.
 
-## Activate production mode
+## Activate Production Mode
 
-With the Zymkey, a physical tab was cut to go into production mode. In the HSM models, to go into production mode it only requires a function call followed by a reboot.
+For all Zymbit SEN and HSM models, to go into Production Mode only requires a function call followed by a reboot.  With the Zymkey, a physical tab was cut to go into Production Mode. 
 
-The API function lock binding puts the HSM into production mode. Below are three examples which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to production mode.
+See [Cutting ZYMKEY4 Production Mode tab](zymkey4-tab.md) for instructions for activating Production Mode on the ZYMKEY4.
+
+The API function lock binding puts the HSM into Production Mode. Below are three examples which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to Production Mode.
 
 <details>
 
@@ -249,7 +253,7 @@ Do not proceed without completing the steps outlined above, including setting th
 
 ### Finalize your device for deployment
 
-After using the APIs to lock binding, reboot. The blink pattern on the HSM6 will change to 3 rapid blinks once every 3 seconds to indicate that HSM6 has bound to the host in production mode.
+After using the APIs to lock binding, reboot. The blink pattern on the Zymbit SEN or HSM will change to 3 rapid blinks once every 3 seconds to indicate that Zymbit SEN or HSM has bound to the host in Production Mode.
 
 If you are using the *Perimeter Detect* features, close your perimeter circuits (for example, by closing the enclosure's lid), and then clear any `Perimeter Detect Events` using the API:
 
