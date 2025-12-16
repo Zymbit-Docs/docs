@@ -1,6 +1,6 @@
 ---
 title: HSM64 - Compute Module Interposer
-linktitle: HSM64: "Compute Module Interposer - Not available for purchase separately"
+linktitle: "HSM64: Compute Module Interposer - Not available for purchase separately"
 description: HSM64 Solution for Zymbit Secure Edge Nodes
 #toc_hide: true           # hides THIS section page from the left nav
 #hide_summary: true       # also hides it from the section landing page tiles
