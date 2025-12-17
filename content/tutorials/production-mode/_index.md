@@ -93,9 +93,9 @@ Test the functionality of your application thoroughly to ensure it is free of ma
 
 ## Activate Production Mode
 
-For all Zymbit SEN and HSM models, to go into Production Mode only requires a function call followed by a reboot.  With the Zymkey, a physical tab was cut to go into Production Mode. 
+For all Zymbit SEN and HSM models, to go into Production Mode only requires a function call followed by a reboot.  With the Zymkey4, a physical tab is cut to go into Production Mode. 
 
-See [Cutting ZYMKEY4 Production Mode tab](zymkey4-tab/) for instructions for activating Production Mode on the ZYMKEY4.
+See [Cutting ZYMKEY4 Production Mode tab](zymkey4-cut-tab/) for instructions for activating Production Mode on the ZYMKEY4.
 
 The API function lock binding puts the HSM into Production Mode. Below are three examples which check the current binding info, lock the HSM binding, then check the current binding info again. Remove the comments around the lock binding function to move to Production Mode.
 
