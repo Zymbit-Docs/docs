@@ -1,14 +1,15 @@
 ---
-title: Quickstart - HSM4
-linkTitle: Quickstart
-description: ""
+title: "HSM4 (legacy): Quickstart and Integration"
+linktitle: HSM4 (legacy)
+description: "Embedded version of ZYMKEY4 for customer integration"
 aliases:
     - /quickstart/getting-started/hsm4/
+    - /getting-started/hsm4/intro/
 date: ""
 lastmod: "2025-10-15"
 draft: false
 images: []
-weight: -670
+weight: 40
 toc: true
 ---
 

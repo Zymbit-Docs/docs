@@ -1,7 +1,7 @@
 ---
-title: Quickstart and Integration - HSM60
-linkTitle: Quickstart and Integration
-description: ""
+title: "HSM60: Compute Module Interposer - Quickstart and Integration"
+linktitle: HSM60
+description: "HSM60 Solution for non-Zymbit CM5,CM4 IO motherboards"
 aliases:
     - /quickstart/getting-started/hsm60/
 date: ""

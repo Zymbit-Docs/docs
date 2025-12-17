@@ -1,14 +1,15 @@
 ---
-title: Quickstart - HSM6
-linkTitle: Quickstart
-description: ""
+title: "HSM6 (legacy): Quickstart and Integration"
+linktitle: HSM6 (legacy)
+description: "Embedded hardware wallet protects hundreds of cryptographic keys"
 aliases:
     - /quickstart/getting-started/hsm6/
+    - /getting-started/hsm6/intro/
 date: ""
 lastmod: "2025-10-15"
 draft: false
 images: []
-weight: -670
+weight: 30
 toc: true
 ---
 

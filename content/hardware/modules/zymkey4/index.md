@@ -1,7 +1,7 @@
 ---
-title: Quickstart - ZYMKEY4
-linkTitle: Quickstart
-description: ""
+title: "ZYMKEY4: Quickstart and Integration"
+linktitle: ZYMKEY4
+description: "Plug in essential security module for Raspberry Pi"
 aliases:
     - /quickstart/getting-started/zymkey4/
 date: ""

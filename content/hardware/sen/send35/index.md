@@ -1,35 +1,39 @@
 ---
-title: "Quickstart - SEN D35 Prototype Kit"
-linkTitle: "Quickstart"
+title: SEN D35 and D35 Dev Kit (legacy)
+linktitle: SEN D35 (legacy)
+description: SEN D35 and D35 Dev Kit - Includes SEN D35 Baseboard and SCM (also known as Dev Kit2)
+aliases:
+    - /getting-started/scm-dev-kit2/quickstart/
+    - /quickstart/getting-started/scm-dev-kit2/
 lastmod: "2025-10-15"
 draft: false
 images: []
-weight: 5
+weight: 35
 toc: true
 ---
 
 -----
-## **SEN D35 Prototype Kit**
+## **SEN D35 and D35 Dev Kit**
 
-The SEN D35 Prototype Kit provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart).
+The SEN D35 and D35 Dev Kit provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](/hardware/components/scm).
 
- * Zymbit [Secure Compute Module](../../scm/quickstart) (Zymbit Security Module and CM4)
+ * Zymbit [Secure Compute Module](/hardware/components/scm) (Zymbit Security Module and CM4)
  * Zymbit SEN D35 Baseboard
  * Optional 12V Power Supply
  * Optional Cellular Modem + SIM + Service in M2.M slot
  * Optional 40 pin GPIO header extender and Perimeter jumper wires
 
 {{< cardpane >}}
-{{< card header="Contents of SEN D35 Prototype Kit" >}}
+{{< card header="Contents of SEN D35 and D35 Dev Kit" >}}
 {{< figure
     src="scm-dev-kit2.png"
-    alt="D35 Prototype Kit"
+    alt="D35 and D35 Dev Kit"
     caption=""
     >}}
 {{< /card >}}
 {{< /cardpane >}}
 
-### **Configure and Setup your SEN D35 Prototype Kit**
+### **Configure and Setup your SEN D35 and D35 Dev Kit**
 
 ##### Power On
  * Connect a 12V Power Supply up to the front panel 12V barrel connector. Connect an ethernet cable to the gigabit ethernet port. The unit is designed to run headless. If you prefer, you do not need a monitor, keyboard, or mouse. Access is via SSH or the monitor.
@@ -46,19 +50,17 @@ Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured
 
 Once the boot sequence completes and the Blue LED is blinking once every three seconds, login remotely via SSH. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
 
-See [Quickstart for SCM](../../scm/quickstart) for more information on how to proceed.
-
 ### Additional information - Using SCM: API and Examples
 
- * [See API Documentation](../../../api/)
- * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
+ * [See API Documentation](/api/)
+ * [Working with Supervised Boot](/tutorials/supervised-boot/)
  * [Securing the SCM further with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
- * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
- * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
+ * [Working with the HD Wallet](/tutorials/digital-wallet/)
+ * [Setting up Tamper Detect](/tutorials/perimeter-detect/)
 
 ### Support
 
- * [Release Notes](../../../troubleshooting/scm/)
+ * [Release Notes](/troubleshooting/scm/)
  * [Contact Support](mailto:support@zymbit.com)
 
 
