@@ -31,7 +31,7 @@ Details: [December 2025 Update](#december-2025)
 | Raspberry Pi OS Trixie   (64-bit) | {{< partially-supported >}} | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} | {{< partially-supported >}} &nbsp; |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1] |
-| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} | {{< supported >}} &nbsl; |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} | {{< supported >}} &nbsp; |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1]                  |
 
 {{< supported >}} Full Bootware Support
