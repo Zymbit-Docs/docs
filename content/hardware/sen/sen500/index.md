@@ -17,7 +17,30 @@ layout: single
 
 The SEN 500 provides all the hardware and software components required to get started implementing your secure application. Inside, the SEN 500 includes a Raspberry PI CM5, the Zymbit Secure Base Board, and the HSM64 security module, detailed below.
 
+{{< cardpane >}}
+{{< card header="Zymbit SEN 500" >}}
+{{< figure
+    src="sen500.png"
+    alt="SEN 500"
+    caption=""
+    width=70%
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
+
+The SEN 500 is also available for [purchase](https://store.zymbit.com/products/sen-500-developer-kit-2) as a Development Kit - an open case for use in the lab.
+
 <img src="sen500.png" alt="SEN 500" width="70%"/>
+{{< cardpane >}}
+{{< card header="Zymbit SEN 500 Dev Kit" >}}
+{{< figure
+    src="sen500_dev_kit.jpg"
+    alt="SEN 500 Dev Kit"
+    caption=""
+    width=70%
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
 
 ## Specifications
 
