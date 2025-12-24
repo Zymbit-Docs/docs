@@ -23,10 +23,11 @@
 		{{ partial "feedback.html" .Site.Params.ui.feedback }}
 		<br />
 	{{ end }}
-	{{ if (.Site.DisqusShortname) }}
-		<br />
-		{{ partial "disqus-comment.html" . }}
-	{{ end }}
+	{{ with site.Config.Services.Disqus.Shortname }}
+                <br />
+                {{ partial "disqus-comment.html" $ }}
+        {{ end }}
+
 	{{ partial "page-meta-lastmod.html" . }}
 </div>
 {{ end }}

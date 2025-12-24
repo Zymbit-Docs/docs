@@ -2,7 +2,7 @@
 title : "CPU Scaling Governor"
 description: ""
 date: ""
-lastmod: "2-23-2022"
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: "docs"

@@ -2,7 +2,7 @@
 title: "HSM6 FAQ & Troubleshooting"
 linkTitle: "HSM6 FAQ & Troubleshooting"
 description: "HSM6 FAQ & Troubleshooting"
-lastmod:
+lastmod: "2025-10-15"
 draft: false
 images: []
 #api_docs: true

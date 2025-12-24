@@ -6,7 +6,9 @@ enableEmoji: true
 enableGitInfo: true
 enableRobotsTXT: true
 languageCode: "en-US"
-paginate: 7
+pagination: 
+  papersize: 7
+
 rssLimit: 10
 
 theme:
@@ -27,6 +29,22 @@ outputFormats:
     isPlainText: true
     noUgly: true
     rel: sitemap
+
+params:
+# Does Bootware versioning
+  version_menu: "Choose Bootware Version"
+  version_menu_pagelinks: false
+  versions:
+    - version: "1.3.2"
+      url: "https://zymbit-docs.github.io/docs-staging/branch/a3/bootware/1.3.2/"
+    - version: "1.3.0"
+      url: "https://zymbit-docs.github.io/docs-staging/branch/a3/bootware/1.3.0/"
+    - version: "1.2.2"
+      url: "https://zymbit-docs.github.io/docs-staging/branch/a3/bootware/1.2.2/"
+    - version: "1.1.0"
+      url: "https://zymbit-docs.github.io/docs-staging/branch/a3/bootware/1.1.0/"
+    - version: "1.0.0"
+      url: "https://zymbit-docs.github.io/docs-staging/branch/a3/bootware/1.0.0/"
 
 markup:
   tableOfContents:

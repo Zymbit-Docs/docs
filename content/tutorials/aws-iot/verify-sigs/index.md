@@ -3,7 +3,7 @@ title: "How to Verify Signatures against Public Key on AWS and Other Devices"
 linkTitle: "Verify Signatures"
 description: ""
 date: ""
-lastmod: "2022-02-05"
+lastmod: "2025-10-15"
 draft: false
 images: []
 toc: true

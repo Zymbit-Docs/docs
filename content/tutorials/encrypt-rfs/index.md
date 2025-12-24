@@ -5,7 +5,7 @@ aliases:
     - /tutorials/encrypt-rfs/zymkey4/
 description: ""
 date: ""
-lastmod: "03-21-2023"
+lastmod: "2025-10-15"
 draft: false
 images: []
 toc: true

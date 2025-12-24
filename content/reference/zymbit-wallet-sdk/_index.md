@@ -6,9 +6,9 @@ description: ""
 aliases:
     - /quickstart/zymbit-wallet-sdk/
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
-weight: 10
+weight: 1000
 images: []
 # headless: true
 # layout: "single"

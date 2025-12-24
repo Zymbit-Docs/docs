@@ -1,0 +1,33 @@
+{{/* Show a warning if the current page is not under the latest Bootware version */}}
+
+{{- $root := site.GetPage "section" "products/bootware" -}}
+{{- if $root -}}
+  {{- $cands := slice -}}
+  {{- range $root.Sections -}}
+    {{- $sec := . -}}
+    {{- with $sec.Params.version -}}
+      {{- $ver := . -}}  {{/* already a string like "1.3.2" */}}
+      {{- $parts := split $ver "." -}}
+      {{- $major := (index $parts 0) | int -}}
+      {{- $minor := cond (ge (len $parts) 2) ((index $parts 1) | int) 0 -}}
+      {{- $patch := cond (ge (len $parts) 3) ((index $parts 2) | int) 0 -}}
+      {{- $w := add (mul $major 1000000) (mul $minor 1000) $patch -}}
+      {{- $cands = $cands | append (dict "p" $sec "w" $w "ver" $ver) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if gt (len $cands) 0 -}}
+    {{- $sorted := sort $cands "w" "desc" -}}
+    {{- $latest := index $sorted 0 -}}
+    {{- $latestPage := $latest.p -}}
+    {{- $latestVer  := $latest.ver -}}
+    {{- $cur := .Page.CurrentSection -}}
+    {{- if and $cur (ne $cur.RelPermalink $latestPage.RelPermalink) -}}
+      <div class="alert alert-warning" role="alert" style="margin:1rem 0;">
+        You’re viewing Bootware {{ $cur.Params.version }} docs.
+        The latest is <a href="{{ $latestPage.RelPermalink }}">Bootware {{ $latestVer }}</a>.
+      </div>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+

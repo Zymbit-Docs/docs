@@ -1,0 +1,83 @@
+{{/* Works whether the theme uses "main" or "content" blocks */}}
+{{/* DEBUG: prove this file is used */}}
+{{ warnf "HIT _default/list.html → %s (Kind=%s, Type=%s, Section=%s)" .RelPermalink .Kind .Type .Section }}
+<span style="display:none">HIT list.html</span>
+
+
+{{ define "main" }}
+  {{ with .Content }}{{ . }}{{ end }}
+  {{ template "immediate-children" . }}
+{{ end }}
+
+{{ define "content" }}
+  {{ with .Content }}{{ . }}{{ end }}
+  {{ template "immediate-children" . }}
+{{ end }}
+
+{{ define "immediate-children" }}
+  {{ if .IsSection }}
+    <p>DEBUG: Sections count: {{ len .Sections }}</p>
+    <p>Regular pages count: {{ len .RegularPages }}</p>
+
+    {{ range .Sections }}
+      <p>SECTION → {{ .Title }} ({{ .File.Path }})</p>
+    {{ end }}
+    {{ range .RegularPages }}
+      <p>PAGE → {{ .Title }} ({{ .File.Path }})</p>
+    {{ end }}
+
+    {{/* Gather and merge (avoid union; keep as Pages) */}}
+    {{ $children := slice | append .Sections | append .RegularPages }}
+
+    {{ range $children }}<p>DEBUG: {{ .Title }} — Weight: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
+
+    {{/* Filters */}}
+    {{ $children = where $children ".Params.hide_summary" "!=" true }}
+    {{ $children = where $children "Type" "!=" "search" }}
+
+    {{/* Sort: use Hugo’s built-ins for predictable behavior */}}
+    {{ $children = $children.ByWeight }}
+    {{ $children = $children.ByTitle }}
+
+    {{ if or .Params.no_list (eq (len $children) 0) }}
+      {{/* nothing */}}
+    {{ else if .Params.simple_list }}
+      <ul>
+        {{ range $children }}
+          {{/* Fix param casing: check and read the same key */}}
+          {{ $hasManual := isset .Params "manualLink" }}
+          {{ $manualLink := cond $hasManual
+              .Params.manualLink
+              (cond (isset .Params "manualLinkRelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
+          <li>
+            <a href="{{ $manualLink }}"
+               {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
+               {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
+              {{- .LinkTitle | default .Title -}}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    {{ else }}
+      <hr class="panel-line">
+      {{ range $children }}<p>{{ .Title }} — Weight2: {{ .Weight }} — Kind: {{ .Kind }}</p>{{ end }}
+      {{ range $children }}
+        {{ $hasManual := isset .Params "manualLink" }}
+        {{ $manualLink := cond $hasManual
+            .Params.manualLink
+            (cond (isset .Params "manualLinkRelref") (relref . .Params.manualLinkRelref) .RelPermalink) }}
+        <div class="entry">
+          <h5>
+            <a href="{{ $manualLink }}"
+               {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
+               {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
+              {{- .LinkTitle | default .Title -}}
+            </a>
+          </h5>
+          <p>{{ .Description | markdownify }}</p>
+        </div>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+

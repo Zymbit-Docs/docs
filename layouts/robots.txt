@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /bootware1.3.2/archive/
-Disallow: /bootware1.3.1/archive/
+#Disallow: /bootware1.3.2/archive/
+#Disallow: /bootware1.3.1/archive/
 Allow: /
 

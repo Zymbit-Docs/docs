@@ -1,0 +1,54 @@
+{{- $parent := . -}}
+
+{{/* Collect immediate child sections + pages */}}
+{{- $children := union $parent.Sections $parent.RegularPages -}}
+{{- $children = where $children ".Params.hide_summary" "!=" true -}}
+{{- $children = where $children "Type" "!=" "search" -}}
+{{- $children = $children.ByWeight.ByTitle -}}
+
+{{- if gt (len $children) 0 -}}
+  {{- if not (eq $parent.Params.simple_list true) -}}
+    <hr class="panel-line">
+  {{- end -}}
+  {{- if $parent.Params.simple_list -}}
+    <ul>
+      {{- range $children -}}
+        {{- $manualLink := cond (isset .Params "manuallink")
+            .Params.manualLink
+            (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) -}}
+        <li>
+          <a href="{{ $manualLink }}"
+             {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
+             {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
+            {{- .LinkTitle | default .Title -}}
+          </a>
+        </li>
+        {{- if .IsSection -}}
+          {{/* Recurse into subsection */}}
+          {{ partial "children-list.html" . }}
+        {{- end -}}
+      {{- end -}}
+    </ul>
+  {{- else -}}
+    {{- range $children -}}
+      {{- $manualLink := cond (isset .Params "manuallink")
+          .Params.manualLink
+          (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) -}}
+      <div class="entry">
+        <h5>
+          <a href="{{ $manualLink }}"
+             {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
+             {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
+            {{- .LinkTitle | default .Title -}}
+          </a>
+        </h5>
+        <p>{{ .Description | markdownify }}</p>
+      </div>
+      {{- if .IsSection -}}
+        {{/* Recurse into subsection */}}
+        {{ partial "children-list.html" . }}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+

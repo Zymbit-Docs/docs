@@ -45,11 +45,17 @@
 {{ end }}
 {{ partial "hooks/head-end.html" . }}
 
-<!--To comply with GDPR, cookie consent scripts places in head-end must execute before Google Analytics is enabled -->
-{{ if hugo.IsProduction }}
-{{ if hasPrefix .Site.GoogleAnalytics "G-"}}
-{{ template "_internal/google_analytics.html" . }}
-{{ else }}
-{{ template "_internal/google_analytics_async.html" . }}
+{{/* To comply with GDPR, ensure your consent code runs before this block sets a truthy flag. */}}
+{{ $consent := site.Params.analytics_consent | default true }} {{/* set to false until consent is granted */}}
+
+{{ if and (hugo.IsProduction) $consent }}
+  {{ with site.Config.Services.GoogleAnalytics.ID }}
+    {{ if hasPrefix . "G-" }}
+      {{/* GA4 embed (Hugo’s supported internal template) */}}
+      {{ template "_internal/google_analytics.html" $ }}
+    {{ else }}
+      {{/* UA IDs are no longer supported by Hugo’s internal template; do nothing. */}}
+    {{ end }}
+  {{ end }}
 {{ end }}
-{{ end }}
+

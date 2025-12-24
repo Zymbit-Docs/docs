@@ -5,7 +5,7 @@ description: "Altium, KiCAD, and 3D Step Model files for the HSM6"
 aliases:
     - /technical_reference/cad/hsm6/
 date: ""
-lastmod: "07-31-2025"
+lastmod: "2025-10-15"
 draft: false
 images: []
 weight: 3

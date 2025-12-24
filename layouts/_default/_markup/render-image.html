@@ -1,0 +1,46 @@
+{{/* layouts/_default/_markup/render-image.html */}}
+{{ $src := .Destination }}
+{{ $alt := .Text }}
+{{ $title := .Title }}
+
+{{/* Try to resolve as a page resource (works for page bundles) */}}
+{{ $res := .Page.Resources.GetMatch (printf "**%s" $src) }}
+
+{{ $maxW := 1200 }}
+
+{{ if and $res (eq $res.MediaType.MainType "image") (ne $res.MediaType.SubType "svg") }}
+  {{/* Raster image: optionally downsize by width only (keeps aspect) */}}
+  {{ $img := $res }}
+  {{ with $res.Width }}
+    {{ if gt . $maxW }}
+      {{ $img = $res.Resize (printf "%dx" $maxW) }}
+    {{ end }}
+  {{ end }}
+
+  <figure class="md-img">
+    <img
+      src="{{ $img.RelPermalink }}"
+      alt="{{ $alt }}"
+      title="{{ $title }}"
+      loading="lazy"
+      decoding="async"
+      style="max-width:100%;height:auto;"
+    />
+    {{ with $title }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+
+{{ else }}
+  {{/* Fallback for non-resources, SVGs, or external URLs */}}
+  <figure class="md-img">
+    <img
+      src="{{ $src | safeURL }}"
+      alt="{{ $alt }}"
+      title="{{ $title }}"
+      loading="lazy"
+      decoding="async"
+      style="max-width:100%;height:auto;"
+    />
+    {{ with $title }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+{{ end }}
+

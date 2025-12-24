@@ -3,7 +3,7 @@ title : "Perimeter Detect: HSM6"
 linkTitle: "HSM6"
 description: ""
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 layout: "single"

@@ -3,7 +3,7 @@ title: "How to Integrate Zymbit with AWS Credentials Provider"
 linkTitle: "Integrate with AWS Credentials Provider"
 description: ""
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 toc: true

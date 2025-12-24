@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <p>DEBUG2 → Type: {{ .Type }}, Section: {{ .Section }}, Kind: {{ .Kind }}</p>
+
+  {{ with .Content }}{{ . }}{{ end }}
+
+  {{ if .IsSection }}
+    {{/* Build a single slice and use Hugo's sort helpers */}}
+    {{ $children := slice | append .Sections | append .RegularPages }}
+    {{ $children = where $children ".Params.hide_summary" "!=" true }}
+    {{ $children = where $children "Type" "!=" "search" }}
+    {{ $children = $children.ByWeight.ByTitle }}
+
+    <ul>
+      {{ range $children }}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle | default .Title }}</a></li>
+      {{ end }}
+    </ul>
+  {{ end }}
+{{ end }}
+

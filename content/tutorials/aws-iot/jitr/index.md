@@ -3,7 +3,7 @@ title : "AWS IoT - Just in Time Registration of Client Certificates using Lambda
 linkTitle: "Just In Time Registration"
 description: ""
 date: ""
-lastmod: ""
+lastmod: "2025-10-15"
 draft: false
 images: []
 toc: true

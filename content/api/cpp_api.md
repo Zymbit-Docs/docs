@@ -2,7 +2,7 @@
 title: "C++ API Documentation"
 linkTitle: "C++ API Documentation"
 description: "C++ interface to Zymkey Application Utilities Library."
-lastmod:
+lastmod: "2025-10-15"
 draft: false
 images: []
 type: docs
@@ -919,7 +919,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Perform a raw ECDH operation. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Perform a raw ECDH operation. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>Perform an ECDH operation with no Key Derivation Function (KDF). The raw pre-master secret is returned in the response. The peer public key is presented in the call.</p>
 </div>
 <div class="parameters">
@@ -951,7 +951,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Perform a raw ECDH operation. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Perform a raw ECDH operation. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>Perform an ECDH operation with no Key Derivation Function (KDF). The raw pre-master secret is returned in the response. The peer public key is referenced from the zymkey internal key store.</p>
 </div>
 <div class="parameters">
@@ -988,7 +988,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Perform an ECDH operation plus Key Derivation Function. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Perform an ECDH operation plus Key Derivation Function. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>Perform an ECDH operation with Key Derivation Function (KDF). The derived key is returned in the response. The peer public key is presented in the call.</p>
 </div>
 <div class="parameters">
@@ -1040,7 +1040,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Perform an ECDH operation plus Key Derivation Function. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Perform an ECDH operation plus Key Derivation Function. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>Perform an ECDH operation with Key Derivation Function (KDF). The derived key is returned in the response. The peer public key is referenced from the zymkey internal key store.</p>
 </div>
 <div class="parameters">
@@ -1152,7 +1152,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">slot_is_foreign</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>If true, designates the pubkey slot to come from the foreign keystore. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>If true, designates the pubkey slot to come from the foreign keystore. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 </span>
 </li>
 </ul>
@@ -1221,7 +1221,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">slot_is_foreign</span><span class="param-desc-divider"> &#8212; </span><span class="description">
-<p>If true, designates the pubkey slot to come from the foreign keystore. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>If true, designates the pubkey slot to come from the foreign keystore. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 </span>
 </li>
 </ul>
@@ -1243,7 +1243,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get the list of allocated keys. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Get the list of allocated keys. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function returns a list of all allocated key slots.</p>
 </div>
 <div class="parameters">
@@ -1270,7 +1270,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Store a new foreign public key in Zymkey. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Store a new foreign public key in Zymkey. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function stores a new foreign public key in the Zymkey public key ring. This public key can be used for signature verification in use cases where it is desirable to hide the public key.</p>
 </div>
 <div class="parameters">
@@ -1311,7 +1311,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Prevent a public key from being exported to the host. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Prevent a public key from being exported to the host. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function prevents the public key at the specified slot from being exported to the host using the API zkExportPubKey.</p>
 </div>
 <div class="parameters">
@@ -1346,7 +1346,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generate a new persistent key pair. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generate a new persistent key pair. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function generates a new key pair of the specified type and store it persistently. This key pair cannot be used as part of the zymkey&#8217;s digital wallet operations.</p>
 </div>
 <div class="parameters">
@@ -1382,7 +1382,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generate an ephemeral key pair. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generate an ephemeral key pair. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function generates an ephemeral key pair of the specified type. Ephemeral key pairs are useful when performing ECDH for time-of-flight encryption. Only one ephemeral key slot is available and is not persistent between reboots.</p>
 </div>
 <div class="parameters">
@@ -1412,7 +1412,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Remove a key pair or a foreign public key. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Remove a key pair or a foreign public key. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function deletes a key pair or a foreign public key from persistent storage.</p>
 </div>
 <div class="parameters">
@@ -1447,7 +1447,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Invalidate the ephemeral key. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Invalidate the ephemeral key. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function invalidates the ephemeral key.</p>
 </div>
 <div class="exceptions">
@@ -1470,7 +1470,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generate a BIP32 master seed to start a new blockchain wallet. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generate a BIP32 master seed to start a new blockchain wallet. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function generates a new blockchain master seed for creating a new wallet per BIP32.</p>
 </div>
 <div class="parameters">
@@ -1533,7 +1533,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set the active SLIP39 group and the amount of members needed. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Set the active SLIP39 group and the amount of members needed. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function configures the active group to generate the number of shards requested for the active group.</p>
 </div>
 <div class="parameters">
@@ -1570,7 +1570,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generate a new SLIP39 member shard. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generate a new SLIP39 member shard. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function generates a new SLIP39 member shard. The shard can optionally have a password attached to it.</p>
 </div>
 <div class="parameters">
@@ -1602,7 +1602,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Cancels the current active SLIP39 session (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Cancels the current active SLIP39 session (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function cancels open active SLIP39 sessions. For both generation and restore SLIP39 sessions.</p>
 </div>
 <div class="returns">
@@ -1619,7 +1619,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generate a oversight wallet from the last hardened node of a wallet node address (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generate a oversight wallet from the last hardened node of a wallet node address (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function generates a new oversight wallet and are used to generate public keys in a deterministic way.</p>
 </div>
 <div class="parameters">
@@ -1671,7 +1671,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generate child key from a parent key in a wallet (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generate child key from a parent key in a wallet (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function generates a new child key descendent from a specified parent key in a wallet.</p>
 </div>
 <div class="parameters">
@@ -1727,7 +1727,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Restore a master seed from a BIP39 mnemonic and a master generator key. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Restore a master seed from a BIP39 mnemonic and a master generator key. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function restores a wallet master seed from a supplied BIP39 mnemonic string and a master generator key.</p>
 </div>
 <div class="parameters">
@@ -1791,7 +1791,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Feed a SLIP39 shard to restore a master seed (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Feed a SLIP39 shard to restore a master seed (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function will feed a shard to the module until the conditions are met and a master seed is generated.</p>
 </div>
 <div class="parameters">
@@ -1823,7 +1823,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Derive the node address from a key slot number. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Derive the node address from a key slot number. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function derives a node address from an input key slot number.</p>
 </div>
 <div class="parameters">
@@ -1869,7 +1869,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Derive the slot address from a node address. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Derive the slot address from a node address. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function returns the slot number associated with a given node address.</p>
 </div>
 <div class="parameters">
@@ -2262,7 +2262,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set the low power period (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Set the low power period (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function sets low power period on the digital perimeter detect.</p>
 </div>
 <div class="parameters">
@@ -2298,7 +2298,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set the low power max number of bits (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Set the low power max number of bits (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function sets low power max number of bits on the digital perimeter detect.</p>
 </div>
 <div class="parameters">
@@ -2334,7 +2334,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set the delays (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Set the delays (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function sets delays on the digital perimeter detect.</p>
 </div>
 <div class="parameters">
@@ -2541,7 +2541,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get the CPU Temp. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Get the CPU Temp. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function gets the current HSM CPU temp.</p>
 </div>
 <div class="exceptions">
@@ -2593,7 +2593,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get the RTC drift. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Get the RTC drift. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function gets the current RTC drift.</p>
 </div>
 <div class="exceptions">
@@ -2619,7 +2619,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get the battery voltage(Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Get the battery voltage(Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function gets the current battery voltage.</p>
 </div>
 <div class="exceptions">
@@ -2648,7 +2648,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set battery voltage threshold action. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Set battery voltage threshold action. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function specifies the action to take when the battery voltage falls below the threshold set by zkSetBatteryVoltageThreshold. If this function is never called, do nothing is default. There are three actions:</p>
 <ul>
 <li>Do nothing.</li>
@@ -2688,7 +2688,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Sets the battery voltage threshold. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Sets the battery voltage threshold. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function sets the threshold at which if the battery voltage falls bellow, the action set by zkSetBatteryVoltageAction will be carried out. The recommended threshold is 2.3V is assumed by default. Threshold must be below 2.5V.</p>
 </div>
 <div class="parameters">
@@ -2721,7 +2721,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set HSM CPU temperature threshold action. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Set HSM CPU temperature threshold action. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function specifies the action to take when the HSM CPU temperature falls below the threshold set by zkSetCPULowTempThreshold, or rises above the threshold set by zkSetCPUHighTempThreshold. There are two actions to apply:</p>
 <ul>
 <li>Do nothing.</li>
@@ -2759,7 +2759,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Sets the HSM CPU low temperature threshold. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Sets the HSM CPU low temperature threshold. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function sets the threshold at which if the on-board HSM CPU&#8217;s tempreature falls below, the action set by zkSetCPUTempAction will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold above the CPU&#8217;s ambient temperature. The recommended setting is no more than 20C. If no threshold is set, -10 degrees Celsius is set as default.</p>
 </div>
 <div class="parameters">
@@ -2789,7 +2789,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Sets the HSM CPU high temperature threshold. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Sets the HSM CPU high temperature threshold. (Supported Devices: HSM60, HSM64, HSM6, Secure Compute Module).</p>
 <p>This function sets the threshold at which if the on-board HSM CPU&#8217;s tempreature rises above, the action set by zkSetCPUTempAction will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold below the CPU&#8217;s ambient temperature. The recommended setting is no less than 40C. If no threshold is set, 65 degrees celsius is set as default.</p>
 </div>
 <div class="parameters">
