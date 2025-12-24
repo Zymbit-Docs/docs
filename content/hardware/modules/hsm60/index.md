@@ -254,7 +254,7 @@ The quickest way to get started is to see the HSM's various features at work by 
 
 
 Now you're ready to start developing with HSM and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
-                                                                                                                      {{< resource_link "getting-started/hsm6/production-mode" >}}
+                                                                                                                      {{< resource_link "/tutorials/production-mode" >}}
 To permanently bind the HSM to a host board, generates a unique Device ID by measuring certain attributes of the host and the HSM itself to associate the two devices.
 {{< /resource_link >}}
 
