@@ -1,7 +1,7 @@
 ---
 title: "General FAQ & Troubleshooting"
 linkTitle: "General"
-lastmod: "2025-10-15"
+lastmod: "2025-12-24"
 draft: false
 images: []
 weight: 10
@@ -10,7 +10,7 @@ toc: true
 
 -----
 
-### **Release Notes - Latest Release November 2025**
+### **Release Notes - Latest Release December 2025**
 
 To update to the latest Zymbit Driver Package, existing customers can do an update/upgrade to get the latest code.
 
@@ -20,7 +20,6 @@ sudo apt install --only-upgrade libzk libzymkeyssl zkbootrtc zkifc zkapputilslib
 sudo pip3 install zku --upgrade
 ```
 #### Current Versions:
-TODO: BELOW NEEDS UPDATING
 
 | Name | Version | Description |
 |----|----|----|
@@ -71,9 +70,10 @@ echo "wake_pin=$wake_pin"   # sanity check value is set
 echo "ZK_GPIO_WAKE_PIN=$wake_pin" > /var/lib/zymbit/zkenv.conf
 systemctl restart zkifc
 ```
-As of 6.6.20, the numbering is:
+As of Dec 2025, the numbering is:
 RPI4=516
-RPI5=575
+RPI5 (1.0)=575
+RPI5 (1.1)=573
 CM4=516
 CM5=573
 
