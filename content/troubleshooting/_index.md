@@ -24,7 +24,6 @@ If your issue is not related to any of the above list, read through the FAQ belo
 |                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
-| Raspberry Pi OS Trixie   (64-bit) | {{< partially-supported >}} | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
 | Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
@@ -43,13 +42,7 @@ If your issue is not related to any of the above list, read through the FAQ belo
 #### December 2025
 -----
 
-- Bug fixes
-   - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
-   - zkpkcs11 package build fixed for 64-bit OSs
-
 - zkifc
-   - Added support for Trixie
-   - `zkifc -v` added to return version
    - Installation script can now set the distribution via an environment variable. This allows pointing a newer distribution to use an older repo. For example, to point any OS at the Zymbit `bookworm` repo, do the following on your Pi,
 
 ```

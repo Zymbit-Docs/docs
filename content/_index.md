@@ -16,7 +16,6 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 Recent Updates - December 2025:
 - Release of new HSM 
   - HSM 60 ([Order](https://store.zymbit.com/products/hsm60)) - Security Module for Pi Compute Modules
-- Update to Zymbit Driver Package - Add support for Raspberry Pi OS Trixie 64-Bit
 
 Details: [December 2025 Update](#december-2025)
 {{% /callout %}}
@@ -28,7 +27,6 @@ Details: [December 2025 Update](#december-2025)
 |                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi5                    |   Pi4             | 
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
-| Raspberry Pi OS Trixie   (64-bit) | {{< partially-supported >}} | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} | {{< partially-supported >}} &nbsp; |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1] |
 | Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} | {{< supported >}} &nbsp; |
@@ -49,13 +47,9 @@ Contact [support](support@zymbit.com) for PiZero 2W.
 #### December 2025
 -----
 
-- Bug fixes
-   - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
-   - zkpkcs11 package build fixed for 64-bit OSs
+- Released HSM 60 - Security Module for Pi Compute Modules
 
 - zkifc
-   - Added support for Trixie
-   - `zkifc -v` added to return version
    - Installation script can now set the distribution via an environment variable. This allows pointing a newer distribution to use an older repo. For example, to point any OS at the Zymbit `bookworm` repo, do the following on your Pi,
 
 ```

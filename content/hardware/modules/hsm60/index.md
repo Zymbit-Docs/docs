@@ -155,6 +155,38 @@ VEXT_MON | General purpose auxiliary recieve (future use) and external voltage m
     
 - Power button input (pin 12):  This pin connects to the power button pin on the compute module after going through the HSM.  Pull this pin low to activate.
 
+### Breakout Board / Cable
+
+Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector (J1).  Use one of the premade cable harnesses to connect to the breakout board.  The pins are labeled according to their function and are laid out in a way that is intuitive for use, not in order of pin number!  Use the pin descriptions above to identify how each pin operates.
+
+{{< cardpane >}}
+{{< card header="Breakout Board Pin Assignment" >}}
+{{< figure
+    src="bob_pinout.jpg"
+    alt="Breakout Board Pin Assignment"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
+
+
+{{< cardpane >}}
+{{< card header="Breakout Board and Cable" >}}
+{{< figure
+    src="bob_cable1.jpg"
+    alt="Breakout Board and Cable"
+    caption=""
+    >}}
+{{< /card >}}
+{{< card header="Breakout Board and cable assembled" >}}
+{{< figure
+    src="bob_cable2.jpg"
+    alt="Breakout Board and cable assembled"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
+
 ### Power on and confirm operation
 
 Power up the Pi and you will see a blue LED blinking rapidly and consistently (5 blinks per second). This indicates the HSM is operational but not configured.
