@@ -166,8 +166,7 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 * 2.4/5.0GHz Wi-Fi & Bluetooth
 
 ### Zymbit Platform Reference
- * [Zymbit Secure Edge Node](../../sen/)
- * [Zymbit SEN-400 Proto Kit](../../sen-400-proto-kit/)
+ * [Zymbit Secure Edge Node 400](../../sen400/)
 
 ### Using SCM: API and Examples
 
