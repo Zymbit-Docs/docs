@@ -10,7 +10,7 @@ weight: 8
 layout: single
 ---
 
-Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit .
+Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit hardware and software.
 
 {{% callout note %}}
 Recent Updates - December 2025:
