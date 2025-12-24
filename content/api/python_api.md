@@ -465,7 +465,7 @@ toc: true
 <li class="param-item">
 <span class="name">foreign</span>
 <span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If false, the normal key store is referenced. Otherwise, the foreign
-                                                public key store is referenced.<strong>Note:</strong> This parameter is only applicable for Supported Devices: HSM6, Secure Compute Module. </span>
+                                                public key store is referenced.<strong>Note:</strong> This parameter is only applicable for Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module. </span>
 </li>
 <li class="param-item">
 <span class="name">encoding</span>
@@ -520,7 +520,7 @@ toc: true
 <li class="param-item">
 <span class="name">foreign</span>
 <span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If false, the normal key store is referenced. Otherwise, the foreign
-                                                public key store is referenced.<strong>Note:</strong> This parameter is only applicable for Supported Devices: HSM6, Secure Compute Module. </span>
+                                                public key store is referenced.<strong>Note:</strong> This parameter is only applicable for Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module. </span>
 </li>
 </ul>
 </div>
@@ -540,7 +540,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Derive a key or a pre-master secret from an ECDH operation. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Derive a key or a pre-master secret from an ECDH operation. (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 </div>
 <div class="parameters">
 <h5>Parameters</h5>
@@ -663,7 +663,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">foreign</span>
-<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (Supported Devices: HSM6, Secure Compute Module). </span>
+<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module). </span>
 </li>
 </ul>
 </div>
@@ -737,7 +737,7 @@ toc: true
 </li>
 <li class="param-item">
 <span class="name">foreign</span>
-<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (Supported Devices: HSM6, Secure Compute Module). </span>
+<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module). </span>
 </li>
 </ul>
 </div>
@@ -763,7 +763,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get a list of the allocated slots in the key store (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Get a list of the allocated slots in the key store (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method gets a list of the allocated slots in the key store.</p>
 </div>
 <div class="parameters">
@@ -771,7 +771,7 @@ toc: true
 <ul>
 <li class="param-item">
 <span class="name">foreign</span>
-<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (Supported Devices: HSM6, Secure Compute Module). </span>
+<span class="type-paren paren-open">(</span><span class="type">bool</span><span class="type-paren paren-close">)</span><span class="param-desc-divider"> &#8212; </span><span class="description">If <span class="title-reference">True</span>, designates the pubkey slot to come from the foreign keystore (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module). </span>
 </li>
 </ul>
 </div>
@@ -797,7 +797,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Stores a foreign public key on the Zymkey foreign keyring (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Stores a foreign public key on the Zymkey foreign keyring (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method stores a foreign public key onto the Zymkey foreign public keyring.</p>
 </div>
 <div class="parameters">
@@ -835,7 +835,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Disable exporting of a public key at a given slot (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Disable exporting of a public key at a given slot (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method permanently disables exporting a public key from a given slot.</p>
 </div>
 <div class="parameters">
@@ -864,7 +864,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generate a new key pair (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generate a new key pair (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method generates a new key pair of the specified type.</p>
 </div>
 <div class="parameters">
@@ -889,7 +889,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generate a new ephemeral key pair (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generate a new ephemeral key pair (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method generates a new ephemeral key pair of the specified type, overwriting the previous ephemeral key pair.</p>
 </div>
 <div class="parameters">
@@ -914,7 +914,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Remove a key at the designated slot (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Remove a key at the designated slot (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method removes a key at the designated slot in either the standard key store or the foreign public keyring.</p>
 </div>
 <div class="parameters">
@@ -943,7 +943,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Invalidate the ephemeral key (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Invalidate the ephemeral key (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method invalidates the ephemeral key, effectively removing it from service until a new key is generated.</p>
 </div>
 <div class="exceptions">
@@ -968,7 +968,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generates a new master seed for creating a new BIP32 wallet (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generates a new master seed for creating a new BIP32 wallet (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method generates a new master seed for creating a new BIP32 wallet.</p>
 </div>
 <div class="parameters">
@@ -1005,7 +1005,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Configures the number of members and threshold for the group shares (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Configures the number of members and threshold for the group shares (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method sets the number of members required for a group share once a SLIP39 session was opened via gen_wallet_master_seed().</p>
 </div>
 <div class="parameters">
@@ -1038,7 +1038,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generates a new mnemonic_str tied to a SLIP39 member (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generates a new mnemonic_str tied to a SLIP39 member (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method generates a new member of a group share. Members can also be passphrase protected. Passphrases are not required to be unique. This function is meant to be called after configuring a group via set_gen_SLIP39_group_info().</p>
 </div>
 <div class="parameters">
@@ -1063,7 +1063,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Cancels an active SLIP39 session (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Cancels an active SLIP39 session (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method cancels an ongoing SLIP39 session for both master seed generation and recovery.</p>
 </div>
 <div class="returns">
@@ -1079,7 +1079,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generates a supervisory bip32 wallet. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generates a supervisory bip32 wallet. (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method generates a new supervisory Bip32 wallet. Meant for read-only transactions and supervising history.</p>
 </div>
 <div class="parameters">
@@ -1124,7 +1124,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Generates a child key based on a parent key that is in a wallet (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Generates a child key based on a parent key that is in a wallet (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method generates a child key based on a parent key that is in a wallet.</p>
 </div>
 <div class="parameters">
@@ -1161,7 +1161,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Restore a wallet&#8217;s master seed based on the recovery strategy object (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Restore a wallet&#8217;s master seed based on the recovery strategy object (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method restores a wallet&#8217;s master seed based on a mnemonic string and a master generator key. This method can be used in the process of wallet duplication.</p>
 </div>
 <div class="parameters">
@@ -1202,7 +1202,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Feed a mnemonic string and the passphrase associated with it (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Feed a mnemonic string and the passphrase associated with it (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method feeds in mnemonic sentences (shards) into the module. Meant to be called after starting a restore_wallet_master_seed() SLIP39 session. Will return -1 until the master seed is reconstructed properly.</p>
 </div>
 <div class="parameters">
@@ -1231,7 +1231,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get a wallet node address from a key slot (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Get a wallet node address from a key slot (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method gets a wallet entry&#8217;s node address from its key slot assignment. The wallet name and master seed slot are also returned.</p>
 </div>
 <div class="parameters">
@@ -1256,7 +1256,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Look up a wallet key slot number from a node address (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Look up a wallet key slot number from a node address (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This method gets a wallet key slot number from its node address and wallet name or master seed key slot. Either the wallet name or the master seed slot must be present.</p>
 </div>
 <div class="parameters">
@@ -1540,7 +1540,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set the digital perimeter detect low power period (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Set the digital perimeter detect low power period (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This function sets the digital perimeter detect low power period (microseconds).</p>
 </div>
 <div class="parameters">
@@ -1565,7 +1565,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set the low power max number of bits (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Set the low power max number of bits (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This function sets the digital perimeter detect low power max number of bits.</p>
 </div>
 <div class="parameters">
@@ -1590,7 +1590,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set the digital perimeter detect delays (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Set the digital perimeter detect delays (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This function sets the digital perimeter detect delay values.</p>
 </div>
 <div class="parameters">
@@ -1676,7 +1676,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get current CPU temperature (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Get current CPU temperature (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This function gets the current HSM CPU temperature.</p>
 </div>
 <div class="returns">
@@ -1718,7 +1718,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get RTC drift (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Get RTC drift (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This function gets the current RTC drift.</p>
 </div>
 <div class="returns">
@@ -1734,7 +1734,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Get current battery voltage (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Get current battery voltage (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This function gets the current battery voltage.</p>
 </div>
 <div class="returns">
@@ -1798,7 +1798,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set battery voltage action. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Set battery voltage action. (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This function specifies the action to take when the battery voltage falls below the threshold set by set_battery_voltage_threshold. If this function is never called, do nothing is default. There are three actions:</p>
 <blockquote>
 <ul>
@@ -1835,7 +1835,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Sets the battery voltage threshold. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Sets the battery voltage threshold. (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This function sets the threshold at which if the battery voltage falls bellow, the action set by set_battery_voltage_action will be carried out. The recommended threshold is 2.3V is assumed by default. Threshold must be below 2.5V.</p>
 </div>
 <div class="parameters">
@@ -1860,7 +1860,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Set HSM CPU temperature threshold action. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Set HSM CPU temperature threshold action. (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This function specifies the action to take when the HSM CPU temperature falls below the threshold set by set_cpu_low_temp_threshold, or rises above the threshold set by set_cpu_high_temp_threshold. There are two actions to apply:</p>
 <blockquote>
 <ul>
@@ -1892,7 +1892,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Sets the HSM CPU low temperature threshold. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Sets the HSM CPU low temperature threshold. (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This function sets the threshold at which if the on-board HSM CPU&#8217;s tempreature falls below, the action set by set_cpu_temp_action will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold above the CPU&#8217;s ambient temperature. The recommended setting is no more than 20C. If this function is never called, -10 degrees celsius is assumed.</p>
 </div>
 <div class="parameters">
@@ -1917,7 +1917,7 @@ toc: true
 
 <div class="body">
 <div class="description">
-<p>Sets the HSM CPU high temperature threshold. (Supported Devices: HSM6, Secure Compute Module).</p>
+<p>Sets the HSM CPU high temperature threshold. (Supported Devices: HSM60, HSM64, HSM6 Secure Compute Module).</p>
 <p>This function sets the threshold at which if the on-board HSM CPU&#8217;s tempreature rises above, the action set by set_cpu_temp_action will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold below the CPU&#8217;s ambient temperature. The recommended setting is no less than 40C. If this function is never called, 65 degrees celsius is assumed.</p>
 </div>
 <div class="parameters">

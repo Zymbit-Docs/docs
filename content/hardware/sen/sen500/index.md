@@ -15,7 +15,7 @@ layout: single
 
 ## Introduction
 
-The SEN 500 provides all the hardware and software components required to get started implementing your secure application. Inside, the SEN 500 includes a Raspberry PI CM5, the Zymbit Secure Base Board, and the HSM65 security module, detailed below.
+The SEN 500 provides all the hardware and software components required to get started implementing your secure application. Inside, the SEN 500 includes a Raspberry PI CM5, the Zymbit Secure Base Board, and the HSM64 security module, detailed below.
 
 <img src="sen500.png" alt="SEN 500" width="70%"/>
 

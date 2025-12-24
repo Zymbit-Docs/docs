@@ -37,7 +37,7 @@ Components included in the SEN product line.
 
 | Model            | Pi CPU        | Zymbit HSM             | Description:
 |:-----------------|:-------------:|:-----------------------|:------------------------|
-| [Secure Base Board](components/sbb/)            | CM5, CM4      | [HSM65](components/hsm65), [HSM64](components/hsm64) | Secure Base Board included in SEN-500, SEN-400. Not sold separately |
+| [Secure Base Board](components/sbb/)            | CM5, CM4      | [HSM64](components/hsm64) | Secure Base Board included in SEN-500, SEN-400. Not sold separately |
 | [Legacy Base Board D35](components/lbb-d35/)            | CM4           | [SCM](components/scm)               | Legacy Base Board D35 Included in D35. Not sold separately |
-| [HSM64](components/hsm64)            | CM4           | Released               | HSM for SEN500, SEN400; not sold separately     |
+| [HSM64](components/hsm64)            | CM4, CM5           | Released               | HSM for SEN500, SEN400; not sold separately     |
 | POE Module       |               |                        | For use as with the Secure Base Board included in the SEN 500, SEN 400.
