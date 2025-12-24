@@ -16,7 +16,7 @@ Fully integrated enterprise grade computers ready to deploy. Easy to customize w
 
 | Model            | Pi CPU        | Zymbit Motherboard     | Zymbit HSM              |  Options                |
 |:-----------------|:-------------:|:-----------------------|:------------------------|:------------------------|
-| [SEN500](sen/sen500/)           | CM5           | [Secure Base Board](components/sbb/)           | [HSM65](components/hsm65)   | POE Module    |
+| [SEN500](sen/sen500/)           | CM5           | [Secure Base Board](components/sbb/)           | [HSM64](components/hsm64)   | POE Module    |
 | [SEN400](sen/sen400/)           | CM4           | [Secure Base Board](components/sbb/)           | [HSM64](components/hsm64), [SCM](components/scm) | POE Module              |
 | [SEN D35 (legacy)](sen/send35) | CM4           | [Legacy Base Board D35](components/lbb-d35/)           | [SCM](components/scm)           |                         |
 
@@ -39,6 +39,5 @@ Components included in the SEN product line.
 |:-----------------|:-------------:|:-----------------------|:------------------------|
 | [Secure Base Board](components/sbb/)            | CM5, CM4      | [HSM65](components/hsm65), [HSM64](components/hsm64) | Secure Base Board included in SEN-500, SEN-400. Not sold separately |
 | [Legacy Base Board D35](components/lbb-d35/)            | CM4           | [SCM](components/scm)               | Legacy Base Board D35 Included in D35. Not sold separately |
-| [HSM65](components/hsm65)            | CM5           | Released               | HSM for SEN500; not sold separately     |
 | [HSM64](components/hsm64)            | CM4           | Released               | HSM for SEN500, SEN400; not sold separately     |
 | POE Module       |               |                        | For use as with the Secure Base Board included in the SEN 500, SEN 400.
