@@ -173,7 +173,7 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 
 ### Zymbit Platform Reference
  * [Zymbit Secure Edge Node 400](../../../hardware/sen/sen400/)
- * [Development vs Production Mode for the SCM](./production-mode/)
+ * [Production Mode for the SCM](../../..tutorials/production-mode/)
 
 ### Using SCM: API and Examples
 
