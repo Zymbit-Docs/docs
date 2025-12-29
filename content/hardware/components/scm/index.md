@@ -1,12 +1,18 @@
 ---
-title: "Quickstart - Secure Compute Module (SCM)"
-linkTitle: "Quickstart"
-description: "Configure and setup your SCM"
-lastmod: "2025-10-15"
+title: "Secure Compute Module - SCM"
+linktitle: SCM Module
+description: "Secure Compute Module, used in Zymbit SEN400. Not available for purchase separately."
+#toc_hide: true           # hides THIS section page from the left nav
+#hide_summary: true       # also hides it from the section landing page tiles
+#cascade:
+  #toc_hide: true         # hide all child pages from the left nav
+  #hide_summary: true     # hide children from section landing page lists
+toc: true
+aliases:
+    - /quickstart/getting-started/scm/
 draft: false
 images: []
-weight: 5
-toc: true
+weight: 50
 ---
 
 -----
@@ -166,19 +172,20 @@ The pre-installed image is encrypted and cannot be replaced via `rpiboot` in the
 * 2.4/5.0GHz Wi-Fi & Bluetooth
 
 ### Zymbit Platform Reference
- * [Zymbit Secure Edge Node 400](../../sen400/)
+ * [Zymbit Secure Edge Node 400](/hardware/sen/sen400/)
+ * [Development vs Production Mode for the SCM](production-mode)
 
 ### Using SCM: API and Examples
 
- * [See API Documentation](../../../api/)
- * [Working with Supervised Boot](../../../tutorials/supervised-boot/)
+ * [See API Documentation](/api/)
+ * [Working with Supervised Boot](/tutorials/supervised-boot/)
  * [Securing the SCM further with the example Sanitization Script](https://github.com/zymbit-applications/zk-scripts)
- * [Working with the HD Wallet](../../../tutorials/digital-wallet/)
- * [Setting up Tamper Detect](../../../tutorials/perimeter-detect/)
+ * [Working with the HD Wallet](/tutorials/digital-wallet/)
+ * [Setting up Tamper Detect](/tutorials/perimeter-detect/)
 
 ### Support
 
- * [Release Notes](../../../troubleshooting/scm/)
+ * [Release Notes](/troubleshooting/scm/)
  * [Contact Support](mailto:support@zymbit.com)
 
 
