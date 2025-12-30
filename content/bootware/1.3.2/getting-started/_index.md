@@ -52,9 +52,9 @@ Contact [support](support@zymbit.com) for PiZero 2W.
 
 -----
 
-The default SCM/SEN as shipped has Zymbit Driver Package pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the Zymbit Driver Package should be completed prior to installation of Bootware. The blue LED should be flashing once every three seconds. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm and Ubuntu 24.04.3). 
+Secure Edge Node (SEN) products are shipped with the Zymbit Driver Package pre-installed by default. For customers using the ZYMKEY4 or other Zymbit HSMs, the Zymbit Driver Package installation will need to be completed prior to installation of Bootware. The blue LED should be flashing once every three seconds. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm and Ubuntu 24.04.3). 
 
-Link to Zymbit Driver Package Installation: See: [Zymbit Security Modules](../../hardware/security-modules)
+Link to Zymbit Driver Package Installation: [Zymbit Security Modules](../../hardware/modules)
 
 
 
