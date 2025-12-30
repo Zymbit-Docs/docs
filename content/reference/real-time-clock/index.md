@@ -14,7 +14,7 @@ toc: true
 
 ## Applicable Products
 
-The information included in this post applies to [ZYMKEY4](/hardware/modules/zymkey4/), [HSM60](/hardware/modules/hsm60/)[HSM4](hardware/modules/hsm4/), and [HSM6](/hardware/modules/hsm6/).
+The information included in this post applies to [ZYMKEY4](/hardware/modules/zymkey4/), [HSM60](/hardware/modules/hsm60/)[HSM4](/hardware/modules/hsm4/), and [HSM6](/hardware/modules/hsm6/).
 
 ---
 

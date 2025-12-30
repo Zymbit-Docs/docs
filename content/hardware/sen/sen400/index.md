@@ -93,7 +93,7 @@ Monitor the Blue LED for the status of the Zymbit SCM module. The total boot tim
 
 Once the boot sequence completes and the Blue LED is blinking once every three seconds, login either via the console or remotely via SSH. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for login. The default password is zymbit. Please change your password once you login.
 
-See [Quickstart for SCM](../../scm/quickstart) for more information on how to proceed.
+See [Installation and Quickstart for SCM](/hardware/components/scm/) for more information on how to proceed.
 
 ### Additional information - Using SCM: API and Examples
 

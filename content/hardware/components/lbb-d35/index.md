@@ -12,9 +12,9 @@ toc: true
 -----
 ## **SEN D35 Prototype Kit**
 
-The SEN D35 Prototype Kit provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart).
+The SEN D35 Prototype Kit provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](/hardware/components/scm/).
 
- * Zymbit [Secure Compute Module](../scm/) (Zymbit Security Module and CM4)
+ * Zymbit [Secure Compute Module](/hardware/components/scm/) (Zymbit Security Module and CM4)
  * Zymbit SEN D35 Baseboard
  * Optional 12V Power Supply
  * Optional Cellular Modem + SIM + Service in M2.M slot

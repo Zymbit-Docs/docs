@@ -161,7 +161,6 @@ Bootware® 1.2.0 Release (1.2.0-30):
 - Adds all new rust-based user interface
 - Adds support for HSM4 and HSM6
 - u-boot updated to linux 6.6 kernel
-- Bug fixes. See [Bootware Troubleshooting](./bootware/troubleshooting) for details.
 
 #### June 2024
 -----

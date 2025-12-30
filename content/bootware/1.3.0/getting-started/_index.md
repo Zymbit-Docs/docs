@@ -16,15 +16,12 @@ headless: false
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-{{< resource_link "products/bootware/1.3.0/tutorials" >}}
+{{< resource_link "/bootware/1.3.0/tutorials" >}}
 Step-by-step videos of this Getting-Started are also available. 
 {{< /resource_link >}}
 
 #### [Register for Bootware Technical Updates](https://www.zymbit.com/get-bootware/)
 
-#### Supported Platforms and Operating Systems
-
-![supported OSs](../../supported-os-dots.png)
 <br>
 
 > It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
