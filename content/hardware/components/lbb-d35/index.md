@@ -14,7 +14,7 @@ toc: true
 
 The SEN D35 Prototype Kit provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart).
 
- * Zymbit [Secure Compute Module](../../scm/quickstart) (Zymbit Security Module and CM4)
+ * Zymbit [Secure Compute Module](../scm/) (Zymbit Security Module and CM4)
  * Zymbit SEN D35 Baseboard
  * Optional 12V Power Supply
  * Optional Cellular Modem + SIM + Service in M2.M slot
@@ -47,7 +47,7 @@ Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured
 
 Once the boot sequence completes and the Blue LED is blinking once every three seconds, login remotely via SSH. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
 
-See [Quickstart for SCM](../../scm/quickstart) for more information on how to proceed.
+See [Installation and Quickstart for SCM](../scm/) for more information on how to proceed.
 
 ### Additional information - Using SCM: API and Examples
 

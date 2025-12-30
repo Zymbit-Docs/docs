@@ -152,7 +152,7 @@ curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
 
 When the software installation has completed, reboot your device. After the reboot has completed, the Raspberry Pi will perform an operation that will temporarily bind the ZYMKEY4 to your SBC. Once the ZYMKEY4 is bound to the SBC, the ZYMKEY4's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
 
-{{< resource_link "reference/binding" >}}
+{{< resource_link "/reference/binding" >}}
 In production mode, ZYMKEY4 generates a unique Device ID by measuring certain attributes of the specific host and the ZYMKEY4 itself to permanently associate the two.
 {{< /resource_link >}}
 
@@ -167,6 +167,6 @@ python3 /usr/local/share/zymkey/examples/zk_crypto_test.py
 
 Now you're ready to start developing with ZYMKEY4 and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
 
-{{< resource_link "getting-started/zymkey4/production-mode" >}}
+{{< resource_link "/tutorials/production-mode" >}}
 To permanently bind the ZYMKEY4 to a host board, generates a unique Device ID by measuring certain attributes of the host and the ZYMKEY4 itself to associate the two devices.
 {{< /resource_link >}}

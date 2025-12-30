@@ -20,7 +20,7 @@ headless: false
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-{{< resource_link "products/bootware/1.3.2/tutorials" >}}
+{{< resource_link "/bootware/1.3.2/tutorials" >}}
 Step-by-step videos of this Getting-Started are also available. 
 {{< /resource_link >}}
 
@@ -42,7 +42,7 @@ Step-by-step videos of this Getting-Started are also available.
 
 {{< supported >}} Full Bootware Support
 
-Contact [support](support@zymbit.com) for PiZero 2W.
+Contact [support](mailto:support@zymbit.com) for PiZero 2W.
 
 [^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](/bootware/1.3.2/troubleshooting/pi4-wifi).
 

@@ -157,7 +157,7 @@ Download and install the necessary Zymbit services onto your device.
 
 When the software installation has completed, the script will automatically reboot your device. After the reboot has completed, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
 
-{{< resource_link "reference/binding" >}}
+{{< resource_link "/reference/binding" >}}
 In production mode, HSM generates a unique Device ID by measuring certain attributes of the specific host and the HSM itself to permanently associate the two.
 {{< /resource_link >}}
 
@@ -170,7 +170,7 @@ The quickest way to get started is to see the HSM's various features at work by 
 
 Now you're ready to start developing with HSM and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
 
-{{< resource_link "getting-started/hsm6/production-mode" >}}
+{{< resource_link "/tutorials/production-mode" >}}
 To permanently bind the HSM to a host board, generates a unique Device ID by measuring certain attributes of the host and the HSM itself to associate the two devices.
 {{< /resource_link >}}
 

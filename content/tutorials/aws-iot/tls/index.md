@@ -41,7 +41,7 @@ The following procedure was done with Raspberry PI OS Buster 32bit. The current 
 {{< /callout >}}
 
 
-Install the necessary software packages and insure the Zymkey is bound to its host using the [Getting Started Guide](https://docs.zymbit.com/getting-started/).
+* Follow the [Installation and Getting Started section for your HSM](/hardware/modules/) first.
 
 Have a registered AWS Account, a free developer account can be made [here](https://aws.amazon.com/free/).
 

@@ -69,8 +69,8 @@ Bootware® 1.3.2-2
 -----
 Bootware® 1.3.2-1
 - Features:
-  - #189: Add static network configuration option. See [Advanced Networking Options](/products/bootware/1.3.2/features/static-networking) for details.
-  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](/products/bootware/1.3.2/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
+  - #189: Add static network configuration option. See [Advanced Networking Options](/bootware/1.3.2/features/static-networking) for details.
+  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](/bootware/1.3.2/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
   - #191: Add feature to sync time from Zymbit HSM in zboot. Also add a flag to override, `disable_cert_time_check=false`. The new feature will try to sync the zboot system clock with the Zymbit HSM, whichever is later. If `disable_cert_time_check=true` and neither the zboot time nor the HSM time is reasonably current, a future time is set. This feature is included to cover situations where certificates need to be provided to bring up Wi-Fi interfaces, which will perform a system time verification before bringing up the wlan0 interface.
 - Bug fixes:
   - #197: Buildroot Wi-Fi related firmware added for all platforms. Prevented wlan0 from showing up in zboot for platforms running Ubuntu 22.04.
@@ -124,7 +124,7 @@ Zymbit Driver Package
 Bootware® 1.3.0 Release (1.3.0-1):
 - Features:
   - #173 Add support for CM5 (ZYMKEY, HSM4, HSM6)
-  - #174 Add second layer key verification of zi image to zboot. NOTE: This additional check requires updating 1.2.2 and earlier images by running `zbcli imager` from version 1.3.0-1. See [1.3.0 upgrade](/products/bootware/1.3.2/troubleshooting/#release-130-1)
+  - #174 Add second layer key verification of zi image to zboot. NOTE: This additional check requires updating 1.2.2 and earlier images by running `zbcli imager` from version 1.3.0-1. See [1.3.0 upgrade](/bootware/1.3.0/troubleshooting/#release-130-1)
   - #175 Add splashscreen to zboot
 - Bug Fixes
   - #171 SAS token truncated at first "="
@@ -152,7 +152,6 @@ Bootware® 1.2.2 Release (1.2.2-1):
 - Adds new feature in recovery to override recovery mechanisms and "boot up anyway"; clears counters and attempts to boot.
 - Adds `-y` option to `zbcli rollback-swap` for non-interactive rollback.
 - Adds specifying platform as Pi4 or Pi5 to bootstrap install for DevOps systems that are not running on a real Pi. Allows non-interactive bootstrap of Bootware tools.
-- Bug fixes. See [Bootware Troubleshooting](./bootware/troubleshooting) for details.
 
 #### September 2024
 -----

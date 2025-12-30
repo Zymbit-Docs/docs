@@ -106,7 +106,7 @@ Follow the below pictures to position the PiHAT onto your SBC. The HSM and batte
 
 Be sure all the GPIO pins are aligned and have a respective slot. If misaligned, this could cause damage to the HSM, PiHAT, and/or your host device. Once aligned properly, press firmly down onto the header. Your PiHAT should fit relatively snug.
 
-{{< resource_link "tutorials/alternative-gpio" >}}
+{{< resource_link "/tutorials/alternative-gpio" >}}
 The default configuration uses GPIO4. This can be reconfigured to use another GPIO of your choice.
 {{< /resource_link >}}
 
@@ -118,7 +118,7 @@ Power up the Pi and you will see a blue LED blinking rapidly and consistently (5
 
 If the blue LED blinks erratically, or not at all, then there is an installation error and you should check your connections.
 
-{{< resource_link "reference/power-quality/" >}}
+{{< resource_link "/reference/power-quality/" >}}
 Power quality matters to the reliable and secure operation of your system and Zymkey.
 {{< /resource_link >}}
 
@@ -132,7 +132,7 @@ For Raspian-based operating systems, you must configure the state of the {{% ter
 
 Your {{% term/i2c %}} bus is now configured and ready to talk to the HSM. The default {{% term/i2c %}} address for the HSM is 0x30.
 
-{{< resource_link "troubleshooting/hsm4/#q-how-do-i-set-an-alternative-i2c-address" >}} The default I2C address for HSM is 0x30. If this conflicts with another device in your system, you can reconfigure the HSM4 to use another address of your choice.
+{{< resource_link "/troubleshooting/hsm4/#q-how-do-i-set-an-alternative-i2c-address" >}} The default I2C address for HSM is 0x30. If this conflicts with another device in your system, you can reconfigure the HSM4 to use another address of your choice.
 {{< /resource_link >}}
 
 Your I2C bus is now on and ready to talk to the HSM.
@@ -163,7 +163,7 @@ curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
 
 When the software installation has completed, the script will automatically reboot your device. After the reboot has completed, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
 
-{{< resource_link "reference/binding" >}}
+{{< resource_link "/reference/binding" >}}
 In production mode, HSM generates a unique Device ID by measuring certain attributes of the specific host and the HSM itself to permanently associate the two.
 {{< /resource_link >}}
 
@@ -177,7 +177,7 @@ python3 /usr/local/share/zymkey/examples/zk_crypto_test.py
 
 Now you're ready to start developing with HSM and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:
 
-{{< resource_link "getting-started/hsm4/production-mode" >}}
+{{< resource_link "/tutorials/production-mode" >}}
 To permanently bind the HSM to a host board, generates a unique Device ID by measuring certain attributes of the host and the HSM itself to associate the two devices.
 {{< /resource_link >}}
 

@@ -27,7 +27,7 @@ This can be useful for handing a copy of a wallet to a financial advisor or some
     * [HSM6](https://www.zymbit.com/hsm6/)
     * [SCM ](https://www.zymbit.com/secure-compute-platform/)
 
-* Follow the [Getting Started guide](../../../getting-started) first, installing all Zymbit Driver Package.
+* Follow the [Installation and Getting Started section for your HSM](/hardware/modules/) first.
 
 * All code snippets written in this article are written using Python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](../../../api)
 

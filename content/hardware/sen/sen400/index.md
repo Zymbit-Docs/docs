@@ -20,7 +20,7 @@ The SEN 400 Prototype Kit provides all the hardware and software components requ
 
 The Dev Kit includes:
 
- * Zymbit [Secure Compute Module](../../scm/quickstart) (Zymbit Security Module and CM4)
+ * Zymbit [Secure Compute Module](/hardware/components/scm/) (Zymbit Security Module and CM4)
  * Zymbit Professional Motherboard 400
  * Optional 12V Power Supply
  * Optional PoE++ 802.bt, 55W. Customer supplied PoE power source.
