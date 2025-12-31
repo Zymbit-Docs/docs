@@ -33,7 +33,7 @@ Secure Linux computer engineered for edge applications that require a high stand
 {{< cardpane >}}
 {{< card header="Zymbit SEN 500 Dev Kit" >}}
 {{< figure
-    src="sen500_dev_kit-2.png"
+    src="sen500_dev-kit-2.png"
     alt="SEN 500 Dev Kit"
     caption=""
     width=70%
