@@ -46,7 +46,7 @@ Secure Linux computer engineered for edge applications that require a high stand
 [SEN-500 Development Kit](https://www.zymbit.com/secure-edge-node-500/#specifications).
 
 -----
-## Configure and Setup your SEN 500 Dev-Kit
+## Quickstart
 
 {{< cardpane >}}
 {{< card header="Zymbit SEN 500 Dev Kit I/O ports" >}}
@@ -59,7 +59,6 @@ Secure Linux computer engineered for edge applications that require a high stand
 {{< /card >}}
 {{< /cardpane >}}
 
-## Quickstart 
 1. Connect the 12-24V Power Supply up to the front panel barrel connector.
 2. Connect an Cat5e/Cat6 ethernet cable to the gigabit ethernet port.
 3. The unit is designed to run either headless via SSH, or, if you prefer, attach a monitor to one of the HDMI ports and a keyboard and mouse to the USB ports and login via the console.  
@@ -135,11 +134,11 @@ To gain access to the SEN 500, power down and remove the six torx screws. Carefu
 
 ## Troubleshooting and FAQ
 
-[General troubleshooting](../../../../troubleshooting/general)
+[General troubleshooting](/troubleshooting/)
 
 ## Add-on Devices
 
-[SEN-500 Add-on Devices](../device-addons)
+[SEN-500 Add-on Devices](../../sen/device-addons)
 
 
 ---
