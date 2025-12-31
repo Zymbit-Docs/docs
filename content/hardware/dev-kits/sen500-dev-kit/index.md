@@ -24,6 +24,10 @@ Secure Linux computer engineered for edge applications that require a high stand
 * Zymbit Secure Base Board with extensive IO
 * Raspberry PI CM5 - 16GB RAM, 64GB FLASH, Wi-Fi
 * HSM64 hardware security module
+* Power supply - 12VDC,  6.25A, 75W International blade kit
+* Zymbit AUXiliary breakout cable and PCB
+* USB female to USB cable
+* Bootware Core, 1 Yr included
 
 
 {{< cardpane >}}
@@ -45,10 +49,10 @@ Secure Linux computer engineered for edge applications that require a high stand
 ## Configure and Setup your SEN 500 Dev-Kit
 
 {{< cardpane >}}
-{{< card header="Zymbit SEN 500 I/O ports" >}}
+{{< card header="Zymbit SEN 500 Dev KitI/O ports" >}}
 {{< figure
-    src="sen500_edge_connections.png"
-    alt="SEN 500 I/O connections"
+    src="sen500_dev_kit_edge_connections.png"
+    alt="SEN 500 Dev Kit I/O connections"
     caption=""
     width=70%
     >}}
