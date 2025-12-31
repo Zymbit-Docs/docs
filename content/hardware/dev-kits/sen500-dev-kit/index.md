@@ -1,10 +1,10 @@
 ---
-title: Secure Edge Node - SEN 500
-linktitle: SEN 500 
-description: SEN 500 - Enterprise grade compute hardware that is secure and easily customized. Also available as a [Development Kit](https://store.zymbit.com/products/sen-500-developer-kit-2).
+title: SEN 500 Developer Kit
+linktitle: SEN 500 Dev Kit
+description: SEN 500 - Secure Edge Node 500, Developer Kit with CM5
 aliases:
-    - /getting-started/sen500/quickstart/
-    - /quickstart/getting-started/sen500/
+    - /getting-started/sen500-dev-kit/quickstart/
+    - /quickstart/getting-started/sen500-dev-kit/
 draft: false
 images: []
 weight: 10
@@ -15,26 +15,34 @@ layout: single
 
 ## Introduction
 
-The SEN 500 provides all the hardware and software components required to get started implementing your secure application. Inside, the SEN 500 includes a Raspberry PI CM5, the Zymbit Secure Base Board, and the HSM64 security module, detailed below.
+Secure Linux computer engineered for edge applications that require a high standard of security, flexibility and resilience for operation in zero trust environments.
+
+**Ideal for:** Edge gateways, edge servers, on-prem analytics and thin-clients.  
+
+**Includes:** 
+
+* Zymbit Secure Base Board with extensive IO
+* Raspberry PI CM5 - 16GB RAM, 64GB FLASH, Wi-Fi
+* HSM64 hardware security module
+
 
 {{< cardpane >}}
-{{< card header="Zymbit SEN 500" >}}
+{{< card header="Zymbit SEN 500 Dev Kit" >}}
 {{< figure
-    src="sen500.png"
-    alt="SEN 500"
+    src="sen500_dev_kit.png"
+    alt="SEN 500 Dev Kit"
     caption=""
     width=70%
     >}}
 {{< /card >}}
 {{< /cardpane >}}
 
-
 ## Specifications
 
-[SEN-500 specifications](https://www.zymbit.com/secure-edge-node-500/#specifications).
+[SEN-500 Development Kit](https://www.zymbit.com/secure-edge-node-500/#specifications).
 
 -----
-## Configure and Setup your SEN 500
+## Configure and Setup your SEN 500 Dev-Kit
 
 {{< cardpane >}}
 {{< card header="Zymbit SEN 500 I/O ports" >}}
