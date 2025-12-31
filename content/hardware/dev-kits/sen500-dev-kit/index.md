@@ -33,7 +33,7 @@ Secure Linux computer engineered for edge applications that require a high stand
 {{< cardpane >}}
 {{< card header="Zymbit SEN 500 Dev Kit" >}}
 {{< figure
-    src="sen500_dev_kit.png"
+    src="sen500_dev_kit-2.png"
     alt="SEN 500 Dev Kit"
     caption=""
     width=70%
@@ -49,9 +49,9 @@ Secure Linux computer engineered for edge applications that require a high stand
 ## Configure and Setup your SEN 500 Dev-Kit
 
 {{< cardpane >}}
-{{< card header="Zymbit SEN 500 Dev KitI/O ports" >}}
+{{< card header="Zymbit SEN 500 Dev Kit I/O ports" >}}
 {{< figure
-    src="sen500_dev_kit_edge_connections.png"
+    src="sen500_dev_kit_edge_connection.png"
     alt="SEN 500 Dev Kit I/O connections"
     caption=""
     width=70%
