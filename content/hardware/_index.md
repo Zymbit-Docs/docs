@@ -1,14 +1,14 @@
 ---
 title: Hardware
 linktitle: Hardware
-description: Secure Edge Nodes (SEN), Development Kits, Components, and Modules
+description: Secure Edge Nodes (SEN), Developer Kits, Components, and Modules
 draft: false
 images: []
 weight: 10
 layout: single
 ---
 
-Zymbit hardware line - Secure Edge Nodes, Development Kits, Security Modules, and Components reference.
+Zymbit hardware line - Secure Edge Nodes, Developer Kits, Security Modules, and Components reference.
 
 ### [Secure Edge Nodes](sen)
 
@@ -20,9 +20,9 @@ Fully integrated enterprise grade computers ready to deploy.
 | [SEN400](sen/sen400/)           | CM4           | [Secure Base Board](components/sbb/)           | [HSM64](components/hsm64), [SCM](components/scm) | POE Module              |
 | [SEN D35 (legacy)](sen/send35) | CM4           | [Legacy Base Board D35](components/lbb-d35/)           | [SCM](components/scm)           |                         |
 
-### [Development Kits](dev-kits)
+### [Developer Kits](dev-kits)
 
-Secure Edge Node, Developer Kits
+Secure Edge Node Developer Kits
 
 | Model            | Pi CPU        | Zymbit Motherboard     | Zymbit HSM              |  Options                |
 |:-----------------|:-------------:|:-----------------------|:------------------------|:------------------------|
