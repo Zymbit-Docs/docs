@@ -43,7 +43,7 @@ Secure Linux computer engineered for edge applications that require a high stand
 
 ## Specifications
 
-[SEN-500 Development Kit](https://www.zymbit.com/secure-edge-node-500/#specifications).
+[SEN-500 Developers Kit](https://www.zymbit.com/secure-edge-node-500/#specifications).
 
 -----
 ## Quickstart
@@ -58,6 +58,8 @@ Secure Linux computer engineered for edge applications that require a high stand
     >}}
 {{< /card >}}
 {{< /cardpane >}}
+
+By default, the SEN 500 Developer Kit comes pre-installed with Raspberry Pi OS Bookworm and the latest Zymbit Driver Package. After completing the following steps, the Developer Kit is ready for use.
 
 1. Connect the 12-24V Power Supply up to the front panel barrel connector.
 2. Connect an Cat5e/Cat6 ethernet cable to the gigabit ethernet port.
