@@ -127,13 +127,14 @@ Download and install the necessary Zymbit services onto your device.
 `curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash`
 
 
-### Test the installation
 
 When the software installation has completed, the script will automatically reboot your device. After the reboot has completed, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
 
 {{< resource_link "reference/binding" >}}
 In production mode, HSM generates a unique Device ID by measuring certain attributes of the specific host and the HSM itself to permanently associate the two.
 {{< /resource_link >}}
+
+### Test the installation
 
 The quickest way to get started is to see the HSM's various features at work by running these test scripts that were installed with the Zymbit Driver Package:
 
