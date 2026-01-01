@@ -1,10 +1,10 @@
 ---
-title: Secure Edge Node - SEN 500
-linktitle: SEN 500 
-description: SEN 500 - Enterprise grade compute hardware that is secure and easily customized. Also available as a [Developer Kit](https://store.zymbit.com/products/sen-500-developer-kit-2).
+title: SEN 500 Developer Kit
+linktitle: SEN 500 Dev Kit
+description: SEN 500 - Secure Edge Node 500, Developer Kit with CM5
 aliases:
-    - /getting-started/sen500/quickstart/
-    - /quickstart/getting-started/sen500/
+    - /getting-started/sen500-dev-kit/quickstart/
+    - /quickstart/getting-started/sen500-dev-kit/
 draft: false
 images: []
 weight: 10
@@ -15,39 +15,52 @@ layout: single
 
 ## Introduction
 
-The SEN 500 provides all the hardware and software components required to get started implementing your secure application. Inside, the SEN 500 includes a Raspberry PI CM5, the Zymbit Secure Base Board, and the HSM64 security module, detailed below.
+Secure Linux computer engineered for edge applications that require a high standard of security, flexibility and resilience for operation in zero trust environments.
+
+**Ideal for:** Edge gateways, edge servers, on-prem analytics and thin-clients.  
+
+**Includes:** 
+
+* Zymbit Secure Base Board with extensive IO
+* Raspberry PI CM5 - 16GB RAM, 64GB FLASH, Wi-Fi
+* HSM64 hardware security module
+* Power supply - 12VDC,  6.25A, 75W International blade kit
+* Zymbit AUXiliary breakout cable and PCB
+* USB female to USB cable
+* Bootware Core, 1 Yr included
+
 
 {{< cardpane >}}
-{{< card header="Zymbit SEN 500" >}}
+{{< card header="Zymbit SEN 500 Dev Kit" >}}
 {{< figure
-    src="sen500.png"
-    alt="SEN 500"
+    src="sen500_dev-kit-2.png"
+    alt="SEN 500 Dev Kit"
     caption=""
     width=70%
     >}}
 {{< /card >}}
 {{< /cardpane >}}
-
 
 ## Specifications
 
-[SEN-500 specifications](https://www.zymbit.com/secure-edge-node-500/#specifications).
+[SEN-500 Developers Kit](https://www.zymbit.com/secure-edge-node-500/#specifications).
 
 -----
-## Configure and Setup your SEN 500
+## Quickstart
 
 {{< cardpane >}}
-{{< card header="Zymbit SEN 500 I/O ports" >}}
+{{< card header="Zymbit SEN 500 Dev Kit I/O ports" >}}
 {{< figure
-    src="sen500_edge_connections.png"
-    alt="SEN 500 I/O connections"
+    src="sen500_dev_kit_edge_connection.png"
+    alt="SEN 500 Dev Kit I/O connections"
     caption=""
     width=70%
     >}}
 {{< /card >}}
 {{< /cardpane >}}
 
-## Quickstart 
+By default, the SEN 500 Developer Kit comes pre-installed with Raspberry Pi OS Bookworm and the latest Zymbit Driver Package. After completing the following steps, the Developer Kit is ready for use.
+
 1. Connect the 12-24V Power Supply up to the front panel barrel connector.
 2. Connect an Cat5e/Cat6 ethernet cable to the gigabit ethernet port.
 3. The unit is designed to run either headless via SSH, or, if you prefer, attach a monitor to one of the HDMI ports and a keyboard and mouse to the USB ports and login via the console.  
@@ -115,19 +128,18 @@ Examples of limited or error secondary power indications could include a PoE inj
 
 The SEN-500 contains the Zymbit Secure Base Board, which includes an additional USB port, storage options, an M.2 Type M connector, Camera/DSI Display connector, 40 pin GPIO header, external battery, etc.
 
+The included USB female to USB cable can be used for the USB port.
+
 Details of the functionality of the Zymbit [Secure Base Board](../../components/sbb/).
 
-#### Accessing the inside of the SEN 500
-
-To gain access to the SEN 500, power down and remove the six torx screws. Carefully remove the lid. It does not void any warranty to open the unit in order to install Pi HATs, sensors, M.2 hardware, configure as a MSD/rpiboot, or arrange tamper prevention. If needed, remove the four nylon screws to separate the CM5 from the Zymbit HSM. Reverse the process to reassemble and close the unit. 
 
 ## Troubleshooting and FAQ
 
-[General troubleshooting](../../../../troubleshooting/general)
+[General troubleshooting](/troubleshooting/)
 
 ## Add-on Devices
 
-[SEN-500 Add-on Devices](../device-addons)
+[SEN-500 Add-on Devices](../../sen/device-addons)
 
 
 ---
