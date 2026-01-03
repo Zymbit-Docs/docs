@@ -4,8 +4,9 @@ linktitle: ZYMKEY4
 description: "Plug in essential security module for Raspberry Pi"
 aliases:
     - /quickstart/getting-started/zymkey4/
+    - /getting-started/zymkey4/quickstart/
 date: ""
-lastmod: "2025-10-15"
+lastmod: "2026-01-03"
 draft: false
 images: []
 weight: 1

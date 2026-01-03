@@ -4,9 +4,9 @@ linktitle: HSM6 (legacy)
 description: "Embedded hardware wallet protects hundreds of cryptographic keys"
 aliases:
     - /quickstart/getting-started/hsm6/
-    - /getting-started/hsm6/intro/
+    - /getting-started/hsm6/quickstart/
 date: ""
-lastmod: "2025-10-15"
+lastmod: "2026-01-03"
 draft: false
 images: []
 weight: 30
