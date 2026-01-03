@@ -2,6 +2,8 @@
 title: "Zymbit Documentation"
 linktitle: "Zymbit Documentation"
 description: "Zymbit Documentation"
+aliases:
+    - /getting-started
 date: 2020-10-06T08:47:36+00:00
 lastmod: "2025-11-16"
 draft: false
