@@ -4,7 +4,6 @@ linktitle: SEN 500
 description: SEN 500 - Enterprise grade compute hardware that is secure and easily customized. Also available as a [Developer Kit](https://store.zymbit.com/products/sen-500-developer-kit-2).
 aliases:
     - /getting-started/sen500/quickstart/
-    - /quickstart/getting-started/sen500/
 draft: false
 images: []
 weight: 10

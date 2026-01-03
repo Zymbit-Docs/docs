@@ -4,8 +4,9 @@ linktitle: HSM60
 description: "HSM60 Solution for non-Zymbit CM5,CM4 IO motherboards"
 aliases:
     - /quickstart/getting-started/hsm60/
+    - /getting-started/hsm60/quickstart/
 date: ""
-lastmod: "2025-10-15"
+lastmod: "2026-01-03"
 draft: false
 images: []
 weight: 20

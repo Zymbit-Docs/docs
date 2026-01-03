@@ -4,9 +4,9 @@ linktitle: HSM4 (legacy)
 description: "Embedded version of ZYMKEY4 for customer integration"
 aliases:
     - /quickstart/getting-started/hsm4/
-    - /getting-started/hsm4/intro/
+    - /getting-started/hsm4/quickstart/
 date: ""
-lastmod: "2025-10-15"
+lastmod: "2026-01-03"
 draft: false
 images: []
 weight: 40

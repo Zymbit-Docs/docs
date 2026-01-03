@@ -5,6 +5,7 @@ description: SEN 400 - Includes Zymbit motherboard and CM4-based Secure Compute 
 aliases:
     - /getting-started/scm-dev-kit3/quickstart/
     - /quickstart/getting-started/scm-dev-kit3/
+    - /getting-started/sen400/quickstart/
 lastmod: "2025-10-15"
 draft: false
 images: []
