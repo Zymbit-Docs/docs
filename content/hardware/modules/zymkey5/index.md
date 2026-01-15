@@ -1,7 +1,7 @@
 ---
 title: "ZYMKEY5: Quickstart and Integration"
 linktitle: ZYMKEY5
-description: "Plug in essential security module for Raspberry Pi"
+description: "The essential hardware security module for Raspberry Pi"
 aliases:
     - /quickstart/getting-started/zymkey5/
     - /getting-started/zymkey5/quickstart/
@@ -13,23 +13,18 @@ weight: 20
 toc: true
 ---
 
-ZYMKEY5 is the fourth generation of the Zymbit security module designed specifically to work with Raspberry Pi. It connects to the GPIO header of the SBC and uses the {{% term/i2c %}} bus and `GPIO4` as a WAKE_PIN to communicate with the SBC CPU via an encrypted channel.
+ZYMKEY5 is the essential Zymbit security module designed specifically to work with Raspberry Pi. It connects to the GPIO header of the SBC and uses the {{% term/i2c %}} bus and `GPIO4` as a WAKE_PIN to communicate with the SBC CPU via an encrypted channel.
 
 In this *Getting Started* guide we describe how to install your ZYMKEY5 to a Raspberry Pi running Raspberry PI OS or Ubuntu. The installation process is the same for both of these Linux distributions.
 
-<!-- TODO: Update link -->
-<!-- **[Learn about Linux OS support for ZYMKEY5.](https://community.zymbit.com/c/operating-system/23)** -->
-
 The ZYMKEY5 occupies 10 pins on the GPIO header. It can also be used with other GPIO devices attached, or other {{% term/i2c %}} devices attached. The correct address range and use of IO pins will be described in this guide as well.
 
-
-<!-- TODO: Make a shortcode that can style things like this more consistent between cards. -->
 {{< cardpane >}}
 {{< card header="ZYMKEY5 Hardware" >}}
 {{< figure
-    src="ZK4-top-bottom.png"
+    src="zymkey5.png"
     alt="Diagram of the ZYMKEY5 hardware"
-    caption="The top and bottom of the ZYMKEY5 hardware showing the location of the GPIO header and other connectors."
+    caption="The ZYMKEY5 hardware showing the location of the GPIO header and other connectors."
     >}}
 {{< /card >}}
 {{< card header="ZYMKEY5 Pinout" >}}
@@ -43,9 +38,8 @@ The ZYMKEY5 occupies 10 pins on the GPIO header. It can also be used with other 
 
 ### Summary of Setup Steps
 
-<!-- TODO: Add better styling for definition lists in this theme. -->
 Installing the hardware
-:   Install the battery on the ZYMKEY5, and connect it to the host single-board computer (SBC).
+:   Connect the external battery to the ZYMKEY5, and connect it to the host single-board computer (SBC). The battery connector is a 1.00mm Pitch, 2-pin, JST PCB header that mates with housings with SHR-02V-S-B or similar headers. It takes 3.3V batteries and is used to power the RTC on the ZYMBIT SCM as well as power the security supervisor on the SCM in a low-power state when there is no primary power.Install the battery on the ZYMKEY5, 
 
 Establish an {{% term/i2c %}} connection
 :   Enable the {{% term/i2c %}} bus on the host device in order to be able to communicate with the ZYMKEY5.
@@ -64,16 +58,14 @@ Test the installation
 Battery installation is not required for the ZYMKEY5 to function, but it is highly recommended if your device is vulnerable to physical access!
 {{< /callout >}}
 
-To maintain the real-time clock (RTC) and tamper detection features in the event of power loss, install a **high quality** 3V `CR1025` coincell battery (not included) in the ZYMKEY5's battery slot with `+ve` **facing upward**. Recommend CR1025 from [Panasonic](https://industrial.panasonic.com/cdbs/www-data/pdf2/AAA4000/AAA4000C273.pdf) or [Renata](https://www.mouser.com/datasheet/2/346/CR1025_v06-25259.pdf)
-
-![Battery Install](ZK4-battery-install.png)
+Connect an external battery to the ZYMKEY5, and connect it to the host single-board computer (SBC). The battery connector is a 1.00mm Pitch, 2-pin, JST PCB header that mates with housings with SHR-02V-S-B or similar headers. It takes 3.3V batteries and is used to power the RTC on the ZYMBIT SCM as well as power the security supervisor on the SCM in a low-power state when there is no primary power.Install the battery on the ZYMKEY5, 
 
 <!-- Link to resource about battery installation and purpose -->
 
 ### Hardware Installation
 
 {{< callout danger >}}
-Installing your hardware correctly is important to avoid destroying your SBC or ZYMKEY5. Be sure to follow the instructions below carefully. In particular:
+Installing your hardware correctly is important to avoid destroying your Pi or ZYMKEY5. Be sure to follow the instructions below carefully. In particular:
 
 * Pay close attention to the images below to ensure the SBC's GPIO pins are **properly aligned** with the ZYMKEY5's header.
 * Ensure that your **Raspberry Pi is powered down** before proceeding.
@@ -83,17 +75,15 @@ Installing your hardware correctly is important to avoid destroying your SBC or 
 
 #### Before installing
 
-Power off your Raspberry Pi to ensure that neither the SBC or the ZYMKEY5 are damaged.
+Power off your Raspberry Pi to ensure that neither the Pi or the ZYMKEY5 are damaged.
 
 #### Attach hardware
 
-Hold the ZYMKEY5 with the LED and battery holder facing upward. Then, carefully align the ZYMKEY5's connector with the first 10 GPIO pins of the Raspberry Pi.
-
-![Alignment of the ZYMKEY5 on the Raspberry Pi GPIO header](ZK4-hw-install-1.png)
-
 Press down firmly on the ZYMKEY5 to connect it to the GPIO pins of the Raspberry Pi. The ZYMKEY5 should fit relatively snug and maintain a tight interference fit around the pins.
+Hold the ZYMKEY5 with the LED and battery holder facing upward. Then, carefully align the ZYMKEY5's connector with the first 10 GPIO pins of the Raspberry Pi. 
 
-![Alignment of the ZYMKEY5 on the Raspberry Pi GPIO header (side view)](ZK4-hw-install-2.png)
+![Alignment of the ZYMKEY5 on the Raspberry Pi GPIO header](zk5-hw-install.png)
+
 
 The ZYMKEY5 occupies 10 pins on the GPIO header. If the header of the ZYMKEY5 isn't properly aligned with the GPIO header of the Raspberry Pi, both devices could be damaged.
 
@@ -115,7 +105,7 @@ Power quality matters to the reliable and secure operation of your system and ZY
 
 ## Establish an I2C connection
 
-For Raspian-based operating systems, you must configure the state of the {{% term/i2c %}}.
+For Raspberry Pi operating systems, you must configure the state of the {{% term/i2c %}}.
 
 1. Log in to your Raspberry Pi and run `sudo raspi-config`.
 1. Navigate to `Interfacing Options` -> `I2C` -> `Would you like the ARM I2C interface to be enabled?`

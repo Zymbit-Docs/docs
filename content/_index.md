@@ -18,6 +18,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 Recent Updates - December 2025:
 - Release of new HSM 
   - HSM 60 ([Order](https://store.zymbit.com/products/hsm60)) - Security Module for Pi Compute Modules
+  - ZYMKEY5 ([Pre-Order](https://store.zymbit.com/products/zymkey5)) - Plug-in hardware security module (for Raspberry Pi).
 
 Details: [December 2025 Update](#december-2025)
 {{% /callout %}}
@@ -47,6 +48,7 @@ Contact [support](mailto:support@zymbit.com) for PiZero 2W.
 -----
 
 - Released HSM 60 - Security Module for Pi Compute Modules
+- Released ZYMKEY5 - Plug-in hardware security module (for Raspberry Pi).
 
 - zkifc
    - Installation script can now set the distribution via an environment variable. This allows pointing a newer distribution to use an older repo. For example, to point any OS at the Zymbit `bookworm` repo, do the following on your Pi,
