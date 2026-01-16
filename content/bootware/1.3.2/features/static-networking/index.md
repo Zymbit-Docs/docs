@@ -41,16 +41,18 @@ Values are set in userspace with the zbconfig utility, encrypted, and passed int
 
 ### Example, to set static networking parameters for eth0 in zboot:
 
+> NOTE: You must set the address, netmask, and gateway for the interface.
+
 ```bash
-sudo zbconfig -set /boot/firmware/zb_config eth0_static_address=192.168.100.100
-sudo zbconfig -set /boot/firmware/zb_config eth0_static_netmask=255.255.255.0
-sudo zbconfig -set /boot/firmware/zb_config eth0_static_gateway=192.168.100.1
+sudo zbconfig -set /boot/firmware/zb_config.enc eth0_static_address=192.168.100.100
+sudo zbconfig -set /boot/firmware/zb_config.enc eth0_static_netmask=255.255.255.0
+sudo zbconfig -set /boot/firmware/zb_config.enc eth0_static_gateway=192.168.100.1
 ```
 
 Enable the static config for eth0:
 
 ```bash
-sudo zbconfig -set /boot/firmware/zb_config is_eth0_static=true
+sudo zbconfig -set /boot/firmware/zb_config.enc is_eth0_static=true
 ```
 
 
