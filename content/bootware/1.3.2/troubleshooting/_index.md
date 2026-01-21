@@ -53,6 +53,17 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 
 ### Issues and Notes
 -----
+#### December 2025
+
+Bootware® 1.3.2-3
+- Open bugs:
+  - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.
+  - #205: zbcli update-config cli errors off with `Invalid Parameter: user`. Workaround is to provide one option at a time.
+  - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
+  - #199: Multiple copies of rollback message in MOTD. Also refers to rollback as rollover. 
+  - #196: overlay .zi images saves files as root regardless of what it was owned by before.
+  - #195: If you delete the DATA partition with your update policy not set to BOTH, zboot does not inject the new data key into the non-updated partition's initramfs. If the user switches to the non-updated partition, the data key will return bad passphrase from initramfs. The system will timeout, boot up, and unlock the partition's LUKS volume. Access to the shared LUKS data partition will be unavailable.
+
 #### August 2025
 -----
 Ubuntu 24.04.3 (Released 8/7/25)
