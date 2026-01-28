@@ -28,8 +28,6 @@ Details: [November 2025 Update](#november-2025)
 
 ### Latest STABLE Platform and OS Support
 
-
-<<<<<<< HEAD
 |                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |

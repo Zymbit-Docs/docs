@@ -1,18 +1,6 @@
 ---
-<<<<<<< HEAD:content/bootware/2.0.0/_index.md
-title: "Bootware 2.0.0"
+title: "Bootware 2.0.0 (Beta)"
 linkTitle: "Bootware 2.0.0 (Beta)"
-=======
-title: "Bootware 1.3.0"
-linkTitle: "Bootware 1.3.0"
-toc_hide: true           # hides THIS section page from the left nav
-hide_summary: true       # also hides it from the section landing page tiles
-cascade:
-  toc_hide: true         # hide all child pages from the left nav
-  hide_summary: true     # hide children from section landing page lists
-  params:
-      show_versions: true
->>>>>>> origin/main:content/bootware/1.3.0/_index.md
 icon: ""
 description: "Beta release. Includes seamless integration of Secure Boot."
 date: "2024-08-11"
@@ -21,11 +9,7 @@ draft: false
 weight: 20
 images: []
 toc: True
-<<<<<<< HEAD:content/bootware/2.0.0/_index.md
 version: "2.0.0"
-=======
-version: "1.3.0"
->>>>>>> origin/main:content/bootware/1.3.0/_index.md
 ---
 
 -----

@@ -1,10 +1,4 @@
 ---
-<<<<<<< HEAD:content/hardware/modules/scm/quickstart/index.md
-title: "Quickstart - Secure Compute Module (SCM)"
-linkTitle: "Quickstart"
-description: "Configure and setup your SCM"
-lastmod: "2025-10-15"
-=======
 title: "Secure Compute Module - SCM"
 linktitle: SCM Module
 description: "Secure Compute Module, used in Zymbit SEN400. Not available for purchase separately."
@@ -16,7 +10,6 @@ description: "Secure Compute Module, used in Zymbit SEN400. Not available for pu
 toc: true
 aliases:
     - /quickstart/getting-started/scm/
->>>>>>> origin/main:content/hardware/components/scm/index.md
 draft: false
 images: []
 weight: 50

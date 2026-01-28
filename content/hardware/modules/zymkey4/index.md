@@ -6,11 +6,7 @@ aliases:
     - /quickstart/getting-started/zymkey4/
     - /getting-started/zymkey4/quickstart/
 date: ""
-<<<<<<< HEAD:content/hardware/modules/zymkey4/quickstart/index.md
-lastmod: "2025-10-15"
-=======
 lastmod: "2026-01-03"
->>>>>>> origin/main:content/hardware/modules/zymkey4/index.md
 draft: false
 images: []
 weight: 25

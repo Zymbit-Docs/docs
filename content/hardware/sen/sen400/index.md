@@ -1,8 +1,4 @@
 ---
-<<<<<<< HEAD:content/hardware/sen/sen400/quickstart/index.md
-title: "Quickstart - SEN 400 Prototype Kit"
-linkTitle: "Quickstart"
-=======
 title: Secure Edge Node - SEN 400
 linktitle: SEN 400
 description: SEN 400 - Includes Zymbit motherboard and CM4-based Secure Compute Module (SCM)
@@ -10,7 +6,6 @@ aliases:
     - /getting-started/scm-dev-kit3/quickstart/
     - /quickstart/getting-started/scm-dev-kit3/
     - /getting-started/sen400/quickstart/
->>>>>>> origin/main:content/hardware/sen/sen400/index.md
 lastmod: "2025-10-15"
 draft: false
 images: []

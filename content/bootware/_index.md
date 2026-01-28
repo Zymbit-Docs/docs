@@ -12,8 +12,4 @@ weight: 20
 Select the documentation for your Bootware Version from the following menu: {{< version-menu >}}
 
 -----
-<<<<<<< HEAD
 Quick links to latest Beta and Stable versions:
-=======
-Quick links to latest Stable versions:
->>>>>>> origin/main

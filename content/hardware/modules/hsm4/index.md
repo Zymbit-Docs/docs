@@ -6,11 +6,7 @@ aliases:
     - /quickstart/getting-started/hsm4/
     - /getting-started/hsm4/quickstart/
 date: ""
-<<<<<<< HEAD:content/hardware/modules/hsm4/quickstart/index.md
-lastmod: "2025-10-15"
-=======
 lastmod: "2026-01-03"
->>>>>>> origin/main:content/hardware/modules/hsm4/index.md
 draft: false
 images: []
 weight: 40
