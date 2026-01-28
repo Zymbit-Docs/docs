@@ -1,7 +1,7 @@
 ---
 title: "General FAQ & Troubleshooting"
 linkTitle: "General"
-lastmod: "2025-10-15"
+lastmod: "2025-12-24"
 draft: false
 images: []
 weight: 10
@@ -10,7 +10,7 @@ toc: true
 
 -----
 
-### **Release Notes - Latest Release November 2025**
+### **Release Notes - Latest Release December 2025**
 
 To update to the latest Zymbit Driver Package, existing customers can do an update/upgrade to get the latest code.
 
@@ -71,9 +71,10 @@ echo "wake_pin=$wake_pin"   # sanity check value is set
 echo "ZK_GPIO_WAKE_PIN=$wake_pin" > /var/lib/zymbit/zkenv.conf
 systemctl restart zkifc
 ```
-As of 6.6.20, the numbering is:
+As of Dec 2025, the numbering is:
 RPI4=516
-RPI5=575
+RPI5 (1.0)=575
+RPI5 (1.1)=573
 CM4=516
 CM5=573
 
@@ -182,7 +183,16 @@ See [Power Quality]( https://docs.zymbit.com/reference/power-quality/) for more 
 
 <br>
 
-![supported OSs](../../supported-os-dots.png)
+
+|                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi5                    |   Pi4             |
+|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
+| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1] |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} | {{< supported >}} &nbsp; |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1]                  |
+
+{{< supported >}} Full Bootware Support
 
 -----
 

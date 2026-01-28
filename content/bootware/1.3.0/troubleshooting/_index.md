@@ -13,11 +13,6 @@ toc: true
 -----
 ### Troubleshooting tips and FAQ
 
-
-#### Supported Platforms and Operating Systems
-
-![supported OSs](../../supported-os-dots.png)
-
 > It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
 
 

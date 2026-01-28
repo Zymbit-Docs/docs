@@ -2,6 +2,8 @@
 title: "Zymbit Documentation"
 linktitle: "Zymbit Documentation"
 description: "Zymbit Documentation"
+aliases:
+    - /getting-started
 date: 2020-10-06T08:47:36+00:00
 lastmod: "2025-11-16"
 draft: false
@@ -13,11 +15,7 @@ layout: single
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit .
 
 {{% callout note %}}
-Recent Updates - November 2025:
-- Release of new HSM 
-  - ZYMKEY FIVE
-  - ZYMKEY ZERO ([Pre-order](https://store.zymbit.com//zymkey-zero))
-  - HSM 60 ([Pre-order](https://store.zymbit.com//hsm60))
+Recent Updates - February 2026:
 - Release of Bootware 2.0 Beta
   - Full boot artifact isolation
   - New Zymbit hardware integration
@@ -31,6 +29,7 @@ Details: [November 2025 Update](#november-2025)
 ### Latest STABLE Platform and OS Support
 
 
+<<<<<<< HEAD
 |                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
@@ -50,7 +49,7 @@ Contact [support](support@zymbit.com) for PiZero 2W.
 [^2]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](//bootware/1.3.2/troubleshooting/pizero-bullseye).
 
 -----
-#### November 2025
+#### February 2026 
 -----
 **Bootware® 2.0.0 Beta**
 
@@ -70,19 +69,39 @@ Contact [support](support@zymbit.com) for PiZero 2W.
    - Requires a clean Bootware install of Beta 2.0.0 - cannot upgrade from an existing Bootware 1.3.2.
 
 - Bug fixes
-   - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
+  - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.
+  - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
+  - #205: zbcli update-config cli errors off with `Invalid Parameter: user`. Workaround is to provide one option at a time.
+  - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
 
 - zkifc
    - Added support for Trixie
-   - Added support for new Zymbit HSM model: ZYMKEY FIVE
-   - `zkifc -v` added to return version
    - zkpkcs11 package build fixed for 64-bit OSs
+
+
+-----
+#### December 2025
+-----
+
+- Released HSM 60 - Security Module for Pi Compute Modules
+- Released ZYMKEY5 - Plug-in hardware security module (for Raspberry Pi).
+
+- zkifc
    - Installation script can now set the distribution via an environment variable. This allows pointing a newer distribution to use an older repo. For example, to point any OS at the Zymbit `bookworm` repo, do the following on your Pi,
 
 ```
     export distro=bookworm
     curl -fsSL https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo -E bash
 ```
+
+Bootware® 1.3.2-3
+- Open bugs:
+  - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.
+  - #205: zbcli update-config cli errors off with `Invalid Parameter: user`. Workaround is to provide one option at a time.
+  - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
+  - #199: Multiple copies of rollback message in MOTD. Also refers to rollback as rollover. 
+  - #196: overlay .zi images saves files as root regardless of what it was owned by before.
+  - #195: If you delete the DATA partition with your update policy not set to BOTH, zboot does not inject the new data key into the non-updated partition's initramfs. If the user switches to the non-updated partition, the data key will return bad passphrase from initramfs. The system will timeout, boot up, and unlock the partition's LUKS volume. Access to the shared LUKS data partition will be unavailable.
 
 -----
 #### Previous Release Notes are in the [Troubleshooting](troubleshooting) section.

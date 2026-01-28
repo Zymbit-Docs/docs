@@ -145,4 +145,28 @@ The fatal LED sequence is repeated 3 times, after which the SCM reboots.
 | 20 | 2 | Temperature above high boundary in self destruct mode in developer mode. |
 | 22 | 9 | Supervised Boot failure: True failure in Supervised Boot process. |
 
+#### LED differences between Development Mode and Production Mode:
 
+The table below summarizes the differences between Development Mode (no Bind Lock) and Production Mode (Bind Locked)
+
+| Event | Development Mode | Production Mode | Triggers |
+| :---- | :---- | :---- | :---- |
+| Tamper Event| 6 flash + channel sub-flash | Destroy all keys | Immediately |
+| Low Temp Threshold | 20 flash + 1 sub-flash | Do Not Boot | Immediately |
+| High Temp Threshold | 20 flash + 2 sub-flash | Do Not Boot | Immediately |
+| Low Battery Voltage Threshold | 4 flash + 1 sub-flash | Two Policies: Prevent Boot or Destroy all keys | Power Off |
+| Supervised Boot Failure | 4 flash + 2 sub-flash | Two Policies: Prevent Boot or Destroy all keys | On Boot |
+
+#### Event Action differences between Development Mode and Production Mode:
+
+Once locked, setting the Event Action modes are limited in the following way:
+
+| Event | Setting |
+| :---- | :----- |
+| Tamper | One time after locked |
+| Low Temp Threshold | Must be set prior to locking |
+| High Temp Threshold | Must be set prior to locking |
+| Low Battery Voltage Threshold | Must be set prior to locking |
+| Supervised Boot Failure | No limit |
+
+When you have completed your development work with the SCM and are ready to deploy your system into the field, we recommend that you permanently bind your SCM to a specific host device.

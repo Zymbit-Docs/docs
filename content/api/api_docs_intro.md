@@ -53,7 +53,7 @@ In addition to a unique ECDSA private/public key pair, each Zymkey has two uniqu
 
 ### ECDSA Operations
 
-Each Zymkey comes out of the factory with three (Zymkey 4i/HSM4) or 12 (HSM6) unique ECDSA private/public key pairs. These private keys are randomly programmed within hardware at the time of manufacture and never exported. In fact, Zymbit doesn't even know what the value of the private keys are.
+Each Zymkey comes out of the factory with three (Zymkey 4i/HSM4) or 12 (HSM60, HSM64, HSM6) unique ECDSA private/public key pairs. These private keys are randomly programmed within hardware at the time of manufacture and never exported. In fact, Zymbit doesn't even know what the value of the private keys are.
 
 There are three ECDSA operations available:
 
@@ -94,7 +94,7 @@ To learn more about binding your zymkey, see [Binding, Device ID, and Authentica
 
 Unlike Zymkey, HSM4 does not have a physical lock tab that is cut to lock the host binding. Instead, it has a software API for locking the binding to the host. See the soft bind lock API description for more information.
 
-## HSM6
+## HSM60, HSM64, HSM6
 
 ### Soft Bind Lock
 
@@ -114,7 +114,7 @@ In addition to NIST P-256 which is available on Zymkey and HSM4, the Koblitz 256
 
 ### More Key Slots
 
-HSM6 now has 12 factory pre-configured NIST P-256 key slots and 512 key pairs for generated key pair and digital wallet allocation for NIST P-256 or Koblitz 256. All of these key slots can be used for  ECDSA as well as ECDH operations. It is also possible to remove the keys in the 512 key pair store and also prohibit public key export.
+HSM60, HSM64, HSM6 now has 12 factory pre-configured NIST P-256 key slots and 512 key pairs for generated key pair and digital wallet allocation for NIST P-256 or Koblitz 256. All of these key slots can be used for  ECDSA as well as ECDH operations. It is also possible to remove the keys in the 512 key pair store and also prohibit public key export.
 
 ### Foreign Public Keyring
 
@@ -122,11 +122,11 @@ HSM6 now has 12 factory pre-configured NIST P-256 key slots and 512 key pairs fo
 
 ### Digital Wallet
 
-HSM6 provides APIs which allow the creation of 1 or more digital wallets per BIP 32/39/44. The number of master seeds and child nodes is only limited by the number of key pairs provided for in the 512 byte key pair store. The BIP 39 feature provides the mnemonic sentence using the 2048 word English dictionary.
+HSM60, HSM64, HSM6 provides APIs which allow the creation of 1 or more digital wallets per BIP 32/39/44. The number of master seeds and child nodes is only limited by the number of key pairs provided for in the 512 byte key pair store. The BIP 39 feature provides the mnemonic sentence using the 2048 word English dictionary.
 
 ### Battery and Temperature Monitoring
 
-The HSM6 has APIs for reading the battery voltage as well as monitoring policies for taking action if certain thresholds are exceeded.
+The HSM60, HSM64, HSM6 has APIs for reading the battery voltage as well as monitoring policies for taking action if certain thresholds are exceeded.
 
 #### Battery Monitoring
 

@@ -20,8 +20,9 @@ If your issue is not related to any of the above list, read through the FAQ belo
 ### **Release Notes**
 -----
 
-#### November 2025
+#### February 2026
 -----
+
 **Bootware® 2.0.0 Beta**
 
 | Pi Platform:                      |  SEN500/CM5       |  SEN400/CM4            |  Pi4                   |   Pi5             |
@@ -47,12 +48,47 @@ If your issue is not related to any of the above list, read through the FAQ belo
    - Added support for new Zymbit HSM model: ZYMKEY FIVE
    - `zkifc -v` added to return version
    - zkpkcs11 package build fixed for 64-bit OSs
+
+### Latest STABLE Platform and OS Support (December 2025)
+
+
+|                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi5                    |   Pi4             |
+|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
+| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1] |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} | {{< supported >}} &nbsp; |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1]                  |
+
+{{< supported >}} Full Bootware Support
+
+> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
+
+[^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](/bootware/1.3.2/troubleshooting/pi4-wifi).
+
+-----
+### **Release Notes**
+-----
+
+#### December 2025
+-----
+
+- zkifc
    - Installation script can now set the distribution via an environment variable. This allows pointing a newer distribution to use an older repo. For example, to point any OS at the Zymbit `bookworm` repo, do the following on your Pi,
 
 ```
     export distro=bookworm
     curl -fsSL https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo -E bash
 ```
+
+Bootware® 1.3.2-3
+- Open bugs:
+  - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.
+  - #205: zbcli update-config cli errors off with `Invalid Parameter: user`. Workaround is to provide one option at a time.
+  - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
+  - #199: Multiple copies of rollback message in MOTD. Also refers to rollback as rollover.
+  - #196: overlay .zi images saves files as root regardless of what it was owned by before.
+  - #195: If you delete the DATA partition with your update policy not set to BOTH, zboot does not inject the new data key into the non-updated partition's initramfs. If the user switches to the non-updated partition, the data key will return bad passphrase from initramfs. The system will timeout, boot up, and unlock the partition's LUKS volume. Access to the shared LUKS data partition will be unavailable.
 
 -----
 #### August 2025 
@@ -73,8 +109,8 @@ Bootware® 1.3.2-2
 -----
 Bootware® 1.3.2-1
 - Features:
-  - #189: Add static network configuration option. See [Advanced Networking Options](/products/bootware/1.3.2/features/static-networking) for details.
-  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](/products/bootware/1.3.2/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
+  - #189: Add static network configuration option. See [Advanced Networking Options](/bootware/1.3.2/features/static-networking) for details.
+  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](/bootware/1.3.2/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
   - #191: Add feature to sync time from Zymbit HSM in zboot. Also add a flag to override, `disable_cert_time_check=false`. The new feature will try to sync the zboot system clock with the Zymbit HSM, whichever is later. If `disable_cert_time_check=true` and neither the zboot time nor the HSM time is reasonably current, a future time is set. This feature is included to cover situations where certificates need to be provided to bring up Wi-Fi interfaces, which will perform a system time verification before bringing up the wlan0 interface.
 - Bug fixes:
   - #197: Buildroot Wi-Fi related firmware added for all platforms. Prevented wlan0 from showing up in zboot for platforms running Ubuntu 22.04.
@@ -128,7 +164,7 @@ Zymbit Driver Package
 Bootware® 1.3.0 Release (1.3.0-1):
 - Features:
   - #173 Add support for CM5 (ZYMKEY, HSM4, HSM6)
-  - #174 Add second layer key verification of zi image to zboot. NOTE: This additional check requires updating 1.2.2 and earlier images by running `zbcli imager` from version 1.3.0-1. See [1.3.0 upgrade](/products/bootware/1.3.2/troubleshooting/#release-130-1)
+  - #174 Add second layer key verification of zi image to zboot. NOTE: This additional check requires updating 1.2.2 and earlier images by running `zbcli imager` from version 1.3.0-1. See [1.3.0 upgrade](/bootware/1.3.0/troubleshooting/#release-130-1)
   - #175 Add splashscreen to zboot
 - Bug Fixes
   - #171 SAS token truncated at first "="
@@ -156,7 +192,6 @@ Bootware® 1.2.2 Release (1.2.2-1):
 - Adds new feature in recovery to override recovery mechanisms and "boot up anyway"; clears counters and attempts to boot.
 - Adds `-y` option to `zbcli rollback-swap` for non-interactive rollback.
 - Adds specifying platform as Pi4 or Pi5 to bootstrap install for DevOps systems that are not running on a real Pi. Allows non-interactive bootstrap of Bootware tools.
-- Bug fixes. See [Bootware Troubleshooting](./bootware/troubleshooting) for details.
 
 #### September 2024
 -----
@@ -166,7 +201,6 @@ Bootware® 1.2.0 Release (1.2.0-30):
 - Adds all new rust-based user interface
 - Adds support for HSM4 and HSM6
 - u-boot updated to linux 6.6 kernel
-- Bug fixes. See [Bootware Troubleshooting](./bootware/troubleshooting) for details.
 
 #### June 2024
 -----

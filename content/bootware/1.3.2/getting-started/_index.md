@@ -16,11 +16,11 @@ headless: false
 
 ## Quickstart - Download, Install, and Configure Bootware
 
-> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
+> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware cannot access ethernet or USB to retrieve and update image. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-{{< resource_link "products/bootware/1.3.2/tutorials" >}}
+{{< resource_link "/bootware/1.3.2/tutorials" >}}
 Step-by-step videos of this Getting-Started are also available. 
 {{< /resource_link >}}
 
@@ -28,36 +28,35 @@ Step-by-step videos of this Getting-Started are also available.
 
 #### Supported Platforms and Operating Systems
 
+### Latest STABLE Platform and OS Support
 
 
-|                  Pi Platform:     |    CM5            |  CM4                   | Pi4             |   Pi5             | PiZero 2W       |
-|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|:---------------:|
-|                  **Zymbit HSMs:** | **Zymkey**        |   **Zymkey,SCM**       | **Zymkey**        | **Zymkey**   | **Zymkey** |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
-| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} [^1] |
-| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} | {{< partially-supported >}} &nbsp; |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^2] | {{< supported >}} [^2] |                   | {{< supported >}} &nbsp; |
-| Raspberry Pi OS Bullseye (32-bit) |                   |                        | {{< partially-supported >}} &nbsp;      |                   |                 |
-| Ubuntu 22.04 LTS Jammy (32-bit)   |                   |                        | {{< partially-supported >}} &nbsp;      |                   |                 |
-
+|                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi5                    |   Pi4             |
+|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
+| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1] |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} | {{< supported >}} &nbsp; |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1]                  |
 
 {{< supported >}} Full Bootware Support
 
-{{< partially-supported >}} Bootware Not Supported
+Contact [support](mailto:support@zymbit.com) for PiZero 2W.
+
+[^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](/bootware/1.3.2/troubleshooting/pi4-wifi).
 
 <br>
 
-[^1]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](../troubleshooting/pizero-bullseye).
-[^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](../troubleshooting/pi4-wifi).
-
-<br>
-
-> It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM.
+> It is highly recommended to use a Pi with at least 4GB of RAM. Bootware requires approximately 700MB of RAM overhead for image verification and encryption. For HTTPS endpoints, the image must be 700MB smaller than your total RAM. For A/B partitioning, it is recommended to use at least 16GB for storage space.
 
 -----
 
+#### Install Zymbit Driver Package if necessary, prior to Bootware
 
-The default SCM/SEN as shipped has Zymbit Driver Package pre-installed. For setups using the ZYMKEY4 or other Zymbit HSMs, the installation is up to the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
+Secure Edge Node (SEN) products are shipped with the Zymbit Driver Package pre-installed by default. For customers using the ZYMKEY4 or other Zymbit HSMs, the Zymbit Driver Package installation will need to be completed prior to installation of Bootware. The blue LED should be flashing once every three seconds. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm and Ubuntu 24.04.3). 
+
+Link to Zymbit Driver Package Installation: [Zymbit Security Modules](../../../hardware/modules)
+
 
 A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootware](https://www.zymbit.com/get-bootware)
 

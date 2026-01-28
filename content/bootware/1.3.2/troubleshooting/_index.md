@@ -15,7 +15,7 @@ toc: true
 -----
 ### Troubleshooting tips and FAQ
 
-> NOTICE (3/31/2025): Changes from the Pi foundation to the Pi5/CM5 firmware from last week are incompatible with Bootware. We are working on a solution to the problem. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 image, but you will if you upgrade to the latest from last week.
+> NOTICE (3/31/2025): Changes from the Pi foundation to the Pi5/CM5 firmware from last week are incompatible with Bootware. We are working on a solution to the problem. Symptom is Bootware cannot access ethernet or USB to retrieve and update image. You won't see the problem with the 11/19 image, but you will if you upgrade to the latest from last week.
 
 #### Supported Platforms and Operating Systems
 
@@ -42,7 +42,7 @@ toc: true
 [^2]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](../troubleshooting/pi4-wifi).
 
 
-> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)                                                                    
+> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware cannot access ethernet or USB to retrieve and update image. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)                                                                    
 
 <br>
 
@@ -53,6 +53,17 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 
 ### Issues and Notes
 -----
+#### December 2025
+
+Bootware® 1.3.2-3
+- Open bugs:
+  - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.
+  - #205: zbcli update-config cli errors off with `Invalid Parameter: user`. Workaround is to provide one option at a time.
+  - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
+  - #199: Multiple copies of rollback message in MOTD. Also refers to rollback as rollover. 
+  - #196: overlay .zi images saves files as root regardless of what it was owned by before.
+  - #195: If you delete the DATA partition with your update policy not set to BOTH, zboot does not inject the new data key into the non-updated partition's initramfs. If the user switches to the non-updated partition, the data key will return bad passphrase from initramfs. The system will timeout, boot up, and unlock the partition's LUKS volume. Access to the shared LUKS data partition will be unavailable.
+
 #### August 2025
 -----
 Ubuntu 24.04.3 (Released 8/7/25)
@@ -71,8 +82,8 @@ Bootware® 1.3.2-2
 -----
 Bootware® 1.3.2-1
 - Features:
-  - #189: Add static network configuration option. See [Advanced Networking Options](/products/bootware/1.3.2/features/static-networking) for details.
-  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](/products/bootware/1.3.2/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
+  - #189: Add static network configuration option. See [Advanced Networking Options](/bootware/1.3.2/features/static-networking) for details.
+  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](/bootware/1.3.2/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
   - #191: Add feature to sync time from Zymbit HSM in zboot. Also add a flag to override, `disable_cert_time_check=false`. The new feature will try to sync the zboot system clock with the Zymbit HSM, whichever is later. If `disable_cert_time_check=true` and neither the zboot time nor the HSM time is reasonably current, a future time is set. This feature is included to cover situations where certificates need to be provided to bring up Wi-Fi interfaces, which will perform a system time verification before bringing up the wlan0 interface.
 - Bug fixes:
   - #197: Buildroot Wi-Fi related firmware added for all platforms. Prevented wlan0 from showing up in zboot for platforms running Ubuntu 22.04.

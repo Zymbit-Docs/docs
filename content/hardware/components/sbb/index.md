@@ -1,7 +1,7 @@
 ---
 title: "Secure Base Board"
-linkTitle:  "Secure Base Board"
-description: "Secure Base Board I/O motherboard, Used in Zymbit SEN500 and SEN400. NOTE: Not available for purchase separately"
+linkTitle:  "Secure Base Board - Not available to purchase separately"
+description: "Secure Base Board I/O motherboard, Used in Zymbit SEN500 and SEN400."
 lastmod: "2025-11-11"
 draft: false
 images: []
@@ -14,8 +14,6 @@ toc: true
 ## Introduction
 
 The Secure Base Board I/O is Zymbit's secure motherboard solution for use with Zymbit Secure Edge Node devices. It serves as a carrier board for a Raspberry Pi CM5 or CM4 Compute Module, along with a Zymbit HSM in the same form factor that physically sits between the Secure Base Board and the Pi Compute Module. 
-
-<< INSERT PICTURE OF PRODUCT STACK >>
 
 ## Overview of the features of the Secure Base Board
 
@@ -77,7 +75,8 @@ The Secure Base Board I/O is Zymbit's secure motherboard solution for use with Z
 | LED3 | 3 | Activity | ACT | Green/Red | No Activity | eMMC or PCIE activity | Pi power error | Pi Power error but still operational |
 | LED10 | 2 | Primary power | PWR | Green/Red | No primary power | Full primary power | Primary power error | Sleep/low power |
 | LED11 | Bottom | Secondary power | PWR2 | Green/Red | No secondary power | Full secondary power | Secondary power error | Secondary power is limited |
-- **Security LED**
+
+#### Security LED
 
 The security LED is Zymbit HSM status LED.  This will normally blink a blue pattern to give its status (see [SCM LED Reference](https://docs.zymbit.com/troubleshooting/scm/#led-reference) for details).  
 

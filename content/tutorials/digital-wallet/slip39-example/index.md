@@ -12,10 +12,6 @@ toc: true
 
 Updated: 2022-02-14
 
-<!-- TODO Remove this permanently? ## Intro
-
-We are excited to present the third hardware wallet in the world to support Shamir's Backup/SLIP39!
--->
 
 ## What is SLIP39 and Shamir's Backup?
 
@@ -44,7 +40,7 @@ SLIP39 generates groups and each of these groups can contain its own system of m
     * [HSM6](https://www.zymbit.com/hsm6/)
     * [SCM](https://www.zymbit.com/secure-compute-platform/) 
 
-*  Follow the [Getting Started guide](../../../getting-started/) first, installing all Zymbit Driver Package. 
+* Follow the [Installation and Getting Started section for your HSM](/hardware/modules/) first.
 
 * All code snippets written in this article are written using python3. For more Zymbit API documentation (Python/C/C++) visit: [API Documentation](../../../api/)
 

@@ -51,9 +51,9 @@ All these examples will be done via Python using the Python-ECDSA library.
 
 ## Prerequisites
 
- 1. Follow the [Getting Started guide](https://docs.zymbit.com/getting-started/) first, installing all Zymbit Driver Package.
- 2. If you wish to try Signature validation on AWS, you need a [valid device certificate](https://docs.zymbit.com/tutorials/aws-iot/tls/) attached to your AWS account.
-3. The device certificate needs to have a policy attached giving it permission to publish data.
+* Follow the [Installation and Getting Started section for your HSM](/hardware/modules/) first.
+* If you wish to try Signature validation on AWS, you need a [valid device certificate](https://docs.zymbit.com/tutorials/aws-iot/tls/) attached to your AWS account.
+* The device certificate needs to have a policy attached giving it permission to publish data.
 
 ### Simple Signature Validation against Zymkey Public Key
 

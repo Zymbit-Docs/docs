@@ -18,5 +18,4 @@ images: []
 
 Included here are instructions and notes to help bring up peripheral devices for use with the Secure Edge Node (SEN). 
 
------
 

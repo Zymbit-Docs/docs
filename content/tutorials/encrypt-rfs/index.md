@@ -181,7 +181,8 @@ The existing root file system can be migrated to an external LUKS encrypted USB 
 ### BUILDING YOUR LUKS ENCRYPTED RFS
 
 #### Prerequisites
-Make sure you have the Zymbit Security Module software suite already running and operational as well as bound. Instructions [here](https://docs.zymbit.com/getting-started).
+
+* Follow the [Installation and Getting Started section for your HSM](/hardware/modules/) first.
 
 
 #### Option 1 - Convert existing SD Card to LUKS

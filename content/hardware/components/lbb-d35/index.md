@@ -1,8 +1,21 @@
 ---
+<<<<<<< HEAD
 title: "Legacy Base Board - D35"
 linkTitle: "Legacy Base Board - D35"
 description: "Zymbit motherboard for the SEN D35 legacy product; carrier board for the Zymbit SCM."
 lastmod: "2025-11-08"
+=======
+<<<<<<< HEAD:content/hardware/sen/send35/quickstart/index.md
+title: "Quickstart - SEN D35 Prototype Kit"
+linkTitle: "Quickstart"
+lastmod: "2025-10-15"
+=======
+title: "Legacy Base Board: D35"
+linkTitle: "Legacy Base Board: D35 - Not available for purchase separately"
+description: "Zymbit motherboard for the SEN D35 legacy product; carrier board for the Zymbit SCM."
+lastmod: "2025-11-08"
+>>>>>>> origin/main:content/hardware/components/lbb-d35/index.md
+>>>>>>> origin/main
 draft: false
 images: []
 weight: 20
@@ -12,9 +25,15 @@ toc: true
 -----
 ## **SEN D35 Prototype Kit**
 
+<<<<<<< HEAD
 The SEN D35 Prototype Kit provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](../../scm/quickstart).
 
  * Zymbit [Secure Compute Module](../../scm/quickstart) (Zymbit Security Module and CM4)
+=======
+The SEN D35 Prototype Kit provides all the hardware and software components required to evaluate the Zymbit [Secure Compute Module](/hardware/components/scm/).
+
+ * Zymbit [Secure Compute Module](/hardware/components/scm/) (Zymbit Security Module and CM4)
+>>>>>>> origin/main
  * Zymbit SEN D35 Baseboard
  * Optional 12V Power Supply
  * Optional Cellular Modem + SIM + Service in M2.M slot
@@ -47,7 +66,11 @@ Monitor the Blue LED on the Zymbit SCM module. The total boot time as configured
 
 Once the boot sequence completes and the Blue LED is blinking once every three seconds, login remotely via SSH. As shipped, the hostname is `zymbit-dev` and a user named `zymbit` can be used for SSH login. The default password for SSH is zymbit. Please change your password once you login. Console login has been disabled.
 
+<<<<<<< HEAD
 See [Quickstart for SCM](../../scm/quickstart) for more information on how to proceed.
+=======
+See [Installation and Quickstart for SCM](../scm/) for more information on how to proceed.
+>>>>>>> origin/main
 
 ### Additional information - Using SCM: API and Examples
 
