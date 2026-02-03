@@ -5,7 +5,7 @@ description: "Zymbit Documentation"
 aliases:
     - /getting-started
 date: 2020-10-06T08:47:36+00:00
-lastmod: "2025-11-16"
+lastmod: "2026-01-28"
 draft: false
 images: []
 weight: 8
@@ -17,12 +17,15 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 {{% callout note %}}
 Recent Updates - February 2026:
 - Release of Bootware 2.0 Beta
-  - Full boot artifact isolation
-  - New Zymbit hardware integration
   - Integration with Pi's Secure Boot
-- Update to Zymbit Driver Package - Add support for Trixie
+  - Full boot artifact isolation
+  - Bootware bug fixes
+  - Support for Trixie
+- Update to Zymbit Driver Package
+  - Add support for Trixie
+  - PKCS11 bug fix for 64-bit OS builds
 
-Details: [November 2025 Update](#november-2025)
+Details: [February 2026 Update](#february-2026)
 {{% /callout %}}
 
 

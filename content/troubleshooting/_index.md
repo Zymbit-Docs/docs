@@ -49,7 +49,7 @@ If your issue is not related to any of the above list, read through the FAQ belo
    - `zkifc -v` added to return version
    - zkpkcs11 package build fixed for 64-bit OSs
 
-### Latest STABLE Platform and OS Support (December 2025)
+**Latest STABLE Platform and OS Support (December 2025)**
 
 
 |                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi5                    |   Pi4             |
@@ -67,7 +67,7 @@ If your issue is not related to any of the above list, read through the FAQ belo
 [^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](/bootware/1.3.2/troubleshooting/pi4-wifi).
 
 -----
-### **Release Notes**
+### **Previous Release Notes**
 -----
 
 #### December 2025
