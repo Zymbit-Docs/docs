@@ -14,25 +14,23 @@ headless: false
 
 ## Quickstart - Download, Install, and Configure Bootware
 
-> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
 
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
 
-{{< resource_link "products/bootware/2.0.0/tutorials" >}}
+{{< resource_link "/bootware/2.0.0/tutorials" >}}
 Step-by-step videos of this Getting-Started are also available. 
 {{< /resource_link >}}
 
 #### [Register for Bootware Technical Updates](https://www.zymbit.com/get-bootware/)
 
-#### Supported Platforms and Operating Systems
+#### Bootware 2.0 Beta Supported Platforms and Operating Systems
 
 
-
-| Platform:                         |    SEN500/CM5     |  CM4                   |  Pi4             |   Pi5             |
-|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM64**   |   **Zymkey,SCM**      | **Zymkey**        | **Zymkey**   |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
-| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
+| Platform:                         |   Pi5             |
+|:----------------------------------|:-----------------:|
+|                  **Zymbit HSMs:** |  **Zymkey**       |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} |
+| Ubuntu 24.04.3 LTS Noble (64-bit) | {{< supported >}} |
 
 <br>
 
@@ -41,8 +39,7 @@ Step-by-step videos of this Getting-Started are also available.
 
 -----
 
-
-The default SCM/SEN as shipped has Zymbit Driver Package pre-installed. For setups using the Zymkey or other Zymbit HSMs, the installation must be completed by the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
+For setups using the Zymkey or other Zymbit HSMs, the installation must be completed by the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
 
 A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootware](https://www.zymbit.com/get-bootware)
 
@@ -73,15 +70,15 @@ A bootstrap utility to detect and load the correct build of Bootware can be down
 curl -sSf https://raw.githubusercontent.com/zymbit-applications/zb-bin/main/install.sh | sudo bash
 ```
 
-The install will identify your Pi and OS and then prompt you if you'd like to include hardware signing. The SCM and HSM6 support hardware signing. All Zymbit products support software signing. For the purpose of this tutorial, we will use software signing. Use the arrow keys to move the selection to `> No`.
+The install will identify your Pi and OS and then prompt you if you'd like to include hardware signing. The HSM60, ZYMKEY5 and HSM6 support hardware signing. All Zymbit products support software signing. For the purpose of this tutorial, we will use software signing. Use the arrow keys to move the selection to `> No`.
 
 ```
 zb-install.sh: bootstrapping the zbcli installer
         ---------
-        Pi Module:         Raspberry Pi 4/Compute Module 4
+        Pi Module:         Raspberry Pi 5/Compute Module 5
         Operating System:  Rpi-Bookworm
-        Zymbit module:     Secure Compute Module
-        Kernel:            kernel8.img
+        Zymbit module:     Zymkey
+        Kernel:            kernel_2712.img
         ---------
 
 ? 'zbcli' comes with software signing by default. Include hardware signing? ›
@@ -89,22 +86,19 @@ zb-install.sh: bootstrapping the zbcli installer
 ❯ No
 ```
 
-Next, select a version of the `zbcli` from a list of recent versions to install. In most cases, you will want to select the latest version. 
+Next, select a version of the `zbcli` from a list of recent versions to install. For the 2.0.0-Beta release, choose 2.0.0-Beta. Choose 1.3.2-3 if you wish to install the latest stable version.
 
 Use the up and down arrows to select the version. You can use Ctrl-C to exit at any time.
 
 ```
 ? Select version ›
-  zbcli-2.0.0-1
+  zbcli-2.0.0-Beta
   zbcli-1.3.2-3
   zbcli-1.3.2-2
   zbcli-1.3.2-1
   zbcli-1.3.1-2
   zbcli-1.3.1-1
   zbcli-1.3.0-1
-  zbcli-1.2.2-1
-  zbcli-1.2.0-30
-  zbcli-1.2.0-29
 ```
 
 ### 2. Run [`zbcli install`](../zbcli/install)
@@ -119,7 +113,7 @@ After installing the Bootware tools and artifacts, you will need to reboot into 
 
 ```
 ? Bootware installation will require 62.59 MiB in `/boot/firmware` and will modify config.txt and rc.local. The system will be configured to boot from U-Boot. No system data will be lost.
-       Found kernel '/boot/firmware/kernel8.img'
+     Found kernel '/boot/firmware/kernel_2712.img'
      Created '/etc/zymbit/zboot/mnt'
      Created '/etc/zymbit/zboot/scripts'
      Created '/etc/zymbit/zboot/scripts/post_install'
@@ -150,8 +144,6 @@ Reboot to complete the installation process and to boot through zboot. Once comp
 
 Bootware requires images in a secure, signed format for loading with zboot. We refer to these images as "zi images." An image conversion tool, [`zbcli imager`](../zbcli/imager), creates the zi image. `zbcli imager` can take a snapshot of your running system or read from tarballs of your bootfs and rootfs partitions. Images can also be partial file additions and deletions called [Overlay images](../features/overlays).
 
-> If you are Developing on a CM4 directly and need to transition to an SCM, See [Developing on the CM4](../features/development) for instructions on how to create an image from your CM4 to load onto the SCM.
-
 
 #### Create a zi image backup from your current running root file system
 
@@ -176,12 +168,12 @@ sudo zbcli imager
 ```
    Validated bootware installation
         ---------
-        Pi Module         Raspberry Pi 4
-        Operating System  Rpi-Bookworm
-        Zymbit module     Secure Compute Module
-        Kernel            kernel8.img
+        Pi Module:         Raspberry Pi 5
+        Operating System:  Rpi-Bookworm
+        Zymbit module:     Zymkey
+        Kernel:            kernel_2712.img
         ---------
-     Cleaned '/etc/zymbit/zboot/update_artifacts/tmp'
+     Created '/etc/zymbit/zboot/update_artifacts/tmp'
 ✔ Enter output directory · /mnt
 ✔ Enter image name · my_image
 ```
@@ -196,7 +188,7 @@ Next, you will be prompted for what type of image to make: A full image of the l
 
 You can optionally provide an image version. This is for your use in helping to identify the image later. It is not used in the process. 
 
-Next, you will be prompted for signing keys. Keys can be software or hardware based and are used for signing and verification of images. Software keys are supported on all Zymbit products. Hardware keys are supported with Secure Compute Module (SCM) or HSM6 products. Had we chosen earlier to include hardware key support, we would be asked to choose either hardware or software key support. We chose earlier to not include hardware key support. You can use an existing key or instruct the imager to create new ones for you. For this Quickstart, we will generate a new software key. Select `Create new software key`
+Next, you will be prompted for signing keys. Keys can be software or hardware based and are used for signing and verification of images. Software keys are supported on all Zymbit products. Hardware keys are supported with HSM60, ZYMKEY5, Secure Compute Module (SCM) or HSM6 products. Had we chosen earlier to include hardware key support, we would be asked to choose either hardware or software key support. We chose earlier to not include hardware key support. You can use an existing key or instruct the imager to create new ones for you. For this Quickstart, we will generate a new software key. Select `Create new software key`
 
 ```
 ? Select key ›
@@ -209,10 +201,10 @@ The imager will now build your zi image. Progress will be shown on the screen.
 ```
    Validated bootware installation
         ---------
-        Pi Module         Raspberry Pi 4
-        Operating System  Rpi-Bookworm
-        Zymbit module     Secure Compute Module
-        Kernel            kernel8.img
+        Pi Module:         Raspberry Pi 5
+        Operating System:  Rpi-Bookworm
+        Zymbit module:     Zymkey
+        Kernel:            kernel_2712.img
         ---------
      Cleaned '/etc/zymbit/zboot/update_artifacts/tmp'
 ✔ Enter output directory · /mnt
@@ -311,10 +303,10 @@ sudo zbcli update-config
 ```
    Validated bootware installation
         ---------
-        Pi Module         Raspberry Pi 4
-        Operating System  Rpi-Bookworm
-        Zymbit module     Secure Compute Module
-        Kernel            kernel8.img
+        Pi Module:         Raspberry Pi 5
+        Operating System:  Rpi-Bookworm
+        Zymbit module:     Zymkey
+        Kernel:            kernel_2712.img
         ---------
 ❯ Configure partition layout
   Configure update policy

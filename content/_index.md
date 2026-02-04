@@ -20,9 +20,7 @@ Recent Updates - February 2026:
   - Integration with Pi's Secure Boot
   - Full boot artifact isolation
   - Bootware bug fixes
-  - Support for Trixie
 - Update to Zymbit Driver Package
-  - Add support for Trixie
   - PKCS11 bug fix for 64-bit OS builds
 
 Details: [February 2026 Update](#february-2026)
@@ -34,7 +32,6 @@ Details: [February 2026 Update](#february-2026)
 |                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
-| Raspberry Pi OS Trixie   (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
 | Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
@@ -47,26 +44,24 @@ Details: [February 2026 Update](#february-2026)
 Contact [support](support@zymbit.com) for PiZero 2W.
 
 [^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](//bootware/1.3.2/troubleshooting/pi4-wifi).
-[^2]: To install Bootware on a PiZero2W running Bullseye64, you need to update the boot artifacts prior to installation. See instructions [here](//bootware/1.3.2/troubleshooting/pizero-bullseye).
 
 -----
 #### February 2026 
 -----
 **Bootware® 2.0.0 Beta**
 
-| Pi Platform:                      |  SEN500/CM5       |  SEN400/CM4            |  Pi4                   |   Pi5             |
-|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM60**   | **Zymkey,HSM60,SCM**  | **Zymkey**        | **Zymkey**   |
-| Raspberry Pi OS Trixie   (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
-| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
+| Pi Platform:                      |   Pi5             |
+|:----------------------------------|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey**        |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  |
 
 - Features
   - Signed Boot Images: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update. Images securely signed with Bootware.
   - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device. All  except SCM.
 
 - Limitations
-   - Operating Systems NOT fully supported : Bullseye, Jammy (Ubuntu 22)
+   - Operating Systems NOT fully supported : Trixie, Bullseye, Jammy (Ubuntu 22)
    - Requires a clean Bootware install of Beta 2.0.0 - cannot upgrade from an existing Bootware 1.3.2.
 
 - Bug fixes
@@ -76,7 +71,6 @@ Contact [support](support@zymbit.com) for PiZero 2W.
   - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
 
 - zkifc
-   - Added support for Trixie
    - zkpkcs11 package build fixed for 64-bit OSs
 
 
