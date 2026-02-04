@@ -378,10 +378,10 @@ sudo zbcli update
 ```
    Validated bootware installation
         ---------
-        Pi Module:         Raspberry Pi 4
+        Pi Module:         Raspberry Pi 5
         Operating System:  Rpi-Bookworm
         Zymbit module:     Zymkey
-        Kernel:            kernel8.img
+        Kernel:            kernel_2712.img
         ---------
      Cleaned '/etc/zymbit/zboot/update_artifacts/tmp'
        Found update configs

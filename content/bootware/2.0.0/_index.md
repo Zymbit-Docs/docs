@@ -17,7 +17,7 @@ version: "2.0.0"
 {{< bootware_version_notice >}}
 
 
-Bootware is a secure integrated tool for managing multiple Linux OS installations for edge / embedded Linux machines. Bootware supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
+Bootware is a secure integrated tool for managing Linux OS installations for edge / embedded Linux machines. Bootware supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
 
 A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootware](https://www.zymbit.com/get-bootware)
 
@@ -31,7 +31,9 @@ A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootw
 
 ![Bootware Overview](with-bw.png "Bootware in A/B Configuration")
 
-- Bootware 2.0 Beta includes support for Pi Foundations Secure Boot and signed boot image capability.
+- Bootware 2.0 Beta includes support for Pi Secure Boot and signed boot image capability.
+
+> Bootware 2.0 Beta is **not** backwards compatible with 1.3.2 and earlier versions of Bootware. You must start fresh since boot.img support is necessary from a first install.
 
 - Bootware is a full-featured native OS switcher/manager with first rate support for encrypted root and data partitions. Bootware is not a hypervisor.
 
