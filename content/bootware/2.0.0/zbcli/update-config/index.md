@@ -28,6 +28,7 @@ Bootware includes a tool to help configure your system called `zbcli update-conf
 zbcli update-config [OPTIONS]
 
 Options:
+
       --partition <PARTITION>
           Configures partition layout [possible values: a/b, a-half-disk, a-full-disk]
       --update-policy <UPDATE_POLICY>
@@ -50,8 +51,15 @@ Options:
           Configures User for post-update password change
       --password <PASSWORD>
           Configures password for post-update
+      --signed-boot
+          Flash eeprom and turn on signed boot
+      --bsk <BSK>
+          Configure new boot signing key
+      --resign-boot
+          Resigns boot images with configured bsk
   -h, --help
           Print help
+
 ```
 
 ### Example 
@@ -65,10 +73,10 @@ The command will validate your bootware installation and then present a list of 
 ```
    Validated bootware installation
         ---------
-        Pi Module         Raspberry Pi 4
-        Operating System  Rpi-Bookworm
-        Zymbit module     Secure Compute Module
-        Kernel            kernel8.img
+        Pi Module:         Raspberry Pi 5
+        Operating System:  Rpi-Bookworm
+        Zymbit module:     Zymkey
+        Kernel:            kernel_2712.img
         ---------
 ❯ Configure partition layout
   Configure update policy
@@ -78,6 +86,7 @@ The command will validate your bootware installation and then present a list of 
   Configure wireless network automatically with a wpa supplicant conf file
   Configure hostname for post-update
   Configure password for post-update
+  Configure Secure Boot parameters and credentials
   Save and exit
 ```
 
@@ -131,6 +140,16 @@ Example USB stick: /dev/sda1
 **Configure hostname for post-update** New since 1.2.2. - A post-update process is included to change your hostname to the specified name. This will be done for every future update until cleared or changed.   NOTE: The "@" character cannot be used.
 
 **Configure password for post-update** New since 1.2.2. - A post-update process is included to change the password for a specified user. This will be done for every future update until cleared or changed.   NOTE: The "@" character cannot be used.
+
+**Configure Secure Boot parameters and credentials** New in 2.0.0-BETA. - Allows Setting up Secure Boot / Signed image parameters and credentials, including importing your 2048-bit RSA boot signing key (BSK), signing and enforcing signing of your boot.img in EEPROM, and the option to re-sign your existing boot images.
+
+Menu options:
+```
+❯ Turn on Signed Boot (Flash EEPROM)
+  Configure the boot signing key
+  Resign boot images with the configured boot signing key
+  Exit
+```
 
 **Save and exit**. The final step is Save all your configuration settings and exit. The settings will be used for future updates by executing the `zbcli update` command, or automatically during the rollback/recovery process.
 

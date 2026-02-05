@@ -29,7 +29,7 @@ Step-by-step videos of this Getting-Started are also available.
 #### Bootware 2.0 Beta Supported Platforms and Operating Systems
 
 
-| Platform:                         |   Pi5             |
+|                                   |   Pi5             |
 |:----------------------------------|:-----------------:|
 |                  **Zymbit HSMs:** |  **Zymkey**       |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} |
@@ -42,7 +42,7 @@ Step-by-step videos of this Getting-Started are also available.
 
 -----
 
-The installation of the Zymbit HSM must be completed by the user prior to installing Bootware. The Zymbit product should be up and running with the blue LED flashing once every three seconds. We recommend partitioning your /boot partition with a size of 1GB. The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
+The installation of the Zymbit HSM must be completed by the user prior to installing Bootware. The Zymbit HSM should be up and running with the blue LED flashing once every three seconds. We recommend partitioning your /boot partition with a size of 1GB. The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
 
 A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootware](https://www.zymbit.com/get-bootware)
 
