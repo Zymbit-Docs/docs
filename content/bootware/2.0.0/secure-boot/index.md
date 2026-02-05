@@ -73,24 +73,4 @@ Please read all steps below first before proceeding
     1. If it doesn’t boot, double-check that the `boot.sig` file on the FAT partition matches the signature of `boot.img` and is signed with the correct private key. An easy way to do this is by attaching the SD card to another computer and comparing the output of `/usr/bin/rpi-eeprom-digest -i boot.img -o /dev/stdout -k private-key.rsa` to the contents of `boot.sig` 
 4. Proceed with using bootware
 
-{{% /tab %}}
-
-{{% tab header="Raspberry Pi 4" %}}
-
-#### Steps to enable secure boot on Pi4
-
-
-> Not supported in Bootware 2.0.0-Beta
-
-{{% /tab %}}
-
-{{% tab header="Zymbit SEN500" %}}
-
-#### Steps to enable secure boot on Zymbit SEN500 or CM5
-
-> Not supported in Bootware 2.0.0-Beta
-
-{{% /tab %}}
-
-{{< /tabpane >}}
 
