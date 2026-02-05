@@ -24,7 +24,6 @@ Bootware 2.0 Beta is not intended for use in production environments. It is mean
 Step-by-step videos of this Getting-Started are also available. 
 {{< /resource_link >}}
 
-#### [Register for Bootware Technical Updates](https://www.zymbit.com/get-bootware/)
 
 #### Bootware 2.0 Beta Supported Platforms and Operating Systems
 

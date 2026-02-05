@@ -38,6 +38,16 @@ Bootware 2.0 Beta is not intended for use in production environments. It is mean
 
 Bootware is a secure integrated tool for managing Linux OS installations for edge / embedded Linux machines. Bootware supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
 
+Bootware 2.0 Beta seemlessly provides integration with Raspberry Pi secure boot. There are three stages of support:
+
+- Automatic incorporation of signed boot.img containers that bundle all necessary boot artifacts. The [Getting Started!](getting-started) guide will complete this step.
+
+- Enabled enforcement of verification of the signed boot.img and EEPROM image. See [Bootware and Secure Boot](secure-boot)
+
+- Permanent Secure boot enforcement of the signing of boot.img and EEPROM image. See [Bootware and Secure Boot](secure-boot)
+
+
+
 ![Bootware Overview](with-bw.png "Bootware in A/B Configuration")
 
 - Bootware 2.0 Beta includes support for Pi Secure Boot and signed boot image capability.
