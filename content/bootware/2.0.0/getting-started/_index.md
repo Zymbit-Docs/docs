@@ -14,8 +14,11 @@ headless: false
 
 ## Quickstart - Download, Install, and Configure Bootware
 
-
 In this Getting Started guide we describe how to bring up a common use case for Bootware - A/B partitioning for fallback and recovery.
+
+{{< callout warning >}}
+Bootware 2.0 Beta is not intended for use in production environments. It is meant for Beta testing preliminary support for Pi native secure boot. The latest stable release is [1.3.2-3](../1.3.2).
+{{< /callout >}}
 
 {{< resource_link "/bootware/2.0.0/tutorials" >}}
 Step-by-step videos of this Getting-Started are also available. 
@@ -39,13 +42,13 @@ Step-by-step videos of this Getting-Started are also available.
 
 -----
 
-For setups using the Zymkey or other Zymbit HSMs, the installation must be completed by the user. The Zymbit product should be up and running with the blue LED flashing once every three seconds before installing Bootware. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm). The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
+The installation of the Zymbit HSM must be completed by the user prior to installing Bootware. The Zymbit product should be up and running with the blue LED flashing once every three seconds. We recommend partitioning your /boot partition with a size of 1GB. The standard Zymbit encrytion process is not necessary as Bootware will do this for you. 
 
 A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootware](https://www.zymbit.com/get-bootware)
 
 An HDMI console is highly recommended for setting up your unit with Bootware. The process of repartitioning and loading takes time and the console is handy for monitoring progress.
 
-Bootware 2.0.0 BETA includes the same, user interface as 1.3.2, but with some additional questions regarding signing images and configuration of Raspberry Pi's Secure Boot. For 2.0.0 BETA, we recommend a completely fresh install, not an upgrade from an existing 1.3.2. 
+Bootware 2.0.0 BETA includes the same user interface as 1.3.2, but with some additional questions regarding signing images and EEPROM code for configuration of Raspberry Pi's Secure Boot. For 2.0.0 BETA, we recommend a completely fresh install, not an upgrade from an existing 1.3.2. 
 
 Details of the commands in this Quickstart are linked in-line.
 See the [Features](../features) section for more information on how to use Bootware.
@@ -86,13 +89,13 @@ zb-install.sh: bootstrapping the zbcli installer
 ❯ No
 ```
 
-Next, select a version of the `zbcli` from a list of recent versions to install. For the 2.0.0-Beta release, choose 2.0.0-Beta. Choose 1.3.2-3 if you wish to install the latest stable version.
+Next, select a version of the `zbcli` from a list of recent versions to install. For the 2.0.0-Beta release, choose 2.0.0-BETA. Choose 1.3.2-3 if you wish to install the latest stable version.
 
 Use the up and down arrows to select the version. You can use Ctrl-C to exit at any time.
 
 ```
 ? Select version ›
-  zbcli-2.0.0-Beta
+  zbcli-2.0.0-BETA
   zbcli-1.3.2-3
   zbcli-1.3.2-2
   zbcli-1.3.2-1
@@ -112,7 +115,7 @@ sudo zbcli install
 After installing the Bootware tools and artifacts, you will need to reboot into zboot. You will be prompted for confirmation to reboot.
 
 ```
-? Bootware installation will require 62.59 MiB in `/boot/firmware` and will modify config.txt and rc.local. The system will be configured to boot from U-Boot. No system data will be lost.
+? Bootware installation will require 72.59 MiB in `/boot/firmware` and will modify config.txt and rc.local. The system will be configured to boot from U-Boot. No system data will be lost.
      Found kernel '/boot/firmware/kernel_2712.img'
      Created '/etc/zymbit/zboot/mnt'
      Created '/etc/zymbit/zboot/scripts'
