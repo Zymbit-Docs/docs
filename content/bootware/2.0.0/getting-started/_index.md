@@ -367,7 +367,7 @@ For `Configure update endpoint`, choose the block device or URL endpoint that ho
 
 `Configure password for post-update` - A post-update process is included to change the password for a specified user. This will be done for every future update until cleared or changed.
 
-`Configure Secure Boot parameters and credentials` - **NEW FOR BOOTWARE 2.0.0-BETA** This step is optional at this point. but is required for full implementation of Secure Boot. Details for setting SIGNED_BOOT and Secure Boot are covered in the [Secure Boot](../secure-boot) section. 
+`Configure Secure Boot parameters and credentials` - *New for Bootware 2.0.0-BETA* This step is optional at this point, since we are only configuring artifact images, but is required for full implementation of Secure Boot. Details for setting SIGNED_BOOT and Secure Boot are covered in the [Secure Boot](../secure-boot) section. 
 
 > NOTE: Turning on Signed Boot may require recovery of the factory EEPROM settings to boot. These changes are reversible however.
 
