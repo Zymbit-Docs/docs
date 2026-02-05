@@ -12,11 +12,11 @@ weight: 8
 layout: single
 ---
 
-Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit .
+Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit hardware and software.
 
 {{% callout note %}}
 Recent Updates - February 2026:
-- Release of Bootware 2.0 Beta
+- Release of Bootware 2.0 Beta - limited platform support, not for production use.
   - Integration with Pi's Secure Boot
   - Full boot artifact isolation
   - Bootware bug fixes
@@ -27,9 +27,9 @@ Details: [February 2026 Update](#february-2026)
 {{% /callout %}}
 
 
-### Latest STABLE Platform and OS Support
+**Latest STABLE Platform and OS Support**
 
-|                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
+|                                   |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
@@ -50,7 +50,9 @@ Contact [support](support@zymbit.com) for PiZero 2W.
 -----
 **Bootware® 2.0.0 Beta**
 
-| Pi Platform:                      |   Pi5             |
+#### Platform Support
+
+|                                   |   Pi5             |
 |:----------------------------------|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey**        |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} |
@@ -61,8 +63,9 @@ Contact [support](support@zymbit.com) for PiZero 2W.
   - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device. All  except SCM.
 
 - Limitations
-   - Operating Systems NOT fully supported : Trixie, Bullseye, Jammy (Ubuntu 22)
-   - Requires a clean Bootware install of Beta 2.0.0 - cannot upgrade from an existing Bootware 1.3.2.
+  - Platform support limited to Pi5.
+  - Operating Systems NOT fully supported : Trixie, Bullseye, Jammy (Ubuntu 22)
+  - Requires a clean Bootware install of Beta 2.0.0 - cannot upgrade from an existing Bootware 1.3.2.
 
 - Bug fixes
   - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.

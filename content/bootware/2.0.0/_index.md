@@ -2,7 +2,7 @@
 title: "Bootware 2.0.0 (Beta)"
 linkTitle: "Bootware 2.0.0 (Beta)"
 icon: ""
-description: "Beta release. Includes seamless integration of Secure Boot."
+description: "Beta release. Includes seamless integration of Pi Secure Boot. Not intended for production."
 date: "2024-08-11"
 lastmod: "2025-10-15"
 draft: false
@@ -11,6 +11,20 @@ images: []
 toc: True
 version: "2.0.0"
 ---
+
+Bootware 2.0 Beta 
+
+{{< callout warning >}}
+Bootware 2.0 Beta is not intended for use in production environments. It is meant for Beta testing preliminary support for Pi native secure boot. The latest stable release is [1.3.2-3](/bootware/1.3.2).
+{{< /callout >}}
+
+#### Bootware 2.0 Beta Supported Platforms and Operating Systems
+
+| Platform:                         |   Pi5             |
+|:----------------------------------|:-----------------:|
+|                  **Zymbit HSMs:** |  **Zymkey**       |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} |
+| Ubuntu 24.04.3 LTS Noble (64-bit) | {{< supported >}} |
 
 -----
 
