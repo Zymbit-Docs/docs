@@ -12,15 +12,15 @@ toc: True
 version: "2.0.0"
 ---
 
-Bootware 2.0 Beta 
+## Bootware 2.0 Beta 
 
 {{< callout warning >}}
-Bootware 2.0 Beta is not intended for use in production environments. It is meant for Beta testing preliminary support for Pi native secure boot. The latest stable release is [1.3.2-3](/bootware/1.3.2).
+Bootware 2.0 Beta is not intended for use in production environments. It is meant for Beta testing preliminary support for Pi native secure boot. The latest stable release is [1.3.2-3](../1.3.2).
 {{< /callout >}}
 
 #### Bootware 2.0 Beta Supported Platforms and Operating Systems
 
-| Platform:                         |   Pi5             |
+|                                   |   Pi5             |
 |:----------------------------------|:-----------------:|
 |                  **Zymbit HSMs:** |  **Zymkey**       |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} |
@@ -30,18 +30,13 @@ Bootware 2.0 Beta is not intended for use in production environments. It is mean
 
 {{< bootware_version_notice >}}
 
-
-Bootware is a secure integrated tool for managing Linux OS installations for edge / embedded Linux machines. Bootware supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
-
-A free ZYMKEY is available when you sign up for a Bootware trial. See [Get Bootware](https://www.zymbit.com/get-bootware)
-
------
-
 #### If you want to jump right in, [Click here to Get Started!](getting-started)
 
 -----
 
 ## What is Bootware 2.0 Beta?
+
+Bootware is a secure integrated tool for managing Linux OS installations for edge / embedded Linux machines. Bootware supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
 
 ![Bootware Overview](with-bw.png "Bootware in A/B Configuration")
 

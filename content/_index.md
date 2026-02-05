@@ -27,7 +27,7 @@ Details: [February 2026 Update](#february-2026)
 {{% /callout %}}
 
 
-**Latest STABLE Platform and OS Support**
+#### Latest STABLE Platform and OS Support
 
 |                                   |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
@@ -48,9 +48,8 @@ Contact [support](support@zymbit.com) for PiZero 2W.
 -----
 #### February 2026 
 -----
-**Bootware® 2.0.0 Beta**
 
-#### Platform Support
+#### Bootware 2.0 Beta Platform Support
 
 |                                   |   Pi5             |
 |:----------------------------------|:-----------------:|
