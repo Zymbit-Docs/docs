@@ -63,14 +63,18 @@ Please read all steps below first before proceeding
 
 {{< /callout >}}
 
-1. Start with:
-    1. SD card with expanded boot partition (1GiB)
-    2. Raspberry Pi 5 with EEPROM restored to factory defaults
-    3. A second Raspberry Pi 5 with its secure-boot OTP fuse programmed
-    4. The 2048-bit RSA private key whose public counterpart has been burned into the aforementioned Pi 5’s secure-boot OTP.
-2. Using items (a), (b), and (d), follow steps 2-5 in the above “**Get up and running with SIGNED_BOOT and pre-existing/supplied RSA boot signing key (BSK)**”
-3. Before running `zbcli update` (which will tie filesystem encryption to the Pi’s Zymkey + CPU combo), transfer the SD card from the first Pi 5 into the one with a programmed OTP. The new Pi should start up into Linux just as the former one did. 
-    1. If it doesn’t boot, double-check that the `boot.sig` file on the FAT partition matches the signature of `boot.img` and is signed with the correct private key. An easy way to do this is by attaching the SD card to another computer and comparing the output of `/usr/bin/rpi-eeprom-digest -i boot.img -o /dev/stdout -k private-key.rsa` to the contents of `boot.sig` 
-4. Proceed with using bootware
+1. Install the usbboot/rpiboot tools from the [github repo](https://github.com/raspberrypi/usbboot) on your host. Follow the instructions on github to install.
+
+2. Connect a cabke from the host USB-A to the Pi5 USB-C (Power) connector.
+
+3. Back on the Pi, use `zbcli update-config --prep-otp <OUTPUT_DIR>`, then transfer the resulting tarball via rsync or USB stick to the host machine. Unpack it in the usbboot directory.
+
+> For the following steps, once secure-boot has been enabled by programming the one-time programmable (OTP) fuses, it cannot be disabled and a different key cannot be programmed.
+
+4. On the host machine, in the usbboot directory, run `rpiboot -d <unpacked-dir>`. 
+
+5. rpiboot should reflash the EEPROM permanently enabling secure-boot.
+
+6. Replace the USB cable between the host system and the Pi with the regular power cable.
 
 
