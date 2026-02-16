@@ -23,5 +23,5 @@ version: "2.0.0"
 
 ## Bootware 2.0.0-BETA
 
-Content in review, targeted for release February 6, 2026. Please do not use Beta at this time.
+Content in review. Please do not use Beta at this time.
 
