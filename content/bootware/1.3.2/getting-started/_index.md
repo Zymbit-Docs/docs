@@ -37,7 +37,7 @@ Step-by-step videos of this Getting-Started are also available.
 |                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1] |
-| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} | {{< supported >}} &nbsp; |
+| Ubuntu 24.04.4 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} | {{< supported >}} &nbsp; |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1]                  |
 
 {{< supported >}} Full Bootware Support
@@ -54,7 +54,7 @@ Contact [support](mailto:support@zymbit.com) for PiZero 2W.
 
 #### Install Zymbit Driver Package if necessary, prior to Bootware
 
-Secure Edge Node (SEN) products are shipped with the Zymbit Driver Package pre-installed by default. For customers using the ZYMKEY4 or other Zymbit HSMs, the Zymbit Driver Package installation will need to be completed prior to installation of Bootware. The blue LED should be flashing once every three seconds. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm and Ubuntu 24.04.3). 
+Secure Edge Node (SEN) products are shipped with the Zymbit Driver Package pre-installed by default. For customers using the ZYMKEY4 or other Zymbit HSMs, the Zymbit Driver Package installation will need to be completed prior to installation of Bootware. The blue LED should be flashing once every three seconds. We recommend partitioning your /boot partition with a size of 512MB (default for Bookworm and Ubuntu 24.04.4). 
 
 Link to Zymbit Driver Package Installation: [Zymbit Security Modules](../../../hardware/modules)
 
