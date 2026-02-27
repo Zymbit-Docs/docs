@@ -16,6 +16,8 @@ version: "2.0.0"
 ## Bootware 2.0 Beta (February 2026)
 -----
 
+Bootware 2.0 Beta is supported on the Pi5 only. Feature, limitations, and bug fixes are listed below.
+
 #### Bootware 2.0 Beta Platform Support
 
 |                                   |   Pi5             |
@@ -55,14 +57,37 @@ Bootware 2.0 Beta is not intended for use in production environments. It is mean
 
 Bootware is a secure integrated tool for managing Linux OS installations for edge / embedded Linux machines. Bootware supports various Raspberry Pi computers and requires a Zymbit HSM or SCM to run. Bootware takes advantage of security features of various Zymbit products and protects credentials via the HSM. 
 
-Bootware 2.0 Beta seemlessly provides integration with Raspberry Pi secure boot. There are three stages for complete Secure Boot integration:
+### New Bootware 2.0 Beta Image & Signature Behavior 
+
+Bootware manages signed boot images across the user OS, A/B partitions, and secure recovery to ensure reliable updates and deterministic recovery.
+
+- Boot images bundle known-good boot artifacts to ensure consistent, validated boot behavior.
+
+- All boot images are signed and verified before use.
+
+- Supports A/B partition updates (active, backup, or both).
+
+- Uses tryboot to safely test new boot images.
+
+- Automatically falls back to:
+
+  - The backup partition on failure
+
+  - zboot secure recovery if tryboot repeatedly fails
+
+  - Missing tryboot artifacts are automatically recreated or re-signed.
+
+In short: Bootware 2.0 Beta guarantees secure installs, controlled updates, and automatic recovery at every stage of the boot process.
+
+### Bootware 2.0 Beta seemlessly provides integration with Raspberry Pi secure boot.
+
+There are three stages for complete Secure Boot integration:
 
 - Stage 1: Automatic incorporation of signed boot.img containers for A/B partitions as well as zboot that bundle all necessary boot artifacts. The [Getting Started](getting-started) guide completes this step.
 
 - Stage 2: Enabled enforcement of verification of the signed boot.img and EEPROM image. See [Bootware and Secure Boot](secure-boot)
 
 - Stage 3: Permanent Secure boot enforcement of the signing of boot.img and EEPROM image. See [Bootware and Secure Boot](secure-boot)
-
 
 
 ![Bootware Overview](with-bw.png "Bootware in A/B Configuration")
