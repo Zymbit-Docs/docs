@@ -16,7 +16,7 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 {{% callout note %}}
 Recent Updates - February 2026:
-- Release of Bootware 2.0 Beta - limited platform support, not for production use.
+- Release of Bootware 2.0 Beta - limited platform support (Pi5 only), not for production use.
   - Integration with Pi's Secure Boot
   - Full boot artifact isolation
   - Bootware bug fixes
