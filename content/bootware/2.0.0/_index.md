@@ -90,7 +90,7 @@ There are three stages for complete Secure Boot integration:
 - Stage 3: Permanent Secure boot enforcement of the signing of boot.img and EEPROM image. See [Bootware and Secure Boot](secure-boot)
 
 
-![Bootware Overview](with-bw.png "Bootware in A/B Configuration")
+![Bootware Overview](with-bw_20.png "Bootware in A/B Configuration")
 
 - Bootware 2.0 Beta includes support for Pi Secure Boot and signed boot image capability.
 
