@@ -12,19 +12,36 @@ toc: True
 version: "2.0.0"
 ---
 
-## Bootware 2.0 Beta 
+-----
+## Bootware 2.0 Beta (February 2026)
+-----
+
+#### Bootware 2.0 Beta Platform Support
+
+|                                   |   Pi5             |
+|:----------------------------------|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey**        |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} |
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  |
+
+- Features
+  - Signed Boot Images: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update. Images securely signed with Bootware.
+  - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device. All  except SCM.
+
+- Limitations
+  - Platform support limited to Pi5.
+  - Operating Systems NOT fully supported : Trixie, Bullseye, Jammy (Ubuntu 22)
+  - Requires a clean Bootware install of Beta 2.0.0 - cannot upgrade from an existing Bootware 1.3.2.
+
+- Bug fixes
+  - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.
+  - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
+  - #205: zbcli update-config cli errors off with `Invalid Parameter: user`. Workaround is to provide one option at a time.
+  - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
 
 {{< callout warning >}}
 Bootware 2.0 Beta is not intended for use in production environments. It is meant for Beta testing preliminary support for Pi native secure boot. The latest stable release is [1.3.2-3](../1.3.2).
 {{< /callout >}}
-
-#### Bootware 2.0 Beta Supported Platforms and Operating Systems
-
-|                                   |   Pi5             |
-|:----------------------------------|:-----------------:|
-|                  **Zymbit HSMs:** |  **Zymkey**       |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} |
-| Ubuntu 24.04.3 LTS Noble (64-bit) | {{< supported >}} |
 
 -----
 
