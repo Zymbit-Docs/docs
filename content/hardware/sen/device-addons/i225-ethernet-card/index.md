@@ -20,9 +20,9 @@ This page outlines extra steps required to get PCIe ethernet chips using the Int
 
 The latest Bookworm images contain support for the I225 controller. There are no additional steps required.
  
-## Installation instructions for Ubuntu 24.04.3 with SEN-500/CM5
+## Installation instructions for Ubuntu 24.04.3 or later with SEN-500/CM5
  
-If you are using Ubuntu 24.04.3 with the CM5 and the Zymbit motherboard, you only need to copy the [pciex1-compat-pi5.dtbo](https://bootware.s3.amazonaws.com/1.3.2/pciex1-compat-pi5.dtbo) overlay (from Bookworm firmware) into `/boot/firmware/overlays`, and add the following to config.txt ( [see Github Issue 6134 for background](https://github.com/raspberrypi/linux/issues/6134) ):
+If you are using Ubuntu 24.04.3 or later with the CM5 and the Zymbit motherboard, you only need to copy the [pciex1-compat-pi5.dtbo](https://bootware.s3.amazonaws.com/1.3.2/pciex1-compat-pi5.dtbo) overlay (from Bookworm firmware) into `/boot/firmware/overlays`, and add the following to config.txt ( [see Github Issue 6134 for background](https://github.com/raspberrypi/linux/issues/6134) ):
 
 ```bash
 [cm5]
