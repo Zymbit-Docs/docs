@@ -8,7 +8,11 @@ description: "Secure Compute Module specifications"
 
 All-in-one secure Linux compute module for developers of IoT devices and infrastructure. The hardened Raspberry Pi compute module for zero-trust environments.
 
-## Open for developers. Hardened for life on the edge.
+![Secure compute module by Zymbit featuring Raspberry Pi CM4 with Zymbit verified hardware agent HSM](SCM-embedded-hero-2023.02.png)
+
+## Overview
+
+### Open for developers. Hardened for life on the edge.
 
 Enjoy all the freedoms of the Raspberry Pi developer ecosystem with the protection of Zymbit verified hardware and tools.
 
@@ -19,36 +23,24 @@ Enjoy all the freedoms of the Raspberry Pi developer ecosystem with the protecti
 - Fully encapsulated, tamper resilient
 - Standard and custom images
 
-## Hardware secured compute for critical applications
+![Secure Compute Module by Zymbit with integrated HSM security layers](zymbit-scm-security-layers-2023.02-1400x1000-1.jpg)
 
-- Raspberry Pi CM4
-- Secure boot
-- Encrypted file system
-- Key storage & generation
-- Data encryption & signing
-- Real time clock
-- Measured system identity
-- Encapsulated module
-- Physical tamper sensors
-- Cryptographic engine
-- HD hardware wallets
-- Shamir's secret sharing
-- Ultra low power
-- Battery monitor, last gasp
-- Quad core Cortex-A72
+### Hardware secured compute for critical applications
 
-## Zymbit Verified Hardware
+![Hardened Linux compute protected by Zymbit verified hardware agent](zymbit-secure-compute-module-architecture-summary-202302.png)
+
+### Zymbit Verified Hardware
 
 Each SCM includes a PiCM4 compute module that is protected by a Zymbit Verified Hardware Agent. The agent runs autonomously from the CPU and provides independent verification of boot, file system access and overall system integrity.
 
 Verified highlights:
 
-- Secure boot on Raspberry Pi
+- [Secure boot on Raspberry Pi](/tutorials/supervised-boot/)
 - Measured system identity
 - File system encryption
-- Physical tamper sensors
+- [Physical tamper sensors](/tutorials/perimeter-detect/scm/)
 
-## Secure encapsulated hardware stack
+### Secure encapsulated hardware stack
 
 The SCM hardware is fully assembled and encapsulated by Zymbit, ready for provisioning and customer applications.
 
@@ -57,7 +49,11 @@ The SCM hardware is fully assembled and encapsulated by Zymbit, ready for provis
 - External battery, under module option
 - Internal last-gasp destruction mode
 
-## Full spec compute module
+![Zymbit secure compute module verifiably bonded to Raspberry Pi CM4](zymbit-secure-compute-module-scm4-exploded-wiew-2023.02b.png)
+
+### Full spec compute module
+
+![Raspberry Pi CM4](raspberry-pi-compute-module-4-BW.jpg)
 
 SCM includes the powerful PiCM4 Linux compute modules.
 
@@ -77,11 +73,17 @@ Comprehensive peripherals support:
 - 1 x MIPI CSI-2 Serial Camera
 - 1 x PCIe 1-lane Host, Gen 2 (5Gbps)
 
-## Python, C, C++ APIs
+### Python, C, C++ APIs
 
 As developers ourselves, we try to build APIs that allow you to benefit from the power of cryptography, without needing to understand the underlying math. Zymbit wallet functions are designed to provide access to powerful features like generating a wallet master seed, child keys and managing wallet recovery from mnemonic phrases and shared secrets.
 
-## Cryptographic engine & services
+[Learn more](/api/)
+
+![Zymbit documentation for secure compute module](Zymbit-HSM6-API-Python1.png)
+
+### Cryptographic engine & services
+
+![Zymbit verified hardware agent system block diagram](zymbit-scm-detailed-system-block-1.png)
 
 The Secure Compute Module provides a wide choice of cryptographic services and types that are easily accessed through the Zymbit API.
 
@@ -101,7 +103,7 @@ Cypher suite:
 - ECDSA (FIPS186-3)
 - AES-256 (FIPS 197)
 
-## Developer tools
+### Developer tools
 
 Dev Kit includes:
 
@@ -112,13 +114,29 @@ Dev Kit includes:
 - 12V power supply
 - USB drive with SSH keys necessary for SSH login
 
-## Optional HD hardware wallet
+[Buy now](https://store.zymbit.com/collections/developer-pilot-kits)
+
+![Zymbit secure compute module developer kit](SCM-Dev-Kit-2-Graphic-Annotated.png)
+
+### Optional HD hardware wallet
 
 A Hierarchical Deterministic (HD) wallet is a reliable and secure way to manage hundreds of keys, embedded in a single device.
 
 HD wallets use proven de-facto standard algorithms developed for blockchain and crypto applications. Zymbit's HSM6 product implements standard protocols -- BIP32/39/44 and SLIP39 -- in a compact, easy to integrate module that's programmable through secure APIs.
 
-## Footprint compatible with CM4
+Tutorials on using HD wallet:
+
+- [Send Web3 Ethereum transactions](/tutorials/digital-wallet/zymbit-wallet-python-sdk/)
+- [Wallet recovery with SLIP39 Shamir's secret sharing](/tutorials/digital-wallet/slip39-example/)
+- [Read-only oversight wallet](/tutorials/digital-wallet/oversight-example/)
+
+[Learn more](/tutorials/digital-wallet/wallet-example/)
+
+![Zymbit programmable hardware wallet for blockchain and crypto](Zymbit-hardware-wallet-graphic-1-20220315m.png)
+
+### Footprint compatible with CM4
+
+![SCM4 footprint graphic](SCM4-footprint-graphic-draft-X2.png)
 
 Ready to embed into your custom design:
 
@@ -126,29 +144,39 @@ Ready to embed into your custom design:
 - Altium Designer & CircuitStudio
 - KiCAD
 - Mechanical drawings
+- [CAD documents](/reference/cad/scm/)
 
-## Pre-configured the way you want
+### Pre-configured the way you want
 
 To simplify your life, the SCM can be shipped with a choice of pre-configured OS, application software and security policies that align with your product development stage.
 
-### Develop
+#### Develop
 
 - Optimized for maximum development flexibility
 - Standard OS builds & tools
 - Partially encrypted file system
 - Relaxed security policies, open ports
 
-### Secure
+#### Secure
 
 - Defined security policies enabled
 - Optimized OS build
 - Fully encrypted file system
 - Supervised boot configured
+- Finalize configuration with [Security Sanitization Guide and Scripts](https://github.com/zymbit-applications/zk-scripts)
 
-### Deploy
+#### Deploy
 
 - Customer-specific configurations loaded, tested, deployed
 - Standard Zymbit curated configurations available
+
+### Manufacturing tools and support
+
+![Zymbit secure compute manufacturing tools](IMG_7423_cropped_square_1000x1000.png)
+
+Zymbit manufacturing tools and services help you transition your SCM based design to volume manufacturing quickly and securely.
+
+---
 
 ## Specifications
 
@@ -175,4 +203,33 @@ To simplify your life, the SCM can be shipped with a choice of pre-configured OS
 | Last gasp battery removal detection | Yes |
 | OEM custom features | Contact Zymbit |
 | Example cipher suites | AWS-IOT: TLS_ECDHE_ECDSA_AES256_SHA, MS-AZURE: TLS_ECDHE_ECDSA_AES_128_GCM_SHA256_P256 |
+| Accessories & related products | [Developer Kit](https://store.zymbit.com/products/copy-of-secure-compute-module-developer-kit-2) |
 | Warranty | 18 months |
+
+---
+
+## Documentation
+
+##### [Using Product](/getting-started/scm/)
+
+- Getting started
+- Software APIs -- python, C, C++
+- Tutorials
+- FAQ & troubleshooting
+
+##### [Conformity Documents](/reference/conformity/scm/)
+
+- EU Declaration of Conformity
+- FCC Declaration of Conformity
+- RoHS/Reach Declaration of Conformity
+- California Prop 65 Declaration of Conformity
+
+##### [CAD Files](/reference/cad/scm/)
+
+- Mechanical dimensions
+- Step model
+
+##### [Manufacturing Tools](https://www.zymbit.com/manufacturing-tools/)
+
+- Secure high speed encryption appliance
+- Programming and provisioning
