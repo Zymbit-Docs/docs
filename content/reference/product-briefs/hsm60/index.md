@@ -6,8 +6,6 @@ weight: 35
 description: "Seamless security for Raspberry Pi Compute Modules"
 ---
 
-Seamless Security for Raspberry Pi Compute Modules. 
-
 ## Overview
 
 ![HSM60 fitted to Raspberry Pi CM5 IO board](zymbit-hsm60-top-20250826-fitted-rpi-cm5-io-b-scaled.jpg)
@@ -55,8 +53,4 @@ Seamless Security for Raspberry Pi Compute Modules.
 | Compatibility | Pi CM5, CM4 |
 
 ---
-
-## Documentation
-
-##### [Using Product](/hardware/modules/hsm60/)
 
