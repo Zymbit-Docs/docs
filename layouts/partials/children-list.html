@@ -17,7 +17,7 @@
             .Params.manualLink
             (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) -}}
         <li>
-          <a href="{{ $manualLink }}"
+          <a href="{{ $manualLink | relURL }}"
              {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
              {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
             {{- .LinkTitle | default .Title -}}
@@ -36,7 +36,7 @@
           (cond (isset .Params "manuallinkrelref") (relref . .Params.manualLinkRelref) .RelPermalink) -}}
       <div class="entry">
         <h5>
-          <a href="{{ $manualLink }}"
+          <a href="{{ $manualLink | relURL }}"
              {{ with .Params.manualLinkTitle }} title="{{ . }}"{{ end }}
              {{ with .Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>
             {{- .LinkTitle | default .Title -}}

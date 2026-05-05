@@ -51,7 +51,7 @@
           {{- $manualTarget := $p.Params.manualLinkTarget | default "_self" -}}
 
           <li>
-            <a href="{{ $manualLink | safeURL }}"
+            <a href="{{ $manualLink | relURL | safeURL }}"
                title="{{ $manualTitle }}"
                {{ if eq $manualTarget "_blank" }}target="_blank" rel="noopener noreferrer"{{ end }}>
               {{- $p.LinkTitle | default $p.Title -}}
@@ -78,7 +78,7 @@
 
         <div class="entry">
           <h5>
-            <a href="{{ $manualLink | safeURL }}"
+            <a href="{{ $manualLink | relURL | safeURL }}"
                title="{{ $manualTitle }}"
                {{ if eq $manualTarget "_blank" }}target="_blank" rel="noopener noreferrer"{{ end }}>
               {{- $p.LinkTitle | default $p.Title -}}
