@@ -39,9 +39,9 @@
         {{ range $children }}
           {{- $p := . -}}
           {{- $manualLink := "" -}}
-          {{- if isset $p.Params "manualLink" -}}
+          {{- if isset $p.Params "manuallink" -}}
             {{- $manualLink = $p.Params.manualLink -}}
-          {{- else if isset $p.Params "manualLinkRelref" -}}
+          {{- else if isset $p.Params "manuallinkrelref" -}}
             {{- $manualLink = relref $p $p.Params.manualLinkRelref -}}
           {{- else -}}
             {{- $manualLink = $p.RelPermalink -}}
@@ -65,9 +65,9 @@
       {{ range $children }}
         {{- $p := . -}}
         {{- $manualLink := "" -}}
-        {{- if isset $p.Params "manualLink" -}}
+        {{- if isset $p.Params "manuallink" -}}
           {{- $manualLink = $p.Params.manualLink -}}
-        {{- else if isset $p.Params "manualLinkRelref" -}}
+        {{- else if isset $p.Params "manuallinkrelref" -}}
           {{- $manualLink = relref $p $p.Params.manualLinkRelref -}}
         {{- else -}}
           {{- $manualLink = $p.RelPermalink -}}
