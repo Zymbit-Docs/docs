@@ -40,7 +40,12 @@
           {{- $p := . -}}
           {{- $manualLink := "" -}}
           {{- if isset $p.Params "manuallink" -}}
-            {{- $manualLink = $p.Params.manualLink -}}
+            {{- $raw := $p.Params.manualLink -}}
+            {{- if hasPrefix $raw "http" -}}
+              {{- $manualLink = $raw -}}
+            {{- else -}}
+              {{- $manualLink = printf "%s%s" $p.RelPermalink $raw -}}
+            {{- end -}}
           {{- else if isset $p.Params "manuallinkrelref" -}}
             {{- $manualLink = relref $p $p.Params.manualLinkRelref -}}
           {{- else -}}
@@ -51,7 +56,7 @@
           {{- $manualTarget := $p.Params.manualLinkTarget | default "_self" -}}
 
           <li>
-            <a href="{{ $manualLink | relURL | safeURL }}"
+            <a href="{{ $manualLink | safeURL }}"
                title="{{ $manualTitle }}"
                {{ if eq $manualTarget "_blank" }}target="_blank" rel="noopener noreferrer"{{ end }}>
               {{- $p.LinkTitle | default $p.Title -}}
@@ -66,7 +71,12 @@
         {{- $p := . -}}
         {{- $manualLink := "" -}}
         {{- if isset $p.Params "manuallink" -}}
-          {{- $manualLink = $p.Params.manualLink -}}
+          {{- $raw := $p.Params.manualLink -}}
+          {{- if hasPrefix $raw "http" -}}
+            {{- $manualLink = $raw -}}
+          {{- else -}}
+            {{- $manualLink = printf "%s%s" $p.RelPermalink $raw -}}
+          {{- end -}}
         {{- else if isset $p.Params "manuallinkrelref" -}}
           {{- $manualLink = relref $p $p.Params.manualLinkRelref -}}
         {{- else -}}
@@ -78,7 +88,7 @@
 
         <div class="entry">
           <h5>
-            <a href="{{ $manualLink | relURL | safeURL }}"
+            <a href="{{ $manualLink | safeURL }}"
                title="{{ $manualTitle }}"
                {{ if eq $manualTarget "_blank" }}target="_blank" rel="noopener noreferrer"{{ end }}>
               {{- $p.LinkTitle | default $p.Title -}}
@@ -90,4 +100,3 @@
     {{ end }}
   {{ end }}
 {{ end }}
-
