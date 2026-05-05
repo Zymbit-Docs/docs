@@ -3,7 +3,7 @@ title: "Secure Compute Module"
 linkTitle: "Secure Compute Module"
 draft: false
 weight: 80
-description: "Secure Compute Module specifications"
+description: "Not recommended for new designs"
 ---
 
 All-in-one secure Linux compute module for developers of IoT devices and infrastructure. The hardened Raspberry Pi compute module for zero-trust environments.
