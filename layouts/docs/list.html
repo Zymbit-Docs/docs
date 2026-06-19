@@ -39,9 +39,14 @@
         {{ range $children }}
           {{- $p := . -}}
           {{- $manualLink := "" -}}
-          {{- if isset $p.Params "manualLink" -}}
-            {{- $manualLink = $p.Params.manualLink -}}
-          {{- else if isset $p.Params "manualLinkRelref" -}}
+          {{- if isset $p.Params "manuallink" -}}
+            {{- $raw := $p.Params.manualLink -}}
+            {{- if hasPrefix $raw "http" -}}
+              {{- $manualLink = $raw -}}
+            {{- else -}}
+              {{- $manualLink = printf "%s%s" $p.RelPermalink $raw -}}
+            {{- end -}}
+          {{- else if isset $p.Params "manuallinkrelref" -}}
             {{- $manualLink = relref $p $p.Params.manualLinkRelref -}}
           {{- else -}}
             {{- $manualLink = $p.RelPermalink -}}
@@ -65,9 +70,14 @@
       {{ range $children }}
         {{- $p := . -}}
         {{- $manualLink := "" -}}
-        {{- if isset $p.Params "manualLink" -}}
-          {{- $manualLink = $p.Params.manualLink -}}
-        {{- else if isset $p.Params "manualLinkRelref" -}}
+        {{- if isset $p.Params "manuallink" -}}
+          {{- $raw := $p.Params.manualLink -}}
+          {{- if hasPrefix $raw "http" -}}
+            {{- $manualLink = $raw -}}
+          {{- else -}}
+            {{- $manualLink = printf "%s%s" $p.RelPermalink $raw -}}
+          {{- end -}}
+        {{- else if isset $p.Params "manuallinkrelref" -}}
           {{- $manualLink = relref $p $p.Params.manualLinkRelref -}}
         {{- else -}}
           {{- $manualLink = $p.RelPermalink -}}
@@ -90,4 +100,3 @@
     {{ end }}
   {{ end }}
 {{ end }}
-
