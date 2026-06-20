@@ -17,7 +17,7 @@ ZYMKEY5 is the essential Zymbit security module designed specifically to work wi
 
 {{% callout note %}}
 
-## ZYMKEY5 Compatibility Notice - Pre-Production Hardware Identification
+#### ZYMKEY5 Compatibility Notice - Pre-Production Hardware Identification
 
 The **ZYMKEY5 Pre-production** identifies as an **HSM6** for backwards compatibility with previous releases of the Zymbit Driver Package. All of the HSM6 functionality is fully applicable to the ZYMKEY5. Production ZYMKEY5 will identify as a ZYMKEY5 maintaining backwards compatibility.
 
