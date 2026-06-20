@@ -6,7 +6,7 @@ aliases:
     - /quickstart/getting-started/zymkey5/
     - /getting-started/zymkey5/quickstart/
 date: ""
-lastmod: "2026-01-03"
+lastmod: "2026-06-19"
 draft: false
 images: []
 weight: 20
@@ -14,6 +14,17 @@ toc: true
 ---
 
 ZYMKEY5 is the essential Zymbit security module designed specifically to work with Raspberry Pi. It connects to the GPIO header of the SBC and uses the {{% term/i2c %}} bus and `GPIO4` as a WAKE_PIN to communicate with the SBC CPU via an encrypted channel.
+
+{{% callout note %}}
+
+#### ZYMKEY5 Compatibility Notice - Pre-Production Hardware Identification
+
+The **ZYMKEY5 Pre-production** identifies as an **HSM6** for backwards compatibility with previous releases of the Zymbit Driver Package. All of the HSM6 functionality is fully applicable to the ZYMKEY5. Production ZYMKEY5 will identify as a ZYMKEY5 maintaining backwards compatibility.
+
+There is also an EDU variant of the ZYMKEY5 intended for educational purposes. The EDU version (pre-production) will also identify as an HSM6. The only difference from the standard ZYMKEY5 and the EDU version of the ZYMKEY5 is that the EDU version will not be able to Bind Lock into any destructive state.
+
+
+{{% /callout %}}
 
 In this *Getting Started* guide we describe how to install your ZYMKEY5 to a Raspberry Pi running Raspberry PI OS or Ubuntu. The installation process is the same for both of these Linux distributions.
 
