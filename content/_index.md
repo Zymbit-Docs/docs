@@ -5,7 +5,7 @@ description: "Zymbit Documentation"
 aliases:
     - /getting-started
 date: 2020-10-06T08:47:36+00:00
-lastmod: "2026-01-28"
+lastmod: "2026-06-22"
 draft: false
 images: []
 weight: 8
@@ -15,7 +15,11 @@ layout: single
 Welcome to Zymbit’s Documentation Site! Here, you will find all the resources you need to learn about and to use all Zymbit hardware and software.
 
 {{% callout note %}}
-Recent Updates - February 2026:
+Recent Updates
+#### June 2026:
+- Minor update to Bootware 1.3.2 (stable)
+  - 1.3.2-4: Added ability to set wake_pin for Bootware via zbconfig.
+#### February 2026:
 - Release of Bootware 2.0 Beta - limited platform support (Pi5 only), not for production use.
   - Integration with Pi's Secure Boot
   - Full boot artifact isolation
