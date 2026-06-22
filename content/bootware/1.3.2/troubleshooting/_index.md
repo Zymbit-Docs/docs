@@ -53,7 +53,16 @@ To install Bootware on a PiZero2W running Bullseye64, you need to update the boo
 
 ### Issues and Notes
 -----
+
+#### June 2026
+-----
+
+Bootware® 1.3.2-4
+- Feature addition:
+  - #211: Add ability to set wake_pin to Bootware.
+
 #### December 2025
+-----
 
 Bootware® 1.3.2-3
 - Open bugs:
