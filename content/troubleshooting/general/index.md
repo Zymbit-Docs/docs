@@ -20,15 +20,14 @@ sudo apt install --only-upgrade libzk libzymkeyssl zkbootrtc zkifc zkapputilslib
 sudo pip3 install zku --upgrade
 ```
 #### Current Versions:
-TODO: BELOW NEEDS UPDATING
 
 | Name | Version | Description |
 |----|----|----|
-| libzk | 1.1-24 | Zymkey Base Communications Library |
+| libzk | 1.1-25 | Zymkey Base Communications Library |
 | libzymkeyssl | 1.0-12 | Zymkey SSL Engine Library |
 | zkapputilslib | 1.1-26 | Zymkey User API |
 | zkbootrtc | 1.1-16 | Zymkey RTC retrieval standalone app |
-| zkifc | 1.2-37 | Zymkey Interface Connector |
+| zkifc | 1.2-38 | Zymkey Interface Connector |
 | zkpkcs11 | 1.0-4 | Zymkey PKCS11 Library |
 | zksaapps | 1.0-18 | Stand alone zymkey apps |
 

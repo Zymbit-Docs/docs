@@ -16,12 +16,11 @@ toc: true
 #### Prerequisites
 
 Raspberry Pi:
+* Raspberry PI OS: Trixie (64 bit)
 * Raspberry PI OS: Bookworm (64 bit)
-* Raspberry PI OS: Bullseye (32 or 64 bit)
-* Raspberry PI OS: Buster (32 or 64 bit)
-* Ubuntu 22.04 LTS (32 or 64 bit)
-* Ubuntu 20.04 LTS (32 or 64 bit)
-* Ubuntu 18.04 LTS (32 or 64 bit)
+* Raspberry PI OS: Bullseye (64 bit)
+* Ubuntu 24.04 LTS (64 bit)
+* Ubuntu 22.04 LTS (64 bit)
 
 ## **BACKGROUND** 
 
