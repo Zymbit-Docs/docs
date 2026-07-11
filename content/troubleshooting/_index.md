@@ -48,7 +48,7 @@ If your issue is not related to any of the above list, read through the FAQ belo
    - `zkifc -v` added to return version
    - zkpkcs11 package build fixed for 64-bit OSs
 
-**Latest STABLE Platform and OS Support (December 2025)**
+**Latest STABLE Platform and OS Support (July 2026)**
 
 
 |                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi5                    |   Pi4             |
