@@ -22,7 +22,7 @@ This connector is a 12 pin JST SURS connector ([SM12B-SURS-TF(LF)(SN)](https://w
 {{< cardpane >}}
 {{< card header="ZYMKEY5 Auxiliary Connector Pinout" >}}
 {{< figure
-    src="pinout.png"
+    src="aux_pinout.png"
     alt="ZYMKEY5 auxiliary connector pinout"
     caption=""
     >}}
