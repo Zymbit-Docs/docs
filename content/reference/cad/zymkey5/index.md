@@ -86,7 +86,6 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector. 
 {{< /card >}}
 {{< /cardpane >}}
 
-
 {{< cardpane >}}
 {{< card header="Breakout Board and Cable" >}}
 {{< figure
@@ -111,4 +110,13 @@ The battery connector is a 1.00mm Pitch, 2-pin, JST PCB header that mates with h
 
 ### GPIO Pinout
 
-![ZYMKEY5 GPIO Pinout](ZK4-pinout.png)
+{< cardpane >}}
+{{< card header="ZYMKEY5 GPIO Pinout" >}}
+{{< figure
+    src="ZK4-pinout.png"
+    alt="ZYMKEY5 GPIO Pinout"
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
+
