@@ -17,7 +17,9 @@ weight: 10
 
 ### Auxiliary Connector
 
-This connector is a 12 pin JST SURS connector ([SM12B-SURS-TF(LF)(SN)](https://www.digikey.com/en/products/detail/jst-sales-america-inc/SM12B-SURS-TF/9920600?s=N4IgTCBcDaIMoFkCMYBCBaOBVASndAKgGIAUAMkQJQlwBylIAugL5A)) and mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-america-inc/12SUR-32S/1300329) ([premade cable harnesses](https://www.digikey.com/en/products/filter/rectangular-cable-assemblies/450?s=N4IgTCBcDaIMoFUBKIA0ICMZEoLoF8g))
+12 pin JST SURS connector ([SM12B-SURS-TF(LF)(SN)](https://www.digikey.com/en/products/detail/jst-sales-america-inc/SM12B-SURS-TF/9920600?s=N4IgTCBcDaIMoFkCMYBCBaOBVASndAKgGIAUAMkQJQlwBylIAugL5A))
+
+Mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-america-inc/12SUR-32S/1300329) ([premade cable harnesses](https://www.digikey.com/en/products/filter/rectangular-cable-assemblies/450?s=N4IgTCBcDaIMoFUBKIA0ICMZEoLoF8g))
 
 {{< cardpane >}}
 {{< card header="ZYMKEY5 Auxiliary Connector Pinout" >}}
@@ -41,16 +43,15 @@ This connector is a 12 pin JST SURS connector ([SM12B-SURS-TF(LF)(SN)](https://w
 | 1 | PERIM_1 | Tamper detection loop 1 recieve |
 | 2 | GND | System ground |
 | 3 | PERIM_0 | Tamper detection transmit.  Connect this pin to PERIM_1 and/or PERIM_2 |
-| 4 | GPAUX_IN_RD/
-VEXT_MON | General purpose auxiliary recieve (future use) and external voltage monitor pin (future use) |
-| 5 | PERIM_2 | Tamper detection loop 2 recieve |
+| 4 | GPAUX_IN_RD | VEXT_MON | General purpose auxiliary receive and external voltage monitor pin (future use) |
+| 5 | PERIM_2 | Tamper detection loop 2 receive |
 | 6 | GPAUX_OUT_TXD | General purpose auxiliary transmit (future use) |
-| 7 | RSVD_GND | Ground pin that is reserved for potential future use. |
+| 7 | RSVD_GND | Ground pin that is reserved for potential (future use) |
 | 8 | 3V3_CM4 | 3.3V output from the Raspberry Pi |
 | 9 | nSECURE_FAIL | Zymbit security fault indicator |
 | 10 | LED_C2 | Zymbit’s security status LED |
 | 11 | GND | System ground |
-| 12 | PWR_BTN_IN | Replicates power button function of Pi 5 power button.  Active low. |
+| 12 | PWR_BTN_IN | Replicates power button function of Pi 5 power button.  Active low. (future use) |
 
 - Tamper detection pins (pins 1, 3, 5): To close a tamper loop, PERIM0 is the TX and PERIM1/PERIM2 are the RX.  So connecting PERIM0 to either of the RX lines completes the tamper for the associated loop.  This is not simply a constant voltage, it is a pseudo random encoded sequence. Breaking this loop will trigger a tamper detection security event
 - GPAUX pins (pins 4, 6): these are general purpose auxiliary pins passed through from the ZYMKEY5.  These pins are currently reserved for future use
