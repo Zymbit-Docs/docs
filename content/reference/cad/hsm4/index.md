@@ -6,7 +6,7 @@ aliases:
     - /technical_reference/cad/hsm4/
 draft: false
 images: []
-weight: 2
+weight: 40
 ---
 
 ## Altium
