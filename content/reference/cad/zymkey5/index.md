@@ -71,7 +71,6 @@ Mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-amer
 {{< /card >}}
 {{< /cardpane >}}
 
-- Power button input (pin 12):  This pin connects to the power button pin on the compute module after going through the ZYMKEY5.  Pull this pin low to activate.
 
 ### Breakout Board / Cable
 
