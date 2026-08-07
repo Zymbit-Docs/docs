@@ -84,7 +84,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector. 
     caption=""
     >}}
 {{< /card >}}
-{{< cardpane >}}
+
 {{< card header="Breakout Board and Cable" >}}
 {{< figure
     src="bob_cable1.jpg"
