@@ -5,7 +5,7 @@ description: "3D Step Model, drawings, and GPIO pinout for the ZYMKEY5"
 aliases:
     - /technical_reference/cad/zymkey5/
 date: ""
-lastmod: "2026-08-07"
+lastmod: "2026-08-20"
 draft: false
 images: []
 weight: 10
@@ -40,18 +40,18 @@ Mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-amer
 
 | Pin Number | Pin Name | Description |
 | --- | --- | --- |
-| 1 | PERIM_1 | Tamper detection loop 1 recieve |
+| 1 | PERIM_1 | Tamper detection loop 1 receive |
 | 2 | GND | System ground |
 | 3 | PERIM_0 | Tamper detection transmit.  Connect this pin to PERIM_1 and/or PERIM_2 |
-| 4 | GPAUX_IN_RD | VEXT_MON | General purpose auxiliary receive and external voltage monitor pin (future use) |
+| 4 | GPAUX_IN | Auxiliary input (digital or analog, 1k R in series) Firmware revision dependent |
 | 5 | PERIM_2 | Tamper detection loop 2 receive |
-| 6 | GPAUX_OUT_TXD | General purpose auxiliary transmit (future use) |
-| 7 | RSVD_GND | Ground pin that is reserved for potential (future use) |
-| 8 | 3V3_CM4 | 3.3V output from the Raspberry Pi |
-| 9 | nSECURE_FAIL | Zymbit security fault indicator |
-| 10 | LED_C2 | Zymbit’s security status LED |
+| 6 | GPAUX_OUT_TXD | Auxiliary output (digital, 100ohm R in series) Firmware revision dependent |
+| 7 | RSVD_GND | Ground pin do not use (reserved) |
+| 8 | 3V3 | 3.3V output from Zymkey voltage regulator. Powered from 5V, on when Pi is shut down |
+| 9 | nSECURE_FAIL | Open drain security fault indicator; 12V max |
+| 10 | LED_C2 | Open drain blue LED indicator; 12V max |
 | 11 | GND | System ground |
-| 12 | PWR_BTN_IN | Replicates power button function of Pi 5 power button.  Active low. (future use) |
+| 12 | PWR_BTN_IN | Secure button input. 3.3V max. Connect between the pin and ground |
 
 - Tamper detection pins (pins 1, 3, 5): To close a tamper loop, PERIM0 is the TX and PERIM1/PERIM2 are the RX.  So connecting PERIM0 to either of the RX lines completes the tamper for the associated loop.  This is not simply a constant voltage, it is a pseudo random encoded sequence. Breaking this loop will trigger a tamper detection security event
 - GPAUX pins (pins 4, 6): these are general purpose auxiliary pins passed through from the ZYMKEY5.  These pins are currently reserved for future use
