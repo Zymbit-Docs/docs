@@ -43,13 +43,13 @@ Mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-amer
 | 1 | PERIM_1 | Tamper detection loop 1 receive |
 | 2 | GND | System ground |
 | 3 | PERIM_0 | Tamper detection transmit.  Connect this pin to PERIM_1 and/or PERIM_2 |
-| 4 | GPAUX_IN | Auxiliary input (digital or analog, 1k R in series) Firmware revision dependent |
+| 4 | GPAUX_IN | Auxiliary input (digital or analog, 1k R in series) [^1] |
 | 5 | PERIM_2 | Tamper detection loop 2 receive |
-| 6 | GPAUX_OUT_TXD | Auxiliary output (digital, 100ohm R in series) Firmware revision dependent |
+| 6 | GPAUX_OUT_TXD | Auxiliary output (digital, 100ohm R in series) [^1] |
 | 7 | RSVD_GND | Ground pin do not use (reserved) |
-| 8 | 3V3 | 3.3V output from Zymkey voltage regulator. Powered from 5V, on when Pi is shut down |
+| 8 | 3V3 | 3.3V output from Zymkey voltage regulator. Powered from 5V, on when Pi is shut down [^2] |
 | 9 | nSECURE_FAIL | Open drain security fault indicator; 12V max |
-| 10 | LED_C2 | Open drain blue LED indicator; 12V max |
+| 10 | LED_OUT | Open drain blue LED indicator; 12V max |
 | 11 | GND | System ground |
 | 12 | PWR_BTN_IN | Secure button input. 3.3V max. Connect between the pin and ground |
 
@@ -117,3 +117,6 @@ Same as Zymkey4.
 {{< /card >}}
 {{< /cardpane >}}
 
+
+[^1] Firmware revision dependent. 
+[^2] Caution: Incorrect use may cause damage to the Zymbit HSM and/or possibly the host. This is not from the Pi 3V3. It comes from the Zymbit HSM voltage regulator. 20 mA output only. 
