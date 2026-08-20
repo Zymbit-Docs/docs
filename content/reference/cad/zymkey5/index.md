@@ -110,10 +110,8 @@ Same as Zymkey4.
 {{< cardpane >}}
 {{< card header="ZYMKEY5 GPIO Pinout" >}}
 {{< figure
-    src="ZK4-pinout.png"
-    alt="ZYMKEY5 GPIO Pinout"
+   <img src="/reference/cad/zymkey5/ZK4-pinout.png" alt="ZYMKEY5 GPIO Pinout" style="width:50%; height:auto;">
     caption=""
-    width="50%"
     >}}
 {{< /card >}}
 {{< /cardpane >}}
