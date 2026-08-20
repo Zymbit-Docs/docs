@@ -119,5 +119,7 @@ Same as Zymkey4.
 {{< /cardpane >}}
 
 
+### Footnotes
+
 [^1]: Firmware revision dependent. 
 [^2]: Caution: Incorrect use may cause damage to the Zymbit HSM and/or possibly the host. This is not from the Pi 3V3. It comes from the Zymbit HSM voltage regulator. 20 mA output only. 

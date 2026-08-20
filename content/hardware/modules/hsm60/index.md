@@ -192,7 +192,7 @@ This connector is a 12 pin JST SURS connector ([SM12B-SURS-TF(LF)(SN)](https://w
 | 5 | PERIM_2 | Tamper detection loop 2 receive |
 | 6 | GPAUX_OUT_TXD | Auxiliary output (digital, 100ohm R in series) [^1] |
 | 7 | RSVD_GND | Ground pin do not use (reserved) |
-| 8 | 3V3 | 3.3V output from Zymkey voltage regulator. Powered from 5V, on when Pi is shut down [^2] |
+| 8 | 3V3 | 3.3V output from HSM60 voltage regulator. Powered from 5V, on when Pi is shut down [^2] |
 | 9 | nSECURE_FAIL | Open drain security fault indicator; 12V max |
 | 10 | LED_OUT | Open drain blue LED indicator; 12V max |
 | 11 | GND | System ground |
@@ -256,6 +256,8 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector (
 Power up the Pi and you will see a blue LED blinking rapidly and consistently (5 blinks per second). This indicates the HSM is operational but not configured.
 
 If the blue LED blinks erratically, or not at all, then there is an installation error and you should check your connections.
+
+### Footnotes
 
 [^1]: Firmware revision dependent. 
 [^2]: Caution: Incorrect use may cause damage to the Zymbit HSM and/or possibly the host. This is not from the Pi 3V3. It comes from the Zymbit HSM voltage regulator. 20 mA output only.
