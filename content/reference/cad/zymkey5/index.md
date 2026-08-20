@@ -113,7 +113,7 @@ Same as Zymkey4.
     src="ZK4-pinout.png"
     alt="ZYMKEY5 GPIO Pinout"
     caption=""
-    width="50%
+    width="50%"
     >}}
 {{< /card >}}
 {{< /cardpane >}}
