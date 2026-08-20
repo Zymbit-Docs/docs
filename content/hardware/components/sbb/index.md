@@ -473,7 +473,28 @@ The pinout for J2:
 {{< /card >}}
 {{< /cardpane >}}
 
-To close a tamper loop, PERIM0 is the TX and PERIM1/PERIM2 are the RX. Connecting PERIM0 to either of the RX lines completes the tamper for the associated loop.  This is not simply a constant voltage, it is a pseudo random encoded sequence.
+| Pin Number | Pin Name | Description |
+| --- | --- | --- |
+| 1 | PERIM_1 | Tamper detection loop 1 receive |
+| 2 | GND | System ground |
+| 3 | PERIM_0 | Tamper detection transmit.  Connect this pin to PERIM_1 and/or PERIM_2 |
+| 4 | GPAUX_IN | Auxiliary input (digital or analog, 1k R in series) [^1] |
+| 5 | PERIM_2 | Tamper detection loop 2 receive |
+| 6 | GPAUX_OUT_TXD | Auxiliary output (digital, 100ohm R in series) [^1] |
+| 7 | RSVD_GND | Ground pin do not use (reserved) |
+| 8 | 3V3 | 3.3V output from HSM60 voltage regulator. Powered from 5V, on when Pi is shut down [^2] |
+| 9 | nSECURE_FAIL | Open drain security fault indicator; 12V max |
+| 10 | LED_OUT | Open drain blue LED indicator; 12V max |
+| 11 | GND | System ground |
+| 12 | PWR_BTN_IN | Secure button input. 3.3V max. Connect between the pin and ground |
+
+- Tamper detection pins (pins 1, 3, 5): To close a tamper loop, PERIM0 is the TX and PERIM1/PERIM2 are the RX.  So connecting PERIM0 to either of the RX lines completes the tamper for the associated loop.  This is not simply a constant voltage, it is a pseudo random encoded sequence. Breaking this loop will trigger a tamper detection security event
+- GPAUX pins (pins 4, 6): these are general purpose auxiliary pins passed through from the HSM60.  These pins are currently reserved for future use
+- 3V3 power (pin 8): This is the 3.3V power output that comes from the Raspberry Pi Compute Module
+- Security indicator signals (pins 9, 10): These are typically used to drive LEDs which indicate the security status of the device.  Note these pins are used together and typically drive a red/blue LED. These pins are currently reserved for future use
+- nSECURE_FAIL: indicates a security fault
+- If there is a security fault but the LED_C2 is still active, this means a noncritical security failure.  If the LED_C2 is not active at the same time this means a critical security fault and the system is not operational anymore
+- LED_C2:  Zymbit’s security status LED.  When being used with the SCM4 or CM5 + Interposer, this will blink a pattern to give its status (see [SCM LED Reference](https://docs.zymbit.com/troubleshooting/scm/#led-reference) for details)
 
 Perimeter 1:  To use perimeter loop 1 (connected to internal tamper switches) on the auxiliary connector, solder bridge the pads R120 where is reads PERIM1 CONNECT on the BOTTOM side of the board.  Because it is still connected to the tamper switches, to see a tamper event on this channel in this case, the tamper switches must be opened AND the auxiliary connection must also be broken.
 
@@ -500,23 +521,6 @@ Perimeter 2:  To use perimeter loop 2 on the auxiliary connector, cut the tab in
 
 Perimeter 0 is the transmit, and the associated perimeters 1 and 2 are the receive loops.
 
-#### Auxiliary Connector (J2)
-
-{{< cardpane >}}
-{{< card header="J2 Pinout" >}}
-{{< figure
-    src="j2_pinout.png"
-    alt="J2 Pinout"
-    caption=""
-    >}}
-{{< /card >}}
-{{< /cardpane >}}
-
-- For tamper detection pins (pins 1, 3, 5) please see the previous section
-- ZIO pins (pins 4, 6) these are general purpose auxiliary pins passed through from the Zymbit HSM.  These pins are currently reserved for future use
-- 3V3 power (pin 8): This is the 3.3V power output that comes from the Raspberry Pi Compute Module
-- Security indicator signals (pins 9, 10): These are the signals used to drive the LEDs on the front panel.  Please see LED indicator section for details.  Example use to drive LEDs:
-- Power button input:  This pin connects to the Power button pin on the compute module after going through the HSM.  Pull this pin low to activate.  Please see the power button section for functionality.
     
 {{< cardpane >}}
 {{< card header="Security Header Pins" >}}
@@ -670,4 +674,10 @@ If the user has other IO on the normal I2C lines (GPIO2 and GPIO3) of the 40-pin
 - [Raspberry Pi CM4 Datasheet](https://datasheets.raspberrypi.com/cm4/cm4-datasheet.pdf)
 - [Raspberry Pi Compute Module 5 IO Board Datasheet](https://datasheets.raspberrypi.com/cm5/cm5io-datasheet.pdf)
 - [Raspberry Pi CM5 Datasheet](https://datasheets.raspberrypi.com/cm5/cm5-datasheet.pdf)
+
+
+### Footnotes
+
+[^1]: Firmware revision dependent.
+[^2]: Caution: Incorrect use may cause damage to the Zymbit HSM and/or possibly the host. This is not from the Pi 3V3. It comes from the Zymbit HSM voltage regulator. 20 mA output only.
 

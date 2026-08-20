@@ -185,19 +185,18 @@ This connector is a 12 pin JST SURS connector ([SM12B-SURS-TF(LF)(SN)](https://w
 
 | Pin Number | Pin Name | Description |
 | --- | --- | --- |
-| 1 | PERIM_1 | Tamper detection loop 1 recieve |
+| 1 | PERIM_1 | Tamper detection loop 1 receive |
 | 2 | GND | System ground |
 | 3 | PERIM_0 | Tamper detection transmit.  Connect this pin to PERIM_1 and/or PERIM_2 |
-| 4 | GPAUX_IN_RD/
-VEXT_MON | General purpose auxiliary recieve (future use) and external voltage monitor pin (future use) |
-| 5 | PERIM_2 | Tamper detection loop 2 recieve |
-| 6 | GPAUX_OUT_TXD | General purpose auxiliary transmit (future use) |
-| 7 | RSVD_GND | Ground pin that is reserved for potential future use. |
-| 8 | 3V3_CM4 | 3.3V output from the Raspberry Pi |
-| 9 | nSECURE_FAIL | Zymbit security fault indicator |
-| 10 | LED_C2 | Zymbit’s security status LED |
+| 4 | GPAUX_IN | Auxiliary input (digital or analog, 1k R in series) [^1] |
+| 5 | PERIM_2 | Tamper detection loop 2 receive |
+| 6 | GPAUX_OUT_TXD | Auxiliary output (digital, 100ohm R in series) [^1] |
+| 7 | RSVD_GND | Ground pin do not use (reserved) |
+| 8 | 3V3 | 3.3V output from HSM60 voltage regulator. Powered from 5V, on when Pi is shut down [^2] |
+| 9 | nSECURE_FAIL | Open drain security fault indicator; 12V max |
+| 10 | LED_OUT | Open drain blue LED indicator; 12V max |
 | 11 | GND | System ground |
-| 12 | PWR_BTN_IN | Replicates power button function of Pi 5 power button.  Active low. |
+| 12 | PWR_BTN_IN | Secure button input. 3.3V max. Connect between the pin and ground |
 
 - Tamper detection pins (pins 1, 3, 5): To close a tamper loop, PERIM0 is the TX and PERIM1/PERIM2 are the RX.  So connecting PERIM0 to either of the RX lines completes the tamper for the associated loop.  This is not simply a constant voltage, it is a pseudo random encoded sequence. Breaking this loop will trigger a tamper detection security event
 - GPAUX pins (pins 4, 6): these are general purpose auxiliary pins passed through from the Zymbit HSM.  These pins are currently reserved for future use
@@ -228,6 +227,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector (
 {{< figure
     src="bob_pinout.jpg"
     alt="Breakout Board Pin Assignment"
+    width=50%
     caption=""
     >}}
 {{< /card >}}
@@ -256,4 +256,9 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector (
 Power up the Pi and you will see a blue LED blinking rapidly and consistently (5 blinks per second). This indicates the HSM is operational but not configured.
 
 If the blue LED blinks erratically, or not at all, then there is an installation error and you should check your connections.
+
+### Footnotes
+
+[^1]: Firmware revision dependent. 
+[^2]: Caution: Incorrect use may cause damage to the Zymbit HSM and/or possibly the host. This is not from the Pi 3V3. It comes from the Zymbit HSM voltage regulator. 20 mA output only.
 
