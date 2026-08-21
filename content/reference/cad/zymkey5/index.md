@@ -53,8 +53,9 @@ Mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-amer
 | 11 | GND | System ground |
 | 12 | SEC_BTN_IN | Secure button input. 3.3V max. Connect between the pin and ground |
 
-<small><sup>1</sup>Firmware revision dependent.</small>
-<small><sup>2</sup>Caution: Incorrect use may cause damage to the Zymbit HSM and/or possibly the host. This is not from the Pi 3V3. It comes from the Zymbit HSM voltage regulator. 20 mA output only.</small>
+<sup>1 </sup>Firmware revision dependent.
+
+<sup>2 </sup>Caution: Incorrect use may cause damage to the Zymbit HSM and/or possibly the host. This is not from the Pi 3V3. It comes from the Zymbit HSM voltage regulator. 20 mA output only.
 
 
 - Tamper detection pins (pins 1, 3, 5): To close a tamper loop, PERIM0 is the TX and PERIM1/PERIM2 are the RX.  So connecting PERIM0 to either of the RX lines completes the tamper for the associated loop.  This is not simply a constant voltage, it is a pseudo random encoded sequence. Breaking this loop will trigger a tamper detection security event
