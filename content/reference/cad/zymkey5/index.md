@@ -33,7 +33,7 @@ Mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-amer
 {{< figure
     src="aux_connector.png"
     alt="ZYMKEY5 Aux Connector Pin 1 location"
-    height=640
+    height=300
     caption=""
     >}}
 {{< /card >}}
@@ -103,9 +103,9 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector. 
 
 ### Battery Connector
 
-JST SM02B-SRSS-TB(LF)(SN) 
-Pin 1: GND 
-Pin 2: VBAT+ 
+JST SM02B-SRSS-TB(LF)(SN)<br>
+Pin 1: GND<br>
+Pin 2: VBAT+<br>
 
 Mates with housings with [02SR-3S](https://www.digikey.com/en/products/detail/jst-sales-america-inc/02SR-3S/1300342?gclsrc=aw.ds&gad_source=1&gad_campaignid=17922795960&gbraid=0AAAAADrbLliwlFAtLOnu4vYnRkMIG6SK8&gclid=Cj0KCQiAi9rJBhCYARIsALyPDtt9lTPFIlJEf0wJDW97hiAQmPxFoRK7w1qn3IasFqn-Juu6-khD8VMaAhC3EALw_wcB) or similar headers.  This is the same battery connector that is on the Pi5.  It takes 3.3V batteries ([like the Pi5 battery](https://www.digikey.com/en/products/detail/raspberry-pi/SC1163/21658274?gclsrc=aw.ds&gad_source=1&gad_campaignid=20228387720&gbraid=0AAAAADrbLlhDWbqKh4-P4EF0aSO6unV-A&gclid=Cj0KCQjwqebEBhD9ARIsAFZMbfxdwRKiRkUYcolECpajh4qdoJvdAUH6vsefttLv7gQ-ObwtNwXfgVEaArlbEALw_wcB)) and is used to power the RTC on the ZYMKEY5.
 
