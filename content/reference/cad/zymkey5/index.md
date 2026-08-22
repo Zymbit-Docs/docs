@@ -26,7 +26,6 @@ Mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-amer
 {{< figure
     src="aux_pinout.png"
     alt="ZYMKEY5 auxiliary connector pinout"
-    width=50%
     caption=""
     >}}
 {{< /card >}}
