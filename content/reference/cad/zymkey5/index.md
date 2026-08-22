@@ -33,7 +33,7 @@ Mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-amer
 {{< figure
     src="aux_connector.png"
     alt="ZYMKEY5 Aux Connector Pin 1 location"
-    height=300
+    height=450px
     caption=""
     >}}
 {{< /card >}}
@@ -103,7 +103,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector. 
 
 ### Battery Connector
 
-JST SM02B-SRSS-TB(LF)(SN)<br>
+**JST SM02B-SRSS-TB(LF)(SN)**<br>
 Pin 1: GND<br>
 Pin 2: VBAT+<br>
 
