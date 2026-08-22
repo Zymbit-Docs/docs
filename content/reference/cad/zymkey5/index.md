@@ -29,10 +29,10 @@ Mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-amer
     caption=""
     >}}
 {{< /card >}}
-{{< card header="ZYMKEY5 Auxiliary Connector" >}}
+{{< card header="ZYMKEY5 Pin 1 Locations" >}}
 {{< figure
     src="aux_connector.png"
-    alt="ZYMKEY5 Aux Connector Pin 1 location"
+    alt="ZYMKEY5 Aux Connector Pin 1 locations"
     width=50%
     caption=""
     >}}
