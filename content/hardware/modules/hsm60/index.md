@@ -210,16 +210,6 @@ E. nLED_OUT pin 10: open collector output that is pulled low when the blue LED o
 
 F. nSEC_BTN_IN pin 12: secure button input. Install button between this pin and ground. Drive to 0 to activate. Supported on certain firmware releases only. Contact Zymbit for more details.
 
-{{< cardpane >}}
-{{< card header="Example use to drive LED" >}}
-{{< figure
-    src="led.png"
-    alt="HSM60 LED example circuit"
-    width=50%
-    caption=""
-    >}}
-{{< /card >}}
-{{< /cardpane >}}
     
 
 ### Breakout Board / Cable
@@ -244,6 +234,20 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector (
 {{< /card >}}
 {{< /cardpane >}}
 
+### LED Example
+
+{{< cardpane >}}
+{{< card header="Example use to drive LED" >}}
+{{< figure
+    src="led.png"
+    alt="HSM60 LED example circuit"
+    width=50%
+    caption=""
+    >}}
+{{< /card >}}
+{{< /cardpane >}}
+
+---
 
 ### Power on and confirm operation
 

@@ -439,7 +439,7 @@ The Zymbit Motherboard provides general expansion capability for Raspberry Pi Co
 
 #### Battery Connector (J1)
 
-The battery connector is a 1.00mm Pitch, 2-pin, JST PCB header that mates with housings with [SHR-02V-S-B](https://www.digikey.com/en/products/detail/jst-sales-america-inc/SHR-02V-S-B/759866?s=N4IgTCBcDaIMoAkBKBaADGAaiuKBCIAugL5A) or similar headers.  It takes 3.3V batteries and is used to power the RTC on the ZYMBIT SCM as well as power the security supervisor on the SCM in a low-power state when there is no primary power.  See API documentation for uses.  
+The battery connector is a 1.00mm Pitch, 2-pin, JST PCB header that mates with housings with [SHR-02V-S-B](https://www.digikey.com/en/products/detail/jst-sales-america-inc/SHR-02V-S-B/759866?s=N4IgTCBcDaIMoAkBKBaADGAaiuKBCIAugL5A) or similar headers.  It takes 3.3V batteries and is used to power the RTC on the Zymbit SCM as well as power the security supervisor on the SCM in a low-power state when there is no primary power.  See API documentation for uses.  
 
 The J14 PI BATT is a separate battery connector for powering the CM5 RTC.  Please see the CM5 section for more detail.
 
@@ -475,7 +475,7 @@ The pinout for J2:
 | 5 | PERIM_2 | Tamper detection loop 2 receive |
 | 6 | GPAUX_OUT | Auxiliary output (digital, 100ohm R in series)  |
 | 7 | RSVD_GND | Ground pin do not use (reserved) |
-| 8 | 3V3 | 3.3V output from Zymkey voltage regulator. Powered from 5V, on when Pi is shut down |
+| 8 | 3V3 | 3.3V output from Zymbit voltage regulator. Powered from 5V, on when Pi is shut down |
 | 9 | nSECURE_FAIL | Open drain security fault indicator; 12V max |
 | 10 | nLED_OUT | Open drain blue LED indicator; 12V max |
 | 11 | GND | System ground |
@@ -552,22 +552,19 @@ Perimeter 2:  To use perimeter loop 2 on the auxiliary connector, cut the tab in
 Perimeter 0 is the transmit, and the associated perimeters 1 and 2 are the receive loops.
 
     
+#### LED Example
+
 {{< cardpane >}}
-{{< card header="Security Header Pins" >}}
+{{< card header="Example use to drive LED" >}}
 {{< figure
-    src="security_led_pinout.png"
-    alt="Security LED pinout"
-    caption=""
-    >}}
-{{< /card >}}
-{{< card header="Power button Pins" >}}
-{{< figure
-    src="pwr_button_pinout.png"
-    alt="Power Button Pinout"
+    src="led.png"
+    alt="LED example circuit"
+    width=50%
     caption=""
     >}}
 {{< /card >}}
 {{< /cardpane >}}
+
 
 ---
 
