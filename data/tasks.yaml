@@ -1,0 +1,67 @@
+# The task index at /tasks/, and the "Common tasks" section on each product hub.
+#
+# Both read from here, so a task appears in both places from one entry.
+#
+# REVIEW NEEDED on the `products` lists. They were seeded by reading which products
+# each tutorial actually names in its text, which is evidence of coverage but not the
+# same as knowing what a task supports. Several are certainly incomplete -- the
+# sensor data tutorial names no product at all, and encrypting the root filesystem
+# almost certainly works on more than the one module its page mentions. Adding a key
+# here is a claim that the task is supported on that product, so add from product
+# knowledge rather than from what the prose happens to say.
+#
+# Fields:
+#   key       stable identifier
+#   title     phrased as the reader would phrase the problem
+#   page      where the task is documented
+#   products  product keys from products.yaml
+#   note      optional caveat rendered with the task
+
+tasks:
+  - key: perimeter-detect
+    title: "Detect physical tampering"
+    page: /tutorials/perimeter-detect
+    products: [zymkey4, zymkey5, hsm4, hsm6, scm, sen500, sen400, send35]
+    note: "Wiring differs per product. The shared SEN page still needs SEN 400 and SEN 500 connections."
+
+  - key: production-mode
+    title: "Lock a device for production"
+    page: /tutorials/production-mode
+    products: [zymkey4, hsm4, hsm6, sen500, sen400, send35]
+    note: "Binding is permanent and cannot be reversed."
+
+  - key: encrypt-rfs
+    title: "Encrypt the root filesystem"
+    page: /tutorials/encrypt-rfs
+    products: [zymkey4]
+
+  - key: sensor-data
+    title: "Encrypt sensor data on disk"
+    page: /tutorials/sensor-data
+    products: []
+    note: "The page names no product; applicability needs confirming."
+
+  - key: supervised-boot
+    title: "Verify the boot chain"
+    page: /tutorials/supervised-boot
+    products: [scm]
+
+  - key: aws-iot
+    title: "Connect to AWS IoT"
+    page: /tutorials/aws-iot
+    products: [zymkey4, hsm6, scm, sen500, sen400, send35]
+
+  - key: digital-wallet
+    title: "Use the hardware wallet"
+    page: /tutorials/digital-wallet
+    products: [hsm6, scm]
+
+  - key: alternative-gpio
+    title: "Free up GPIO4"
+    page: /tutorials/alternative-gpio
+    products: [zymkey4]
+
+  - key: bootware
+    title: "Manage OS images and A/B updates"
+    page: /bootware
+    products: [scm, sen500, sen400, send35, zymkey4, zymkey5]

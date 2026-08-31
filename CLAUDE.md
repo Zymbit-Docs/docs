@@ -118,6 +118,28 @@ Four things are driven by separate mechanisms, and three of them are manual:
 
 To exclude a page from search, set `pagefind_ignore: true` in its front matter.
 
+## Product hubs and the task index
+
+`/products/` and `/tasks/` are a second way into the same content, organized by device and by job rather than by the section a page happens to live in. They add no content: every link points at a page that already exists, and no URL changed when they were added.
+
+Both are generated from two data files, so there is nothing to keep in sync by hand:
+
+- `data/products.yaml` - one entry per product: `key` (the URL segment and the default name for convention lookups), `name`, `status` (current / legacy / component), `hardware` (its main page, declared because those paths are irregular), and optionally `refkey`, `perimeter`, `components`, and `also`.
+- `data/tasks.yaml` - one entry per task: `title` phrased as a reader would phrase it, `page`, and the `products` it applies to. The product hubs and the task index both read this, so a task added here appears in both.
+
+Rendered by `layouts/docs/product-hub.html`, `layouts/docs/product-index.html`, and `layouts/docs/task-index.html`, via `layouts/partials/product-links.html`. Content files under `content/products/` carry only a `product:` key and `layout: product-hub`.
+
+Two rules make this hold up:
+
+- **Declared paths must resolve.** A path named in either data file that does not exist fails the build through `errorf`, the same guard used for the Hugo version pin and the Pagefind index. A hub full of dead links is worse than no hub.
+- **Derived paths may be absent.** Whether `/reference/cad/<key>/`, `/reference/conformity/<key>/`, `/reference/product-briefs/<key>/`, or `/troubleshooting/<key>/` exists is asked of Hugo at build time. A missing one renders under "Not yet documented" rather than being silently omitted, and appears automatically once the page is written.
+
+To add a product: one entry in `data/products.yaml` and one thin file in `content/products/`. To record that a task supports a product: add the key to that task's `products` list.
+
+The `products` lists were seeded from which products each tutorial actually names in its text, which is evidence of coverage rather than knowledge of support. They need review by someone who knows the hardware; the file says so.
+
+`Hardware` and `Tutorials` are intentionally absent from `menu.yaml`. They keep their URLs, stay in the sidebar tree, and are linked from every hub and task row, but the navbar is one row and both are better reached through Products and Tasks.
+
 ## Theme management (git-subtree)
 
 The Zymdocsy theme lives at `themes/zymdocsy/` and is managed with `git subtree`. Commits affecting `themes/zymdocsy/` must be separate from commits affecting other files. Always use `--squash` with subtree operations.

@@ -1,0 +1,51 @@
+{{/*
+    The /tasks/ index: the site organized by what a reader is trying to do.
+
+    Everything comes from data/tasks.yaml, which the product hubs read too, so a task
+    added there appears in both places. Product names resolve through
+    data/products.yaml, and any task pointing at a page that does not exist fails the
+    build in partials/product-links.html.
+
+    Tasks with no products listed are still shown, marked as needing confirmation.
+    Hiding them would bury exactly the gap worth closing.
+*/}}
+{{ define "main" }}
+{{- $products := site.Data.products.products -}}
+<div class="td-content">
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.description }}<div class="lead">{{ . | markdownify }}</div>{{ end }}
+  {{ .Content }}
+
+  <hr class="panel-line">
+
+  {{ range site.Data.tasks.tasks }}
+    {{ $t := . }}
+    {{ $page := site.GetPage $t.page }}
+    {{ if not $page }}{{ errorf "tasks.yaml: task %q points at %q, which does not exist" $t.key $t.page }}{{ end }}
+    <div class="entry">
+      <h5><a href="{{ $page.RelPermalink }}">{{ $t.title }}</a></h5>
+      <p>
+        {{- with $t.note }}<em>{{ . }}</em><br>{{ end -}}
+        {{- if $t.products -}}
+          Supported on:&nbsp;
+          {{- $links := slice -}}
+          {{- range $t.products -}}
+            {{- $key := . -}}
+            {{- range $products -}}
+              {{- if eq .key $key -}}
+                {{- $pg := site.GetPage (printf "/products/%s" .key) -}}
+                {{- if $pg -}}
+                  {{- $links = $links | append (printf "<a href=\"%s\">%s</a>" $pg.RelPermalink .name) -}}
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+          {{ delimit $links ", " | safeHTML }}
+        {{- else -}}
+          <small>Which products this applies to has not been confirmed.</small>
+        {{- end -}}
+      </p>
+    </div>
+  {{ end }}
+</div>
+{{ end }}

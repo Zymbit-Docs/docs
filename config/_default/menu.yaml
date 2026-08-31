@@ -7,9 +7,18 @@
 # left sidebar tree, so a reader arriving on a deep page from a search engine had no
 # visible way to see what else the docs cover.
 #
-# The six documentation sections come first, in reading order rather than by the
-# `weight` used for sidebar ordering. The two outbound links stay last and keep their
-# icons, which usefully marks them as leaving the site.
+# Products and Tasks lead: they are the two doors most readers actually want. Someone
+# holding a SEN 500 is served better by that product's hub than by a directory of all
+# hardware, and someone trying to encrypt a filesystem is served better by the task
+# index than by a list of tutorials.
+#
+# Hardware and Tutorials are deliberately NOT in this menu. They keep their URLs, stay
+# in the sidebar tree, and are linked from every hub and every task row -- but the
+# navbar is a single row and these two are reached better through Products and Tasks.
+# The remaining four are sections nothing else fronts.
+#
+# The two outbound links stay last and keep their icons, which usefully marks them as
+# leaving the site.
 #
 # `pageRef` rather than `url`: it populates `.Page` on the menu entry, which is what
 # partials/navbar.html needs to mark a section active while the reader is anywhere
@@ -22,20 +31,20 @@
 # breakpoint.
 
 main:
-  - name: Hardware
-    pageRef: /hardware
+  - name: Products
+    pageRef: /products
     weight: 10
+
+  - name: Tasks
+    pageRef: /tasks
+    weight: 20
 
   - name: Bootware
     pageRef: /bootware
-    weight: 20
+    weight: 30
 
   - name: API
     pageRef: /api
-    weight: 30
-
-  - name: Tutorials
-    pageRef: /tutorials
     weight: 40
 
   - name: Reference
