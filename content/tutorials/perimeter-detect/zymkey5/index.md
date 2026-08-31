@@ -11,8 +11,6 @@ weight: -690
 toc: true
 ---
 
-> NOTICE Aug 2026: The perimeter detect behavior described here is correct for Zymkey5, but the physical connections are not the same as Zymkey4. Zymkey5 brings the perimeter circuits out on a 12 pin JST 0.8mm receptacle, not the micro USB connector used by Zymkey4. Contact support@zymbit.com for the Zymkey5 perimeter pinout and cable options before wiring your loops.
-
 ## Scope
 
 This section explains the perimeter detect feature on Zymkey5 and how to use it in your software application with a simple two wire loop physical configuration.
@@ -30,9 +28,25 @@ When a Perimeter Loop is breached, Zymkey5 can be configured (at time of binding
 
 ### Connecting Perimeter Loop Circuits
 
-Zymkey5 brings perimeter circuits 1 and 2 out on a 12 pin JST 0.8mm receptacle, which mates with a JST 12SUR-32S connector. See the [Zymkey5 product brief](/reference/product-briefs/zymkey5/) for the full connector specification.
+Zymkey5 does not use the micro USB perimeter connector found on Zymkey4. The perimeter circuits are brought out on the 12 pin auxiliary connector, a JST SM12B-SURS-TF that mates with a 12SUR-32S housing. Premade cable harnesses will fit it, and Zymbit makes a breakout board that labels each pin by function.
 
-Perimeter cable assemblies are available from Zymbit as an accessory. [Contact Zymbit](https://www.zymbit.com/contact-us/) for the pinout and cable options.
+Three pins carry the tamper loops:
+
+| Pin | Name | Purpose |
+| --- | --- | --- |
+| 3 | PERIM_0 | Tamper detection transmit |
+| 1 | PERIM_1 | Tamper detection loop 1 receive |
+| 5 | PERIM_2 | Tamper detection loop 2 receive |
+
+Connect PERIM_0 to PERIM_1 to complete loop 1, and to PERIM_2 to complete loop 2. You can wire either loop, or both.
+
+{{% callout warning %}}
+Do not connect the tamper loop pins to any other voltage source or to system ground. When the host is powered off and a battery is fitted, the loop runs from the coin cell, so avoid anything that leaks current through it and do not drive LEDs from the loop.
+{{% /callout %}}
+
+The Zymkey5 perimeter circuit is not the same as the Zymkey4 one. It drives a high entropy encoded pulse train and measures circuit delay, so it detects tampering that a simple continuity loop would miss.
+
+For the full 12 pin auxiliary connector pinout, the breakout board layout, and the pin 1 location diagrams, see the [Zymkey5 connector reference](/reference/cad/zymkey5/).
 
 ### Electrical Circuit
 

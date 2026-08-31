@@ -1,7 +1,7 @@
 ---
-title: "ZYMKEY5 CAD Files"
-linkTitle: "ZYMKEY5 CAD Files"
-description: "3D Step Model, drawings, and GPIO pinout for the ZYMKEY5"
+title: "ZYMKEY5 CAD Files, Connectors, and Pinouts"
+linkTitle: "ZYMKEY5 CAD and Pinouts"
+description: "3D STEP model, GPIO pinout, and the 12 pin auxiliary connector for Zymkey5, including the perimeter tamper loop, battery, LED, and secure button pins."
 aliases:
     - /technical_reference/cad/zymkey5/
 date: ""
@@ -20,6 +20,8 @@ weight: 10
 12 pin JST SURS connector ([SM12B-SURS-TF(LF)(SN)](https://www.digikey.com/en/products/detail/jst-sales-america-inc/SM12B-SURS-TF/9920600?s=N4IgTCBcDaIMoFkCMYBCBaOBVASndAKgGIAUAMkQJQlwBylIAugL5A))
 
 Mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-america-inc/12SUR-32S/1300329) ([premade cable harnesses](https://www.digikey.com/en/products/filter/rectangular-cable-assemblies/450?s=N4IgTCBcDaIMoFUBKIA0ICMZEoLoF8g))
+
+Pins 1, 3, and 5 carry the perimeter tamper loops. To wire and test them, see [Perimeter Detect: Zymkey5](/tutorials/perimeter-detect/zymkey5/).
 
 {{< cardpane >}}
 {{< card header="ZYMKEY5 Auxiliary Connector Pinout" >}}
