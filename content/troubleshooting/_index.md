@@ -45,7 +45,7 @@ If your issue is not related to any of the above list, read through the FAQ belo
 
 - zkifc
    - Added support for Trixie
-   - Added support for new Zymbit HSM model: ZYMKEY FIVE
+   - Added support for new Zymbit HSM model: ZYMKEY5
    - `zkifc -v` added to return version
    - zkpkcs11 package build fixed for 64-bit OSs
 
