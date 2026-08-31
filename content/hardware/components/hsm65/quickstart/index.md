@@ -1,7 +1,7 @@
 ---
 title: Quickstart - HSM6
 linkTitle: Quickstart
-description: ""
+description: "Quickstart for the snap in security module, covering its single 30 pin connector and integration into a secure manufacturing flow."
 aliases:
     - /quickstart/getting-started/hsm6/
 date: ""

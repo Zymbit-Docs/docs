@@ -1,7 +1,7 @@
 ---
 title: "Secure Compute Family Conformity Documents"
 toc_title: "Secure Compute Conformity Documents"
-description: ""
+description: "EU and FCC declarations of conformity for the Secure Compute Module and Secure Compute Motherboard."
 aliases:
     - /technical_reference/conformity/scm/
 date: ""

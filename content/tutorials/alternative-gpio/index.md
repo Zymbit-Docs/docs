@@ -2,7 +2,7 @@
 title: "Using an Alternative GPIO Pin"
 linkTitle: "Alternative GPIO Pin"
 icon: ""
-description: ""
+description: "Move the Zymkey4 handshake signal off GPIO4 when your application needs that pin."
 date: ""
 lastmod: "2025-10-15"
 draft: false

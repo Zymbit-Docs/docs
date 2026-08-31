@@ -1,7 +1,7 @@
 ---
 title: "SLIP39 and Shamir's Wallet Recovery Example"
 linkTitle: "SLIP39 and Shamir's"
-description: ""
+description: "Back up and recover wallet keys using SLIP39 and Shamir's Secret Sharing."
 date: "2022-02-04"
 lastmod: "2025-10-15"
 draft: false

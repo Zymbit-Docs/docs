@@ -9,7 +9,7 @@ cascade:
   params:
       show_versions: true
 icon: ""
-description: ""
+description: "Deprecated Bootware 1.0 release for Secure Compute Module based products, including the Secure Edge Node."
 date: "2024-05-31"
 lastmod: "2025-10-15"
 draft: false

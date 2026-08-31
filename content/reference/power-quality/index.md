@@ -1,7 +1,7 @@
 ---
 title: "Power Quality Considerations"
 icon: ""
-description: ""
+description: "How poor power quality causes unstable and potentially insecure operation, and what supply your board needs."
 aliases:
     - /technical_reference/power-quality/
 date: ""

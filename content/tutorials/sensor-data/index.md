@@ -2,7 +2,7 @@
 title: "Encrypting & Decrypting Sensor Data on Disk"
 linkTitle: "Encrypt Sensor Data"
 icon: ""
-description: ""
+description: "Encrypt and decrypt sensor data on disk with an HSM so collected data is never stored in the clear."
 date: ""
 lastmod: "2025-10-15"
 draft: false

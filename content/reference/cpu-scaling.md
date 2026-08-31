@@ -1,6 +1,6 @@
 ---
 title : "CPU Scaling Governor"
-description: ""
+description: "Why the Raspberry Pi CPU scaling governor can disrupt the I2C bus and Zymkey operations, and how to avoid it."
 date: ""
 lastmod: "2025-10-15"
 draft: false

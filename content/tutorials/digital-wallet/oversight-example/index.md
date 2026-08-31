@@ -1,7 +1,7 @@
 ---
 title: "Creating an Oversight (Read Only) Wallet"
 linkTitle: "Oversight Wallet"
-description: ""
+description: "Create a read only oversight wallet to watch blockchain addresses without exposing private keys."
 date: "2022-02-22"
 lastmod: "2025-10-15"
 draft: false

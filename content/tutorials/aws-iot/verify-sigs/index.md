@@ -1,7 +1,7 @@
 ---
 title: "How to Verify Signatures against Public Key on AWS and Other Devices"
 linkTitle: "Verify Signatures"
-description: ""
+description: "Verify signatures produced by a Zymbit module on another device using the exportable public key."
 date: ""
 lastmod: "2025-10-15"
 draft: false

@@ -3,7 +3,7 @@ title : "Encrypting Root File System with Zymbit Security Modules"
 linkTitle: "Encrypt Root File System"
 aliases:
     - /tutorials/encrypt-rfs/zymkey4/
-description: ""
+description: "Encrypt the root file system on a Raspberry Pi with a Zymbit security module to protect credentials and proprietary code."
 date: ""
 lastmod: "2025-10-15"
 draft: false

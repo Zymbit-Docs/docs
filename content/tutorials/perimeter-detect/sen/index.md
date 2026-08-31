@@ -1,7 +1,7 @@
 ---
 title : "Perimeter Detect: Secure Edge Nodes"
 linkTitle: "Secure Edge Node"
-description: ""
+description: "Perimeter detect tamper wiring for the Secure Edge Node. Contact Zymbit for SEN 400 and SEN 500 connections."
 date: "2022-05-11"
 lastmod: "2025-10-15"
 draft: false

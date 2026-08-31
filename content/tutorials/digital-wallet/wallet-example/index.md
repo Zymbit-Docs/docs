@@ -1,7 +1,7 @@
 ---
 title: "Working with the Zymbit Hardware Wallet"
 linkTitle: "Zymbit Hardware Wallet"
-description: ""
+description: "Work with the Zymbit hardware wallet, which follows BIP32, BIP39, and BIP44 for hierarchical deterministic wallets."
 date: "2022-02-08"
 lastmod: "2025-10-15"
 draft: false

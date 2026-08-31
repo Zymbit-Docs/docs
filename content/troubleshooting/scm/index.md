@@ -1,5 +1,6 @@
 ---
 title: "SCM FAQ and Troubleshooting"
+description: "FAQ and troubleshooting for the Secure Compute Module, including Rev B hardware and firmware changes."
 linkTitle: "SCM" 
 lastmod: "2025-10-15"
 draft: false

@@ -1,7 +1,7 @@
 ---
 title : "Perimeter Detect Circuit Examples"
 linkTitle: "CIRCUIT EXAMPLES"
-description: ""
+description: "Wiring examples and best practices for the two independent perimeter detect circuits."
 date: ""
 lastmod: "2025-10-15"
 draft: false

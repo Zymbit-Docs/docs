@@ -9,7 +9,7 @@ cascade:
   params:
       show_versions: true
 icon: ""
-description: ""
+description: "Deprecated Bootware 1.1 release, adding Zymkey support across additional Raspberry Pi platforms."
 date: "2024-07-23"
 lastmod: "2025-10-15"
 draft: false

@@ -1,5 +1,6 @@
 ---
 title: "Image Files"
+description: "Downloadable Bootware 1.1.0 image files and the platforms each one targets."
 linkTitle: "Image Files" 
 lastmod: "2025-10-15"
 draft: false

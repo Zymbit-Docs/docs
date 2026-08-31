@@ -9,7 +9,7 @@ cascade:
   params:
       show_versions: true
 icon: ""
-description: ""
+description: "Bootware 1.3.0 for managing multiple Linux OS installations on Raspberry Pi with a Zymbit HSM or SCM."
 date: "2024-08-11"
 lastmod: "2025-10-15"
 draft: false

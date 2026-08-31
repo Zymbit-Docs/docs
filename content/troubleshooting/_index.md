@@ -1,5 +1,6 @@
 ---
 title: "FAQ and Troubleshooting"
+description: "Start here: a troubleshooting checklist covering power, I2C, and installation, plus release notes and per product FAQs."
 draft: false
 images: []
 weight: 40

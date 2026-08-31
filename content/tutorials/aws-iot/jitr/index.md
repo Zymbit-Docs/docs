@@ -1,7 +1,7 @@
 ---
 title : "AWS IoT - Just in Time Registration of Client Certificates using Lambda functions"
 linkTitle: "Just In Time Registration"
-description: ""
+description: "Register and activate device certificates automatically at scale with AWS IoT Just In Time Registration."
 date: ""
 lastmod: "2025-10-15"
 draft: false

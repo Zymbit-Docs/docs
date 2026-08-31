@@ -1,7 +1,7 @@
 ---
 title : "AWS IoT - TLS Client Certificate Authentication"
 linkTitle: "Transport Level Security"
-description: ""
+description: "Create and register a Zymkey backed client certificate, then publish data to AWS IoT over TLS."
 date: "2022-01-24"
 lastmod: "2025-10-15"
 draft: false

@@ -1,5 +1,6 @@
 ---
 title: Zymbit Bootware Signing and Verifying
+description: "Sign and verify Zymbit image (.zi) update files using hardware keys held in the HSM or your own keys."
 linkTitle: "Sign and Verify"
 lastmod: "2025-10-15"
 date: "2024-04-17"

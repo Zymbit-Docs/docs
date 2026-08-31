@@ -1,5 +1,6 @@
 ---
 title: "Bootware 1.0-general Error Codes"
+description: "Bootware error codes shown on the HDMI console and logged to /boot/zboot.log, with what each one means."
 linkTitle: "Logging and Bootware 1.0-general Error Codes"
 lastmod: "2025-10-15"
 draft: false

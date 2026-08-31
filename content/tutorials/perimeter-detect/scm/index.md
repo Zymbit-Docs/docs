@@ -1,7 +1,7 @@
 ---
 title : "Perimeter Detect: SCM"
 linkTitle: "SCM"
-description: ""
+description: "Set up perimeter detect on the Secure Compute Module and respond to physical tamper events."
 date: "2022-05-11"
 lastmod: "2025-10-15"
 draft: false

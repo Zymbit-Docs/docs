@@ -1,6 +1,6 @@
 ---
 title: Binding, Device ID, and Authentication
-description: ""
+description: "How Zymkey derives an unalterable Device ID from host attributes, and how binding authenticates later interactions."
 aliases:
     - /technical_reference/binding/
 date: ""

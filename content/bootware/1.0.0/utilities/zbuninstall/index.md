@@ -1,5 +1,6 @@
 ---
 title: Zymbit Bootware Uninstall Utility
+description: "Remove Bootware and return the device to the standard Linux boot process."
 linkTitle: "zb-uninstall"
 lastmod: "2025-10-15"
 date: "2024-04-17"

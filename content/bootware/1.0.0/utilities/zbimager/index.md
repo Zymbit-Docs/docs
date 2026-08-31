@@ -1,5 +1,6 @@
 ---
 title: Zymbit Bootware Image Converter
+description: "Convert an operating system image into Zymbit image (.zi) format with the zb-imager utility."
 linkTitle: "zb-imager"
 lastmod: "2025-10-15"
 date: "2024-04-02"

@@ -1,7 +1,7 @@
 ---
 title: Enabling Production Mode 
 linkTitle: "Production Mode"
-description: ""
+description: "Permanently bind a Zymbit SEN or HSM to its host. Binding cannot be reversed, so read this before you start."
 aliases:
     - /quickstart/production-mode/hsm4/
     - /quickstart/production-mode/hsm6/

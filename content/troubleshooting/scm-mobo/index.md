@@ -1,5 +1,6 @@
 ---
 title: "SCM Motherboard D35 FAQ and Troubleshooting"
+description: "FAQ and troubleshooting for the SCM Motherboard D35."
 linkTitle: "SCM Motherboard D35"
 lastmod: "2025-10-15"
 draft: false

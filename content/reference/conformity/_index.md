@@ -1,7 +1,7 @@
 ---
 title: "Conformity Documents"
 icon: ""
-description: ""
+description: "Declarations of conformity and regulatory documents for Zymbit products."
 aliases:
     - /technical_refrence/conformity/
 date: ""
