@@ -1,0 +1,67 @@
+{{/*
+    Project override of themes/zymdocsy/layouts/partials/hooks/head-end.html
+    (the theme's copy is an empty Algolia stub).
+
+    Only the search overlay's own chrome is defined here. Pagefind's UI bundle --
+    both its JS and its CSS -- is fetched on first use by the script in
+    hooks/body-end.html, so a reader who never searches downloads none of it.
+*/}}
+<style>
+  .pf-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1080;
+    display: none;
+    padding: 6vh 16px 16px;
+    background: rgba(16, 21, 27, .55);
+    overflow-y: auto;
+  }
+  .pf-overlay[data-open] { display: block; }
+  .pf-overlay__panel {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .3);
+    padding: 20px;
+  }
+  .pf-overlay__foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #e3e8ee;
+    font-size: .875rem;
+  }
+  .pf-overlay__hint { color: #6c7885; }
+  .pf-overlay__hint kbd {
+    background: #eef2f6;
+    border: 1px solid #d7dee6;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: .8em;
+    color: #3d4854;
+  }
+  /* Pagefind renders its own input; the overlay supplies the frame. */
+  .pf-overlay .pagefind-ui__form { margin-bottom: 4px; }
+
+  @media (prefers-color-scheme: dark) {
+    .pf-overlay__panel { background: #1b222b; }
+    .pf-overlay__foot { border-top-color: #2a3540; }
+    .pf-overlay__hint { color: #93a1af; }
+    .pf-overlay__hint kbd {
+      background: #232c37;
+      border-color: #33404d;
+      color: #b7c2ce;
+    }
+  }
+  body.dark .pf-overlay__panel { background: #1b222b; }
+  body.dark .pf-overlay__foot { border-top-color: #2a3540; }
+  body.dark .pf-overlay__hint { color: #93a1af; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pf-overlay, .pf-overlay * { transition: none !important; animation: none !important; }
+  }
+</style>

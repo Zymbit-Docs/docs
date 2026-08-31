@@ -57,6 +57,21 @@ jobs:
       - name: Build static site with Hugo
         run: hugo --gc --minify
 
+      # Pagefind indexes the rendered HTML in public/, so it must run after Hugo and
+      # before the deploy. It writes public/pagefind/, which the site fetches lazily
+      # on first search. Pinned so a Pagefind release cannot change search behavior
+      # without a deliberate bump.
+      - name: Build search index with Pagefind
+        run: npx --yes pagefind@1.3.0 --site public
+
+      - name: Verify search index was generated
+        run: |
+          test -f public/pagefind/pagefind.js || {
+            echo "::error::Pagefind index missing - search would silently 404"
+            exit 1
+          }
+          echo "Pagefind index size: $(du -sh public/pagefind | cut -f1)"
+
       - name: Set truncated SHA hash
         run: echo "short_hash=${GITHUB_SHA::6}" >> $GITHUB_ENV
 

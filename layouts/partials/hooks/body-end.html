@@ -1,0 +1,151 @@
+{{/*
+    Project override of themes/zymdocsy/layouts/partials/hooks/body-end.html
+    (the theme's copy is an empty Algolia stub).
+
+    Renders the search overlay once per page and wires it to every
+    [data-pagefind-trigger] field emitted by partials/search-input.html.
+
+    Pagefind's bundle is fetched on first interaction, not on page load. The old
+    Lunr setup downloaded a 1.1 MB index plus jQuery and Lunr from two CDNs on
+    every single page view, whether or not the reader ever searched.
+*/}}
+{{- $bundle := "/pagefind/" | relURL -}}
+{{- $searchPage := "/search/" | relURL -}}
+
+<div class="pf-overlay" id="pf-overlay" role="dialog" aria-modal="true" aria-label="{{ T "ui_search" | default "Search this site" }}" hidden>
+  <div class="pf-overlay__panel">
+    <div id="pf-overlay-ui"></div>
+    <div class="pf-overlay__foot">
+      <span class="pf-overlay__hint"><kbd>Esc</kbd> to close</span>
+      <a href="{{ $searchPage }}" id="pf-overlay-all">View all results</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var BUNDLE = {{ $bundle }};
+  var SEARCH_PAGE = {{ $searchPage }};
+
+  var overlay = document.getElementById("pf-overlay");
+  var mount = document.getElementById("pf-overlay-ui");
+  var allLink = document.getElementById("pf-overlay-all");
+  if (!overlay || !mount) return;
+
+  var bundlePromise = null;
+  var ui = null;
+  var lastTrigger = null;
+
+  // Fetch Pagefind's CSS and JS once, on first use.
+  function ensureBundle() {
+    if (bundlePromise) return bundlePromise;
+    bundlePromise = new Promise(function (resolve, reject) {
+      var css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = BUNDLE + "pagefind-ui.css";
+      document.head.appendChild(css);
+
+      var js = document.createElement("script");
+      js.src = BUNDLE + "pagefind-ui.js";
+      js.onload = resolve;
+      js.onerror = function () {
+        reject(new Error("Pagefind bundle unavailable at " + BUNDLE));
+      };
+      document.head.appendChild(js);
+    });
+    return bundlePromise;
+  }
+
+  function overlayInput() {
+    return mount.querySelector(".pagefind-ui__search-input");
+  }
+
+  function seedQuery(value) {
+    var input = overlayInput();
+    if (!input) return;
+    input.value = value || "";
+    input.focus();
+    if (value) {
+      // The UI listens on its own input; dispatching is more durable than
+      // reaching for an internal method that may be renamed.
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+  }
+
+  function open(seed) {
+    overlay.hidden = false;
+    overlay.setAttribute("data-open", "");
+    document.body.style.overflow = "hidden";
+
+    ensureBundle().then(function () {
+      if (!ui && typeof window.PagefindUI === "function") {
+        ui = new window.PagefindUI({
+          element: "#pf-overlay-ui",
+          bundlePath: BUNDLE,
+          showSubResults: true,
+          showImages: false,
+          pageSize: 8
+        });
+      }
+      seedQuery(seed);
+    }).catch(function (err) {
+      // Almost always the dev server: `hugo server` renders from memory and never
+      // runs Pagefind, so /pagefind/ does not exist. Name the command that does.
+      mount.innerHTML =
+        '<p role="alert"><strong>Search needs a full build.</strong><br>' +
+        'The dev server (<code>npm start</code>) does not generate the search index. ' +
+        'Run <code>npm run build:preview</code> to browse the site locally with search working.</p>';
+      if (window.console) console.warn("Pagefind bundle not found:", err);
+    });
+  }
+
+  function close() {
+    overlay.removeAttribute("data-open");
+    overlay.hidden = true;
+    document.body.style.overflow = "";
+    if (lastTrigger) {
+      lastTrigger.blur();
+      lastTrigger = null;
+    }
+  }
+
+  // Keep "View all results" pointed at the current query.
+  mount.addEventListener("input", function () {
+    var input = overlayInput();
+    var q = input ? input.value.trim() : "";
+    allLink.href = q ? SEARCH_PAGE + "?q=" + encodeURIComponent(q) : SEARCH_PAGE;
+  });
+
+  Array.prototype.forEach.call(
+    document.querySelectorAll("[data-pagefind-trigger]"),
+    function (trigger) {
+      function launch(seed) {
+        lastTrigger = trigger;
+        trigger.value = "";
+        open(seed);
+      }
+      trigger.addEventListener("focus", function () { launch(""); });
+      trigger.addEventListener("click", function () { launch(""); });
+      // If the browser restores a value, or the reader types fast, carry it over.
+      trigger.addEventListener("input", function () { launch(trigger.value); });
+    }
+  );
+
+  overlay.addEventListener("click", function (e) {
+    if (e.target === overlay) close();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && overlay.hasAttribute("data-open")) close();
+    // "/" focuses search, the convention on most docs sites.
+    var tag = (e.target.tagName || "").toLowerCase();
+    if (e.key === "/" && !overlay.hasAttribute("data-open") &&
+        tag !== "input" && tag !== "textarea" && !e.target.isContentEditable) {
+      e.preventDefault();
+      open("");
+    }
+  });
+})();
+</script>

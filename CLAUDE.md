@@ -11,9 +11,9 @@ Hugo-based static documentation site for Zymbit hardware security products (docs
 | Command | Purpose |
 |---------|---------|
 | `npm install` | Install all dependencies (includes Hugo extended) |
-| `npm start` | Dev server with live-reload at localhost:1313 (runs `clean` first) |
-| `npm run build` | Production build with minification (`-e production`) |
-| `npm run build:preview` | Production build served locally |
+| `npm start` | Dev server with live-reload at localhost:1313 (runs `clean` first). **No search index** - see below |
+| `npm run build` | Production build with minification (`-e production`), then Pagefind via `postbuild` |
+| `npm run build:preview` | Production build served locally at localhost:1313, **with working search** |
 | `npm run build:preview:all` | Production build including drafts and future-dated content |
 | `npm run dev:serve` | Watch-mode build plus browser-sync server |
 | `npm run dev:serve:poll` | Same, but polls every 10s (for filesystems without inotify) |
@@ -24,9 +24,18 @@ Hugo-based static documentation site for Zymbit hardware security products (docs
 
 There are no unit tests. `npm test` is an alias for `npm run lint`.
 
+### Checking work locally
+
+`npm run build:preview` is the full local check: it builds, generates the search index, and serves the result at localhost:1313. Use it instead of pushing a branch and waiting on the staging site.
+
+Both `npm start` and `npm run build:preview` serve on port 1313, which makes them easy to confuse. `npm start` runs `hugo server`, which renders from memory and never runs Pagefind, so `/pagefind/` is a 404 there and the search UI reports that a full build is needed. That is expected: `npm start` is for fast content iteration, `build:preview` is for verifying anything search-related.
+
+Pushing a non-`main` branch mirrors it to the staging repo, but `push-staging.yml` strips `.github` and substitutes the staging repo's own workflows - so **the Pagefind step in `deploy-site.yml` does not run on staging** and search will appear unindexed there. Verify search locally, not on staging.
+
 ### Toolchain version caveats
 
-- CI builds with Hugo **0.151.1** extended (pinned in `deploy-site.yml`), but `package.json` pins `hugo-extended` at `^0.91.0`. A local build can therefore behave differently from production; prefer verifying against the CI version when a change depends on newer Hugo behavior.
+- Hugo is pinned to **0.151.1** in two places that must be kept in sync: `hugo-extended` in `package.json`, and `hugo-version` in `deploy-site.yml`. A CI step fails the build if they disagree. They drifted before (`^0.91.0` locally against 0.151.1 in CI), which silently broke `npm run build`.
+- Do not add `hugo-bin` back. It also declares a `hugo` executable and wins the `node_modules/.bin/hugo` symlink over `hugo-extended`, pinning its own much older Hugo regardless of what `hugo-extended` says.
 - The `theme` devDependency in `package.json` points at `file:themes/docs-theme`, a directory that no longer exists (the theme is `themes/zymdocsy`). It is a stale entry, not a path to fix by creating the directory.
 
 ## Hugo configuration
@@ -68,6 +77,26 @@ Located in `layouts/shortcodes/`:
 - `youtube` - YouTube video embeds
 
 Use `supported` / `partially-supported` for OS support status rather than writing the status in prose, so support tables stay consistent as new OS releases land.
+
+## Site search
+
+Search is Pagefind, generated from the rendered HTML in `public/` after Hugo runs (`postbuild` locally, an explicit step in `deploy-site.yml`). There is no index template to maintain; what gets indexed is controlled by `data-pagefind-*` attributes in the layouts.
+
+All of it lives in project-level overrides; `themes/zymdocsy/` is untouched.
+
+- `layouts/docs/baseof.html` - every page routes through this. Marks `<main>` and wraps nav chrome in `data-pagefind-ignore`. Keep in sync when pulling the theme subtree.
+- `layouts/partials/pagefind-attrs.html` - returns `data-pagefind-body` or `data-pagefind-ignore`. Excludes superseded Bootware versions (latest is derived by semver, so a new version directory needs no edit), taxonomy stubs, the 404, and anything with `pagefind_ignore: true`.
+- `layouts/partials/pagefind-filters.html` - filter and metadata carrier elements.
+- `layouts/partials/search-input.html` - the trigger field, rendered twice per page.
+- `layouts/partials/hooks/{head-end,body-end}.html` - overlay styles and markup; fetches the Pagefind bundle on first use, not on page load.
+- `layouts/docs/search.html` + `content/search.md` - the `/search/` results page.
+
+Two traps worth knowing before editing:
+
+- Pagefind reads **one** `data-pagefind-filter` and **one** `data-pagefind-meta` per element, and does not split a comma-separated list. Writing `data-pagefind-filter="section:Bootware, version:2.0.0"` stores a single section literally named `Bootware, version:2.0.0`. Use one element per value.
+- A partial used in attribute position must `return` a `safeHTMLAttr`. Returning a plain string yields `ZgotmplZ` in the output.
+
+To exclude a page from search, set `pagefind_ignore: true` in its front matter.
 
 ## Theme management (git-subtree)
 

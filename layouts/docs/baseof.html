@@ -1,0 +1,56 @@
+{{/*
+    Project override of themes/zymdocsy/layouts/docs/baseof.html.
+
+    Every page on this site resolves to this template (all content cascades to
+    type: docs, and the home page renders through it too), so it is the single
+    place that marks up what Pagefind should index.
+
+    Two changes from the theme original:
+
+      1. <main> carries the attributes from partials/pagefind-attrs.html, which
+         scope indexing to page content and attach section/version filters.
+      2. The version banner and breadcrumb are wrapped in data-pagefind-ignore so
+         navigation chrome does not leak into result excerpts.
+
+    Keep in sync when pulling the theme subtree.
+*/}}
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" class="no-js">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body class="td-{{ .Kind }}">
+    <header>
+      {{ partial "navbar.html" . }}
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            {{ partial "sidebar.html" . }}
+          </aside>
+          {{- if not (default false .Params.api_docs) -}}
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            {{ partial "page-meta-links.html" . }}
+            {{ partial "toc.html" . }}
+            {{ partial "taxonomy_terms_clouds.html" . }}
+          </aside>
+          {{- end -}}
+          <main class="col-12 col-md-8 col-xl-7 pl-md-5" role="main" {{ partial "pagefind-attrs.html" . }}>
+            {{/* Safe to emit unconditionally: when pagefind-attrs.html has put
+                 data-pagefind-ignore on <main>, everything nested inside it --
+                 these carriers included -- is excluded from the index. */}}
+            {{ partial "pagefind-filters.html" . }}
+            <div data-pagefind-ignore>
+              {{ partial "version-banner.html" . }}
+              {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
+            </div>
+            {{ block "main" . }}{{ end }}
+          </main>
+        </div>
+      </div>
+      {{ partial "footer.html" . }}
+    </div>
+    {{ partial "scripts.html" . }}
+  </body>
+</html>

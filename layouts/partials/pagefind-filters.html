@@ -1,0 +1,54 @@
+{{/*
+    Emits one carrier element per Pagefind filter and per metadata field, to be
+    placed inside the data-pagefind-body region (see layouts/docs/baseof.html).
+
+    Why one element each: Pagefind reads ONE data-pagefind-filter and ONE
+    data-pagefind-meta per element, and does not split a comma-separated list --
+    two filters written as data-pagefind-filter="section:Bootware, version:2.0.0"
+    are stored as a single section value literally named "Bootware, version:2.0.0".
+    Two attributes of the same name on one element is invalid HTML and the parser
+    silently drops the second. One element per value is the only form that works.
+
+    Each element carries an explicit key:value, so its (empty) text content is never
+    used and it contributes nothing to the indexed body or to result excerpts.
+
+    The explicit title matters: the project's layouts/docs/list.html does not render
+    an <h1>, so on every section page Pagefind would otherwise fall back to the
+    document <title>, which carries a trailing " |" from titleSeparator with an empty
+    titleAddition -- giving results like "Bootware 2.0.0 (Beta) |".
+
+    Superseded Bootware pages still render these carriers, which is harmless:
+    data-pagefind-ignore on <main> excludes everything nested inside it.
+*/}}
+{{- $pageVersion := .Params.version -}}
+{{- if not $pageVersion -}}
+  {{- range .Ancestors -}}
+    {{- if and (not $pageVersion) .Params.version -}}
+      {{- $pageVersion = .Params.version -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Filters */ -}}
+{{- with .FirstSection -}}
+  {{- if not .IsHome -}}
+<span data-pagefind-filter="section:{{ .LinkTitle | default .Title }}"></span>
+  {{- end -}}
+{{- end -}}
+{{- with $pageVersion -}}
+<span data-pagefind-filter="version:{{ . }}"></span>
+{{- end -}}
+
+{{- /* Metadata shown on the result card */ -}}
+{{- with .Title -}}
+<span data-pagefind-meta="title:{{ . }}"></span>
+{{- end -}}
+{{- $crumbs := slice -}}
+{{- range .Ancestors.Reverse -}}
+  {{- if not .IsHome -}}
+    {{- $crumbs = $crumbs | append (.LinkTitle | default .Title) -}}
+  {{- end -}}
+{{- end -}}
+{{- with delimit $crumbs " › " -}}
+<span data-pagefind-meta="breadcrumb:{{ . }}"></span>
+{{- end -}}

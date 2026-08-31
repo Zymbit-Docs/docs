@@ -22,8 +22,12 @@ schemaLinkedIn: "https://www.linkedin.com/company/zymbit"
 schemaGitHub: "https://github.com/zymbit"
 schemaSection: "blog"
 
-## Lunr.js search
-offlineSearch: true
+## Site search
+# Search is served by Pagefind, which indexes the rendered HTML in public/ at build
+# time (see .github/workflows/deploy-site.yml and `npm run build:search`).
+# offlineSearch must stay false: it is what pulls in Lunr, jQuery's offline-search.js
+# and the 1.1 MB offline-search-index.json on every page load.
+offlineSearch: false
 sidebar_search_disable: true
 
 ## Sitelinks Search Box
@@ -44,9 +48,6 @@ lqipWidth: "20x"
 # Edit Page
 docsRepo: "https://github.com/zymbit-docs/docs"
 editPage: true
-
-options:
-  flexSearch: true
 
 ui:
   sidebar_menu_foldable: true

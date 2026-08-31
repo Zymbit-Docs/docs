@@ -1,0 +1,19 @@
+{{/*
+    Project override of themes/zymdocsy/layouts/partials/search-input.html.
+
+    Replaces the Lunr/offline-search input. This partial is rendered twice per page
+    (navbar and sidebar), so it emits only the trigger field -- the search overlay
+    itself is rendered once, in partials/hooks/body-end.html.
+
+    The td-search-input class is kept so the theme's existing _search.scss styling
+    continues to apply unchanged.
+*/}}
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; {{ T "ui_search" }}"
+  aria-label="{{ T "ui_search" }}"
+  aria-haspopup="dialog"
+  autocomplete="off"
+  data-pagefind-trigger
+>
