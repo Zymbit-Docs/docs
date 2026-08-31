@@ -86,7 +86,7 @@ All of it lives in project-level overrides; `themes/zymdocsy/` is untouched.
 
 - `layouts/docs/baseof.html` - every page routes through this. Marks `<main>` and wraps nav chrome in `data-pagefind-ignore`. Keep in sync when pulling the theme subtree.
 - `layouts/partials/pagefind-attrs.html` - returns `data-pagefind-body` or `data-pagefind-ignore`. Excludes every Bootware version except the stable one, taxonomy stubs, the 404, and anything with `pagefind_ignore: true`.
-- `layouts/partials/bootware-stable.html` - returns the stable Bootware version.
+- `layouts/partials/bootware-releases.html` - returns the stable and beta Bootware releases.
 - `layouts/partials/pagefind-filters.html` - filter and metadata carrier elements.
 - `layouts/partials/search-input.html` - the trigger field, rendered twice per page.
 - `layouts/partials/hooks/{head-end,body-end}.html` - overlay styles and markup; fetches the Pagefind bundle on first use, not on page load.
@@ -99,11 +99,13 @@ Two traps worth knowing before editing:
 
 ### Which Bootware version is searchable
 
-Only the **stable** release is indexed, so results never land on a prerelease. Stable is declared by `stable: true` in the front matter of that version's `_index.md` (currently `content/bootware/1.3.2/_index.md`), read via `partials/bootware-stable.html`.
+Only the **stable** release is indexed, so results never land on a prerelease. Stable is declared by `stable: true` in the front matter of that version's `_index.md` (currently `content/bootware/1.3.2/_index.md`), read via `partials/bootware-releases.html`.
 
 Do **not** sort by version number to find the current release. Bootware 2.0.0 is a beta and 1.3.2 is stable, so highest-semver points at prerelease docs. `weight` is display order, not stability - 2.0.0 is weight 20, above 1.3.2 at 30. When 2.0.0 ships, move the `stable: true` flag and nothing else needs to change.
 
-Three files still carry their own highest-semver copy of this logic and share the bug: `shortcodes/bootware_version_notice.html` (which would tell 1.3.2 readers they are out of date), `section/bootware.html` (which would redirect `/bootware/` to the beta), and the stale `section/products/bootware.html`. Switch them to `partials/bootware-stable.html` when next touched.
+The beta needs no flag: it is the highest version ranked above stable, so promoting a release automatically stops the old beta being advertised as one.
+
+Two files still carry their own highest-semver copy of this logic and share the original bug: `section/bootware.html` (which would redirect `/bootware/` to the beta) and the stale `section/products/bootware.html`. Both are currently inert - `docs/list.html` wins the layout lookup for `/bootware/` - but switch them to `partials/bootware-releases.html` when next touched.
 
 To exclude a page from search, set `pagefind_ignore: true` in its front matter.
 

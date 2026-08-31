@@ -25,7 +25,7 @@
     this region -- see partials/pagefind-filters.html for why they cannot share an
     attribute with each other or with <main>.
 
-    The stable release comes from partials/bootware-stable.html, which reads the
+    The stable release comes from partials/bootware-releases.html, which reads the
     `stable: true` front matter flag rather than sorting by version number -- the
     highest version is the 2.0.0 beta. Adding or promoting a version does not require
     editing this file.
@@ -34,7 +34,7 @@
     in attribute position; returning a plain string there yields ZgotmplZ.
 */}}
 
-{{- $stable := partial "bootware-stable.html" . -}}
+{{- $stable := (partial "bootware-releases.html" .).stableVersion -}}
 
 {{- /* The Bootware version this page belongs to, if any. */ -}}
 {{- $pageVersion := .Params.version -}}
