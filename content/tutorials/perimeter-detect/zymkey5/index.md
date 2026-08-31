@@ -11,41 +11,28 @@ weight: -690
 toc: true
 ---
 
+> NOTICE Aug 2026: The perimeter detect behavior described here is correct for Zymkey5, but the physical connections are not the same as Zymkey4. Zymkey5 brings the perimeter circuits out on a 12 pin JST 0.8mm receptacle, not the micro USB connector used by Zymkey4. Contact support@zymbit.com for the Zymkey5 perimeter pinout and cable options before wiring your loops.
+
 ## Scope
 
-This section explains the perimeter detect feature on Zymkey4 and how to use it in your software application with a simple two wire loop physical configuration.
+This section explains the perimeter detect feature on Zymkey5 and how to use it in your software application with a simple two wire loop physical configuration.
 
 For alternative physical configurations and best practices: [Learn more >](https://docs.zymbit.com/tutorials/perimeter-detect/examples)
 
-![Zymkey4-PD-thick-lines](../ZK4-perim-detect-thick-lines.png)
+![Perimeter detect circuits](../ZK4-perim-detect-thick-lines.png)
 
 Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended  or in high risk environments.
 
-Zymkey4 includes two independent Perimeter Loops that can be configured to meet different applications.
+Zymkey5 includes two independent Perimeter Loops that can be configured to meet different applications.
 
-When a Perimeter Loop is breached, Zymkey4 can be configured (at time of binding) to respond with different "Actions", depending upon your security policy.
+When a Perimeter Loop is breached, Zymkey5 can be configured (at time of binding) to respond with different "Actions", depending upon your security policy.
 
 
 ### Connecting Perimeter Loop Circuits
 
-Zymkey4 uses a standard microUSB connector to interface to perimeter circuits 1 and 2. This is convenient for rapid prototyping and small scale production situations.
+Zymkey5 brings perimeter circuits 1 and 2 out on a 12 pin JST 0.8mm receptacle, which mates with a JST 12SUR-32S connector. See the [Zymkey5 product brief](/reference/product-briefs/zymkey5/) for the full connector specification.
 
-<p><img src="../ZK4-cable-connector.png" alt="Zymkey4 Cable Connector" width="50%"></p>
-
-(For high volume applications, different connector types are available.  [Contact Zymbit](https://www.zymbit.com/contact-us/) for more details.)
-
-
-
-### Using a Standard USB EXTENSION Cable for Perimeter Loop
-
-You can use a micro-usb EXTENSION cable, which carries all necessary signals, to connect to the perimeter detect. [Here is one example of an extension cable that will work.](https://www.amazon.com/gp/product/B071RYP3SC/ref=oh_aui_detailpage_o08_s02?ie=UTF8&psc=1) (Remove the female connector to expose the flying leads as shown below, then connect your perimeter circuits - P1, P2 -  to these)
-
-![Cable Pic 1](../ZK4-perim-detect-cable-pic.png)
-
-![Cable Pic 2](../ZK4-perim-detect-cable.png)
-
-
-**IMPORTANT:** do **NOT**  use standard micro-usb **charging cable**  it will not work, because it does not have a wire on pin 4.
+Perimeter cable assemblies are available from Zymbit as an accessory. [Contact Zymbit](https://www.zymbit.com/contact-us/) for the pinout and cable options.
 
 ### Electrical Circuit
 
