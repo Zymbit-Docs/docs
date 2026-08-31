@@ -20,11 +20,25 @@ jobs:
           submodules: true
           fetch-depth: 0
           
+      # KEEP IN SYNC with the "hugo-extended" pin in package.json. The version lives
+      # in two places, and when they drift, `npm run build` stops matching production
+      # -- which is how the local build came to be broken against Hugo 0.91 while CI
+      # was building fine on 0.151.1.
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.151.1'
           extended: true
+
+      - name: Fail if the local Hugo pin has drifted from this workflow
+        run: |
+          pinned=$(node -p "require('./package.json').devDependencies['hugo-extended']")
+          if [ "$pinned" != "0.151.1" ]; then
+            echo "::error::package.json pins hugo-extended at '$pinned' but this workflow builds with 0.151.1."
+            echo "Update both together so local builds match production."
+            exit 1
+          fi
+          echo "Hugo pin matches: $pinned"
 
       - name: Cache npm
         uses: actions/cache@v4
