@@ -17,6 +17,9 @@ weight: 30
 images: []
 toc: True
 version: "1.3.2"
+# Marks this as the stable release. Search indexes only the stable version, so
+# results land here rather than on the 2.0.0 beta. Move this flag when 2.0.0 ships.
+stable: true
 ---
 
 -----

@@ -85,7 +85,8 @@ Search is Pagefind, generated from the rendered HTML in `public/` after Hugo run
 All of it lives in project-level overrides; `themes/zymdocsy/` is untouched.
 
 - `layouts/docs/baseof.html` - every page routes through this. Marks `<main>` and wraps nav chrome in `data-pagefind-ignore`. Keep in sync when pulling the theme subtree.
-- `layouts/partials/pagefind-attrs.html` - returns `data-pagefind-body` or `data-pagefind-ignore`. Excludes superseded Bootware versions (latest is derived by semver, so a new version directory needs no edit), taxonomy stubs, the 404, and anything with `pagefind_ignore: true`.
+- `layouts/partials/pagefind-attrs.html` - returns `data-pagefind-body` or `data-pagefind-ignore`. Excludes every Bootware version except the stable one, taxonomy stubs, the 404, and anything with `pagefind_ignore: true`.
+- `layouts/partials/bootware-stable.html` - returns the stable Bootware version.
 - `layouts/partials/pagefind-filters.html` - filter and metadata carrier elements.
 - `layouts/partials/search-input.html` - the trigger field, rendered twice per page.
 - `layouts/partials/hooks/{head-end,body-end}.html` - overlay styles and markup; fetches the Pagefind bundle on first use, not on page load.
@@ -95,6 +96,14 @@ Two traps worth knowing before editing:
 
 - Pagefind reads **one** `data-pagefind-filter` and **one** `data-pagefind-meta` per element, and does not split a comma-separated list. Writing `data-pagefind-filter="section:Bootware, version:2.0.0"` stores a single section literally named `Bootware, version:2.0.0`. Use one element per value.
 - A partial used in attribute position must `return` a `safeHTMLAttr`. Returning a plain string yields `ZgotmplZ` in the output.
+
+### Which Bootware version is searchable
+
+Only the **stable** release is indexed, so results never land on a prerelease. Stable is declared by `stable: true` in the front matter of that version's `_index.md` (currently `content/bootware/1.3.2/_index.md`), read via `partials/bootware-stable.html`.
+
+Do **not** sort by version number to find the current release. Bootware 2.0.0 is a beta and 1.3.2 is stable, so highest-semver points at prerelease docs. `weight` is display order, not stability - 2.0.0 is weight 20, above 1.3.2 at 30. When 2.0.0 ships, move the `stable: true` flag and nothing else needs to change.
+
+Three files still carry their own highest-semver copy of this logic and share the bug: `shortcodes/bootware_version_notice.html` (which would tell 1.3.2 readers they are out of date), `section/bootware.html` (which would redirect `/bootware/` to the beta), and the stale `section/products/bootware.html`. Switch them to `partials/bootware-stable.html` when next touched.
 
 To exclude a page from search, set `pagefind_ignore: true` in its front matter.
 
