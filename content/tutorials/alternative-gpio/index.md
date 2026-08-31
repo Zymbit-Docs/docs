@@ -12,8 +12,17 @@ toc: true
 
 ## Remapping GPIO4 Pin
 
-Zymkey4 uses GPIO4 for a 'handshake signal' to coordinate communications with the host Pi.
+Zymbit security modules use GPIO4 for a 'handshake signal' to coordinate the I2C communications they use to talk to the host Pi. This applies to:
+
+* Zymkey4
+* Zymkey5
+* HSM4
+* HSM6
+* HSM60
+
 There is a logical (software), electrical and mechanical connection with GPIO4. If you need to use an alternative GPIO pin, here are the steps you need to take reconfigure your system:
+
+The software change is the same on every module. The electrical and mechanical steps below show Zymkey4; the other modules use the same handshake but differ in form factor and pinout, so check the pinout for yours before rewiring.
 
 
 ### Software Configuration

@@ -22,6 +22,14 @@ The process we describe here can also be used more generally to encrypt binary l
 
 ## What you will need
 
+A Zymbit security module. The process is the same for each of these:
+
+* Zymkey4
+* Zymkey5
+* HSM4
+* HSM6
+* HSM60
+
 * Follow the [Installation and Getting Started section for your HSM](/hardware/modules/) first.
 
 We will use temperature data from a DS18B20 OneWire probe. We will encrypt the data to disk using the HSM python package, and then decrypt in a different session. For the purpose of this tutorial I will not be going over the circuit setup and one-wire configuration. That is adequately covered [here. ](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/hardware) If you have questions however, we are happy to help!

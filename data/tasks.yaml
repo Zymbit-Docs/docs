@@ -39,8 +39,8 @@ tasks:
   - key: sensor-data
     title: "Encrypt sensor data on disk"
     page: /tutorials/sensor-data
-    products: []
-    note: "The page names no product; applicability needs confirming."
+    products: [zymkey4, zymkey5, hsm4, hsm6, hsm60]
+    note: "The process is the same on each of these modules."
 
   - key: supervised-boot
     title: "Verify the boot chain"
@@ -60,7 +60,8 @@ tasks:
   - key: alternative-gpio
     title: "Free up GPIO4"
     page: /tutorials/alternative-gpio
-    products: [zymkey4]
+    products: [zymkey4, zymkey5, hsm4, hsm6, hsm60]
+    note: "All of these use GPIO4 as the I2C handshake. The software change is identical; the wiring diagram shows Zymkey4."
 
   - key: bootware
     title: "Manage OS images and A/B updates"
