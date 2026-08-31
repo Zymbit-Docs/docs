@@ -20,14 +20,7 @@
     Superseded Bootware pages still render these carriers, which is harmless:
     data-pagefind-ignore on <main> excludes everything nested inside it.
 */}}
-{{- $pageVersion := .Params.version -}}
-{{- if not $pageVersion -}}
-  {{- range .Ancestors -}}
-    {{- if and (not $pageVersion) .Params.version -}}
-      {{- $pageVersion = .Params.version -}}
-    {{- end -}}
-  {{- end -}}
-{{- end -}}
+{{- $pageVersion := partial "bootware-page-version.html" . -}}
 
 {{- /* Filters */ -}}
 {{- with .FirstSection -}}

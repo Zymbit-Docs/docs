@@ -36,15 +36,7 @@
 
 {{- $stable := (partial "bootware-releases.html" .).stableVersion -}}
 
-{{- /* The Bootware version this page belongs to, if any. */ -}}
-{{- $pageVersion := .Params.version -}}
-{{- if not $pageVersion -}}
-  {{- range .Ancestors -}}
-    {{- if and (not $pageVersion) .Params.version -}}
-      {{- $pageVersion = .Params.version -}}
-    {{- end -}}
-  {{- end -}}
-{{- end -}}
+{{- $pageVersion := partial "bootware-page-version.html" . -}}
 
 {{- $notStable := and $pageVersion $stable (ne $pageVersion $stable) -}}
 

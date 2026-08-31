@@ -1,6 +1,12 @@
 # Hostname (and path) to the root
 baseurl: "https://docs.zymbit.com"
 
+# Site name. This is `.Site.Title`, which partials/head.html appends to every page
+# title. It was never set -- the name lived only in params.yaml as
+# `.Site.Params.title` -- so `.Site.Title` was empty and every page emitted a title
+# ending in a dangling " | ", visible in search results across the whole site.
+title: "Zymbit Documentation"
+
 # General site configuration
 enableEmoji: true
 enableGitInfo: true
