@@ -28,7 +28,9 @@ SLIP39 allows the owner to backup their wallets with multiple shards using a com
 SLIP39 generates groups and each of these groups can contain its own system of member shards.
 
 * HSM6 supports up to 14 groups \* 14 members per group = 196 shards total
-* SCM supports up to 16 groups \* 16 members per group = 256 shards total 
+* SCM supports up to 16 groups \* 16 members per group = 256 shards total
+
+Limits for the HSM60 and Zymkey5 are not documented here. [Contact Zymbit](https://www.zymbit.com/contact-us/) for those figures.
 
 #### Useful Resources:
 
@@ -36,9 +38,11 @@ SLIP39 generates groups and each of these groups can contain its own system of m
 
 ### Prerequisites
 
-* Zymbit Modules that support this feature:
-    * [HSM6](https://www.zymbit.com/hsm6/)
-    * [SCM](https://www.zymbit.com/secure-compute-platform/) 
+* Zymbit modules that support this feature:
+    - [HSM6](/products/hsm6/)
+    - [HSM60](/products/hsm60/)
+    - [Zymkey5](/products/zymkey5/)
+    - [Secure Compute Module](/products/scm/)
 
 * Follow the [Installation and Getting Started section for your HSM](/hardware/modules/) first.
 

@@ -21,7 +21,7 @@ A Software Wallet, also known as a Soft Wallet or Desktop Wallet locally stores 
 
 ## What is the Zymbit Embedded Hardware Wallet?
 
-Zymbit Embedded Hardware Wallet functionality is available in Zymbit products, HSM6 and SCM. These products are designed to easily integrate into IoT and blockchain appliances that manage large numbers of keys and/or participate in blockchain and crypto transactions.
+Zymbit Embedded Hardware Wallet functionality is available on the HSM6, HSM60, Zymkey5, and Secure Compute Module. It is not available on Zymkey4 or HSM4. These products are designed to easily integrate into IoT and blockchain appliances that manage large numbers of keys and/or participate in blockchain and crypto transactions.
 
 The core features of Zymbit Embedded Hardware Wallets are:
  * BIP32 – Hierarchical Deterministic Wallet
@@ -50,9 +50,11 @@ safe and locked away!
 
 ### Prerequisites
 
-* Zymbit Modules that support this feature:
-    * [HSM6](https://www.zymbit.com/hsm6/)
-    * [SCM ](https://www.zymbit.com/secure-compute-platform/)
+* Zymbit modules that support this feature:
+    - [HSM6](/products/hsm6/)
+    - [HSM60](/products/hsm60/)
+    - [Zymkey5](/products/zymkey5/)
+    - [Secure Compute Module](/products/scm/)
 
 * Follow the [Installation and Getting Started section for your HSM](/hardware/modules/) first.
 

@@ -50,12 +50,13 @@ tasks:
   - key: aws-iot
     title: "Connect to AWS IoT"
     page: /tutorials/aws-iot
-    products: [zymkey4, hsm6, scm, sen500, sen400, send35]
+    products: [zymkey4, zymkey5, hsm4, hsm6, hsm60, scm, sen500, sen400, send35]
 
   - key: digital-wallet
     title: "Use the hardware wallet"
     page: /tutorials/digital-wallet
-    products: [hsm6, scm]
+    products: [hsm6, scm, zymkey5, hsm60]
+    note: "Wallet support is not available on Zymkey4 or HSM4."
 
   - key: alternative-gpio
     title: "Free up GPIO4"

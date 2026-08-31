@@ -23,9 +23,11 @@ This can be useful for handing a copy of a wallet to a financial advisor or some
 
 ### Prerequisites
 
-* Zymbit Modules that support this feature:
-    * [HSM6](https://www.zymbit.com/hsm6/)
-    * [SCM ](https://www.zymbit.com/secure-compute-platform/)
+* Zymbit modules that support this feature:
+    - [HSM6](/products/hsm6/)
+    - [HSM60](/products/hsm60/)
+    - [Zymkey5](/products/zymkey5/)
+    - [Secure Compute Module](/products/scm/)
 
 * Follow the [Installation and Getting Started section for your HSM](/hardware/modules/) first.
 
