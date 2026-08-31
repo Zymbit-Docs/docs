@@ -1,10 +1,57 @@
 ---
 
+# Global navigation.
+#
+# Before this, the only two entries were Community and zymbit.com -- both of which
+# leave the site. Every documentation section was reachable only by expanding the
+# left sidebar tree, so a reader arriving on a deep page from a search engine had no
+# visible way to see what else the docs cover.
+#
+# The six documentation sections come first, in reading order rather than by the
+# `weight` used for sidebar ordering. The two outbound links stay last and keep their
+# icons, which usefully marks them as leaving the site.
+#
+# `pageRef` rather than `url`: it populates `.Page` on the menu entry, which is what
+# partials/navbar.html needs to mark a section active while the reader is anywhere
+# beneath it (`$.IsDescendant`). A plain `url` leaves `.Page` nil and highlights only
+# the section's own landing page.
+#
+# Labels are deliberately shorter than the section titles -- "API" rather than
+# "Zymbit Driver API", "Troubleshooting" rather than "FAQ and Troubleshooting" --
+# because the navbar is a single row that scrolls horizontally below the md
+# breakpoint.
+
 main:
+  - name: Hardware
+    pageRef: /hardware
+    weight: 10
+
+  - name: Bootware
+    pageRef: /bootware
+    weight: 20
+
+  - name: API
+    pageRef: /api
+    weight: 30
+
+  - name: Tutorials
+    pageRef: /tutorials
+    weight: 40
+
+  - name: Reference
+    pageRef: /reference
+    weight: 50
+
+  - name: Troubleshooting
+    pageRef: /troubleshooting
+    weight: 60
+
   - name: Community
     pre: "<i class=\"fab fa-discourse\"></i>"
     url: https://community.zymbit.com/
-    
+    weight: 90
+
   - name: zymbit.com
     pre: "<i class=\"fa fa-home\"></i>"
     url: https://zymbit.com
+    weight: 100

@@ -122,6 +122,8 @@ To exclude a page from search, set `pagefind_ignore: true` in its front matter.
 
 The Zymdocsy theme lives at `themes/zymdocsy/` and is managed with `git subtree`. Commits affecting `themes/zymdocsy/` must be separate from commits affecting other files. Always use `--squash` with subtree operations.
 
+Prefer a project-level override in `layouts/` to editing the theme, so subtree pulls stay clean. Files in `layouts/` shadow the theme copy of the same path, and several already do - including `partials/breadcrumb.html` and `docs/baseof.html`. Editing the `themes/zymdocsy/` copy of a shadowed file has no effect, which is easy to lose time to.
+
 ```bash
 # Pull upstream changes
 git subtree pull --prefix themes/zymdocsy \
