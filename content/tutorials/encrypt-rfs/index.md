@@ -15,6 +15,14 @@ toc: true
 
 #### Prerequisites
 
+Zymbit security module. The process is the same for each of these:
+
+* Zymkey4
+* Zymkey5
+* HSM4
+* HSM6
+* HSM60
+
 Raspberry Pi:
 * Raspberry PI OS: Trixie (64 bit)
 * Raspberry PI OS: Bookworm (64 bit)
