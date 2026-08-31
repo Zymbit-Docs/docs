@@ -58,7 +58,7 @@ Notable details in `config/_default/config.yaml`:
 
 All documentation lives under `content/` as Markdown files:
 
-- **`bootware/`** - Versioned by semver directories: 1.0.0, 1.1.0, 1.2.2, 1.3.0, 1.3.2, 2.0.0. The layout at `layouts/section/bootware.html` auto-redirects `/bootware/` to the latest version. The version list that drives the picker and the outdated-version banner is `params.versions` in `config/_default/config.yaml` — adding a directory alone is not enough.
+- **`bootware/`** - Versioned by semver directories: 1.0.0, 1.1.0, 1.2.2, 1.3.0, 1.3.2, 2.0.0. `/bootware/` is a landing page, not a redirect: it renders the version dropdown plus quick links to the stable and beta releases. Adding a version directory is not enough on its own - see below.
 - **`api/`** - Auto-generated from XML via the `process-api-update.yml` GitHub Action. Do not edit these files manually.
 - **`hardware/`** - Product documentation (`sen`, `dev-kits`, `modules`, `components`)
 - **`reference/`** - Technical reference (`binding`, `cad`, `conformity`, `engineering-notes`, `power-quality`, `product-briefs`, `real-time-clock`, `reserved-pins`, `zymbit-wallet-sdk`, plus `cpu-scaling.md`)
@@ -105,7 +105,16 @@ Do **not** sort by version number to find the current release. Bootware 2.0.0 is
 
 The beta needs no flag: it is the highest version ranked above stable, so promoting a release automatically stops the old beta being advertised as one.
 
-Two files still carry their own highest-semver copy of this logic and share the original bug: `section/bootware.html` (which would redirect `/bootware/` to the beta) and the stale `section/products/bootware.html`. Both are currently inert - `docs/list.html` wins the layout lookup for `/bootware/` - but switch them to `partials/bootware-releases.html` when next touched.
+`partials/bootware-releases.html` is now the only place that identifies releases. Two dead layouts that duplicated the highest-semver logic (`section/bootware.html` and `section/products/bootware.html`) have been deleted; they were never reached, because everything cascades to `type: docs` and `docs/list.html` wins the lookup for `/bootware/`.
+
+### Adding or promoting a Bootware version
+
+Four things are driven by separate mechanisms, and three of them are manual:
+
+1. `params.versions` in `config/_default/config.yaml` drives the version dropdown (`version-menu` shortcode and the navbar selector). A new directory does not appear there on its own.
+1. `stable: true` in the version's `_index.md` selects the stable release, which controls both what search indexes and what the version banner says. Move it on promotion.
+1. `hide_summary: true` in a version's `_index.md` keeps it out of the quick-links list on `/bootware/`. Today only 1.3.2 and 2.0.0 lack it, which is why that list resolves to exactly stable and beta - so on promotion, add it to the newly superseded version.
+1. The beta is derived, not declared: it is the highest version ranked above stable. Nothing to update.
 
 To exclude a page from search, set `pagefind_ignore: true` in its front matter.
 
