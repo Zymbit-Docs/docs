@@ -96,10 +96,25 @@
     what the `perimeter` field in products.yaml overrides.
 */ -}}
 {{- $variantKey := $perimKey -}}
+
+{{- /* A product supports its own tasks plus those of anything it inherits from. */ -}}
+{{- $taskKeys := slice $p.key -}}
+{{- with $p.inherits -}}
+  {{- $parent := . -}}
+  {{- $known := false -}}
+  {{- range site.Data.products.products -}}
+    {{- if eq .key $parent -}}{{ $known = true }}{{- end -}}
+  {{- end -}}
+  {{- if not $known -}}
+    {{- errorf "products.yaml: product %q inherits from %q, which is not a product" $p.key $parent -}}
+  {{- end -}}
+  {{- $taskKeys = $taskKeys | append $parent -}}
+{{- end -}}
+
 {{- $tasks := slice -}}
 {{- range site.Data.tasks.tasks -}}
   {{- $t := . -}}
-  {{- if in $t.products $p.key -}}
+  {{- if intersect $t.products $taskKeys -}}
     {{- $pg := site.GetPage $t.page -}}
     {{- if not $pg -}}
       {{- errorf "tasks.yaml: task %q points at %q, which does not exist" $t.key $t.page -}}

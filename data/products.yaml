@@ -17,6 +17,11 @@
 #   refkey     Override for the convention lookups when it differs from key.
 #   perimeter  Override for /tutorials/perimeter-detect/<...>/ when a product is
 #              covered by a shared page rather than its own.
+#   inherits   Another product key whose tasks this product also supports. The
+#              developer kit is a SEN 500 plus accessories, so it supports whatever
+#              the SEN 500 does; declaring that once means a task added to the SEN
+#              500 later reaches the kit with no second edit. One level only, not
+#              transitive.
 #   components Boards and modules inside this product, as page paths.
 #   also       Extra links worth surfacing, as {path, label}.
 #
@@ -56,6 +61,7 @@ products:
     status: current
     hardware: /hardware/dev-kits/sen500-dev-kit
     perimeter: sen
+    inherits: sen500
     components:
       - /hardware/components/sbb
       - /hardware/components/hsm64
