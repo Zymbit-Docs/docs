@@ -62,10 +62,10 @@
   </ul>
   {{ end }}
 
-  {{ if or $h.tasks $h.perimeter }}
+  {{ with $h.tasks }}
   <h2>Common tasks</h2>
   <ul>
-    {{- range $h.tasks }}
+    {{- range . }}
     <li><a href="{{ .page.RelPermalink }}">{{ .task.title }}</a>
       {{- with .task.note }} <em>({{ . }})</em>{{ end }}</li>
     {{- end }}

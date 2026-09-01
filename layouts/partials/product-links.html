@@ -12,7 +12,9 @@
         also        slice of {page, label}
         refs        slice of {page, label, key}   cad / conformity / brief
         support     slice of {page, label, key}   troubleshooting / community
-        tasks       slice of {task, page}         from data/tasks.yaml
+        tasks       slice of {task, page, specific} from data/tasks.yaml, where
+                    `page` is the per-product page when one exists and `specific`
+                    says whether it is
         gaps        slice of strings              categories with nothing behind them
 
     Two rules make this maintainable:
@@ -79,7 +81,21 @@
 {{- if $ts }}{{ $support = $support | append (dict "page" $ts "label" "FAQ and troubleshooting" "key" "troubleshooting") }}
 {{- else }}{{ $gaps = $gaps | append "troubleshooting FAQ" }}{{ end -}}
 
-{{- /* Tasks that name this product. */ -}}
+{{- /*
+    Tasks that name this product.
+
+    Some tasks are documented per product beneath the task's own section --
+    /tutorials/perimeter-detect/zymkey5/ rather than the section landing. Where such
+    a page exists, link it: sending a Zymkey5 owner to the generic perimeter page
+    when a Zymkey5 one exists is exactly the indirection these hubs are meant to
+    remove. The lookup is by convention, so any task that later grows per-product
+    pages picks this up with no change here.
+
+    $variantKey is the product's own key, except where several products share one
+    page -- the SEN models are all covered by .../perimeter-detect/sen/ -- which is
+    what the `perimeter` field in products.yaml overrides.
+*/ -}}
+{{- $variantKey := $perimKey -}}
 {{- $tasks := slice -}}
 {{- range site.Data.tasks.tasks -}}
   {{- $t := . -}}
@@ -88,12 +104,14 @@
     {{- if not $pg -}}
       {{- errorf "tasks.yaml: task %q points at %q, which does not exist" $t.key $t.page -}}
     {{- end -}}
-    {{- $tasks = $tasks | append (dict "task" $t "page" $pg) -}}
+    {{- $specific := false -}}
+    {{- with site.GetPage (printf "%s/%s" $t.page $variantKey) -}}
+      {{- $pg = . -}}
+      {{- $specific = true -}}
+    {{- end -}}
+    {{- $tasks = $tasks | append (dict "task" $t "page" $pg "specific" $specific) -}}
   {{- end -}}
 {{- end -}}
-
-{{- /* Perimeter detect is a task with a per-product page, so resolve it directly. */ -}}
-{{- $perim := site.GetPage (printf "/tutorials/perimeter-detect/%s" $perimKey) -}}
 
 {{- return (dict
       "product"    $p
@@ -103,5 +121,4 @@
       "refs"       $refs
       "support"    $support
       "tasks"      $tasks
-      "perimeter"  $perim
       "gaps"       $gaps) -}}
