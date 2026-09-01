@@ -9,9 +9,11 @@
     Content files under content/products/ carry only a `product` key; there is nothing
     to keep in sync by hand.
 
-    Gaps are rendered, not hidden. A product with no troubleshooting FAQ says so. That
-    is the point: a hole visible on one page is a prompt, while the same hole spread
-    across six sections is invisible to everyone.
+    Missing categories are simply absent rather than listed. An earlier version
+    printed a "Not yet documented" list, which reads as a note to whoever maintains
+    the site rather than as anything a reader wants -- and it makes the docs look
+    unfinished to the person least able to do anything about it. The gap information
+    is still worth having, just not on a customer-facing page.
 */}}
 {{ define "main" }}
 {{- $key := .Params.product -}}
@@ -90,15 +92,5 @@
     <li><a href="https://community.zymbit.com/">Community forum</a></li>
   </ul>
 
-  {{ with $h.gaps }}
-  <h2>Not yet documented</h2>
-  <p>These do not exist for {{ $entry.name }} yet. They will appear here automatically
-  once written.</p>
-  <ul>
-    {{- range . }}
-    <li>{{ . }}</li>
-    {{- end }}
-  </ul>
-  {{ end }}
 </div>
 {{ end }}

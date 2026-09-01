@@ -31,12 +31,7 @@
       {{ $h := partial "product-links.html" $entry }}
       <div class="entry">
         <h5><a href="{{ $page.RelPermalink }}">{{ $entry.name }}</a></h5>
-        <p>
-          {{- with $h.hardware.Description }}{{ . | markdownify }}{{ end -}}
-          {{- with $h.gaps }}
-          <br><small>Not yet documented: {{ delimit . ", " }}.</small>
-          {{- end -}}
-        </p>
+        <p>{{ with $h.hardware.Description }}{{ . | markdownify }}{{ end }}</p>
       </div>
     {{ end }}
     {{ end }}

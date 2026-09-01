@@ -15,7 +15,6 @@
         tasks       slice of {task, page, specific} from data/tasks.yaml, where
                     `page` is the per-product page when one exists and `specific`
                     says whether it is
-        gaps        slice of strings              categories with nothing behind them
 
     Two rules make this maintainable:
 
@@ -27,9 +26,8 @@
 
     DERIVED paths may be absent. Whether /reference/cad/<key>/ or
     /troubleshooting/<key>/ exists is a question asked of Hugo at build time, not
-    something anyone records here. A missing one is reported as a gap and rendered as
-    such, so an undocumented area is visible on the page instead of being silently
-    omitted. Creating the page is all it takes to make the link appear.
+    something anyone records here. A missing one is simply not linked. Creating the
+    page is all it takes to make the link appear.
 */}}
 
 {{- $p := . -}}
@@ -62,24 +60,23 @@
 
 {{- /* Derived: absence is information, not an error. */ -}}
 {{- $refs := slice -}}
-{{- $gaps := slice -}}
 
 {{- $brief := site.GetPage (printf "/reference/product-briefs/%s" $refkey) -}}
 {{- if $brief }}{{ $refs = $refs | append (dict "page" $brief "label" "Product brief" "key" "brief") }}
-{{- else }}{{ $gaps = $gaps | append "product brief" }}{{ end -}}
+{{- end -}}
 
 {{- $cad := site.GetPage (printf "/reference/cad/%s" $refkey) -}}
 {{- if $cad }}{{ $refs = $refs | append (dict "page" $cad "label" "CAD, connectors, and pinouts" "key" "cad") }}
-{{- else }}{{ $gaps = $gaps | append "CAD and pinouts" }}{{ end -}}
+{{- end -}}
 
 {{- $conf := site.GetPage (printf "/reference/conformity/%s" $refkey) -}}
 {{- if $conf }}{{ $refs = $refs | append (dict "page" $conf "label" "Conformity documents" "key" "conformity") }}
-{{- else }}{{ $gaps = $gaps | append "conformity documents" }}{{ end -}}
+{{- end -}}
 
 {{- $support := slice -}}
 {{- $ts := site.GetPage (printf "/troubleshooting/%s" $refkey) -}}
 {{- if $ts }}{{ $support = $support | append (dict "page" $ts "label" "FAQ and troubleshooting" "key" "troubleshooting") }}
-{{- else }}{{ $gaps = $gaps | append "troubleshooting FAQ" }}{{ end -}}
+{{- end -}}
 
 {{- /*
     Tasks that name this product.
@@ -135,5 +132,4 @@
       "also"       $also
       "refs"       $refs
       "support"    $support
-      "tasks"      $tasks
-      "gaps"       $gaps) -}}
+      "tasks"      $tasks) -}}
