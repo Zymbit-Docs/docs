@@ -14,11 +14,11 @@ We try to adhere to the following standards when writing documentation:
 
 ### Dependencies
 
-The only local dependency to begin developing locally is `npm`. Hugo is a dependency that you can optionally install using the [standard installation instructions](https://gohugo.io/getting-started/installing/) if you would like direct access to the Hugo executable. However, a Hugo executable is also bundled as an npm dependency, so this isn't strictly necesary.
+The only dependency needed to get started is `npm`. Hugo ships as an npm dependency, so you do not have to install it separately, though you can via the [standard installation instructions](https://gohugo.io/getting-started/installing/) if you want the executable on your PATH.
+
+Hugo is pinned to **0.151.1** in two places that must stay in sync: `hugo-extended` in `package.json`, and `hugo-version` in `.github/workflows/deploy-site.yml`. CI fails the build if they disagree. Do not add `hugo-bin` back as a dependency: it also provides a `hugo` executable, wins the `node_modules/.bin/hugo` symlink, and pins a much older Hugo regardless of what `hugo-extended` says.
 
 ### Installation
-
-To run this site locally for development purposes, clone it to your local machine and run `npm install` to install the site's dependencies.
 
 ```bash
 git clone git@github.com:Zymbit-Docs/docs.git
@@ -26,41 +26,57 @@ cd docs
 npm install
 ```
 
-### Preview changes in development
+### Which command to use
 
-After you have installed the necessary dependencies, there are a few different commands for running the site locally. This will use the `hugo server` command directly to run a live-reloading development version of the site at <http://localhost:1313/>.
+| Command | Use it for | Search works? |
+|---------|------------|---------------|
+| `npm start` | Writing and editing content. Live reload, fastest loop. | **No** |
+| `npm run build:preview` | **Reviewing before merge.** Full production build, served locally. | Yes |
+| `npm run build:preview:all` | Same, including drafts and future-dated content. | Yes |
+| `npm run build` | Producing `public/` to inspect the output. Does not serve. | Yes |
+| `npm run lint` | markdownlint over `*.md` and `content/**/*.md`. | n/a |
+
+All three serving commands use <http://localhost:1313/>, so it is easy to be looking at one while thinking you are looking at another.
+
+### Writing content
 
 ```bash
-# npm script command:
 npm start
-
-# Underlying native command:
-hugo server --disableFastRender --cleanDestinationDir --enableGitInfo --ignoreCache --noHTTPCache
 ```
 
-### Previewing production
+Runs `hugo server` with live reload. Hugo renders from memory, which is what makes it fast.
 
-The site rendered by `hugo server` isn't *exactly* the same as what will be deployed for a few reasons:
+**Search does not work under `npm start`.** Search is Pagefind, and the index is generated from the rendered HTML in `public/` after Hugo finishes, which `hugo server` never produces. The search box will report that a full build is needed. That is expected: use `build:preview` for anything search-related.
 
-* The `development` configuration doesn't compress and minify asset files.
-* Hugo serves the site from memory in development mode and from disk in production mode.
-* Various development/debugging features causes the development mode site to be rendered slightly differently (e.g. sometimes it's possible to scroll past the top of a page when serving directly from Hugo).
-
-To verify that the production version of the site renders as expected, you can run the following command to render the site to disk and serve it locally on <http://localhost:1313/>:
+### Reviewing before merge
 
 ```bash
 npm run build:preview
 ```
 
-If your changes appear when you run in development mode but are unavailable when you build a preview of the site, the modified pages may have `draft: true` set in the front matter or a publication date that's set in the future. To build a preview that includes drafts and future content, you can run:
+Builds the production site to disk, generates the search index, and serves the result at <http://localhost:1313/>. Takes 15 to 20 seconds before it starts serving. This is the command to use when reviewing a branch, because it is the only local command that exercises everything the deployed site does.
+
+It builds with `-b http://localhost:1313/` so that links stay on localhost. Without that, the theme emits absolute URLs and clicking through a locally built site silently lands you on the live docs.zymbit.com.
+
+If a change appears under `npm start` but not here, the page probably has `draft: true` or a future publication date. To include those:
 
 ```bash
 npm run build:preview:all
 ```
 
+**Staging cannot substitute for this.** Pushing a non-`main` branch mirrors it to the staging repo, but `push-staging.yml` strips `.github` and substitutes the staging repo's own workflows, so the Pagefind step never runs there and search will look broken on staging regardless of the branch. Review locally.
+
+### Building without serving
+
+```bash
+npm run build
+```
+
+Renders the production site into `public/` and then generates the search index into `public/pagefind/` through the `postbuild` script. Useful for inspecting output — checking canonical tags, `sitemap.xml`, or the generated HTML — rather than for browsing.
+
 ### [Advanced] Render to disk with live-reloading
 
-Hugo can render the site to disk and watch for any source changes that should trigger a rebuild. The site's rendered `public/` directory is then served using the `browser-sync` package, which offers live reloads and serves the site on <http://localhost:1313/>.
+Hugo can render to disk and watch for source changes, with `browser-sync` serving `public/` and reloading on <http://localhost:1313/>. Note that these also do not generate a search index.
 
 ```bash
 npm run dev:serve
