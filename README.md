@@ -98,6 +98,97 @@ npm run dev:webserver
 npm run dev:build:poll
 ```
 
+## Adding a product or a task
+
+`/products/` and `/tasks/` are generated from two data files. Nothing about them is hand-maintained, and a link that points at a page which does not exist fails the build rather than shipping broken.
+
+### Adding a product
+
+**1. Make sure the product's hardware page exists.** The hub links to it and cannot be built without it. Its `description` becomes the lead paragraph on the hub, so write a good one.
+
+**2. Add an entry to `data/products.yaml`.**
+
+| Field | Required | What it does |
+|-------|----------|--------------|
+| `key` | yes | URL segment, `/products/<key>/`. Also the default name used to look for related pages. |
+| `name` | yes | Display name, shown as the hub title and in task lists. |
+| `status` | yes | `current`, `legacy`, or `component`. Groups the `/products/` landing page and controls the banner: `legacy` gets "use a current product for new designs", `component` gets "not sold separately". |
+| `hardware` | yes | Path to the main hardware page. Declared because these paths are irregular (`/hardware/sen/...`, `/hardware/modules/...`, `/hardware/components/...`). |
+| `refkey` | no | Use when the directories under `reference/` and `troubleshooting/` are named differently from `key`. |
+| `perimeter` | no | Use when several products share one per-product tutorial page. All three SEN models set `perimeter: sen`. |
+| `inherits` | no | Another product key whose tasks this product also supports. One level, not transitive. |
+| `components` | no | Boards and modules inside this product, as page paths. |
+| `also` | no | Extra links worth surfacing, as `{path, label}` pairs. |
+
+**3. Create `content/products/<key>.md`.** It carries no body; the layout builds the page.
+
+```yaml
+---
+title: "SEN 600"
+linkTitle: "SEN 600"
+description: "Setup, tasks, references, and troubleshooting for the SEN 600."
+layout: product-hub
+product: sen600
+draft: false
+images: []
+---
+```
+
+**4. Record which tasks it supports** by adding its `key` to the `products` list of each relevant task in `data/tasks.yaml` — or set `inherits` in step 2 if it supports exactly what another product does.
+
+**5. Build and check.**
+
+```bash
+npm run build:preview
+```
+
+Then open `/products/<key>/`. A mistyped path fails the build with a message naming the product and the path, so a green build means every link on the hub resolves.
+
+### What happens without configuration
+
+These are looked up at build time from `key` (or `refkey`). Create the page and the link appears on the hub; until then there is simply no link.
+
+* `/reference/product-briefs/<key>/`
+* `/reference/cad/<key>/`
+* `/reference/conformity/<key>/`
+* `/troubleshooting/<key>/`
+* per-product versions of a task page, such as `/tutorials/perimeter-detect/<key>/`
+
+### Worked example
+
+Adding a hypothetical SEN 600 that ships with the Secure Base Board, supports the same tasks as the SEN 500, and shares the SEN perimeter detect page:
+
+```yaml
+  - key: sen600
+    name: "SEN 600"
+    status: current
+    hardware: /hardware/sen/sen600
+    perimeter: sen
+    inherits: sen500
+    components:
+      - /hardware/components/sbb
+```
+
+That entry plus `content/products/sen600.md` is the whole change. If a product brief or troubleshooting FAQ is written for it later, both appear on the hub with no further edit.
+
+### Adding a task
+
+Add an entry to `data/tasks.yaml`:
+
+```yaml
+  - key: rotate-keys
+    title: "Rotate device keys"
+    page: /tutorials/rotate-keys
+    products: [zymkey5, hsm60]
+    note: "Optional caveat shown with the task."
+```
+
+Phrase `title` the way a reader would describe the problem, not the way the docs are filed. The task then appears on `/tasks/` and on the hub of every product listed.
+
+If per-product versions of the page exist at `<page>/<key>/`, each hub links its own automatically.
+
+> **NOTE:** The `products` lists were originally seeded from which products each tutorial happens to name in its own text, which is evidence of coverage rather than knowledge of support. Several are still unreviewed. Adding a key is a claim that the task is supported on that product, so add from product knowledge rather than from what the prose says.
+
 ## Theme development
 
 The theme used in this site is [Zymdocsy](https://github.com/Zymbit-Docs/zymdocsy), a fork of Google's Docsy theme for Hugo. However, rather than using git submodules as Docsy does, we use git-subtree to handle the theme as well as its vendored dependencies.
