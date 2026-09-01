@@ -107,3 +107,13 @@ permalinks:
 # https://gohugo.io/content-management/front-matter#front-matter-cascade
 cascade:
   type: docs
+  # Scope the left sidebar to the page's own top-level section instead of the whole
+  # site. sidebar-tree.html roots its tree at Site.Home whenever the home page's type
+  # is "docs" -- which the line above makes true for everything -- so every page was
+  # rendering all 162 links of the entire site tree, 76 KB of markup, and 67% of all
+  # rendered HTML on the site. toc_root: true roots it at .FirstSection instead.
+  #
+  # This is only reasonable now that the navbar carries Products, Tasks, Bootware,
+  # API, Reference, and Troubleshooting. Before that the sidebar was the sole route
+  # between sections, and scoping it would have stranded readers.
+  toc_root: true
