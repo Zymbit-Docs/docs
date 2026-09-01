@@ -124,7 +124,7 @@ To exclude a page from search, set `pagefind_ignore: true` in its front matter.
 
 Both are generated from two data files, so there is nothing to keep in sync by hand:
 
-- `data/products.yaml` - one entry per product: `key` (the URL segment and the default name for convention lookups), `name`, `status` (current / legacy / component), `hardware` (its main page, declared because those paths are irregular), and optionally `refkey`, `perimeter`, `components`, and `also`.
+- `data/products.yaml` - one entry per product: `key` (the URL segment and the default name for convention lookups), `name`, `status` (current / legacy / component), `hardware` (its main page, declared because those paths are irregular), and optionally `refkey`, `perimeter`, `inherits`, `components`, and `also`. `inherits` names another product whose tasks this one also supports, which is how the SEN 500 Developer Kit tracks the SEN 500 without duplicating task keys.
 - `data/tasks.yaml` - one entry per task: `title` phrased as a reader would phrase it, `page`, and the `products` it applies to. The product hubs and the task index both read this, so a task added here appears in both.
 
 Rendered by `layouts/docs/product-hub.html`, `layouts/docs/product-index.html`, and `layouts/docs/task-index.html`, via `layouts/partials/product-links.html`. Content files under `content/products/` carry only a `product:` key and `layout: product-hub`.
@@ -132,9 +132,9 @@ Rendered by `layouts/docs/product-hub.html`, `layouts/docs/product-index.html`, 
 Two rules make this hold up:
 
 - **Declared paths must resolve.** A path named in either data file that does not exist fails the build through `errorf`, the same guard used for the Hugo version pin and the Pagefind index. A hub full of dead links is worse than no hub.
-- **Derived paths may be absent.** Whether `/reference/cad/<key>/`, `/reference/conformity/<key>/`, `/reference/product-briefs/<key>/`, or `/troubleshooting/<key>/` exists is asked of Hugo at build time. A missing one renders under "Not yet documented" rather than being silently omitted, and appears automatically once the page is written.
+- **Derived paths may be absent.** Whether `/reference/cad/<key>/`, `/reference/conformity/<key>/`, `/reference/product-briefs/<key>/`, or `/troubleshooting/<key>/` exists is asked of Hugo at build time. A missing one is simply not linked, and appears automatically once the page is written. Gaps are not listed on the page: that read as a note to whoever maintains the site rather than as anything a reader wants.
 
-To add a product: one entry in `data/products.yaml` and one thin file in `content/products/`. To record that a task supports a product: add the key to that task's `products` list.
+**The step-by-step procedure for adding a product or a task lives in [README.md](README.md#adding-a-product-or-a-task)**, with a field table and a worked example. In short: one entry in `data/products.yaml` and one thin file in `content/products/` for a product; one entry in `data/tasks.yaml` for a task. Keep the procedure in the README rather than duplicating it here.
 
 The `products` lists were seeded from which products each tutorial actually names in its text, which is evidence of coverage rather than knowledge of support. They need review by someone who knows the hardware; the file says so.
 
