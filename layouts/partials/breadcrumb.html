@@ -12,6 +12,11 @@
       2. Closed the `</nav>` properly. The theme has `</nav\t>`, with a literal tab
          inside the tag.
 
+      3. RelPermalink rather than Permalink. The theme emits absolute URLs, so on a
+         locally built site every breadcrumb link jumped to docs.zymbit.com. Internal
+         links should be host-relative; `npm run build:preview` also now builds with a
+         localhost baseURL, which covers the theme partials still doing this.
+
     Overriding here rather than editing the theme keeps themes/zymdocsy untouched, so
     subtree pulls stay clean.
 */}}
@@ -30,6 +35,6 @@
 {{ end }}
 {{ $isActive :=  eq .p1 .p2  }}
 <li class="breadcrumb-item{{ if $isActive }} active{{ end }}" {{ if $isActive }}aria-current="page"{{ end }}>
-	<a href="{{ .p1.Permalink }}">{{ .p1.LinkTitle }}</a>
+	<a href="{{ .p1.RelPermalink }}">{{ .p1.LinkTitle }}</a>
 </li>
 {{ end }}
