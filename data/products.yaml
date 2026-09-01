@@ -1,0 +1,111 @@
+# Products that get a hub page at /products/<key>/.
+#
+# Keep this file small on purpose. It holds only what a template cannot work out
+# for itself: which products exist, whether they are current, and where their main
+# hardware page lives. Everything else -- CAD, conformity, product brief,
+# troubleshooting FAQ, perimeter detect guide, and the page summary shown on the hub
+# -- is looked up at build time from the content tree, so a link appears the moment
+# the page it points at is created and can never quietly rot.
+#
+# Fields:
+#   key        URL segment, /products/<key>/, and the default name used for the
+#              convention lookups above (/reference/cad/<key>/ and friends).
+#   name       Short display name.
+#   status     current | legacy | component. Groups the /products/ landing page.
+#   hardware   Main hardware page. Declared because the paths are irregular:
+#              /hardware/sen/..., /hardware/modules/..., /hardware/components/...
+#   refkey     Override for the convention lookups when it differs from key.
+#   perimeter  Override for /tutorials/perimeter-detect/<...>/ when a product is
+#              covered by a shared page rather than its own.
+#   inherits   Another product key whose tasks this product also supports. The
+#              developer kit is a SEN 500 plus accessories, so it supports whatever
+#              the SEN 500 does; declaring that once means a task added to the SEN
+#              500 later reaches the kit with no second edit. One level only, not
+#              transitive.
+#   components Boards and modules inside this product, as page paths.
+#   also       Extra links worth surfacing, as {path, label}.
+#
+# Every path here is checked at build time by partials/product-links.html. A path
+# that does not resolve fails the build rather than rendering a dead link.
+
+products:
+  - key: sen500
+    name: "SEN 500"
+    status: current
+    hardware: /hardware/sen/sen500
+    perimeter: sen
+    components:
+      - /hardware/components/sbb
+      - /hardware/components/hsm64
+    also:
+      - path: /hardware/sen/device-addons
+        label: "M.2 add-on devices"
+      - path: /hardware/sen/sen500/production-mode
+        label: "Enabling production mode"
+
+  - key: sen400
+    name: "SEN 400"
+    status: current
+    hardware: /hardware/sen/sen400
+    perimeter: sen
+    components:
+      - /hardware/components/sbb
+      - /hardware/components/hsm64
+      - /hardware/components/scm
+    also:
+      - path: /hardware/sen/device-addons
+        label: "M.2 add-on devices"
+
+  - key: sen500-dev-kit
+    name: "SEN 500 Developer Kit"
+    status: current
+    hardware: /hardware/dev-kits/sen500-dev-kit
+    perimeter: sen
+    inherits: sen500
+    components:
+      - /hardware/components/sbb
+      - /hardware/components/hsm64
+
+  - key: zymkey5
+    name: "Zymkey5"
+    status: current
+    hardware: /hardware/modules/zymkey5
+
+  - key: hsm60
+    name: "HSM60"
+    status: current
+    hardware: /hardware/modules/hsm60
+
+  - key: zymkey4
+    name: "Zymkey4"
+    status: legacy
+    hardware: /hardware/modules/zymkey4
+
+  - key: hsm6
+    name: "HSM6"
+    status: legacy
+    hardware: /hardware/modules/hsm6
+
+  - key: hsm4
+    name: "HSM4"
+    status: legacy
+    hardware: /hardware/modules/hsm4
+
+  - key: send35
+    name: "SEN D35"
+    status: legacy
+    hardware: /hardware/sen/send35
+    perimeter: sen
+    components:
+      - /hardware/components/lbb-d35
+      - /hardware/components/scm
+
+  - key: scm
+    name: "Secure Compute Module"
+    status: component
+    hardware: /hardware/components/scm
+
+  - key: sbb
+    name: "Secure Base Board"
+    status: component
+    hardware: /hardware/components/sbb

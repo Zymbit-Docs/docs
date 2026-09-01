@@ -1,0 +1,62 @@
+{{/*
+    Returns the Pagefind indexing attributes for the <main> element of the current
+    page, as a single safeHTMLAttr value.
+
+    Pagefind indexes the rendered HTML in public/, so what gets indexed is controlled
+    with data-pagefind-* attributes rather than a hand-maintained JSON template.
+
+    Rules applied here:
+
+      * data-pagefind-body   restricts indexing to page content. Because at least one
+                             page on the site carries it, Pagefind indexes ONLY the
+                             marked regions -- the navbar, sidebar tree and footer are
+                             excluded everywhere without needing data-pagefind-ignore.
+
+      * data-pagefind-ignore is emitted instead for every Bootware version that is not
+                             the stable release, so the other five copies of the
+                             manual stop competing with it in every result set. That
+                             includes the 2.0.0 BETA: searching must land readers on
+                             stable docs, not a prerelease. Those pages stay published
+                             and linkable; they are just not indexed. Set
+                             pagefind_ignore: true in front matter to opt any other
+                             page out.
+
+    Filters and result metadata are emitted separately, as carrier elements inside
+    this region -- see partials/pagefind-filters.html for why they cannot share an
+    attribute with each other or with <main>.
+
+    The stable release comes from partials/bootware-releases.html, which reads the
+    `stable: true` front matter flag rather than sorting by version number -- the
+    highest version is the 2.0.0 beta. Adding or promoting a version does not require
+    editing this file.
+
+    Returns a value, so it must be called as {{ partial "pagefind-attrs.html" . }}
+    in attribute position; returning a plain string there yields ZgotmplZ.
+*/}}
+
+{{- $stable := (partial "bootware-releases.html" .).stableVersion -}}
+
+{{- $pageVersion := partial "bootware-page-version.html" . -}}
+
+{{- $notStable := and $pageVersion $stable (ne $pageVersion $stable) -}}
+
+{{- $attrs := "" -}}
+
+{{- /*
+    Taxonomy list and term pages render empty: config.yaml declares categories and
+    tags, but no page uses either, so /tags/ and /categories/ are content-free stubs.
+    Keep them out of results explicitly rather than relying on Pagefind skipping
+    them for having no words.
+*/ -}}
+{{- $isTaxonomy := or (eq .Kind "taxonomy") (eq .Kind "term") -}}
+
+{{- /* The 404 page also renders through this baseof; it must never be a result. */ -}}
+{{- $isError := eq .Kind "404" -}}
+
+{{- if or $notStable .Params.pagefind_ignore $isTaxonomy $isError -}}
+  {{- $attrs = "data-pagefind-ignore" -}}
+{{- else -}}
+  {{- $attrs = "data-pagefind-body" -}}
+{{- end -}}
+
+{{- return ($attrs | safeHTMLAttr) -}}

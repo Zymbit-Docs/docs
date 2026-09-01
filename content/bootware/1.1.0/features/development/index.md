@@ -1,5 +1,6 @@
 ---
 title: Developing on the CM4 with Bootware 1.0-general
+description: "Develop your application on a standard CM4, then move it across to the secure SCM."
 linkTitle: Developing on the CM4 with Bootware 1.0-general
 lastmod: "2025-10-15"
 date: "2024-06-05"

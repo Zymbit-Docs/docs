@@ -7,5 +7,5 @@ manualLinkTarget: "_blank"
 date: 2020-11-27T00:00:00+01:00
 draft: false
 weight: 80
-description: ""
+description: "Engineering note on USB power behavior for the SCM motherboard."
 ---

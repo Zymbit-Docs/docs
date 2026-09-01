@@ -1,5 +1,6 @@
 ---
 title: "Troubleshooting and FAQ"
+description: "Troubleshooting and FAQ for Bootware 1.0.0, covering pre-installed images, encryption, and recovery."
 linkTitle: "Troubleshooting/FAQ"
 lastmod: "2025-10-15"
 draft: false

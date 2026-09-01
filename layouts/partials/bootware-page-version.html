@@ -1,0 +1,19 @@
+{{/*
+    Returns the Bootware version a page belongs to ("1.3.2"), or "" if it is not
+    under a version section.
+
+    Takes the version from the page's own front matter when it has one (the version
+    landing pages do), otherwise from the nearest ancestor that declares one.
+
+    Callers: partials/head.html, partials/pagefind-attrs.html,
+    partials/pagefind-filters.html. Extracted because all three had their own copy.
+*/}}
+{{- $ver := .Params.version -}}
+{{- if not $ver -}}
+  {{- range .Ancestors -}}
+    {{- if and (not $ver) .Params.version -}}
+      {{- $ver = .Params.version -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return (default "" $ver) -}}

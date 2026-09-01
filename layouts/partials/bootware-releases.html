@@ -1,0 +1,96 @@
+{{/*
+    Returns the current Bootware releases as a dict:
+
+        stableVersion  "1.3.2"  | ""     the stable release
+        stablePage     Page     | nil
+        betaVersion    "2.0.0"  | ""     the prerelease, if one exists
+        betaPage       Page     | nil
+
+    Highest semver is NOT the stable release. Bootware 2.0.0 is a beta and 1.3.2 is
+    stable, so anything sorting by version number alone points readers at prerelease
+    documentation. Stability is otherwise only recorded in prose -- a title of
+    "Bootware 2.0.0 (Beta)" and a linkTitle of "Bootware 1.3.2 (Latest STABLE)" --
+    which nothing can key off reliably. `weight` is display order, not stability:
+    2.0.0 sits at weight 20, above 1.3.2 at 30.
+
+    So the stable release declares itself, with `stable: true` in the front matter of
+    its version _index.md. When 2.0.0 leaves beta, move that flag; nothing else needs
+    to change.
+
+    The beta needs no flag of its own: it is simply the highest version ranked above
+    stable. That also means promoting a release automatically stops the old beta from
+    being advertised as one.
+
+    If more than one section claims `stable: true` -- easy to do by copying a version
+    directory -- the highest semver among the flagged ones wins, so the result stays
+    deterministic. If NONE is flagged, this falls back to the highest semver overall
+    and reports no beta; that fallback exists only so the site still builds, and it is
+    why the flag should never be removed without moving it.
+
+    Callers: partials/pagefind-attrs.html, shortcodes/bootware_version_notice.html.
+    Two other files still carry their own copy of the highest-semver logic and share
+    the original bug -- section/bootware.html and the stale
+    section/products/bootware.html -- and should move here when next touched.
+*/}}
+
+{{- $stable := "" -}}
+{{- $stablePage := false -}}
+{{- $stableRank := -1 -}}
+{{- $beta := "" -}}
+{{- $betaPage := false -}}
+{{- $betaRank := -1 -}}
+
+{{- with site.GetPage "/bootware" -}}
+
+  {{- /* Rank every version section by semver. Two-arg add keeps this working on
+         older Hugo, where variadic add is unavailable. Note `with .Params.version`
+         rebinds the dot, so the section itself is captured first. */ -}}
+  {{- $entries := slice -}}
+  {{- range .Sections -}}
+    {{- $sec := . -}}
+    {{- with $sec.Params.version -}}
+      {{- $parts := split . "." -}}
+      {{- $major := (index $parts 0) | int -}}
+      {{- $minor := cond (ge (len $parts) 2) ((index $parts 1) | int) 0 -}}
+      {{- $patch := cond (ge (len $parts) 3) ((index $parts 2) | int) 0 -}}
+      {{- $w := add (add (mul $major 1000000) (mul $minor 1000)) $patch -}}
+      {{- $entries = $entries | append (dict "page" $sec "ver" . "rank" $w "stable" (default false $sec.Params.stable)) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Stable: highest semver among sections flagged stable. */ -}}
+  {{- range $entries -}}
+    {{- if and .stable (gt .rank $stableRank) -}}
+      {{- $stableRank = .rank -}}
+      {{- $stable = .ver -}}
+      {{- $stablePage = .page -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Fallback only: nothing declared itself stable. */ -}}
+  {{- if eq $stableRank -1 -}}
+    {{- range $entries -}}
+      {{- if gt .rank $stableRank -}}
+        {{- $stableRank = .rank -}}
+        {{- $stable = .ver -}}
+        {{- $stablePage = .page -}}
+      {{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{- /* Beta: highest version ranked above stable. */ -}}
+    {{- range $entries -}}
+      {{- if and (gt .rank $stableRank) (gt .rank $betaRank) -}}
+        {{- $betaRank = .rank -}}
+        {{- $beta = .ver -}}
+        {{- $betaPage = .page -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+{{- end -}}
+
+{{- return (dict
+      "stableVersion" $stable
+      "stablePage"    $stablePage
+      "betaVersion"   $beta
+      "betaPage"      $betaPage) -}}

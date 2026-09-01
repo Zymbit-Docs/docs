@@ -1,0 +1,135 @@
+{{/*
+    Resolves everything a product hub shows, and returns it as a dict.
+
+    Call with a product entry from data/products.yaml:
+
+        {{ $p := partial "product-links.html" $productEntry }}
+
+    Returns:
+        product     the data entry, unchanged
+        hardware    Page          main hardware page (always present)
+        components  slice of Page
+        also        slice of {page, label}
+        refs        slice of {page, label, key}   cad / conformity / brief
+        support     slice of {page, label, key}   troubleshooting / community
+        tasks       slice of {task, page, specific} from data/tasks.yaml, where
+                    `page` is the per-product page when one exists and `specific`
+                    says whether it is
+
+    Two rules make this maintainable:
+
+    DECLARED paths must resolve. If data/products.yaml names a page that does not
+    exist, the build fails with errorf rather than rendering a dead link. This is the
+    same guard used for the Hugo version pin and the Pagefind index, and it exists
+    because every piece of hand-maintained bookkeeping in this repo has rotted at
+    least once.
+
+    DERIVED paths may be absent. Whether /reference/cad/<key>/ or
+    /troubleshooting/<key>/ exists is a question asked of Hugo at build time, not
+    something anyone records here. A missing one is simply not linked. Creating the
+    page is all it takes to make the link appear.
+*/}}
+
+{{- $p := . -}}
+{{- $refkey := default $p.key $p.refkey -}}
+{{- $perimKey := default $refkey $p.perimeter -}}
+
+{{- /* Declared: must resolve. */ -}}
+{{- $hardware := site.GetPage $p.hardware -}}
+{{- if not $hardware -}}
+  {{- errorf "products.yaml: product %q declares hardware page %q, which does not exist" $p.key $p.hardware -}}
+{{- end -}}
+
+{{- $components := slice -}}
+{{- range $p.components -}}
+  {{- $pg := site.GetPage . -}}
+  {{- if not $pg -}}
+    {{- errorf "products.yaml: product %q lists component %q, which does not exist" $p.key . -}}
+  {{- end -}}
+  {{- $components = $components | append $pg -}}
+{{- end -}}
+
+{{- $also := slice -}}
+{{- range $p.also -}}
+  {{- $pg := site.GetPage .path -}}
+  {{- if not $pg -}}
+    {{- errorf "products.yaml: product %q links %q, which does not exist" $p.key .path -}}
+  {{- end -}}
+  {{- $also = $also | append (dict "page" $pg "label" .label) -}}
+{{- end -}}
+
+{{- /* Derived: absence is information, not an error. */ -}}
+{{- $refs := slice -}}
+
+{{- $brief := site.GetPage (printf "/reference/product-briefs/%s" $refkey) -}}
+{{- if $brief }}{{ $refs = $refs | append (dict "page" $brief "label" "Product brief" "key" "brief") }}
+{{- end -}}
+
+{{- $cad := site.GetPage (printf "/reference/cad/%s" $refkey) -}}
+{{- if $cad }}{{ $refs = $refs | append (dict "page" $cad "label" "CAD, connectors, and pinouts" "key" "cad") }}
+{{- end -}}
+
+{{- $conf := site.GetPage (printf "/reference/conformity/%s" $refkey) -}}
+{{- if $conf }}{{ $refs = $refs | append (dict "page" $conf "label" "Conformity documents" "key" "conformity") }}
+{{- end -}}
+
+{{- $support := slice -}}
+{{- $ts := site.GetPage (printf "/troubleshooting/%s" $refkey) -}}
+{{- if $ts }}{{ $support = $support | append (dict "page" $ts "label" "FAQ and troubleshooting" "key" "troubleshooting") }}
+{{- end -}}
+
+{{- /*
+    Tasks that name this product.
+
+    Some tasks are documented per product beneath the task's own section --
+    /tutorials/perimeter-detect/zymkey5/ rather than the section landing. Where such
+    a page exists, link it: sending a Zymkey5 owner to the generic perimeter page
+    when a Zymkey5 one exists is exactly the indirection these hubs are meant to
+    remove. The lookup is by convention, so any task that later grows per-product
+    pages picks this up with no change here.
+
+    $variantKey is the product's own key, except where several products share one
+    page -- the SEN models are all covered by .../perimeter-detect/sen/ -- which is
+    what the `perimeter` field in products.yaml overrides.
+*/ -}}
+{{- $variantKey := $perimKey -}}
+
+{{- /* A product supports its own tasks plus those of anything it inherits from. */ -}}
+{{- $taskKeys := slice $p.key -}}
+{{- with $p.inherits -}}
+  {{- $parent := . -}}
+  {{- $known := false -}}
+  {{- range site.Data.products.products -}}
+    {{- if eq .key $parent -}}{{ $known = true }}{{- end -}}
+  {{- end -}}
+  {{- if not $known -}}
+    {{- errorf "products.yaml: product %q inherits from %q, which is not a product" $p.key $parent -}}
+  {{- end -}}
+  {{- $taskKeys = $taskKeys | append $parent -}}
+{{- end -}}
+
+{{- $tasks := slice -}}
+{{- range site.Data.tasks.tasks -}}
+  {{- $t := . -}}
+  {{- if intersect $t.products $taskKeys -}}
+    {{- $pg := site.GetPage $t.page -}}
+    {{- if not $pg -}}
+      {{- errorf "tasks.yaml: task %q points at %q, which does not exist" $t.key $t.page -}}
+    {{- end -}}
+    {{- $specific := false -}}
+    {{- with site.GetPage (printf "%s/%s" $t.page $variantKey) -}}
+      {{- $pg = . -}}
+      {{- $specific = true -}}
+    {{- end -}}
+    {{- $tasks = $tasks | append (dict "task" $t "page" $pg "specific" $specific) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return (dict
+      "product"    $p
+      "hardware"   $hardware
+      "components" $components
+      "also"       $also
+      "refs"       $refs
+      "support"    $support
+      "tasks"      $tasks) -}}

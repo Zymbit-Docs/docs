@@ -1,7 +1,7 @@
 ---
-title : "Perimeter Detect: ZYMKEY FIVE"
-linkTitle: "ZYMKEY FIVE"
-description: ""
+title : "Perimeter Detect: ZYMKEY5"
+linkTitle: "ZYMKEY5"
+description: "Set up perimeter detect on Zymkey5 with a two wire loop and handle tamper events in your application."
 date: ""
 lastmod: "2025-10-15"
 draft: false
@@ -13,39 +13,40 @@ toc: true
 
 ## Scope
 
-This section explains the perimeter detect feature on Zymkey4 and how to use it in your software application with a simple two wire loop physical configuration.
+This section explains the perimeter detect feature on Zymkey5 and how to use it in your software application with a simple two wire loop physical configuration.
 
 For alternative physical configurations and best practices: [Learn more >](https://docs.zymbit.com/tutorials/perimeter-detect/examples)
 
-![Zymkey4-PD-thick-lines](../ZK4-perim-detect-thick-lines.png)
+![Perimeter detect circuits](../ZK4-perim-detect-thick-lines.png)
 
 Perimeter Detect provides two additional layers of physical security that can be used to detect when the perimeter of your device is breached. This is an important feature when devices are deployed in the field, unattended  or in high risk environments.
 
-Zymkey4 includes two independent Perimeter Loops that can be configured to meet different applications.
+Zymkey5 includes two independent Perimeter Loops that can be configured to meet different applications.
 
-When a Perimeter Loop is breached, Zymkey4 can be configured (at time of binding) to respond with different "Actions", depending upon your security policy.
+When a Perimeter Loop is breached, Zymkey5 can be configured (at time of binding) to respond with different "Actions", depending upon your security policy.
 
 
 ### Connecting Perimeter Loop Circuits
 
-Zymkey4 uses a standard microUSB connector to interface to perimeter circuits 1 and 2. This is convenient for rapid prototyping and small scale production situations.
+Zymkey5 does not use the micro USB perimeter connector found on Zymkey4. The perimeter circuits are brought out on the 12 pin auxiliary connector, a JST SM12B-SURS-TF that mates with a 12SUR-32S housing. Premade cable harnesses will fit it, and Zymbit makes a breakout board that labels each pin by function.
 
-<p><img src="../ZK4-cable-connector.png" alt="Zymkey4 Cable Connector" width="50%"></p>
+Three pins carry the tamper loops:
 
-(For high volume applications, different connector types are available.  [Contact Zymbit](https://www.zymbit.com/contact-us/) for more details.)
+| Pin | Name | Purpose |
+| --- | --- | --- |
+| 3 | PERIM_0 | Tamper detection transmit |
+| 1 | PERIM_1 | Tamper detection loop 1 receive |
+| 5 | PERIM_2 | Tamper detection loop 2 receive |
 
+Connect PERIM_0 to PERIM_1 to complete loop 1, and to PERIM_2 to complete loop 2. You can wire either loop, or both.
 
+{{% callout warning %}}
+Do not connect the tamper loop pins to any other voltage source or to system ground. When the host is powered off and a battery is fitted, the loop runs from the coin cell, so avoid anything that leaks current through it and do not drive LEDs from the loop.
+{{% /callout %}}
 
-### Using a Standard USB EXTENSION Cable for Perimeter Loop
+The Zymkey5 perimeter circuit is not the same as the Zymkey4 one. It drives a high entropy encoded pulse train and measures circuit delay, so it detects tampering that a simple continuity loop would miss.
 
-You can use a micro-usb EXTENSION cable, which carries all necessary signals, to connect to the perimeter detect. [Here is one example of an extension cable that will work.](https://www.amazon.com/gp/product/B071RYP3SC/ref=oh_aui_detailpage_o08_s02?ie=UTF8&psc=1) (Remove the female connector to expose the flying leads as shown below, then connect your perimeter circuits - P1, P2 -  to these)
-
-![Cable Pic 1](../ZK4-perim-detect-cable-pic.png)
-
-![Cable Pic 2](../ZK4-perim-detect-cable.png)
-
-
-**IMPORTANT:** do **NOT**  use standard micro-usb **charging cable**  it will not work, because it does not have a wire on pin 4.
+For the full 12 pin auxiliary connector pinout, the breakout board layout, and the pin 1 location diagrams, see the [Zymkey5 connector reference](/reference/cad/zymkey5/).
 
 ### Electrical Circuit
 

@@ -1,0 +1,96 @@
+{{/*
+    A product hub: everything documented about one device, on one page.
+
+    Selected with `layout: product-hub` in front matter, so it renders inside
+    docs/baseof.html and keeps the sidebar, breadcrumb, and search indexing that
+    every other page has.
+
+    The page body is generated from data/products.yaml via partials/product-links.html.
+    Content files under content/products/ carry only a `product` key; there is nothing
+    to keep in sync by hand.
+
+    Missing categories are simply absent rather than listed. An earlier version
+    printed a "Not yet documented" list, which reads as a note to whoever maintains
+    the site rather than as anything a reader wants -- and it makes the docs look
+    unfinished to the person least able to do anything about it. The gap information
+    is still worth having, just not on a customer-facing page.
+*/}}
+{{ define "main" }}
+{{- $key := .Params.product -}}
+{{- $entry := false -}}
+{{- range site.Data.products.products -}}
+  {{- if eq .key $key -}}{{ $entry = . }}{{- end -}}
+{{- end -}}
+{{- if not $entry -}}
+  {{- errorf "%s sets product: %q, which is not in data/products.yaml" .File.Path $key -}}
+{{- end -}}
+{{- $h := partial "product-links.html" $entry -}}
+
+<div class="td-content">
+  <h1>{{ $entry.name }}</h1>
+  <div class="lead">
+    {{ with $h.hardware.Description }}{{ . | markdownify }}{{ else }}Documentation for the {{ $entry.name }}.{{ end }}
+  </div>
+
+  {{ if eq $entry.status "legacy" }}
+  <div class="alert alert-warning" role="alert" style="margin:1rem 0;">
+    {{ $entry.name }} is a legacy product. It remains documented and supported, but new
+    designs should use a current product.
+  </div>
+  {{ else if eq $entry.status "component" }}
+  <div class="alert alert-info" role="alert" style="margin:1rem 0;">
+    {{ $entry.name }} is built into Zymbit products and is not sold separately.
+  </div>
+  {{ end }}
+
+  <h2>Start here</h2>
+  <ul>
+    <li><a href="{{ $h.hardware.RelPermalink }}">{{ $h.hardware.LinkTitle | default $h.hardware.Title }}</a>
+      — hardware, installation, and integration</li>
+    {{- range $h.also }}
+    <li><a href="{{ .page.RelPermalink }}">{{ .label }}</a></li>
+    {{- end }}
+  </ul>
+
+  {{ with $h.components }}
+  <h2>What is inside</h2>
+  <ul>
+    {{- range . }}
+    {{/* Title, not LinkTitle: several component linkTitles carry sales caveats
+         like "Not available to purchase separately", which read badly in a list. */}}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{- with .Description }} — {{ . | markdownify | plainify }}{{ end }}</li>
+    {{- end }}
+  </ul>
+  {{ end }}
+
+  {{ with $h.tasks }}
+  <h2>Common tasks</h2>
+  <ul>
+    {{- range . }}
+    <li><a href="{{ .page.RelPermalink }}">{{ .task.title }}</a>
+      {{- with .task.note }} <em>({{ . }})</em>{{ end }}</li>
+    {{- end }}
+  </ul>
+  {{ end }}
+
+  {{ with $h.refs }}
+  <h2>Reference</h2>
+  <ul>
+    {{- range . }}
+    <li><a href="{{ .page.RelPermalink }}">{{ .label }}</a></li>
+    {{- end }}
+  </ul>
+  {{ end }}
+
+  <h2>Getting help</h2>
+  <ul>
+    {{- range $h.support }}
+    <li><a href="{{ .page.RelPermalink }}">{{ .label }}</a></li>
+    {{- end }}
+    <li><a href="/troubleshooting/">General troubleshooting checklist</a></li>
+    <li><a href="https://community.zymbit.com/">Community forum</a></li>
+  </ul>
+
+</div>
+{{ end }}

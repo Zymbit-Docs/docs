@@ -59,7 +59,7 @@ Bootware® 2.0.0-1 Beta
    - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
 
 - zkifc
-   - Added support for new Zymbit HSM models: ZYMKEY FIVE, ZYMKEY ZERO
+   - Added support for new Zymbit HSM models: ZYMKEY5, ZYMKEY ZERO
    - `zkifc -v` added to return version
    - zkpkcs11 package build fixed for 64-bit OSs
 

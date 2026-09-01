@@ -2,7 +2,7 @@
 title: "Driver Installation/Configuration for M.2 Exar Corp. XR17V3521 Dual PCIe UART on Zymbit Secure Edge Node."
 linkTitle: "MaxLinear XR17V3521 Dual PCIe UART"
 icon: ""
-description: ""
+description: "Install and configure M.2 dual PCIe serial ports using the MaxLinear XR17V3521 on a Secure Edge Node."
 aliases:
     - /quickstart/addons/xr17v3521-pcie-serial
 date: ""

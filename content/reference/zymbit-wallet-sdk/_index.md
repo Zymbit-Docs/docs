@@ -2,7 +2,7 @@
 title: "Zymbit Wallet SDK"
 linkTitle: "Zymbit Wallet SDK"
 icon: ""
-description: ""
+description: "The Zymbit Wallet SDK abstracts blockchain account, key, and transaction handling on Zymbit hardware."
 aliases:
     - /quickstart/zymbit-wallet-sdk/
 date: ""

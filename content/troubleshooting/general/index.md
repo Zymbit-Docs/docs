@@ -1,5 +1,6 @@
 ---
 title: "General FAQ & Troubleshooting"
+description: "General FAQs covering Zymbit Driver Package updates and the Zymbit GPG key renewed in September 2024."
 linkTitle: "General"
 lastmod: "2025-12-24"
 draft: false

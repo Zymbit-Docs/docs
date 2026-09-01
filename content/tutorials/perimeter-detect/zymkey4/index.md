@@ -1,7 +1,7 @@
 ---
 title : "Perimeter Detect: ZYMKEY4"
 linkTitle: "ZYMKEY4"
-description: ""
+description: "Set up perimeter detect on Zymkey4 with a two wire loop and handle tamper events in your application."
 date: ""
 lastmod: "2025-10-15"
 draft: false

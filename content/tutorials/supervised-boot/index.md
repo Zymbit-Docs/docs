@@ -1,7 +1,7 @@
 ---
 title: "Working with SCM Supervised Boot"
 linkTitle: "Supervised Boot (SCM)"
-description: ""
+description: "Use SCM Supervised Boot to hash, sign, and verify boot files before the CM4 is allowed to boot."
 aliases:
     - /tutorials/verified-boot/
 date: "2022-03-28"

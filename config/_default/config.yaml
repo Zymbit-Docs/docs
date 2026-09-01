@@ -1,6 +1,12 @@
 # Hostname (and path) to the root
 baseurl: "https://docs.zymbit.com"
 
+# Site name. This is `.Site.Title`, which partials/head.html appends to every page
+# title. It was never set -- the name lived only in params.yaml as
+# `.Site.Params.title` -- so `.Site.Title` was empty and every page emitted a title
+# ending in a dangling " | ", visible in search results across the whole site.
+title: "Zymbit Documentation"
+
 # General site configuration
 enableEmoji: true
 enableGitInfo: true
@@ -14,21 +20,28 @@ rssLimit: 10
 theme:
   - zymdocsy
 
+# SITEMAP belongs on the home page: that is what produces the single /sitemap.xml
+# search engines look for, and what robots.txt advertises.
+#
+# It used to be listed under `section` instead, with a hand-rolled SITEMAP output
+# format. That generated 54 per-section sitemaps (one per section, at paths like
+# /hardware/sitemap.xml) and no root sitemap at all. Nothing linked to any of them
+# and robots.txt named none, so no crawler could discover them -- the site
+# effectively had no sitemap, and https://docs.zymbit.com/sitemap.xml returned 404.
+#
+# The custom outputFormats.SITEMAP block is gone with it; Hugo's built-in sitemap
+# format and template do the job, and the hand-rolled one declared isPlainText: true,
+# which is what produced the "found no layout file for sitemap" build warnings.
+#
+# RSS is deliberately still not listed here. Hugo's default home outputs are
+# HTML + RSS + sitemap, and dropping RSS predates this change; re-enabling it is a
+# separate decision, not a side effect of fixing the sitemap.
 outputs:
   home:
     - HTML
+    - SITEMAP
   section:
     - HTML
-    - SITEMAP
-
-outputFormats:
-  SITEMAP:
-    mediaType: application/xml
-    baseName: sitemap
-    isHTML: false
-    isPlainText: true
-    noUgly: true
-    rel: sitemap
 
 params:
 # Does Bootware versioning
@@ -94,3 +107,13 @@ permalinks:
 # https://gohugo.io/content-management/front-matter#front-matter-cascade
 cascade:
   type: docs
+  # Scope the left sidebar to the page's own top-level section instead of the whole
+  # site. sidebar-tree.html roots its tree at Site.Home whenever the home page's type
+  # is "docs" -- which the line above makes true for everything -- so every page was
+  # rendering all 162 links of the entire site tree, 76 KB of markup, and 67% of all
+  # rendered HTML on the site. toc_root: true roots it at .FirstSection instead.
+  #
+  # This is only reasonable now that the navbar carries Products, Tasks, Bootware,
+  # API, Reference, and Troubleshooting. Before that the sidebar was the sole route
+  # between sections, and scoping it would have stranded readers.
+  toc_root: true

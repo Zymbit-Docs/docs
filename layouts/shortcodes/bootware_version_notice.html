@@ -1,33 +1,81 @@
-{{/* Show a warning if the current page is not under the latest Bootware version */}}
+{{/*
+    Banner at the top of each Bootware version landing page, telling the reader where
+    the version they are looking at sits relative to the stable release.
 
-{{- $root := site.GetPage "section" "products/bootware" -}}
-{{- if $root -}}
-  {{- $cands := slice -}}
-  {{- range $root.Sections -}}
-    {{- $sec := . -}}
-    {{- with $sec.Params.version -}}
-      {{- $ver := . -}}  {{/* already a string like "1.3.2" */}}
-      {{- $parts := split $ver "." -}}
-      {{- $major := (index $parts 0) | int -}}
-      {{- $minor := cond (ge (len $parts) 2) ((index $parts 1) | int) 0 -}}
-      {{- $patch := cond (ge (len $parts) 3) ((index $parts 2) | int) 0 -}}
-      {{- $w := add (mul $major 1000000) (mul $minor 1000) $patch -}}
-      {{- $cands = $cands | append (dict "p" $sec "w" $w "ver" $ver) -}}
-    {{- end -}}
-  {{- end -}}
+    Two bugs fixed here:
 
-  {{- if gt (len $cands) 0 -}}
-    {{- $sorted := sort $cands "w" "desc" -}}
-    {{- $latest := index $sorted 0 -}}
-    {{- $latestPage := $latest.p -}}
-    {{- $latestVer  := $latest.ver -}}
-    {{- $cur := .Page.CurrentSection -}}
-    {{- if and $cur (ne $cur.RelPermalink $latestPage.RelPermalink) -}}
-      <div class="alert alert-warning" role="alert" style="margin:1rem 0;">
-        You’re viewing Bootware {{ $cur.Params.version }} docs.
-        The latest is <a href="{{ $latestPage.RelPermalink }}">Bootware {{ $latestVer }}</a>.
-      </div>
+      1. It resolved `site.GetPage "section" "products/bootware"`. The content lives
+         at content/bootware -- there is no content/products -- so the lookup returned
+         nil and the entire banner was skipped, silently, on all six pages that call
+         it. Nothing rendered on the live site.
+
+      2. It treated the highest version number as current. Bootware 2.0.0 is a BETA
+         and 1.3.2 is stable, so once bug 1 was fixed this would have told readers of
+         the stable release that they were out of date and sent them to a prerelease.
+         Release identification now comes from partials/bootware-releases.html.
+
+    Three states, so every version page says something useful:
+
+      superseded  warning  -- older than stable; link to stable, and mention the beta
+      beta        warning  -- prerelease, not for production; link to stable
+      stable      info     -- confirms this is current, and points at the beta
+
+    Uses Bootstrap 4 alert classes, matching the rest of the theme.
+*/}}
+
+{{- $rel := partial "bootware-releases.html" . -}}
+{{- $stableVer := $rel.stableVersion -}}
+{{- $stablePage := $rel.stablePage -}}
+{{- $betaVer := $rel.betaVersion -}}
+{{- $betaPage := $rel.betaPage -}}
+
+{{- /* The version this page belongs to: its own, or the nearest ancestor's, so the
+       banner still works if it is ever used on a child page. */ -}}
+{{- $cur := .Page.Params.version -}}
+{{- if not $cur -}}
+  {{- range .Page.Ancestors -}}
+    {{- if and (not $cur) .Params.version -}}
+      {{- $cur = .Params.version -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
 
+{{- $betaLink := "" -}}
+{{- if $betaPage -}}
+  {{- $betaLink = printf "<a href=\"%s\">Bootware %s</a>" $betaPage.RelPermalink $betaVer -}}
+{{- end -}}
+{{- $stableLink := "" -}}
+{{- if $stablePage -}}
+  {{- $stableLink = printf "<a href=\"%s\">Bootware %s</a>" $stablePage.RelPermalink $stableVer -}}
+{{- end -}}
+
+{{- if and $cur $stableVer -}}
+
+  {{- if eq $cur $stableVer -}}
+
+    {{- /* Stable: confirm it, and surface the beta as an option rather than a nag. */ -}}
+    <div class="alert alert-info" role="alert" style="margin:1rem 0;">
+      Bootware {{ $cur }} is the current <strong>stable</strong> release, recommended for production.
+      {{- with $betaLink }} {{ $betaVer }} is available as a beta: see {{ . | safeHTML }}.{{ end }}
+    </div>
+
+  {{- else if and $betaVer (eq $cur $betaVer) -}}
+
+    {{- /* Beta. The reader may have arrived from a search engine or an old link. */ -}}
+    <div class="alert alert-warning" role="alert" style="margin:1rem 0;">
+      Bootware {{ $cur }} is a <strong>beta</strong> release and is not intended for production use.
+      {{- with $stableLink }} The current stable release is {{ . | safeHTML }}.{{ end }}
+    </div>
+
+  {{- else -}}
+
+    {{- /* Superseded. */ -}}
+    <div class="alert alert-warning" role="alert" style="margin:1rem 0;">
+      You’re viewing documentation for Bootware {{ $cur }}, which has been superseded.
+      {{- with $stableLink }} The current stable release is {{ . | safeHTML }}.{{ end }}
+      {{- with $betaLink }} A {{ $betaVer }} beta is also available: see {{ . | safeHTML }}.{{ end }}
+    </div>
+
+  {{- end -}}
+
+{{- end -}}

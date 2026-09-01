@@ -1,5 +1,6 @@
 ---
 title: Zymbit Bootware Configuration Wizard
+description: "Configure update endpoints and update policies for your device with the zb-wizard dialog tool."
 linkTitle: "zb-wizard"
 lastmod: "2025-10-15"
 date: "2024-04-02"

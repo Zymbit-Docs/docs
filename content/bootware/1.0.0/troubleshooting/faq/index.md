@@ -1,5 +1,6 @@
 ---
 title: Frequently Asked Questions
+description: "Answers to common questions about Bootware 1.0.0 platform support, operating systems, and updates."
 linkTitle: "Bootware 1.0 FAQ"
 lastmod: "2025-10-15"
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with AWS IoT Greengrass"
 linkTitle: "Getting Started with AWS IoT Greengrass"
-description: ""
+description: "Getting started guides for running AWS IoT Greengrass on Secure Edge Nodes and SCM development kits."
 date: ""
 lastmod: "2025-10-15"
 draft: false

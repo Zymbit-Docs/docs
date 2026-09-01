@@ -1,6 +1,6 @@
 ---
 title: SCM Reserved Pins
-description: ""
+description: "Pins and services reserved for Secure Compute Module operation that your application cannot use."
 aliases:
     - /technical_reference/reserved-pins/
 date: ""

@@ -1,7 +1,7 @@
 ---
 title: "Real Time Clock Operation"
 icon: ""
-description: ""
+description: "Using the real time clock supplied with Zymkey4, HSM4, HSM6, and HSM60 on platforms that have none built in."
 aliases:
     - /technical_reference/real-time-clock/
 date: ""

@@ -1,7 +1,7 @@
 ---
 title: "Secure Base Board"
 linkTitle:  "Secure Base Board - Not available to purchase separately"
-description: "Secure Base Board I/O motherboard, Used in Zymbit SEN500 and SEN400."
+description: "Hardware reference for the Secure Base Board used in the SEN 500 and SEN 400: connector functions and mating parts, the J2 auxiliary connector pinout, tamper detection wiring, LED status codes, power system, and the CM5 features DIP switch."
 lastmod: "2025-11-11"
 draft: false
 images: []

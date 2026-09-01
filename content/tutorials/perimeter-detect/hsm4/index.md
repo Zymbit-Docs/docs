@@ -1,7 +1,7 @@
 ---
 title : "Perimeter Detect: HSM4"
 linkTitle: "HSM4"
-description: ""
+description: "Set up perimeter detect on HSM4 and respond to physical tamper events from your application."
 date: ""
 lastmod: "2025-10-15"
 draft: false

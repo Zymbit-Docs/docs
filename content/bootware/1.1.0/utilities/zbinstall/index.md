@@ -1,5 +1,6 @@
 ---
 title: Zymbit Bootware Install Utility
+description: "Install Bootware on your device with the zb-install utility."
 linkTitle: "zb-install"
 lastmod: "2025-10-15"
 date: "2024-06-05"

@@ -1,5 +1,6 @@
 ---
 title: Bootware Additional Info
+description: "Reference for the files Bootware uses during boot, including config.txt and u-boot.bin."
 linkTitle: "Additional Bootware File Info"
 lastmod: "2025-10-15"
 draft: false

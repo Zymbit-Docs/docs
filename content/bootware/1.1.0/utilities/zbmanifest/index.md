@@ -1,5 +1,6 @@
 ---
 title: Zymbit Bootware Overlay Manifest Utility
+description: "Perform overlay manifest updates, selectively adding or deleting files in a deployed image."
 linkTitle: "zb-manifest"
 lastmod: "2025-10-15"
 date: "2024-04-17"

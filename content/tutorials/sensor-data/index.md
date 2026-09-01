@@ -2,7 +2,7 @@
 title: "Encrypting & Decrypting Sensor Data on Disk"
 linkTitle: "Encrypt Sensor Data"
 icon: ""
-description: ""
+description: "Encrypt and decrypt sensor data on disk with an HSM so collected data is never stored in the clear."
 date: ""
 lastmod: "2025-10-15"
 draft: false
@@ -21,6 +21,14 @@ Encrypting data on disk prevents a bad actor from imaging your SD card and gaini
 The process we describe here can also be used more generally to encrypt binary large objects, or ‘data blobs’
 
 ## What you will need
+
+A Zymbit security module. The process is the same for each of these:
+
+* Zymkey4
+* Zymkey5
+* HSM4
+* HSM6
+* HSM60
 
 * Follow the [Installation and Getting Started section for your HSM](/hardware/modules/) first.
 

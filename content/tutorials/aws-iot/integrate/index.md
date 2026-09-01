@@ -1,7 +1,7 @@
 ---
 title: "How to Integrate Zymbit with AWS Credentials Provider"
 linkTitle: "Integrate with AWS Credentials Provider"
-description: ""
+description: "Use the AWS IoT Credentials Provider to issue AWS credentials to a device holding a Zymbit backed certificate."
 date: ""
 lastmod: "2025-10-15"
 draft: false

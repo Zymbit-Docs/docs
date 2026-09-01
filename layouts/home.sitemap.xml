@@ -1,0 +1,45 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{{- /*
+    Explicit sitemap template.
+
+    Hugo's internal template ranges over `.Data.Pages`, which on the home page
+    resolves to the home page's direct children -- the six sections plus /search/.
+    That produced a seven-URL sitemap listing no actual documentation. Ranging over
+    `site.Pages` covers every page instead.
+
+    Excluded, all of them pages a crawler should never be pointed at:
+
+      * 404
+      * /search/ -- a JavaScript search UI with no content of its own
+      * taxonomy and term stubs -- categories and tags are declared in config.yaml
+        but used by zero pages, so /tags/ and /categories/ render empty
+
+    Every Bootware version IS listed, including superseded ones and the 2.0.0 beta.
+    That is deliberate: omitting them from the sitemap would not stop them being
+    indexed, since crawlers still follow links, so it is not the right lever for the
+    duplicate-content problem those six near-identical copies create. Fixing that
+    properly means canonical tags or noindex on non-stable versions, which is an SEO
+    policy decision rather than a build fix.
+*/ -}}
+{{- range site.Pages -}}
+  {{- if not .Permalink -}}{{- continue -}}{{- end -}}
+  {{- if eq .Kind "404" -}}{{- continue -}}{{- end -}}
+  {{- if or (eq .Kind "taxonomy") (eq .Kind "term") -}}{{- continue -}}{{- end -}}
+  {{- if .Params.pagefind_ignore -}}{{- continue -}}{{- end -}}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    {{- with .Lastmod }}
+    <lastmod>{{ .Format "2006-01-02T15:04:05-07:00" | safeHTML }}</lastmod>
+    {{- end }}
+    {{- with .Sitemap.ChangeFreq }}
+    <changefreq>{{ . }}</changefreq>
+    {{- end }}
+    {{- with .Sitemap.Priority }}
+    {{- if ge . 0.0 }}
+    <priority>{{ . }}</priority>
+    {{- end }}
+    {{- end }}
+  </url>
+{{- end }}
+</urlset>

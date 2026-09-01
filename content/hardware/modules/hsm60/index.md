@@ -1,7 +1,7 @@
 ---
 title: "HSM60: Compute Module Interposer - Quickstart and Integration"
 linktitle: HSM60
-description: "HSM60 Solution for non-Zymbit CM5,CM4 IO motherboards"
+description: "Install and integrate the HSM60 interposer on non-Zymbit CM5 and CM4 IO motherboards, including the J1 auxiliary connector pinout, perimeter tamper loop wiring, battery connector, and breakout board."
 aliases:
     - /quickstart/getting-started/hsm60/
     - /getting-started/hsm60/quickstart/

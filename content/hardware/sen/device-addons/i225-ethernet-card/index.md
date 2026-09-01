@@ -2,7 +2,7 @@
 title: "Driver Installation/Configuration for M.2 Intel I225 Ethernet Controllers on Zymbit Secure Edge Node"
 linkTitle: "Intel I225 2.5G PCIe Ethernet"
 icon: ""
-description: ""
+description: "Install and configure M.2 PCIe Ethernet cards using the Intel I225 controller on a Secure Edge Node."
 aliases:
     - /quickstart/addons/i225-ethernet
 date: ""

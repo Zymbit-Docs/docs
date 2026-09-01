@@ -1,5 +1,6 @@
 ---
 title: "Bootware 1.0-general Getting Started"
+description: "Bring up A/B partitioning for fallback and recovery on an SCM or SEN running Bootware 1.1.0."
 linkTitle: "Bootware 1.0-general Getting Started"
 lastmod: "2025-10-15"
 date: "2024-06-19"

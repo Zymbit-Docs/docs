@@ -1,5 +1,6 @@
 ---
 title: "Getting Started"
+description: "Bring up A/B partitioning for fallback and recovery on an SCM or SEN running Bootware 1.0.0."
 linkTitle: "Getting Started"
 lastmod: "2025-10-15"
 date: "2024-04-23"

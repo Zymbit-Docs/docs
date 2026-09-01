@@ -1,7 +1,7 @@
 ---
 title: "Working with Zymbit's Wallet Python SDK"
 linkTitle: "Zymbit Wallet Python SDK Tutorial"
-description: ""
+description: "Create and manage blockchain accounts from Python with the Zymbit Wallet SDK."
 date: "2023-05-11"
 lastmod: "2025-10-15"
 draft: false

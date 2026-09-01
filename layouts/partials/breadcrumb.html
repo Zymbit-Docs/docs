@@ -1,0 +1,40 @@
+{{/*
+    Project override of themes/zymdocsy/layouts/partials/breadcrumb.html.
+
+    Two changes from the theme original:
+
+      1. Dropped `d-none d-md-block`. The trail was hidden below the md breakpoint,
+         so on a phone -- where the sidebar tree is collapsed behind a toggle and the
+         navbar is a single scrolling row -- a reader arriving from a search engine
+         had nothing at all showing where they were. That is precisely the case the
+         breadcrumb exists for. `d-print-none` is kept.
+
+      2. Closed the `</nav>` properly. The theme has `</nav\t>`, with a literal tab
+         inside the tag.
+
+      3. RelPermalink rather than Permalink. The theme emits absolute URLs, so on a
+         locally built site every breadcrumb link jumped to docs.zymbit.com. Internal
+         links should be host-relative; `npm run build:preview` also now builds with a
+         localhost baseURL, which covers the theme partials still doing this.
+
+    Overriding here rather than editing the theme keeps themes/zymdocsy untouched, so
+    subtree pulls stay clean.
+*/}}
+<nav aria-label="breadcrumb" class="d-print-none">
+	<ol class="breadcrumb spb-1">
+		{{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+	</ol>
+</nav>
+{{ define "breadcrumbnav" }}
+{{ if .p1.Parent }}
+{{ if not .p1.Parent.IsHome }}
+{{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
+{{ end }}
+{{ else if not .p1.IsHome }}
+{{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
+{{ end }}
+{{ $isActive :=  eq .p1 .p2  }}
+<li class="breadcrumb-item{{ if $isActive }} active{{ end }}" {{ if $isActive }}aria-current="page"{{ end }}>
+	<a href="{{ .p1.RelPermalink }}">{{ .p1.LinkTitle }}</a>
+</li>
+{{ end }}

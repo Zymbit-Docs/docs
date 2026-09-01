@@ -3,7 +3,7 @@ title : "Encrypting Root File System with Zymbit Security Modules"
 linkTitle: "Encrypt Root File System"
 aliases:
     - /tutorials/encrypt-rfs/zymkey4/
-description: ""
+description: "Encrypt the root file system on a Raspberry Pi with a Zymbit security module to protect credentials and proprietary code."
 date: ""
 lastmod: "2025-10-15"
 draft: false
@@ -14,6 +14,14 @@ toc: true
 ![image1](erfs1.png)
 
 #### Prerequisites
+
+Zymbit security module. The process is the same for each of these:
+
+* Zymkey4
+* Zymkey5
+* HSM4
+* HSM6
+* HSM60
 
 Raspberry Pi:
 * Raspberry PI OS: Trixie (64 bit)

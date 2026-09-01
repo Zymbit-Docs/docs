@@ -2,7 +2,7 @@
 title: "SEN Device Add-ons"
 linkTitle: "SEN Add-on Devices"
 icon: ""
-description: ""
+description: "Instructions and notes for bringing up peripheral devices on the Secure Edge Node."
 aliases:
     - /quickstart/addons/
 date: "2024-08-21"
