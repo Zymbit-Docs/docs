@@ -121,19 +121,19 @@ To gain access to the SEN 500, power down and remove the six torx screws. Carefu
 
 ### Product Brief
 
-  Coming Soon!
+Contact [sales@zymbit.com](mailto:sales@zymbit.com) for availability.
 
 ### CAD Files
 
-  Coming Soon!
+Contact [sales@zymbit.com](mailto:sales@zymbit.com) for availability.
 
 ### Conformity docs
 
-  Coming Soon!
+Contact [sales@zymbit.com](mailto:sales@zymbit.com) for availability.
 
 ### Engineering Notes
 
-  Coming Soon!
+Contact [sales@zymbit.com](mailto:sales@zymbit.com) for availability.
 
 ---
 
