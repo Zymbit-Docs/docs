@@ -1,0 +1,80 @@
+@import "darkmode";
+
+// Project dark mode overrides.
+//
+// Loaded after the theme's _darkmode.scss rules so same-specificity selectors
+// here win the cascade.
+
+.dark-mode,
+body.dark-mode {
+
+  // Mirror the main-stylesheet fix: dark mode re-declares width: 110%.
+  .td-sidebar-nav .td-sidebar-link {
+    width: 100%;
+  }
+
+  // ── Bootstrap alerts ────────────────────────────────────────────────────────
+  // _alerts.scss sets background: $white on .alert with color: inherit.
+  // In dark mode that yields #f5f5f5 text on #fff background (≈1:1 contrast).
+
+  .alert {
+    background-color: #3a3a3a;
+    color: #d0d0d0;
+
+    a { color: #7ab8ff; }
+  }
+
+  // alert-info: stable-release banner (teal tint, $info = #C0E0DE)
+  .alert-info {
+    background-color: rgba(192, 224, 222, 0.12);
+    border-color: rgba(192, 224, 222, 0.35);
+    color: #b0d8d5;
+  }
+
+  // alert-warning: beta / superseded banner (amber tint, $warning = #F06F1F)
+  .alert-warning {
+    background-color: rgba(240, 111, 31, 0.12);
+    border-color: rgba(240, 111, 31, 0.40);
+    color: #f0b07a;
+  }
+
+  // ── Callout boxes ───────────────────────────────────────────────────────────
+  // _darkmode.scss sets callout-notice body to hsl(226,100%,89%) (near white)
+  // and callout-destructive body to hsl(8,54%,84%) (light salmon). Both look
+  // like bright islands on a dark page and force color:black for inner text,
+  // leaving headings and other non-> p children illegible.
+
+  .callout-notice {
+    background-color: hsl(226, 50%, 15%);
+
+    .callout-body {
+      background-color: hsl(226, 50%, 15%);
+      color: #c4d4ff;
+    }
+
+    // Override the theme's color: black rules on individual child selectors.
+    .callout-body > p,
+    .callout-body > p > strong,
+    .callout-body > p > em,
+    .callout-body > p > code,
+    .callout-body > ul,
+    .callout-body > ul > li,
+    .callout-body > ul > li > strong,
+    .callout-body > ul > li > em {
+      background-color: inherit;
+      color: #c4d4ff;
+    }
+  }
+
+  .callout-destructive {
+    .callout-body {
+      background-color: hsl(8, 55%, 15%);
+      color: #f5c5be;
+    }
+
+    .callout-body > p {
+      background-color: hsl(8, 55%, 15%);
+      color: #f5c5be;
+    }
+  }
+}

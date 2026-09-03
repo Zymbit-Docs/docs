@@ -1,0 +1,6 @@
+// width: 110% on sidebar links bleeds past the container and triggers a
+// horizontal scrollbar. 100% preserves the clip/ellipsis effect without
+// overflowing.
+.td-sidebar-nav .td-sidebar-link {
+    width: 100%;
+}
