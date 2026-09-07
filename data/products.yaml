@@ -66,6 +66,16 @@ products:
       - /hardware/components/sbb
       - /hardware/components/hsm64
 
+  - key: sen-builder-dev-kit
+    name: "Secure Node Builder Super Dev Kit"
+    status: current
+    hardware: /hardware/dev-kits/sen-builder-dev-kit
+    perimeter: sen
+    inherits: sen500
+    components:
+      - /hardware/components/sbb
+      - /hardware/components/hsm64
+
   - key: zymkey5
     name: "Zymkey5"
     status: current
