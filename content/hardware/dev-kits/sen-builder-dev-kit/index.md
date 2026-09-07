@@ -1,6 +1,6 @@
 ---
-title: Secure Node Builder Super Dev Kit
-linktitle: SEN Builder Dev Kit
+title: SEN Builder Super Dev Kit
+linktitle: SEN Builder Super Dev Kit
 description: All-in-one developer kit for building custom secure edge nodes, based on the Raspberry Pi CM5, HSM64, and Zymbit Secure Base Board.
 draft: false
 images: []

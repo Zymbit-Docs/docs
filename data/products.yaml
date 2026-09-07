@@ -67,7 +67,7 @@ products:
       - /hardware/components/hsm64
 
   - key: sen-builder-dev-kit
-    name: "Secure Node Builder Super Dev Kit"
+    name: "SEN Builder Super Dev Kit"
     status: current
     hardware: /hardware/dev-kits/sen-builder-dev-kit
     perimeter: sen
