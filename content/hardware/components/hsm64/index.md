@@ -12,5 +12,5 @@ images: []
 weight: 40
 ---
 
-The HSM64 is the Compute Module Interposer found in the SEN500 (CM5) and SEN400 (CM4). It is not available for purchase separately. The software functionality is equivalent to the HSM6 and HSM60.
+The HSM64 is the Compute Module Interposer found in the SEN500 (CM5) and SEN400 (CM4). It is not available for purchase separately. The software functionality is equivalent to the [HSM6](../../modules/hsm6) and [HSM60](../../modules/hsm60).
 
