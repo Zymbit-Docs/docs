@@ -25,7 +25,7 @@ jobs:
       # -- which is how the local build came to be broken against Hugo 0.91 while CI
       # was building fine on 0.151.1.
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.151.1'
           extended: true
