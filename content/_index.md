@@ -22,7 +22,7 @@ Recent Updates
   - Adds support for Ubuntu 26.04 (resolute) (no Bootware support)
   - Completely re-vamped packaging and installation; no longer uses install_zk_sw.sh script method. Installation is purely apt package based. Running apt upgrade on a device still using zk-sw-repo will not move it to 2.0.
   - Deprecates support for Ubuntu 22.04 (jammy), Debian 11 (bullseye) and 32-bit ARM. 
-    Details: [October 2026 Update](october-2026)
+    Details: [October 2026 Update](#october-2026)
 #### June/July 2026:
 - Added trixie support for Zymbit Driver Package (not Bootware)
 - Minor update to Bootware 1.3.2 (stable)
@@ -46,7 +46,7 @@ Recent Updates
 | Raspberry Pi OS Trixie (64-bit) | {{< partially-supported >}} | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
-| Ubuntu 26.04 LTS Noble (64-bit) |{{< partially-supported >}}  | {{< partially-supported >}} &nbsp;     | {{< partially-supported >}} &nbsp;     | {{< partially-supported >}} |
+| Ubuntu 26.04 LTS Resolute (64-bit) |{{< partially-supported >}}  | {{< partially-supported >}} &nbsp;     | {{< partially-supported >}} &nbsp;     | {{< partially-supported >}} |
 | Ubuntu 24.04 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
 
@@ -61,7 +61,7 @@ Contact [support](support@zymbit.com) for PiZero 2W.
 [^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](//bootware/1.3.2/troubleshooting/pi4-wifi).
 
 -----
-#### October 2026 
+## October 2026 
 -----
 
 Zymbit Driver Package 2.0. The upgrade is more of a migration than a simple upgrade path. Before you upgrade:
@@ -69,10 +69,14 @@ Zymbit Driver Package 2.0. The upgrade is more of a migration than a simple upgr
   - On devices already set up with install_zk_sw.sh, back up /var/lib/zymbit.
   - Plan to rebuild applications built against the old Zymkey API libraries.
 
-| **Z****y****mb****it ****Driver Package 2.0 is a migration, not a routine update.** It moves devices from the heterogeneous, distribution-specific legacy APT repositories to a common new APT repository, renames and splits several packages, and drops Ubuntu 22.04, Debian 11 and 32-bit ARM. Running `apt upgrade` on a device still using zk-sw-repo will not move it to 2.0.<br>Before you upgrade a device:<br>• Check that it runs a [supported distribution](#m6e99mv1xre.897).<br>• On devices set up with `install_zk_sw.sh`, back up `/var/lib/zymbit`.<br>• Plan to rebuild applications built against the old Zymkey API libraries.<br>Then follow the [install steps](#m6e99mv1xre.3901) below. |
+| Zymbit Driver Package 2.0 is a migration, not a routine update. It moves devices from the heterogeneous, distribution-specific legacy APT repositories to a common new APT repository, renames and splits several packages. Running `apt upgrade` on a device still using zk-sw-repo will not move it to 2.0.
+<br>Before you upgrade a device:
+<br>• Check that it runs a [supported distribution](#supported-distributions).
+<br>• On devices set up with `install_zk_sw.sh`, back up `/var/lib/zymbit`.
+<br>• Plan to rebuild applications built against the old Zymkey API libraries.<br>Then follow the [install steps](#install-steps) below. |
 | --- |
 
-## What's New?
+#### What's New?
 
 Zymbit Driver Package 2.0 makes Zymbit software install and update like any other package on your system: one signed apt repository, production ZYMKEY5 support, and Ubuntu 26.04 LTS out of the box.
 
@@ -83,7 +87,7 @@ Zymbit Driver Package 2.0 makes Zymbit software install and update like any othe
 - **Python API as a native package.** python3-zku installs with apt like everything else and automatically replaces the old pip package.&#32;
 - **Build your apps the standard way.** Native libraries now install to standard multiarch-aware locations with versioned names, and ship with pkg-config and CMake helpers. Applications built against the old libraries need a rebuild; see Known Issues.
 
-## Supported platforms
+#### Supported Distributions
 
 Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built.
 
@@ -98,9 +102,9 @@ Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) 
 
 Ubuntu 22.04 (jammy) and Debian 11 (bullseye) are no longer supported because the packages require glibc 2.36 or newer. Devices on 22.04 should stay on the zk-sw-repo packages or upgrade to Ubuntu 24.04. Devices on bullseye should stay on the zk-sw-repo packages or upgrade to Debian 12 (bookworm).
 
-## Zymbit Driver Package 2.0 versions
+#### Zymbit Driver Package 2.0 versions
 
-All packages now come from one signed repository, `https://zk-repo.s3.amazonaws.com/debian/` (suite `stable`), shared by every supported distribution. **Driver Package 2.0** names this set of packages as a whole. Each package keeps its own version number, listed below. Previous versions are the newest from the legacy zk-sw-repo repository.
+All packages now come from one common, signed repository, `https://zk-repo.s3.amazonaws.com/debian/` (suite `stable`), shared by every supported distribution. **Zymbit Driver Package 2.0** names this set of packages as a whole. Each package keeps its own version number, listed below. Previous versions are the newest from the legacy zk-sw-repo repository.
 
 | Package | Previous version | New version | Notes |
 | --- | --- | --- | --- |
@@ -118,7 +122,7 @@ All packages now come from one signed repository, `https://zk-repo.s3.amazonaws.
 | zkpkcs11 | 1.0-4 | 1.3.0-6 | PKCS#11 softhsm-util style utility using the HSM for additional security. |
 | zksaapps | 1.0-18 | 2.0.0-1 | Standalone apps used for LUKS encryption process |
 
-## What's new
+#### What's new
 
 | Package | Changes |
 | --- | --- |
@@ -132,7 +136,7 @@ All packages now come from one signed repository, `https://zk-repo.s3.amazonaws.
 | zksaapps | Standalone apps used for encryption. Tools install to `/usr/sbin`. |
 | zkbootrtc | Real time Clock sync service. Service installs under `/usr/lib/systemd/system`. |
 
-## Install and upgrade
+#### Install and upgrade
 
 Installing the `[zymbit-repo` package](https://zk-repo.s3.amazonaws.com/zymbit-repo.deb) switches a device to the new repository; after that, every Zymbit package installs and updates through APT. This works the same for new installs and for devices already using zk-sw-repo.
 
@@ -213,62 +217,6 @@ The new packages replace the old ones themselves: when applicable, `apt` removes
 - **Back up your PKCS#11 configuration before upgrading.** The token directory stays at `/var/lib/zymbit/zk_pkcs11/tokens/`, so existing tokens carry over. As a precaution, keep a copy of `/etc/zk_pkcs11.conf` and your tokens before upgrading.
 - **python3-zku leaks memory.** Calls that return data from the Zymkey do not free the library's buffer. `lock` and `unlock` together lose about 1.6 KB per call, so long-running Python services grow over time. C and C++ applications that free returned buffers are not affected. This was also true of the legacy zku pip module.
 - **libzy****m****keyssl**. Only supports OpenSSL ENGINE using the EC\_KEY\_METHOD interface; runs on OpenSSL 3.0 through 3.x. Not supported on OpenSSL 4.0. Support for 3.5 LTS runs to 2030.
-
-
------
-#### February 2026 
------
-
-#### Bootware 2.0 Beta Platform Support
-
-|                                   |   Pi5             |
-|:----------------------------------|:-----------------:|
-|                  **Zymbit HSMs:** | **Zymkey**        |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} |
-| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  |
-
-- Features
-  - Signed Boot Images: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update. Images securely signed with Bootware.
-  - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device. All  except SCM.
-
-- Limitations
-  - Platform support limited to Pi5.
-  - Operating Systems NOT fully supported : Trixie, Bullseye, Jammy (Ubuntu 22)
-  - Requires a clean Bootware install of Beta 2.0.0 - cannot upgrade from an existing Bootware 1.3.2.
-
-- Bug fixes
-  - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.
-  - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
-  - #205: zbcli update-config cli errors off with `Invalid Parameter: user`. Workaround is to provide one option at a time.
-  - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
-
-- zkifc
-   - zkpkcs11 package build fixed for 64-bit OSs
-
-
------
-#### December 2025
------
-
-- Released HSM 60 - Security Module for Pi Compute Modules
-- Released ZYMKEY5 - Plug-in hardware security module (for Raspberry Pi).
-
-- zkifc
-   - Installation script can now set the distribution via an environment variable. This allows pointing a newer distribution to use an older repo. For example, to point any OS at the Zymbit `bookworm` repo, do the following on your Pi,
-
-```
-    export distro=bookworm
-    curl -fsSL https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo -E bash
-```
-
-Bootware® 1.3.2-3
-- Open bugs:
-  - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.
-  - #205: zbcli update-config cli errors off with `Invalid Parameter: user`. Workaround is to provide one option at a time.
-  - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
-  - #199: Multiple copies of rollback message in MOTD. Also refers to rollback as rollover. 
-  - #196: overlay .zi images saves files as root regardless of what it was owned by before.
-  - #195: If you delete the DATA partition with your update policy not set to BOTH, zboot does not inject the new data key into the non-updated partition's initramfs. If the user switches to the non-updated partition, the data key will return bad passphrase from initramfs. The system will timeout, boot up, and unlock the partition's LUKS volume. Access to the shared LUKS data partition will be unavailable.
 
 -----
 #### Previous Release Notes are in the [Troubleshooting](troubleshooting) section.

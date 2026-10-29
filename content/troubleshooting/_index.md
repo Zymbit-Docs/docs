@@ -18,61 +18,41 @@ Before contacting Zymbit with troubleshooting related questions, please read thr
 If your issue is not related to any of the above list, read through the FAQ below to see if your issue is answered. If you still do not see a solution to your problem, reach out on our [Community Forum](https://community.zymbit.com/). Thank you!
 
 -----
-### **Release Notes**
------
-
-#### February 2026
------
-
-**Bootware® 2.0.0 Beta**
-
-| Pi Platform:                      |  SEN500/CM5       |  SEN400/CM4            |  Pi4                   |   Pi5             |
-|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM60**   | **Zymkey,HSM60,SCM**  | **Zymkey**        | **Zymkey**   |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
-| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
-
-- Features
-  - Signed Boot Images: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update. Images securely signed with Bootware.
-  - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device. All products except SCM.
-
-- Limitations
-   - Operating Systems NOT fully supported : Bullseye, Jammy (Ubuntu 22)
-   - Requires a clean Bootware install of Beta 2.0.0 - cannot upgrade from an existing Bootware 1.3.2.
-
-- Bug fixes
-   - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
-
-- zkifc
-   - Added support for Trixie
-   - Added support for new Zymbit HSM model: ZYMKEY5
-   - `zkifc -v` added to return version
-   - zkpkcs11 package build fixed for 64-bit OSs
-
-**Latest STABLE Platform and OS Support (July 2026)**
-
-
-|                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi5                    |   Pi4             |
-|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
- Raspberry Pi OS Trixie (64-bit) | {{< partially-supported >}} | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
-| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1] |
-| Ubuntu 24.04.4 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} | {{< supported >}} &nbsp; |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1]                  |
-
-{{< supported >}} Full Bootware Support
-
-{{< partially-supported >}} Bootware Not Supported
-
-> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
-
-[^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](/bootware/1.3.2/troubleshooting/pi4-wifi).
-
------
 ### **Previous Release Notes**
 -----
 
+-----
+#### February 2026
+-----
+
+### Bootware 2.0 Beta Platform Support  
+
+|                                   |   Pi5             | 
+|:----------------------------------|:-----------------:|
+|                  **Zymbit HSMs:** | **Zymkey**        | 
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | 
+| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  |
+
+- Features
+  - Signed Boot Images: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update. Images securely signed with Bootware.
+  - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device. All  except SCM.
+
+- Limitations
+  - Platform support limited to Pi5.
+  - Operating Systems NOT fully supported : Trixie, Bullseye, Jammy (Ubuntu 22)
+  - Requires a clean Bootware install of Beta 2.0.0 - cannot upgrade from an existing Bootware 1.3.2.
+
+- Bug fixes
+  - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.
+  - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
+  - #205: zbcli update-config cli errors off with `Invalid Parameter: user`. Workaround is to provide one option at a time.
+  - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
+
+- zkifc
+   - zkpkcs11 package build fixed for 64-bit OSs
+
+
+-----
 #### December 2025
 -----
 
