@@ -5,7 +5,7 @@ description: "Zymbit Documentation"
 aliases:
     - /getting-started
 date: 2020-10-06T08:47:36+00:00
-lastmod: "2026-07-10"
+lastmod: "2026-10-29"
 draft: false
 images: []
 weight: 8
@@ -16,6 +16,12 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 {{% callout note %}}
 Recent Updates
+#### October 2026:
+- Release of Zymbit Driver Package 2.0.  This is the first overall update to all of the Zymbit Driver Packages since 2025. Consider it a migration, not a routine update. Major feature changes:
+  - Adds support for the production ZYMKEY5
+  - Adds support for Ubuntu 26.04 (resolute)
+  - Completely re-vamped packaging and installation; no longer uses install_zk_sw.sh script method. Installation is purely apt package based. Running apt upgrade on a device still using zk-sw-repo will not move it to 2.0.
+  - Deprecates support for Ubuntu 22.04, Debian 11 and 32-bit ARM. 
 #### June/July 2026:
 - Added trixie support for Zymbit Driver Package (not Bootware)
 - Minor update to Bootware 1.3.2 (stable)
