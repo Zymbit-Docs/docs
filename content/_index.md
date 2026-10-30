@@ -23,7 +23,7 @@ Recent Updates
   - Completely re-vamped packaging and installation; no longer uses install_zk_sw.sh script method. Installation is purely apt package based. Running apt upgrade on a device still using zk-sw-repo will not move it to 2.0.
   - Deprecates support for Ubuntu 22.04 (jammy), Debian 11 (bullseye) and 32-bit ARM. 
 
-    Details: [October 2026 Update](#october-2026)
+    Details: [October 2026 Update](#october-2026-details)
 
 #### June/July 2026:
 - Added trixie support for Zymbit Driver Package (not Bootware)
@@ -63,13 +63,13 @@ Contact [support](support@zymbit.com) for PiZero 2W.
 [^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](//bootware/1.3.2/troubleshooting/pi4-wifi).
 
 -----
-## October 2026 
+### October 2026 Details
 -----
 
 
 #### Zymbit Driver Package 2.0 
 
-The installation is a migration, not a routine update. It moves devices from the heterogeneous, distribution-specific legacy APT repositories to a common new APT repository, renames and splits several packages. Running `apt upgrade` on a device still using zk-sw-repo will not move it to 2.0.
+The installation of the Zymbit Driver Package 2.0 is a migration, not a routine update. It moves devices from the heterogeneous, distribution-specific legacy APT repositories to a common new APT repository, renames and splits several packages. Running `apt upgrade` on a device still using zk-sw-repo will not move it to 2.0.
 
 Before you upgrade a device:
 
@@ -83,16 +83,16 @@ Then follow the [install steps](#install-steps) below.
 
 Zymbit Driver Package 2.0 makes Zymbit software install and update like any other package on your system: one signed apt repository, production ZYMKEY5 support, and Ubuntu 26.04 LTS out of the box.
 
-- **Install and update with apt.** Add the Zymbit repository once, and every Zymbit package installs and stays current through standard apt commands, alongside the rest of your system. No more `install_zk_sw.sh` script.&#32;
-- **Production-ready ZYMKEY5.** Production ZYMKEY5 adapters now identify as zymkey5, replacing the pre-production hsm6 name. Zymbit Driver Package 2.0 is required for adapters identifying as zymkey5 and is backwards compatible withe adapters identifying as hsm6.
-- **Ready for Ubuntu 26.04 LTS.** zkifc supports the new GPIO character-device interface that replaces sysfs GPIO in Ubuntu 24.04, so you can move your fleet to the latest LTS.
+- **Install and update with with a unified apt process.** Add the Zymbit repository once, and every Zymbit package installs and stays current through standard apt commands, alongside the rest of your system. No more `install_zk_sw.sh` script. 
 - **Install only what you need.** The Zymkey app utilities API is split into separate runtime, development and Python packages. Production devices need no longer install development headers and utilities.
+- **Production-ready ZYMKEY5.** Production ZYMKEY5 adapters now identify as zymkey5, replacing the pre-production hsm6 name. Zymbit Driver Package 2.0 is *required* for adapters identifying as zymkey5, and is backwards compatible withe adapters identifying as hsm6.
+- **Ready for Ubuntu 26.04 LTS.** zkifc supports the new GPIO character-device interface that replaces sysfs GPIO in Ubuntu 24.04, so you can move your fleet to the latest LTS.
 - **Python API as a native package.** python3-zku installs with apt like everything else and automatically replaces the old pip package.&#32;
 - **Build your apps the standard way.** Native libraries now install to standard multiarch-aware locations with versioned names, and ship with pkg-config and CMake helpers. Applications built against the old libraries need a rebuild; see Known Issues.
 
 #### Supported Distributions
 
-Zymbit Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built. If you are using an older distribution, we recommend you stick with the existing legacy package.
+Zymbit Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built. If you are using an older distribution, we recommend you stick with the existing legacy packages.
 
 | Distribution | Codename | Status |
 | --- | --- | --- |
@@ -105,7 +105,7 @@ Zymbit Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (
 
 Ubuntu 22.04 (jammy) and Debian 11 (bullseye) are no longer supported because the packages require glibc 2.36 or newer. Devices on 22.04 should stay on the zk-sw-repo packages or upgrade to Ubuntu 24.04. Devices on bullseye should stay on the zk-sw-repo packages or upgrade to Debian 12 (bookworm).
 
-#### Zymbit Driver Package 2.0 versions
+#### Zymbit Driver Package 2.0 Versions
 
 All packages now come from one common, signed repository, `https://zk-repo.s3.amazonaws.com/debian/` (suite `stable`), shared by every supported distribution. **Zymbit Driver Package 2.0** names this set of packages as a whole. Each package keeps its own version number, listed below. Previous versions are the newest from the legacy zk-sw-repo repository.
 
@@ -139,9 +139,9 @@ All packages now come from one common, signed repository, `https://zk-repo.s3.am
 | zksaapps | Standalone apps used for encryption. Tools install to `/usr/sbin`. |
 | zkbootrtc | Real time Clock sync service. Service installs under `/usr/lib/systemd/system`. |
 
-#### Install and upgrade
+#### Install and Upgrade
 
-Installing the `[zymbit-repo` package](https://zk-repo.s3.amazonaws.com/zymbit-repo.deb) switches a device to the new repository; after that, every Zymbit package installs and updates through APT. This works the same for new installs and for devices already using zk-sw-repo.
+Installing the `zymbit-repo` package switches a device to the new repository; after that, every Zymbit package installs and updates through APT. This works the same for new installs and for devices already using zk-sw-repo.
 
 1. Pull down the installation package, `zymbit-repo`. The `-J` option tells `curl` to automatically save the file under the version name reported by the download server; e.g.: `zymbit-repo_1.0-1_all.deb`:
 
@@ -215,7 +215,8 @@ The new packages replace the old ones themselves: when applicable, `apt` removes
 
 #### Known issues
 
-- **Applications built against zkapputilslib must be rebuilt.** The old libraries had unversioned names (`libzk_app_utils.so`, `libzkAppUtilsClassCPP.so`). Rebuild against the new packages. See \[LINK TO API DOCS' INSTRUCTIONS FOR USING CMAKE/PKG-CONFIG HELPERS\]
+- **Applications built against zkapputilslib must be rebuilt.** The old libraries had unversioned names (`libzk_app_utils.so`, `libzkAppUtilsClassCPP.so`). Rebuild against the new packages.
+<!-- See \[LINK TO API DOCS' INSTRUCTIONS FOR USING CMAKE/PKG-CONFIG HELPERS\] -->
 - **Update PKCS#11 configurations that name old paths.** Configurations that load the PKCS#11 module from `/usr/lib/libzk_pkcs11.so` must point to the new names in `/usr/lib/aarch64-linux-gnu/libzk_pkcs11.so`. (`zk_pkcs11-util` does this automatically.)
 - **Back up your PKCS#11 configuration before upgrading.** The token directory stays at `/var/lib/zymbit/zk_pkcs11/tokens/`, so existing tokens carry over. As a precaution, keep a copy of `/etc/zk_pkcs11.conf` and your tokens before upgrading.
 - **libzy****m****keyssl**. Only supports OpenSSL ENGINE using the EC\_KEY\_METHOD interface; runs on OpenSSL 3.0 through 3.x. Not supported on OpenSSL 4.0. Support for 3.5 LTS runs to 2030.
