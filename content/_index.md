@@ -22,7 +22,9 @@ Recent Updates
   - Adds support for Ubuntu 26.04 (resolute) (no Bootware support)
   - Completely re-vamped packaging and installation; no longer uses install_zk_sw.sh script method. Installation is purely apt package based. Running apt upgrade on a device still using zk-sw-repo will not move it to 2.0.
   - Deprecates support for Ubuntu 22.04 (jammy), Debian 11 (bullseye) and 32-bit ARM. 
+
     Details: [October 2026 Update](#october-2026)
+
 #### June/July 2026:
 - Added trixie support for Zymbit Driver Package (not Bootware)
 - Minor update to Bootware 1.3.2 (stable)
@@ -64,17 +66,18 @@ Contact [support](support@zymbit.com) for PiZero 2W.
 ## October 2026 
 -----
 
-Zymbit Driver Package 2.0. The upgrade is more of a migration than a simple upgrade path. Before you upgrade:
-  - Check that it runs a supported distribution.
-  - On devices already set up with install_zk_sw.sh, back up /var/lib/zymbit.
-  - Plan to rebuild applications built against the old Zymkey API libraries.
 
-| Zymbit Driver Package 2.0 is a migration, not a routine update. It moves devices from the heterogeneous, distribution-specific legacy APT repositories to a common new APT repository, renames and splits several packages. Running `apt upgrade` on a device still using zk-sw-repo will not move it to 2.0.
-<br>Before you upgrade a device:
-<br>• Check that it runs a [supported distribution](#supported-distributions).
-<br>• On devices set up with `install_zk_sw.sh`, back up `/var/lib/zymbit`.
-<br>• Plan to rebuild applications built against the old Zymkey API libraries.<br>Then follow the [install steps](#install-steps) below. |
-| --- |
+#### Zymbit Driver Package 2.0 
+
+The installation is a migration, not a routine update. It moves devices from the heterogeneous, distribution-specific legacy APT repositories to a common new APT repository, renames and splits several packages. Running `apt upgrade` on a device still using zk-sw-repo will not move it to 2.0.
+
+Before you upgrade a device:
+
+- Check that it runs a [supported distribution](#supported-distributions).
+- On devices set up with `install_zk_sw.sh`, back up `/var/lib/zymbit`.
+- Plan to rebuild applications built against the old Zymkey API libraries.
+
+Then follow the [install steps](#install-steps) below.
 
 #### What's New?
 
@@ -89,7 +92,7 @@ Zymbit Driver Package 2.0 makes Zymbit software install and update like any othe
 
 #### Supported Distributions
 
-Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built.
+Zymbit Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built. If you are using an older distribution, we recommend you stick with the existing legacy package.
 
 | Distribution | Codename | Status |
 | --- | --- | --- |
@@ -210,12 +213,11 @@ Installing the `[zymbit-repo` package](https://zk-repo.s3.amazonaws.com/zymbit-r
 
 The new packages replace the old ones themselves: when applicable, `apt` removes `libzk` and `zkapputilslib` as part of the install and `python3-zku` removes the `zku` package installed with `pip`.
 
-## Known issues
+#### Known issues
 
 - **Applications built against zkapputilslib must be rebuilt.** The old libraries had unversioned names (`libzk_app_utils.so`, `libzkAppUtilsClassCPP.so`). Rebuild against the new packages. See \[LINK TO API DOCS' INSTRUCTIONS FOR USING CMAKE/PKG-CONFIG HELPERS\]
 - **Update PKCS#11 configurations that name old paths.** Configurations that load the PKCS#11 module from `/usr/lib/libzk_pkcs11.so` must point to the new names in `/usr/lib/aarch64-linux-gnu/libzk_pkcs11.so`. (`zk_pkcs11-util` does this automatically.)
 - **Back up your PKCS#11 configuration before upgrading.** The token directory stays at `/var/lib/zymbit/zk_pkcs11/tokens/`, so existing tokens carry over. As a precaution, keep a copy of `/etc/zk_pkcs11.conf` and your tokens before upgrading.
-- **python3-zku leaks memory.** Calls that return data from the Zymkey do not free the library's buffer. `lock` and `unlock` together lose about 1.6 KB per call, so long-running Python services grow over time. C and C++ applications that free returned buffers are not affected. This was also true of the legacy zku pip module.
 - **libzy****m****keyssl**. Only supports OpenSSL ENGINE using the EC\_KEY\_METHOD interface; runs on OpenSSL 3.0 through 3.x. Not supported on OpenSSL 4.0. Support for 3.5 LTS runs to 2030.
 
 -----
