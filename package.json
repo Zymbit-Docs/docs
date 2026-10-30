@@ -26,7 +26,7 @@
     "dev:webserver": "browser-sync start --no-open --server public --watch --files public/ --port 1313 --reload-delay 2000",
     "dev:webserver:preview": "browser-sync start --server public --watch --files public/ --port 1313",
     "lint": "npm run -s lint:markdown",
-    "lint:markdown": "markdownlint *.md content/**/*.md",
+    "lint:markdown": "markdownlint *.md content/**/*.md assets/**/*.md",
     "release": "standard-version",
     "test": "npm run -s lint",
     "env": "env"

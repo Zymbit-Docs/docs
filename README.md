@@ -98,6 +98,39 @@ npm run dev:webserver
 npm run dev:build:poll
 ```
 
+## Shared content snippets
+
+Steps that appear word for word on several pages are written once, in `assets/snippets/`, and pulled into each page by a shortcode. Edit the snippet, never the copies: the pages only contain the shortcode call.
+
+| Path | Contents |
+| --- | --- |
+| `assets/scss/` | Site style overrides (`_styles_project.scss`, `dark.scss`) |
+| `assets/snippets/` | Markdown fragments rendered into pages by a shortcode |
+
+`assets/` is mounted over the theme's own `assets/` by `config/_default/module.yaml`, so a file here shadows a theme file at the same path.
+
+### Zymbit Driver Package install steps
+
+`assets/snippets/driver-install.md` holds the Driver Package 2.0 install steps shown in the "Install the Zymbit Driver Package" section of every module getting-started page (ZYMKEY4, ZYMKEY5, HSM4, HSM6, HSM60). Each page calls:
+
+```markdown
+## Install the Zymbit Driver Package
+
+{{< driver-install product="ZYMKEY5" >}}
+```
+
+`layouts/shortcodes/driver-install.html` reads the snippet, replaces every `%PRODUCT%` with the `product` value, and renders the result as Markdown. A missing snippet fails the build rather than leaving an empty section.
+
+The snippet is the short version for getting started. The full install and upgrade reference, with every package option, lives at `content/reference/driver-package/_index.md`, and the legacy `install_zk_sw.sh` method for Ubuntu 22.04, Debian 11, and 32-bit systems at `content/reference/driver-package/legacy.md`. When the install changes, check all three.
+
+### Writing a snippet
+
+* Keep the section heading in the page and put only the body in the snippet. Headings rendered by a shortcode do not appear in the page's table of contents.
+* Use root-relative links (`/reference/driver-package/`). A relative link would resolve against whichever page includes the snippet.
+* Snippets are linted with everything else by `npm run lint`. A snippet does not start with a heading, so it opens with `<!-- markdownlint-disable-next-line MD041 -->`. The comment passes through to the page's HTML, where it is invisible.
+
+To add another snippet, put the Markdown in `assets/snippets/` and copy `driver-install.html` as the shortcode, changing the file name it reads and the parameters it substitutes.
+
 ## Adding a product or a task
 
 `/products/` and `/tasks/` are generated from two data files. Nothing about them is hand-maintained, and a link that points at a page which does not exist fails the build rather than shipping broken.

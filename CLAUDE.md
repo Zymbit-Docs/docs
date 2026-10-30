@@ -79,6 +79,17 @@ Located in `layouts/shortcodes/`:
 
 Use `supported` / `partially-supported` for OS support status rather than writing the status in prose, so support tables stay consistent as new OS releases land.
 
+## Shared content snippets
+
+`assets/` holds `scss/` (style overrides) and `snippets/` (Markdown fragments rendered into pages by a shortcode). When the same steps appear on several pages, write them once in `assets/snippets/` rather than copying them; the five module install sections had already drifted apart before they were consolidated.
+
+- `assets/snippets/driver-install.md` is the short Driver Package 2.0 install, rendered by `driver-install` with `%PRODUCT%` replaced. The full reference is `content/reference/driver-package/_index.md` and the 1.x method is `content/reference/driver-package/legacy.md`; an install change usually touches all three.
+- Keep the section heading in the page, not the snippet: headings rendered from a `{{< >}}` shortcode stay out of the table of contents.
+- Links in a snippet must be root-relative, since it renders inside other pages.
+- `npm run lint` covers `assets/**/*.md`. Snippets open with `<!-- markdownlint-disable-next-line MD041 -->` because they have no heading.
+
+**The procedure for writing or adding a snippet lives in [README.md](README.md#shared-content-snippets).**
+
 ## Site search
 
 Search is Pagefind, generated from the rendered HTML in `public/` after Hugo runs (`postbuild` locally, an explicit step in `deploy-site.yml`). There is no index template to maintain; what gets indexed is controlled by `data-pagefind-*` attributes in the layouts.
