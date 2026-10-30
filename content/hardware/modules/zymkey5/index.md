@@ -6,7 +6,7 @@ aliases:
     - /quickstart/getting-started/zymkey5/
     - /getting-started/zymkey5/quickstart/
 date: ""
-lastmod: "2026-06-19"
+lastmod: "2026-10-29"
 draft: false
 images: []
 weight: 20
@@ -19,7 +19,7 @@ ZYMKEY5 is the essential Zymbit security module designed specifically to work wi
 
 #### ZYMKEY5 Compatibility Notice - Pre-Production Hardware Identification
 
-The **ZYMKEY5 Pre-production** identifies as an **HSM6** for backwards compatibility with previous releases of the Zymbit Driver Package. All of the HSM6 functionality is fully applicable to the ZYMKEY5. Production ZYMKEY5 will identify as a ZYMKEY5 maintaining backwards compatibility.
+The **ZYMKEY5 Pre-production** identifies as an **HSM6** for backwards compatibility with previous releases of the Zymbit Driver Package. All of the HSM6 functionality is fully applicable to the ZYMKEY5. Production ZYMKEY5 identifies as a ZYMKEY5 and requires Zymbit Driver Package 2.0, which also supports pre-production units that identify as an HSM6.
 
 There is also an EDU variant of the ZYMKEY5 intended for educational purposes. The EDU version (pre-production) will also identify as an HSM6. The only difference from the standard ZYMKEY5 and the EDU version of the ZYMKEY5 is that the EDU version will not be able to Bind Lock into any destructive state.
 
@@ -130,29 +130,11 @@ The default I2C address for ZYMKEY5 is 0x30. If this conflicts with another devi
 
 ## Install the Zymbit Driver Package
 
-Login to your host device and follow these steps to install the ZYMKEY5's Zymbit Driver Package.
-
-The ZYMKEY5 will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
-
-* Zymbit `.service` files located in the `/etc/systemd/system` directory
-* `pip`
-
-Ensure that `curl` is installed on your host:
-
-```bash
-sudo apt install curl
-```
-
-Download and install the necessary Zymbit services onto your device.
-
-```bash
-curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
-```
-
+{{< driver-install product="ZYMKEY5" >}}
 
 ## Test the installation
 
-When the software installation has completed, reboot your device. After the reboot has completed, the Raspberry Pi will perform an operation that will temporarily bind the ZYMKEY5 to your SBC. Once the ZYMKEY5 is bound to the SBC, the ZYMKEY5's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
+After your device reboots, the Raspberry Pi will perform an operation that will temporarily bind the ZYMKEY5 to your SBC. Once the ZYMKEY5 is bound to the SBC, the ZYMKEY5's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
 
 {{< resource_link "/reference/binding" >}}
 In production mode, ZYMKEY5 generates a unique Device ID by measuring certain attributes of the specific host and the ZYMKEY5 itself to permanently associate the two.
@@ -163,8 +145,8 @@ The quickest way to get started is to see the ZYMKEY5's various features at work
 Run the scripts:
 
 ```bash
-python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py
-python3 /usr/local/share/zymkey/examples/zk_crypto_test.py
+python3 /usr/share/zymkey/examples/zk_app_utils_test.py
+python3 /usr/share/zymkey/examples/zk_crypto_test.py
 ```
 
 Now you're ready to start developing with ZYMKEY5 and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:

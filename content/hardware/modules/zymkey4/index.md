@@ -6,7 +6,7 @@ aliases:
     - /quickstart/getting-started/zymkey4/
     - /getting-started/zymkey4/quickstart/
 date: ""
-lastmod: "2026-01-03"
+lastmod: "2026-10-29"
 draft: false
 images: []
 weight: 25
@@ -129,29 +129,11 @@ The default I2C address for ZYMKEY4 is 0x30. If this conflicts with another devi
 
 ## Install the Zymbit Driver Package
 
-Login to your host device and follow these steps to install the ZYMKEY4's Zymbit Driver Package.
-
-The ZYMKEY4 will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
-
-* Zymbit `.service` files located in the `/etc/systemd/system` directory
-* `pip`
-
-Ensure that `curl` is installed on your host:
-
-```bash
-sudo apt install curl
-```
-
-Download and install the necessary Zymbit services onto your device.
-
-```bash
-curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash
-```
-
+{{< driver-install product="ZYMKEY4" >}}
 
 ## Test the installation
 
-When the software installation has completed, reboot your device. After the reboot has completed, the Raspberry Pi will perform an operation that will temporarily bind the ZYMKEY4 to your SBC. Once the ZYMKEY4 is bound to the SBC, the ZYMKEY4's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
+After your device reboots, the Raspberry Pi will perform an operation that will temporarily bind the ZYMKEY4 to your SBC. Once the ZYMKEY4 is bound to the SBC, the ZYMKEY4's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
 
 {{< resource_link "/reference/binding" >}}
 In production mode, ZYMKEY4 generates a unique Device ID by measuring certain attributes of the specific host and the ZYMKEY4 itself to permanently associate the two.
@@ -162,8 +144,8 @@ The quickest way to get started is to see the ZYMKEY4's various features at work
 Run the scripts:
 
 ```bash
-python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py
-python3 /usr/local/share/zymkey/examples/zk_crypto_test.py
+python3 /usr/share/zymkey/examples/zk_app_utils_test.py
+python3 /usr/share/zymkey/examples/zk_crypto_test.py
 ```
 
 Now you're ready to start developing with ZYMKEY4 and Raspberry Pi. When it's time to deploy your project, read our guide on enabling Production Mode:

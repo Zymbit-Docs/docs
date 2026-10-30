@@ -61,7 +61,7 @@ All documentation lives under `content/` as Markdown files:
 - **`bootware/`** - Versioned by semver directories: 1.0.0, 1.1.0, 1.2.2, 1.3.0, 1.3.2, 2.0.0. `/bootware/` is a landing page, not a redirect: it renders the version dropdown plus quick links to the stable and beta releases. Adding a version directory is not enough on its own - see below.
 - **`api/`** - Auto-generated from XML via the `process-api-update.yml` GitHub Action. Do not edit these files manually.
 - **`hardware/`** - Product documentation (`sen`, `dev-kits`, `modules`, `components`)
-- **`reference/`** - Technical reference (`binding`, `cad`, `conformity`, `engineering-notes`, `power-quality`, `product-briefs`, `real-time-clock`, `reserved-pins`, `zymbit-wallet-sdk`, plus `cpu-scaling.md`)
+- **`reference/`** - Technical reference (`binding`, `cad`, `conformity`, `driver-package`, `engineering-notes`, `power-quality`, `product-briefs`, `real-time-clock`, `reserved-pins`, `zymbit-wallet-sdk`, plus `cpu-scaling.md`)
 - **`tutorials/`** - Step-by-step guides
 - **`troubleshooting/`** - FAQs organized by product (`general`, `hsm4`, `hsm6`, `scm`, `scm-mobo`, `zymkey4`)
 
@@ -72,6 +72,7 @@ Archetypes for `npm run create` live in `archetypes/`: `default.md`, `docs.md`, 
 Located in `layouts/shortcodes/`:
 
 - `bootware_version_notice` - Banner warning when viewing an outdated Bootware version
+- `driver-install` - Zymbit Driver Package install steps shared by every module getting-started page. The steps live in `assets/snippets/driver-install.md`; edit them there, not in the product pages
 - `resource_link` - Linked resource card that extracts page title and description
 - `supported` / `partially-supported` - Hardware and OS support status badges
 - `youtube` - YouTube video embeds

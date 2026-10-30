@@ -6,7 +6,7 @@ aliases:
     - /quickstart/getting-started/hsm60/
     - /getting-started/hsm60/quickstart/
 date: ""
-lastmod: "2026-01-03"
+lastmod: "2026-10-29"
 draft: false
 images: []
 weight: 10
@@ -112,24 +112,9 @@ Your {{% term/i2c %}} bus is now on and ready to talk to the HSM.
 
 ### Install the Zymbit Driver Package
 
-Login to your host device and follow these steps to install the HSM's Zymbit Driver Package.
+{{< driver-install product="HSM60" >}}
 
-The HSM will require a number of packages to be installed from the Raspbian and Zymbit `apt` repositories. The following setup script will be install a number of files and software packages on your system, including:
-
-* Zymbit `.service` files located in the `/etc/systemd/system` directory
-* `pip3`
-
-Ensure that `curl` is installed on your host:
-
-`sudo apt install curl`
-
-Download and install the necessary Zymbit services onto your device.
-
-`curl -G https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo bash`
-
-
-
-When the software installation has completed, the script will automatically reboot your device. After the reboot has completed, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
+After your device reboots, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
 
 {{< resource_link "reference/binding" >}}
 In production mode, HSM generates a unique Device ID by measuring certain attributes of the specific host and the HSM itself to permanently associate the two.
@@ -139,9 +124,9 @@ In production mode, HSM generates a unique Device ID by measuring certain attrib
 
 The quickest way to get started is to see the HSM's various features at work by running these test scripts that were installed with the Zymbit Driver Package:
 
-`python3 /usr/local/share/zymkey/examples/zk_app_utils_test.py`
+`python3 /usr/share/zymkey/examples/zk_app_utils_test.py`
 
-`python3 /usr/local/share/zymkey/examples/zk_crypto_test.py`
+`python3 /usr/share/zymkey/examples/zk_crypto_test.py`
 
 Now you're ready to start developing with HSM and Raspberry Pi, or [install Bootware](/bootware/1.3.2/getting-started).
 
