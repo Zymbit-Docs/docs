@@ -77,7 +77,7 @@ Before you upgrade a device:
 - On devices set up with `install_zk_sw.sh`, back up `/var/lib/zymbit`.
 - Plan to rebuild applications built against the old Zymkey API libraries.
 
-Then follow the [install steps](#install-steps) below.
+Then follow the [install steps](#install-and-upgrade) below.
 
 #### What's New?
 
@@ -112,18 +112,18 @@ All packages now come from one common, signed repository, `https://zk-repo.s3.am
 | Package | Previous version | New version | Notes |
 | --- | --- | --- | --- |
 | zymbit-repo | — | 1.0-1 | New. Configures the APT source and installs Zymbit GPG signing key. |
-| zkifc | 1.2-38 | 2.0.0-1 | Now includes libzk; replaces the libzk package. |
+| zkifc | 1.2-38 | 2.0.0-2 | Now includes libzk; replaces the libzk package. |
 | libzk | 1.1-26 | — | Removed; merged into zkifc. |
 | zkapputilslib | 1.1-27 | — | Removed; split into the following four libzkapputils\* packages. |
-| libzkapputils | — | 1.2.0-10 | New. C library.. Needed to run user-built programs which utilize the Zymkey API. |
-| libzkapputils-c++ | — | 1.2.0-10 | New. C++ library, replaces zkapputilslib. Needed to run user-built programs which utilize the C++ bindings to the Zymkey API. |
-| libzkapputils-dev | — | 1.2.0-10 | New. C headers. Only necessary on systems being used to build programs with the Zymkey API.&#32; |
-| libzkapputils-c++-dev | — | 1.2.0-10 | New. C++ headers. Only necessary on systems being used to build programs with the C++ bindings to the Zymkey API. |
-| python3-zku | — | 1.2.0-10 | New. Python bindings to the Zymkey API. Replaces the pip zku package. |
-| libzymkeyssl | 1.0-13 | 2.0.0-1 | OpenSSL engine 3.x support only. OpenSSL 4.x not supported. |
-| zkbootrtc | 1.1-16 | 1.1.17-5 | Zymbit real-time clock synchronization service. |
-| zkpkcs11 | 1.0-4 | 1.3.0-6 | PKCS#11 softhsm-util style utility using the HSM for additional security. |
-| zksaapps | 1.0-18 | 2.0.0-1 | Standalone apps used for LUKS encryption process |
+| libzkapputils | — | 1.2.0-11 | New. C library.. Needed to run user-built programs which utilize the Zymkey API. |
+| libzkapputils-c++ | — | 1.2.0-11 | New. C++ library, replaces zkapputilslib. Needed to run user-built programs which utilize the C++ bindings to the Zymkey API. |
+| libzkapputils-dev | — | 1.2.0-11 | New. C headers. Only necessary on systems being used to build programs with the Zymkey API.&#32; |
+| libzkapputils-c++-dev | — | 1.2.0-11 | New. C++ headers. Only necessary on systems being used to build programs with the C++ bindings to the Zymkey API. |
+| python3-zku | — | 1.2.0-11 | New. Python bindings to the Zymkey API. Replaces the pip zku package. |
+| libzymkeyssl | 1.0-13 | 2.0.0-2 | OpenSSL engine 3.x support only. OpenSSL 4.x not supported. |
+| zkbootrtc | 1.1-16 | 1.1.17-6 | Zymbit real-time clock synchronization service. |
+| zkpkcs11 | 1.0-4 | 1.3.0-7 | PKCS#11 softhsm-util style utility using the HSM for additional security. |
+| zksaapps | 1.0-18 | 2.0.0-2 | Standalone apps used for LUKS encryption process |
 
 #### What's new
 
