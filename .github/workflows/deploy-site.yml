@@ -8,10 +8,28 @@ on:
       - '.github/**'
   workflow_dispatch:
 
+# Read-only unless a job asks for more. Only this workflow can publish the site,
+# and the github-pages environment accepts deployments from main alone, so a
+# workflow on any other branch cannot change docs.zymbit.com.
+permissions:
+  contents: read
+
+# Let a running deployment finish rather than cancel it partway through.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   deploy:
     name: Generate static docs site using Hugo
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout branch
@@ -72,14 +90,13 @@ jobs:
           }
           echo "Pagefind index size: $(du -sh public/pagefind | cut -f1)"
 
-      - name: Set truncated SHA hash
-        run: echo "short_hash=${GITHUB_SHA::6}" >> $GITHUB_ENV
+      # The custom domain (docs.zymbit.com) is set in the repo's Pages settings, so
+      # the artifact needs no CNAME file.
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
 
       - name: Deploy static site to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
-          full_commit_message: "[${{ env.short_hash }}] ${{ github.event.head_commit.message }}"
+        id: deployment
+        uses: actions/deploy-pages@v4
