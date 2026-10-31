@@ -222,7 +222,7 @@ The new packages replace the old ones themselves: when applicable, `apt` removes
 - **libzy****m****keyssl**. Only supports OpenSSL ENGINE using the EC\_KEY\_METHOD interface; runs on OpenSSL 3.0 through 3.x. Not supported on OpenSSL 4.0. Support for 3.5 LTS runs to 2030.
 
 -----
-#### Previous Release Notes are in the [Troubleshooting](troubleshooting) section.
+#### Previous release notes are in [Troubleshooting](troubleshooting/release-notes/).
 -----
 <br>
 

@@ -63,7 +63,7 @@ All documentation lives under `content/` as Markdown files:
 - **`hardware/`** - Product documentation (`sen`, `dev-kits`, `modules`, `components`)
 - **`reference/`** - Technical reference (`binding`, `cad`, `conformity`, `driver-package`, `engineering-notes`, `power-quality`, `product-briefs`, `real-time-clock`, `reserved-pins`, `zymbit-wallet-sdk`, plus `cpu-scaling.md`)
 - **`tutorials/`** - Step-by-step guides
-- **`troubleshooting/`** - FAQs organized by product (`general`, `hsm4`, `hsm6`, `scm`, `scm-mobo`, `zymkey4`)
+- **`troubleshooting/`** - `_index.md` is the landing page: the troubleshooting checklist, common issues, and general FAQs (it absorbed the old `general/` page, whose URL is kept as an alias). Product FAQs (`hsm4`, `hsm6`, `scm`, `scm-mobo`, `zymkey4`) link to the shared checklist and fixes rather than repeating them. `release-notes/` holds past release notes; when a home page release is superseded, move its notes there, newest first.
 
 Archetypes for `npm run create` live in `archetypes/`: `default.md`, `docs.md`, `api_docs.md`.
 

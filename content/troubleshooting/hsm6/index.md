@@ -2,7 +2,7 @@
 title: "HSM6 FAQ & Troubleshooting"
 linkTitle: "HSM6 FAQ & Troubleshooting"
 description: "HSM6 FAQ & Troubleshooting"
-lastmod: "2025-10-15"
+lastmod: "2026-10-31"
 draft: false
 images: []
 #api_docs: true
@@ -10,23 +10,12 @@ weight: 40
 toc: true
 ---
 
-------
-## **Troubleshooting**
-------
+## Troubleshooting
 
-### **Troubleshooting Checklist**
-
-Before contacting Zymbit with troubleshooting related questions, please read through the following troubleshooting checklist.
-
-1. Power supply. Most of the problems we see are from a poor power source. Start with a good power supply from the PI foundation or Canakit, not a phone charger. The recommended power for the PI4 is 5V and 3 amps.  For a PI5, the recommended power supply should provide 5V, 5 amps.
-2. I2C enabled. Double check that you have enabled the I2C bus. An easy way to check is "ls -l /dev/i2c-1". If /dev/i2c-1 exists, the I2C bus is enabled.
-3. apt update and upgrade. Be sure that your software is up to date. On Driver Package 1.x (installed with `install_zk_sw.sh`), `apt upgrade` does not move you to Driver Package 2.0; see [Installing the Zymbit Driver Package](/reference/driver-package/).
-4. Installation. Install the Zymbit Driver Package as described in [Installing the Zymbit Driver Package](/reference/driver-package/), then reboot. After the reboot, the blue LED on your Zymbit device should blink once every 3 seconds. You must get to this step before proceeding to encryption, etc.
-
-If your issue is not related to any of the above list, read through the FAQ below to see if your issue is answered. If you still do not see a solution to your problem, reach out on our [Community Forum](https://community.zymbit.com/). Thank you!
+Before contacting Zymbit, work through the [troubleshooting checklist](/troubleshooting/#troubleshooting-checklist) and [common issues](/troubleshooting/#common-issues). The questions below are specific to the HSM6.
 
 
-##### Q: Why does the LED continue to blink rapidly? It never blinks with the described pattern of once (in Development mode) or three times (in Production mode) every three seconds.
+### Q: Why does the LED continue to blink rapidly? It never blinks with the described pattern of once (in Development mode) or three times (in Production mode) every three seconds.
 
 <details>
 
@@ -68,7 +57,7 @@ C: `int zkSetI2CAddr ( zkCTX ctx, int addr)`
 
 </details>
 
-##### Q: The LED blinks rapidly when booting, but eventually turns off. It doesn't blink once or three times every 3 seconds as described.
+### Q: The LED blinks rapidly when booting, but eventually turns off. It doesn't blink once or three times every 3 seconds as described.
 
 <details>
 
@@ -82,7 +71,7 @@ A: This issue could be caused by the same issues described in the first question
 
 </details>
 
-##### Q: What do the different LED blinking patterns mean?
+### Q: What do the different LED blinking patterns mean?
 
 <details>
 
@@ -122,7 +111,7 @@ A: This issue could be caused by the same issues described in the first question
 
 </details>
 
-##### Q: How do I set an alternative I2C address?
+### Q: How do I set an alternative I2C address?
 
 <details>
 
@@ -142,7 +131,7 @@ The I2C communication between the Zymkey and the Host is encrypted, but will not
 
 </details>
 
-##### Q: Why does my HSM6 fail to restart after cycling power?
+### Q: Why does my HSM6 fail to restart after cycling power?
 
 <details>
 
@@ -156,7 +145,7 @@ A: HSM6 monitors the quality of 5V power coming into the host computer. If the v
 
 </details>
 
-##### Q: Why is my HSM6 "invisible" to the i2c-tools suite?
+### Q: Why is my HSM6 "invisible" to the i2c-tools suite?
 
 <details>
 
@@ -174,7 +163,7 @@ You can tell if you successfully installed it by observing the blue LED. If it i
 
 </details>
 
-##### Q: If the install fails, can I run it more than once?
+### Q: If the install fails, can I run it more than once?
 
 <details>
 
@@ -188,9 +177,9 @@ A: Yes, you should have no problem running it multiple times if it were to fail.
 
 </details>
 
-### **Encrypting Root File System**
+### Encrypting root file system
 
-##### Summary of steps
+#### Summary of steps
 
 * Start with a blank USB device.
 * USB storage should be twice the size of the SD card.
@@ -198,7 +187,7 @@ A: Yes, you should have no problem running it multiple times if it were to fail.
 * The process will automatically do two reboots. Be patient.
 * If the encryption process does not complete, it's best to start fresh and try again.
 
-##### Q: How can I check if the system matches the default parameters?
+#### Q: How can I check if the system matches the default parameters?
 
 <details>
 
@@ -221,7 +210,7 @@ sda            8:0    0   32.0G   0  disk
 
 </details>
 
-##### Q: How can I monitor the status after phase 1 reboot?
+#### Q: How can I monitor the status after phase 1 reboot?
 
 <details>
 
@@ -239,7 +228,7 @@ That will show you progress of the second half of the encryption process.
 
 </details>
 
-##### Q: Can I re-run encryption with the same USB stick?
+#### Q: Can I re-run encryption with the same USB stick?
 
 <details>
 
@@ -253,7 +242,7 @@ A: The script is designed to re-use information on the USB stick to encrypt a "g
 
 </details>
 
-##### Q: If my PI automounts the USB device, will that interfere with the process?
+#### Q: If my PI automounts the USB device, will that interfere with the process?
 
 <details>
 
@@ -281,7 +270,7 @@ journalctl -fu cfg_SD_crfs
 
 </details>
 
-##### Q: How can I confirm my file system is encrypted and protected?
+#### Q: How can I confirm my file system is encrypted and protected?
 
 <details>
 
@@ -301,13 +290,11 @@ If your system reboots twice, the LED returns to flashing once every 3 seconds, 
 
 </details>
 
-### For more help, see Zymbit's [Community Forum](https://community.zymbit.com/).
+For more help, see Zymbit's [Community Forum](https://community.zymbit.com/).
 
-------
-## **Features**
-------
+## Features
 
-##### Q: What curves are supported for Zymbit products?
+### Q: What curves are supported for Zymbit products?
 
 <details>
 
@@ -315,15 +302,15 @@ If your system reboots twice, the LED returns to flashing once every 3 seconds, 
 
 <br>
 
-Zymkey and HSM4: NIST P-256 and secp256r1
+ZYMKEY4 and HSM4: NIST P-256 and secp256r1
 
-HSM6: NIST P-256, secp256r1, secp256k1, X25519, ED25519
+HSM6, ZYMKEY5, and HSM60: NIST P-256, secp256r1, secp256k1, X25519, ED25519
 
 -----
 
 </details>
 
-##### Q: How do I use HSM6’s `store_foreign_public_key` function to store a Zymkey or HSM4 public key on HSM6?
+### Q: How do I use HSM6’s `store_foreign_public_key` function to store a Zymkey or HSM4 public key on HSM6?
 
 <details>
 
@@ -366,7 +353,7 @@ foreign_slot = zymkey.client.store_foreign_public_key('secp256r1', key)
 
 </details>
 
-##### Q: How can I reset the clock to the current timestamp?
+### Q: How can I reset the clock to the current timestamp?
 
 <details>
 
@@ -380,7 +367,7 @@ A: The clock will sync to the current timestamp once the Pi has achieved NTP syn
 
 </details>
 
-##### Q: How do I access the devices (RTC, accelerometer, crypto) on HSM6?
+### Q: How do I access the devices (RTC, accelerometer, crypto) on HSM6?
 
 <details>
 
@@ -394,7 +381,7 @@ A: For Zymkey and HSMs, kernel drivers and libraries for all of the devices are 
 
 </details>
 
-##### Q: My GPG Key expired and I cannot access the Zymkey Repository. How do I update the Key?
+### Q: My GPG Key expired and I cannot access the Zymkey Repository. How do I update the Key?
 
 
 <details>
@@ -403,19 +390,13 @@ A: For Zymkey and HSMs, kernel drivers and libraries for all of the devices are 
 
 <br>
 
-A: This applies only to devices on Driver Package 1.x, which use the legacy zk-sw-repo repository. On Driver Package 2.0, the signing key is installed by the `zymbit-repo` package; see [Installing the Zymbit Driver Package](/reference/driver-package/).
-
-On Driver Package 1.x, you can update your existing key with the following command:
-
-```bash
-curl -L https://zk-sw-repo.s3.amazonaws.com/apt-zymkey-pubkey.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/zymbit.gpg
-```
+A: See [Expired GPG key preventing access to the repository](/troubleshooting/#expired-gpg-key-preventing-access-to-the-repository) in the general troubleshooting page. It applies only to devices on Driver Package 1.x.
 
 -----
 
 </details>
 
-##### Q: Can the HSM6 detect if the SD card has been removed?
+### Q: Can the HSM6 detect if the SD card has been removed?
 
 <details>
 
@@ -429,9 +410,9 @@ A: No, but perimeter detect can be configured to prevent access to the SD card. 
 
 </details>
 
-### **Battery & Power Questions**
+### Battery and power questions
 
-##### Q: Should I use an external battery on my Zymkey or HSM?
+#### Q: Should I use an external battery on my Zymkey or HSM?
 
 <details>
 
@@ -449,7 +430,7 @@ The battery is required to maintain the Real Time Clock and the perimeter detect
 
 </details>
 
-##### Q: What happens when the battery dies? How can I change the battery when it dies, without self-destructing my device?
+#### Q: What happens when the battery dies? How can I change the battery when it dies, without self-destructing my device?
 
 <details>
 
@@ -461,17 +442,22 @@ A: If the battery dies and the host is not connected to power, some features wil
 
 ![external battery matrix](../external-battery.png)
 
-With Zymkey and HSM4, if tamper detect is enabled and the battery dies or is removed, the device will self-destruct. This is an intentional security feature. If tamper detect is NOT enabled, you should connect the host device to power to change the battery.
+By default, a Zymbit device does nothing if its battery dies or is removed. On every Zymbit product except ZYMKEY4, you can set the device to respond instead in one of two ways:
 
-HSM6 has a battery monitoring feature to help the user prevent the battery from dying. If the battery dies, HSM6 users have the ability to choose whether the device should self-destruct or hold in reset mode until the battery is changed.
+* Self-destruct.
+* Hold in reset until the battery is changed.
+
+ZYMKEY4 does not support either option. If tamper detect is NOT enabled, you should connect the host device to power to change the battery.
+
+HSM6 has a battery monitoring feature to help the user prevent the battery from dying.
 
 -----
 
 </details>
 
-### **Kernel & Kernel Boot Questions**
+### Kernel and kernel boot questions
 
-##### Q: Can you tell the kernel not to run a shell?
+#### Q: Can you tell the kernel not to run a shell?
 
 <details>
 
@@ -485,7 +471,7 @@ A: Someone could easily replace the kernel and, while it is possible to configur
 
 </details>
 
-##### Q:  Can you tell the kernel to ignore cmdline.txt?
+#### Q:  Can you tell the kernel to ignore cmdline.txt?
 
 <details>
 
@@ -501,7 +487,7 @@ A: There are many reasons why this is infeasible, but the main one is that, sinc
 </details>
 
 
-##### Q: Is it possible to encrypt the boot partition?
+#### Q: Is it possible to encrypt the boot partition?
 
 <details>
 
@@ -516,9 +502,9 @@ A: No because the GPU bootloader does not have encryption features implemented a
 
 </details>
 
-### **Production (“self-destruct”) Mode Questions**
+### Production (“self-destruct”) mode questions
 
-##### Q: When using the perimeter-detect feature, does the “self-destruct” mode work (destroy all of its key material) even when the Lock Tab hasn’t been cut?
+#### Q: When using the perimeter-detect feature, does the “self-destruct” mode work (destroy all of its key material) even when the Lock Tab hasn’t been cut?
 
 <details>
 
@@ -532,7 +518,7 @@ A: Self-destruct mode works only after the Lock Tab has been cut.
 
 </details>
 
-##### Q: Is there a way to turn off “self-destruct” mode?
+#### Q: Is there a way to turn off “self-destruct” mode?
 
 <details>
 
@@ -547,7 +533,7 @@ A: No, once turned on, "self-destruct" mode is permanent.
 </details>
 
 
-##### Q: If my HSM6 does “self-destruct,” can I create new keys and reuse the hardware?
+#### Q: If my HSM6 does “self-destruct,” can I create new keys and reuse the hardware?
 
 <details>
 
@@ -563,7 +549,7 @@ A: No, once turned on, "self-destruct" mode is permanent.
 
 </details>
 
-##### Q: If I cut the Lock-Tab on a HSM6, can I move that HSM6 to another Pi or change the SD card?
+#### Q: If I cut the Lock-Tab on a HSM6, can I move that HSM6 to another Pi or change the SD card?
 
 <details>
 
@@ -577,7 +563,7 @@ A: No. Cutting the Lock-Tab **permanently** binds that instance of HSM6 to the s
 
 </details>
 
-##### Q: Will HSM6 still self-destruct, even when my SBC is powered off?
+#### Q: Will HSM6 still self-destruct, even when my SBC is powered off?
 
 <details>
 
@@ -593,11 +579,9 @@ A: Yes, because HSM6 is battery powered. As long as the battery is sufficiently 
 
  
 
-------
-## **Other**
-------
+## Other
 
-##### Q: Where can I learn about and/or pre-order future products?
+### Q: Where can I learn about and/or pre-order future products?
 
 <details>
 
@@ -611,7 +595,7 @@ A: Sign up for our new product email updates at the bottom of [Zymbit's homepage
 
 </details>
 
-##### Q: Which SBCs are compatible with HSM6?
+### Q: Which SBCs are compatible with HSM6?
 
 <details>
 
@@ -619,15 +603,16 @@ A: Sign up for our new product email updates at the bottom of [Zymbit's homepage
 
 <br>
 
-*  Electrically, the Zymkey-I2C will interface to any single board computer using I2C. Check compatibility with your particular Linux distribution.
-*  Raspberry Pi 3, 3B+, 4, Zero
-*  RPi Compute Module 3, 4
+* Electrically, Zymbit I2C-based HSMs will interface to any single board computer using I2C. Check compatibility with your particular Linux distribution.
+* Raspberry Pi 4, Raspberry Pi 5, Compute Module 4, and Compute Module 5
+* Raspberry Pi Zero 2W: [contact support](mailto:support@zymbit.com)
+* Raspberry Pi 3 and Compute Module 3 are not supported
 
 -----
 
 </details>
 
-##### Q: Does HSM6 work with Arduino?
+### Q: Does HSM6 work with Arduino?
 
 <details>
 
@@ -642,7 +627,7 @@ A: We have no plans to release an Arduino shield version. While we love Arduinos
 
 </details>
 
-##### Q: Does HSM6 work with BeagleBone?
+### Q: Does HSM6 work with BeagleBone?
 
 <details>
 
@@ -657,7 +642,7 @@ A: Zymbit does not officially support the BeagleBoard platform at this time.
 </details>
 
 
-##### Q: Which operating systems does HSM6 support?
+### Q: Which operating systems does HSM6 support?
 
 <details>
 
@@ -672,7 +657,7 @@ A: Zymbit does not officially support the BeagleBoard platform at this time.
 </details>
 
 
-##### Q: How much power does HSM6 consume?
+### Q: How much power does HSM6 consume?
 
 <details>
 
