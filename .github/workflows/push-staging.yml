@@ -40,6 +40,10 @@ on:
     types:
       - completed
 
+# Pushes to the staging repo use STAGING_DEPLOY_KEY, so this token only needs to read.
+permissions:
+  contents: read
+
 jobs:
   get-trigger:
     name: Determine how this workflow was triggered
