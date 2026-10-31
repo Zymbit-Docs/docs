@@ -20,8 +20,8 @@ Before contacting Zymbit with troubleshooting related questions, please read thr
 
 1. Power supply. Most of the problems we see are from a poor power source. Start with a good power supply from the PI foundation or Canakit, not a phone charger. The recommended power for the PI4 is 5V and 3 amps.  For a PI5, the recommended power supply should provide 5V, 5 amps.
 2. I2C enabled. Double check that you have enabled the I2C bus. An easy way to check is "ls -l /dev/i2c-1". If /dev/i2c-1 exists, the I2C bus is enabled.
-3. apt update and upgrade. Be sure that your software is up to date.
-4. Installation. The curl script will reboot your system once completed. After the reboot, the blue LED on your Zymbit device should blink once every 3 seconds. You must get to this step before proceeding to encryption, etc.
+3. apt update and upgrade. Be sure that your software is up to date. On Driver Package 1.x (installed with `install_zk_sw.sh`), `apt upgrade` does not move you to Driver Package 2.0; see [Installing the Zymbit Driver Package](/reference/driver-package/).
+4. Installation. Install the Zymbit Driver Package as described in [Installing the Zymbit Driver Package](/reference/driver-package/), then reboot. After the reboot, the blue LED on your Zymbit device should blink once every 3 seconds. You must get to this step before proceeding to encryption, etc.
 
 If your issue is not related to any of the above list, read through the FAQ below to see if your issue is answered. If you still do not see a solution to your problem, reach out on our [Community Forum](https://community.zymbit.com/). Thank you!
 
@@ -403,7 +403,9 @@ A: For Zymkey and HSMs, kernel drivers and libraries for all of the devices are 
 
 <br>
 
-A: You can update your existing key with the following command:
+A: This applies only to devices on Driver Package 1.x, which use the legacy zk-sw-repo repository. On Driver Package 2.0, the signing key is installed by the `zymbit-repo` package; see [Installing the Zymbit Driver Package](/reference/driver-package/).
+
+On Driver Package 1.x, you can update your existing key with the following command:
 
 ```bash
 curl -L https://zk-sw-repo.s3.amazonaws.com/apt-zymkey-pubkey.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/zymbit.gpg

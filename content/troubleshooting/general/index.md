@@ -2,7 +2,7 @@
 title: "General FAQ & Troubleshooting"
 description: "General FAQs covering Zymbit Driver Package updates and the Zymbit GPG key renewed in September 2024."
 linkTitle: "General"
-lastmod: "2025-12-24"
+lastmod: "2026-10-30"
 draft: false
 images: []
 weight: 10
@@ -11,26 +11,18 @@ toc: true
 
 -----
 
-### **Release Notes - Latest Release December 2025**
+### **Updating the Zymbit Driver Package**
 
-To update to the latest Zymbit Driver Package, existing customers can do an update/upgrade to get the latest code.
+On Driver Package 2.0, Zymbit packages update with the rest of your system:
 
 ```bash
-sudo apt-get update
-sudo apt install --only-upgrade libzk libzymkeyssl zkbootrtc zkifc zkapputilslib zksaapps zkpkcs11
-sudo pip3 install zku --upgrade
+sudo apt update
+sudo apt upgrade
 ```
-#### Current Versions:
 
-| Name | Version | Description |
-|----|----|----|
-| libzk | 1.1-25 | Zymkey Base Communications Library |
-| libzymkeyssl | 1.0-12 | Zymkey SSL Engine Library |
-| zkapputilslib | 1.1-26 | Zymkey User API |
-| zkbootrtc | 1.1-16 | Zymkey RTC retrieval standalone app |
-| zkifc | 1.2-38 | Zymkey Interface Connector |
-| zkpkcs11 | 1.0-4 | Zymkey PKCS11 Library |
-| zksaapps | 1.0-18 | Stand alone zymkey apps |
+A device set up with the legacy `install_zk_sw.sh` script is on Driver Package 1.x, and `apt upgrade` will not move it to 2.0. To migrate, follow [Installing the Zymbit Driver Package](/reference/driver-package/). Devices on Ubuntu 22.04, Debian 11, or a 32-bit OS cannot run 2.0; see [Driver Package 1.x](/reference/driver-package/legacy/). Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.0.
+
+For current and previous package versions, see the [Driver Package 2.0 release notes](/#october-2026-details).
 
 -----
 
@@ -39,6 +31,8 @@ sudo pip3 install zku --upgrade
 ### **Issues and Solutions**
 
 #### Expired GPG Key Preventing Access to Repository
+
+This applies only to devices on Driver Package 1.x, which use the legacy zk-sw-repo repository. On Driver Package 2.0, the signing key is installed by the `zymbit-repo` package.
 
 The Zymbit GPG key expired and was renewed on September 30, 2024. New installations should not have any problems. `apt-get update` may complain that the GPG key has expired. To update your local key, do the following:
 
@@ -58,7 +52,9 @@ sudo sed -i 's/^deb https/deb [signed-by=\/usr\/share\/keyrings\/zymbit.gpg] htt
 
 #### Wake-Pin Issues for upgrades to Kernel 6.6 and later
 
-The installation script takes care of the following for you. If you are doing a new installation, you should not have to worry about the following. If you already installed the Zymbit Driver Package and then upgraded the kernel to something beyond 6.6, please note the following.
+On Driver Package 2.0, `apt install zkifc` sets the wake pin for you, so you do not need to set it by hand.
+
+On Driver Package 1.x, the installation script sets it for new installations. If you installed Driver Package 1.x and then upgraded the kernel to 6.6 or later, please note the following.
 
 Raspberry PI OS Bookworm updated the kernel to version 6.6.y in March 2024. The kernel no longer overrides an upstream kernel decision to force the base number of the main GPIO controller to be global GPIO 0. If the WAKE_PIN number is not set, the ZYMKEY will not bind. You will see 5 flashes per second continuously.For RPI4, RPI5, and CM4 platforms, you will need to set the WAKE_PIN in the following manner:
 
@@ -106,6 +102,8 @@ sudo systemctl disable unattended-upgrades
 sudo apt-get remove --purge -y unattended-upgrades
 ```
 #### Running a 32-bit version of Operating System
+
+Driver Package 2.0 supports 64-bit ARM only. On a 32-bit OS, install [Driver Package 1.x](/reference/driver-package/legacy/) and apply the following. Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.0. A production ZYMKEY5 cannot be used on a 32-bit OS.
 
 As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
 
@@ -183,16 +181,10 @@ See [Power Quality]( https://docs.zymbit.com/reference/power-quality/) for more 
 
 <br>
 
+A: See:
 
-|                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi5                    |   Pi4             |
-|:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |
-| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1] |
-| Ubuntu 24.04.4 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} | {{< supported >}} &nbsp; |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] |                        |  {{< supported >}} [^1]                  |
-
-{{< supported >}} Full Bootware Support
+* [Latest stable platform and OS support](/#latest-stable-platform-and-os-support) on the home page, for each platform and which operating systems Bootware supports.
+* [Supported distributions](/reference/driver-package/#supported-distributions) for Zymbit Driver Package 2.0.
 
 -----
 

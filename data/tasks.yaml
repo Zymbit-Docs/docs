@@ -22,7 +22,7 @@ tasks:
     title: "Install or upgrade the Zymbit Driver Package"
     page: /reference/driver-package
     products: [zymkey4, zymkey5, hsm4, hsm6, hsm60]
-    note: "Driver Package 2.0 requires a 64-bit OS. Ubuntu 22.04, Debian 11, and 32-bit systems use the 1.x instructions."
+    note: "Driver Package 2.0 requires a 64-bit OS. Ubuntu 22.04, Debian 11, and 32-bit systems use the 1.x instructions, except production ZYMKEY5, which requires 2.0."
 
   - key: perimeter-detect
     title: "Detect physical tampering"

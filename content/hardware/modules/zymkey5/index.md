@@ -19,7 +19,7 @@ ZYMKEY5 is the essential Zymbit security module designed specifically to work wi
 
 #### ZYMKEY5 Compatibility Notice - Pre-Production Hardware Identification
 
-The **ZYMKEY5 Pre-production** identifies as an **HSM6** for backwards compatibility with previous releases of the Zymbit Driver Package. All of the HSM6 functionality is fully applicable to the ZYMKEY5. Production ZYMKEY5 identifies as a ZYMKEY5 and requires Zymbit Driver Package 2.0, which also supports pre-production units that identify as an HSM6.
+The **ZYMKEY5 Pre-production** identifies as an **HSM6** for backwards compatibility with previous releases of the Zymbit Driver Package. All of the HSM6 functionality is fully applicable to the ZYMKEY5. Production ZYMKEY5 identifies as a ZYMKEY5 and requires Zymbit Driver Package 2.0; Driver Package 1.x does not recognize it. Pre-production units that identify as an HSM6 work with both Driver Package 2.0 and 1.x.
 
 There is also an EDU variant of the ZYMKEY5 intended for educational purposes. The EDU version (pre-production) will also identify as an HSM6. The only difference from the standard ZYMKEY5 and the EDU version of the ZYMKEY5 is that the EDU version will not be able to Bind Lock into any destructive state.
 
@@ -130,7 +130,7 @@ The default I2C address for ZYMKEY5 is 0x30. If this conflicts with another devi
 
 ## Install the Zymbit Driver Package
 
-{{< driver-install product="ZYMKEY5" >}}
+{{< driver-install product="ZYMKEY5" requirements="zymkey5" >}}
 
 ## Test the installation
 
