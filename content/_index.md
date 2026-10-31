@@ -85,7 +85,7 @@ Zymbit Driver Package 2.0 makes Zymbit software install and update like any othe
 
 - **Install and update with with a unified apt process.** Add the Zymbit repository once, and every Zymbit package installs and stays current through standard apt commands, alongside the rest of your system. No more `install_zk_sw.sh` script. 
 - **Install only what you need.** The Zymkey app utilities API is split into separate runtime, development and Python packages. Production devices need no longer install development headers and utilities.
-- **Production-ready ZYMKEY5.** Production ZYMKEY5 adapters now identify as zymkey5, replacing the pre-production hsm6 name. Zymbit Driver Package 2.0 is *required* for adapters identifying as zymkey5, and is backwards compatible withe adapters identifying as hsm6.
+- **Production-ready ZYMKEY5.** Production ZYMKEY5 adapters now identify as zymkey5, replacing the pre-production hsm6 name. Zymbit Driver Package 2.0 is *required* for adapters identifying as zymkey5, and is backwards compatible with adapters identifying as hsm6.
 - **Ready for Ubuntu 26.04 LTS.** zkifc supports the new GPIO character-device interface that replaces sysfs GPIO in Ubuntu 24.04, so you can move your fleet to the latest LTS.
 - **Python API as a native package.** python3-zku installs with apt like everything else and automatically replaces the old pip package.&#32;
 - **Build your apps the standard way.** Native libraries now install to standard multiarch-aware locations with versioned names, and ship with pkg-config and CMake helpers. Applications built against the old libraries need a rebuild; see Known Issues.
