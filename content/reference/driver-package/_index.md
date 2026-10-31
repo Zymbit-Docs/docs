@@ -27,7 +27,7 @@ Zymbit Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only.
 
 Ubuntu 22.04 and Debian 11 are not supported because the packages require glibc 2.36 or newer. Devices on those releases, or on a 32-bit OS, should stay on the [Driver Package 1.x packages](legacy/) or upgrade the OS.
 
-Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.0. A production ZYMKEY5 cannot be used on Ubuntu 22.04, Debian 11, or a 32-bit OS.
+Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.0. A production ZYMKEY5 cannot be used on Ubuntu 22.04, Debian 11, or a 32-bit OS. Pre-production ZYMKEY5 units, which identify as an HSM6, work with both Driver Package 2.0 and 1.x.
 
 ## Before you upgrade
 
