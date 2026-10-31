@@ -234,13 +234,6 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-      - name: Install the latest GitHub CLI from apt repo
-        run: |
-          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-          sudo apt-add-repository https://cli.github.com/packages
-          sudo apt update
-          sudo apt install -y gh
-
       - name: Create PR for updated API docs branch
         id: create-pr
         env:
@@ -258,10 +251,13 @@ jobs:
 
           # If we already have a pull request for this branch, we should just update
           # the name of the pull request and add the new changes to the PR body.
-          if gh pr list --state open | grep "api-docs-update" > /dev/null 2>&1; then
-            gh pr edit api-docs-update \
-              --title "Update API documentation to latest version (${UPSTREAM_COMMIT_HASH})" \
-              --body "$(cat .NEW_PR_BODY)"
+          # `gh pr edit` fails on GraphQL's deprecated Projects (classic) field, so
+          # update the existing pull request through the REST API instead.
+          PR_NUMBER=$(gh pr list --state open --head api-docs-update --json number --jq '.[].number' | head -n 1)
+          if [[ -n "${PR_NUMBER}" ]]; then
+            gh api -X PATCH "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" \
+              -f title="Update API documentation to latest version (${UPSTREAM_COMMIT_HASH})" \
+              -F body=@.NEW_PR_BODY
 
           # If we don't yet have a pull request for this branch, we should use
           # the GitHub CLI to create a new one.
