@@ -1,217 +1,68 @@
 ---
 title: "FAQ and Troubleshooting"
-description: "Start here: a troubleshooting checklist covering power, I2C, and installation, plus release notes and per product FAQs."
+description: "Start here: a troubleshooting checklist, fixes for common issues, and general FAQs, with links to each product's FAQ and past release notes."
+lastmod: "2026-10-31"
 draft: false
 images: []
 weight: 40
-# headless: true
+toc: true
+aliases:
+    - /troubleshooting/general/
 ---
-### **Troubleshooting Checklist**
+
+## Troubleshooting checklist
 
 Before contacting Zymbit with troubleshooting related questions, please read through the following troubleshooting checklist.
 
 1. Power supply. Most of the problems we see are from a poor power source. Start with a good power supply from the PI foundation or Canakit, not a phone charger. The recommended power for the PI4 is 5V and 3 amps.  For a PI5, the recommended power supply should provide 5V, 5 amps.
-2. (For Zymkey, HSM4, HSM6) I2C enabled. Double check that you have enabled the I2C bus. An easy way to check is "ls -l /dev/i2c-1". If /dev/i2c-1 exists, the I2C bus is enabled.
-3. apt update and upgrade. Be sure that your software is up to date. On Driver Package 1.x (installed with `install_zk_sw.sh`), `apt upgrade` does not move you to Driver Package 2.0; see [Installing the Zymbit Driver Package](/reference/driver-package/).
-4. Installation. Install the Zymbit Driver Package as described in [Installing the Zymbit Driver Package](/reference/driver-package/), then reboot. After the reboot, the blue LED on your Zymbit device should blink once every 3 seconds. You must get to this step before proceeding to encryption, etc.
+1. (All products except SCM) I2C enabled. Double check that you have enabled the I2C bus. An easy way to check is "ls -l /dev/i2c-1". If /dev/i2c-1 exists, the I2C bus is enabled.
+1. apt update and upgrade. Be sure that your software is up to date. On Driver Package 1.x (installed with `install_zk_sw.sh`), `apt upgrade` does not move you to Driver Package 2.0; see [Installing the Zymbit Driver Package](/reference/driver-package/).
+1. Installation. Install the Zymbit Driver Package as described in [Installing the Zymbit Driver Package](/reference/driver-package/), then reboot. After the reboot, the blue LED on your Zymbit device should blink once every 3 seconds. You must get to this step before proceeding to encryption, etc.
 
-If your issue is not related to any of the above list, read through the FAQ below to see if your issue is answered. If you still do not see a solution to your problem, reach out on our [Community Forum](https://community.zymbit.com/). Thank you!
+If your issue is not related to any of the above list, check the common issues and FAQ below, then the FAQ for your product. If you still do not see a solution to your problem, reach out on our [Community Forum](https://community.zymbit.com/). Thank you!
 
------
-### **Previous Release Notes**
------
+## Common issues
 
------
-#### February 2026
------
+### Updating the Zymbit Driver Package
 
-### Bootware 2.0 Beta Platform Support  
+On Driver Package 2.0, Zymbit packages update with the rest of your system:
 
-|                                   |   Pi5             | 
-|:----------------------------------|:-----------------:|
-|                  **Zymbit HSMs:** | **Zymkey**        | 
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | 
-| Ubuntu 24.04.3 LTS Noble (64-bit) |{{< supported >}}  |
-
-- Features
-  - Signed Boot Images: Provide known-good boot.img support for use with Bootware on Raspberry Pi devices to control the boot artifacts. Controlling boot artifacts by implementing the above will allow secure update paths for OS changes, kernel changes, overlay changes, eliminating the chance of Bootware no longer functioning after update. Images securely signed with Bootware.
-  - Secure Boot: Seamless integration of Raspberry Pi's Secure Boot process into Bootware, ensuring only trusted software can run on the device. All  except SCM.
-
-- Limitations
-  - Platform support limited to Pi5.
-  - Operating Systems NOT fully supported : Trixie, Bullseye, Jammy (Ubuntu 22)
-  - Requires a clean Bootware install of Beta 2.0.0 - cannot upgrade from an existing Bootware 1.3.2.
-
-- Bug fixes
-  - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.
-  - #207: Bootware: replace ext2 with ext4; add fsck whenever booting through zboot.
-  - #205: zbcli update-config cli errors off with `Invalid Parameter: user`. Workaround is to provide one option at a time.
-  - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
-
-- zkifc
-   - zkpkcs11 package build fixed for 64-bit OSs
-
-
------
-#### December 2025
------
-
-- zkifc
-   - Installation script can now set the distribution via an environment variable. This allows pointing a newer distribution to use an older repo. For example, to point any OS at the Zymbit `bookworm` repo, do the following on your Pi,
-
-```
-    export distro=bookworm
-    curl -fsSL https://s3.amazonaws.com/zk-sw-repo/install_zk_sw.sh | sudo -E bash
+```bash
+sudo apt update
+sudo apt upgrade
 ```
 
-Bootware® 1.3.2-3
-- Open bugs:
-  - #208: zbcli update-config doesn't allow you to clear wifi SSID and Passphrase, takes "" as valid characters.
-  - #205: zbcli update-config cli errors off with `Invalid Parameter: user`. Workaround is to provide one option at a time.
-  - #200: zbcli update confirmation screen indicates password has been set to change when it hasn't
-  - #199: Multiple copies of rollback message in MOTD. Also refers to rollback as rollover.
-  - #196: overlay .zi images saves files as root regardless of what it was owned by before.
-  - #195: If you delete the DATA partition with your update policy not set to BOTH, zboot does not inject the new data key into the non-updated partition's initramfs. If the user switches to the non-updated partition, the data key will return bad passphrase from initramfs. The system will timeout, boot up, and unlock the partition's LUKS volume. Access to the shared LUKS data partition will be unavailable.
+A device set up with the legacy `install_zk_sw.sh` script is on Driver Package 1.x, and `apt upgrade` will not move it to 2.0. To migrate, follow [Installing the Zymbit Driver Package](/reference/driver-package/). Devices on Ubuntu 22.04, Debian 11, or a 32-bit OS cannot run 2.0; see [Driver Package 1.x](/reference/driver-package/legacy/). Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.0.
 
------
-#### August 2025 
------
-Ubuntu 24.04.3 (Released 8/7/25) or later
-- The Ubuntu team released 24.04.3 (updated Noble) on 8/7/25. The image straight from the Pi Imager can be used. There is no longer a need to use the daily image. 24.04.3 or later improves hardware support for the Pi5 and CM5. Ubuntu 24.04.3 or later works with Zymbit products on the platforms noted above (Pi5, CM5, Pi4, CM4).
+For current and previous package versions, see the [Driver Package 2.0 release notes](/#october-2026-details).
 
-Bootware® 1.3.2-3
-- Bug fixes:
-  - #202: Pi5/CM5 with 16GB RAM are showing up as 8GB when booting from u-boot
+### Expired GPG key preventing access to the repository
 
-Bootware® 1.3.2-2
-- Bug fixes:
-  - #201: Adds Bootware support for Pi5 Rev 1.1 hardware.
+This applies only to devices on Driver Package 1.x, which use the legacy zk-sw-repo repository. On Driver Package 2.0, the signing key is installed by the `zymbit-repo` package.
 
------
-#### July 2025 
------
-Bootware® 1.3.2-1
-- Features:
-  - #189: Add static network configuration option. See [Advanced Networking Options](/bootware/1.3.2/features/static-networking) for details.
-  - #190: Add `ignore_low_ram=true` flag. Ignores the low ram check in zboot to download images into the /DATA partition on devices that have less than 3GB RAM space. See [Low Memory Platforms](/bootware/1.3.2/features/lowmem) for details. NOTE: Zymbit recommends always using platforms with at least 4GB RAM.
-  - #191: Add feature to sync time from Zymbit HSM in zboot. Also add a flag to override, `disable_cert_time_check=false`. The new feature will try to sync the zboot system clock with the Zymbit HSM, whichever is later. If `disable_cert_time_check=true` and neither the zboot time nor the HSM time is reasonably current, a future time is set. This feature is included to cover situations where certificates need to be provided to bring up Wi-Fi interfaces, which will perform a system time verification before bringing up the wlan0 interface.
-- Bug fixes:
-  - #197: Buildroot Wi-Fi related firmware added for all platforms. Prevented wlan0 from showing up in zboot for platforms running Ubuntu 22.04.
-  - #193: zbcli overrides existing wifi related config values with defaults on some parameters. If the user Save and Exits the `zbcli update-config` menu without touching the wifi related parameters, existing wifi configs would be overriden with defaults. The default values turned off wifi and set the psk hash to an empty string. zbcli now only changes wifi configs when the user touches the wifi configs in the zbcli `update-config` menu.
-  - #194: dhcp or ntp timeout defaults were too long. By default both dhcp and ntp retried  up to 30 times at possibly a minute a interval, which could have a user sitting at a screen for 30min - 1 hr. Reduced timeouts to 3 retries.
-- Open bugs:
-  - #196: overlay .zi images saves files as root regardless of what it was owned by before.
-  - #195: If you delete the DATA partition with your update policy not set to BOTH, zboot does not inject the new data key into the non-updated partition's initramfs. If the user switches to the non-updated partition, the data key will return bad passphrase from initramfs. The system will timeout, boot up, and unlock the partition's LUKS volume. Access to the shared LUKS data partition will be unavailable.
+The Zymbit GPG key expired and was renewed on September 30, 2024. New installations should not have any problems. `apt-get update` may complain that the GPG key has expired. To update your local key, do the following:
 
------
-#### April 2025 
------
-Bootware® 1.3.1-2
-- Bug fixes:
-  - #188: `sudo zbcli update-config --update-endpoint https://192.168.42.125/my.zi --update-endpoint-cert myCert.crt` doesn't work. Endpoint certs now work.
-  - #187: Bootware: ` --data-part-size-mb` doesn’t apply correctly. Now works either interactively or non-interactively.
+```bash
+curl -L https://zk-sw-repo.s3.amazonaws.com/apt-zymkey-pubkey.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/zymbit.gpg
+```
 
------
-#### March 2025 
------
+For those of you that are on older installations, make sure the `signed-by` option is included in the `/etc/apt/sources.list.d/zymbit.list`,
 
-Bootware® 1.3.1-1
-- Features:
-  - #182 Add support for Pi Zero 2W (ZYMKEY, HSM4, HSM6)
-    - Bookworm 64 bit and Bullseye 64 bit
-    - Uses the DATA partition as an alternative for Pis with limited RAM, like the Pi Zero 2W.
-    - Slight optimizations on Update writes to the encrypted A/B partitions.
-  - #184 `zbcli update` has a new `--no-pre-verify` flag. Normally the zi image is verified in userspace and also within zboot. Setting the `--no-pre-verify` flags skips the verify of the image/endpoint in userspace before launching into zboot, which saves some time. The images are always verified in zboot. WARNING: Setting this flag can lead to lost data, as the verification in zboot may require reformatting to make space for URL endpoints on limited RAM devices.
-  - #185 Additional information is logged in /boot/zboot.log.
-- Bug fixes:
-  - #180: Bootware: zbcli update hostname/password cannot contain an @ character.
+This parameter - `[signed-by=/usr/share/keyrings/zymbit.gpg]`
 
-Zymbit Driver Package 
-- Bug fixes:
-  - #186: zkifc: Babbling with time sync issues. Setting the time forward or backwards caused zkifc to think it lost contact with the Zymkey. Babbling messages would result with the potential to fill logs with rapid messages. Babbling messages are now limited, and recovery has been improved. Fixed in zkifc 1.2-37.
-- Current Versions:
+The following will check and fix for you,
 
-| Name | Version | Description |
-|----|----|----|
-| libzk | 1.1-24 | Zymkey Base Communications Library |
-| libzymkeyssl | 1.0-12 | Zymkey SSL Engine Library |
-| zkapputilslib | 1.1-26 | Zymkey User API |
-| zkbootrtc | 1.1-16 | Zymkey RTC retrieval standalone app |
-| zkifc | 1.2-37 | Zymkey Interface Connector |
-| zkpkcs11 | 1.0-4 | Zymkey PKCS11 Library |
-| zksaapps | 1.0-18 | Stand alone zymkey apps |
+```bash
+sudo sed -i 's/^deb https/deb [signed-by=\/usr\/share\/keyrings\/zymbit.gpg] https/' /etc/apt/sources.list.d/zymbit.list
+```
 
------
-#### February 2025
------
-Bootware® 1.3.0 Release (1.3.0-1):
-- Features:
-  - #173 Add support for CM5 (ZYMKEY, HSM4, HSM6)
-  - #174 Add second layer key verification of zi image to zboot. NOTE: This additional check requires updating 1.2.2 and earlier images by running `zbcli imager` from version 1.3.0-1. See [1.3.0 upgrade](/bootware/1.3.0/troubleshooting/#release-130-1)
-  - #175 Add splashscreen to zboot
-- Bug Fixes
-  - #171 SAS token truncated at first "="
-  - #170 update and update-config displays for DATA partition should reflect already exists
-  - #169 zbconfig with blank hostname and password set will change hostname to zymbit-dev
-  - #176 wpa_supplicant passthrough - certs were not read properly by zboot
+### Wake pin issues after upgrading to kernel 6.6 or later
 
------
-#### December 2024
------
-Standard Product:
-- Update SCM pre-installed OS images to latest available matching Pi Imager:
-  - Raspberry Pi OS Lite (64-bit) - Bookworm w/ no desktop. Released: 2024-11-19
-  - Raspberry Pi OS (Legacy, 64-bit) Lite - Bullseye w/ no desktop. Released: 2024-10-22
-  - Ubuntu Server 22.04.5 LTS (64-bit) - Jammy. Released: 2024-09-12
+On Driver Package 2.0, `apt install zkifc` sets the wake pin for you, so you do not need to set it by hand.
 
-- Confirmed ZYMKEY/HSM4/HSM6 support for CM5 with Bookworm64
+On Driver Package 1.x, the installation script sets it for new installations. If you installed Driver Package 1.x and then upgraded the kernel to 6.6 or later, please note the following.
 
-Bootware® 1.2.2 Release (1.2.2-1):
-- Adds certificate based authentication (dot1x) for ethernet and wifi. Includes method to import wpa_supplicant.conf formatted file.
-- Adds support for URLs that include additional parameters after a question mark, such as those used with Azure SAS.
-- Allows either HTTPS or HTTP as valid endpoints.
-- Supports self-signed HTTPS endpoints.
-- Adds new feature to change hostname and specified user password on `zbcli update` post-install.
-- Adds new feature in recovery to override recovery mechanisms and "boot up anyway"; clears counters and attempts to boot.
-- Adds `-y` option to `zbcli rollback-swap` for non-interactive rollback.
-- Adds specifying platform as Pi4 or Pi5 to bootstrap install for DevOps systems that are not running on a real Pi. Allows non-interactive bootstrap of Bootware tools.
-
-#### September 2024
------
-
-Bootware® 1.2.0 Release (1.2.0-30):
-- Adds support for Pi 5
-- Adds all new rust-based user interface
-- Adds support for HSM4 and HSM6
-- u-boot updated to linux 6.6 kernel
-
-#### June 2024
------
-
-Bootware 1.1 General Platform Support - Along with the SCM-based products, Bootware 1.1 includes cross-platform support for ZYMKEY on CM4 and RPi4.
-
-The Zymbit Products also include Bookworm 64-bit support.
-
-#### Other significant enhancements in Bootware 1.1:
-
-**Issue #142** - FIXED. OS updates that change boot.scr can prevent future boot. Affects Ubuntu. Although the PI version of Ubuntu does not use U-Boot, Ubuntu's dpkg kernel update re-writes the file /boot/firmware/boot.scr. boot.scr was used by Bootware 1.0, and a re-write of the file could leave the system unable to boot. Bootware 1.1 no longer relies on the file. 
-
-**Enhancement** - The common data partition is now encrypted and the LUKS key is locked by the Zymbit HSM.
-
----
-
-<br>
-
-#### April 2024
------
-Bootware 1.0 is now released for General Availability. Along with Bootware 1.0 GA, The SCM/SEN product line now officially supports both Bullseye 64-bit and Ubuntu 22.04 64-bit.
-
-
-#### March 2024
------
-Raspberry PI OS updated kernels to 6.6.y on March 12th. The kernel no longer overrides an upstream kernel decision to force the base number of the main GPIO controller to be global GPIO 0. If the ZYMKEY4 WAKE_PIN number is not set, the ZYMKEY will not bind. The install_zk_sw.sh script has been updated to set the WAKE_PIN number for you if it detects a kernel version of 6.6.x or later. If you update the kernel on an existing installation without making the change below, you will see 5 flashes per second continuously.
-
-For RPI4, RPI5, and CM4 platforms, you will need to set the WAKE_PIN in the following manner:
+Raspberry PI OS Bookworm updated the kernel to version 6.6.y in March 2024. The kernel no longer overrides an upstream kernel decision to force the base number of the main GPIO controller to be global GPIO 0. If the WAKE_PIN number is not set, the ZYMKEY will not bind. You will see 5 flashes per second continuously.For RPI4, RPI5, and CM4 platforms, you will need to set the WAKE_PIN in the following manner:
 
 Determine the numbering for GPIO4 by examining /sys/kernel/debug/gpio for the number associated with GPIO4, then set an environment variable in the Zymbit environment variable file:
 
@@ -223,18 +74,192 @@ echo "ZK_GPIO_WAKE_PIN=$wake_pin" > /var/lib/zymbit/zkenv.conf
 systemctl restart zkifc
 ```
 
-The kernel version can be retrieved with `uname -r`. As of version 6.6.20, the numbering is: RPI4=516 RPI5=575 CM4=516
+As of Dec 2025, the numbering is:
+RPI4=516
+RPI5 (1.0)=575
+RPI5 (1.1)=573
+CM4=516
+CM5=573
 
-You do not need to do anything for new installations as the install_zk_sw.sh will take care of things for you.
+### CPU scaling governor
 
+We have seen some issues with the scaling cpu governor on the raspberry pi interfere with the i2c bus. This sometimes causes the zymkey to be put into a odd state or return failures from operations that get optimized out by the governor. The raspberry pi sets the **scaling governor** to be "**ondemand**" by default. We recommend switching this mode to "**performance**" to get the best out of the zymkey. Details:
 
-#### December 2023
+{{< resource_link "reference/cpu-scaling/" >}}
+How to set cpu governor to performance.
+{{< /resource_link >}}
+
+### Unattended upgrades
+
+When encrypting your rootfs, we highly recommend turning off unattended-upgrades prior to the encryption process. In some cases primarily with Ubuntu, during an update/upgrade after encryption, the `update-initramfs` process may fail and leave the system unable to boot.
+
+To mitigate this issue, remove the service unattended-upgrades:
+
+Check `/etc/apt/apt.conf.d/20auto-upgrades`. Make sure the following lines are set to 0,
+
+```text
+APT::Periodic::Update-Package-Lists "0";
+APT::Periodic::Unattended-Upgrade "0";
+```
+
+Stop and remove the unattended-upgrade service:
+
+```bash
+sudo systemctl stop unattended-upgrades
+sudo systemctl disable unattended-upgrades
+sudo apt-get remove --purge -y unattended-upgrades
+```
+
+### Running a 32-bit operating system
+
+Driver Package 2.0 supports 64-bit ARM only. On a 32-bit OS, install [Driver Package 1.x](/reference/driver-package/legacy/) and apply the following. Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.0. A production ZYMKEY5 cannot be used on a 32-bit OS.
+
+As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
+
+`arm_64bit=0`
+
+## Products FAQ
+
+### Q: Where can I learn about and/or pre-order future products?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+A: Sign up for our new product email updates at the bottom of [Zymbit's homepage](https://www.zymbit.com/).
+
 -----
-We have added support for Bookworm (64-bit) on the Pi5, PI4 and CM4 for the ZYMKEY, HSM4, and HSM6. Follow the Getting Started guides to install and encrypt.
 
-#### October 2023
+</details>
+
+### Q: What are the differences between Zymbit's Products?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+A: See the [Product Comparison Matrix](https://www.zymbit.com/security-modules/#compare-modules) for the differences between ZYMKEY4, ZYMKEY5, HSM4, HSM6, and HSM60. Please [reach out](https://www.zymbit.com/contact-us/) with any further questions.
+
 -----
-Secure Compute Module moved from Revision A to Revision B. The Zymbit Driver Package did not change. The root filesystem partitioning changed from 100% of the eMMC to 50% of the eMMC (encrypted). This was done to accommodate future support for Bootware, which is available in a Preview mode. A utility is included to repartition to 100% (encrypted) if required.
 
+</details>
 
+### Q: How much power do Zymbit products consume?
 
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+* ZYMKEY4 (3.3V): idle approx. 1mA; max active < 25mA with LED off, < 35mA with LED on.
+
+See [Power Quality]( https://docs.zymbit.com/reference/power-quality/) for more information.
+
+-----
+
+</details>
+
+### Q: What is the expected battery life for Zymbit Products?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+![Battery Lifetime Guidelines](pub-battery-lifetimes.png)
+
+-----
+
+</details>
+
+## Compatibility FAQ
+
+### Q: Which operating systems does Zymbit support?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+A: See:
+
+* [Latest stable platform and OS support](/#latest-stable-platform-and-os-support) on the home page, for each platform and which operating systems Bootware supports.
+* [Supported distributions](/reference/driver-package/#supported-distributions) for Zymbit Driver Package 2.0.
+
+-----
+
+</details>
+
+### Q: Which SBCs are compatible with Zymbit Products?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+* Electrically, Zymbit I2C-based HSMs will interface to any single board computer using I2C. Check compatibility with your particular Linux distribution.
+* Raspberry Pi 4, Raspberry Pi 5, Compute Module 4, and Compute Module 5
+* Raspberry Pi Zero 2W: [contact support](mailto:support@zymbit.com)
+* Raspberry Pi 3 and Compute Module 3 are not supported
+
+-----
+
+</details>
+
+### Q: What curves are supported for Zymbit products?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+ZYMKEY4 and HSM4: NIST P-256 and secp256r1
+
+SCM, HSM6, ZYMKEY5, and HSM60: NIST P-256, secp256r1, secp256k1, X25519, ED25519
+
+All Products: Only EC curves are supported. No RSA support is provided in hardware. RSA support is provided via hardware lock/unlock of PKCS11 store on host.
+
+-----
+
+</details>
+
+### Q: Do Zymbit Products work with Arduino?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+A: We have no plans to release an Arduino shield version. While we love Arduinos and use them all the time, they generally don’t have enough resources to handle cryptographic operations at this level.
+
+-----
+
+</details>
+
+### Q: Do Zymbit Products work with BeagleBone?
+
+<details>
+
+<summary>Expand for Answer</summary>
+
+<br>
+
+A: Zymbit does not officially support the BeagleBoard platform at this time.
+
+-----
+
+</details>
+
+## Product FAQs and release notes
+
+Questions specific to one product are in that product's FAQ, listed below. Past release notes are in [Release notes](release-notes/).
