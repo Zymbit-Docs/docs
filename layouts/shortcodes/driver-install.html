@@ -1,0 +1,9 @@
+{{- /* Zymbit Driver Package install steps, shared by every module getting-started page.
+       Usage: {{< driver-install product="ZYMKEY5" >}}
+       The steps live in assets/snippets/driver-install.md; %PRODUCT% is replaced with the product name. */ -}}
+{{- $product := .Get "product" | default "Zymkey" -}}
+{{- with resources.Get "snippets/driver-install.md" -}}
+{{- $.Page.RenderString (dict "display" "block") (replace .Content "%PRODUCT%" $product) -}}
+{{- else -}}
+{{- errorf "driver-install: assets/snippets/driver-install.md not found (called from %s)" $.Page.File.Path -}}
+{{- end -}}

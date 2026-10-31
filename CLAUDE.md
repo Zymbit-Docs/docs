@@ -61,7 +61,7 @@ All documentation lives under `content/` as Markdown files:
 - **`bootware/`** - Versioned by semver directories: 1.0.0, 1.1.0, 1.2.2, 1.3.0, 1.3.2, 2.0.0. `/bootware/` is a landing page, not a redirect: it renders the version dropdown plus quick links to the stable and beta releases. Adding a version directory is not enough on its own - see below.
 - **`api/`** - Auto-generated from XML via the `process-api-update.yml` GitHub Action. Do not edit these files manually.
 - **`hardware/`** - Product documentation (`sen`, `dev-kits`, `modules`, `components`)
-- **`reference/`** - Technical reference (`binding`, `cad`, `conformity`, `engineering-notes`, `power-quality`, `product-briefs`, `real-time-clock`, `reserved-pins`, `zymbit-wallet-sdk`, plus `cpu-scaling.md`)
+- **`reference/`** - Technical reference (`binding`, `cad`, `conformity`, `driver-package`, `engineering-notes`, `power-quality`, `product-briefs`, `real-time-clock`, `reserved-pins`, `zymbit-wallet-sdk`, plus `cpu-scaling.md`)
 - **`tutorials/`** - Step-by-step guides
 - **`troubleshooting/`** - FAQs organized by product (`general`, `hsm4`, `hsm6`, `scm`, `scm-mobo`, `zymkey4`)
 
@@ -72,11 +72,23 @@ Archetypes for `npm run create` live in `archetypes/`: `default.md`, `docs.md`, 
 Located in `layouts/shortcodes/`:
 
 - `bootware_version_notice` - Banner warning when viewing an outdated Bootware version
+- `driver-install` - Zymbit Driver Package install steps shared by every module getting-started page. The steps live in `assets/snippets/driver-install.md`; edit them there, not in the product pages
 - `resource_link` - Linked resource card that extracts page title and description
 - `supported` / `partially-supported` - Hardware and OS support status badges
 - `youtube` - YouTube video embeds
 
 Use `supported` / `partially-supported` for OS support status rather than writing the status in prose, so support tables stay consistent as new OS releases land.
+
+## Shared content snippets
+
+`assets/` holds `scss/` (style overrides) and `snippets/` (Markdown fragments rendered into pages by a shortcode). When the same steps appear on several pages, write them once in `assets/snippets/` rather than copying them; the five module install sections had already drifted apart before they were consolidated.
+
+- `assets/snippets/driver-install.md` is the short Driver Package 2.0 install, rendered by `driver-install` with `%PRODUCT%` replaced. The full reference is `content/reference/driver-package/_index.md` and the 1.x method is `content/reference/driver-package/legacy.md`; an install change usually touches all three.
+- Keep the section heading in the page, not the snippet: headings rendered from a `{{< >}}` shortcode stay out of the table of contents.
+- Links in a snippet must be root-relative, since it renders inside other pages.
+- `npm run lint` covers `assets/**/*.md`. Snippets open with `<!-- markdownlint-disable-next-line MD041 -->` because they have no heading.
+
+**The procedure for writing or adding a snippet lives in [README.md](README.md#shared-content-snippets).**
 
 ## Site search
 
