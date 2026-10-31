@@ -1,8 +1,8 @@
 ---
-title: "C API Documentation"
-linkTitle: "C API Documentation"
-description: "C interface to Zymkey Application Utilities Library."
-lastmod: "2025-10-15"
+title: C API Documentation
+linkTitle: C API Documentation
+description: C interface to Zymkey Application Utilities Library.
+lastmod:
 draft: false
 images: []
 type: docs
@@ -17,7 +17,8 @@ toc: true
 ## <span class="markdown-h2 include-toc">Introduction</span>
 
 <p>C interface to Zymkey Application Utilities Library.</p>
-<p>This file contains the C API to the the Zymkey Application Utilities library. This API facilitates writing user space applications which use Zymkey to perform cryptographic operations, such as:</p>
+<p>This file contains the C API to the the Zymkey Application Utilities library, libzk_app_utils. Systems intending to run such applications require that the <code>libzkapputils</code> package be installed. </p>
+<p>This API facilitates writing user space applications which use Zymkey to perform cryptographic operations, such as:</p>
 <ol>
 <li>Signing of payloads using ECDSA.</li>
 <li>Verification of payloads that were signed using Zymkey.</li>
@@ -25,6 +26,15 @@ toc: true
 <li>&#8220;Locking&#8221; and &#8220;unlocking&#8221; data objects.</li>
 <li>Generating random data Additionally, there are functions for changing the i2c address (i2c units only), setting tap sensitivity and controlling the LED.</li>
 </ol>
+<p>Developers wishing to build applications which utilize the libzk_app_utils library should additionally install the <code>libzk_app_utils-dev</code> package, which contains the necessary development files for the Zymkey&#8217;s C library. To install this package on a system that does not need to run the applications (e.g. a Docker container or when cross compiling on a foreign architecture), use <code>apt install --no-install-recommends libzkapputils-dev</code>. This will prevent <code>apt</code> from installing the Zymkey&#8217;s <code>zkifc</code> driver daemon. </p>
+<p>Usage:</p>
+<pre><code class="language-c">#include &lt;zymkey/zk_app_utils.h&gt;</code></pre>
+<p>To add libzk_app_utils as a dependency of a CMake-based project, add the following lines to your project&#8217;s CMakeLists.txt file:</p>
+<pre><code class="language-c">find_package(zkAppUtils REQUIRED)
+target_link_libraries(target_name PRIVATE zkAppUtils::zk_app_utils)</code></pre>
+<p>Makefile-based projects may likewise configure the library dependency via pkg-config:</p>
+<pre><code class="language-c">CFLAGS="$(pkg-config --cflags zkapputils)"
+LDFLAGS="$(pkg-config --libs zkapputils)"</code></pre>
 </div>
 <div class="api-docs">
 
@@ -333,6 +343,47 @@ toc: true
 <li class="param-item">
 <span class="name">ctx</span><span class="param-desc-divider"> &#8212; </span><span class="description">
 <p>(input) The Zymkey context to close.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="returns">
+<h4>Returns</h4>
+<span class="return_value">
+<p>0 for success, less than 0 for failure.</p>
+</span>
+</div>
+</div>
+</div>
+<div class="method">
+
+### <span><span class="returns">int</span>  <span class="pointer-ref"></span> <span class="name">zkEnableSelfRestart</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">zkCTX</span> <span class="pointer-ref"></span> <span class="name">ctx</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">bool</span> <span class="pointer-ref"></span> <span class="name">enabled</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">waitSec</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">maxNumRestart</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="int--zkEnableSelfRestart-ea9548f7" class="markdown-h3 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Enables automatic restart of zkifc/zymbit device (in case of fatal error).</p>
+</div>
+<div class="parameters">
+<h4>Parameters</h4>
+<ul>
+<li class="param-item">
+<span class="name">ctx</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) Zymkey context.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">enabled</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) Enable/disable.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">waitSec</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) Time in seconds to wait before attempting restart.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">maxNumRestart</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) Maximum number of restarts to attempt.</p>
 </span>
 </li>
 </ul>

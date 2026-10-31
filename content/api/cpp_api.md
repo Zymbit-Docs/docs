@@ -1,8 +1,8 @@
 ---
-title: "C++ API Documentation"
-linkTitle: "C++ API Documentation"
-description: "C++ interface to Zymkey Application Utilities Library."
-lastmod: "2025-10-15"
+title: C++ API Documentation
+linkTitle: C++ API Documentation
+description: C++ interface to Zymkey Application Utilities Library.
+lastmod:
 draft: false
 images: []
 type: docs
@@ -17,7 +17,8 @@ toc: true
 ## <span class="markdown-h2 include-toc">Introduction</span>
 
 <p>C++ interface to Zymkey Application Utilities Library.</p>
-<p>This file contains the C API to the the Zymkey Application Utilities library. This API facilitates writing user space applications which use Zymkey to perform cryptographic operations, such as:</p>
+<p>This file contains the C++ API to the the Zymkey Application Utilities library, <code>libzkAppUtilsClassCPP</code>. Systems intending to run such applications require that the <code>libzkapputils-c++</code> package be installed. </p>
+<p>This class facilitates writing user space applications which use Zymkey to perform cryptographic operations, such as:</p>
 <ol>
 <li>Signing of payloads using ECDSA.</li>
 <li>Verification of payloads that were signed using Zymkey.</li>
@@ -25,6 +26,16 @@ toc: true
 <li>&#8220;Locking&#8221; and &#8220;unlocking&#8221; data objects.</li>
 <li>Generating random data Additionally, there are functions for changing the i2c address (i2c units only), setting tap sensitivity and controlling the LED.</li>
 </ol>
+<p>Developers wishing to build applications which utilize the <code>libzkAppUtilsClassCPP</code> library should additionally install the <code>libzkapputils-c++-dev</code> package, which contains the necessary development files for the Zymkey&#8217;s C++ library. To install this package on a system that does not need to run the applications (e.g. a Docker container or when cross compiling on another architecture), use <code>apt install --no-install-recommends libzkapputils-c++-dev</code>. This will prevent <code>apt</code> from installing the Zymkey&#8217;s <code>zkifc</code> driver daemon. </p>
+<p>Usage:</p>
+<pre><code class="language-cpp">#include &lt;zymkey/zkAppUtilsClass.h&gt;</code></pre>
+<p> To add <code>libzkAppUtilsClassCPP</code> as a dependency of a CMake-based project, add the following lines to your project&#8217;s <code>CMakeLists.txt</code>: </p>
+<pre><code class="language-cpp">find_package(zkAppUtilsCXX REQUIRED)
+target_link_libraries(target_name PRIVATE zkAppUtilsCXX::zkAppUtilsClassCPP)</code></pre>
+<p> Statically linking to the library is also supported within CMake by way of the <code>zkAppUtilsCXX::zkAppUtilsClassCPP_static</code> link item. </p>
+<p>Other projects may likewise configure the library dependency via <code>pkg-config</code>: </p>
+<pre><code class="language-cpp">CFLAGS="$(pkg-config --cflags zkapputils-c++)"
+LDFLAGS="$(pkg-config --libs zkapputils-c++)"</code></pre>
 </div>
 <div class="api-docs">
 
@@ -2925,6 +2936,48 @@ toc: true
 <span class="return_value">
 <p>a string for the list of files in the manifest.</p>
 </span>
+</div>
+</div>
+</div>
+</div>
+<div class="context">
+<h4 class="context-name">Public Functions</h4>
+<div class="method">
+
+#### <span><span class="returns">void</span>  <span class="pointer-ref"></span> <span class="name">enableSelfRestart</span> <span class="param-list"><span class="param-paren paren-open">(</span> <span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">bool</span> <span class="pointer-ref"></span> <span class="name">enabled</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">waitSec</span></span><span class="param-divider">, </span></span><span class="param-item-wrapper"><span class="param"><span class="annotation"></span>  <span class="type">int</span> <span class="pointer-ref"></span> <span class="name">maxNumRestart</span></span></span><span class="param-paren paren-close">)</span></span></span> {id="void--enableSelfRestart-15b9b99c" class="markdown-h4 signature include-toc"}
+
+<div class="body">
+<div class="description">
+<p>Enables automatic restart of zkifc/zymbit device (in case of fatal error).</p>
+</div>
+<div class="parameters">
+<h5>Parameters</h5>
+<ul>
+<li class="param-item">
+<span class="name">enabled</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) Enable/disable.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">waitSec</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) Time in seconds to wait before attempting restart.</p>
+</span>
+</li>
+<li class="param-item">
+<span class="name">maxNumRestart</span><span class="param-desc-divider"> &#8212; </span><span class="description">
+<p>(input) Maximum number of restarts to attempt.</p>
+</span>
+</li>
+</ul>
+</div>
+<div class="exceptions">
+<h5>Exceptions</h5>
+<ul>
+<li class="exc-item">
+<span class="name">commonException</span>
+<span class="description">upon error.</span>
+</li>
+</ul>
 </div>
 </div>
 </div>

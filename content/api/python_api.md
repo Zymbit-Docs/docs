@@ -2,7 +2,7 @@
 title: Python API Documentation
 linkTitle: Python API Documentation
 description: Python interface module to Zymkey Application Utilities Library.
-lastmod: "2025-10-15"
+lastmod:
 draft: false
 images: []
 type: docs
@@ -17,7 +17,10 @@ toc: true
 ## <span class="markdown-h2 include-toc">Introduction</span>
 
 <p>Python interface module to Zymkey Application Utilities Library.</p>
-<p>This file contains a Python class which interfaces to the the Zymkey Application Utilities library. This class facilitates writing user space applications which use Zymkey to perform cryptographic operations, such as:</p>
+<p>This file contains a Python class which interfaces to the the Zymkey
+            Application Utilities library. Systems intending to run such applications
+            require that the <code>python3-zku</code> package be installed. </p>
+<p>This class facilitates writing userspace applications which use Zymkey to perform cryptographic operations, such as:</p>
 <ol>
 <li>Signing of payloads using ECDSA.</li>
 <li>Verification of payloads that were signed using Zymkey.</li>
@@ -371,6 +374,7 @@ toc: true
 <div class="returns">
 <h5>Returns</h5>
 <span class="return_type">
+<code>bytearray</code>
 </span><span class="param-desc-divider"> &#8212; </span>
 <span class="return_value">
 <ul>
@@ -420,6 +424,7 @@ toc: true
 <div class="returns">
 <h5>Returns</h5>
 <span class="return_type">
+<code>bytearray</code>
 </span><span class="param-desc-divider"> &#8212; </span>
 <span class="return_value">
 <ul>
