@@ -266,7 +266,6 @@ jobs:
               --title "Update API documentation to latest version (${UPSTREAM_COMMIT_HASH})" \
               --body-file .NEW_PR_BODY \
               --base main \
-              --draft \
               --head api-docs-update \
               --label "api" --label "automated pr" \
               --no-maintainer-edit
