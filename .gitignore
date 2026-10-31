@@ -5,6 +5,9 @@ node_modules
 public
 resources
 
+# Hugo writes this lock file on every build
+.hugo_build.lock
+
 # Utility files for CI purposes that should be ignored
 .GHA-LOG
 .NEW_COMMIT_MSG
