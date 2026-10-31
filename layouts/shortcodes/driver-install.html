@@ -1,9 +1,20 @@
 {{- /* Zymbit Driver Package install steps, shared by every module getting-started page.
-       Usage: {{< driver-install product="ZYMKEY5" >}}
-       The steps live in assets/snippets/driver-install.md; %PRODUCT% is replaced with the product name. */ -}}
+       Usage: {{< driver-install product="ZYMKEY5" requirements="zymkey5" >}}
+       The steps live in assets/snippets/driver-install.md; %PRODUCT% is replaced with the product name.
+       %REQUIREMENTS% is replaced with assets/snippets/driver-install-requirements.md, or with
+       driver-install-requirements-<requirements>.md when the requirements parameter is set. */ -}}
 {{- $product := .Get "product" | default "Zymkey" -}}
+{{- $reqFile := "snippets/driver-install-requirements.md" -}}
+{{- with .Get "requirements" -}}
+{{- $reqFile = printf "snippets/driver-install-requirements-%s.md" . -}}
+{{- end -}}
+{{- $req := resources.Get $reqFile -}}
+{{- if not $req -}}
+{{- errorf "driver-install: assets/%s not found (called from %s)" $reqFile $.Page.File.Path -}}
+{{- end -}}
 {{- with resources.Get "snippets/driver-install.md" -}}
-{{- $.Page.RenderString (dict "display" "block") (replace .Content "%PRODUCT%" $product) -}}
+{{- $md := replace .Content "%REQUIREMENTS%" (replaceRE `(?s)<!--.*?-->\s*` "" $req.Content | strings.TrimSpace) -}}
+{{- $.Page.RenderString (dict "display" "block") (replace $md "%PRODUCT%" $product) -}}
 {{- else -}}
 {{- errorf "driver-install: assets/snippets/driver-install.md not found (called from %s)" $.Page.File.Path -}}
 {{- end -}}

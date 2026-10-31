@@ -1,7 +1,7 @@
 <!-- markdownlint-disable-next-line MD041 -->
 Log in to your host device and follow these steps to install Zymbit Driver Package 2.0 for your %PRODUCT%. The same steps upgrade a device that was set up with the legacy `install_zk_sw.sh` script.
 
-Zymbit Driver Package 2.0 requires a 64-bit OS: Raspberry Pi OS (Debian 12 bookworm or Debian 13 trixie), or Ubuntu 24.04 or 26.04. On Ubuntu 22.04, Debian 11, or a 32-bit OS, use the [Driver Package 1.x instructions](/reference/driver-package/legacy/) instead.
+%REQUIREMENTS%
 
 1. Download the Zymbit repository package. The file is saved under its versioned name, for example `zymbit-repo_1.0-1_all.deb`:
 

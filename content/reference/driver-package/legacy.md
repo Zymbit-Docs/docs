@@ -12,6 +12,8 @@ toc: true
 
 {{< callout warning >}}
 Use these instructions only on a distribution that [Zymbit Driver Package 2.0](../) does not support: Ubuntu 22.04 (jammy), Debian 11 (bullseye), or any 32-bit OS. On every other distribution, install Driver Package 2.0.
+
+Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.0. Pre-production ZYMKEY5 units, which identify as an HSM6, work with Driver Package 1.x.
 {{< /callout >}}
 
 Driver Package 1.x is installed by a setup script that adds the legacy zk-sw-repo `apt` repository and installs the Zymbit packages from it, including:

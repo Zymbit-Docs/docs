@@ -130,7 +130,7 @@ The default I2C address for ZYMKEY5 is 0x30. If this conflicts with another devi
 
 ## Install the Zymbit Driver Package
 
-{{< driver-install product="ZYMKEY5" >}}
+{{< driver-install product="ZYMKEY5" requirements="zymkey5" >}}
 
 ## Test the installation
 
