@@ -3,8 +3,8 @@
   "language": "python",
   "source": {
     "repo": "zkapputilslib",
-    "version": "1.2.0-11",
-    "commit": "ec73411"
+    "version": "1.2.0-11-18-g36791e3",
+    "commit": "36791e3"
   },
   "module": "zymkey",
   "brief": "Python interface module to Zymkey Application Utilities Library.",
@@ -496,8 +496,7 @@
                       "default": null,
                       "direction": null,
                       "description": "The buffer to verify.",
-                      "supported": [],
-                      "doc_type": "TYPE"
+                      "supported": []
                     },
                     {
                       "name": "sig",
@@ -505,8 +504,7 @@
                       "default": null,
                       "direction": null,
                       "description": "The signature to verify against.",
-                      "supported": [],
-                      "doc_type": "TYPE"
+                      "supported": []
                     },
                     {
                       "name": "raise_exception",
@@ -579,12 +577,12 @@
                   "params": [
                     {
                       "name": "digest",
-                      "type": "t.Any",
+                      "type": "_hashlib.HASH",
                       "default": null,
                       "direction": null,
                       "description": "A hashlib instance that will be used to generate the signature.",
                       "supported": [],
-                      "doc_type": "TYPE"
+                      "doc_type": "t.Any"
                     },
                     {
                       "name": "sig",
@@ -592,8 +590,7 @@
                       "default": null,
                       "direction": null,
                       "description": "The signature to verify.",
-                      "supported": [],
-                      "doc_type": "TYPE"
+                      "supported": []
                     },
                     {
                       "name": "raise_exception",
@@ -633,7 +630,12 @@
                       "description": "Returns `True` for a good verification or `False` for a bad\nverification when `raise_exception` is `False`."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": []
                 },
@@ -812,14 +814,7 @@
                       ]
                     }
                   ],
-                  "returns": [
-                    {
-                      "name": null,
-                      "type": "None",
-                      "description": "0 for success, less than 0 for failure.",
-                      "doc_type": "TYPE"
-                    }
-                  ],
+                  "returns": [],
                   "throws": [
                     {
                       "type": "AssertionError",
@@ -976,8 +971,7 @@
                       "default": null,
                       "direction": null,
                       "description": "The EC curve type that should be associated with the public key.",
-                      "supported": [],
-                      "doc_type": "TYPE"
+                      "supported": []
                     },
                     {
                       "name": "pubkey",
@@ -985,8 +979,7 @@
                       "default": null,
                       "direction": null,
                       "description": "The public key binary data.",
-                      "supported": [],
-                      "doc_type": "TYPE"
+                      "supported": []
                     }
                   ],
                   "returns": [
@@ -1038,14 +1031,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1077,11 +1069,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
-                      "description": "the slot allocated to the key or less than one for failure."
+                      "type": "int",
+                      "description": "The slot the new key pair was allocated to."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1110,14 +1107,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1154,14 +1150,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1185,8 +1180,7 @@
                     {
                       "name": null,
                       "type": "int",
-                      "description": "0 for success, less than 0 for failure.",
-                      "doc_type": "TYPE"
+                      "description": "0 for success."
                     }
                   ],
                   "throws": [
@@ -1250,11 +1244,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
-                      "description": "the slot the master seed was generated in. 0 for starting SLIP39 sessions."
+                      "type": "int or tuple of (int, str)",
+                      "description": "The slot the master seed was generated in. With a BIP39 recovery strategy, a tuple of\nthat slot and the BIP39 mnemonic sentence. 0 for starting SLIP39 sessions."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1299,14 +1298,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 on successful configuration. non-zero for error."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1338,8 +1336,8 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
-                      "description": "A 24-word recovery phrase known as a mnemonic sentence. non-zero for error."
+                      "type": "tuple of (int, str)",
+                      "description": "The return code from the Zymkey library, and the member's 24-word recovery phrase\n(mnemonic sentence)."
                     }
                   ],
                   "throws": [],
@@ -1362,14 +1360,13 @@
                   "brief": "Cancels an active SLIP39 session.",
                   "details": "This method cancels an ongoing SLIP39 session for both master seed generation and recovery.",
                   "params": [],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 on success. non-zero for error."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1441,11 +1438,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "int",
                       "description": "the slot the oversight wallet was generated in."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1501,11 +1503,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
-                      "description": "the allocated slot on success, or a tuple containing the chain code as well."
+                      "type": "int or tuple of (int, bytearray)",
+                      "description": "The allocated slot. If `return_chain_code` is true, a tuple of the slot and the\n32-byte chain code."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1569,11 +1576,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "int",
                       "description": "the allocated slot on success"
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function (BIP39),\nif `mnemonics` is not given for BIP39, or if the recovery strategy is not BIP39 or SLIP39."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1613,7 +1625,7 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "int",
                       "description": "A -1 for no change in status. Otherwise returns the slot of the master seed successfully\nreconstructed from the last shard passed in."
                     }
                   ],
@@ -1649,11 +1661,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "tuple of (str, str, int)",
                       "description": "the node address, wallet name and master seed key slot."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1701,11 +1718,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "int",
                       "description": "the key slot."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -1734,14 +1756,7 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
-                    {
-                      "name": null,
-                      "type": "None",
-                      "description": "0 for success, less than 0 for failure.",
-                      "doc_type": "TYPE"
-                    }
-                  ],
+                  "returns": [],
                   "throws": [
                     {
                       "type": "AssertionError",
@@ -1778,14 +1793,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": []
                 },
@@ -1945,14 +1959,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": []
                 },
@@ -1975,14 +1988,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -2011,14 +2023,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -2055,14 +2066,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -2091,14 +2101,17 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    },
+                    {
+                      "type": "ZymkeyTimeoutError",
+                      "description": "If no perimeter event arrives within `timeout_ms`."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": []
                 },
@@ -2115,11 +2128,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "list of int",
                       "description": "The array of timestamps for each channel for the first detected\nevent in epoch seconds"
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": []
                 },
@@ -2133,14 +2151,13 @@
                   "brief": "Clear perimeter detect info.",
                   "details": "This function clears all perimeter detect info and rearms all\nperimeter detect channels",
                   "params": [],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": []
                 },
@@ -2157,11 +2174,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "float",
                       "description": "The CPU temperature in celsius as a float"
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -2193,11 +2215,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "float",
                       "description": "The temperature in celsius as a float"
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": []
                 },
@@ -2214,11 +2241,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "float",
                       "description": "The RTC drift as a float"
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -2241,11 +2273,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "float",
                       "description": "The battery voltage as a float"
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -2268,11 +2305,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "str",
                       "description": "The model number as a string."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": []
                 },
@@ -2289,11 +2331,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "str",
                       "description": "The firmware version as a string."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": []
                 },
@@ -2310,11 +2357,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
+                      "type": "str",
                       "description": "The serial number as a string."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": []
                 },
@@ -2345,14 +2397,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -2381,14 +2432,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -2417,14 +2467,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -2453,14 +2502,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -2489,14 +2537,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
@@ -2525,14 +2572,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "Secure Compute Module"
@@ -2565,14 +2611,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "Secure Compute Module"
@@ -2597,14 +2642,13 @@
                       "supported": []
                     }
                   ],
-                  "returns": [
+                  "returns": [],
+                  "throws": [
                     {
-                      "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
                     }
                   ],
-                  "throws": [],
                   "notes": [],
                   "supported": [
                     "Secure Compute Module"
@@ -2623,16 +2667,16 @@
                   "returns": [
                     {
                       "name": null,
-                      "type": "TYPE",
-                      "description": "0 for success, less than 0 for failure."
-                    },
-                    {
-                      "name": null,
-                      "type": "TYPE",
+                      "type": "str",
                       "description": "File manifest to be checked by Supervised boot."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "Secure Compute Module"

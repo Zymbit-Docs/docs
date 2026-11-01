@@ -3,8 +3,8 @@
   "language": "c",
   "source": {
     "repo": "zkapputilslib",
-    "version": "1.2.0-11",
-    "commit": "ec73411"
+    "version": "1.2.0-11-18-g36791e3",
+    "commit": "36791e3"
   },
   "header": "zk_app_utils.h",
   "brief": "C interface to Zymkey Application Utilities Library.",
@@ -1187,7 +1187,7 @@
               "type": "ZK_ECDH_KDF_TYPE",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) The key derivation function to use (ZK_ECDH_KDF_TYPE).",
               "supported": []
             },
             {
@@ -1310,7 +1310,7 @@
               "type": "ZK_ECDH_KDF_TYPE",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) The key derivation function to use (ZK_ECDH_KDF_TYPE).",
               "supported": []
             },
             {
@@ -2369,7 +2369,7 @@
               "type": "const char *",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) The variant of the key_type to generate. Currently only \"cardano\" is supported for ed25519.",
               "supported": []
             },
             {
@@ -2876,7 +2876,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3058,7 +3058,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3095,7 +3095,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3292,7 +3292,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3335,7 +3335,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3386,7 +3386,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3431,7 +3431,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3468,7 +3468,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3476,7 +3476,7 @@
               "type": "zkAccelAxisDataType *",
               "default": null,
               "direction": null,
-              "description": "(output) x axis accelerometer information y (output) y axis accelerometer information z (output) z axis accelerometer information",
+              "description": "(output) x axis accelerometer information",
               "supported": []
             },
             {
@@ -3484,7 +3484,7 @@
               "type": "zkAccelAxisDataType *",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(output) y axis accelerometer information",
               "supported": []
             },
             {
@@ -3492,7 +3492,7 @@
               "type": "zkAccelAxisDataType *",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(output) z axis accelerometer information",
               "supported": []
             }
           ],
@@ -3556,7 +3556,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3564,7 +3564,7 @@
               "type": "bool *",
               "default": null,
               "direction": null,
-              "description": "(output) Binary value which expresses the current binding lock state. is_bound (output) Binary value which expresses the current bind state.",
+              "description": "(output) Binary value which expresses the current binding lock state.",
               "supported": []
             },
             {
@@ -3572,7 +3572,7 @@
               "type": "bool *",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(output) Binary value which expresses the current bind state.",
               "supported": []
             }
           ],
@@ -3652,17 +3652,8 @@
               "type": "char **",
               "default": null,
               "direction": null,
-              "description": "",
-              "supported": []
-            },
-            {
-              "name": "version_str",
-              "type": "",
-              "default": null,
-              "direction": null,
               "description": "(output) A double pointer to the firmware version string. This function allocates this string. It is the caller's responsibility to free it.",
-              "supported": [],
-              "undeclared": true
+              "supported": []
             }
           ],
           "returns": [
@@ -3727,7 +3718,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3815,7 +3806,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3866,17 +3857,8 @@
               "type": "float *",
               "default": null,
               "direction": null,
-              "description": "",
-              "supported": []
-            },
-            {
-              "name": "battV",
-              "type": "",
-              "default": null,
-              "direction": null,
               "description": "(output) The current battery voltage value",
-              "supported": [],
-              "undeclared": true
+              "supported": []
             }
           ],
           "returns": [
@@ -3916,7 +3898,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -3959,7 +3941,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -4008,7 +3990,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -4051,7 +4033,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -4094,7 +4076,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -4137,7 +4119,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -4176,7 +4158,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -4223,7 +4205,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -4262,7 +4244,7 @@
               "type": "zkCTX",
               "default": null,
               "direction": null,
-              "description": "",
+              "description": "(input) Zymkey context.",
               "supported": []
             },
             {
@@ -4300,7 +4282,7 @@
           "protection": "public",
           "signature": "#define ZK_PERIMETER_EVENT_ACTION_NOTIFY (1 << 0)",
           "brief": "Perimeter breach action flag definitions.",
-          "details": "",
+          "details": "Notify host.",
           "params": [],
           "returns": [],
           "throws": [],
@@ -4315,7 +4297,7 @@
           "protection": "public",
           "signature": "#define ZK_PERIMETER_EVENT_ACTION_SELF_DESTRUCT (1 << 1)",
           "brief": "",
-          "details": "",
+          "details": "Zymkey self-destruct.",
           "params": [],
           "returns": [],
           "throws": [],
@@ -4540,7 +4522,7 @@
           "anchor": "zkCTX",
           "protection": "public",
           "signature": "typedef void* zkCTX",
-          "brief": "",
+          "brief": "The Zymkey context, created by zkOpen and passed to every other call.",
           "details": "",
           "params": [],
           "returns": [],
