@@ -1,0 +1,43 @@
+name: Check pull request
+
+# Builds the site, with the search index, for every pull request into main, so a
+# change that breaks the build fails here instead of in deploy-site.yml after it
+# is merged. The API reference templates fail the build on raw HTML or on a data
+# field they do not render, which makes this the check for the automated
+# API docs PRs from api-extractor's publish workflow.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+          cache: npm
+
+      # Installs hugo-extended at the version package.json pins, which
+      # deploy-site.yml checks against its own pin.
+      - run: npm ci
+
+      # `npm run build` is the production build plus Pagefind (postbuild).
+      - run: npm run build
+
+      - name: Verify search index was generated
+        run: test -f public/pagefind/pagefind.js
