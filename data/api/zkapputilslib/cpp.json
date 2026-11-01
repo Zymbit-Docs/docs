@@ -106,7 +106,7 @@
                   "id": "classzk_app_utils_1_1common_exception_1a3c0053dca967e9c898837a8a1f949f28",
                   "anchor": "zkAppUtils-commonException-commonException-2",
                   "protection": "public",
-                  "signature": "virtual zkAppUtils::commonException::~commonException()",
+                  "signature": "inline virtual zkAppUtils::commonException::~commonException()",
                   "brief": "Destructor.",
                   "details": "",
                   "params": [],
@@ -119,7 +119,8 @@
                   "throws": [],
                   "notes": [],
                   "supported": [],
-                  "virt": "virtual"
+                  "virt": "virtual",
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -199,7 +200,7 @@
                   "id": "classzk_app_utils_1_1timeout_exception_1abf7d12b6c879936a5e91438133716e31",
                   "anchor": "zkAppUtils-timeoutException-timeoutException-2",
                   "protection": "public",
-                  "signature": "virtual zkAppUtils::timeoutException::~timeoutException()",
+                  "signature": "inline virtual zkAppUtils::timeoutException::~timeoutException()",
                   "brief": "Destructor.",
                   "details": "",
                   "params": [],
@@ -212,7 +213,8 @@
                   "throws": [],
                   "notes": [],
                   "supported": [],
-                  "virt": "virtual"
+                  "virt": "virtual",
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -348,7 +350,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_base_type_1a01d29cc209df6b64c98d8e7a18d4e53a",
                   "anchor": "zkAppUtils-recoveryStrategyBaseType-getRecoveryStrategy",
                   "protection": "public",
-                  "signature": "ZK_RECOVERY_STRATEGY zkAppUtils::recoveryStrategyBaseType::getRecoveryStrategy() const",
+                  "signature": "inline ZK_RECOVERY_STRATEGY zkAppUtils::recoveryStrategyBaseType::getRecoveryStrategy() const",
                   "brief": "",
                   "details": "",
                   "params": [],
@@ -361,7 +363,8 @@
                   "throws": [],
                   "notes": [],
                   "supported": [],
-                  "const": "yes"
+                  "const": "yes",
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -369,7 +372,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_base_type_1a226a73e41bdea4be682526934c6bf1d2",
                   "anchor": "zkAppUtils-recoveryStrategyBaseType-setVariant",
                   "protection": "public",
-                  "signature": "void zkAppUtils::recoveryStrategyBaseType::setVariant(const std::string &key_variant)",
+                  "signature": "inline void zkAppUtils::recoveryStrategyBaseType::setVariant(const std::string &key_variant)",
                   "brief": "",
                   "details": "",
                   "params": [
@@ -390,7 +393,8 @@
                   ],
                   "throws": [],
                   "notes": [],
-                  "supported": []
+                  "supported": [],
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -398,28 +402,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_base_type_1a491c7c16800212b22ef5252a517c8745",
                   "anchor": "zkAppUtils-recoveryStrategyBaseType-getVariant",
                   "protection": "public",
-                  "signature": "std::string zkAppUtils::recoveryStrategyBaseType::getVariant() const",
-                  "brief": "",
-                  "details": "",
-                  "params": [],
-                  "returns": [
-                    {
-                      "type": "std::string",
-                      "description": ""
-                    }
-                  ],
-                  "throws": [],
-                  "notes": [],
-                  "supported": [],
-                  "const": "yes"
-                },
-                {
-                  "kind": "function",
-                  "name": "getPassPhrase",
-                  "id": "classzk_app_utils_1_1recovery_strategy_base_type_1a16415ed8c4c0f1382cdab19ad02b0b37",
-                  "anchor": "zkAppUtils-recoveryStrategyBaseType-getPassPhrase",
-                  "protection": "public",
-                  "signature": "virtual std::string zkAppUtils::recoveryStrategyBaseType::getPassPhrase() const",
+                  "signature": "inline std::string zkAppUtils::recoveryStrategyBaseType::getVariant() const",
                   "brief": "",
                   "details": "",
                   "params": [],
@@ -433,7 +416,30 @@
                   "notes": [],
                   "supported": [],
                   "const": "yes",
-                  "virt": "virtual"
+                  "inline": "yes"
+                },
+                {
+                  "kind": "function",
+                  "name": "getPassPhrase",
+                  "id": "classzk_app_utils_1_1recovery_strategy_base_type_1a16415ed8c4c0f1382cdab19ad02b0b37",
+                  "anchor": "zkAppUtils-recoveryStrategyBaseType-getPassPhrase",
+                  "protection": "public",
+                  "signature": "inline virtual std::string zkAppUtils::recoveryStrategyBaseType::getPassPhrase() const",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "std::string",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "const": "yes",
+                  "virt": "virtual",
+                  "inline": "yes"
                 }
               ]
             }
@@ -520,7 +526,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_b_i_p39_1ac1c9b9b721be60e9e6bf7567db97322f",
                   "anchor": "zkAppUtils-recoveryStrategyBIP39-setPassPhrase",
                   "protection": "public",
-                  "signature": "void zkAppUtils::recoveryStrategyBIP39::setPassPhrase(const std::string &passphrase)",
+                  "signature": "inline void zkAppUtils::recoveryStrategyBIP39::setPassPhrase(const std::string &passphrase)",
                   "brief": "",
                   "details": "",
                   "params": [
@@ -541,7 +547,8 @@
                   ],
                   "throws": [],
                   "notes": [],
-                  "supported": []
+                  "supported": [],
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -549,7 +556,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_b_i_p39_1ac685ed29676c694fa18da237ed0a6c1e",
                   "anchor": "zkAppUtils-recoveryStrategyBIP39-getPassPhrase",
                   "protection": "public",
-                  "signature": "std::string zkAppUtils::recoveryStrategyBIP39::getPassPhrase() const",
+                  "signature": "inline std::string zkAppUtils::recoveryStrategyBIP39::getPassPhrase() const",
                   "brief": "",
                   "details": "",
                   "params": [],
@@ -563,7 +570,8 @@
                   "notes": [],
                   "supported": [],
                   "const": "yes",
-                  "virt": "virtual"
+                  "virt": "virtual",
+                  "inline": "yes"
                 }
               ]
             }
@@ -674,7 +682,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1aea3b19fe261a0d19ab8ba85b6be3c844",
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-setPassPhrase",
                   "protection": "public",
-                  "signature": "void zkAppUtils::recoveryStrategySLIP39::setPassPhrase(const std::string &passphrase)",
+                  "signature": "inline void zkAppUtils::recoveryStrategySLIP39::setPassPhrase(const std::string &passphrase)",
                   "brief": "",
                   "details": "",
                   "params": [
@@ -695,7 +703,8 @@
                   ],
                   "throws": [],
                   "notes": [],
-                  "supported": []
+                  "supported": [],
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -703,7 +712,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a20c94db2f768a96c6e63f57a1bb70dc1",
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-getPassPhrase",
                   "protection": "public",
-                  "signature": "std::string zkAppUtils::recoveryStrategySLIP39::getPassPhrase() const",
+                  "signature": "inline std::string zkAppUtils::recoveryStrategySLIP39::getPassPhrase() const",
                   "brief": "",
                   "details": "",
                   "params": [],
@@ -717,7 +726,8 @@
                   "notes": [],
                   "supported": [],
                   "const": "yes",
-                  "virt": "virtual"
+                  "virt": "virtual",
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -725,7 +735,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a842ac641957b43d12fd915d20920cd54",
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-setGroupCount",
                   "protection": "public",
-                  "signature": "void zkAppUtils::recoveryStrategySLIP39::setGroupCount(int group_count)",
+                  "signature": "inline void zkAppUtils::recoveryStrategySLIP39::setGroupCount(int group_count)",
                   "brief": "",
                   "details": "",
                   "params": [
@@ -746,7 +756,8 @@
                   ],
                   "throws": [],
                   "notes": [],
-                  "supported": []
+                  "supported": [],
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -754,7 +765,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a52daf145f639080964cca346b6da8cbb",
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-getGroupCount",
                   "protection": "public",
-                  "signature": "int zkAppUtils::recoveryStrategySLIP39::getGroupCount() const",
+                  "signature": "inline int zkAppUtils::recoveryStrategySLIP39::getGroupCount() const",
                   "brief": "",
                   "details": "",
                   "params": [],
@@ -767,7 +778,8 @@
                   "throws": [],
                   "notes": [],
                   "supported": [],
-                  "const": "yes"
+                  "const": "yes",
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -775,7 +787,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a42eaf376ac34a8ca1c8af4d799720f2c",
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-setGroupThreshold",
                   "protection": "public",
-                  "signature": "void zkAppUtils::recoveryStrategySLIP39::setGroupThreshold(int group_threshold)",
+                  "signature": "inline void zkAppUtils::recoveryStrategySLIP39::setGroupThreshold(int group_threshold)",
                   "brief": "",
                   "details": "",
                   "params": [
@@ -796,7 +808,8 @@
                   ],
                   "throws": [],
                   "notes": [],
-                  "supported": []
+                  "supported": [],
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -804,7 +817,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a1cb94cd5c4241a3e23a2878d3cb067c1",
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-getGroupThreshold",
                   "protection": "public",
-                  "signature": "int zkAppUtils::recoveryStrategySLIP39::getGroupThreshold() const",
+                  "signature": "inline int zkAppUtils::recoveryStrategySLIP39::getGroupThreshold() const",
                   "brief": "",
                   "details": "",
                   "params": [],
@@ -817,7 +830,8 @@
                   "throws": [],
                   "notes": [],
                   "supported": [],
-                  "const": "yes"
+                  "const": "yes",
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -825,7 +839,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1ac2a46dbe5fc0839b82ce6d7f109ee67c",
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-setIterationExponent",
                   "protection": "public",
-                  "signature": "void zkAppUtils::recoveryStrategySLIP39::setIterationExponent(int iteration_exponent)",
+                  "signature": "inline void zkAppUtils::recoveryStrategySLIP39::setIterationExponent(int iteration_exponent)",
                   "brief": "",
                   "details": "",
                   "params": [
@@ -846,7 +860,8 @@
                   ],
                   "throws": [],
                   "notes": [],
-                  "supported": []
+                  "supported": [],
+                  "inline": "yes"
                 },
                 {
                   "kind": "function",
@@ -854,7 +869,7 @@
                   "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a8d32ad728c5a16beeea2d380526b910d",
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-getIterationExponent",
                   "protection": "public",
-                  "signature": "int zkAppUtils::recoveryStrategySLIP39::getIterationExponent() const",
+                  "signature": "inline int zkAppUtils::recoveryStrategySLIP39::getIterationExponent() const",
                   "brief": "",
                   "details": "",
                   "params": [],
@@ -867,7 +882,8 @@
                   "throws": [],
                   "notes": [],
                   "supported": [],
-                  "const": "yes"
+                  "const": "yes",
+                  "inline": "yes"
                 }
               ]
             }
