@@ -167,7 +167,7 @@ For best practices and examples of how to physically configure perimeter circuit
 
 ### Additional Self Destruct Policies
 
-HSM6 has two additional self destruct policies, independent of Perimeter Detect-- temperature and voltage level monitoring. For more information, visit [Python documentation](https://docs.zymbit.com/api/python_api/#setbatteryvoltageaction-45bcda8a) or [C documentation](https://docs.zymbit.com/api/c_api/#int--zkSetBatteryVoltageAction-f90f5fd1).
+HSM6 has two additional self destruct policies, independent of Perimeter Detect-- temperature and voltage level monitoring. For more information, visit [Python documentation](https://docs.zymbit.com/api/python_api/#Zymkey-set_battery_voltage_action) or [C documentation](https://docs.zymbit.com/api/c_api/#zkSetBatteryVoltageAction).
 
 ## Troubleshooting
 [Troubleshooting](https://docs.zymbit.com/troubleshooting/)

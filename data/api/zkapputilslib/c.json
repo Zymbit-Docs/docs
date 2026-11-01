@@ -4,7 +4,7 @@
   "source": {
     "repo": "zkapputilslib",
     "version": "1.2.0-11",
-    "commit": "c9b56b9"
+    "commit": "ec73411"
   },
   "header": "zk_app_utils.h",
   "brief": "C interface to Zymkey Application Utilities Library.",
@@ -1037,7 +1037,7 @@
           "anchor": "zkDoRawECDH",
           "protection": "public",
           "signature": "int zkDoRawECDH(zkCTX ctx, int slot, const uint8_t *peer_pubkey, int peer_pubkey_sz, uint8_t **pre_master_secret)",
-          "brief": "Perform a raw ECDH operation. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Perform a raw ECDH operation.",
           "details": "Perform an ECDH operation with no Key Derivation Function (KDF). The raw pre-master secret is returned in the response. The peer public key is presented in the call.",
           "params": [
             {
@@ -1104,7 +1104,7 @@
           "anchor": "zkDoRawECDHWithIntPeerPubkey",
           "protection": "public",
           "signature": "int zkDoRawECDHWithIntPeerPubkey(zkCTX ctx, int slot, int peer_pubkey_slot, bool peer_pubkey_slot_is_foreign, uint8_t **pre_master_secret)",
-          "brief": "Perform a raw ECDH operation. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Perform a raw ECDH operation.",
           "details": "Perform an ECDH operation with no Key Derivation Function (KDF). The raw pre-master secret is returned in the response. The peer public key is referenced from the zymkey internal key store.",
           "params": [
             {
@@ -1171,7 +1171,7 @@
           "anchor": "zkDoECDHAndKDF",
           "protection": "public",
           "signature": "int zkDoECDHAndKDF(zkCTX ctx, ZK_ECDH_KDF_TYPE kdf_type, int slot, const uint8_t *peer_pubkey, int peer_pubkey_sz, const uint8_t *salt, int salt_sz, const uint8_t *info, int info_sz, int num_iterations, int derived_key_sz, uint8_t **derived_key)",
-          "brief": "Perform an ECDH operation plus Key Derivation Function. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Perform an ECDH operation plus Key Derivation Function.",
           "details": "Perform an ECDH operation with Key Derivation Function (KDF). The derived key is returned in the response. The peer public key is presented in the call.",
           "params": [
             {
@@ -1294,7 +1294,7 @@
           "anchor": "zkDoECDHAndKDFWithIntPeerPubkey",
           "protection": "public",
           "signature": "int zkDoECDHAndKDFWithIntPeerPubkey(zkCTX ctx, ZK_ECDH_KDF_TYPE kdf_type, int slot, int peer_pubkey_slot, bool peer_pubkey_slot_is_foreign, const uint8_t *salt, int salt_sz, const uint8_t *info, int info_sz, int num_iterations, int derived_key_sz, uint8_t **derived_key)",
-          "brief": "Perform an ECDH operation plus Key Derivation Function. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Perform an ECDH operation plus Key Derivation Function.",
           "details": "Perform an ECDH operation with Key Derivation Function (KDF). The derived key is returned in the response. The peer public key is referenced from the zymkey internal key store.",
           "params": [
             {
@@ -1647,7 +1647,7 @@
           "anchor": "zkGetAllocSlotsList",
           "protection": "public",
           "signature": "int zkGetAllocSlotsList(zkCTX ctx, bool is_foreign, int *max_num_keys, int **alloc_key_list, int *alloc_key_list_sz)",
-          "brief": "Get the list of allocated keys (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "brief": "Get the list of allocated keys.",
           "details": "This function returns a list of all allocated key slots.",
           "params": [
             {
@@ -1714,7 +1714,7 @@
           "anchor": "zkStoreForeignPubKey",
           "protection": "public",
           "signature": "int zkStoreForeignPubKey(zkCTX ctx, ZK_EC_KEY_TYPE pk_type, uint8_t *pk, int pk_sz)",
-          "brief": "Store a new foreign public key in Zymkey. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Store a new foreign public key in Zymkey.",
           "details": "This function stores a new foreign public key in the Zymkey public key ring. This public key can be used for signature verification in use cases where it is desirable to hide the public key.",
           "params": [
             {
@@ -1773,7 +1773,7 @@
           "anchor": "zkDisablePubKeyExport",
           "protection": "public",
           "signature": "int zkDisablePubKeyExport(zkCTX ctx, int pubkey_slot, bool slot_is_foreign)",
-          "brief": "Prevent a public key from being exported to the host. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Prevent a public key from being exported to the host.",
           "details": "This function prevents the public key at the specified slot from being exported to the host using the API zkExportPubKey.",
           "params": [
             {
@@ -1824,7 +1824,7 @@
           "anchor": "zkGenKeyPair",
           "protection": "public",
           "signature": "int zkGenKeyPair(zkCTX ctx, ZK_EC_KEY_TYPE type)",
-          "brief": "Generate a new persistent key pair. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Generate a new persistent key pair.",
           "details": "This function generates a new key pair of the specified type and store it persistently. This key pair cannot be used as part of the zymkey's digital wallet operations.",
           "params": [
             {
@@ -1867,7 +1867,7 @@
           "anchor": "zkGenEphemeralKeyPair",
           "protection": "public",
           "signature": "int zkGenEphemeralKeyPair(zkCTX ctx, ZK_EC_KEY_TYPE type)",
-          "brief": "Generate an ephemeral key pair. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Generate an ephemeral key pair.",
           "details": "This function generates an ephemeral key pair of the specified type. Ephemeral key pairs are useful when performing ECDH for time-of-flight encryption. Only one ephemeral key slot is available and is not persistent between reboots.",
           "params": [
             {
@@ -1910,7 +1910,7 @@
           "anchor": "zkRemoveKey",
           "protection": "public",
           "signature": "int zkRemoveKey(zkCTX ctx, int slot, bool slot_is_foreign)",
-          "brief": "Remove a key pair or a foreign public key. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Remove a key pair or a foreign public key.",
           "details": "This function deletes a key pair or a foreign public key from persistent storage.",
           "params": [
             {
@@ -1961,7 +1961,7 @@
           "anchor": "zkInvalidateEphemeralKey",
           "protection": "public",
           "signature": "int zkInvalidateEphemeralKey(zkCTX ctx)",
-          "brief": "Invalidate the ephemeral key. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Invalidate the ephemeral key.",
           "details": "This function invalidates the ephemeral key.",
           "params": [
             {
@@ -2002,7 +2002,7 @@
           "anchor": "zkGenWalletMasterSeedWithBIP39",
           "protection": "public",
           "signature": "int zkGenWalletMasterSeedWithBIP39(zkCTX ctx, ZK_EC_KEY_TYPE type, const char *variant, const char *wallet_name, const uint8_t *master_generator_key, int master_generator_key_size, const char *passphrase, char **mnemonic)",
-          "brief": "Generate master seed to start a new blockchain wallet. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Generate master seed to start a new blockchain wallet.",
           "details": "This function generates a new blockchain master seed for creating a new wallet.",
           "params": [
             {
@@ -2093,7 +2093,7 @@
           "anchor": "zkGenWalletMasterSeedWithSLIP39",
           "protection": "public",
           "signature": "int zkGenWalletMasterSeedWithSLIP39(zkCTX ctx, ZK_EC_KEY_TYPE type, const char *variant, const char *wallet_name, const uint8_t *master_generator_key, int master_generator_key_size, int group_count, int group_threshold, int group_iteration_exponent, const char *master_passphrase)",
-          "brief": "Generate master seed to start a new blockchain wallet. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Generate master seed to start a new blockchain wallet.",
           "details": "This function opens a session to generate a new blockchain master seed with the ability to recover from SLIP39 shards.",
           "params": [
             {
@@ -2200,7 +2200,7 @@
           "anchor": "zkSetSLIP39GroupInfo",
           "protection": "public",
           "signature": "int zkSetSLIP39GroupInfo(zkCTX ctx, int group_index, int member_count, int member_threshold)",
-          "brief": "Set the active SLIP39 group and the amount of members needed. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Set the active SLIP39 group and the amount of members needed.",
           "details": "This function configures the active group to generate the number of shards requested for the active group.",
           "params": [
             {
@@ -2259,7 +2259,7 @@
           "anchor": "zkAddSLIP39MemberPassword",
           "protection": "public",
           "signature": "int zkAddSLIP39MemberPassword(zkCTX ctx, const char *passhrase, char **mnemonic_sentence)",
-          "brief": "Generate a new SLIP39 member shard. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Generate a new SLIP39 member shard.",
           "details": "This function generates a new SLIP39 member shard. The shard can optionally have a password attached to it.",
           "params": [
             {
@@ -2310,7 +2310,7 @@
           "anchor": "zkCancelSLIP39Session",
           "protection": "public",
           "signature": "int zkCancelSLIP39Session(zkCTX ctx)",
-          "brief": "Cancels the current active SLIP39 session (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Cancels the current active SLIP39 session.",
           "details": "This function cancels open active SLIP39 sessions. For both generation and restore SLIP39 sessions.",
           "params": [
             {
@@ -2345,7 +2345,7 @@
           "anchor": "zkGenOversightWallet",
           "protection": "public",
           "signature": "int zkGenOversightWallet(zkCTX ctx, ZK_EC_KEY_TYPE type, const char *variant, const uint8_t *pub_key, const uint8_t *chain_code, const char *node_addr, const char *wallet_name)",
-          "brief": "Generate master seed to start a new blockchain wallet. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Generate master seed to start a new blockchain wallet.",
           "details": "This function generates a new blockchain master seed for creating a new wallet.",
           "params": [
             {
@@ -2428,7 +2428,7 @@
           "anchor": "zkGenWalletChildKey",
           "protection": "public",
           "signature": "int zkGenWalletChildKey(zkCTX ctx, int parent_key_slot, uint32_t index, bool is_hardened, bool return_chain_code, uint8_t **chain_code)",
-          "brief": "Generate child key from a parent key in a blockchain wallet . (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Generate child key from a parent key in a blockchain wallet.",
           "details": "This function generates a new child key descendent from a specified parent key in a wallet.",
           "params": [
             {
@@ -2503,7 +2503,7 @@
           "anchor": "zkRestoreWalletMasterSeedFromBIP39Mnemonic",
           "protection": "public",
           "signature": "int zkRestoreWalletMasterSeedFromBIP39Mnemonic(zkCTX ctx, ZK_EC_KEY_TYPE type, const char *variant, const char *wallet_name, const uint8_t *master_generator_key, int master_generator_key_size, const char *BIP39_passphrase, char *BIP39_mnemonic)",
-          "brief": "Restore a master seed from a BIP39 mnemonic and a master generator key. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Restore a master seed from a BIP39 mnemonic and a master generator key.",
           "details": "This function restores a wallet master seed from a supplied BIP39 mnemonic string and a master generator key.",
           "params": [
             {
@@ -2594,7 +2594,7 @@
           "anchor": "zkRestoreWalletMasterSeedFromSLIP39",
           "protection": "public",
           "signature": "int zkRestoreWalletMasterSeedFromSLIP39(zkCTX ctx, ZK_EC_KEY_TYPE type, const char *variant, const char *wallet_name, const uint8_t *master_generator_key, int master_generator_key_size, const char *SLIP39_passphrase)",
-          "brief": "Open a SLIP39 restore master seed session (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "brief": "Open a SLIP39 restore master seed session.",
           "details": "This function starts a restore SLIP39 session, in order to start feeding shards into.",
           "params": [
             {
@@ -2677,7 +2677,7 @@
           "anchor": "zkAddRestoreSLIP39Mnemonic",
           "protection": "public",
           "signature": "int zkAddRestoreSLIP39Mnemonic(zkCTX ctx, const char *passphrase, const char *mnemonic_sentence)",
-          "brief": "Feed a SLIP39 shard to restore a master seed (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "brief": "Feed a SLIP39 shard to restore a master seed.",
           "details": "This function will feed a shard to the module until the conditions are met and a master seed is generated.",
           "params": [
             {
@@ -2728,7 +2728,7 @@
           "anchor": "zkGetWalletNodeAddrFromKeySlot",
           "protection": "public",
           "signature": "int zkGetWalletNodeAddrFromKeySlot(zkCTX ctx, int slot, char **node_addr, char **wallet_name, int *master_seed_slot)",
-          "brief": "Derive the node address from a key slot number. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Derive the node address from a key slot number.",
           "details": "This function derives a node address from an input key slot number.",
           "params": [
             {
@@ -2795,7 +2795,7 @@
           "anchor": "zkGetWalletKeySlotFromNodeAddr",
           "protection": "public",
           "signature": "int zkGetWalletKeySlotFromNodeAddr(zkCTX ctx, const char *node_addr, const char *wallet_name, int master_seed_slot, int *slot)",
-          "brief": "Derive the slot address from a node address. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Derive the slot address from a node address.",
           "details": "This function returns the slot number associated with a given node address.",
           "params": [
             {
@@ -2913,7 +2913,7 @@
           "anchor": "zkSetDigitalPerimeterDetectLPPeriod",
           "protection": "public",
           "signature": "int zkSetDigitalPerimeterDetectLPPeriod(zkCTX ctx, int lp_period)",
-          "brief": "Set the low power period (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "brief": "Set the low power period.",
           "details": "This function sets low power period on the digital perimeter detect",
           "params": [
             {
@@ -2956,7 +2956,7 @@
           "anchor": "zkSetDigitalPerimeterDetectLPMaxBits",
           "protection": "public",
           "signature": "int zkSetDigitalPerimeterDetectLPMaxBits(zkCTX ctx, int max_num_bits)",
-          "brief": "Set the low power max number of bits (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "brief": "Set the low power max number of bits.",
           "details": "This function sets low power max number of bits on the digital perimeter detect",
           "params": [
             {
@@ -2999,7 +2999,7 @@
           "anchor": "zkSetDigitalPerimeterDetectDelays",
           "protection": "public",
           "signature": "int zkSetDigitalPerimeterDetectDelays(zkCTX ctx, int min_delay_ns, int max_delay_ns)",
-          "brief": "Set the delays (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "brief": "Set the delays.",
           "details": "This function sets delays on the digital perimeter detect",
           "params": [
             {
@@ -3719,7 +3719,7 @@
           "anchor": "zkGetCPUTemp",
           "protection": "public",
           "signature": "int zkGetCPUTemp(zkCTX ctx, float *cpu_temp)",
-          "brief": "Get current HSM CPU temperature. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Get current HSM CPU temperature.",
           "details": "This function gets the current HSM CPU temp.",
           "params": [
             {
@@ -3807,7 +3807,7 @@
           "anchor": "zkGetRTCDrift",
           "protection": "public",
           "signature": "int zkGetRTCDrift(zkCTX ctx, float *rtc_drift)",
-          "brief": "Get current RTC drift. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Get current RTC drift.",
           "details": "This function is called to get the current RTC drift.",
           "params": [
             {
@@ -3850,7 +3850,7 @@
           "anchor": "zkGetBatteryVoltage",
           "protection": "public",
           "signature": "int zkGetBatteryVoltage(zkCTX ctx, float *batt_voltage)",
-          "brief": "Get the battery voltage (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "brief": "Get the battery voltage.",
           "details": "This function gets the current battery voltage",
           "params": [
             {
@@ -3908,7 +3908,7 @@
           "anchor": "zkSetBatteryVoltageAction",
           "protection": "public",
           "signature": "int zkSetBatteryVoltageAction(zkCTX ctx, int action)",
-          "brief": "Set battery voltage threshold action. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Set battery voltage threshold action.",
           "details": "This function specifies the action to take when the battery voltage falls below the threshold set by zkSetBatteryVoltageThreshold. If this function is never called, do nothing is default. There are three actions:\n\n- Do nothing\n- Go to sleep until battery is replaced\n- Self-destruct",
           "params": [
             {
@@ -3951,7 +3951,7 @@
           "anchor": "zkSetBatteryVoltageThreshold",
           "protection": "public",
           "signature": "int zkSetBatteryVoltageThreshold(zkCTX ctx, float threshold)",
-          "brief": "Sets the battery voltage threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Sets the battery voltage threshold.",
           "details": "This function sets the threshold at which if the battery voltage falls bellow, the action set by zkSetBatteryVoltageAction will be carried out. The recommended threshold is 2.3V. If this function isn't called 2.3V is assumed by default. Threshold must be below 2.5V.",
           "params": [
             {
@@ -4000,7 +4000,7 @@
           "anchor": "zkSetCPUTempAction",
           "protection": "public",
           "signature": "int zkSetCPUTempAction(zkCTX ctx, int action)",
-          "brief": "Set HSM CPU temperature threshold action. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Set HSM CPU temperature threshold action.",
           "details": "This function specifies the action to take when the HSM CPU temperature falls below the threshold set by zkSetCPULowTempThreshold, or rises above the threshold set by zkSetCPUHighTempThreshold. There are two actions to apply:\n\n- Do nothing\n- Self-destruct",
           "params": [
             {
@@ -4043,7 +4043,7 @@
           "anchor": "zkSetCPULowTempThreshold",
           "protection": "public",
           "signature": "int zkSetCPULowTempThreshold(zkCTX ctx, float threshold)",
-          "brief": "Sets the HSM CPU low temperature threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Sets the HSM CPU low temperature threshold.",
           "details": "This function sets the threshold at which if the on-board HSM CPU's tempreature falls below, the action set by zkSetCPUTempAction will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold above the CPU's ambient temperature. The recommended setting is no more than 20C. If no threshold is set, -10 degrees celsius is set as default.",
           "params": [
             {
@@ -4086,7 +4086,7 @@
           "anchor": "zkSetCPUHighTempThreshold",
           "protection": "public",
           "signature": "int zkSetCPUHighTempThreshold(zkCTX ctx, float threshold)",
-          "brief": "Sets the HSM CPU high temperature threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "brief": "Sets the HSM CPU high temperature threshold.",
           "details": "This function sets the threshold at which if the on-board HSM CPU's tempreature rises above, the action set by zkSetCPUTempAction will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold below the CPU's ambient temperature. The recommended setting is no less than 40C. If no threshold is set, 65 degrees celsius is set as default.",
           "params": [
             {
@@ -4129,7 +4129,7 @@
           "anchor": "zkSetSupervisedBootPolicy",
           "protection": "public",
           "signature": "int zkSetSupervisedBootPolicy(zkCTX ctx, int policy_id)",
-          "brief": "Sets the Supervised boot policy. (Supported Devices: Secure Compute Module)",
+          "brief": "Sets the Supervised boot policy.",
           "details": "This function specifies the action to take when Supervised boot event triggers based on a file change.",
           "params": [
             {
@@ -4168,7 +4168,7 @@
           "anchor": "zkAddOrUpdateSupervisedBootFile",
           "protection": "public",
           "signature": "int zkAddOrUpdateSupervisedBootFile(zkCTX ctx, const char *file_path, int slot)",
-          "brief": "Update file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+          "brief": "Update file manifest for Supervised boot to check.",
           "details": "This function adds or updates files to be checked by Supervised boot.",
           "params": [
             {
@@ -4215,7 +4215,7 @@
           "anchor": "zkRemoveSupervisedBootFile",
           "protection": "public",
           "signature": "int zkRemoveSupervisedBootFile(zkCTX ctx, const char *file_path)",
-          "brief": "Remove a file from file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+          "brief": "Remove a file from file manifest for Supervised boot to check.",
           "details": "This function removes a file to be checked by Supervised boot.",
           "params": [
             {
@@ -4254,7 +4254,7 @@
           "anchor": "zkGetSupervisedBootFileManifest",
           "protection": "public",
           "signature": "int zkGetSupervisedBootFileManifest(zkCTX ctx, char **manifest)",
-          "brief": "Get file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+          "brief": "Get file manifest for Supervised boot to check.",
           "details": "This function gets the list of files to be checked by Supervised boot.",
           "params": [
             {
