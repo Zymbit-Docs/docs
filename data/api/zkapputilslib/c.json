@@ -3,8 +3,8 @@
   "language": "c",
   "source": {
     "repo": "zkapputilslib",
-    "version": "1.2.0-11",
-    "commit": "ec73411"
+    "version": "1.2.0-11-14-g0119476",
+    "commit": "0119476"
   },
   "header": "zk_app_utils.h",
   "brief": "C interface to Zymkey Application Utilities Library.",
