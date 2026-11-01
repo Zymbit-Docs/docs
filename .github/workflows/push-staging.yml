@@ -9,11 +9,6 @@ on:
 
       # Don't trigger on pushes to `gh-pages` branch because that is an already-built static site.
       - gh-pages
-
-      # We don't want to trigger this when there are *pushes* to the `api-docs-update*`
-      # branches, as we need to do some pre-processing on these branches.
-      - api-docs-update
-      - api-docs-update**
     paths-ignore:
       - '.github/**'
   create:
@@ -21,24 +16,12 @@ on:
     branches-ignore:
       - main
       - gh-pages
-      - api-docs-update
-      - api-docs-update**
   delete:
     # See the notes under `on.push.branches-ignore` for the rationale here.
     branches-ignore:
       - main
       - gh-pages
   workflow_dispatch:
-
-  # After the `api-docs-update` branch is processed by the relevant workflow,
-  # THEN we should push the result to the staging environment.
-  workflow_run:
-    workflows: ["Process raw API docs update"]
-    branches:
-      - api-docs-update
-      - api-docs-update**
-    types:
-      - completed
 
 # Pushes to the staging repo use STAGING_DEPLOY_KEY, so this token only needs to read.
 permissions:
