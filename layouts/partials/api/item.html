@@ -17,7 +17,7 @@
 {{- $sub := cond (ge $level 6) 6 (add $level 1) -}}
 {{- $known := slice "kind" "name" "id" "anchor" "protection" "signature" "brief" "details"
     "params" "returns" "throws" "notes" "supported" "values" "type" "value" "bases"
-    "groups" "static" "const" "virt" "examples" "see_also" "pre" "post" "par" "retvals" -}}
+    "groups" "static" "const" "virt" "inline" "examples" "see_also" "pre" "post" "par" "retvals" -}}
 {{- range $k, $_ := $i -}}
   {{- if not (in $known $k) -}}
     {{- errorf "API item %q has a field %q that layouts/partials/api/item.html does not render" $i.name $k -}}
