@@ -3,8 +3,8 @@
   "language": "cpp",
   "source": {
     "repo": "zkapputilslib",
-    "version": "1.2.0-11",
-    "commit": "ec73411"
+    "version": "1.2.0-11-18-g36791e3",
+    "commit": "36791e3"
   },
   "header": "zkAppUtilsClass.h",
   "brief": "C++ interface to Zymkey Application Utilities Library.",
@@ -264,7 +264,7 @@
                   "anchor": "zkAppUtils-recoveryStrategyBaseType-recoveryStrategy",
                   "protection": "protected",
                   "signature": "ZK_RECOVERY_STRATEGY zkAppUtils::recoveryStrategyBaseType::recoveryStrategy",
-                  "brief": "",
+                  "brief": "The strategy: none, BIP39 or SLIP39.",
                   "details": "",
                   "params": [],
                   "returns": [],
@@ -280,7 +280,7 @@
                   "anchor": "zkAppUtils-recoveryStrategyBaseType-variant",
                   "protection": "protected",
                   "signature": "std::string zkAppUtils::recoveryStrategyBaseType::variant",
-                  "brief": "",
+                  "brief": "The key variant, such as \"cardano\"; empty for none.",
                   "details": "",
                   "params": [],
                   "returns": [],
@@ -302,7 +302,7 @@
                   "anchor": "zkAppUtils-recoveryStrategyBaseType-recoveryStrategyBaseType",
                   "protection": "public",
                   "signature": "zkAppUtils::recoveryStrategyBaseType::recoveryStrategyBaseType(const std::string &key_variant=\"\")",
-                  "brief": "",
+                  "brief": "A strategy with no recovery mnemonic.",
                   "details": "",
                   "params": [
                     {
@@ -310,7 +310,7 @@
                       "type": "const std::string &",
                       "default": "\"\"",
                       "direction": null,
-                      "description": "",
+                      "description": "The key variant (only \"cardano\" is supported, for ed25519).",
                       "supported": []
                     }
                   ],
@@ -351,7 +351,7 @@
                   "anchor": "zkAppUtils-recoveryStrategyBaseType-getRecoveryStrategy",
                   "protection": "public",
                   "signature": "inline ZK_RECOVERY_STRATEGY zkAppUtils::recoveryStrategyBaseType::getRecoveryStrategy() const",
-                  "brief": "",
+                  "brief": "The recovery strategy this object represents.",
                   "details": "",
                   "params": [],
                   "returns": [
@@ -373,7 +373,7 @@
                   "anchor": "zkAppUtils-recoveryStrategyBaseType-setVariant",
                   "protection": "public",
                   "signature": "inline void zkAppUtils::recoveryStrategyBaseType::setVariant(const std::string &key_variant)",
-                  "brief": "",
+                  "brief": "Set the key variant.",
                   "details": "",
                   "params": [
                     {
@@ -403,7 +403,7 @@
                   "anchor": "zkAppUtils-recoveryStrategyBaseType-getVariant",
                   "protection": "public",
                   "signature": "inline std::string zkAppUtils::recoveryStrategyBaseType::getVariant() const",
-                  "brief": "",
+                  "brief": "The key variant.",
                   "details": "",
                   "params": [],
                   "returns": [
@@ -425,7 +425,7 @@
                   "anchor": "zkAppUtils-recoveryStrategyBaseType-getPassPhrase",
                   "protection": "public",
                   "signature": "inline virtual std::string zkAppUtils::recoveryStrategyBaseType::getPassPhrase() const",
-                  "brief": "",
+                  "brief": "The passphrase; empty for a strategy without one.",
                   "details": "",
                   "params": [],
                   "returns": [
@@ -470,7 +470,7 @@
                   "anchor": "zkAppUtils-recoveryStrategyBIP39-recoveryStrategyBIP39",
                   "protection": "public",
                   "signature": "zkAppUtils::recoveryStrategyBIP39::recoveryStrategyBIP39(const std::string &passphrase=\"\", const std::string &key_variant=\"\")",
-                  "brief": "",
+                  "brief": "A BIP39 strategy.",
                   "details": "",
                   "params": [
                     {
@@ -478,7 +478,7 @@
                       "type": "const std::string &",
                       "default": "\"\"",
                       "direction": null,
-                      "description": "",
+                      "description": "Base 64 encoded passphrase; empty for none.",
                       "supported": []
                     },
                     {
@@ -486,7 +486,7 @@
                       "type": "const std::string &",
                       "default": "\"\"",
                       "direction": null,
-                      "description": "",
+                      "description": "The key variant (only \"cardano\" is supported, for ed25519).",
                       "supported": []
                     }
                   ],
@@ -527,7 +527,7 @@
                   "anchor": "zkAppUtils-recoveryStrategyBIP39-setPassPhrase",
                   "protection": "public",
                   "signature": "inline void zkAppUtils::recoveryStrategyBIP39::setPassPhrase(const std::string &passphrase)",
-                  "brief": "",
+                  "brief": "Set the base 64 encoded passphrase.",
                   "details": "",
                   "params": [
                     {
@@ -557,7 +557,7 @@
                   "anchor": "zkAppUtils-recoveryStrategyBIP39-getPassPhrase",
                   "protection": "public",
                   "signature": "inline std::string zkAppUtils::recoveryStrategyBIP39::getPassPhrase() const",
-                  "brief": "",
+                  "brief": "The base 64 encoded passphrase.",
                   "details": "",
                   "params": [],
                   "returns": [
@@ -588,7 +588,7 @@
           "bases": [
             "zkAppUtils::recoveryStrategyBaseType"
           ],
-          "brief": "",
+          "brief": "Class used for SLIP39 recovery strategy: the group layout, iteration exponent, b64 encoded passphrase and key variant for a SLIP39 master seed session.",
           "details": "",
           "groups": [
             {
@@ -602,7 +602,7 @@
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-recoveryStrategySLIP39",
                   "protection": "public",
                   "signature": "zkAppUtils::recoveryStrategySLIP39::recoveryStrategySLIP39(int group_count, int group_threshold, int iteration_exponent, const std::string &passphrase=\"\", const std::string &key_variant=\"\")",
-                  "brief": "",
+                  "brief": "A SLIP39 strategy.",
                   "details": "",
                   "params": [
                     {
@@ -610,7 +610,7 @@
                       "type": "int",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "Total number of groups to generate (max 14).",
                       "supported": []
                     },
                     {
@@ -618,7 +618,7 @@
                       "type": "int",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "Number of groups needed to restore the master seed.",
                       "supported": []
                     },
                     {
@@ -626,7 +626,7 @@
                       "type": "int",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "The higher the exponent, the more PBKDF2 hashing is done (0-5).",
                       "supported": []
                     },
                     {
@@ -634,7 +634,7 @@
                       "type": "const std::string &",
                       "default": "\"\"",
                       "direction": null,
-                      "description": "",
+                      "description": "Base 64 encoded passphrase; empty for none.",
                       "supported": []
                     },
                     {
@@ -642,7 +642,7 @@
                       "type": "const std::string &",
                       "default": "\"\"",
                       "direction": null,
-                      "description": "",
+                      "description": "The key variant (only \"cardano\" is supported, for ed25519).",
                       "supported": []
                     }
                   ],
@@ -683,7 +683,7 @@
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-setPassPhrase",
                   "protection": "public",
                   "signature": "inline void zkAppUtils::recoveryStrategySLIP39::setPassPhrase(const std::string &passphrase)",
-                  "brief": "",
+                  "brief": "Set the base 64 encoded passphrase.",
                   "details": "",
                   "params": [
                     {
@@ -713,7 +713,7 @@
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-getPassPhrase",
                   "protection": "public",
                   "signature": "inline std::string zkAppUtils::recoveryStrategySLIP39::getPassPhrase() const",
-                  "brief": "",
+                  "brief": "The base 64 encoded passphrase.",
                   "details": "",
                   "params": [],
                   "returns": [
@@ -736,7 +736,7 @@
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-setGroupCount",
                   "protection": "public",
                   "signature": "inline void zkAppUtils::recoveryStrategySLIP39::setGroupCount(int group_count)",
-                  "brief": "",
+                  "brief": "Set the total number of groups.",
                   "details": "",
                   "params": [
                     {
@@ -766,7 +766,7 @@
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-getGroupCount",
                   "protection": "public",
                   "signature": "inline int zkAppUtils::recoveryStrategySLIP39::getGroupCount() const",
-                  "brief": "",
+                  "brief": "The total number of groups.",
                   "details": "",
                   "params": [],
                   "returns": [
@@ -788,7 +788,7 @@
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-setGroupThreshold",
                   "protection": "public",
                   "signature": "inline void zkAppUtils::recoveryStrategySLIP39::setGroupThreshold(int group_threshold)",
-                  "brief": "",
+                  "brief": "Set the number of groups needed to restore the master seed.",
                   "details": "",
                   "params": [
                     {
@@ -818,7 +818,7 @@
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-getGroupThreshold",
                   "protection": "public",
                   "signature": "inline int zkAppUtils::recoveryStrategySLIP39::getGroupThreshold() const",
-                  "brief": "",
+                  "brief": "The number of groups needed to restore the master seed.",
                   "details": "",
                   "params": [],
                   "returns": [
@@ -840,7 +840,7 @@
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-setIterationExponent",
                   "protection": "public",
                   "signature": "inline void zkAppUtils::recoveryStrategySLIP39::setIterationExponent(int iteration_exponent)",
-                  "brief": "",
+                  "brief": "Set the PBKDF2 iteration exponent.",
                   "details": "",
                   "params": [
                     {
@@ -870,7 +870,7 @@
                   "anchor": "zkAppUtils-recoveryStrategySLIP39-getIterationExponent",
                   "protection": "public",
                   "signature": "inline int zkAppUtils::recoveryStrategySLIP39::getIterationExponent() const",
-                  "brief": "",
+                  "brief": "The PBKDF2 iteration exponent.",
                   "details": "",
                   "params": [],
                   "returns": [
@@ -912,7 +912,7 @@
                   "anchor": "zkAppUtils-accelData-x",
                   "protection": "public",
                   "signature": "double zkAppUtils::accelData::x",
-                  "brief": "",
+                  "brief": "x axis reading in units of g-force",
                   "details": "",
                   "params": [],
                   "returns": [],
@@ -928,7 +928,7 @@
                   "anchor": "zkAppUtils-accelData-y",
                   "protection": "public",
                   "signature": "double zkAppUtils::accelData::y",
-                  "brief": "",
+                  "brief": "y axis reading in units of g-force",
                   "details": "",
                   "params": [],
                   "returns": [],
@@ -944,7 +944,7 @@
                   "anchor": "zkAppUtils-accelData-z",
                   "protection": "public",
                   "signature": "double zkAppUtils::accelData::z",
-                  "brief": "",
+                  "brief": "z axis reading in units of g-force",
                   "details": "",
                   "params": [],
                   "returns": [],
@@ -960,7 +960,7 @@
                   "anchor": "zkAppUtils-accelData-tapDirX",
                   "protection": "public",
                   "signature": "int zkAppUtils::accelData::tapDirX",
-                  "brief": "",
+                  "brief": "x axis tap direction: -1 negative, +1 positive, 0 no tap",
                   "details": "",
                   "params": [],
                   "returns": [],
@@ -976,7 +976,7 @@
                   "anchor": "zkAppUtils-accelData-tapDirY",
                   "protection": "public",
                   "signature": "int zkAppUtils::accelData::tapDirY",
-                  "brief": "",
+                  "brief": "y axis tap direction: -1 negative, +1 positive, 0 no tap",
                   "details": "",
                   "params": [],
                   "returns": [],
@@ -992,7 +992,7 @@
                   "anchor": "zkAppUtils-accelData-tapDirZ",
                   "protection": "public",
                   "signature": "int zkAppUtils::accelData::tapDirZ",
-                  "brief": "",
+                  "brief": "z axis tap direction: -1 negative, +1 positive, 0 no tap",
                   "details": "",
                   "params": [],
                   "returns": [],
@@ -1502,7 +1502,7 @@
                       "type": "const byteArray &",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "Unsigned byte container which holds locked data object",
                       "supported": []
                     },
                     {
@@ -1512,15 +1512,6 @@
                       "direction": null,
                       "description": "Determines whether one-way or shared key is used for locking. Default = false.",
                       "supported": []
-                    },
-                    {
-                      "name": "src_ct_data",
-                      "type": "",
-                      "default": null,
-                      "direction": null,
-                      "description": "Unsigned byte container which holds locked data object",
-                      "supported": [],
-                      "undeclared": true
                     }
                   ],
                   "returns": [
@@ -1677,15 +1668,6 @@
                       "direction": null,
                       "description": "If false, the normal key store is referenced. Otherwise, the foreign public key store is referenced.",
                       "supported": []
-                    },
-                    {
-                      "name": "pub_key_is_foreign",
-                      "type": "",
-                      "default": null,
-                      "direction": null,
-                      "description": "If false, the normal key store is referenced. Otherwise, the foreign public key store is referenced.",
-                      "supported": [],
-                      "undeclared": true
                     }
                   ],
                   "returns": [
@@ -1813,7 +1795,7 @@
                       "type": "ZK_ECDH_KDF_TYPE",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "The key derivation function to use (ZK_ECDH_KDF_TYPE).",
                       "supported": []
                     },
                     {
@@ -1896,7 +1878,7 @@
                       "type": "ZK_ECDH_KDF_TYPE",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "The key derivation function to use (ZK_ECDH_KDF_TYPE).",
                       "supported": []
                     },
                     {
@@ -2495,15 +2477,6 @@
                       "direction": null,
                       "description": "The master generator key used to help generate the master seed (bip32). Defaults to empty string",
                       "supported": []
-                    },
-                    {
-                      "name": "mnemonics(output)",
-                      "type": "",
-                      "default": null,
-                      "direction": null,
-                      "description": "Allocated mnemonics if it was asked for, based on recovery strategy used.",
-                      "supported": [],
-                      "undeclared": true
                     }
                   ],
                   "returns": [
@@ -2529,7 +2502,7 @@
                   "anchor": "zkAppUtils-zkClass-genWalletMasterSeed-2",
                   "protection": "public",
                   "signature": "int zkAppUtils::zkClass::genWalletMasterSeed(ZK_EC_KEY_TYPE type, std::string &wallet_name, const recoveryStrategyBIP39 &recovery_strategy, std::string *mnemonic_str, const byteArray &master_generator_key=byteArray())",
-                  "brief": "",
+                  "brief": "Generate a BIP32 master seed with a BIP39 recovery mnemonic.",
                   "details": "",
                   "params": [
                     {
@@ -2537,7 +2510,7 @@
                       "type": "ZK_EC_KEY_TYPE",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "The type of key to generate (ZK_EC_KEY_TYPE).",
                       "supported": []
                     },
                     {
@@ -2545,7 +2518,7 @@
                       "type": "std::string &",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "An ASCII string which contains the name of the wallet.",
                       "supported": []
                     },
                     {
@@ -2553,7 +2526,7 @@
                       "type": "const recoveryStrategyBIP39 &",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "The BIP39 passphrase and key variant.",
                       "supported": []
                     },
                     {
@@ -2561,7 +2534,7 @@
                       "type": "std::string *",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "(output) The BIP39 mnemonic sentence for recovering the master seed.",
                       "supported": []
                     },
                     {
@@ -2569,19 +2542,25 @@
                       "type": "const byteArray &",
                       "default": "byteArray()",
                       "direction": null,
-                      "description": "",
+                      "description": "The master generator key used to help generate the master seed (bip32). Defaults to empty string",
                       "supported": []
                     }
                   ],
                   "returns": [
                     {
                       "type": "int",
-                      "description": ""
+                      "description": "The slot the master seed was allocated to."
                     }
                   ],
                   "throws": [],
                   "notes": [],
-                  "supported": []
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
                 },
                 {
                   "kind": "function",
@@ -2590,15 +2569,15 @@
                   "anchor": "zkAppUtils-zkClass-genWalletMasterSeed-3",
                   "protection": "public",
                   "signature": "int zkAppUtils::zkClass::genWalletMasterSeed(ZK_EC_KEY_TYPE type, std::string &wallet_name, const recoveryStrategySLIP39 &recovery_strategy, const byteArray &master_generator_key=byteArray())",
-                  "brief": "",
-                  "details": "",
+                  "brief": "Start a SLIP39 session to generate a BIP32 master seed.",
+                  "details": "The shards are then generated with setGenSLIP39GroupInfo and addGenSLIP39Member.",
                   "params": [
                     {
                       "name": "type",
                       "type": "ZK_EC_KEY_TYPE",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "The type of key to generate (ZK_EC_KEY_TYPE).",
                       "supported": []
                     },
                     {
@@ -2606,7 +2585,7 @@
                       "type": "std::string &",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "An ASCII string which contains the name of the wallet.",
                       "supported": []
                     },
                     {
@@ -2614,7 +2593,7 @@
                       "type": "const recoveryStrategySLIP39 &",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "The SLIP39 group layout, iteration exponent, passphrase and key variant.",
                       "supported": []
                     },
                     {
@@ -2622,19 +2601,30 @@
                       "type": "const byteArray &",
                       "default": "byteArray()",
                       "direction": null,
-                      "description": "",
+                      "description": "The master generator key used to help generate the master seed (bip32). Defaults to empty string",
                       "supported": []
                     }
                   ],
                   "returns": [
                     {
                       "type": "int",
-                      "description": ""
+                      "description": "0 when the SLIP39 session is open."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
                   "notes": [],
-                  "supported": []
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
                 },
                 {
                   "kind": "function",
@@ -2878,17 +2868,8 @@
                       "type": "byteArray *",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "(output) Allocated chain_code if it was asked for.",
                       "supported": []
-                    },
-                    {
-                      "name": "(output)",
-                      "type": "",
-                      "default": null,
-                      "direction": null,
-                      "description": "Allocated chain_code if it was asked for.",
-                      "supported": [],
-                      "undeclared": true
                     }
                   ],
                   "returns": [
@@ -2991,15 +2972,15 @@
                   "anchor": "zkAppUtils-zkClass-restoreWalletMasterSeedFromMnemonic-2",
                   "protection": "public",
                   "signature": "int zkAppUtils::zkClass::restoreWalletMasterSeedFromMnemonic(ZK_EC_KEY_TYPE type, std::string &wallet_name, byteArray &master_generator_key, recoveryStrategySLIP39 &recovery_strategy)",
-                  "brief": "",
-                  "details": "",
+                  "brief": "Start a SLIP39 session to restore a master seed.",
+                  "details": "The shards are then fed in with addRestoreSLIP39Mnemonic.",
                   "params": [
                     {
                       "name": "type",
                       "type": "ZK_EC_KEY_TYPE",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "The type of key to restore (ZK_EC_KEY_TYPE).",
                       "supported": []
                     },
                     {
@@ -3007,7 +2988,7 @@
                       "type": "std::string &",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "An ASCII string which contains the name of the wallet.",
                       "supported": []
                     },
                     {
@@ -3015,7 +2996,7 @@
                       "type": "byteArray &",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "The master generator key used to help generate the master seed.",
                       "supported": []
                     },
                     {
@@ -3023,19 +3004,25 @@
                       "type": "recoveryStrategySLIP39 &",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "The SLIP39 passphrase and key variant to recover from.",
                       "supported": []
                     }
                   ],
                   "returns": [
                     {
                       "type": "int",
-                      "description": ""
+                      "description": "The result of opening the session; less than 0 for failure."
                     }
                   ],
                   "throws": [],
                   "notes": [],
-                  "supported": []
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
                 },
                 {
                   "kind": "function",
@@ -3111,17 +3098,8 @@
                       "type": "std::string *",
                       "default": "NULL",
                       "direction": null,
-                      "description": "",
-                      "supported": []
-                    },
-                    {
-                      "name": "wallet_name",
-                      "type": "",
-                      "default": null,
-                      "direction": null,
                       "description": "(output) A pointer to a string which will contain the wallet name in ASCII. If NULL, this parameter will not be retrieved.",
-                      "supported": [],
-                      "undeclared": true
+                      "supported": []
                     }
                   ],
                   "returns": [
@@ -3549,7 +3527,7 @@
                       "type": "bool &",
                       "default": null,
                       "direction": null,
-                      "description": "(output) Binary value which expresses the current binding lock state. is_bound (output) Binary value which expresses the current bind state.",
+                      "description": "(output) Binary value which expresses the current binding lock state.",
                       "supported": []
                     },
                     {
@@ -3557,7 +3535,7 @@
                       "type": "bool &",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "(output) Binary value which expresses the current bind state.",
                       "supported": []
                     }
                   ],
@@ -3801,7 +3779,7 @@
                       "type": "uint32_t **",
                       "default": null,
                       "direction": null,
-                      "description": "",
+                      "description": "(output) The timestamps for when any events occurred. The index in this array corresponds to the channel number used by zkSetPerimeterEventAction. A 0 value means no breach has occurred on this channel. This array is allocated by this routine and so it must be freed by the caller.",
                       "supported": []
                     },
                     {
@@ -3811,15 +3789,6 @@
                       "direction": null,
                       "description": "(output) The number of timestamps in the returned array",
                       "supported": []
-                    },
-                    {
-                      "name": "timestamps_sec",
-                      "type": "",
-                      "default": null,
-                      "direction": null,
-                      "description": "(output) The timestamps for when any events occurred. The index in this array corresponds to the channel number used by zkSetPerimeterEventAction. A 0 value means no breach has occurred on this channel. This array is allocated by this routine and so it must be freed by the caller.",
-                      "supported": [],
-                      "undeclared": true
                     }
                   ],
                   "returns": [
@@ -4387,21 +4356,11 @@
                   "signature": "std::string * zkAppUtils::zkClass::getSupervisedBootFileManifest()",
                   "brief": "Get file manifest for Supervised boot to check.",
                   "details": "This function gets the list of files to be checked by Supervised boot.",
-                  "params": [
-                    {
-                      "name": "manifest",
-                      "type": "",
-                      "default": null,
-                      "direction": null,
-                      "description": "(output) The file manifest that is checked by Supervised boot.",
-                      "supported": [],
-                      "undeclared": true
-                    }
-                  ],
+                  "params": [],
                   "returns": [
                     {
                       "type": "std::string *",
-                      "description": "a string for the list of files in the manifest."
+                      "description": "The file manifest that is checked by Supervised boot."
                     }
                   ],
                   "throws": [],
