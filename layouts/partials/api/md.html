@@ -1,0 +1,15 @@
+{{/*
+    Renders one Markdown field from the API reference JSON.
+
+    The extractor escapes HTML in comment prose, so text such as "<b>" in a header
+    comment shows as literal text. Goldmark runs with `unsafe: true` on this site,
+    so if raw HTML ever reached this point it would render. This is the second
+    line of defense: any tag outside a code span or code block fails the build.
+*/}}
+{{- $md := . | default "" -}}
+{{- $prose := replaceRE "(?s)```.*?```" "" $md -}}
+{{- $prose = replaceRE "`[^`]*`" "" $prose -}}
+{{- with findRE `<[A-Za-z/!?]` $prose 1 -}}
+  {{- errorf "API reference text contains raw HTML (%q): fix the extractor's escaping. Text: %q" (index . 0) $md -}}
+{{- end -}}
+{{- return ($md | markdownify) -}}

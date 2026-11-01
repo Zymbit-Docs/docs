@@ -41,7 +41,8 @@
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{ end -}}
 
-{{ if and hugo.IsProduction (ne $outputFormat "print") -}}
+{{/* `noindex: true` in front matter keeps a published page (the API preview) out of search engines. */ -}}
+{{ if and hugo.IsProduction (ne $outputFormat "print") (not .Params.noindex) -}}
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 {{ else -}}
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">

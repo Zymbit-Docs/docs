@@ -1,0 +1,4702 @@
+{
+  "schema": 1,
+  "language": "c",
+  "source": {
+    "repo": "zkapputilslib",
+    "version": "1.2.0-11",
+    "commit": "c9b56b9"
+  },
+  "header": "zk_app_utils.h",
+  "brief": "C interface to Zymkey Application Utilities Library.",
+  "intro": "This file contains the C API to the the Zymkey Application Utilities library, libzk_app_utils. Systems intending to run such applications require that the `libzkapputils` package be installed.\n\nThis API facilitates writing user space applications which use Zymkey to perform cryptographic operations, such as:\n\n1. Signing of payloads using ECDSA\n1. Verification of payloads that were signed using Zymkey\n1. Exporting the public key that matches Zymkey's private key\n1. \"Locking\" and \"unlocking\" data objects\n1. Generating random data Additionally, there are functions for changing the i2c address (i2c units only), setting tap sensitivity and controlling the LED.\n\nDevelopers wishing to build applications which utilize the libzk_app_utils library should additionally install the `libzk_app_utils-dev` package, which contains the necessary development files for the Zymkey's C library. To install this package on a system that does not need to run the applications (e.g. a Docker container or when cross compiling on a foreign architecture), use `apt install --no-install-recommends libzkapputils-dev`. This will prevent `apt` from installing the Zymkey's `zkifc` driver daemon.\n\nUsage:\n\n```\n#include <zymkey/zk_app_utils.h>\n```\n\nTo add libzk_app_utils as a dependency of a CMake-based project, add the following lines to your project's CMakeLists.txt file:\n\n```\nfind_package(zkAppUtils REQUIRED)\ntarget_link_libraries(target_name PRIVATE zkAppUtils::zk_app_utils)\n```\n\nMakefile-based projects may likewise configure the library dependency via pkg-config:\n\n```\nCFLAGS=\"$(pkg-config --cflags zkapputils)\"\nLDFLAGS=\"$(pkg-config --libs zkapputils)\"\n```",
+  "meta": {
+    "version": "1.2.0",
+    "copyright": "Zymbit Technologies, Inc."
+  },
+  "notes": [],
+  "groups": [
+    {
+      "title": "Zymkey Context",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkOpen",
+          "id": "zk__app__utils_8h_1a48a562243cd2902b84bb7347a540b8d6",
+          "anchor": "zkOpen",
+          "protection": "public",
+          "signature": "int zkOpen(zkCTX *ctx)",
+          "brief": "Open a Zymkey context.",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX *",
+              "default": null,
+              "direction": null,
+              "description": "(output) returns a pointer to a Zymkey context.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkClose",
+          "id": "zk__app__utils_8h_1af427eb2bb73d78bb7acdf723ec99750a",
+          "anchor": "zkClose",
+          "protection": "public",
+          "signature": "int zkClose(zkCTX ctx)",
+          "brief": "Close a Zymkey context.",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) The Zymkey context to close",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkEnableSelfRestart",
+          "id": "zk__app__utils_8h_1a91bf63e3a5ec9a118d83c45e5775b321",
+          "anchor": "zkEnableSelfRestart",
+          "protection": "public",
+          "signature": "int zkEnableSelfRestart(zkCTX ctx, bool enabled, int waitSec, int maxNumRestart)",
+          "brief": "Enables automatic restart of zkifc/zymbit device (in case of fatal error).",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "enabled",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) Enable/disable.",
+              "supported": []
+            },
+            {
+              "name": "waitSec",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Time in seconds to wait before attempting restart.",
+              "supported": []
+            },
+            {
+              "name": "maxNumRestart",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Maximum number of restarts to attempt.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "Random Number Generation",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkCreateRandDataFile",
+          "id": "zk__app__utils_8h_1a899ce7a6aebb542b5796fc027f021695",
+          "anchor": "zkCreateRandDataFile",
+          "protection": "public",
+          "signature": "int zkCreateRandDataFile(zkCTX ctx, const char *dst_filename, int rdata_sz)",
+          "brief": "Fill a file with random numbers.",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "dst_filename",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) Absolute path name for the destination file.",
+              "supported": []
+            },
+            {
+              "name": "rdata_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The number of random bytes to generate.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkGetRandBytes",
+          "id": "zk__app__utils_8h_1a7b2e6031f9f72f3810c47202ca04b8b5",
+          "anchor": "zkGetRandBytes",
+          "protection": "public",
+          "signature": "int zkGetRandBytes(zkCTX ctx, uint8_t **rdata, int rdata_sz)",
+          "brief": "Get an array of random bytes.",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "rdata",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(input) Pointer to a pointer of bytes.",
+              "supported": []
+            },
+            {
+              "name": "rdata_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The number of random bytes to generate.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "Lock Data",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkLockDataF2F",
+          "id": "zk__app__utils_8h_1aa0885303a749fe9c049f277ba8c11e21",
+          "anchor": "zkLockDataF2F",
+          "protection": "public",
+          "signature": "int zkLockDataF2F(zkCTX ctx, const char *src_pt_filename, const char *dst_ct_filename, bool use_shared_key)",
+          "brief": "Lock up source (plaintext) data from a file and store the results (ciphertext) in a destination file.",
+          "details": "This function encrypts and signs a block of plaintext data from a file and stores the result in a destination file.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "src_pt_filename",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The absolute path to the file where the source (plaintext) data is located.",
+              "supported": []
+            },
+            {
+              "name": "dst_ct_filename",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The absolute path to the file where the destination (ciphertext) data should be deposited.",
+              "supported": []
+            },
+            {
+              "name": "use_shared_key",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) This parameter specifies which key will be used to used to lock the data up. A value of 'false' specifies that the Zymkey will use the one-way key whereas 'true' specifies that the shared key will be used. Specify 'true' for publishing data to another that has the shared key (e.g. Zymbit cloud) and 'False' when the data is meant to reside exclusively withing the host computer.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [
+            {
+              "kind": "note",
+              "text": "The zymkey has two keys that can be used for locking/unlocking operations, designated as 'shared' and 'one-way'.\n\n1. The one-way key is meant to lock up data only on the local host computer. Data encrypted using this key cannot be exported and deciphered anywhere else.\n1. The shared key is meant for publishing data to other sources that have the capability to generate the shared key, such as the Zymbit cloud server."
+            }
+          ],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkLockDataB2F",
+          "id": "zk__app__utils_8h_1ad18866d7ca51cacbc750f8a39e6e1e6c",
+          "anchor": "zkLockDataB2F",
+          "protection": "public",
+          "signature": "int zkLockDataB2F(zkCTX ctx, const uint8_t *src_pt, int src_pt_sz, const char *dst_ct_filename, bool use_shared_key)",
+          "brief": "Lock up source (plaintext) data from a byte array and store the results (ciphertext) in a destination file.",
+          "details": "This function encrypts and signs a block of binary plaintext data and stores the result in a destination file.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "src_pt",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) Binary plaintext source byte array.",
+              "supported": []
+            },
+            {
+              "name": "src_pt_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Size of plaintext source data.",
+              "supported": []
+            },
+            {
+              "name": "dst_ct_filename",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The absolute path to the file where the destination (ciphertext) data should be deposited.",
+              "supported": []
+            },
+            {
+              "name": "use_shared_key",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) Specifies if shared key is to be used. See zkLockDataF2F.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [
+            {
+              "kind": "note",
+              "text": "(See zkLockDataF2F for notes about keys)"
+            }
+          ],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkLockDataF2B",
+          "id": "zk__app__utils_8h_1adfed9aa2d8ca8f631fb83ee51e82cb6b",
+          "anchor": "zkLockDataF2B",
+          "protection": "public",
+          "signature": "int zkLockDataF2B(zkCTX ctx, const char *src_pt_filename, uint8_t **dst_ct, int *dst_ct_sz, bool use_shared_key)",
+          "brief": "Lock up source (plaintext) data from a file and store the results (ciphertext) in a destination byte array.",
+          "details": "This function encrypts and signs a block of plaintext data from a file and stores the result in a binary byte array.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "src_pt_filename",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The absolute path to the file where the source (plaintext) data is located.",
+              "supported": []
+            },
+            {
+              "name": "dst_ct",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to a pointer to an array of unsigned bytes created by this function. This pointer must be freed by the application when no longer needed.",
+              "supported": []
+            },
+            {
+              "name": "dst_ct_sz",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to an integer which contains the size of the destination array.",
+              "supported": []
+            },
+            {
+              "name": "use_shared_key",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) Specifies if shared key is to be used. See zkLockDataF2F.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [
+            {
+              "kind": "note",
+              "text": "(See zkLockDataF2F for notes about keys)"
+            }
+          ],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkLockDataB2B",
+          "id": "zk__app__utils_8h_1a98ed878370908120142f5e353a369448",
+          "anchor": "zkLockDataB2B",
+          "protection": "public",
+          "signature": "int zkLockDataB2B(zkCTX ctx, const uint8_t *src_pt, int src_pt_sz, uint8_t **dst_ct, int *dst_ct_sz, bool use_shared_key)",
+          "brief": "Lock up source (plaintext) data from a byte array and store the results (ciphertext) in a destination byte array.",
+          "details": "This function encrypts and signs a block of plaintext data and stores the result in a binary byte array.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "src_pt",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) Binary plaintext source byte array.",
+              "supported": []
+            },
+            {
+              "name": "src_pt_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Size of plaintext source data.",
+              "supported": []
+            },
+            {
+              "name": "dst_ct",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to a pointer to an array of unsigned bytes created by this function. This pointer must be freed by the application when no longer needed.",
+              "supported": []
+            },
+            {
+              "name": "dst_ct_sz",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to an integer which contains the size of the destination array.",
+              "supported": []
+            },
+            {
+              "name": "use_shared_key",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) Specifies if shared key is to be used. See zkLockDataF2F.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [
+            {
+              "kind": "note",
+              "text": "(See zkLockDataF2F for notes about keys)"
+            }
+          ],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "Unlock Data",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkUnlockDataF2F",
+          "id": "zk__app__utils_8h_1a4a8c161f1dfcdf08d741f5926d5f77f2",
+          "anchor": "zkUnlockDataF2F",
+          "protection": "public",
+          "signature": "int zkUnlockDataF2F(zkCTX ctx, const char *src_ct_filename, const char *dst_pt_filename, bool use_shared_key)",
+          "brief": "Unlock source (ciphertext) data from a file and store the results (plaintext) in a destination file.",
+          "details": "This function verifies a locked object signature and decrypts the associated ciphertext data.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "src_ct_filename",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The absolute path to the file where the source (ciphertext) data is located.",
+              "supported": []
+            },
+            {
+              "name": "dst_pt_filename",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The absolute path to the file where the destination (plaintext) data should be deposited.",
+              "supported": []
+            },
+            {
+              "name": "use_shared_key",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) This parameter specifies which key will be used to used to lock the data up. A value of 'false' specifies that the Zymkey will use the one-way key whereas 'true' specifies that the shared key will be used. Specify 'true' for publishing data to another that has the shared key (e.g. Zymbit cloud) and 'False' when the data is meant to reside exclusively withing the host computer.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [
+            {
+              "kind": "note",
+              "text": "(See zkLockDataF2F for notes about keys)"
+            }
+          ],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkUnlockDataB2F",
+          "id": "zk__app__utils_8h_1a2c63c6a31a2a9d787bb670c0e855795c",
+          "anchor": "zkUnlockDataB2F",
+          "protection": "public",
+          "signature": "int zkUnlockDataB2F(zkCTX ctx, const uint8_t *src_ct, int src_ct_sz, const char *dst_pt_filename, bool use_shared_key)",
+          "brief": "Unlock source (ciphertext) data from a byte array and store the results (plaintext) in a destination file.",
+          "details": "This function verifies a locked object signature and decrypts the associated ciphertext data.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "src_ct",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) Binary ciphertext source byte array.",
+              "supported": []
+            },
+            {
+              "name": "src_ct_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Size of ciphertext source data.",
+              "supported": []
+            },
+            {
+              "name": "dst_pt_filename",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The absolute path to the file where the destination (plaintext) data should be deposited.",
+              "supported": []
+            },
+            {
+              "name": "use_shared_key",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) Specifies if shared key is to be used. See zkLockDataF2F.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [
+            {
+              "kind": "note",
+              "text": "(See zkLockDataF2F for notes about keys)"
+            }
+          ],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkUnlockDataF2B",
+          "id": "zk__app__utils_8h_1a7553aa0574bf2bfe13b7b32d2774baa8",
+          "anchor": "zkUnlockDataF2B",
+          "protection": "public",
+          "signature": "int zkUnlockDataF2B(zkCTX ctx, const char *src_ct_filename, uint8_t **dst_pt, int *dst_pt_sz, bool use_shared_key)",
+          "brief": "Unlock source (ciphertext) data from a file and store the results (plaintext) in a destination byte array.",
+          "details": "This function verifies a locked object signature and decrypts the associated ciphertext data.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "src_ct_filename",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The absolute path to the file where the source (ciphertext) data is located.",
+              "supported": []
+            },
+            {
+              "name": "dst_pt",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to a pointer to an array of unsigned bytes created by this function. This pointer must be freed by the application when no longer needed.",
+              "supported": []
+            },
+            {
+              "name": "dst_pt_sz",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to an integer which contains the size of the destination array.",
+              "supported": []
+            },
+            {
+              "name": "use_shared_key",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) Specifies if shared key is to be used. See zkLockDataF2F.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [
+            {
+              "kind": "note",
+              "text": "(See zkLockDataF2F for notes about keys)"
+            }
+          ],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkUnlockDataB2B",
+          "id": "zk__app__utils_8h_1acfe501ceb80ecb6b51385a5573b4da3a",
+          "anchor": "zkUnlockDataB2B",
+          "protection": "public",
+          "signature": "int zkUnlockDataB2B(zkCTX ctx, const uint8_t *src_ct, int src_ct_sz, uint8_t **dst_pt, int *dst_pt_sz, bool use_shared_key)",
+          "brief": "Unlock source (ciphertext) data from a byte array and store the results (plaintext) in a destination byte array.",
+          "details": "This function verifies a locked object signature and decrypts the associated ciphertext data.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "src_ct",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) Binary ciphertext source byte array.",
+              "supported": []
+            },
+            {
+              "name": "src_ct_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Size of ciphertext source data.",
+              "supported": []
+            },
+            {
+              "name": "dst_pt",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to a pointer to an array of unsigned bytes created by this function. This pointer must be freed by the application when no longer needed.",
+              "supported": []
+            },
+            {
+              "name": "dst_pt_sz",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to an integer which contains the size of the destination array.",
+              "supported": []
+            },
+            {
+              "name": "use_shared_key",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) Specifies if shared key is to be used. See zkLockDataF2F.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [
+            {
+              "kind": "note",
+              "text": "(See zkLockDataF2F for notes about keys)"
+            }
+          ],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "ECDSA",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkGenECDSASigFromDigest",
+          "id": "zk__app__utils_8h_1a803174f6dbeba5d1e59d63bd127cc746",
+          "anchor": "zkGenECDSASigFromDigest",
+          "protection": "public",
+          "signature": "int zkGenECDSASigFromDigest(zkCTX ctx, const uint8_t *digest, int slot, uint8_t **sig, int *sig_sz)",
+          "brief": "Generate a signature using the Zymkey's ECDSA private key.",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "digest",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) This parameter contains the digest of the data that will be used to generate the signature.",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to generate a signature from. This parameter is only valid for Zymkey models 4i and beyond.",
+              "supported": []
+            },
+            {
+              "name": "sig",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to a pointer to an array of unsigned bytes which contains the generated signature. This pointer is created by this function and must be freed by the application when no longer needed.",
+              "supported": []
+            },
+            {
+              "name": "sig_sz",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to an integer which contains the size of the signature.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkGenECDSASigFromDigestWithRecID",
+          "id": "zk__app__utils_8h_1ac2237d21c7963e18b9c43c272239f5f3",
+          "anchor": "zkGenECDSASigFromDigestWithRecID",
+          "protection": "public",
+          "signature": "int zkGenECDSASigFromDigestWithRecID(zkCTX ctx, const uint8_t *digest, int slot, uint8_t **sig, int *sig_sz, uint8_t *recovery_id)",
+          "brief": "Generate a signature using the Zymkey's ECDSA private key.",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "digest",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) This parameter contains the digest of the data that will be used to generate the signature.",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to generate a signature from. This parameter is only valid for Zymkey models 4i and beyond.",
+              "supported": []
+            },
+            {
+              "name": "sig",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to a pointer to an array of unsigned bytes which contains the generated signature. This pointer is created by this function and must be freed by the application when no longer needed.",
+              "supported": []
+            },
+            {
+              "name": "sig_sz",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to an integer which contains the size of the signature.",
+              "supported": []
+            },
+            {
+              "name": "recovery_id",
+              "type": "uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(output) Returns recovery id value needed for ethereum key recovery.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkVerifyECDSASigFromDigest",
+          "id": "zk__app__utils_8h_1af2fff1ad2dc2962c075d86e4c7f32910",
+          "anchor": "zkVerifyECDSASigFromDigest",
+          "protection": "public",
+          "signature": "int zkVerifyECDSASigFromDigest(zkCTX ctx, const uint8_t *digest, int pubkey_slot, const uint8_t *sig, int sig_sz)",
+          "brief": "Verify a signature using one of the Zymkey's public keys.",
+          "details": "Verify a signature using an internal public key from the Zymkey private/public key store.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "digest",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) This parameter contains the digest of the data that will be used to generate the signature.",
+              "supported": []
+            },
+            {
+              "name": "pubkey_slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to generate a signature from. This parameter is only valid for Zymkey models 4i and beyond.",
+              "supported": []
+            },
+            {
+              "name": "sig",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) Array of bytes which contains the signature.",
+              "supported": []
+            },
+            {
+              "name": "sig_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Size of signature.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for signature verification failed, 1 for signature verification passed, less than 0 for general failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkVerifyECDSASigFromDigestWithForeignKeySlot",
+          "id": "zk__app__utils_8h_1ac01a977ceac50cd7a4fb8ddb1672c7b4",
+          "anchor": "zkVerifyECDSASigFromDigestWithForeignKeySlot",
+          "protection": "public",
+          "signature": "int zkVerifyECDSASigFromDigestWithForeignKeySlot(zkCTX ctx, const uint8_t *digest, int pubkey_slot, const uint8_t *sig, int sig_sz)",
+          "brief": "Verify a signature using one of the Zymkey's foreign public keys.",
+          "details": "Verify a signature using a public key from the Zymkey foreign key store.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "digest",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) This parameter contains the digest of the data that will be used to generate the signature.",
+              "supported": []
+            },
+            {
+              "name": "pubkey_slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to generate a signature from. This parameter is only valid for Zymkey models 4i and beyond.",
+              "supported": []
+            },
+            {
+              "name": "sig",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) Array of bytes which contains the signature.",
+              "supported": []
+            },
+            {
+              "name": "sig_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Size of signature.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for signature verification failed, 1 for signature verification passed, less than 0 for general failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "ECDH and KDF",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkDoRawECDH",
+          "id": "zk__app__utils_8h_1adc168549885a25d8967e6f0537ea0253",
+          "anchor": "zkDoRawECDH",
+          "protection": "public",
+          "signature": "int zkDoRawECDH(zkCTX ctx, int slot, const uint8_t *peer_pubkey, int peer_pubkey_sz, uint8_t **pre_master_secret)",
+          "brief": "Perform a raw ECDH operation. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "Perform an ECDH operation with no Key Derivation Function (KDF). The raw pre-master secret is returned in the response. The peer public key is presented in the call.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to use for the local key. If this parameter is -1, the ephemeral key is used.",
+              "supported": []
+            },
+            {
+              "name": "peer_pubkey",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The peer public key.",
+              "supported": []
+            },
+            {
+              "name": "peer_pubkey_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Size of the peer public key.",
+              "supported": []
+            },
+            {
+              "name": "pre_master_secret",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) returned pointer to the pre-master secret",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for general failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkDoRawECDHWithIntPeerPubkey",
+          "id": "zk__app__utils_8h_1ac1222347f2bd12f688db3a5bbbb83f97",
+          "anchor": "zkDoRawECDHWithIntPeerPubkey",
+          "protection": "public",
+          "signature": "int zkDoRawECDHWithIntPeerPubkey(zkCTX ctx, int slot, int peer_pubkey_slot, bool peer_pubkey_slot_is_foreign, uint8_t **pre_master_secret)",
+          "brief": "Perform a raw ECDH operation. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "Perform an ECDH operation with no Key Derivation Function (KDF). The raw pre-master secret is returned in the response. The peer public key is referenced from the zymkey internal key store.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to use for the local key. If this parameter is -1, the ephemeral key is used.",
+              "supported": []
+            },
+            {
+              "name": "peer_pubkey_slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The peer public key slot where the peer public key is to be found.",
+              "supported": []
+            },
+            {
+              "name": "peer_pubkey_slot_is_foreign",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) If true, the peer public key slot is found in the foreign public keyring.",
+              "supported": []
+            },
+            {
+              "name": "pre_master_secret",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) returned pointer to the pre-master secret",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for general failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkDoECDHAndKDF",
+          "id": "zk__app__utils_8h_1a772ea57e2db2aeab6d3e30e32c1af3b9",
+          "anchor": "zkDoECDHAndKDF",
+          "protection": "public",
+          "signature": "int zkDoECDHAndKDF(zkCTX ctx, ZK_ECDH_KDF_TYPE kdf_type, int slot, const uint8_t *peer_pubkey, int peer_pubkey_sz, const uint8_t *salt, int salt_sz, const uint8_t *info, int info_sz, int num_iterations, int derived_key_sz, uint8_t **derived_key)",
+          "brief": "Perform an ECDH operation plus Key Derivation Function. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "Perform an ECDH operation with Key Derivation Function (KDF). The derived key is returned in the response. The peer public key is presented in the call.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "kdf_type",
+              "type": "ZK_ECDH_KDF_TYPE",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to use for the local key. If this parameter is -1, the ephemeral key is used.",
+              "supported": []
+            },
+            {
+              "name": "peer_pubkey",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The peer public key.",
+              "supported": []
+            },
+            {
+              "name": "peer_pubkey_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Size of the peer public key.",
+              "supported": []
+            },
+            {
+              "name": "salt",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The salt to use for the selected KDF.",
+              "supported": []
+            },
+            {
+              "name": "salt_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The salt size. Must be less than or equal to 128 bytes.",
+              "supported": []
+            },
+            {
+              "name": "info",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The info field to use for RFC 5869. Ignored for PBKDF2.",
+              "supported": []
+            },
+            {
+              "name": "info_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The size of the info parameter. Must be less than or equal to 128 bytes.",
+              "supported": []
+            },
+            {
+              "name": "num_iterations",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Number of iterations to carry out (PBKDF only)",
+              "supported": []
+            },
+            {
+              "name": "derived_key_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The desired number of bytes to return for the KDF. For RFC 5869, this value must be less than 8160 bytes (SHA256) or 16320 (SHA512).",
+              "supported": []
+            },
+            {
+              "name": "derived_key",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) returned pointer to the derived key.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for general failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkDoECDHAndKDFWithIntPeerPubkey",
+          "id": "zk__app__utils_8h_1a38ce470571919d1fc26e877b4c1edc16",
+          "anchor": "zkDoECDHAndKDFWithIntPeerPubkey",
+          "protection": "public",
+          "signature": "int zkDoECDHAndKDFWithIntPeerPubkey(zkCTX ctx, ZK_ECDH_KDF_TYPE kdf_type, int slot, int peer_pubkey_slot, bool peer_pubkey_slot_is_foreign, const uint8_t *salt, int salt_sz, const uint8_t *info, int info_sz, int num_iterations, int derived_key_sz, uint8_t **derived_key)",
+          "brief": "Perform an ECDH operation plus Key Derivation Function. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "Perform an ECDH operation with Key Derivation Function (KDF). The derived key is returned in the response. The peer public key is referenced from the zymkey internal key store.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "kdf_type",
+              "type": "ZK_ECDH_KDF_TYPE",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to use for the local key. If this parameter is -1, the ephemeral key is used.",
+              "supported": []
+            },
+            {
+              "name": "peer_pubkey_slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The peer public key slot where the peer public key is to be found.",
+              "supported": []
+            },
+            {
+              "name": "peer_pubkey_slot_is_foreign",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) If true, the peer public key slot is found in the foreign public keyring.",
+              "supported": []
+            },
+            {
+              "name": "salt",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The salt to use for the selected KDF.",
+              "supported": []
+            },
+            {
+              "name": "salt_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The salt size. Must be less than or equal to 128 bytes.",
+              "supported": []
+            },
+            {
+              "name": "info",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The info field to use for RFC 5869. Ignored for PBKDF2.",
+              "supported": []
+            },
+            {
+              "name": "info_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The size of the info parameter. Must be less than or equal to 128 bytes.",
+              "supported": []
+            },
+            {
+              "name": "num_iterations",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Number of iterations to carry out (PBKDF only)",
+              "supported": []
+            },
+            {
+              "name": "derived_key_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The desired number of bytes to return for the KDF. For RFC 5869, this value must be less than 8160 bytes (SHA256) or 16320 (SHA512).",
+              "supported": []
+            },
+            {
+              "name": "derived_key",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) returned pointer to the derived key.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for general failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Key Management",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkSaveECDSAPubKey2File",
+          "id": "zk__app__utils_8h_1a2843e04c508eb3b242bf3ec2a10b90bb",
+          "anchor": "zkSaveECDSAPubKey2File",
+          "protection": "public",
+          "signature": "int zkSaveECDSAPubKey2File(zkCTX ctx, const char *filename, int slot)",
+          "brief": "\\[DEPRECATED\\] Use zkExportPubKey2File. Store the public key to a host file in PEM format.",
+          "details": "This function is useful for generating Certificate Signing Requests (CSR).",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "filename",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) Filename where PEM formatted public key is to be stored.",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to retrieve. Only valid for model 4i and above.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkExportPubKey2File",
+          "id": "zk__app__utils_8h_1a6446ab63ac57d94a77e5c6373ee24399",
+          "anchor": "zkExportPubKey2File",
+          "protection": "public",
+          "signature": "int zkExportPubKey2File(zkCTX ctx, const char *filename, int pubkey_slot, bool slot_is_foreign)",
+          "brief": "Store the public key to a host file in PEM format.",
+          "details": "This function is useful for generating Certificate Signing Requests (CSR).",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "filename",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) Filename where PEM formatted public key is to be stored.",
+              "supported": []
+            },
+            {
+              "name": "pubkey_slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to retrieve. Zymkey and HSM4 have slots 0, 1, and 2.",
+              "supported": []
+            },
+            {
+              "name": "slot_is_foreign",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) If true, designates the pubkey slot to come from the foreign keystore. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+              "supported": [
+                "ZYMKEY5",
+                "HSM60",
+                "HSM64",
+                "HSM6",
+                "Secure Compute Module"
+              ]
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkGetECDSAPubKey",
+          "id": "zk__app__utils_8h_1a2c71f05a6b2b14d0440b9d3c81b41bfa",
+          "anchor": "zkGetECDSAPubKey",
+          "protection": "public",
+          "signature": "int zkGetECDSAPubKey(zkCTX ctx, uint8_t **pk, int *pk_sz, int slot)",
+          "brief": "\\[DEPRECATED\\] Use zkExportPubKey. Gets the public key and stores in a byte array created by this function.",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "pk",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) Pointer to a pointer created by this function which contains the public key.",
+              "supported": []
+            },
+            {
+              "name": "pk_sz",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) Pointer to an integer which contains the size of the public key.",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to retrieve. Only valid for model 4i and above.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkExportPubKey",
+          "id": "zk__app__utils_8h_1a8f43ab1e3cfd0429a33f6e1292dced00",
+          "anchor": "zkExportPubKey",
+          "protection": "public",
+          "signature": "int zkExportPubKey(zkCTX ctx, uint8_t **pk, int *pk_sz, int pubkey_slot, bool slot_is_foreign)",
+          "brief": "Gets the public key and stores in a byte array created by this function.",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "pk",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) Pointer to a pointer created by this function which contains the public key.",
+              "supported": []
+            },
+            {
+              "name": "pk_sz",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) Pointer to an integer which contains the size of the public key.",
+              "supported": []
+            },
+            {
+              "name": "pubkey_slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to retrieve. Zymkey and HSM4 have slots 0, 1, and 2.",
+              "supported": []
+            },
+            {
+              "name": "slot_is_foreign",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) If true, designates the pubkey slot to come from the foreign keystore (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+              "supported": [
+                "ZYMKEY5",
+                "HSM60",
+                "HSM64",
+                "HSM6",
+                "Secure Compute Module"
+              ]
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkGetAllocSlotsList",
+          "id": "zk__app__utils_8h_1ac4f620af7fafbf32fd820f6db8861e5f",
+          "anchor": "zkGetAllocSlotsList",
+          "protection": "public",
+          "signature": "int zkGetAllocSlotsList(zkCTX ctx, bool is_foreign, int *max_num_keys, int **alloc_key_list, int *alloc_key_list_sz)",
+          "brief": "Get the list of allocated keys (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "details": "This function returns a list of all allocated key slots.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "is_foreign",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) if true, retrieve allocation list of the foreign keys",
+              "supported": []
+            },
+            {
+              "name": "max_num_keys",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(input) retrieves the key pool size",
+              "supported": []
+            },
+            {
+              "name": "alloc_key_list",
+              "type": "int **",
+              "default": null,
+              "direction": null,
+              "description": "(output) a pointer to an array of integers provided by this function to the caller",
+              "supported": []
+            },
+            {
+              "name": "alloc_key_list_sz",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) a pointer to an integer which contains the size of the returned key list",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkStoreForeignPubKey",
+          "id": "zk__app__utils_8h_1a558efd96315d7e1e7245e52cdfa0bd0e",
+          "anchor": "zkStoreForeignPubKey",
+          "protection": "public",
+          "signature": "int zkStoreForeignPubKey(zkCTX ctx, ZK_EC_KEY_TYPE pk_type, uint8_t *pk, int pk_sz)",
+          "brief": "Store a new foreign public key in Zymkey. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function stores a new foreign public key in the Zymkey public key ring. This public key can be used for signature verification in use cases where it is desirable to hide the public key.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "pk_type",
+              "type": "ZK_EC_KEY_TYPE",
+              "default": null,
+              "direction": null,
+              "description": "(input) The type of the public key.",
+              "supported": []
+            },
+            {
+              "name": "pk",
+              "type": "uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) Pointer to the public key to store.",
+              "supported": []
+            },
+            {
+              "name": "pk_sz",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The public key size.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "allocated slot number in foreign key store, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkDisablePubKeyExport",
+          "id": "zk__app__utils_8h_1a156c256f416f2e5b466fe7379d64899b",
+          "anchor": "zkDisablePubKeyExport",
+          "protection": "public",
+          "signature": "int zkDisablePubKeyExport(zkCTX ctx, int pubkey_slot, bool slot_is_foreign)",
+          "brief": "Prevent a public key from being exported to the host. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function prevents the public key at the specified slot from being exported to the host using the API zkExportPubKey.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "pubkey_slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The key slot to disable pubkey export on.",
+              "supported": []
+            },
+            {
+              "name": "slot_is_foreign",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) The slot parameter refers to a slot in the foreign keyring.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkGenKeyPair",
+          "id": "zk__app__utils_8h_1a7d440c70c23f8fe1144a4a95b2ada1e3",
+          "anchor": "zkGenKeyPair",
+          "protection": "public",
+          "signature": "int zkGenKeyPair(zkCTX ctx, ZK_EC_KEY_TYPE type)",
+          "brief": "Generate a new persistent key pair. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function generates a new key pair of the specified type and store it persistently. This key pair cannot be used as part of the zymkey's digital wallet operations.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "type",
+              "type": "ZK_EC_KEY_TYPE",
+              "default": null,
+              "direction": null,
+              "description": "(input) The type of key to generate (ZK_EC_KEY_TYPE).",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "allocated slot number if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkGenEphemeralKeyPair",
+          "id": "zk__app__utils_8h_1ab97b544f292dae99810a4d2128a0ba53",
+          "anchor": "zkGenEphemeralKeyPair",
+          "protection": "public",
+          "signature": "int zkGenEphemeralKeyPair(zkCTX ctx, ZK_EC_KEY_TYPE type)",
+          "brief": "Generate an ephemeral key pair. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function generates an ephemeral key pair of the specified type. Ephemeral key pairs are useful when performing ECDH for time-of-flight encryption. Only one ephemeral key slot is available and is not persistent between reboots.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "type",
+              "type": "ZK_EC_KEY_TYPE",
+              "default": null,
+              "direction": null,
+              "description": "(input) The type of key to generate (ZK_EC_KEY_TYPE).",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkRemoveKey",
+          "id": "zk__app__utils_8h_1a68c45329be1247878b4d0d9a690e2915",
+          "anchor": "zkRemoveKey",
+          "protection": "public",
+          "signature": "int zkRemoveKey(zkCTX ctx, int slot, bool slot_is_foreign)",
+          "brief": "Remove a key pair or a foreign public key. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function deletes a key pair or a foreign public key from persistent storage.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The slot",
+              "supported": []
+            },
+            {
+              "name": "slot_is_foreign",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) The slot parameter refers to a slot in the foreign keyring.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkInvalidateEphemeralKey",
+          "id": "zk__app__utils_8h_1a6d74d4a5fd5748dd90c30c372bf23e2b",
+          "anchor": "zkInvalidateEphemeralKey",
+          "protection": "public",
+          "signature": "int zkInvalidateEphemeralKey(zkCTX ctx)",
+          "brief": "Invalidate the ephemeral key. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function invalidates the ephemeral key.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Digital Wallet (BIP32/39/44)",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkGenWalletMasterSeedWithBIP39",
+          "id": "zk__app__utils_8h_1af04e6720852236d3b9ad65b19df7bddc",
+          "anchor": "zkGenWalletMasterSeedWithBIP39",
+          "protection": "public",
+          "signature": "int zkGenWalletMasterSeedWithBIP39(zkCTX ctx, ZK_EC_KEY_TYPE type, const char *variant, const char *wallet_name, const uint8_t *master_generator_key, int master_generator_key_size, const char *passphrase, char **mnemonic)",
+          "brief": "Generate master seed to start a new blockchain wallet. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function generates a new blockchain master seed for creating a new wallet.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "type",
+              "type": "ZK_EC_KEY_TYPE",
+              "default": null,
+              "direction": null,
+              "description": "(input) The type of key to generate (ZK_EC_KEY_TYPE).",
+              "supported": []
+            },
+            {
+              "name": "variant",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The variant of the key_type to generate. Currently only \"cardano\" is supported for ed25519.",
+              "supported": []
+            },
+            {
+              "name": "wallet_name",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) An ASCII string which contains the name of the wallet.",
+              "supported": []
+            },
+            {
+              "name": "master_generator_key",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The master generator key used to help generate the master seed. Can be empty string.",
+              "supported": []
+            },
+            {
+              "name": "master_generator_key_size",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The size of the master generator key. If 0, no master generator key is used in the formulation of the master seed.",
+              "supported": []
+            },
+            {
+              "name": "passphrase",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The passphrase to generate a different BIP39_mnemonic. Can be empty string.",
+              "supported": []
+            },
+            {
+              "name": "mnemonic",
+              "type": "char **",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to the mnemonic sentence. If NULL, the master seed is generated per BIP32. Otherwise, the master seed is generated per recovery strategy and the mnemonic sentence is returned in this parameter. The string is null terminated and encoded in UTF-8 NFKD from the English dictionary.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "allocated slot number if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkGenWalletMasterSeedWithSLIP39",
+          "id": "zk__app__utils_8h_1a3861037651637a8eab415d87afb79573",
+          "anchor": "zkGenWalletMasterSeedWithSLIP39",
+          "protection": "public",
+          "signature": "int zkGenWalletMasterSeedWithSLIP39(zkCTX ctx, ZK_EC_KEY_TYPE type, const char *variant, const char *wallet_name, const uint8_t *master_generator_key, int master_generator_key_size, int group_count, int group_threshold, int group_iteration_exponent, const char *master_passphrase)",
+          "brief": "Generate master seed to start a new blockchain wallet. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function opens a session to generate a new blockchain master seed with the ability to recover from SLIP39 shards.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "type",
+              "type": "ZK_EC_KEY_TYPE",
+              "default": null,
+              "direction": null,
+              "description": "(input) The type of key to generate (ZK_EC_KEY_TYPE).",
+              "supported": []
+            },
+            {
+              "name": "variant",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The variant of the key_type to generate. Currently only \"cardano\" is supported for ed25519.",
+              "supported": []
+            },
+            {
+              "name": "wallet_name",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) An ASCII string which contains the name of the wallet.",
+              "supported": []
+            },
+            {
+              "name": "master_generator_key",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The master generator key used to help generate the master seed. Can be empty string.",
+              "supported": []
+            },
+            {
+              "name": "master_generator_key_size",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The size of the master generator key. If 0, no master generator key is used in the formulation of the master seed.",
+              "supported": []
+            },
+            {
+              "name": "group_count",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The total count of groups(shards) to split into.",
+              "supported": []
+            },
+            {
+              "name": "group_threshold",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The count of groups(shards) needed to restore the master seed.",
+              "supported": []
+            },
+            {
+              "name": "group_iteration_exponent",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The iteration of exponent of SLIP39.",
+              "supported": []
+            },
+            {
+              "name": "master_passphrase",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The master passphrase used for slip 39 recovery process.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful on opening a SLIP39 session, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkSetSLIP39GroupInfo",
+          "id": "zk__app__utils_8h_1ab4c8679b71f8995cc45393a88b1eee7b",
+          "anchor": "zkSetSLIP39GroupInfo",
+          "protection": "public",
+          "signature": "int zkSetSLIP39GroupInfo(zkCTX ctx, int group_index, int member_count, int member_threshold)",
+          "brief": "Set the active SLIP39 group and the amount of members needed. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function configures the active group to generate the number of shards requested for the active group.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "group_index",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The index of the group to generate shards from. Index starts at 0.",
+              "supported": []
+            },
+            {
+              "name": "member_count",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The total amount of member shards in this group to generate.",
+              "supported": []
+            },
+            {
+              "name": "member_threshold",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The number of member shards needed to recreate this group in recovery.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful on configuring the active group, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkAddSLIP39MemberPassword",
+          "id": "zk__app__utils_8h_1a74e3498e7e50bddd8c943a6fae057293",
+          "anchor": "zkAddSLIP39MemberPassword",
+          "protection": "public",
+          "signature": "int zkAddSLIP39MemberPassword(zkCTX ctx, const char *passhrase, char **mnemonic_sentence)",
+          "brief": "Generate a new SLIP39 member shard. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function generates a new SLIP39 member shard. The shard can optionally have a password attached to it.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "passhrase",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) Password for the shard. Can be empty string.",
+              "supported": []
+            },
+            {
+              "name": "mnemonic_sentence",
+              "type": "char **",
+              "default": null,
+              "direction": null,
+              "description": "(output) The mnemonic sentence of the shard.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful on opening a SLIP39 session, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkCancelSLIP39Session",
+          "id": "zk__app__utils_8h_1a2ae5543e5250d7434f0cc4f9086b85b0",
+          "anchor": "zkCancelSLIP39Session",
+          "protection": "public",
+          "signature": "int zkCancelSLIP39Session(zkCTX ctx)",
+          "brief": "Cancels the current active SLIP39 session (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function cancels open active SLIP39 sessions. For both generation and restore SLIP39 sessions.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful on aborting a SLIP39 session, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkGenOversightWallet",
+          "id": "zk__app__utils_8h_1a18da27cf2ed94be41ecc357b8289e074",
+          "anchor": "zkGenOversightWallet",
+          "protection": "public",
+          "signature": "int zkGenOversightWallet(zkCTX ctx, ZK_EC_KEY_TYPE type, const char *variant, const uint8_t *pub_key, const uint8_t *chain_code, const char *node_addr, const char *wallet_name)",
+          "brief": "Generate master seed to start a new blockchain wallet. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function generates a new blockchain master seed for creating a new wallet.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "type",
+              "type": "ZK_EC_KEY_TYPE",
+              "default": null,
+              "direction": null,
+              "description": "(input) The type of key to generate (ZK_EC_KEY_TYPE).",
+              "supported": []
+            },
+            {
+              "name": "variant",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "pub_key",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The public key to create the oversight wallet from. Should come from a hardened node in a node tree.",
+              "supported": []
+            },
+            {
+              "name": "chain_code",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The chain code of the public key being used to create the oversight wallet.",
+              "supported": []
+            },
+            {
+              "name": "node_addr",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The node address index of the public key being used.",
+              "supported": []
+            },
+            {
+              "name": "wallet_name",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The name of the oversight wallet being created.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "allocated slot number if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkGenWalletChildKey",
+          "id": "zk__app__utils_8h_1a4d052b8491006e91425266cdb090aad9",
+          "anchor": "zkGenWalletChildKey",
+          "protection": "public",
+          "signature": "int zkGenWalletChildKey(zkCTX ctx, int parent_key_slot, uint32_t index, bool is_hardened, bool return_chain_code, uint8_t **chain_code)",
+          "brief": "Generate child key from a parent key in a blockchain wallet . (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function generates a new child key descendent from a specified parent key in a wallet.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "parent_key_slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The parent key slot to base the child key derivation on.",
+              "supported": []
+            },
+            {
+              "name": "index",
+              "type": "uint32_t",
+              "default": null,
+              "direction": null,
+              "description": "(input) The index of the child seed. This determines the node address as well as the outcome of the key generation.",
+              "supported": []
+            },
+            {
+              "name": "is_hardened",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) If true, a hardened key is generated.",
+              "supported": []
+            },
+            {
+              "name": "return_chain_code",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) If true, returns the chain code of the public key that was just generated. Has to be a hardened node as well.",
+              "supported": []
+            },
+            {
+              "name": "chain_code",
+              "type": "uint8_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) the chain code of the public key",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "allocated slot number if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkRestoreWalletMasterSeedFromBIP39Mnemonic",
+          "id": "zk__app__utils_8h_1a2aab50f875d6e82ff9ea10ab32d9d6ea",
+          "anchor": "zkRestoreWalletMasterSeedFromBIP39Mnemonic",
+          "protection": "public",
+          "signature": "int zkRestoreWalletMasterSeedFromBIP39Mnemonic(zkCTX ctx, ZK_EC_KEY_TYPE type, const char *variant, const char *wallet_name, const uint8_t *master_generator_key, int master_generator_key_size, const char *BIP39_passphrase, char *BIP39_mnemonic)",
+          "brief": "Restore a master seed from a BIP39 mnemonic and a master generator key. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function restores a wallet master seed from a supplied BIP39 mnemonic string and a master generator key.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "type",
+              "type": "ZK_EC_KEY_TYPE",
+              "default": null,
+              "direction": null,
+              "description": "(input) The type of key to generate (ZK_KEY_TYPE).",
+              "supported": []
+            },
+            {
+              "name": "variant",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The variant of the key_type to generate. Currently only \"cardano\" is supported for ed25519.",
+              "supported": []
+            },
+            {
+              "name": "wallet_name",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) An ASCII string which contains the name of the wallet.",
+              "supported": []
+            },
+            {
+              "name": "master_generator_key",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The master generator key used to help generate the master seed.",
+              "supported": []
+            },
+            {
+              "name": "master_generator_key_size",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The size of the master generator key. If 0, no master generator key is used in the formulation of the master seed.",
+              "supported": []
+            },
+            {
+              "name": "BIP39_passphrase",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The passphrase used to generate the BIP39_mnemonic.",
+              "supported": []
+            },
+            {
+              "name": "BIP39_mnemonic",
+              "type": "char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The BIP39_mnemonic string, null terminated and UTF-8 NFKD encoded from the BIP39 English dictionary.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "allocated slot number if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkRestoreWalletMasterSeedFromSLIP39",
+          "id": "zk__app__utils_8h_1abad0202fb44e0e09b6ca36fcca72e02c",
+          "anchor": "zkRestoreWalletMasterSeedFromSLIP39",
+          "protection": "public",
+          "signature": "int zkRestoreWalletMasterSeedFromSLIP39(zkCTX ctx, ZK_EC_KEY_TYPE type, const char *variant, const char *wallet_name, const uint8_t *master_generator_key, int master_generator_key_size, const char *SLIP39_passphrase)",
+          "brief": "Open a SLIP39 restore master seed session (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "details": "This function starts a restore SLIP39 session, in order to start feeding shards into.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "type",
+              "type": "ZK_EC_KEY_TYPE",
+              "default": null,
+              "direction": null,
+              "description": "(input) The type of key to generate (ZK_KEY_TYPE).",
+              "supported": []
+            },
+            {
+              "name": "variant",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The variant of the key_type to generate. Currently only \"cardano\" is supported for ed25519.",
+              "supported": []
+            },
+            {
+              "name": "wallet_name",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) An ASCII string which contains the name of the wallet.",
+              "supported": []
+            },
+            {
+              "name": "master_generator_key",
+              "type": "const uint8_t *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The master generator key used to help generate the master seed.",
+              "supported": []
+            },
+            {
+              "name": "master_generator_key_size",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The size of the master generator key. If 0, no master generator key is used in the formulation of the master seed.",
+              "supported": []
+            },
+            {
+              "name": "SLIP39_passphrase",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The master passphrase.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "allocated slot number if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkAddRestoreSLIP39Mnemonic",
+          "id": "zk__app__utils_8h_1a47f5e75a54b769afe947868aa2a3c5e7",
+          "anchor": "zkAddRestoreSLIP39Mnemonic",
+          "protection": "public",
+          "signature": "int zkAddRestoreSLIP39Mnemonic(zkCTX ctx, const char *passphrase, const char *mnemonic_sentence)",
+          "brief": "Feed a SLIP39 shard to restore a master seed (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "details": "This function will feed a shard to the module until the conditions are met and a master seed is generated.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "passphrase",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The passphrase that was attached to the shard.",
+              "supported": []
+            },
+            {
+              "name": "mnemonic_sentence",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The twenty-four word sentence mnemonic shard.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "allocated slot number when all shards required are fed in, less than 0 for no change."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkGetWalletNodeAddrFromKeySlot",
+          "id": "zk__app__utils_8h_1a5d6c1880618a06e360fad5f3b6b554a9",
+          "anchor": "zkGetWalletNodeAddrFromKeySlot",
+          "protection": "public",
+          "signature": "int zkGetWalletNodeAddrFromKeySlot(zkCTX ctx, int slot, char **node_addr, char **wallet_name, int *master_seed_slot)",
+          "brief": "Derive the node address from a key slot number. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function derives a node address from an input key slot number.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) A key slot number that is part of a digital wallet.",
+              "supported": []
+            },
+            {
+              "name": "node_addr",
+              "type": "char **",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to a pointer which will contain the node address in ASCII.",
+              "supported": []
+            },
+            {
+              "name": "wallet_name",
+              "type": "char **",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to a pointer which will contain the wallet name in ASCII. If NULL, this parameter will not be retrieved.",
+              "supported": []
+            },
+            {
+              "name": "master_seed_slot",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to an integer which will contain the master seed key slot. If NULL, this parameter will not be retrieved.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkGetWalletKeySlotFromNodeAddr",
+          "id": "zk__app__utils_8h_1ab8d71adf4a175f319cc56ce83fc745d0",
+          "anchor": "zkGetWalletKeySlotFromNodeAddr",
+          "protection": "public",
+          "signature": "int zkGetWalletKeySlotFromNodeAddr(zkCTX ctx, const char *node_addr, const char *wallet_name, int master_seed_slot, int *slot)",
+          "brief": "Derive the slot address from a node address. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function returns the slot number associated with a given node address.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "node_addr",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) A pointer which contains the node address in ASCII.",
+              "supported": []
+            },
+            {
+              "name": "wallet_name",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) A pointer which contains the wallet name in ASCII, used to identify the wallet identity. If desired, this parameter can be NULL and the master_seed_slot parameter can be specified instead.",
+              "supported": []
+            },
+            {
+              "name": "master_seed_slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The master seed slot. Can be used to specify the wallet identity instead of the wallet name.",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) A pointer to an integer which contains the associated key slot.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Perimeter Detect",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkSetPerimeterEventAction",
+          "id": "zk__app__utils_8h_1a099e0f45cd4ddeaddc9089ee1ee4618f",
+          "anchor": "zkSetPerimeterEventAction",
+          "protection": "public",
+          "signature": "int zkSetPerimeterEventAction(zkCTX ctx, int channel, uint32_t action_flags)",
+          "brief": "Set perimeter breach action.",
+          "details": "This function specifies the action to take when a perimeter breach event occurs. The possible actions are any combination of:\n\n- Notify host\n- Zymkey self-destruct",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "channel",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The channel (0 or 1) that the action flags will be applied to.",
+              "supported": []
+            },
+            {
+              "name": "action_flags",
+              "type": "uint32_t",
+              "default": null,
+              "direction": null,
+              "description": "(input) The actions to apply to the perimeter event channel:\n\n- Notify (ZK_PERIMETER_EVENT_ACTION_NOTIFY)\n- Self-destruct (ZK_PERIMETER_EVENT_ACTION_SELF_DESTRUCT)",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkSetDigitalPerimeterDetectLPPeriod",
+          "id": "zk__app__utils_8h_1af3e8e23e3a8cdbf5ec95f115fb154915",
+          "anchor": "zkSetDigitalPerimeterDetectLPPeriod",
+          "protection": "public",
+          "signature": "int zkSetDigitalPerimeterDetectLPPeriod(zkCTX ctx, int lp_period)",
+          "brief": "Set the low power period (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "details": "This function sets low power period on the digital perimeter detect",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "lp_period",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) low power period in microseconds",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkSetDigitalPerimeterDetectLPMaxBits",
+          "id": "zk__app__utils_8h_1a6e29752c07d3f08810b1ef78162e00d2",
+          "anchor": "zkSetDigitalPerimeterDetectLPMaxBits",
+          "protection": "public",
+          "signature": "int zkSetDigitalPerimeterDetectLPMaxBits(zkCTX ctx, int max_num_bits)",
+          "brief": "Set the low power max number of bits (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "details": "This function sets low power max number of bits on the digital perimeter detect",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "max_num_bits",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) max number of bits",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkSetDigitalPerimeterDetectDelays",
+          "id": "zk__app__utils_8h_1a32d0c0a1960f271c4c37b173fd6f6fde",
+          "anchor": "zkSetDigitalPerimeterDetectDelays",
+          "protection": "public",
+          "signature": "int zkSetDigitalPerimeterDetectDelays(zkCTX ctx, int min_delay_ns, int max_delay_ns)",
+          "brief": "Set the delays (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "details": "This function sets delays on the digital perimeter detect",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "min_delay_ns",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) minimum delay in nanoseconds",
+              "supported": []
+            },
+            {
+              "name": "max_delay_ns",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) maximum delay in nanoseconds",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkWaitForPerimeterEvent",
+          "id": "zk__app__utils_8h_1a8ee9b92164a922565327aae70ea12578",
+          "anchor": "zkWaitForPerimeterEvent",
+          "protection": "public",
+          "signature": "int zkWaitForPerimeterEvent(zkCTX ctx, uint32_t timeout_ms)",
+          "brief": "Wait for a perimeter breach event to be detected.",
+          "details": "This function is called in order to wait for a perimeter breach event to occur. This function blocks the calling thread unless called with a timeout of zero. Note that, in order to receive perimeter events, the zymkey must have been configured to notify the host on either or both of the perimeter detect channels via a call to \"zkSetPerimeterEventAction\".",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "timeout_ms",
+              "type": "uint32_t",
+              "default": null,
+              "direction": null,
+              "description": "(input) The maximum amount of time in milliseconds to wait for a perimeter event to arrive.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure, -ETIMEDOUT when no perimeter events detected within the specified timeout"
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkGetPerimeterDetectInfo",
+          "id": "zk__app__utils_8h_1ac21dfdb0c57067772fe45c6481551029",
+          "anchor": "zkGetPerimeterDetectInfo",
+          "protection": "public",
+          "signature": "int zkGetPerimeterDetectInfo(zkCTX ctx, uint32_t **timestamps_sec, int *num_timestamps)",
+          "brief": "Get current perimeter detect info.",
+          "details": "This function gets the timestamp of the first perimeter detect event for the given channel",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "timestamps_sec",
+              "type": "uint32_t **",
+              "default": null,
+              "direction": null,
+              "description": "(output) The timestamps for when any breach occurred. The index in this array corresponds to the channel number used by zkSetPerimeterEventAction. A 0 value means no breach has occurred on this channel. This array is allocated by this routine and so it must be freed by the caller.",
+              "supported": []
+            },
+            {
+              "name": "num_timestamps",
+              "type": "int *",
+              "default": null,
+              "direction": null,
+              "description": "(output) The number of timestamps in the returned array",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkClearPerimeterDetectEvents",
+          "id": "zk__app__utils_8h_1aaba47000d3349d6278c4e0389f3be92d",
+          "anchor": "zkClearPerimeterDetectEvents",
+          "protection": "public",
+          "signature": "int zkClearPerimeterDetectEvents(zkCTX ctx)",
+          "brief": "Clear perimeter detect events.",
+          "details": "This function clears all perimeter detect event info and rearms all perimeter detect channels",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "LED Control",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkLEDOff",
+          "id": "zk__app__utils_8h_1a0a8056c9a978f68358a6c30e32a0554a",
+          "anchor": "zkLEDOff",
+          "protection": "public",
+          "signature": "int zkLEDOff(zkCTX ctx)",
+          "brief": "Turns the LED off.",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkLEDOn",
+          "id": "zk__app__utils_8h_1a95b9136c02dd481c3c5da5835e47dc4c",
+          "anchor": "zkLEDOn",
+          "protection": "public",
+          "signature": "int zkLEDOn(zkCTX ctx)",
+          "brief": "Turns the LED on.",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkLEDFlash",
+          "id": "zk__app__utils_8h_1a83ef549eec6c821909be6a542995ebca",
+          "anchor": "zkLEDFlash",
+          "protection": "public",
+          "signature": "int zkLEDFlash(zkCTX ctx, uint32_t on_ms, uint32_t off_ms, uint32_t num_flashes)",
+          "brief": "Flashes the LED.",
+          "details": "",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "on_ms",
+              "type": "uint32_t",
+              "default": null,
+              "direction": null,
+              "description": "(input) The amount of time, in milliseconds, that the LED will stay on during a flash cycle.",
+              "supported": []
+            },
+            {
+              "name": "off_ms",
+              "type": "uint32_t",
+              "default": null,
+              "direction": null,
+              "description": "(input) The amount of time, in milliseconds, that the LED will stay off during a flash cycle.",
+              "supported": []
+            },
+            {
+              "name": "num_flashes",
+              "type": "uint32_t",
+              "default": null,
+              "direction": null,
+              "description": "(input) The number of on/off flash cycles to complete. If this parameter is 0, then the LED will flash indefinitely.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "Administrative Ops",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkSetI2CAddr",
+          "id": "zk__app__utils_8h_1a17a243ae1bf977c5357aae425c0613a9",
+          "anchor": "zkSetI2CAddr",
+          "protection": "public",
+          "signature": "int zkSetI2CAddr(zkCTX ctx, int addr)",
+          "brief": "Sets the i2c address of the Zymkey (i2c versions only)",
+          "details": "This method should be called if the i2c address of the Zymkey is shared with another i2c device on the same i2c bus. The default i2c address for Zymkey units is 0x30. Currently, the address may be set in the ranges of 0x30 - 0x37 and 0x60 - 0x67. After successful completion of this command, the Zymkey will reset itself.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "addr",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The i2c address that the Zymkey will set itself to.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "Time",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkGetTime",
+          "id": "zk__app__utils_8h_1a4bcc349ef785502a3e5eabdc33629181",
+          "anchor": "zkGetTime",
+          "protection": "public",
+          "signature": "int zkGetTime(zkCTX ctx, uint32_t *epoch_time_sec, bool precise_time)",
+          "brief": "Get current GMT time.",
+          "details": "This function is called to get the time directly from a Zymkey's Real Time Clock (RTC)",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "epoch_time_sec",
+              "type": "uint32_t *",
+              "default": null,
+              "direction": null,
+              "description": "(output) The time in seconds from the epoch (Jan. 1, 1970).",
+              "supported": []
+            },
+            {
+              "name": "precise_time",
+              "type": "bool",
+              "default": null,
+              "direction": null,
+              "description": "(input) If true, this API returns the time after the next second falls. This means that the caller could be blocked up to one second. If false, the API returns immediately with the current time reading.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "Accelerometer",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkSetTapSensitivity",
+          "id": "zk__app__utils_8h_1a4f378947ae177504717b050ee892c48f",
+          "anchor": "zkSetTapSensitivity",
+          "protection": "public",
+          "signature": "int zkSetTapSensitivity(zkCTX ctx, int axis, float pct)",
+          "brief": "Sets the sensitivity of tap operations.",
+          "details": "This method permits setting the sensitivity of the tap detection feature. Each axis may be individually configured or all at once.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "axis",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The axis to configure. This parameter should contain one of the values in the enum typedef ACCEL_AXIS_TYPE.",
+              "supported": []
+            },
+            {
+              "name": "pct",
+              "type": "float",
+              "default": null,
+              "direction": null,
+              "description": "(input) The sensitivity expressed as percentage.\n\n1. 0% = Shut down: Tap detection should not occur along the axis.\n1. 100% = Maximum sensitivity.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkWaitForTap",
+          "id": "zk__app__utils_8h_1a59be1e5f44001cfe4dbaac2a77bbab4c",
+          "anchor": "zkWaitForTap",
+          "protection": "public",
+          "signature": "int zkWaitForTap(zkCTX ctx, uint32_t timeout_ms)",
+          "brief": "Wait for a tap event to be detected.",
+          "details": "This function is called in order to wait for a tap event to occur. This function blocks the calling thread unless called with a timeout of zero.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "timeout_ms",
+              "type": "uint32_t",
+              "default": null,
+              "direction": null,
+              "description": "(input) The maximum amount of time in milliseconds to wait for a tap event to arrive.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure, -ETIMEDOUT when no tap events detected within the specified timeout"
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkGetAccelerometerData",
+          "id": "zk__app__utils_8h_1aafb16259abbab1dc1a65c0efa54d5a42",
+          "anchor": "zkGetAccelerometerData",
+          "protection": "public",
+          "signature": "int zkGetAccelerometerData(zkCTX ctx, zkAccelAxisDataType *x, zkAccelAxisDataType *y, zkAccelAxisDataType *z)",
+          "brief": "Get current accelerometer data and tap info.",
+          "details": "This function gets the most recent accelerometer data in units of g forces plus the tap direction per axis.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "x",
+              "type": "zkAccelAxisDataType *",
+              "default": null,
+              "direction": null,
+              "description": "(output) x axis accelerometer information y (output) y axis accelerometer information z (output) z axis accelerometer information",
+              "supported": []
+            },
+            {
+              "name": "y",
+              "type": "zkAccelAxisDataType *",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "z",
+              "type": "zkAccelAxisDataType *",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "Binding Management",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkLockBinding",
+          "id": "zk__app__utils_8h_1a34dcd3e4579174085cc753e7148bc3e7",
+          "anchor": "zkLockBinding",
+          "protection": "public",
+          "signature": "int zkLockBinding(zkCTX ctx)",
+          "brief": "Set soft binding lock.",
+          "details": "This function locks the binding for a specific HSM. This API is only valid for HSM series products.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkGetCurrentBindingInfo",
+          "id": "zk__app__utils_8h_1a9c1ac0054642eb48f4d9b604e1fb0ab5",
+          "anchor": "zkGetCurrentBindingInfo",
+          "protection": "public",
+          "signature": "int zkGetCurrentBindingInfo(zkCTX ctx, bool *binding_is_locked, bool *is_bound)",
+          "brief": "Get current binding info.",
+          "details": "This function gets the current binding lock state as well as the current binding state. This API is only valid for devices in the HSM family.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "binding_is_locked",
+              "type": "bool *",
+              "default": null,
+              "direction": null,
+              "description": "(output) Binary value which expresses the current binding lock state. is_bound (output) Binary value which expresses the current bind state.",
+              "supported": []
+            },
+            {
+              "name": "is_bound",
+              "type": "bool *",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "Module Info",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkGetModelNumberString",
+          "id": "zk__app__utils_8h_1a96ef2502bb9c17c1884cd8e5a481ec55",
+          "anchor": "zkGetModelNumberString",
+          "protection": "public",
+          "signature": "int zkGetModelNumberString(zkCTX ctx, char **model_str)",
+          "brief": "Get Zymkey model number.",
+          "details": "This function retrieves the model number of the zymkey referred to in a specified context",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context which was created with zkOpen",
+              "supported": []
+            },
+            {
+              "name": "model_str",
+              "type": "char **",
+              "default": null,
+              "direction": null,
+              "description": "(output) A double pointer to the model string. This function allocates this string. It is the caller's responsibility to free it.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkGetFirmwareVersionString",
+          "id": "zk__app__utils_8h_1a277fddb2c0abff8b8b2e532b46481fe5",
+          "anchor": "zkGetFirmwareVersionString",
+          "protection": "public",
+          "signature": "int zkGetFirmwareVersionString(zkCTX ctx, char **fw_ver_str)",
+          "brief": "Get Zymkey firmware version.",
+          "details": "This function retrieves the firmware version number of the zymkey referred to in a specified context",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context which was created with zkOpen",
+              "supported": []
+            },
+            {
+              "name": "fw_ver_str",
+              "type": "char **",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "version_str",
+              "type": "",
+              "default": null,
+              "direction": null,
+              "description": "(output) A double pointer to the firmware version string. This function allocates this string. It is the caller's responsibility to free it.",
+              "supported": [],
+              "undeclared": true
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkGetSerialNumberString",
+          "id": "zk__app__utils_8h_1a2de34f6c567cf67e908d6aafce53b323",
+          "anchor": "zkGetSerialNumberString",
+          "protection": "public",
+          "signature": "int zkGetSerialNumberString(zkCTX ctx, char **serial_num_str)",
+          "brief": "Get Zymkey serial number.",
+          "details": "This function retrieves the serial number of the zymkey referred to in a specified context",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context which was created with zkOpen",
+              "supported": []
+            },
+            {
+              "name": "serial_num_str",
+              "type": "char **",
+              "default": null,
+              "direction": null,
+              "description": "(output) A double pointer to the serial number string. This function allocates this string. It is the caller's responsibility to free it.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkGetCPUTemp",
+          "id": "zk__app__utils_8h_1a2e463f92b62c58b0ffb3d036998de8cd",
+          "anchor": "zkGetCPUTemp",
+          "protection": "public",
+          "signature": "int zkGetCPUTemp(zkCTX ctx, float *cpu_temp)",
+          "brief": "Get current HSM CPU temperature. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function gets the current HSM CPU temp.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "cpu_temp",
+              "type": "float *",
+              "default": null,
+              "direction": null,
+              "description": "(output) The temperature in celsius of the CPU.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkGetAUXTemp",
+          "id": "zk__app__utils_8h_1ad671aab27fb8e99f384f93675a53e304",
+          "anchor": "zkGetAUXTemp",
+          "protection": "public",
+          "signature": "int zkGetAUXTemp(zkCTX ctx, int index, float *aux_temp)",
+          "brief": "Get current AUX temperature. (Only for secure compute modules)",
+          "details": "This function gets an aux temp. THIS FUNCTION IS FOR INTERNAL ZYMBIT USE ONLY.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "index",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) Index for which aux temp to be polled.",
+              "supported": []
+            },
+            {
+              "name": "aux_temp",
+              "type": "float *",
+              "default": null,
+              "direction": null,
+              "description": "(output) The temperature in celsius.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "function",
+          "name": "zkGetRTCDrift",
+          "id": "zk__app__utils_8h_1a4fb1581bda04b621f56af043173159f7",
+          "anchor": "zkGetRTCDrift",
+          "protection": "public",
+          "signature": "int zkGetRTCDrift(zkCTX ctx, float *rtc_drift)",
+          "brief": "Get current RTC drift. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function is called to get the current RTC drift.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "rtc_drift",
+              "type": "float *",
+              "default": null,
+              "direction": null,
+              "description": "(output) The RTC drift.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkGetBatteryVoltage",
+          "id": "zk__app__utils_8h_1a9c2d7b0c22146f89ba04ccc7df38052b",
+          "anchor": "zkGetBatteryVoltage",
+          "protection": "public",
+          "signature": "int zkGetBatteryVoltage(zkCTX ctx, float *batt_voltage)",
+          "brief": "Get the battery voltage (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+          "details": "This function gets the current battery voltage",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "(input) Zymkey context.",
+              "supported": []
+            },
+            {
+              "name": "batt_voltage",
+              "type": "float *",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "battV",
+              "type": "",
+              "default": null,
+              "direction": null,
+              "description": "(output) The current battery voltage value",
+              "supported": [],
+              "undeclared": true
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 if successful, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Battery Voltage Monitor",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkSetBatteryVoltageAction",
+          "id": "zk__app__utils_8h_1a004db48c634667dab0d53c745aa36266",
+          "anchor": "zkSetBatteryVoltageAction",
+          "protection": "public",
+          "signature": "int zkSetBatteryVoltageAction(zkCTX ctx, int action)",
+          "brief": "Set battery voltage threshold action. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function specifies the action to take when the battery voltage falls below the threshold set by zkSetBatteryVoltageThreshold. If this function is never called, do nothing is default. There are three actions:\n\n- Do nothing\n- Go to sleep until battery is replaced\n- Self-destruct",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "action",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The action to apply, specify one of the ZK_THRESHOLD_ACTION_TYPE:\n\n- Do nothing (ZK_ACTION_NONE)\n- Sleep (ZK_ACTION_SLEEP)\n- Self-destruct (ZK_ACTION_SELF_DESTRUCT)",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkSetBatteryVoltageThreshold",
+          "id": "zk__app__utils_8h_1a85d7e20bba98c94d2bd92b1f8dfc68c9",
+          "anchor": "zkSetBatteryVoltageThreshold",
+          "protection": "public",
+          "signature": "int zkSetBatteryVoltageThreshold(zkCTX ctx, float threshold)",
+          "brief": "Sets the battery voltage threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function sets the threshold at which if the battery voltage falls bellow, the action set by zkSetBatteryVoltageAction will be carried out. The recommended threshold is 2.3V. If this function isn't called 2.3V is assumed by default. Threshold must be below 2.5V.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "default": null,
+              "direction": null,
+              "description": "(input) The threshold in Volts.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "CPU Temperature Monitor",
+      "description": "",
+      "items": [
+        {
+          "kind": "function",
+          "name": "zkSetCPUTempAction",
+          "id": "zk__app__utils_8h_1a9e7e23bdb88149047344b1522f62a627",
+          "anchor": "zkSetCPUTempAction",
+          "protection": "public",
+          "signature": "int zkSetCPUTempAction(zkCTX ctx, int action)",
+          "brief": "Set HSM CPU temperature threshold action. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function specifies the action to take when the HSM CPU temperature falls below the threshold set by zkSetCPULowTempThreshold, or rises above the threshold set by zkSetCPUHighTempThreshold. There are two actions to apply:\n\n- Do nothing\n- Self-destruct",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "action",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The action to apply, used it's named constant from ZK_THRESHOLD_ACTION_TYPE:\n\n- Do nothing (ZK_ACTION_NONE)\n- Self-destruct (ZK_ACTION_SELF_DESTRUCT)",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkSetCPULowTempThreshold",
+          "id": "zk__app__utils_8h_1a0bf795c9bed846f2d87855816e70c114",
+          "anchor": "zkSetCPULowTempThreshold",
+          "protection": "public",
+          "signature": "int zkSetCPULowTempThreshold(zkCTX ctx, float threshold)",
+          "brief": "Sets the HSM CPU low temperature threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function sets the threshold at which if the on-board HSM CPU's tempreature falls below, the action set by zkSetCPUTempAction will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold above the CPU's ambient temperature. The recommended setting is no more than 20C. If no threshold is set, -10 degrees celsius is set as default.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "default": null,
+              "direction": null,
+              "description": "(input) The threshold in celsius.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkSetCPUHighTempThreshold",
+          "id": "zk__app__utils_8h_1a26fab5ddba18b8d79feebcebe8583e1a",
+          "anchor": "zkSetCPUHighTempThreshold",
+          "protection": "public",
+          "signature": "int zkSetCPUHighTempThreshold(zkCTX ctx, float threshold)",
+          "brief": "Sets the HSM CPU high temperature threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+          "details": "This function sets the threshold at which if the on-board HSM CPU's tempreature rises above, the action set by zkSetCPUTempAction will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold below the CPU's ambient temperature. The recommended setting is no less than 40C. If no threshold is set, 65 degrees celsius is set as default.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "threshold",
+              "type": "float",
+              "default": null,
+              "direction": null,
+              "description": "(input) The threshold in celsius.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "ZYMKEY5",
+            "HSM60",
+            "HSM64",
+            "HSM6",
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkSetSupervisedBootPolicy",
+          "id": "zk__app__utils_8h_1a321d93da694eabc9b86469131d2d8ee7",
+          "anchor": "zkSetSupervisedBootPolicy",
+          "protection": "public",
+          "signature": "int zkSetSupervisedBootPolicy(zkCTX ctx, int policy_id)",
+          "brief": "Sets the Supervised boot policy. (Supported Devices: Secure Compute Module)",
+          "details": "This function specifies the action to take when Supervised boot event triggers based on a file change.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "policy_id",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The actions to apply to the Supervised boot process:\n\n- 0 Do Nothing (ZK_SUPBOOT_FAIL_NO_ACTION)\n- 1 Self-Destruct (ZK_SUPBOOT_FAIL_DESTROY)\n- 2 Hold Chip in Reset (ZK_SUPBOOT_FAIL_HOLD_RESET)",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkAddOrUpdateSupervisedBootFile",
+          "id": "zk__app__utils_8h_1ab06553594ce4f49df7fa89858037d539",
+          "anchor": "zkAddOrUpdateSupervisedBootFile",
+          "protection": "public",
+          "signature": "int zkAddOrUpdateSupervisedBootFile(zkCTX ctx, const char *file_path, int slot)",
+          "brief": "Update file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+          "details": "This function adds or updates files to be checked by Supervised boot.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "file_path",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The file to be signed and checked by Supervised boot.",
+              "supported": []
+            },
+            {
+              "name": "slot",
+              "type": "int",
+              "default": null,
+              "direction": null,
+              "description": "(input) The slot to sign the file with.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkRemoveSupervisedBootFile",
+          "id": "zk__app__utils_8h_1acd4c92be98f7878ff8d02bdfc6e29807",
+          "anchor": "zkRemoveSupervisedBootFile",
+          "protection": "public",
+          "signature": "int zkRemoveSupervisedBootFile(zkCTX ctx, const char *file_path)",
+          "brief": "Remove a file from file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+          "details": "This function removes a file to be checked by Supervised boot.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "file_path",
+              "type": "const char *",
+              "default": null,
+              "direction": null,
+              "description": "(input) The file to be removed from the Supervised boot manifest.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "Secure Compute Module"
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "zkGetSupervisedBootFileManifest",
+          "id": "zk__app__utils_8h_1a198d422a9c7983583c74a1880dadc131",
+          "anchor": "zkGetSupervisedBootFileManifest",
+          "protection": "public",
+          "signature": "int zkGetSupervisedBootFileManifest(zkCTX ctx, char **manifest)",
+          "brief": "Get file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+          "details": "This function gets the list of files to be checked by Supervised boot.",
+          "params": [
+            {
+              "name": "ctx",
+              "type": "zkCTX",
+              "default": null,
+              "direction": null,
+              "description": "",
+              "supported": []
+            },
+            {
+              "name": "manifest",
+              "type": "char **",
+              "default": null,
+              "direction": null,
+              "description": "(output) The file manifest that is checked by Supervised boot.",
+              "supported": []
+            }
+          ],
+          "returns": [
+            {
+              "type": "int",
+              "description": "0 for success, less than 0 for failure."
+            }
+          ],
+          "throws": [],
+          "notes": [],
+          "supported": [
+            "Secure Compute Module"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Defines",
+      "description": "",
+      "items": [
+        {
+          "kind": "define",
+          "name": "ZK_PERIMETER_EVENT_ACTION_NOTIFY",
+          "id": "zk__app__utils_8h_1a483ab601bc65411778a8573de194ca28",
+          "anchor": "ZK-PERIMETER-EVENT-ACTION-NOTIFY",
+          "protection": "public",
+          "signature": "#define ZK_PERIMETER_EVENT_ACTION_NOTIFY (1 << 0)",
+          "brief": "Perimeter breach action flag definitions.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "define",
+          "name": "ZK_PERIMETER_EVENT_ACTION_SELF_DESTRUCT",
+          "id": "zk__app__utils_8h_1aeb46102a3b07a7dbc1938c2e64a3bc56",
+          "anchor": "ZK-PERIMETER-EVENT-ACTION-SELF-DESTRUCT",
+          "protection": "public",
+          "signature": "#define ZK_PERIMETER_EVENT_ACTION_SELF_DESTRUCT (1 << 1)",
+          "brief": "",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "Enums",
+      "description": "",
+      "items": [
+        {
+          "kind": "enum",
+          "name": "ZK_EC_KEY_TYPE",
+          "id": "zk__app__utils_8h_1ad1e233079d658083389bcda3e66bffa7",
+          "anchor": "ZK-EC-KEY-TYPE",
+          "protection": "public",
+          "signature": "enum ZK_EC_KEY_TYPE",
+          "brief": "Supported key types.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": [],
+          "values": [
+            {
+              "name": "ZK_NISTP256",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_SECP256R1",
+              "initializer": "ZK_NISTP256",
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_SECP256K1",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_ED25519",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_X25519",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            }
+          ]
+        },
+        {
+          "kind": "enum",
+          "name": "ZK_RECOVERY_STRATEGY",
+          "id": "zk__app__utils_8h_1ad4b157af1d69d413c1965cef0c0d9f37",
+          "anchor": "ZK-RECOVERY-STRATEGY",
+          "protection": "public",
+          "signature": "enum ZK_RECOVERY_STRATEGY",
+          "brief": "Supported recovery strategies.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": [],
+          "values": [
+            {
+              "name": "ZK_NONE",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_BIP39",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_SLIP39",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            }
+          ]
+        },
+        {
+          "kind": "enum",
+          "name": "ZK_ECDH_KDF_TYPE",
+          "id": "zk__app__utils_8h_1abee5b47d3dde7bd528de628f5330919e",
+          "anchor": "ZK-ECDH-KDF-TYPE",
+          "protection": "public",
+          "signature": "enum ZK_ECDH_KDF_TYPE",
+          "brief": "Supported ECDH key derivation function types.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": [],
+          "values": [
+            {
+              "name": "ZK_KDF_RFC5869_SHA256",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_KDF_RFC5869_SHA512",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_KDF_PBKDF2_SHA256",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_KDF_PBKDF2_SHA512",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            }
+          ]
+        },
+        {
+          "kind": "enum",
+          "name": "ZK_ACCEL_AXIS_TYPE",
+          "id": "zk__app__utils_8h_1aedbdda1d06346a4a4c7b8b0a3ad70f61",
+          "anchor": "ZK-ACCEL-AXIS-TYPE",
+          "protection": "public",
+          "signature": "enum ZK_ACCEL_AXIS_TYPE",
+          "brief": "Accelerometer axis enum, used to set tap sensitivity.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": [],
+          "values": [
+            {
+              "name": "ZK_ACCEL_AXIS_X",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_ACCEL_AXIS_Y",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_ACCEL_AXIS_Z",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_ACCEL_AXIS_ALL",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            }
+          ]
+        },
+        {
+          "kind": "enum",
+          "name": "ZK_THRESHOLD_ACTION_TYPE",
+          "id": "zk__app__utils_8h_1a33917af8836db67d44da0de5f65c31f5",
+          "anchor": "ZK-THRESHOLD-ACTION-TYPE",
+          "protection": "public",
+          "signature": "enum ZK_THRESHOLD_ACTION_TYPE",
+          "brief": "Possible actions for threshold monitor functions.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": [],
+          "values": [
+            {
+              "name": "ZK_ACTION_NONE",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_ACTION_SELF_DESTRUCT",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            },
+            {
+              "name": "ZK_ACTION_SLEEP",
+              "initializer": null,
+              "brief": "",
+              "details": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Typedefs",
+      "description": "",
+      "items": [
+        {
+          "kind": "typedef",
+          "name": "zkCTX",
+          "id": "zk__app__utils_8h_1ad9cb7324974b6700baaa38bb1e0dd692",
+          "anchor": "zkCTX",
+          "protection": "public",
+          "signature": "typedef void* zkCTX",
+          "brief": "",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "typedef",
+          "name": "ZK_EC_KEY_TYPE",
+          "id": "zk__app__utils_8h_1adc6fcaf09ce1ebf1bc28e7cd9d11154c",
+          "anchor": "ZK-EC-KEY-TYPE-2",
+          "protection": "public",
+          "signature": "typedef enum ZK_EC_KEY_TYPE ZK_EC_KEY_TYPE",
+          "brief": "Supported key types.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "typedef",
+          "name": "ZK_RECOVERY_STRATEGY",
+          "id": "zk__app__utils_8h_1a9ad878b5a824b0a58005025d60f078b5",
+          "anchor": "ZK-RECOVERY-STRATEGY-2",
+          "protection": "public",
+          "signature": "typedef enum ZK_RECOVERY_STRATEGY ZK_RECOVERY_STRATEGY",
+          "brief": "Supported recovery strategies.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "typedef",
+          "name": "ZK_ECDH_KDF_TYPE",
+          "id": "zk__app__utils_8h_1a373f0a7fd3cdb75ff3944219af363d6d",
+          "anchor": "ZK-ECDH-KDF-TYPE-2",
+          "protection": "public",
+          "signature": "typedef enum ZK_ECDH_KDF_TYPE ZK_ECDH_KDF_TYPE",
+          "brief": "Supported ECDH key derivation function types.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "typedef",
+          "name": "ZK_ACCEL_AXIS_TYPE",
+          "id": "zk__app__utils_8h_1a71457a7f4cc58c17b1502bda69978bc2",
+          "anchor": "ZK-ACCEL-AXIS-TYPE-2",
+          "protection": "public",
+          "signature": "typedef enum ZK_ACCEL_AXIS_TYPE ZK_ACCEL_AXIS_TYPE",
+          "brief": "Accelerometer axis enum, used to set tap sensitivity.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "typedef",
+          "name": "ZK_THRESHOLD_ACTION_TYPE",
+          "id": "zk__app__utils_8h_1a523cd900e7fbeb25cb9557790c28a9be",
+          "anchor": "ZK-THRESHOLD-ACTION-TYPE-2",
+          "protection": "public",
+          "signature": "typedef enum ZK_THRESHOLD_ACTION_TYPE ZK_THRESHOLD_ACTION_TYPE",
+          "brief": "Possible actions for threshold monitor functions.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "typedef",
+          "name": "zkAccelAxisDataType",
+          "id": "zk__app__utils_8h_1a45d7e3232790f86c9282b91cb0a292af",
+          "anchor": "zkAccelAxisDataType-2",
+          "protection": "public",
+          "signature": "typedef struct zkAccelAxisDataType zkAccelAxisDataType",
+          "brief": "zkGetAccelerometer data output.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "Structs",
+      "description": "",
+      "items": [
+        {
+          "kind": "struct",
+          "name": "zkAccelAxisDataType",
+          "id": "structzk_accel_axis_data_type",
+          "anchor": "zkAccelAxisDataType",
+          "protection": "public",
+          "bases": [],
+          "brief": "zkGetAccelerometer data output.",
+          "details": "",
+          "groups": [
+            {
+              "title": "Public Members",
+              "description": "",
+              "items": [
+                {
+                  "kind": "variable",
+                  "name": "g",
+                  "id": "structzk_accel_axis_data_type_1a0b0263b57b8cfdee66bc8ba88832f30a",
+                  "anchor": "zkAccelAxisDataType-g",
+                  "protection": "public",
+                  "signature": "double zkAccelAxisDataType::g",
+                  "brief": "",
+                  "details": "the axis reading in units of g-force",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "type": "double"
+                },
+                {
+                  "kind": "variable",
+                  "name": "tapDirection",
+                  "id": "structzk_accel_axis_data_type_1af3b1fd34e286b65f39293b9035460966",
+                  "anchor": "zkAccelAxisDataType-tapDirection",
+                  "protection": "public",
+                  "signature": "int zkAccelAxisDataType::tapDirection",
+                  "brief": "",
+                  "details": "the direction of the force along the axis which caused a tap event: -1 = negative +1 = positive 0 = did not cause a tap event",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "type": "int"
+                }
+              ]
+            }
+          ],
+          "supported": [],
+          "notes": []
+        }
+      ]
+    }
+  ]
+}

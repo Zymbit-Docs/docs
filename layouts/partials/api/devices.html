@@ -1,0 +1,24 @@
+{{/*
+    Supported-device badges for an API item or parameter. Takes the item's
+    `supported` list. A device with a product hub in data/products.yaml links to it;
+    one without (HSM64 today) is a plain badge.
+*/}}
+{{- with . -}}
+<div class="api-devices">
+  <span class="api-devices-label">Supported devices:</span>
+  {{- range . -}}
+    {{- $name := . -}}
+    {{- $hub := "" -}}
+    {{- range site.Data.products.products -}}
+      {{- if eq (lower .name) (lower $name) -}}
+        {{- with site.GetPage (printf "/products/%s" .key) -}}{{- $hub = .RelPermalink -}}{{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $hub }}
+  <a class="api-device" href="{{ $hub }}">{{ $name }}</a>
+    {{- else }}
+  <span class="api-device">{{ $name }}</span>
+    {{- end -}}
+  {{- end }}
+</div>
+{{- end -}}

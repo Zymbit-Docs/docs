@@ -1,0 +1,17 @@
+{{/*
+    Project override of themes/zymdocsy/layouts/partials/toc.html.
+
+    API reference pages (`api` in front matter) are built from data, not Markdown,
+    so .TableOfContents is empty for them; their contents come from the same JSON
+    via partials/api/toc.html. Every other page gets the theme's behaviour, copied
+    below unchanged. Keep in sync when pulling the theme subtree.
+*/}}
+{{ if .Params.api }}
+{{ partial "api/toc.html" . }}
+{{ else if not .Params.notoc }}
+{{ with .TableOfContents }}
+{{ if ge (len .) 200 }}
+<div class="td-toc">{{ . }}</div>
+{{ end }}
+{{ end }}
+{{ end }}

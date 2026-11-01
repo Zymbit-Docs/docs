@@ -1,0 +1,40 @@
+{{/*
+    An API reference page, rendered from data/api/<api>.json.
+
+    Selected with `layout: api-reference` and `api: <repo>/<language>` in front
+    matter. The JSON is written by Zymbit-Docs/api-extractor from the library's own
+    Doxygen comments or docstrings; nothing on this page is edited by hand.
+    Presentation lives here and in partials/api/, so a layout change needs no
+    regeneration and is checked with `npm run build:preview`.
+*/}}
+{{ define "main" }}
+{{- $data := partial "api/data.html" . -}}
+{{- $lang := $data.language -}}
+{{- $md := "api/md.html" -}}
+
+<div class="td-content api-reference">
+  <h1>{{ .Title }}</h1>
+  {{ with $data.brief }}<div class="lead">{{ partial $md . }}</div>{{ end }}
+
+  {{ with $data.source }}
+  <p class="api-source">
+    Generated from <code>{{ .repo }}</code>{{ with .version }} version {{ . }}{{ end }}{{ with .commit }} (commit <code>{{ . }}</code>){{ end }}.
+  </p>
+  {{ end }}
+
+  {{ with $data.intro }}<div class="api-intro">{{ partial $md . }}</div>{{ end }}
+  {{- range $data.notes }}
+  <div class="alert alert-info api-note" role="note"><strong>{{ .kind | humanize }}:</strong> {{ partial $md .text }}</div>
+  {{- end }}
+
+  {{- range $data.groups }}
+  <section class="api-group">
+    <h2 id="group-{{ anchorize .title }}">{{ .title }}</h2>
+    {{ with .description }}<div class="api-group-description">{{ partial $md . }}</div>{{ end }}
+    {{- range .items }}
+    {{ partial "api/item.html" (dict "item" . "lang" $lang "level" 3) }}
+    {{- end }}
+  </section>
+  {{- end }}
+</div>
+{{ end }}

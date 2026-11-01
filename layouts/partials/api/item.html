@@ -1,0 +1,124 @@
+{{/*
+    One API item (function, method, class, struct, enum, typedef, define, variable
+    or attribute) from the API reference JSON. Classes and structs recurse into
+    their own groups.
+
+    Called with a dict:
+      item   the item
+      lang   "c", "cpp" or "python", for signature highlighting
+      level  heading level for the item's name (3 at the top of a page)
+
+    A field this template does not know fails the build, so nothing the extractor
+    adds is silently left off the page.
+*/}}
+{{- $i := .item -}}
+{{- $lang := .lang -}}
+{{- $level := cond (gt .level 6) 6 .level -}}
+{{- $sub := cond (ge $level 6) 6 (add $level 1) -}}
+{{- $known := slice "kind" "name" "id" "anchor" "protection" "signature" "brief" "details"
+    "params" "returns" "throws" "notes" "supported" "values" "type" "value" "bases"
+    "groups" "static" "const" "virt" "examples" "see_also" "pre" "post" "par" "retvals" -}}
+{{- range $k, $_ := $i -}}
+  {{- if not (in $known $k) -}}
+    {{- errorf "API item %q has a field %q that layouts/partials/api/item.html does not render" $i.name $k -}}
+  {{- end -}}
+{{- end -}}
+{{- $kinds := dict "define" "macro" -}}
+{{- $md := "api/md.html" -}}
+
+<section class="api-item api-{{ $i.kind }}">
+{{ printf "<h%d id=%q class=\"api-name\">" $level $i.anchor | safeHTML -}}
+<code>{{ $i.name }}</code>
+<span class="api-kind">{{ index $kinds $i.kind | default $i.kind }}</span>
+{{- if eq $i.protection "protected" }} <span class="api-kind">protected</span>{{ end -}}
+{{- with $i.static }} <span class="api-kind">static</span>{{ end -}}
+{{ printf "</h%d>" $level | safeHTML }}
+
+{{ highlight $i.signature $lang "" }}
+
+{{ partial "api/devices.html" $i.supported }}
+{{ with $i.bases }}<p class="api-bases">Inherits from {{ range $n, $b := . }}{{ if $n }}, {{ end }}<code>{{ $b }}</code>{{ end }}.</p>{{ end }}
+{{ with $i.brief }}<div class="api-brief">{{ partial $md . }}</div>{{ end }}
+{{ with $i.details }}<div class="api-details">{{ partial $md . }}</div>{{ end }}
+
+{{- range $i.notes }}
+<div class="alert {{ if in (slice "warning" "attention" "deprecated") .kind }}alert-warning{{ else }}alert-info{{ end }} api-note" role="note">
+  <strong>{{ .kind | humanize }}:</strong> {{ partial $md .text }}
+</div>
+{{- end }}
+
+{{- with $i.params }}
+{{ printf "<h%d class=\"api-subhead\">%s</h%d>" $sub "Parameters" $sub | safeHTML }}
+<dl class="api-params">
+  {{- range . }}
+  <dt>
+    <code>{{ .name }}</code>
+    {{- with .type }} <span class="api-type">{{ . }}</span>{{ end }}
+    {{- with .direction }} <span class="api-dir">{{ . }}</span>{{ end }}
+    {{- with .default }} <span class="api-default">default <code>{{ . }}</code></span>{{ end }}
+    {{- if .undeclared }} <span class="api-flag" title="Documented, but not a parameter of this signature">not in signature</span>{{ end }}
+  </dt>
+  <dd>{{ partial $md .description }}{{ partial "api/devices.html" .supported }}</dd>
+  {{- end }}
+</dl>
+{{- end }}
+
+{{- with $i.retvals }}
+{{ printf "<h%d class=\"api-subhead\">%s</h%d>" $sub "Return values" $sub | safeHTML }}
+<dl class="api-params">
+  {{- range . }}
+  <dt><code>{{ .name }}</code></dt><dd>{{ partial $md .description }}</dd>
+  {{- end }}
+</dl>
+{{- end }}
+
+{{- $returns := where ($i.returns | default slice) "description" "!=" "" -}}
+{{- if and (not $returns) (eq $lang "python") -}}{{- $returns = $i.returns | default slice -}}{{- end -}}
+{{- with $returns }}
+{{ printf "<h%d class=\"api-subhead\">%s</h%d>" $sub "Returns" $sub | safeHTML }}
+<dl class="api-params">
+  {{- range . }}
+  <dt>{{ with .name }}<code>{{ . }}</code> {{ end }}{{ with .type }}<span class="api-type">{{ . }}</span>{{ end }}</dt>
+  <dd>{{ partial $md .description }}</dd>
+  {{- end }}
+</dl>
+{{- end }}
+
+{{- with $i.throws }}
+{{ printf "<h%d class=\"api-subhead\">%s</h%d>" $sub (cond (eq $lang "python") "Raises" "Throws") $sub | safeHTML }}
+<dl class="api-params">
+  {{- range . }}
+  <dt><code>{{ .type }}</code></dt><dd>{{ partial $md .description }}</dd>
+  {{- end }}
+</dl>
+{{- end }}
+
+{{- with $i.values }}
+<table class="table api-values">
+  <thead><tr><th>Value</th><th>Description</th></tr></thead>
+  <tbody>
+  {{- range . }}
+    <tr>
+      <td><code>{{ .name }}</code>{{ with .initializer }} = <code>{{ . }}</code>{{ end }}</td>
+      <td>{{ partial $md .brief }}{{ partial $md .details }}</td>
+    </tr>
+  {{- end }}
+  </tbody>
+</table>
+{{- end }}
+
+{{- range $i.examples }}<div class="api-example">{{ partial $md . }}</div>{{ end }}
+{{- range $label, $key := dict "Precondition" "pre" "Postcondition" "post" "See also" "see_also" }}
+  {{- range index $i $key }}<div class="api-extra"><strong>{{ $label }}:</strong> {{ partial $md . }}</div>{{ end }}
+{{- end }}
+{{- range $i.par }}<div class="api-extra">{{ partial $md . }}</div>{{ end }}
+
+{{- range $i.groups }}
+<div class="api-member-group">
+{{ printf "<h%d class=\"api-group-title\">%s</h%d>" $sub (htmlEscape .title) $sub | safeHTML }}
+{{- range .items }}
+{{ partial "api/item.html" (dict "item" . "lang" $lang "level" (add $level 2)) }}
+{{- end }}
+</div>
+{{- end }}
+</section>
