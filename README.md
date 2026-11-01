@@ -98,6 +98,53 @@ npm run dev:webserver
 npm run dev:build:poll
 ```
 
+## API reference
+
+The C, C++, and Python API pages under `/api/` are generated from the library's source comments. Do not edit them by hand: a change belongs in the library's Doxygen comments or docstrings, and reaches this repo through a pull request.
+
+### Where the pages come from
+
+| File | What it is |
+| --- | --- |
+| `data/api/zkapputilslib/{c,cpp,python}.json` | Everything on the pages, extracted by [Zymbit-Docs/api-extractor](https://github.com/Zymbit-Docs/api-extractor) |
+| `content/api/{c,cpp,python}_api.md` | Thin pages: a title and `api: zkapputilslib/<language>`, nothing else |
+| `layouts/docs/api-reference.html`, `layouts/partials/api/` | How the pages look. Change these to change the layout; no regeneration needed |
+| `content/api/api_docs_intro.md` | zkapputilslib's `mainpage.md`, copied as-is |
+| `data/api/zkapputilslib/legacy_anchors.json` | Old anchors from the pre-2026 pages (`#int--zkOpen-1a2b3c4d`) mapped to the new ones, followed by a script on the page |
+
+The templates fail the build on raw HTML in the text, or on a field in the JSON that they do not render, so nothing is silently dropped or injected.
+
+### How updates arrive
+
+A release tag in zkapputilslib (`v1.2.0-12`; betas are skipped) runs its `publish-api-docs.yml`, which calls api-extractor's reusable workflow. That opens, or updates, a pull request here from the branch `api-update/zkapputilslib`, authored by the **Zymbit Docs Publisher** app. It changes only the JSON files and the intro page.
+
+To review one:
+
+1. Check the PR's **Build site** check passed.
+1. Look at the pages on staging, at `https://zymbit-docs.github.io/docs-staging/branch/api-update/zkapputilslib/api/c_api/` (and `cpp_api/`, `python_api/`).
+1. Merge to publish, or close it. The next release replaces the branch either way.
+
+To publish without waiting for a release, run **Publish API docs** by hand in zkapputilslib's Actions tab with **dry-run** unchecked. With dry-run checked (the default), the run attaches the extracted JSON as an artifact and opens no PR.
+
+### Regenerating by hand
+
+From an api-extractor checkout next to zkapputilslib and this repo, with Doxygen installed:
+
+```bash
+pip install -e .
+REPO_NAME=zkapputilslib DOXYFILE=docs/Doxyfile C_HEADER=zk_app_utils.h \
+CPP_HEADER=C++/zkAppUtilsClass.h PYTHON_PACKAGE=zymkey PYTHON_PATH=python INTRO=mainpage.md \
+    scripts/extract-all.sh ../zkapputilslib /tmp/api-docs
+cp /tmp/api-docs/data/api/zkapputilslib/*.json ../docs/data/api/zkapputilslib/
+cp /tmp/api-docs/intro.md ../docs/content/api/api_docs_intro.md
+```
+
+Then `npm run build:preview` here to check the result.
+
+### Adding another library
+
+A library such as zkpkcs11 needs a `data/api/<name>/` directory (written by its own publish workflow), a thin page per language with `layout: api-reference` and `api: <name>/<language>`, and a call to the reusable workflow in its repo. The templates need no change.
+
 ## Shared content snippets
 
 Steps that appear word for word on several pages are written once, in `assets/snippets/`, and pulled into each page by a shortcode. Edit the snippet, never the copies: the pages only contain the shortcode call.
