@@ -60,6 +60,7 @@ All documentation lives under `content/` as Markdown files:
 
 - **`bootware/`** - Versioned by semver directories: 1.0.0, 1.1.0, 1.2.2, 1.3.0, 1.3.2, 2.0.0. `/bootware/` is a landing page, not a redirect: it renders the version dropdown plus quick links to the stable and beta releases. Adding a version directory is not enough on its own - see below.
 - **`api/`** - Auto-generated from XML via the `process-api-update.yml` GitHub Action. Do not edit these files manually.
+- **`api-preview/`** - The replacement API reference, being built: thin pages with `layout: api-reference` and `api: <repo>/<language>`, rendered from `data/api/<repo>/<language>.json` (written by Zymbit-Docs/api-extractor; do not edit by hand) through `layouts/docs/api-reference.html` and `layouts/partials/api/`. Hidden from the sidebar, search, the sitemap and search engines (`toc_hide`, `pagefind_ignore`, `sitemap.disable`, `noindex`) until it replaces `api/`. The templates fail the build on raw HTML in the text or on a JSON field they do not render.
 - **`hardware/`** - Product documentation (`sen`, `dev-kits`, `modules`, `components`)
 - **`reference/`** - Technical reference (`binding`, `cad`, `conformity`, `driver-package`, `engineering-notes`, `power-quality`, `product-briefs`, `real-time-clock`, `reserved-pins`, `zymbit-wallet-sdk`, plus `cpu-scaling.md`)
 - **`tutorials/`** - Step-by-step guides

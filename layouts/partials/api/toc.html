@@ -1,0 +1,28 @@
+{{/*
+    The right-hand contents list for an API reference page: each group, its items,
+    and one level of class members.
+*/}}
+{{- $data := partial "api/data.html" . -}}
+<div class="td-toc api-toc">
+<nav id="TableOfContents">
+<ul>
+  {{- range $data.groups }}
+  <li><a href="#group-{{ anchorize .title }}">{{ .title }}</a>
+    <ul>
+      {{- range .items }}
+      <li><a href="#{{ .anchor }}">{{ .name }}</a>
+        {{- with .groups }}
+        <ul>
+          {{- range . }}{{ range .items }}
+          <li><a href="#{{ .anchor }}">{{ .name }}</a></li>
+          {{- end }}{{ end }}
+        </ul>
+        {{- end }}
+      </li>
+      {{- end }}
+    </ul>
+  </li>
+  {{- end }}
+</ul>
+</nav>
+</div>

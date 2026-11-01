@@ -1,0 +1,4462 @@
+{
+  "schema": 1,
+  "language": "cpp",
+  "source": {
+    "repo": "zkapputilslib",
+    "version": "1.2.0-11",
+    "commit": "c9b56b9"
+  },
+  "header": "zkAppUtilsClass.h",
+  "brief": "C++ interface to Zymkey Application Utilities Library.",
+  "intro": "This file contains the C++ API to the the Zymkey Application Utilities library, `libzkAppUtilsClassCPP`. Systems intending to run such applications require that the `libzkapputils-c++` package be installed.\n\nThis class facilitates writing user space applications which use Zymkey to perform cryptographic operations, such as:\n\n1. Signing of payloads using ECDSA\n1. Verification of payloads that were signed using Zymkey\n1. Exporting the public key that matches Zymkey's private key\n1. \"Locking\" and \"unlocking\" data objects\n1. Generating random data Additionally, there are functions for changing the i2c address (i2c units only), setting tap sensitivity and controlling the LED.\n\nDevelopers wishing to build applications which utilize the `libzkAppUtilsClassCPP` library should additionally install the `libzkapputils-c++-dev` package, which contains the necessary development files for the Zymkey's C++ library. To install this package on a system that does not need to run the applications (e.g. a Docker container or when cross compiling on another architecture), use `apt install --no-install-recommends libzkapputils-c++-dev`. This will prevent `apt` from installing the Zymkey's `zkifc` driver daemon.\n\nUsage:\n\n```\n#include <zymkey/zkAppUtilsClass.h>\n```\n\nTo add `libzkAppUtilsClassCPP` as a dependency of a CMake-based project, add the following lines to your project's `CMakeLists.txt`:\n\n```\nfind_package(zkAppUtilsCXX REQUIRED)\ntarget_link_libraries(target_name PRIVATE zkAppUtilsCXX::zkAppUtilsClassCPP)\n```\n\nStatically linking to the library is also supported within CMake by way of the `zkAppUtilsCXX::zkAppUtilsClassCPP_static` link item.\n\nOther projects may likewise configure the library dependency via `pkg-config`:\n\n```\nCFLAGS=\"$(pkg-config --cflags zkapputils-c++)\"\nLDFLAGS=\"$(pkg-config --libs zkapputils-c++)\" \n```",
+  "meta": {
+    "version": "1.2.0",
+    "copyright": "Zymbit Technologies, Inc."
+  },
+  "notes": [],
+  "groups": [
+    {
+      "title": "Typedefs",
+      "description": "",
+      "items": [
+        {
+          "kind": "typedef",
+          "name": "byteArray",
+          "id": "zk_app_utils_class_8h_1a8cb247b41a182478fcdf780c1ce524e3",
+          "anchor": "byteArray",
+          "protection": "public",
+          "signature": "typedef std::vector<uint8_t> zkAppUtils::byteArray",
+          "brief": "Typedef for a simple unsigned bytes container.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        },
+        {
+          "kind": "typedef",
+          "name": "intArray",
+          "id": "zk_app_utils_class_8h_1a7cc12af0cdc6374a29588629bd450da6",
+          "anchor": "intArray",
+          "protection": "public",
+          "signature": "typedef std::vector<int> zkAppUtils::intArray",
+          "brief": "Typedef for a simple integer container.",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": []
+        }
+      ]
+    },
+    {
+      "title": "Classes",
+      "description": "",
+      "items": [
+        {
+          "kind": "class",
+          "name": "zkAppUtils::commonException",
+          "id": "classzk_app_utils_1_1common_exception",
+          "anchor": "zkAppUtils-commonException",
+          "protection": "public",
+          "bases": [
+            "std::exception"
+          ],
+          "brief": "Exception class derived from std::exception.",
+          "details": "",
+          "groups": [
+            {
+              "title": "Public Functions",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "commonException",
+                  "id": "classzk_app_utils_1_1common_exception_1a02a5816cccdcd19e719bb288080c0e82",
+                  "anchor": "zkAppUtils-commonException-commonException",
+                  "protection": "public",
+                  "signature": "zkAppUtils::commonException::commonException(std::string status)",
+                  "brief": "Constructor.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "status",
+                      "type": "std::string",
+                      "default": null,
+                      "direction": null,
+                      "description": "A string which described the verbose exception",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "~commonException",
+                  "id": "classzk_app_utils_1_1common_exception_1a3c0053dca967e9c898837a8a1f949f28",
+                  "anchor": "zkAppUtils-commonException-commonException-2",
+                  "protection": "public",
+                  "signature": "virtual zkAppUtils::commonException::~commonException()",
+                  "brief": "Destructor.",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "virt": "virtual"
+                },
+                {
+                  "kind": "function",
+                  "name": "what",
+                  "id": "classzk_app_utils_1_1common_exception_1a892f14105d7fcd1a06117c11ef0e81e9",
+                  "anchor": "zkAppUtils-commonException-what",
+                  "protection": "public",
+                  "signature": "const char * zkAppUtils::commonException::what() const",
+                  "brief": "Override of std::exception [what()](#zkAppUtils-commonException-what) method.",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "const char *",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "const": "yes"
+                }
+              ]
+            }
+          ],
+          "supported": [],
+          "notes": []
+        },
+        {
+          "kind": "class",
+          "name": "zkAppUtils::timeoutException",
+          "id": "classzk_app_utils_1_1timeout_exception",
+          "anchor": "zkAppUtils-timeoutException",
+          "protection": "public",
+          "bases": [
+            "std::exception"
+          ],
+          "brief": "Exception class derived from std::exception.",
+          "details": "",
+          "groups": [
+            {
+              "title": "Public Functions",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "timeoutException",
+                  "id": "classzk_app_utils_1_1timeout_exception_1aa5da5e052dc4c819ad7294fb0c840d58",
+                  "anchor": "zkAppUtils-timeoutException-timeoutException",
+                  "protection": "public",
+                  "signature": "zkAppUtils::timeoutException::timeoutException(std::string status)",
+                  "brief": "Constructor.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "status",
+                      "type": "std::string",
+                      "default": null,
+                      "direction": null,
+                      "description": "A string which described the verbose exception",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "~timeoutException",
+                  "id": "classzk_app_utils_1_1timeout_exception_1abf7d12b6c879936a5e91438133716e31",
+                  "anchor": "zkAppUtils-timeoutException-timeoutException-2",
+                  "protection": "public",
+                  "signature": "virtual zkAppUtils::timeoutException::~timeoutException()",
+                  "brief": "Destructor.",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "virt": "virtual"
+                },
+                {
+                  "kind": "function",
+                  "name": "what",
+                  "id": "classzk_app_utils_1_1timeout_exception_1a73396f1d9ff61a4b7b83f4d824eab1b7",
+                  "anchor": "zkAppUtils-timeoutException-what",
+                  "protection": "public",
+                  "signature": "const char * zkAppUtils::timeoutException::what() const",
+                  "brief": "Override of std::exception [what()](#zkAppUtils-timeoutException-what) method.",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "const char *",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "const": "yes"
+                }
+              ]
+            }
+          ],
+          "supported": [],
+          "notes": []
+        },
+        {
+          "kind": "class",
+          "name": "zkAppUtils::recoveryStrategyBaseType",
+          "id": "classzk_app_utils_1_1recovery_strategy_base_type",
+          "anchor": "zkAppUtils-recoveryStrategyBaseType",
+          "protection": "public",
+          "bases": [],
+          "brief": "Class used for retrieval of recovery mnemonic for Bip32 wallet.",
+          "details": "",
+          "groups": [
+            {
+              "title": "Protected Members",
+              "description": "",
+              "items": [
+                {
+                  "kind": "variable",
+                  "name": "recoveryStrategy",
+                  "id": "classzk_app_utils_1_1recovery_strategy_base_type_1ab69e4026f5e5cb91f5b87ae1dbbcbbbb",
+                  "anchor": "zkAppUtils-recoveryStrategyBaseType-recoveryStrategy",
+                  "protection": "protected",
+                  "signature": "ZK_RECOVERY_STRATEGY zkAppUtils::recoveryStrategyBaseType::recoveryStrategy",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "type": "ZK_RECOVERY_STRATEGY"
+                },
+                {
+                  "kind": "variable",
+                  "name": "variant",
+                  "id": "classzk_app_utils_1_1recovery_strategy_base_type_1a64bc26e7ad61c2d645a1acb1f2df5b9f",
+                  "anchor": "zkAppUtils-recoveryStrategyBaseType-variant",
+                  "protection": "protected",
+                  "signature": "std::string zkAppUtils::recoveryStrategyBaseType::variant",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "type": "std::string"
+                }
+              ]
+            },
+            {
+              "title": "Public Functions",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "recoveryStrategyBaseType",
+                  "id": "classzk_app_utils_1_1recovery_strategy_base_type_1ad121e69cc920c187d823b223e791004e",
+                  "anchor": "zkAppUtils-recoveryStrategyBaseType-recoveryStrategyBaseType",
+                  "protection": "public",
+                  "signature": "zkAppUtils::recoveryStrategyBaseType::recoveryStrategyBaseType(const std::string &key_variant=\"\")",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "key_variant",
+                      "type": "const std::string &",
+                      "default": "\"\"",
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "~recoveryStrategyBaseType",
+                  "id": "classzk_app_utils_1_1recovery_strategy_base_type_1a0f53c832b83b15bc484810ed27c3f348",
+                  "anchor": "zkAppUtils-recoveryStrategyBaseType-recoveryStrategyBaseType-2",
+                  "protection": "public",
+                  "signature": "zkAppUtils::recoveryStrategyBaseType::~recoveryStrategyBaseType()",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getRecoveryStrategy",
+                  "id": "classzk_app_utils_1_1recovery_strategy_base_type_1a01d29cc209df6b64c98d8e7a18d4e53a",
+                  "anchor": "zkAppUtils-recoveryStrategyBaseType-getRecoveryStrategy",
+                  "protection": "public",
+                  "signature": "ZK_RECOVERY_STRATEGY zkAppUtils::recoveryStrategyBaseType::getRecoveryStrategy() const",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "ZK_RECOVERY_STRATEGY",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "const": "yes"
+                },
+                {
+                  "kind": "function",
+                  "name": "setVariant",
+                  "id": "classzk_app_utils_1_1recovery_strategy_base_type_1a226a73e41bdea4be682526934c6bf1d2",
+                  "anchor": "zkAppUtils-recoveryStrategyBaseType-setVariant",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::recoveryStrategyBaseType::setVariant(const std::string &key_variant)",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "key_variant",
+                      "type": "const std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getVariant",
+                  "id": "classzk_app_utils_1_1recovery_strategy_base_type_1a491c7c16800212b22ef5252a517c8745",
+                  "anchor": "zkAppUtils-recoveryStrategyBaseType-getVariant",
+                  "protection": "public",
+                  "signature": "std::string zkAppUtils::recoveryStrategyBaseType::getVariant() const",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "std::string",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "const": "yes"
+                },
+                {
+                  "kind": "function",
+                  "name": "getPassPhrase",
+                  "id": "classzk_app_utils_1_1recovery_strategy_base_type_1a16415ed8c4c0f1382cdab19ad02b0b37",
+                  "anchor": "zkAppUtils-recoveryStrategyBaseType-getPassPhrase",
+                  "protection": "public",
+                  "signature": "virtual std::string zkAppUtils::recoveryStrategyBaseType::getPassPhrase() const",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "std::string",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "const": "yes",
+                  "virt": "virtual"
+                }
+              ]
+            }
+          ],
+          "supported": [],
+          "notes": []
+        },
+        {
+          "kind": "class",
+          "name": "zkAppUtils::recoveryStrategyBIP39",
+          "id": "classzk_app_utils_1_1recovery_strategy_b_i_p39",
+          "anchor": "zkAppUtils-recoveryStrategyBIP39",
+          "protection": "public",
+          "bases": [
+            "zkAppUtils::recoveryStrategyBaseType"
+          ],
+          "brief": "Class used for BIP39 recovery strategy. User can set b64 encoded passphrase and key variant (only \"cardano\" is supported for ed25519 currently) for bip32 seed generation. It can also hold the mnemonic sentence from master seed generation.",
+          "details": "",
+          "groups": [
+            {
+              "title": "Public Functions",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "recoveryStrategyBIP39",
+                  "id": "classzk_app_utils_1_1recovery_strategy_b_i_p39_1a5aa5fb926bc33091691218aa30c11fba",
+                  "anchor": "zkAppUtils-recoveryStrategyBIP39-recoveryStrategyBIP39",
+                  "protection": "public",
+                  "signature": "zkAppUtils::recoveryStrategyBIP39::recoveryStrategyBIP39(const std::string &passphrase=\"\", const std::string &key_variant=\"\")",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "passphrase",
+                      "type": "const std::string &",
+                      "default": "\"\"",
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "key_variant",
+                      "type": "const std::string &",
+                      "default": "\"\"",
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "~recoveryStrategyBIP39",
+                  "id": "classzk_app_utils_1_1recovery_strategy_b_i_p39_1a6692050ccaadff2943c0a396e6962be6",
+                  "anchor": "zkAppUtils-recoveryStrategyBIP39-recoveryStrategyBIP39-2",
+                  "protection": "public",
+                  "signature": "zkAppUtils::recoveryStrategyBIP39::~recoveryStrategyBIP39()",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "setPassPhrase",
+                  "id": "classzk_app_utils_1_1recovery_strategy_b_i_p39_1ac1c9b9b721be60e9e6bf7567db97322f",
+                  "anchor": "zkAppUtils-recoveryStrategyBIP39-setPassPhrase",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::recoveryStrategyBIP39::setPassPhrase(const std::string &passphrase)",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "passphrase",
+                      "type": "const std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getPassPhrase",
+                  "id": "classzk_app_utils_1_1recovery_strategy_b_i_p39_1ac685ed29676c694fa18da237ed0a6c1e",
+                  "anchor": "zkAppUtils-recoveryStrategyBIP39-getPassPhrase",
+                  "protection": "public",
+                  "signature": "std::string zkAppUtils::recoveryStrategyBIP39::getPassPhrase() const",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "std::string",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "const": "yes",
+                  "virt": "virtual"
+                }
+              ]
+            }
+          ],
+          "supported": [],
+          "notes": []
+        },
+        {
+          "kind": "class",
+          "name": "zkAppUtils::recoveryStrategySLIP39",
+          "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39",
+          "anchor": "zkAppUtils-recoveryStrategySLIP39",
+          "protection": "public",
+          "bases": [
+            "zkAppUtils::recoveryStrategyBaseType"
+          ],
+          "brief": "",
+          "details": "",
+          "groups": [
+            {
+              "title": "Public Functions",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "recoveryStrategySLIP39",
+                  "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a0647823f6b95d36d292e1e31afcf549a",
+                  "anchor": "zkAppUtils-recoveryStrategySLIP39-recoveryStrategySLIP39",
+                  "protection": "public",
+                  "signature": "zkAppUtils::recoveryStrategySLIP39::recoveryStrategySLIP39(int group_count, int group_threshold, int iteration_exponent, const std::string &passphrase=\"\", const std::string &key_variant=\"\")",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "group_count",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "group_threshold",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "iteration_exponent",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "passphrase",
+                      "type": "const std::string &",
+                      "default": "\"\"",
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "key_variant",
+                      "type": "const std::string &",
+                      "default": "\"\"",
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "~recoveryStrategySLIP39",
+                  "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a045bfb0191290fc5c952db2af39f5306",
+                  "anchor": "zkAppUtils-recoveryStrategySLIP39-recoveryStrategySLIP39-2",
+                  "protection": "public",
+                  "signature": "zkAppUtils::recoveryStrategySLIP39::~recoveryStrategySLIP39()",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "setPassPhrase",
+                  "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1aea3b19fe261a0d19ab8ba85b6be3c844",
+                  "anchor": "zkAppUtils-recoveryStrategySLIP39-setPassPhrase",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::recoveryStrategySLIP39::setPassPhrase(const std::string &passphrase)",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "passphrase",
+                      "type": "const std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getPassPhrase",
+                  "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a20c94db2f768a96c6e63f57a1bb70dc1",
+                  "anchor": "zkAppUtils-recoveryStrategySLIP39-getPassPhrase",
+                  "protection": "public",
+                  "signature": "std::string zkAppUtils::recoveryStrategySLIP39::getPassPhrase() const",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "std::string",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "const": "yes",
+                  "virt": "virtual"
+                },
+                {
+                  "kind": "function",
+                  "name": "setGroupCount",
+                  "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a842ac641957b43d12fd915d20920cd54",
+                  "anchor": "zkAppUtils-recoveryStrategySLIP39-setGroupCount",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::recoveryStrategySLIP39::setGroupCount(int group_count)",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "group_count",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getGroupCount",
+                  "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a52daf145f639080964cca346b6da8cbb",
+                  "anchor": "zkAppUtils-recoveryStrategySLIP39-getGroupCount",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::recoveryStrategySLIP39::getGroupCount() const",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "const": "yes"
+                },
+                {
+                  "kind": "function",
+                  "name": "setGroupThreshold",
+                  "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a42eaf376ac34a8ca1c8af4d799720f2c",
+                  "anchor": "zkAppUtils-recoveryStrategySLIP39-setGroupThreshold",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::recoveryStrategySLIP39::setGroupThreshold(int group_threshold)",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "group_threshold",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getGroupThreshold",
+                  "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a1cb94cd5c4241a3e23a2878d3cb067c1",
+                  "anchor": "zkAppUtils-recoveryStrategySLIP39-getGroupThreshold",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::recoveryStrategySLIP39::getGroupThreshold() const",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "const": "yes"
+                },
+                {
+                  "kind": "function",
+                  "name": "setIterationExponent",
+                  "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1ac2a46dbe5fc0839b82ce6d7f109ee67c",
+                  "anchor": "zkAppUtils-recoveryStrategySLIP39-setIterationExponent",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::recoveryStrategySLIP39::setIterationExponent(int iteration_exponent)",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "iteration_exponent",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getIterationExponent",
+                  "id": "classzk_app_utils_1_1recovery_strategy_s_l_i_p39_1a8d32ad728c5a16beeea2d380526b910d",
+                  "anchor": "zkAppUtils-recoveryStrategySLIP39-getIterationExponent",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::recoveryStrategySLIP39::getIterationExponent() const",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "const": "yes"
+                }
+              ]
+            }
+          ],
+          "supported": [],
+          "notes": []
+        },
+        {
+          "kind": "struct",
+          "name": "zkAppUtils::accelData",
+          "id": "structzk_app_utils_1_1accel_data",
+          "anchor": "zkAppUtils-accelData",
+          "protection": "public",
+          "bases": [],
+          "brief": "Structure typedef used for retrieval of accelerometer data.",
+          "details": "",
+          "groups": [
+            {
+              "title": "Public Members",
+              "description": "",
+              "items": [
+                {
+                  "kind": "variable",
+                  "name": "x",
+                  "id": "structzk_app_utils_1_1accel_data_1ade088cb17d564e9ab8de27df8e529b53",
+                  "anchor": "zkAppUtils-accelData-x",
+                  "protection": "public",
+                  "signature": "double zkAppUtils::accelData::x",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "type": "double"
+                },
+                {
+                  "kind": "variable",
+                  "name": "y",
+                  "id": "structzk_app_utils_1_1accel_data_1a523ccaa6bbe89ac2e2e7ccd6ed56ba92",
+                  "anchor": "zkAppUtils-accelData-y",
+                  "protection": "public",
+                  "signature": "double zkAppUtils::accelData::y",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "type": "double"
+                },
+                {
+                  "kind": "variable",
+                  "name": "z",
+                  "id": "structzk_app_utils_1_1accel_data_1a5080fb3abbdeeac3b6b99bbeab84d2af",
+                  "anchor": "zkAppUtils-accelData-z",
+                  "protection": "public",
+                  "signature": "double zkAppUtils::accelData::z",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "type": "double"
+                },
+                {
+                  "kind": "variable",
+                  "name": "tapDirX",
+                  "id": "structzk_app_utils_1_1accel_data_1acad0eacf3d403f2b9337223f915e7693",
+                  "anchor": "zkAppUtils-accelData-tapDirX",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::accelData::tapDirX",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "type": "int"
+                },
+                {
+                  "kind": "variable",
+                  "name": "tapDirY",
+                  "id": "structzk_app_utils_1_1accel_data_1acee9fe0835114a7ee167ebe706dc807e",
+                  "anchor": "zkAppUtils-accelData-tapDirY",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::accelData::tapDirY",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "type": "int"
+                },
+                {
+                  "kind": "variable",
+                  "name": "tapDirZ",
+                  "id": "structzk_app_utils_1_1accel_data_1a411a716f8caae78a98ea4983d796779f",
+                  "anchor": "zkAppUtils-accelData-tapDirZ",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::accelData::tapDirZ",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "type": "int"
+                }
+              ]
+            }
+          ],
+          "supported": [],
+          "notes": []
+        },
+        {
+          "kind": "class",
+          "name": "zkAppUtils::zkClass",
+          "id": "classzk_app_utils_1_1zk_class",
+          "anchor": "zkAppUtils-zkClass",
+          "protection": "public",
+          "bases": [],
+          "brief": "The main class.",
+          "details": "",
+          "groups": [
+            {
+              "title": "Zymkey Context",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "zkClass",
+                  "id": "classzk_app_utils_1_1zk_class_1af2017a24669f2f1f84743ab8eb1b2e6d",
+                  "anchor": "zkAppUtils-zkClass-zkClass",
+                  "protection": "public",
+                  "signature": "zkAppUtils::zkClass::zkClass()",
+                  "brief": "Constructor: a Zymkey context is opened.",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "~zkClass",
+                  "id": "classzk_app_utils_1_1zk_class_1a9fd36f5cebc6fc718abd7c63b0e30035",
+                  "anchor": "zkAppUtils-zkClass-zkClass-2",
+                  "protection": "public",
+                  "signature": "virtual zkAppUtils::zkClass::~zkClass()",
+                  "brief": "Destructor: the Zymkey context is closed.",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "virt": "virtual"
+                }
+              ]
+            },
+            {
+              "title": "Random Number Generation",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "createRandDataFile",
+                  "id": "classzk_app_utils_1_1zk_class_1a9a4a7c019b82d8b1760ae9f743de944d",
+                  "anchor": "zkAppUtils-zkClass-createRandDataFile",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::createRandDataFile(std::string &dst_filename, int rdata_sz)",
+                  "brief": "Write random data to a file.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "dst_filename",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "A string containing the absolute path to the file where random data is written",
+                      "supported": []
+                    },
+                    {
+                      "name": "rdata_sz",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The number of random bytes to generate",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getRandBytes",
+                  "id": "classzk_app_utils_1_1zk_class_1a710adb889c21dabb89f61f76a81f6446",
+                  "anchor": "zkAppUtils-zkClass-getRandBytes",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::getRandBytes(int rdata_sz)",
+                  "brief": "Generate a block of random data.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "rdata_sz",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The number of random bytes to generate",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "A pointer to container with the random bytes"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            },
+            {
+              "title": "Lock Data",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "lockData",
+                  "id": "classzk_app_utils_1_1zk_class_1a65aee74e18121f104b8420822013452e",
+                  "anchor": "zkAppUtils-zkClass-lockData",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::lockData(const std::string &src_pt_filename, const std::string &dst_ct_filename, bool use_shared_key=false)",
+                  "brief": "Locks data from a plaintext source file and stores locked data object to a destination file.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "src_pt_filename",
+                      "type": "const std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Absolute path to source plaintext file",
+                      "supported": []
+                    },
+                    {
+                      "name": "dst_ct_filename",
+                      "type": "const std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Absolute path to destination file which will contain locked data object",
+                      "supported": []
+                    },
+                    {
+                      "name": "use_shared_key",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "Determines whether one-way or shared key is used for locking. Default = false.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "lockData",
+                  "id": "classzk_app_utils_1_1zk_class_1a12a0b56f2d9957e4f6f66964b1dc88c8",
+                  "anchor": "zkAppUtils-zkClass-lockData-2",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::lockData(const byteArray &src_pt_data, const std::string &dst_ct_filename, bool use_shared_key=false)",
+                  "brief": "Locks data from a plaintext source byte container and stores locked data object to a destination file.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "src_pt_data",
+                      "type": "const byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Unsigned byte container which holds source plaintext data",
+                      "supported": []
+                    },
+                    {
+                      "name": "dst_ct_filename",
+                      "type": "const std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Absolute path to destination file which will contain locked data object",
+                      "supported": []
+                    },
+                    {
+                      "name": "use_shared_key",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "Determines whether one-way or shared key is used for locking. Default = false.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "lockData",
+                  "id": "classzk_app_utils_1_1zk_class_1ac57f7a6a758248406bd2ad92e8b1d3ec",
+                  "anchor": "zkAppUtils-zkClass-lockData-3",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::lockData(const std::string &src_pt_filename, bool use_shared_key=false)",
+                  "brief": "Locks data from a plaintext source file and stores locked data object in a container of unsigned bytes.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "src_pt_filename",
+                      "type": "const std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Absolute path to source plaintext file",
+                      "supported": []
+                    },
+                    {
+                      "name": "use_shared_key",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "Determines whether one-way or shared key is used for locking. Default = false.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "Byte container with locked data"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "lockData",
+                  "id": "classzk_app_utils_1_1zk_class_1aa6a70fd15ea113d66ee65f239bd06600",
+                  "anchor": "zkAppUtils-zkClass-lockData-4",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::lockData(const byteArray &src_pt_data, bool use_shared_key=false)",
+                  "brief": "Locks data from a plaintext source byte container and stores locked data object in a container of unsigned bytes.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "src_pt_data",
+                      "type": "const byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Unsigned byte container which holds source plaintext data",
+                      "supported": []
+                    },
+                    {
+                      "name": "use_shared_key",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "Determines whether one-way or shared key is used for locking. Default = false.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "Byte container with locked data"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            },
+            {
+              "title": "Unlock Data",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "unlockData",
+                  "id": "classzk_app_utils_1_1zk_class_1a0ecbe6c828556f8f762fb74e628f13af",
+                  "anchor": "zkAppUtils-zkClass-unlockData",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::unlockData(const std::string &src_ct_filename, const std::string &dst_pt_filename, bool use_shared_key=false)",
+                  "brief": "Unocks a locked data object from source file and stores unlocked data object to a destination file.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "src_ct_filename",
+                      "type": "const std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Absolute path to source file which contains locked data object",
+                      "supported": []
+                    },
+                    {
+                      "name": "dst_pt_filename",
+                      "type": "const std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Absolute path to destination file which will contain unlocked plaintext data",
+                      "supported": []
+                    },
+                    {
+                      "name": "use_shared_key",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "Determines whether one-way or shared key is used for locking. Default = false.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "unlockData",
+                  "id": "classzk_app_utils_1_1zk_class_1a40befc1bfc64e6a06e2169c8a102cd2f",
+                  "anchor": "zkAppUtils-zkClass-unlockData-2",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::unlockData(const byteArray &src_ct_data, const std::string &dst_pt_filename, bool use_shared_key=false)",
+                  "brief": "Unlocks a locked data object contained in an unsigned byte container and stores plaintext data to a destination file.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "src_ct_data",
+                      "type": "const byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Unsigned byte container which holds locked data object",
+                      "supported": []
+                    },
+                    {
+                      "name": "dst_pt_filename",
+                      "type": "const std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Absolute path to destination file which will contain unlocked plaintext data",
+                      "supported": []
+                    },
+                    {
+                      "name": "use_shared_key",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "Determines whether one-way or shared key is used for locking. Default = false.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "unlockData",
+                  "id": "classzk_app_utils_1_1zk_class_1a4acdb8f7a6a6f97285ede36ba1d34fe3",
+                  "anchor": "zkAppUtils-zkClass-unlockData-3",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::unlockData(const std::string &src_ct_filename, bool use_shared_key=false)",
+                  "brief": "Unlocks a locked data object from a plaintext source file and stores plaintext data in a container of unsigned bytes.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "src_ct_filename",
+                      "type": "const std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Absolute path to source file which contains locked data object",
+                      "supported": []
+                    },
+                    {
+                      "name": "use_shared_key",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "Determines whether one-way or shared key is used for locking. Default = false.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "Byte container with plaintext data"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "unlockData",
+                  "id": "classzk_app_utils_1_1zk_class_1a6c9c6974bd00b81de17ab6e316c509f8",
+                  "anchor": "zkAppUtils-zkClass-unlockData-4",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::unlockData(const byteArray &src_ct_bytes, bool use_shared_key=false)",
+                  "brief": "Unlocks a locked data object contained in an unsigned byte container and stores plaintext data in a container of unsigned bytes.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "src_ct_bytes",
+                      "type": "const byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "use_shared_key",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "Determines whether one-way or shared key is used for locking. Default = false.",
+                      "supported": []
+                    },
+                    {
+                      "name": "src_ct_data",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "Unsigned byte container which holds locked data object",
+                      "supported": [],
+                      "undeclared": true
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "Byte container with plaintext data"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            },
+            {
+              "title": "ECDSA",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "genECDSASigFromDigest",
+                  "id": "classzk_app_utils_1_1zk_class_1ab007adf3d85c5a488dd28b6cf182d5b6",
+                  "anchor": "zkAppUtils-zkClass-genECDSASigFromDigest",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::genECDSASigFromDigest(byteArray &digest, int slot=0)",
+                  "brief": "Generate a signature from a data digest using the Zymkey's private key.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "digest",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Currently, this should be a SHA256 digest",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot to use for verification.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "Byte container with binary signature"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "genECDSASigFromDigest",
+                  "id": "classzk_app_utils_1_1zk_class_1ab1d956eac6affc32b82eb27bc4ae9b57",
+                  "anchor": "zkAppUtils-zkClass-genECDSASigFromDigest-2",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::genECDSASigFromDigest(byteArray &digest, uint8_t &recovery_id, int slot=0)",
+                  "brief": "Generate a signature from a data digest using the Zymkey's private key.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "digest",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Currently, this should be a SHA256 digest",
+                      "supported": []
+                    },
+                    {
+                      "name": "recovery_id",
+                      "type": "uint8_t &",
+                      "default": null,
+                      "direction": null,
+                      "description": "\\[Output\\]Returns recovery id value needed for ethereum key recovery.",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot to use for verification.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "Byte container with binary signature"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "verifyECDSASigFromDigest",
+                  "id": "classzk_app_utils_1_1zk_class_1a5046d6ddc2fb67c7c352df859c84089d",
+                  "anchor": "zkAppUtils-zkClass-verifyECDSASigFromDigest",
+                  "protection": "public",
+                  "signature": "bool zkAppUtils::zkClass::verifyECDSASigFromDigest(byteArray &digest, byteArray &sig, int pub_key_slot=0, bool pub_key_is_foreign=false)",
+                  "brief": "Verify a signature from a data digest using the Zymkey's public key. The public key is not given as an input. Rather, the Zymkey uses its own copy of the private key. This insures that the public key that matches the private key is used.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "digest",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Currently, this should be a SHA256 digest",
+                      "supported": []
+                    },
+                    {
+                      "name": "sig",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The signature to verify",
+                      "supported": []
+                    },
+                    {
+                      "name": "pub_key_slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot to use for verification.",
+                      "supported": []
+                    },
+                    {
+                      "name": "pub_key_is_foreign",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "If false, the normal key store is referenced. Otherwise, the foreign public key store is referenced.",
+                      "supported": []
+                    },
+                    {
+                      "name": "pub_key_is_foreign",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "If false, the normal key store is referenced. Otherwise, the foreign public key store is referenced.",
+                      "supported": [],
+                      "undeclared": true
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "bool",
+                      "description": "true = signature verification passed, false = signature verification failed"
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            },
+            {
+              "title": "ECDH and KDF",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "doRawECDH",
+                  "id": "classzk_app_utils_1_1zk_class_1a92667fd60df92fa92b31fe8cdb3c08f2",
+                  "anchor": "zkAppUtils-zkClass-doRawECDH",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::doRawECDH(int slot, byteArray &peer_pubkey)",
+                  "brief": "Perform a raw ECDH operation. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "Perform an ECDH operation with no Key Derivation Function (KDF). The raw pre-master secret is returned in the response. The peer public key is presented in the call.",
+                  "params": [
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The key slot to use for the local key. If this parameter is -1, the ephemeral key is used.",
+                      "supported": []
+                    },
+                    {
+                      "name": "peer_pubkey",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The peer public key.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "Byte container with pre master secret"
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "doRawECDHWithIntPeerPubkey",
+                  "id": "classzk_app_utils_1_1zk_class_1a99c291436911e35c8ae2b1782a1b7e8d",
+                  "anchor": "zkAppUtils-zkClass-doRawECDHWithIntPeerPubkey",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::doRawECDHWithIntPeerPubkey(int slot, int peer_pubkey_slot, bool peer_pubkey_slot_is_foreign)",
+                  "brief": "Perform a raw ECDH operation. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "Perform an ECDH operation with no Key Derivation Function (KDF). The raw pre-master secret is returned in the response. The peer public key is referenced from the zymkey internal key store.",
+                  "params": [
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The key slot to use for the local key. If this parameter is -1, the ephemeral key is used.",
+                      "supported": []
+                    },
+                    {
+                      "name": "peer_pubkey_slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The peer public key slot where the peer public key is to be found.",
+                      "supported": []
+                    },
+                    {
+                      "name": "peer_pubkey_slot_is_foreign",
+                      "type": "bool",
+                      "default": null,
+                      "direction": null,
+                      "description": "If true, the peer public key slot is found in the foreign public keyring.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "Byte container with pre master secret"
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "doECDHAndKDF",
+                  "id": "classzk_app_utils_1_1zk_class_1a346e58ecb0fd1947bb11af399c8c0188",
+                  "anchor": "zkAppUtils-zkClass-doECDHAndKDF",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::doECDHAndKDF(ZK_ECDH_KDF_TYPE kdf_type, int slot, byteArray &peer_pubkey, byteArray &salt, byteArray &info, int num_iterations, int derived_key_sz)",
+                  "brief": "Perform an ECDH operation plus Key Derivation Function. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "Perform an ECDH operation with Key Derivation Function (KDF). The derived key is returned in the response. The peer public key is presented in the call.",
+                  "params": [
+                    {
+                      "name": "kdf_type",
+                      "type": "ZK_ECDH_KDF_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The key slot to use for the local key. If this parameter is -1, the ephemeral key is used.",
+                      "supported": []
+                    },
+                    {
+                      "name": "peer_pubkey",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The peer public key.",
+                      "supported": []
+                    },
+                    {
+                      "name": "salt",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The salt to use for the selected KDF.",
+                      "supported": []
+                    },
+                    {
+                      "name": "info",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The info field to use for RFC 5869. Ignored for PBKDF2.",
+                      "supported": []
+                    },
+                    {
+                      "name": "num_iterations",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "Number of iterations to carry out (PBKDF only)",
+                      "supported": []
+                    },
+                    {
+                      "name": "derived_key_sz",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The desired number of bytes to return for the KDF. For RFC 5869, this value must be less than 8160 bytes (SHA256) or 16320 (SHA512).",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "Byte container with pre master secret."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "doECDHAndKDFWithIntPeerPubkey",
+                  "id": "classzk_app_utils_1_1zk_class_1a2db20d758c7c1872426cbf8cd4501d39",
+                  "anchor": "zkAppUtils-zkClass-doECDHAndKDFWithIntPeerPubkey",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::doECDHAndKDFWithIntPeerPubkey(ZK_ECDH_KDF_TYPE kdf_type, int slot, int peer_pubkey_slot, bool peer_pubkey_slot_is_foreign, byteArray &salt, byteArray &info, int num_iterations, int derived_key_sz)",
+                  "brief": "Perform an ECDH operation plus Key Derivation Function. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "Perform an ECDH operation with Key Derivation Function (KDF). The derived key is returned in the response. The peer public key is referenced from the zymkey internal key store.",
+                  "params": [
+                    {
+                      "name": "kdf_type",
+                      "type": "ZK_ECDH_KDF_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The key slot to use for the local key. If this parameter is -1, the ephemeral key is used.",
+                      "supported": []
+                    },
+                    {
+                      "name": "peer_pubkey_slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The peer public key slot where the peer public key is to be found.",
+                      "supported": []
+                    },
+                    {
+                      "name": "peer_pubkey_slot_is_foreign",
+                      "type": "bool",
+                      "default": null,
+                      "direction": null,
+                      "description": "If true, the peer public key slot is found in the foreign public keyring.",
+                      "supported": []
+                    },
+                    {
+                      "name": "salt",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The salt to use for the selected KDF.",
+                      "supported": []
+                    },
+                    {
+                      "name": "info",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The info field to use for RFC 5869. Ignored for PBKDF2.",
+                      "supported": []
+                    },
+                    {
+                      "name": "num_iterations",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "Number of iterations to carry out (PBKDF only)",
+                      "supported": []
+                    },
+                    {
+                      "name": "derived_key_sz",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The desired number of bytes to return for the KDF. For RFC 5869, this value must be less than 8160 bytes (SHA256) or 16320 (SHA512).",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "Byte container with pre master secret."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Key Management",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "saveECDSAPubKey2File",
+                  "id": "classzk_app_utils_1_1zk_class_1a90e0ace2d84e42b6ccdaad122f9035c8",
+                  "anchor": "zkAppUtils-zkClass-saveECDSAPubKey2File",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::saveECDSAPubKey2File(std::string dst_filename, int slot=0)",
+                  "brief": "\\[DEPRECATED\\] Use exportPubKey2File. Save the public key that matches the Zymkey's private key into a PEM formatted file. Mainly used for Certificate Signing Request (CSR) generation.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "dst_filename",
+                      "type": "std::string",
+                      "default": null,
+                      "direction": null,
+                      "description": "Absolute location where the PEM formatted file is to be stored",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "Reserved for future use",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "exportPubKey2File",
+                  "id": "classzk_app_utils_1_1zk_class_1a1bdc2d2f9d479a28af6de6cd7889020b",
+                  "anchor": "zkAppUtils-zkClass-exportPubKey2File",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::exportPubKey2File(std::string dst_filename, int pubkey_slot=0, bool slot_is_foreign=false)",
+                  "brief": "Store the public key to a host file in PEM format.",
+                  "details": "This function is useful for generating Certificate Signing Requests (CSR).",
+                  "params": [
+                    {
+                      "name": "dst_filename",
+                      "type": "std::string",
+                      "default": null,
+                      "direction": null,
+                      "description": "Filename where PEM formatted public key is to be stored.",
+                      "supported": []
+                    },
+                    {
+                      "name": "pubkey_slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot to retrieve. Zymkey and HSM4 have slots 0, 1, and 2.",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot_is_foreign",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "If true, designates the pubkey slot to come from the foreign keystore. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                      "supported": [
+                        "ZYMKEY5",
+                        "HSM60",
+                        "HSM64",
+                        "HSM6",
+                        "Secure Compute Module"
+                      ]
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getECDSAPubKey",
+                  "id": "classzk_app_utils_1_1zk_class_1a43a830a3e3a51d9e5b3b09ffe037f858",
+                  "anchor": "zkAppUtils-zkClass-getECDSAPubKey",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::getECDSAPubKey(int slot=0)",
+                  "brief": "\\[DEPRECATED\\] Use exportPubKey. Get a container of bytes which contains the ECDSA public key",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "Reserved for future use.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": "Byte container with binary public key"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "exportPubKey",
+                  "id": "classzk_app_utils_1_1zk_class_1abb635d3e522ef15b4f675b1b1a05678e",
+                  "anchor": "zkAppUtils-zkClass-exportPubKey",
+                  "protection": "public",
+                  "signature": "zkAppUtils::byteArray * zkAppUtils::zkClass::exportPubKey(int pubkey_slot=0, bool slot_is_foreign=0)",
+                  "brief": "Gets the public key and stores in a byte array created by this function.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "pubkey_slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot to retrieve. Zymkey and HSM4 have slots 0, 1, and 2.",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot_is_foreign",
+                      "type": "bool",
+                      "default": "0",
+                      "direction": null,
+                      "description": "If true, designates the pubkey slot to come from the foreign keystore. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                      "supported": [
+                        "ZYMKEY5",
+                        "HSM60",
+                        "HSM64",
+                        "HSM6",
+                        "Secure Compute Module"
+                      ]
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "zkAppUtils::byteArray *",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getAllocSlotsList",
+                  "id": "classzk_app_utils_1_1zk_class_1adc53f82db51aafe1f5d6ec205cc55987",
+                  "anchor": "zkAppUtils-zkClass-getAllocSlotsList",
+                  "protection": "public",
+                  "signature": "intArray * zkAppUtils::zkClass::getAllocSlotsList(bool foreign_key_pool)",
+                  "brief": "Get the list of allocated keys. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function returns a list of all allocated key slots.",
+                  "params": [
+                    {
+                      "name": "foreign_key_pool",
+                      "type": "bool",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) if true, retrieve allocation list of the foreign keys",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "intArray *",
+                      "description": "Array of the allocated keys."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "storeForeignPubKey",
+                  "id": "classzk_app_utils_1_1zk_class_1aa95d4e59e180197bf8e847b4d52d5001",
+                  "anchor": "zkAppUtils-zkClass-storeForeignPubKey",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::storeForeignPubKey(ZK_EC_KEY_TYPE pk_type, byteArray &pk)",
+                  "brief": "Store a new foreign public key in Zymkey. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function stores a new foreign public key in the Zymkey public key ring. This public key can be used for signature verification in use cases where it is desirable to hide the public key.",
+                  "params": [
+                    {
+                      "name": "pk_type",
+                      "type": "ZK_EC_KEY_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "The type of the public key. {ZK_NISTP256, ZK_SECP256R1 = ZK_NISTP256, ZK_SECP256K1}",
+                      "supported": []
+                    },
+                    {
+                      "name": "pk",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "Public key to store.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "Allocated slot number in foreign key store, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "disablePubKeyExport",
+                  "id": "classzk_app_utils_1_1zk_class_1ab730469e9e5ffb217455a775960732d1",
+                  "anchor": "zkAppUtils-zkClass-disablePubKeyExport",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::disablePubKeyExport(int pubkey_slot, bool slot_is_foreign=false)",
+                  "brief": "Prevent a public key from being exported to the host. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function prevents the public key at the specified slot from being exported to the host using the API zkExportPubKey.",
+                  "params": [
+                    {
+                      "name": "pubkey_slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The key slot to disable pubkey export on.",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot_is_foreign",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "The slot parameter refers to a slot in the foreign keyring.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "genKeyPair",
+                  "id": "classzk_app_utils_1_1zk_class_1afa4595edba19c2c98109763898dbfc9a",
+                  "anchor": "zkAppUtils-zkClass-genKeyPair",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::genKeyPair(ZK_EC_KEY_TYPE type)",
+                  "brief": "Generate a new persistent key pair. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function generates a new key pair of the specified type and store it persistently. This key pair cannot be used as part of the zymkey's digital wallet operations.",
+                  "params": [
+                    {
+                      "name": "type",
+                      "type": "ZK_EC_KEY_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "The type of key to generate (ZK_EC_KEY_TYPE). {ZK_NISTP256, ZK_SECP256R1 = ZK_NISTP256, ZK_SECP256K1}",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "Allocated slot number if successful, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "genEphemeralKeyPair",
+                  "id": "classzk_app_utils_1_1zk_class_1ada05198c035f694fda303a8b7e30b4b5",
+                  "anchor": "zkAppUtils-zkClass-genEphemeralKeyPair",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::genEphemeralKeyPair(ZK_EC_KEY_TYPE type)",
+                  "brief": "Generate an ephemeral key pair. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function generates an ephemeral key pair of the specified type. Ephemeral key pairs are useful when performing ECDH for time-of-flight encryption. Only one ephemeral key slot is available and is not persistent between reboots.",
+                  "params": [
+                    {
+                      "name": "type",
+                      "type": "ZK_EC_KEY_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "The type of key to generate (ZK_EC_KEY_TYPE). {ZK_NISTP256, ZK_SECP256R1 = ZK_NISTP256, ZK_SECP256K1}",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "removeKey",
+                  "id": "classzk_app_utils_1_1zk_class_1a62f486dc7c3502fd49c43f628a48fd62",
+                  "anchor": "zkAppUtils-zkClass-removeKey",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::removeKey(int slot, bool slot_is_foreign=false)",
+                  "brief": "Remove a key pair or a foreign public key. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function deletes a key pair or a foreign public key from persistent storage.",
+                  "params": [
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The slot",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot_is_foreign",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "The slot parameter refers to a slot in the foreign keyring.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "invalidateEphemeralKey",
+                  "id": "classzk_app_utils_1_1zk_class_1a2b2d25ba5fa9e7ddd56e293aeac069c6",
+                  "anchor": "zkAppUtils-zkClass-invalidateEphemeralKey",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::invalidateEphemeralKey()",
+                  "brief": "Invalidate the ephemeral key. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function invalidates the ephemeral key.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Digital Wallet (BIP32/39/44)",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "genWalletMasterSeed",
+                  "id": "classzk_app_utils_1_1zk_class_1a9a0b6ea782bbe1b628a821a0ad42a0ed",
+                  "anchor": "zkAppUtils-zkClass-genWalletMasterSeed",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::genWalletMasterSeed(ZK_EC_KEY_TYPE type, std::string &wallet_name, const recoveryStrategyBaseType &recovery_strategy=recoveryStrategyBaseType(), const byteArray &master_generator_key=byteArray())",
+                  "brief": "Generate a BIP32 master seed to start a new blockchain wallet. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function generates a new blockchain master seed for creating a new wallet per BIP32.",
+                  "params": [
+                    {
+                      "name": "type",
+                      "type": "ZK_EC_KEY_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "The type of key to generate (ZK_EC_KEY_TYPE). {ZK_NISTP256, ZK_SECP256R1 = ZK_NISTP256, ZK_SECP256K1, ZK_ED25519, ZK_X25519}",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "An ASCII string which contains the name of the wallet.",
+                      "supported": []
+                    },
+                    {
+                      "name": "recovery_strategy",
+                      "type": "const recoveryStrategyBaseType &",
+                      "default": "recoveryStrategyBaseType()",
+                      "direction": null,
+                      "description": "The recovery strategy object for returning BIP39 or SLIP39 (starts a SLIP39 session instead of a one shot). Also contains key variants and passphrases. Defaults to no recovery strategy.",
+                      "supported": []
+                    },
+                    {
+                      "name": "master_generator_key",
+                      "type": "const byteArray &",
+                      "default": "byteArray()",
+                      "direction": null,
+                      "description": "The master generator key used to help generate the master seed (bip32). Defaults to empty string",
+                      "supported": []
+                    },
+                    {
+                      "name": "mnemonics(output)",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "Allocated mnemonics if it was asked for, based on recovery strategy used.",
+                      "supported": [],
+                      "undeclared": true
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "The slot the master seed was allocated to."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "genWalletMasterSeed",
+                  "id": "classzk_app_utils_1_1zk_class_1acb12f4443c3d7b0fdc81f9cb18f78381",
+                  "anchor": "zkAppUtils-zkClass-genWalletMasterSeed-2",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::genWalletMasterSeed(ZK_EC_KEY_TYPE type, std::string &wallet_name, const recoveryStrategyBIP39 &recovery_strategy, std::string *mnemonic_str, const byteArray &master_generator_key=byteArray())",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "type",
+                      "type": "ZK_EC_KEY_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "recovery_strategy",
+                      "type": "const recoveryStrategyBIP39 &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "mnemonic_str",
+                      "type": "std::string *",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "master_generator_key",
+                      "type": "const byteArray &",
+                      "default": "byteArray()",
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "genWalletMasterSeed",
+                  "id": "classzk_app_utils_1_1zk_class_1add63278d1061e559bfc2509e2cf0febc",
+                  "anchor": "zkAppUtils-zkClass-genWalletMasterSeed-3",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::genWalletMasterSeed(ZK_EC_KEY_TYPE type, std::string &wallet_name, const recoveryStrategySLIP39 &recovery_strategy, const byteArray &master_generator_key=byteArray())",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "type",
+                      "type": "ZK_EC_KEY_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "recovery_strategy",
+                      "type": "const recoveryStrategySLIP39 &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "master_generator_key",
+                      "type": "const byteArray &",
+                      "default": "byteArray()",
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "setGenSLIP39GroupInfo",
+                  "id": "classzk_app_utils_1_1zk_class_1a537a3e6d65d177082a82ef569c212947",
+                  "anchor": "zkAppUtils-zkClass-setGenSLIP39GroupInfo",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::setGenSLIP39GroupInfo(int group_index, int member_count, int member_threshold)",
+                  "brief": "Set the active SLIP39 group and the amount of members needed. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function configures the active group to generate the number of shards requested for the active group.",
+                  "params": [
+                    {
+                      "name": "group_index",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The index of the group to generate shards from. Index starts at 0.",
+                      "supported": []
+                    },
+                    {
+                      "name": "member_count",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The total amount of member shards in this group to generate.",
+                      "supported": []
+                    },
+                    {
+                      "name": "member_threshold",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The number of member shards needed to recreate this group in recovery.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "0 if successful on configuring the active group, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "addGenSLIP39Member",
+                  "id": "classzk_app_utils_1_1zk_class_1af96fe0fcaa53a74e799f18ce7715fc5e",
+                  "anchor": "zkAppUtils-zkClass-addGenSLIP39Member",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::addGenSLIP39Member(std::string passphrase, std::string *mnemonic_str)",
+                  "brief": "Generate a new SLIP39 member shard. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function generates a new SLIP39 member shard. The shard can optionally have a password attached to it.",
+                  "params": [
+                    {
+                      "name": "passphrase",
+                      "type": "std::string",
+                      "default": null,
+                      "direction": null,
+                      "description": "Password for the shard. Can be empty string.",
+                      "supported": []
+                    },
+                    {
+                      "name": "mnemonic_str",
+                      "type": "std::string *",
+                      "default": null,
+                      "direction": null,
+                      "description": "(output) The mnemonic sentence of the shard.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "0 if successful on configuring the active group, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "cancelSLIP39Session",
+                  "id": "classzk_app_utils_1_1zk_class_1a00d207abd7552ce2df19244be76ea1c7",
+                  "anchor": "zkAppUtils-zkClass-cancelSLIP39Session",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::cancelSLIP39Session()",
+                  "brief": "Cancels the current active SLIP39 session (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function cancels open active SLIP39 sessions. For both generation and restore SLIP39 sessions.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "0 if successful on configuring the active group, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "genOverSightWallet",
+                  "id": "classzk_app_utils_1_1zk_class_1a9a5cd46173cdcbd018ec8672d7256110",
+                  "anchor": "zkAppUtils-zkClass-genOverSightWallet",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::genOverSightWallet(ZK_EC_KEY_TYPE type, byteArray &public_key, byteArray &chain_code, std::string &node_address, std::string &wallet_name, std::string &variant)",
+                  "brief": "Generate a oversight wallet from the last hardened node of a wallet node address (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function generates a new oversight wallet and are used to generate public keys in a deterministic way.",
+                  "params": [
+                    {
+                      "name": "type",
+                      "type": "ZK_EC_KEY_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "The type of key to generate (ZK_EC_KEY_TYPE). {ZK_NISTP256, ZK_SECP256R1 = ZK_NISTP256, ZK_SECP256K1, ZK_ED25519, ZK_X25519}",
+                      "supported": []
+                    },
+                    {
+                      "name": "public_key",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The public_key of the last hardened node of the address.",
+                      "supported": []
+                    },
+                    {
+                      "name": "chain_code",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The chain_code of the last hardened node of the address.",
+                      "supported": []
+                    },
+                    {
+                      "name": "node_address",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The node_address being derived from.",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "An ASCII string which contains the name of the wallet.",
+                      "supported": []
+                    },
+                    {
+                      "name": "variant",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The key type variant to generate. Currently only \"cardano\" for ed25519 is supported.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "The slot the oversight wallet was allocated to."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "genWalletChildKey",
+                  "id": "classzk_app_utils_1_1zk_class_1aa3a204a5d059bf18f7dda922767ee4ff",
+                  "anchor": "zkAppUtils-zkClass-genWalletChildKey",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::genWalletChildKey(int parent_key_slot, uint32_t index, bool is_hardened, bool return_chain_code, byteArray *chain_code)",
+                  "brief": "Generate child key from a parent key in a wallet (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function generates a new child key descendent from a specified parent key in a wallet.",
+                  "params": [
+                    {
+                      "name": "parent_key_slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The parent key slot to base the child key derivation on.",
+                      "supported": []
+                    },
+                    {
+                      "name": "index",
+                      "type": "uint32_t",
+                      "default": null,
+                      "direction": null,
+                      "description": "The index of the child seed. This determines the node address as well as the outcome of the key generation.",
+                      "supported": []
+                    },
+                    {
+                      "name": "is_hardened",
+                      "type": "bool",
+                      "default": null,
+                      "direction": null,
+                      "description": "If true, a hardened key is generated.",
+                      "supported": []
+                    },
+                    {
+                      "name": "return_chain_code",
+                      "type": "bool",
+                      "default": null,
+                      "direction": null,
+                      "description": "If true, exports the chain code. Must be exported from a hardened node.",
+                      "supported": []
+                    },
+                    {
+                      "name": "chain_code",
+                      "type": "byteArray *",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "(output)",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "Allocated chain_code if it was asked for.",
+                      "supported": [],
+                      "undeclared": true
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "Allocated slot number if successful, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "restoreWalletMasterSeedFromMnemonic",
+                  "id": "classzk_app_utils_1_1zk_class_1a528b0cec60d7b2a122fc59c8665437ad",
+                  "anchor": "zkAppUtils-zkClass-restoreWalletMasterSeedFromMnemonic",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::restoreWalletMasterSeedFromMnemonic(ZK_EC_KEY_TYPE type, std::string &wallet_name, byteArray &master_generator_key, recoveryStrategyBIP39 &recovery_strategy, std::string &mnemonic_str)",
+                  "brief": "Restore a master seed from a BIP39 mnemonic and a master generator key. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function restores a wallet master seed from a supplied BIP39 mnemonic string and a master generator key.",
+                  "params": [
+                    {
+                      "name": "type",
+                      "type": "ZK_EC_KEY_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "The type of key to generate (ZK_KEY_TYPE). {ZK_NISTP256, ZK_SECP256R1 = ZK_NISTP256, ZK_SECP256K1}",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "An ASCII string which contains the name of the wallet.",
+                      "supported": []
+                    },
+                    {
+                      "name": "master_generator_key",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The master generator key used to help generate the master seed.",
+                      "supported": []
+                    },
+                    {
+                      "name": "recovery_strategy",
+                      "type": "recoveryStrategyBIP39 &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The recovery strategy used. Contains the passphrases and key variant to recover from.",
+                      "supported": []
+                    },
+                    {
+                      "name": "mnemonic_str",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "The mnemonic sentence to recover the master seed with. (Not used for SLIP39)",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "Allocated slot number if successful, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "restoreWalletMasterSeedFromMnemonic",
+                  "id": "classzk_app_utils_1_1zk_class_1a276a007de13b1372718e00fefba393cb",
+                  "anchor": "zkAppUtils-zkClass-restoreWalletMasterSeedFromMnemonic-2",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::restoreWalletMasterSeedFromMnemonic(ZK_EC_KEY_TYPE type, std::string &wallet_name, byteArray &master_generator_key, recoveryStrategySLIP39 &recovery_strategy)",
+                  "brief": "",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "type",
+                      "type": "ZK_EC_KEY_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "master_generator_key",
+                      "type": "byteArray &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "recovery_strategy",
+                      "type": "recoveryStrategySLIP39 &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "addRestoreSLIP39Mnemonic",
+                  "id": "classzk_app_utils_1_1zk_class_1a48243e710fd42c4b73c73c69d074e61b",
+                  "anchor": "zkAppUtils-zkClass-addRestoreSLIP39Mnemonic",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::addRestoreSLIP39Mnemonic(std::string passphrase, std::string mnemonic_sentence)",
+                  "brief": "Feed a SLIP39 shard to restore a master seed (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This function will feed a shard to the module until the conditions are met and a master seed is generated.",
+                  "params": [
+                    {
+                      "name": "passphrase",
+                      "type": "std::string",
+                      "default": null,
+                      "direction": null,
+                      "description": "The passphrase that was attached to the shard.",
+                      "supported": []
+                    },
+                    {
+                      "name": "mnemonic_sentence",
+                      "type": "std::string",
+                      "default": null,
+                      "direction": null,
+                      "description": "(output) The twenty-four word sentence mnemonic shard.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "allocated slot number when all shards required are fed in, less than 0 for no change."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "getWalletNodeAddrFromKeySlot",
+                  "id": "classzk_app_utils_1_1zk_class_1a62bc7fcc98b1b71507a959451322fc31",
+                  "anchor": "zkAppUtils-zkClass-getWalletNodeAddrFromKeySlot",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::getWalletNodeAddrFromKeySlot(int slot, std::string *out_node_addr, std::string *out_wallet_name=NULL)",
+                  "brief": "Derive the node address from a key slot number. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function derives a node address from an input key slot number.",
+                  "params": [
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) A key slot number that is part of a digital wallet.",
+                      "supported": []
+                    },
+                    {
+                      "name": "out_node_addr",
+                      "type": "std::string *",
+                      "default": null,
+                      "direction": null,
+                      "description": "(output) A pointer to a string which will contain the node address in ASCII.",
+                      "supported": []
+                    },
+                    {
+                      "name": "out_wallet_name",
+                      "type": "std::string *",
+                      "default": "NULL",
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "(output) A pointer to a string which will contain the wallet name in ASCII. If NULL, this parameter will not be retrieved.",
+                      "supported": [],
+                      "undeclared": true
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "The master seed key slot."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "getWalletKeySlotFromNodeAddr",
+                  "id": "classzk_app_utils_1_1zk_class_1af955d4038166b61c98da8d6a03796f1c",
+                  "anchor": "zkAppUtils-zkClass-getWalletKeySlotFromNodeAddr",
+                  "protection": "public",
+                  "signature": "int zkAppUtils::zkClass::getWalletKeySlotFromNodeAddr(std::string &node_addr, std::string &wallet_name, int master_seed_slot)",
+                  "brief": "Derive the slot address from a node address. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function returns the slot number associated with a given node address.",
+                  "params": [
+                    {
+                      "name": "node_addr",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) A pointer which contains the node address in ASCII.",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "std::string &",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) A pointer which contains the wallet name in ASCII, used to identify the wallet identity. If desired, this parameter can be NULL and the master_seed_slot parameter can be specified instead.",
+                      "supported": []
+                    },
+                    {
+                      "name": "master_seed_slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The master seed slot. Can be used to specify the wallet identity instead of the wallet name.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "int",
+                      "description": "The associated key slot."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "LED Control",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "ledOff",
+                  "id": "classzk_app_utils_1_1zk_class_1a0071ea33df7fcddd04d53c1314d535c3",
+                  "anchor": "zkAppUtils-zkClass-ledOff",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::ledOff()",
+                  "brief": "Turn LED off.",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "ledOn",
+                  "id": "classzk_app_utils_1_1zk_class_1a8531fbc0c9c218131d8e583d5275c8c9",
+                  "anchor": "zkAppUtils-zkClass-ledOn",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::ledOn()",
+                  "brief": "Turn LED on.",
+                  "details": "",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "ledFlash",
+                  "id": "classzk_app_utils_1_1zk_class_1a40f09d223beda138c8cb94fb6104caca",
+                  "anchor": "zkAppUtils-zkClass-ledFlash",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::ledFlash(uint32_t on_ms, uint32_t off_ms=0, uint32_t num_flashes=0)",
+                  "brief": "Flash LED a certain number of times.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "on_ms",
+                      "type": "uint32_t",
+                      "default": null,
+                      "direction": null,
+                      "description": "Number of milliseconds that the LED will be on during a flash cycle",
+                      "supported": []
+                    },
+                    {
+                      "name": "off_ms",
+                      "type": "uint32_t",
+                      "default": "0",
+                      "direction": null,
+                      "description": "Number of milliseconds that the LED will be off during a flash cycle",
+                      "supported": []
+                    },
+                    {
+                      "name": "num_flashes",
+                      "type": "uint32_t",
+                      "default": "0",
+                      "direction": null,
+                      "description": "Number of flash cycles to execute. 0 = infinite.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            },
+            {
+              "title": "Administrative",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "setI2CAddr",
+                  "id": "classzk_app_utils_1_1zk_class_1acd808f1709fcc0a8cdda9de14763ff1b",
+                  "anchor": "zkAppUtils-zkClass-setI2CAddr",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setI2CAddr(int addr)",
+                  "brief": "Sets the i2c address (i2c versions only). Used in case of i2c bus device address conflict.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "addr",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The i2c address to set. Upon successful change, the Zymkey will reset itself. However, if the address is the same as the current setting, the Zymkey will not reset. Valid address ranges are 0x30 - 0x37 and 0x60 - 0x67.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            },
+            {
+              "title": "Time",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "getTime",
+                  "id": "classzk_app_utils_1_1zk_class_1ac31d4badb6328045e8cab672e3394018",
+                  "anchor": "zkAppUtils-zkClass-getTime",
+                  "protection": "public",
+                  "signature": "uint32_t zkAppUtils::zkClass::getTime(bool precise_time=false)",
+                  "brief": "Get current GMT time.",
+                  "details": "This method is called to get the time directly from a Zymkey's Real Time Clock (RTC)",
+                  "params": [
+                    {
+                      "name": "precise_time",
+                      "type": "bool",
+                      "default": "false",
+                      "direction": null,
+                      "description": "(input) If true, this API returns the time after the next second falls. This means that the caller could be blocked up to one second. If false, the API returns immediately with the current time reading.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "uint32_t",
+                      "description": "The time in seconds from the epoch (Jan. 1, 1970)."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            },
+            {
+              "title": "Accelerometer",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "setTapSensitivity",
+                  "id": "classzk_app_utils_1_1zk_class_1ac9d8a6cc388eaf2b37099929da776a59",
+                  "anchor": "zkAppUtils-zkClass-setTapSensitivity",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setTapSensitivity(float pct, ZK_ACCEL_AXIS_TYPE axis=ZK_ACCEL_AXIS_ALL)",
+                  "brief": "Sets the sensitivity of the tap detection as a percentage for an individual axis or all axes.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "pct",
+                      "type": "float",
+                      "default": null,
+                      "direction": null,
+                      "description": "Sensitivity expressed in percentage. 0% = off, 100% = maximum.",
+                      "supported": []
+                    },
+                    {
+                      "name": "axis",
+                      "type": "ZK_ACCEL_AXIS_TYPE",
+                      "default": "ZK_ACCEL_AXIS_ALL",
+                      "direction": null,
+                      "description": "X, Y, Z or all (default).",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "waitForTap",
+                  "id": "classzk_app_utils_1_1zk_class_1ab00515782c453df5103905b5058fc21f",
+                  "anchor": "zkAppUtils-zkClass-waitForTap",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::waitForTap(uint32_t timeout_ms)",
+                  "brief": "Wait for a tap event to be detected.",
+                  "details": "This function is called in order to wait for a tap event to occur. This function blocks the calling thread unless called with a timeout of zero.",
+                  "params": [
+                    {
+                      "name": "timeout_ms",
+                      "type": "uint32_t",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The maximum amount of time in milliseconds to wait for a tap event to arrive.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsTimeoutException",
+                      "description": "upon timeout or zkAppUtilsException upon other errors"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getAccelerometerData",
+                  "id": "classzk_app_utils_1_1zk_class_1ae9c5c2c67b60cea02fd13e5f545158a6",
+                  "anchor": "zkAppUtils-zkClass-getAccelerometerData",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::getAccelerometerData(accelData &accel_data)",
+                  "brief": "Get current accelerometer data and tap info.",
+                  "details": "This function gets the most recent accelerometer data in units of g forces plus the tap direction per axis. Array index 0 = x 1 = y 2 = z",
+                  "params": [
+                    {
+                      "name": "accel_data",
+                      "type": "accelData &",
+                      "default": null,
+                      "direction": null,
+                      "description": "(output) The current accelerometer data and tap information",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            },
+            {
+              "title": "Binding Management",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "lockBinding",
+                  "id": "classzk_app_utils_1_1zk_class_1a88a59ed6eca3f5bd83895d2fabac0000",
+                  "anchor": "zkAppUtils-zkClass-lockBinding",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::lockBinding()",
+                  "brief": "Set soft binding lock.",
+                  "details": "This function locks the binding for a specific HSM. This API is only valid for HSM series products.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getCurrentBindingInfo",
+                  "id": "classzk_app_utils_1_1zk_class_1a984102f5f0bfdd298db1fb67b1e2111e",
+                  "anchor": "zkAppUtils-zkClass-getCurrentBindingInfo",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::getCurrentBindingInfo(bool &binding_is_locked, bool &is_bound)",
+                  "brief": "Get current binding info.",
+                  "details": "This function gets the current binding lock state as well as the current binding state. This API is only valid for devices in the HSM family.",
+                  "params": [
+                    {
+                      "name": "binding_is_locked",
+                      "type": "bool &",
+                      "default": null,
+                      "direction": null,
+                      "description": "(output) Binary value which expresses the current binding lock state. is_bound (output) Binary value which expresses the current bind state.",
+                      "supported": []
+                    },
+                    {
+                      "name": "is_bound",
+                      "type": "bool &",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            },
+            {
+              "title": "Perimeter Detect",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "setPerimeterEventAction",
+                  "id": "classzk_app_utils_1_1zk_class_1a2bf03172ebb08f4b8aef9d2541545cdf",
+                  "anchor": "zkAppUtils-zkClass-setPerimeterEventAction",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setPerimeterEventAction(int channel, uint32_t action_flags)",
+                  "brief": "Set perimeter breach action.",
+                  "details": "This function specifies the action to take when a perimeter breach event occurs. The possible actions are any combination of:\n\n- Notify host\n- Zymkey self-destruct",
+                  "params": [
+                    {
+                      "name": "channel",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The channel (0 or 1) that the action flags will be applied to.",
+                      "supported": []
+                    },
+                    {
+                      "name": "action_flags",
+                      "type": "uint32_t",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The actions to apply to the perimeter event channel:\n\n- Notify (ZK_PERIMETER_EVENT_ACTION_NOTIFY)\n- Self-destruct (ZK_PERIMETER_EVENT_ACTION_SELF_DESTRUCT)",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "setDigitalPerimeterDetectLPPeriod",
+                  "id": "classzk_app_utils_1_1zk_class_1a435c6ceebccb97bcaf8316a853b0f220",
+                  "anchor": "zkAppUtils-zkClass-setDigitalPerimeterDetectLPPeriod",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setDigitalPerimeterDetectLPPeriod(int lp_period)",
+                  "brief": "Set the low power period (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This function sets low power period on the digital perimeter detect",
+                  "params": [
+                    {
+                      "name": "lp_period",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) low power period in microseconds",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": "void."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "setDigitalPerimeterDetectLPMaxBits",
+                  "id": "classzk_app_utils_1_1zk_class_1aa78c0fb85fefdf67ba5292024718bdcf",
+                  "anchor": "zkAppUtils-zkClass-setDigitalPerimeterDetectLPMaxBits",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setDigitalPerimeterDetectLPMaxBits(int max_num_bits)",
+                  "brief": "Set the low power max number of bits (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This function sets low power max number of bits on the digital perimeter detect",
+                  "params": [
+                    {
+                      "name": "max_num_bits",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) max number of bits",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": "void."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "setDigitalPerimeterDetectDelays",
+                  "id": "classzk_app_utils_1_1zk_class_1a21ffee7105f368c8f72d6fd36de577f4",
+                  "anchor": "zkAppUtils-zkClass-setDigitalPerimeterDetectDelays",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setDigitalPerimeterDetectDelays(int min_delay_ns, int max_delay_ns)",
+                  "brief": "Set the delays (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This function sets delays on the digital perimeter detect",
+                  "params": [
+                    {
+                      "name": "min_delay_ns",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) minimum delay in nanoseconds",
+                      "supported": []
+                    },
+                    {
+                      "name": "max_delay_ns",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) maximum delay in nanoseconds",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": "void."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "waitForPerimeterEvent",
+                  "id": "classzk_app_utils_1_1zk_class_1a0b2fcd99b282a30b779560375eb6e54f",
+                  "anchor": "zkAppUtils-zkClass-waitForPerimeterEvent",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::waitForPerimeterEvent(uint32_t timeout_ms)",
+                  "brief": "Wait for a perimeter breach event to be detected.",
+                  "details": "This function is called in order to wait for a perimeter breach event to occur. This function blocks the calling thread unless called with a timeout of zero. Note that, in order to receive perimeter events, the zymkey must have been configured to notify the host on either or both of the perimeter detect channels via a call to \"zkSetPerimeterEventAction\".",
+                  "params": [
+                    {
+                      "name": "timeout_ms",
+                      "type": "uint32_t",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The maximum amount of time in milliseconds to wait for a perimeter event to arrive.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getPerimeterDetectInfo",
+                  "id": "classzk_app_utils_1_1zk_class_1a57aa4d041fe70d3d2728b4de44d4e6eb",
+                  "anchor": "zkAppUtils-zkClass-getPerimeterDetectInfo",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::getPerimeterDetectInfo(uint32_t **timestamp_sec, int &num_timestamps)",
+                  "brief": "Get current perimeter detect info.",
+                  "details": "This function gets the timestamp of the first perimeter detect event for the given channel",
+                  "params": [
+                    {
+                      "name": "timestamp_sec",
+                      "type": "uint32_t **",
+                      "default": null,
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    },
+                    {
+                      "name": "num_timestamps",
+                      "type": "int &",
+                      "default": null,
+                      "direction": null,
+                      "description": "(output) The number of timestamps in the returned array",
+                      "supported": []
+                    },
+                    {
+                      "name": "timestamps_sec",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "(output) The timestamps for when any events occurred. The index in this array corresponds to the channel number used by zkSetPerimeterEventAction. A 0 value means no breach has occurred on this channel. This array is allocated by this routine and so it must be freed by the caller.",
+                      "supported": [],
+                      "undeclared": true
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "clearPerimeterDetectEvents",
+                  "id": "classzk_app_utils_1_1zk_class_1af94e6c0e537f18e320c65728764e5ca8",
+                  "anchor": "zkAppUtils-zkClass-clearPerimeterDetectEvents",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::clearPerimeterDetectEvents()",
+                  "brief": "Clear perimeter detect info.",
+                  "details": "This function clears all perimeter detect info and rearms all perimeter detect channels",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getModelNumberString",
+                  "id": "classzk_app_utils_1_1zk_class_1acf90dc47cc0664a1501d3c20a5d5ecad",
+                  "anchor": "zkAppUtils-zkClass-getModelNumberString",
+                  "protection": "public",
+                  "signature": "std::string * zkAppUtils::zkClass::getModelNumberString()",
+                  "brief": "Get Zymkey model number.",
+                  "details": "This function retrieves the model number of the zymkey referred to in a specified context",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "std::string *",
+                      "description": "A pointer to a string containing the Zymkey model number."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getFirmwareVersionString",
+                  "id": "classzk_app_utils_1_1zk_class_1a40b9a6c8fffc15e9aaecf2ae35547238",
+                  "anchor": "zkAppUtils-zkClass-getFirmwareVersionString",
+                  "protection": "public",
+                  "signature": "std::string * zkAppUtils::zkClass::getFirmwareVersionString()",
+                  "brief": "Get Zymkey firmware version.",
+                  "details": "This function retrieves the firmware version of the zymkey referred to in a specified context.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "std::string *",
+                      "description": "A pointer to a string containing the Zymkey firmware version."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getSerialNumberString",
+                  "id": "classzk_app_utils_1_1zk_class_1a544950c02c4aa8580beffc8c8c4a3d6c",
+                  "anchor": "zkAppUtils-zkClass-getSerialNumberString",
+                  "protection": "public",
+                  "signature": "std::string * zkAppUtils::zkClass::getSerialNumberString()",
+                  "brief": "Get Zymkey serial number.",
+                  "details": "This function retrieves the serial number of the zymkey referred to in a specified context.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "std::string *",
+                      "description": "A pointer to a string containing the Zymkey serial number."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            },
+            {
+              "title": "Module Info",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "getCPUTemp",
+                  "id": "classzk_app_utils_1_1zk_class_1a6956a4bedbe0baee05318807605dc674",
+                  "anchor": "zkAppUtils-zkClass-getCPUTemp",
+                  "protection": "public",
+                  "signature": "float zkAppUtils::zkClass::getCPUTemp()",
+                  "brief": "Get the CPU Temp. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function gets the current HSM CPU temp.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "float",
+                      "description": "The CPU temp as a float."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "getAUXTemp",
+                  "id": "classzk_app_utils_1_1zk_class_1a65b659edb8e402ab00b90177599220d5",
+                  "anchor": "zkAppUtils-zkClass-getAUXTemp",
+                  "protection": "public",
+                  "signature": "float zkAppUtils::zkClass::getAUXTemp(int index=0)",
+                  "brief": "Get the AUX Temp. (Secure Compute Modules Only)",
+                  "details": "This function gets the current temp of an aux processor. (defaults to 0). THIS FUNCTION IS FOR INTERNAL ZYMBIT USE ONLY.",
+                  "params": [
+                    {
+                      "name": "index",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "float",
+                      "description": "The CPU temp as a float."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "function",
+                  "name": "getRTCDrift",
+                  "id": "classzk_app_utils_1_1zk_class_1a2a9214bf2810417108ea300ff79b6d46",
+                  "anchor": "zkAppUtils-zkClass-getRTCDrift",
+                  "protection": "public",
+                  "signature": "float zkAppUtils::zkClass::getRTCDrift()",
+                  "brief": "Get the RTC drift. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function gets the current RTC drift.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "float",
+                      "description": "The RTC drift as a float."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "getBatteryVoltage",
+                  "id": "classzk_app_utils_1_1zk_class_1acaf94e9560d986f54750718ce6f12402",
+                  "anchor": "zkAppUtils-zkClass-getBatteryVoltage",
+                  "protection": "public",
+                  "signature": "float zkAppUtils::zkClass::getBatteryVoltage()",
+                  "brief": "Get the battery voltage(Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This function gets the current battery voltage",
+                  "params": [],
+                  "returns": [
+                    {
+                      "type": "float",
+                      "description": "the battery voltage as a float."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Battery Voltage Monitor",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "setBatteryVoltageAction",
+                  "id": "classzk_app_utils_1_1zk_class_1a374940c6de51d1a2bf9259d0542e0b0c",
+                  "anchor": "zkAppUtils-zkClass-setBatteryVoltageAction",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setBatteryVoltageAction(ZK_THRESHOLD_ACTION_TYPE action)",
+                  "brief": "Set battery voltage threshold action. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function specifies the action to take when the battery voltage falls below the threshold set by zkSetBatteryVoltageThreshold. If this function is never called, do nothing is default. There are three actions:\n\n- Do nothing\n- Go to sleep until battery is replaced\n- Self-destruct",
+                  "params": [
+                    {
+                      "name": "action",
+                      "type": "ZK_THRESHOLD_ACTION_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The action to apply, specify one of the ZK_THRESHOLD_ACTION_TYPE:\n\n- Do nothing (ZK_ACTION_NONE)\n- Sleep (ZK_ACTION_SLEEP)\n- Self-destruct (ZK_ACTION_SELF_DESTRUCT)",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "setBatteryVoltageThreshold",
+                  "id": "classzk_app_utils_1_1zk_class_1af48b1f11765f94cc8f707101f197eeb5",
+                  "anchor": "zkAppUtils-zkClass-setBatteryVoltageThreshold",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setBatteryVoltageThreshold(float threshold)",
+                  "brief": "Sets the battery voltage threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function sets the threshold at which if the battery voltage falls bellow, the action set by zkSetBatteryVoltageAction will be carried out. The recommended threshold is 2.3V is assumed by default. Threshold must be below 2.5V.",
+                  "params": [
+                    {
+                      "name": "threshold",
+                      "type": "float",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The threshold in Volts.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "CPU Temperature Monitor",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "setCPUTempAction",
+                  "id": "classzk_app_utils_1_1zk_class_1ada7ce931928fedde9cec5c15cb1d1d91",
+                  "anchor": "zkAppUtils-zkClass-setCPUTempAction",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setCPUTempAction(ZK_THRESHOLD_ACTION_TYPE action)",
+                  "brief": "Set HSM CPU temperature threshold action. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function specifies the action to take when the HSM CPU temperature falls below the threshold set by zkSetCPULowTempThreshold, or rises above the threshold set by zkSetCPUHighTempThreshold. There are two actions to apply:\n\n- Do nothing\n- Self-destruct",
+                  "params": [
+                    {
+                      "name": "action",
+                      "type": "ZK_THRESHOLD_ACTION_TYPE",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The action to apply, used it's named constant from ZK_THRESHOLD_ACTION_TYPE:\n\n- Do nothing (ZK_ACTION_NONE)\n- Self-destruct (ZK_ACTION_SELF_DESTRUCT)",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "setCPULowTempThreshold",
+                  "id": "classzk_app_utils_1_1zk_class_1aee3dcb54cfa647f1f51b81d539ceb1d6",
+                  "anchor": "zkAppUtils-zkClass-setCPULowTempThreshold",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setCPULowTempThreshold(float threshold)",
+                  "brief": "Sets the HSM CPU low temperature threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function sets the threshold at which if the on-board HSM CPU's tempreature falls below, the action set by zkSetCPUTempAction will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold above the CPU's ambient temperature. The recommended setting is no more than 20C. If no threshold is set, -10 degrees Celsius is set as default.",
+                  "params": [
+                    {
+                      "name": "threshold",
+                      "type": "float",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The threshold in celsius.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "zkAppUtilsException",
+                      "description": "upon error"
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "setCPUHighTempThreshold",
+                  "id": "classzk_app_utils_1_1zk_class_1a7ca53d9e747c76a88be85aad6ed60e3b",
+                  "anchor": "zkAppUtils-zkClass-setCPUHighTempThreshold",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setCPUHighTempThreshold(float threshold)",
+                  "brief": "Sets the HSM CPU high temperature threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function sets the threshold at which if the on-board HSM CPU's tempreature rises above, the action set by zkSetCPUTempAction will be carried out. WARNING: You can lock yourself out in dev mode if you set a threshold below the CPU's ambient temperature. The recommended setting is no less than 40C. If no threshold is set, 65 degrees celsius is set as default.",
+                  "params": [
+                    {
+                      "name": "threshold",
+                      "type": "float",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The threshold in celsius.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "setSupervisedBootPolicy",
+                  "id": "classzk_app_utils_1_1zk_class_1a3f0de0eee83e1ca06453bc44eaaa3e7c",
+                  "anchor": "zkAppUtils-zkClass-setSupervisedBootPolicy",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::setSupervisedBootPolicy(int policy_id)",
+                  "brief": "Sets the Supervised boot policy. (Supported Devices: Secure Compute Module)",
+                  "details": "This function specifies the action to take when Supervised boot event triggers based on a file change.",
+                  "params": [
+                    {
+                      "name": "policy_id",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The actions to apply to the Supervised boot process:\n\n- 0 Do Nothing (ZK_SUPBOOT_FAIL_NO_ACTION)\n- 1 Self-Destruct (ZK_SUPBOOT_FAIL_DESTROY)\n- 2 Hold Chip in Reset (ZK_SUPBOOT_FAIL_HOLD_RESET)",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "addOrUpdateSupervisedBootFile",
+                  "id": "classzk_app_utils_1_1zk_class_1a5eeea590e4d73911e87334a313590f9b",
+                  "anchor": "zkAppUtils-zkClass-addOrUpdateSupervisedBootFile",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::addOrUpdateSupervisedBootFile(std::string file_path, int slot=15)",
+                  "brief": "Update file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+                  "details": "This function adds or updates files to be checked by Supervised boot.",
+                  "params": [
+                    {
+                      "name": "file_path",
+                      "type": "std::string",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The file to be signed and checked by Supervised boot.",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "15",
+                      "direction": null,
+                      "description": "(input) The slot to sign the file with. Defaults to 15, if no slot 15, defaults to 0.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "removeSupervisedBootFile",
+                  "id": "classzk_app_utils_1_1zk_class_1a9115df2b0c1feae8708efad9481a2983",
+                  "anchor": "zkAppUtils-zkClass-removeSupervisedBootFile",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::removeSupervisedBootFile(std::string file_path)",
+                  "brief": "Remove a file from file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+                  "details": "This function removes a file to be checked by Supervised boot.",
+                  "params": [
+                    {
+                      "name": "file_path",
+                      "type": "std::string",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) The file to be removed from the Supervised boot manifest.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "function",
+                  "name": "getSupervisedBootFileManifest",
+                  "id": "classzk_app_utils_1_1zk_class_1a27fae03f85c47983ced41d8834ebf189",
+                  "anchor": "zkAppUtils-zkClass-getSupervisedBootFileManifest",
+                  "protection": "public",
+                  "signature": "std::string * zkAppUtils::zkClass::getSupervisedBootFileManifest()",
+                  "brief": "Get file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+                  "details": "This function gets the list of files to be checked by Supervised boot.",
+                  "params": [
+                    {
+                      "name": "manifest",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "(output) The file manifest that is checked by Supervised boot.",
+                      "supported": [],
+                      "undeclared": true
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "std::string *",
+                      "description": "a string for the list of files in the manifest."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "Secure Compute Module"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Public Functions",
+              "description": "",
+              "items": [
+                {
+                  "kind": "function",
+                  "name": "enableSelfRestart",
+                  "id": "classzk_app_utils_1_1zk_class_1a70126fc94e512ff0562013c9717b9b5e",
+                  "anchor": "zkAppUtils-zkClass-enableSelfRestart",
+                  "protection": "public",
+                  "signature": "void zkAppUtils::zkClass::enableSelfRestart(bool enabled, int waitSec, int maxNumRestart)",
+                  "brief": "Enables automatic restart of zkifc/zymbit device (in case of fatal error).",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "enabled",
+                      "type": "bool",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) Enable/disable.",
+                      "supported": []
+                    },
+                    {
+                      "name": "waitSec",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) Time in seconds to wait before attempting restart.",
+                      "supported": []
+                    },
+                    {
+                      "name": "maxNumRestart",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "(input) Maximum number of restarts to attempt.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "type": "void",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "commonException",
+                      "description": "upon error."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            }
+          ],
+          "supported": [],
+          "notes": []
+        }
+      ]
+    }
+  ]
+}

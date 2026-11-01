@@ -1,0 +1,16 @@
+{{/*
+    The API reference data for a page: data/api/<path>.json, where <path> is the
+    page's `api` front matter value, e.g. `api: zkapputilslib/c` reads
+    data/api/zkapputilslib/c.json. The JSON is written by Zymbit-Docs/api-extractor.
+
+    A missing file or an unknown schema fails the build rather than rendering an
+    empty page.
+*/}}
+{{- $data := index site.Data.api (split .Params.api "/") -}}
+{{- if not $data -}}
+  {{- errorf "%s sets api: %q, but data/api/%s.json does not exist" .File.Path .Params.api .Params.api -}}
+{{- end -}}
+{{- if ne (int $data.schema) 1 -}}
+  {{- errorf "data/api/%s.json has schema %v; these templates render schema 1" .Params.api $data.schema -}}
+{{- end -}}
+{{- return $data -}}

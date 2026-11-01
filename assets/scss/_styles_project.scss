@@ -4,3 +4,130 @@
 .td-sidebar-nav .td-sidebar-link {
     width: 100%;
 }
+
+// API reference pages (layouts/docs/api-reference.html, partials/api/).
+.api-reference {
+    .api-source {
+        color: $gray-600;
+        font-size: $font-size-sm;
+    }
+
+    .api-group {
+        margin-top: 3rem;
+    }
+
+    .api-item {
+        border-top: 1px solid $gray-300;
+        margin-top: 2rem;
+        padding-top: 1rem;
+
+        .highlight {
+            margin: 0.5rem 0 1rem;
+        }
+
+        .highlight pre {
+            white-space: pre-wrap;
+        }
+    }
+
+    .api-name {
+        font-size: $font-size-base * 1.25;
+
+        code {
+            background: none;
+            color: inherit;
+            font-size: inherit;
+            padding: 0;
+        }
+    }
+
+    .api-kind {
+        color: $gray-600;
+        font-size: $font-size-sm;
+        font-weight: normal;
+        margin-left: 0.5rem;
+    }
+
+    .api-subhead,
+    .api-group-title {
+        font-size: $font-size-base;
+        font-weight: bold;
+        margin-top: 1.25rem;
+    }
+
+    .api-group-title {
+        font-size: $font-size-base * 1.15;
+        margin-top: 2rem;
+    }
+
+    .api-params {
+        dt {
+            font-weight: normal;
+            margin-top: 0.5rem;
+        }
+
+        dd {
+            margin-left: 1.5rem;
+
+            p:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .api-type,
+    .api-dir,
+    .api-default {
+        color: $gray-600;
+        font-size: $font-size-sm;
+        margin-left: 0.25rem;
+    }
+
+    .api-flag {
+        background: $warning;
+        border-radius: 0.25rem;
+        font-size: $font-size-sm;
+        margin-left: 0.5rem;
+        padding: 0 0.35rem;
+    }
+
+    .api-devices {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin: 0.5rem 0;
+    }
+
+    .api-devices-label {
+        color: $gray-600;
+        font-size: $font-size-sm;
+    }
+
+    .api-device {
+        border: 1px solid $primary;
+        border-radius: 1rem;
+        color: $primary;
+        font-size: $font-size-sm;
+        line-height: 1.5;
+        padding: 0 0.6rem;
+    }
+
+    a.api-device:hover {
+        background: $primary;
+        color: $white;
+        text-decoration: none;
+    }
+
+    .api-note {
+        margin: 1rem 0;
+
+        p {
+            display: inline;
+        }
+    }
+}
+
+.api-toc ul ul ul {
+    font-size: 0.9em;
+}

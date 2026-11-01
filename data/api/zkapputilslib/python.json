@@ -1,0 +1,2923 @@
+{
+  "schema": 1,
+  "language": "python",
+  "source": {
+    "repo": "zkapputilslib",
+    "version": "1.2.0-11",
+    "commit": "c9b56b9"
+  },
+  "module": "zymkey",
+  "brief": "Python interface module to Zymkey Application Utilities Library.",
+  "intro": "This file contains a Python class which interfaces to the the Zymkey\nApplication Utilities library. Systems intending to run such applications\nrequire that the `python3-zku` package be installed.\n\nThis class facilitates writing userspace applications which use Zymkey to\nperform cryptographic operations, such as:\n\n1. Signing of payloads using ECDSA\n2. Verification of payloads that were signed using Zymkey\n3. Exporting the public key that matches Zymkey's private key\n4. \"Locking\" and \"unlocking\" data objects\n5. Generating random data\n\nAdditionally, there are methods for changing the i2c address (i2c units\nonly), setting tap sensitivity, and controlling the LED.",
+  "meta": {},
+  "notes": [],
+  "groups": [
+    {
+      "title": "Classes",
+      "description": "",
+      "items": [
+        {
+          "kind": "class",
+          "name": "Zymkey",
+          "id": "zymkey.Zymkey",
+          "anchor": "Zymkey",
+          "protection": "public",
+          "signature": "class Zymkey()",
+          "brief": "The Zymkey class definition.",
+          "details": "This class provides access to the Zymkey within Python.",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": [],
+          "bases": [
+            "object"
+          ],
+          "groups": [
+            {
+              "title": "Attributes",
+              "description": "",
+              "items": [
+                {
+                  "kind": "attribute",
+                  "name": "EPHEMERAL_KEY_SLOT",
+                  "id": "zymkey.Zymkey.EPHEMERAL_KEY_SLOT",
+                  "anchor": "Zymkey-EPHEMERAL-KEY-SLOT",
+                  "protection": "public",
+                  "signature": "EPHEMERAL_KEY_SLOT = -1",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "type": "",
+                  "value": "-1"
+                }
+              ]
+            },
+            {
+              "title": "Methods",
+              "description": "",
+              "items": [
+                {
+                  "kind": "method",
+                  "name": "__init__",
+                  "id": "zymkey.Zymkey.__init__",
+                  "anchor": "Zymkey-init",
+                  "protection": "public",
+                  "signature": "def __init__()",
+                  "brief": "Initialize an instance of a Zymkey context.",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "led_on",
+                  "id": "zymkey.Zymkey.led_on",
+                  "anchor": "Zymkey-led-on",
+                  "protection": "public",
+                  "signature": "def led_on() -> None",
+                  "brief": "Turn the LED on.",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "led_off",
+                  "id": "zymkey.Zymkey.led_off",
+                  "anchor": "Zymkey-led-off",
+                  "protection": "public",
+                  "signature": "def led_off() -> None",
+                  "brief": "Turn the LED off.",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "led_flash",
+                  "id": "zymkey.Zymkey.led_flash",
+                  "anchor": "Zymkey-led-flash",
+                  "protection": "public",
+                  "signature": "def led_flash(on_ms: int, off_ms: int = 0, num_flashes: int = 0) -> None",
+                  "brief": "Flash the LED.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "on_ms",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The amount of time in milliseconds that the LED will be on for.",
+                      "supported": []
+                    },
+                    {
+                      "name": "off_ms",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The amount of time in milliseconds that the LED will be off for. If\nthis parameter is set to 0 (default), the off time is the same as\nthe on time.",
+                      "supported": []
+                    },
+                    {
+                      "name": "num_flashes",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The number of on/off cycles to execute. If this parameter is set\nto 0 (default), the LED flashes indefinitely.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_random",
+                  "id": "zymkey.Zymkey.get_random",
+                  "anchor": "Zymkey-get-random",
+                  "protection": "public",
+                  "signature": "def get_random(num_bytes: int) -> bytearray",
+                  "brief": "Get some random bytes.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "num_bytes",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The number of random bytes to get.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "bytearray",
+                      "description": "An array of bytes returned by the random number generator."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "create_random_file",
+                  "id": "zymkey.Zymkey.create_random_file",
+                  "anchor": "Zymkey-create-random-file",
+                  "protection": "public",
+                  "signature": "def create_random_file(file_path: str, num_bytes: int) -> None",
+                  "brief": "Deposit random data in a file.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "file_path",
+                      "type": "str",
+                      "default": null,
+                      "direction": null,
+                      "description": "The absolute path name for the destination file.",
+                      "supported": []
+                    },
+                    {
+                      "name": "num_bytes",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The number of random bytes to get.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "lock",
+                  "id": "zymkey.Zymkey.lock",
+                  "anchor": "Zymkey-lock",
+                  "protection": "public",
+                  "signature": "def lock(src: t.Union[str, bytes], dst: t.Optional[str] = None, encryption_key: str = ZYMKEY_ENCRYPTION_KEY) -> t.Union[None, bytearray]",
+                  "brief": "Lock up source (plaintext) data.",
+                  "details": "This methods encrypts and signs a block of data.\n\nThe Zymkey that can be used for locking/unlocking operations\n\n1. The one-way key is meant to lock up data only on the local host\n   computer. Data encrypted using this key cannot be exported and\n   deciphered anywhere else.",
+                  "params": [
+                    {
+                      "name": "src",
+                      "type": "t.Union[str, bytes]",
+                      "default": null,
+                      "direction": null,
+                      "description": "The source (plaintext) data to lock.\n\nIf a `str` is passed to this method, the value is assumed to be\nthe absolute path to the location of the source file. If `bytes`\nor `bytesarray` is passed, it is assumed to contain binary data.",
+                      "supported": []
+                    },
+                    {
+                      "name": "dst",
+                      "type": "t.Optional[str]",
+                      "default": "None",
+                      "direction": null,
+                      "description": "The destination (ciphertext) of the locked data.\n\nIf a `str` is passed to this method, the value is assumed to be\nthe absolute path to the location of the file where the destination\ndata is meant to be written. Otherwise, if `None` is passed to the\nmethod (the default), the locked data is returned from the method\nas a bytearray.",
+                      "supported": []
+                    },
+                    {
+                      "name": "encryption_key",
+                      "type": "str",
+                      "default": "ZYMKEY_ENCRYPTION_KEY",
+                      "direction": null,
+                      "description": "This specifies which key will be used to lock the data. A value of\n'zymbit' (default) specifies that the Zymkey will use the one-way\nkey.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "t.Union[None, bytearray]",
+                      "description": "The locked data is returned as a bytearray if no destination is\nspecified when this method is called. Otherwise, `None` is returned.",
+                      "doc_type": "bytearray or None"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "unlock",
+                  "id": "zymkey.Zymkey.unlock",
+                  "anchor": "Zymkey-unlock",
+                  "protection": "public",
+                  "signature": "def unlock(src: t.Union[str, bytes], dst: t.Optional[str] = None, encryption_key: str = ZYMKEY_ENCRYPTION_KEY, raise_exception: bool = True) -> t.Union[None, bytearray, t.NoReturn]",
+                  "brief": "Unlock source (ciphertext) data.",
+                  "details": "This method verifies a locked object signature and decrypts the\nassociated ciphertext data.\n\nThe Zymkey has two keys that can be used for locking/unlocking operations\n\n1. The one-way key is meant to lock up data only on the local host\n   computer. Data encrypted using this key cannot be exported and\n   deciphered anywhere else.",
+                  "params": [
+                    {
+                      "name": "src",
+                      "type": "t.Union[str, bytes]",
+                      "default": null,
+                      "direction": null,
+                      "description": "The source (ciphertext) data to verify and decrypt.\n\nIf a `str` is passed to this method, the value is assumed to be\nthe absolute path to the location of the source file. If `bytes`\nor `bytesarray` is passed, it is assumed to contain binary data.",
+                      "supported": []
+                    },
+                    {
+                      "name": "dst",
+                      "type": "t.Optional[str]",
+                      "default": "None",
+                      "direction": null,
+                      "description": "The destination of the decrypted data (plaintext).\n\nIf a `str` is passed to this method, the value is assumed to be\nthe absolute path to the location of the file where the destination\ndata is meant to be written. Otherwise, if `None` is passed to the\nmethod (the default), the locked data is returned from the method\nas a bytearray.",
+                      "supported": []
+                    },
+                    {
+                      "name": "encryption_key",
+                      "type": "str",
+                      "default": "ZYMKEY_ENCRYPTION_KEY",
+                      "direction": null,
+                      "description": "This specifies which key will be used to lock the data. A value of\n'zymbit' (default) specifies that the Zymkey will use the one-way\nkey.",
+                      "supported": []
+                    },
+                    {
+                      "name": "raise_exception",
+                      "type": "bool",
+                      "default": "True",
+                      "direction": null,
+                      "description": "Specifies if an exception should be raised if the signature verification\nof the locked object fails.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "t.Union[None, bytearray, t.NoReturn]",
+                      "description": "The locked data is returned as a bytearray if no destination is\nspecified when this method is called. Otherwise, `None` is returned.",
+                      "doc_type": "bytearray or None"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "sign",
+                  "id": "zymkey.Zymkey.sign",
+                  "anchor": "Zymkey-sign",
+                  "protection": "public",
+                  "signature": "def sign(src: t.Union[str, bytes, bytearray], slot: int = 0, return_recid: bool = False, encoding: str = 'utf-8', digest: t.Any = None) -> bytearray",
+                  "brief": "Generate a signature using the Zymkey's ECDSA private key.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "src",
+                      "type": "t.Union[str, bytes, bytearray]",
+                      "default": null,
+                      "direction": null,
+                      "description": "The SHA256 digest of the data that will be used to generate the signature.",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot used for signing. \\[ZYMKEY5, HSM60, HSM64, HSM6\\] Slot can't contain a X25519 key pair",
+                      "supported": []
+                    },
+                    {
+                      "name": "return_recid",
+                      "type": "bool",
+                      "default": "False",
+                      "direction": null,
+                      "description": "This parameter asks for the y parity to be returned.",
+                      "supported": []
+                    },
+                    {
+                      "name": "encoding",
+                      "type": "str",
+                      "default": "'utf-8'",
+                      "direction": null,
+                      "description": "This parameter asks for the encoding for the string source.",
+                      "supported": []
+                    },
+                    {
+                      "name": "digest",
+                      "type": "t.Any",
+                      "default": "None",
+                      "direction": null,
+                      "description": "This parameter asks for the type of hash. Can be None. Defaults to sha256.",
+                      "supported": [],
+                      "doc_type": "_hashlib.HASH"
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "bytearray",
+                      "description": "A bytearray of the signature."
+                    },
+                    {
+                      "name": null,
+                      "type": "int",
+                      "description": "If return_recid = True, then return the y parity of the signature (either a 1 or 0)."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [
+                    {
+                      "kind": "todo",
+                      "text": "Allow for overloading of source parameter in similar fashion to lock/unlock."
+                    }
+                  ],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "sign_digest",
+                  "id": "zymkey.Zymkey.sign_digest",
+                  "anchor": "Zymkey-sign-digest",
+                  "protection": "public",
+                  "signature": "def sign_digest(digest: t.Any, slot: int = 0, return_recid: bool = False) -> bytearray",
+                  "brief": "Generate a signature using the Zymkey's ECDSA private key.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "digest",
+                      "type": "t.Any",
+                      "default": null,
+                      "direction": null,
+                      "description": "A encoded str instance representing the digest to be signed.",
+                      "supported": [],
+                      "doc_type": "_hashlib.HASH"
+                    },
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "This parameter specifies the key slot used for signing. \\[ZYMKEY5, HSM60, HSM64, HSM6\\] Slot can't contain a X25519 key pair",
+                      "supported": []
+                    },
+                    {
+                      "name": "return_recid",
+                      "type": "bool",
+                      "default": "False",
+                      "direction": null,
+                      "description": "This parameter asks for the y parity to be returned.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "bytearray",
+                      "description": "The signature of the SHA-256 digest passed to this method."
+                    },
+                    {
+                      "name": null,
+                      "type": "int",
+                      "description": "If return_recid = True, then return the y parity of the signature (either a 1 or 0)."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [
+                    {
+                      "kind": "todo",
+                      "text": "Allow for overloading of source parameter in similar fashion to lock/unlockData."
+                    }
+                  ],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "verify",
+                  "id": "zymkey.Zymkey.verify",
+                  "anchor": "Zymkey-verify",
+                  "protection": "public",
+                  "signature": "def verify(src: t.Union[str, bytes, bytearray], sig: bytearray, raise_exception: bool = True, pubkey_slot: int = 0, foreign: bool = False, encoding: str = 'utf-8', digest: t.Any = None) -> bool",
+                  "brief": "Verify data against a signature.",
+                  "details": "The public key is not specified in the parameter list to ensure\nthat the public key that matches the Zymkey's ECDSA private key\nis used.",
+                  "params": [
+                    {
+                      "name": "src",
+                      "type": "t.Union[str, bytes, bytearray]",
+                      "default": null,
+                      "direction": null,
+                      "description": "The buffer to verify.",
+                      "supported": [],
+                      "doc_type": "TYPE"
+                    },
+                    {
+                      "name": "sig",
+                      "type": "bytearray",
+                      "default": null,
+                      "direction": null,
+                      "description": "The signature to verify against.",
+                      "supported": [],
+                      "doc_type": "TYPE"
+                    },
+                    {
+                      "name": "raise_exception",
+                      "type": "bool",
+                      "default": "True",
+                      "direction": null,
+                      "description": "By default, when verification fails a `VerificationError` will be\nraised, unless this is set to `False`.",
+                      "supported": []
+                    },
+                    {
+                      "name": "pubkey_slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot to use to verify the signature against. Defaults to the\nfirst key slot.",
+                      "supported": []
+                    },
+                    {
+                      "name": "foreign",
+                      "type": "bool",
+                      "default": "False",
+                      "direction": null,
+                      "description": "If false, the normal key store is referenced. Otherwise, the foreign\npublic key store is referenced.\n**Note:** This parameter is only applicable for Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module.",
+                      "supported": [
+                        "ZYMKEY5",
+                        "HSM60",
+                        "HSM64",
+                        "HSM6",
+                        "Secure Compute Module"
+                      ]
+                    },
+                    {
+                      "name": "encoding",
+                      "type": "str",
+                      "default": "'utf-8'",
+                      "direction": null,
+                      "description": "This parameter asks for the encoding for the string source.",
+                      "supported": []
+                    },
+                    {
+                      "name": "digest",
+                      "type": "t.Any",
+                      "default": "None",
+                      "direction": null,
+                      "description": "This parameter asks for the type of hash. Can be None. Defaults to sha256.",
+                      "supported": [],
+                      "doc_type": "_hashlib.HASH"
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "bool",
+                      "description": "Returns `True` for a good verification or `False` for a bad\nverification when the `raise_exception` parameters is `False`."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "verify_digest",
+                  "id": "zymkey.Zymkey.verify_digest",
+                  "anchor": "Zymkey-verify-digest",
+                  "protection": "public",
+                  "signature": "def verify_digest(digest: t.Any, sig: bytearray, raise_exception: bool = True, pubkey_slot: int = 0, foreign: bool = False) -> bool",
+                  "brief": "Verify a signature using the Zymkey's ECDSA public key.",
+                  "details": "The public key is not specified in the parameter list to ensure\nthat the public key that matches the Zymkey's ECDSA private key\nis used.",
+                  "params": [
+                    {
+                      "name": "digest",
+                      "type": "t.Any",
+                      "default": null,
+                      "direction": null,
+                      "description": "A hashlib instance that will be used to generate the signature.",
+                      "supported": [],
+                      "doc_type": "TYPE"
+                    },
+                    {
+                      "name": "sig",
+                      "type": "bytearray",
+                      "default": null,
+                      "direction": null,
+                      "description": "The signature to verify.",
+                      "supported": [],
+                      "doc_type": "TYPE"
+                    },
+                    {
+                      "name": "raise_exception",
+                      "type": "bool",
+                      "default": "True",
+                      "direction": null,
+                      "description": "By default, when verification fails, a `VerificationError` will be\nraised, unless this is set to `False`.",
+                      "supported": []
+                    },
+                    {
+                      "name": "pubkey_slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot to use to verify the signature against. Defaults to\nthe first key slot.",
+                      "supported": []
+                    },
+                    {
+                      "name": "foreign",
+                      "type": "bool",
+                      "default": "False",
+                      "direction": null,
+                      "description": "If false, the normal key store is referenced. Otherwise, the foreign\npublic key store is referenced.\n**Note:** This parameter is only applicable for Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module.",
+                      "supported": [
+                        "ZYMKEY5",
+                        "HSM60",
+                        "HSM64",
+                        "HSM6",
+                        "Secure Compute Module"
+                      ]
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "bool",
+                      "description": "Returns `True` for a good verification or `False` for a bad\nverification when `raise_exception` is `False`."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "ecdh",
+                  "id": "zymkey.Zymkey.ecdh",
+                  "anchor": "Zymkey-ecdh",
+                  "protection": "public",
+                  "signature": "def ecdh(local_slot: int, peer_pubkey: t.Union[t.List[bytes], int], kdf_func_type: str = 'none', salt: t.Optional[t.List[bytes]] = [], info: t.Optional[t.List[bytes]] = [], num_iterations: int = 1, peer_pubkey_slot_is_foreign: bool = True, derived_key_size: bool = 32) -> bytearray",
+                  "brief": "Derive a key or a pre-master secret from an ECDH operation. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "local_slot",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The local key slot to use.",
+                      "supported": []
+                    },
+                    {
+                      "name": "peer_pubkey",
+                      "type": "t.Union[t.List[bytes], int]",
+                      "default": null,
+                      "direction": null,
+                      "description": "The public key of the peer used to generate the pre-master secret\nagainst the private key located in `local_slot`. This parameter can\nbe a list of `bytes` if the key is provided explicitly or an `int`\nif it refers to a key slot.",
+                      "supported": []
+                    },
+                    {
+                      "name": "kdf_func_type",
+                      "type": "str",
+                      "default": "'none'",
+                      "direction": null,
+                      "description": "Specifies the KDF (Key Derivation Function) to use\nfor the returned derived key. Valid values are:\n\n* `\"none\"`: just return the pre-master secret. NOTE: The raw pre-master\n  secret should not be used as a derived key should be put through a\n  suitable KDF. Use 'none' when it is desired to use a different KDF\n  than what is offered by this method.\n* `\"rfc5869-sha256\"`: RFC5869 with SHA256\n* `\"rfc5869-sha512\"`: RFC5869 with SHA512\n* `\"pbkdf2-sha256\"`: PBKDF2 with SHA256\n* `\"pbkdf2-sha512\"`: PBKDF2 with SHA512",
+                      "supported": []
+                    },
+                    {
+                      "name": "salt",
+                      "type": "t.Optional[t.List[bytes]]",
+                      "default": "[]",
+                      "direction": null,
+                      "description": "A unique identifier for KDF. Ignored for `kdf_func_type='none'`.",
+                      "supported": []
+                    },
+                    {
+                      "name": "info",
+                      "type": "t.Optional[t.List[bytes]]",
+                      "default": "[]",
+                      "direction": null,
+                      "description": "A unique field for rfc5869. Ignore for other KDF types.",
+                      "supported": []
+                    },
+                    {
+                      "name": "num_iterations",
+                      "type": "int",
+                      "default": "1",
+                      "direction": null,
+                      "description": "The number of iterations that the KDF should complete.",
+                      "supported": []
+                    },
+                    {
+                      "name": "peer_pubkey_slot_is_foreign",
+                      "type": "bool",
+                      "default": "True",
+                      "direction": null,
+                      "description": "TODO_DESCRIPTION",
+                      "supported": []
+                    },
+                    {
+                      "name": "derived_key_size",
+                      "type": "bool",
+                      "default": "32",
+                      "direction": null,
+                      "description": "TODO_DESCRIPTION",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "bytearray",
+                      "description": "The computed signature."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [
+                    {
+                      "kind": "todo",
+                      "text": "Allow for overloading of source parameter in similar fashion to lock/unlockData."
+                    }
+                  ],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "create_ecdsa_public_key_file",
+                  "id": "zymkey.Zymkey.create_ecdsa_public_key_file",
+                  "anchor": "Zymkey-create-ecdsa-public-key-file",
+                  "protection": "public",
+                  "signature": "def create_ecdsa_public_key_file(filename: str, slot: int = 0) -> None",
+                  "brief": "Create a file with the PEM-formatted ECDSA public key.",
+                  "details": "**\\[DEPRECATED\\]:** Use `create_public_key_file` instead.\n\nThis method is useful for generating a Certificate Signing Request.",
+                  "params": [
+                    {
+                      "name": "filename",
+                      "type": "str",
+                      "default": null,
+                      "direction": null,
+                      "description": "The absolute file path where the public key will be stored in PEM format.",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot for the public key.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "create_public_key_file",
+                  "id": "zymkey.Zymkey.create_public_key_file",
+                  "anchor": "Zymkey-create-public-key-file",
+                  "protection": "public",
+                  "signature": "def create_public_key_file(filename: str, slot: int = 0, foreign: bool = False) -> None",
+                  "brief": "Create a file with the PEM-formatted public key.",
+                  "details": "This method is useful for generating a Certificate Signing Request.",
+                  "params": [
+                    {
+                      "name": "filename",
+                      "type": "str",
+                      "default": null,
+                      "direction": null,
+                      "description": "The absolute file path where the public key will be stored in PEM format.",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot for the public key.",
+                      "supported": []
+                    },
+                    {
+                      "name": "foreign",
+                      "type": "bool",
+                      "default": "False",
+                      "direction": null,
+                      "description": "If `True`, designates the pubkey slot to come from the foreign keystore (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                      "supported": [
+                        "ZYMKEY5",
+                        "HSM60",
+                        "HSM64",
+                        "HSM6",
+                        "Secure Compute Module"
+                      ]
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "None",
+                      "description": "0 for success, less than 0 for failure.",
+                      "doc_type": "TYPE"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_ecdsa_public_key",
+                  "id": "zymkey.Zymkey.get_ecdsa_public_key",
+                  "anchor": "Zymkey-get-ecdsa-public-key",
+                  "protection": "public",
+                  "signature": "def get_ecdsa_public_key(slot: int = 0) -> bytearray",
+                  "brief": "Retrieves the ECDSA public key as a binary bytearray.",
+                  "details": "**\\[DEPRECATED\\]:** Use `get_public_key` instead.\n\nThis method is used to retrieve the public key in binary form.",
+                  "params": [
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot for the public key.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "bytearray",
+                      "description": "The public key in binary form."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_public_key",
+                  "id": "zymkey.Zymkey.get_public_key",
+                  "anchor": "Zymkey-get-public-key",
+                  "protection": "public",
+                  "signature": "def get_public_key(slot: int = 0, foreign: bool = False)",
+                  "brief": "Retrieves a public key as a binary bytearray.",
+                  "details": "This method is used to retrieve the public key in binary form.",
+                  "params": [
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The key slot for the public key. Zymkey and HSM4 have slots 0, 1, and 2.",
+                      "supported": []
+                    },
+                    {
+                      "name": "foreign",
+                      "type": "bool",
+                      "default": "False",
+                      "direction": null,
+                      "description": "If `True`, designates the pubkey slot to come from the foreign keystore (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                      "supported": [
+                        "ZYMKEY5",
+                        "HSM60",
+                        "HSM64",
+                        "HSM6",
+                        "Secure Compute Module"
+                      ]
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "bytearray",
+                      "description": "The public key in binary form."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_slot_alloc_list",
+                  "id": "zymkey.Zymkey.get_slot_alloc_list",
+                  "anchor": "Zymkey-get-slot-alloc-list",
+                  "protection": "public",
+                  "signature": "def get_slot_alloc_list(foreign: bool = False) -> t.Tuple[list, int]",
+                  "brief": "Get a list of the allocated slots in the key store (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method gets a list of the allocated slots in the key store.",
+                  "params": [
+                    {
+                      "name": "foreign",
+                      "type": "bool",
+                      "default": "False",
+                      "direction": null,
+                      "description": "If `True`, designates the pubkey slot to come from the foreign keystore (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                      "supported": [
+                        "ZYMKEY5",
+                        "HSM60",
+                        "HSM64",
+                        "HSM6",
+                        "Secure Compute Module"
+                      ]
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "t.Tuple[list, int]",
+                      "description": "The allocation list and the maximum number of keys"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "store_foreign_public_key",
+                  "id": "zymkey.Zymkey.store_foreign_public_key",
+                  "anchor": "Zymkey-store-foreign-public-key",
+                  "protection": "public",
+                  "signature": "def store_foreign_public_key(key_type: str, pubkey: bytearray) -> int",
+                  "brief": "Stores a foreign public key on the Zymkey foreign keyring (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method stores a foreign public key onto the Zymkey foreign public keyring.",
+                  "params": [
+                    {
+                      "name": "key_type",
+                      "type": "str",
+                      "default": null,
+                      "direction": null,
+                      "description": "The EC curve type that should be associated with the public key.",
+                      "supported": [],
+                      "doc_type": "TYPE"
+                    },
+                    {
+                      "name": "pubkey",
+                      "type": "bytearray",
+                      "default": null,
+                      "direction": null,
+                      "description": "The public key binary data.",
+                      "supported": [],
+                      "doc_type": "TYPE"
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "int",
+                      "description": "The slot allocated to the key, or less than one for failure."
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "disable_public_key_export",
+                  "id": "zymkey.Zymkey.disable_public_key_export",
+                  "anchor": "Zymkey-disable-public-key-export",
+                  "protection": "public",
+                  "signature": "def disable_public_key_export(slot=0, foreign=False)",
+                  "brief": "Disable exporting of a public key at a given slot (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method permanently disables exporting a public key from a\ngiven slot.",
+                  "params": [
+                    {
+                      "name": "slot",
+                      "type": "",
+                      "default": "0",
+                      "direction": null,
+                      "description": "This parameter specifies the key slot for the public key.",
+                      "supported": []
+                    },
+                    {
+                      "name": "foreign",
+                      "type": "",
+                      "default": "False",
+                      "direction": null,
+                      "description": "If true, the slot refers to the foreign public keyring.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "gen_key_pair",
+                  "id": "zymkey.Zymkey.gen_key_pair",
+                  "anchor": "Zymkey-gen-key-pair",
+                  "protection": "public",
+                  "signature": "def gen_key_pair(key_type)",
+                  "brief": "Generate a new key pair (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method generates a new key pair of the specified type.",
+                  "params": [
+                    {
+                      "name": "key_type",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "This parameter indicates the EC curve type that should be\nassociated with the new key pair.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "the slot allocated to the key or less than one for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "gen_ephemeral_key_pair",
+                  "id": "zymkey.Zymkey.gen_ephemeral_key_pair",
+                  "anchor": "Zymkey-gen-ephemeral-key-pair",
+                  "protection": "public",
+                  "signature": "def gen_ephemeral_key_pair(key_type)",
+                  "brief": "Generate a new ephemeral key pair (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method generates a new ephemeral key pair of the specified\ntype, overwriting the previous ephemeral key pair.",
+                  "params": [
+                    {
+                      "name": "key_type",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "This parameter indicates the EC curve type that should be\nassociated with the new key pair.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "remove_key",
+                  "id": "zymkey.Zymkey.remove_key",
+                  "anchor": "Zymkey-remove-key",
+                  "protection": "public",
+                  "signature": "def remove_key(slot, foreign=False)",
+                  "brief": "Remove a key at the designated slot (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method removes a key at the designated slot in either the\nstandard key store or the foreign public keyring.",
+                  "params": [
+                    {
+                      "name": "slot",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "This parameter specifies the key slot for the key.",
+                      "supported": []
+                    },
+                    {
+                      "name": "foreign",
+                      "type": "",
+                      "default": "False",
+                      "direction": null,
+                      "description": "If true, a public key in the foreign keyring will be deleted.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "invalidate_ephemeral_key",
+                  "id": "zymkey.Zymkey.invalidate_ephemeral_key",
+                  "anchor": "Zymkey-invalidate-ephemeral-key",
+                  "protection": "public",
+                  "signature": "def invalidate_ephemeral_key() -> int",
+                  "brief": "Invalidate the ephemeral key (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method invalidates the ephemeral key, effectively removing\nit from service until a new key is generated.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "int",
+                      "description": "0 for success, less than 0 for failure.",
+                      "doc_type": "TYPE"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "gen_wallet_master_seed",
+                  "id": "zymkey.Zymkey.gen_wallet_master_seed",
+                  "anchor": "Zymkey-gen-wallet-master-seed",
+                  "protection": "public",
+                  "signature": "def gen_wallet_master_seed(key_type, master_gen_key, wallet_name, recovery_strategy=RecoveryStrategy())",
+                  "brief": "Generates a new master seed for creating a new BIP32 wallet (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method generates a new master seed for creating a new BIP32\nwallet.",
+                  "params": [
+                    {
+                      "name": "key_type",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "This parameter indicates the EC curve type that should be\nassociated with the new key pair.",
+                      "supported": []
+                    },
+                    {
+                      "name": "master_gen_key",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The master generator key (bytearray) used in the\nderivation of the child key.",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The name of the wallet (string) that this master seed\nis attached to.",
+                      "supported": []
+                    },
+                    {
+                      "name": "recovery_strategy",
+                      "type": "",
+                      "default": "RecoveryStrategy()",
+                      "direction": null,
+                      "description": "RecoveryStrategy() class that defines what strategy to be used\n{None, BIP39, SLIP39} are currently supported.\nRecoveryStrategy-&gt;passphrase must be b64 encoded.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "the slot the master seed was generated in. 0 for starting SLIP39 sessions."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "set_gen_SLIP39_group_info",
+                  "id": "zymkey.Zymkey.set_gen_SLIP39_group_info",
+                  "anchor": "Zymkey-set-gen-SLIP39-group-info",
+                  "protection": "public",
+                  "signature": "def set_gen_SLIP39_group_info(group_index, member_count, member_threshold)",
+                  "brief": "Configures the number of members and threshold for the group shares (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method sets the number of members required for a group share once a SLIP39 session\nwas opened via gen_wallet_master_seed().",
+                  "params": [
+                    {
+                      "name": "group_index",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "This parameter indicates the index of the group share\nto set the amount of member count/threshold for.",
+                      "supported": []
+                    },
+                    {
+                      "name": "member_count",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The total number of members (mnemonics) in this group share.",
+                      "supported": []
+                    },
+                    {
+                      "name": "member_threshold",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The number of members (mnemonics) needed to reconstruct the group share.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 on successful configuration. non-zero for error."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "add_gen_SLIP39_member_pwd",
+                  "id": "zymkey.Zymkey.add_gen_SLIP39_member_pwd",
+                  "anchor": "Zymkey-add-gen-SLIP39-member-pwd",
+                  "protection": "public",
+                  "signature": "def add_gen_SLIP39_member_pwd(passphrase='')",
+                  "brief": "Generates a new mnemonic_str tied to a SLIP39 member (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method generates a new member of a group share. Members can also be\npassphrase protected. Passphrases are not required to be unique. This\nfunction is meant to be called after configuring a group via set_gen_SLIP39_group_info().",
+                  "params": [
+                    {
+                      "name": "passphrase",
+                      "type": "",
+                      "default": "''",
+                      "direction": null,
+                      "description": "This parameter indicates the passphrase of the SLIP39 member\nand is associated with the mnemonic string generated. Can\nbe empty string for no passphrase.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "A 24-word recovery phrase known as a mnemonic sentence. non-zero for error."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "cancel_SLIP39_session",
+                  "id": "zymkey.Zymkey.cancel_SLIP39_session",
+                  "anchor": "Zymkey-cancel-SLIP39-session",
+                  "protection": "public",
+                  "signature": "def cancel_SLIP39_session()",
+                  "brief": "Cancels an active SLIP39 session (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method cancels an ongoing SLIP39 session for both master seed generation and recovery.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 on success. non-zero for error."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "gen_oversight_wallet",
+                  "id": "zymkey.Zymkey.gen_oversight_wallet",
+                  "anchor": "Zymkey-gen-oversight-wallet",
+                  "protection": "public",
+                  "signature": "def gen_oversight_wallet(key_type, pub_key, chain_code, node_addr, wallet_name, variant='')",
+                  "brief": "Generates a supervisory bip32 wallet. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method generates a new supervisory Bip32 wallet. Meant for\nread-only transactions and supervising history.",
+                  "params": [
+                    {
+                      "name": "key_type",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "This parameter indicates the EC curve type that should be\nassociated with the new key pair.",
+                      "supported": []
+                    },
+                    {
+                      "name": "pub_key",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The public key (bytearray) of the last\nhardened node of the node address.",
+                      "supported": []
+                    },
+                    {
+                      "name": "chain_code",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The chain code (bytearray) of the last\nhardened node of the node address.",
+                      "supported": []
+                    },
+                    {
+                      "name": "node_addr",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The bip32 node address used. (EX: \"m/1852'/1815'/0'\").",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The name of the wallet (string) that this master seed\nis attached to.",
+                      "supported": []
+                    },
+                    {
+                      "name": "variant",
+                      "type": "",
+                      "default": "''",
+                      "direction": null,
+                      "description": "Key type variant to generate from. Currently only \"cardano\" is\nsupported for \"ed25519\".",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "the slot the oversight wallet was generated in."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "gen_wallet_child_key",
+                  "id": "zymkey.Zymkey.gen_wallet_child_key",
+                  "anchor": "Zymkey-gen-wallet-child-key",
+                  "protection": "public",
+                  "signature": "def gen_wallet_child_key(parent_key_slot, index, hardened, return_chain_code=False)",
+                  "brief": "Generates a child key based on a parent key that is in a wallet (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method generates a child key based on a parent key that is\nin a wallet.",
+                  "params": [
+                    {
+                      "name": "parent_key_slot",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "This parameter specifies the parent key slot. This\nkey must already be part of a wallet.",
+                      "supported": []
+                    },
+                    {
+                      "name": "index",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "This parameter represents the index for the child key\nderivation which becomes part of the node address.",
+                      "supported": []
+                    },
+                    {
+                      "name": "hardened",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "If true, the key is a hardened key.",
+                      "supported": []
+                    },
+                    {
+                      "name": "return_chain_code",
+                      "type": "",
+                      "default": "False",
+                      "direction": null,
+                      "description": "If true, returns the chain code for the key as well.\n(Must be from a hardened key).",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "the allocated slot on success, or a tuple containing the chain code as well."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "restore_wallet_master_seed",
+                  "id": "zymkey.Zymkey.restore_wallet_master_seed",
+                  "anchor": "Zymkey-restore-wallet-master-seed",
+                  "protection": "public",
+                  "signature": "def restore_wallet_master_seed(key_type, master_gen_key, wallet_name, recovery_strategy, mnemonics=None)",
+                  "brief": "Restore a wallet's master seed based on the recovery strategy object (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method restores a wallet's master seed based on a\nmnemonic string and a master generator key. This method can be\nused in the process of wallet duplication.",
+                  "params": [
+                    {
+                      "name": "key_type",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "This parameter indicates the EC curve type that should be\nassociated with the new key pair.",
+                      "supported": []
+                    },
+                    {
+                      "name": "master_gen_key",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The master generator key used in the derivation of\nthe child key.",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "Name of the new wallet to be generated.",
+                      "supported": []
+                    },
+                    {
+                      "name": "recovery_strategy",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "RecoveryStategy class object that provides the type of recovery\nand key variant required for restoration.",
+                      "supported": []
+                    },
+                    {
+                      "name": "mnemonics",
+                      "type": "",
+                      "default": "None",
+                      "direction": null,
+                      "description": "Mnemonic sentences required for restoration, number of mnemonics dependant\non recovery strategy used. This field is not used for SLIP39.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "the allocated slot on success"
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "add_restore_SLIP39_mnemonic",
+                  "id": "zymkey.Zymkey.add_restore_SLIP39_mnemonic",
+                  "anchor": "Zymkey-add-restore-SLIP39-mnemonic",
+                  "protection": "public",
+                  "signature": "def add_restore_SLIP39_mnemonic(mnemonic_sentence, passphrase='')",
+                  "brief": "Feed a mnemonic string and the passphrase associated with it (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This method feeds in mnemonic sentences (shards) into the module.\nMeant to be called after starting a restore_wallet_master_seed() SLIP39 session.\nWill return -1 until the master seed is reconstructed properly.",
+                  "params": [
+                    {
+                      "name": "mnemonic_sentence",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "24-word recovery phrase associated with the SLIP39 member.",
+                      "supported": []
+                    },
+                    {
+                      "name": "passphrase",
+                      "type": "",
+                      "default": "''",
+                      "direction": null,
+                      "description": "This parameter indicates the passphrase of the SLIP39 member\nand is associated with the mnemonic string generated. Can\nbe empty string for no passphrase.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "A -1 for no change in status. Otherwise returns the slot of the master seed successfully\nreconstructed from the last shard passed in."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "get_wallet_node_addr",
+                  "id": "zymkey.Zymkey.get_wallet_node_addr",
+                  "anchor": "Zymkey-get-wallet-node-addr",
+                  "protection": "public",
+                  "signature": "def get_wallet_node_addr(slot)",
+                  "brief": "Get a wallet node address from a key slot (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This method gets a wallet entry's node address from its key slot\nassignment. The wallet name and master seed slot are also\nreturned.",
+                  "params": [
+                    {
+                      "name": "slot",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The key slot assignment.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "the node address, wallet name and master seed key slot."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "get_wallet_key_slot",
+                  "id": "zymkey.Zymkey.get_wallet_key_slot",
+                  "anchor": "Zymkey-get-wallet-key-slot",
+                  "protection": "public",
+                  "signature": "def get_wallet_key_slot(node_addr, wallet_name=None, master_seed_slot=None)",
+                  "brief": "Look up a wallet key slot number from a node address (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This method gets a wallet key slot number from its node address\nand wallet name or master seed key slot. Either the wallet name\nor the master seed slot must be present.",
+                  "params": [
+                    {
+                      "name": "node_addr",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The desired node address to look up",
+                      "supported": []
+                    },
+                    {
+                      "name": "wallet_name",
+                      "type": "",
+                      "default": "None",
+                      "direction": null,
+                      "description": "The name of the wallet that the node address belongs\nto. Either this parameter or master_seed_slot must be\nspecified or this function will fail.",
+                      "supported": []
+                    },
+                    {
+                      "name": "master_seed_slot",
+                      "type": "",
+                      "default": "None",
+                      "direction": null,
+                      "description": "The master seed slot that the node address belongs\nto. Either this parameter or wallet_name must be\nspecified or this function will fail.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "the key slot."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "set_i2c_address",
+                  "id": "zymkey.Zymkey.set_i2c_address",
+                  "anchor": "Zymkey-set-i2c-address",
+                  "protection": "public",
+                  "signature": "def set_i2c_address(address: int) -> None",
+                  "brief": "Set the i2c address of the Zymkey.",
+                  "details": "**Note:** This is only applicable to versions of the Zymkey with i2c.\n\nThis method should be called if the i2c address of the\nZymkey is shared with another i2c device on the same i2c bus.\nThe default i2c address for Zymkey units is 0x30. Currently,\nthe address may be set in the ranges of 0x30 - 0x37 and 0x60 - 0x67.\n\nAfter successful completion of this command, the Zymkey will\nreboot itself.",
+                  "params": [
+                    {
+                      "name": "address",
+                      "type": "int",
+                      "default": null,
+                      "direction": null,
+                      "description": "The i2c address that the Zymkey will set itself to.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "None",
+                      "description": "0 for success, less than 0 for failure.",
+                      "doc_type": "TYPE"
+                    }
+                  ],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "set_tap_sensitivity",
+                  "id": "zymkey.Zymkey.set_tap_sensitivity",
+                  "anchor": "Zymkey-set-tap-sensitivity",
+                  "protection": "public",
+                  "signature": "def set_tap_sensitivity(axis='all', pct=50.0)",
+                  "brief": "Set the sensitivity of tap operations.",
+                  "details": "This method permits setting the sensitivity of the tap\ndetection feature. Each axis may be individually\nconfigured or all at once.",
+                  "params": [
+                    {
+                      "name": "axis",
+                      "type": "",
+                      "default": "'all'",
+                      "direction": null,
+                      "description": "The axis to configure. Valid values include:\n  1. 'all': Configure all axes with the specified sensitivity value.\n  2. 'x' or 'X': Configure only the x-axis\n  3. 'y' or 'Y': Configure only the y-axis\n  4. 'z' or 'Z': Configure only the z-axis",
+                      "supported": []
+                    },
+                    {
+                      "name": "pct",
+                      "type": "",
+                      "default": "50.0",
+                      "direction": null,
+                      "description": "The sensitivity expressed as percentage.\n  1. 0% = Shut down: Tap detection should not occur along the axis.\n  2. 100% = Maximum sensitivity.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "wait_for_tap",
+                  "id": "zymkey.Zymkey.wait_for_tap",
+                  "anchor": "Zymkey-wait-for-tap",
+                  "protection": "public",
+                  "signature": "def wait_for_tap(timeout_ms=-1)",
+                  "brief": "Wait for tap event",
+                  "details": "This function is called in order to wait for a tap event to occur.\nThis function blocks the calling thread unless called with a\ntimeout of zero.",
+                  "params": [
+                    {
+                      "name": "timeout_ms",
+                      "type": "",
+                      "default": "-1",
+                      "direction": null,
+                      "description": "The maximum amount of time in milliseconds to wait for a tap\nevent to arrive.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_accelerometer_data",
+                  "id": "zymkey.Zymkey.get_accelerometer_data",
+                  "anchor": "Zymkey-get-accelerometer-data",
+                  "protection": "public",
+                  "signature": "def get_accelerometer_data()",
+                  "brief": "Get current accelerometer data and tap info.",
+                  "details": "This function gets the most recent accelerometer data in units of g\nforces plus the tap direction per axis.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "    An array of accelerometer readings in units of g-force.",
+                      "description": "array index 0 = x axis\n            1 = y axis\n            2 = z axis\nA value of -1 indicates that the tap event was detected in a\nnegative direction for the axis, +1 for a positive direction\nand 0 for stationary."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_time",
+                  "id": "zymkey.Zymkey.get_time",
+                  "anchor": "Zymkey-get-time",
+                  "protection": "public",
+                  "signature": "def get_time(precise=False)",
+                  "brief": "Get current GMT time",
+                  "details": "This function is called to get the time directly from a\nZymkey's Real Time Clock (RTC)",
+                  "params": [
+                    {
+                      "name": "precise",
+                      "type": "",
+                      "default": "False",
+                      "direction": null,
+                      "description": "If true, this API returns the time after the next second\nfalls. This means that the caller could be blocked up to one second.\nIf False, the API returns immediately with the current time reading.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "    Time in epoch seconds.",
+                      "description": ""
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "lock_binding",
+                  "id": "zymkey.Zymkey.lock_binding",
+                  "anchor": "Zymkey-lock-binding",
+                  "protection": "public",
+                  "signature": "def lock_binding()",
+                  "brief": "Set soft binding lock.",
+                  "details": "This function locks the binding for a specific HSM. This API is\nonly valid for HSM series products.",
+                  "params": [],
+                  "returns": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function."
+                    }
+                  ],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_current_binding_info",
+                  "id": "zymkey.Zymkey.get_current_binding_info",
+                  "anchor": "Zymkey-get-current-binding-info",
+                  "protection": "public",
+                  "signature": "def get_current_binding_info()",
+                  "brief": "Get current binding info.",
+                  "details": "This function gets the current binding lock state as well as the\ncurrent binding state. This API is only valid for devices in the HSM\nfamily.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "binding_is_locked",
+                      "description": "Binary value which expresses the current binding lock state."
+                    },
+                    {
+                      "name": null,
+                      "type": "is_bound",
+                      "description": "Binary value which expresses the current bind state."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "set_perimeter_event_actions",
+                  "id": "zymkey.Zymkey.set_perimeter_event_actions",
+                  "anchor": "Zymkey-set-perimeter-event-actions",
+                  "protection": "public",
+                  "signature": "def set_perimeter_event_actions(channel, action_notify=True, action_self_destruct=False)",
+                  "brief": "Set perimeter breach action",
+                  "details": "This function specifies the action to take when a perimeter breach\nevent occurs. The possible actions are any combination of:\n  * Notify host\n  * Zymkey self-destruct",
+                  "params": [
+                    {
+                      "name": "channel",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The channel (0 or 1) that the action flags will be applied to",
+                      "supported": []
+                    },
+                    {
+                      "name": "action_notify",
+                      "type": "",
+                      "default": "True",
+                      "direction": null,
+                      "description": "Set a perimeter breach to notify. (default = True)",
+                      "supported": []
+                    },
+                    {
+                      "name": "action_self_destruct",
+                      "type": "",
+                      "default": "False",
+                      "direction": null,
+                      "description": "Set a perimeter breach to self destruct. (default = False)",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "set_digital_perimeter_lp_period",
+                  "id": "zymkey.Zymkey.set_digital_perimeter_lp_period",
+                  "anchor": "Zymkey-set-digital-perimeter-lp-period",
+                  "protection": "public",
+                  "signature": "def set_digital_perimeter_lp_period(lp_period)",
+                  "brief": "Set the digital perimeter detect low power period (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This function sets the digital perimeter detect low power period (microseconds).",
+                  "params": [
+                    {
+                      "name": "lp_period",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The perimeter detect low power period in microseconds.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "set_digital_perimeter_lp_max_bits",
+                  "id": "zymkey.Zymkey.set_digital_perimeter_lp_max_bits",
+                  "anchor": "Zymkey-set-digital-perimeter-lp-max-bits",
+                  "protection": "public",
+                  "signature": "def set_digital_perimeter_lp_max_bits(max_num_bits)",
+                  "brief": "Set the low power max number of bits (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This function sets the digital perimeter detect low power max number of bits",
+                  "params": [
+                    {
+                      "name": "max_num_bits",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The perimeter detect low power max number of bits",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "set_digital_perimeter_delays",
+                  "id": "zymkey.Zymkey.set_digital_perimeter_delays",
+                  "anchor": "Zymkey-set-digital-perimeter-delays",
+                  "protection": "public",
+                  "signature": "def set_digital_perimeter_delays(min_delay_ns, max_delay_ns)",
+                  "brief": "Set the digital perimeter detect delays (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This function sets the digital perimeter detect delay values.",
+                  "params": [
+                    {
+                      "name": "min_delay_ns",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The minimum delay in nanoseconds.",
+                      "supported": []
+                    },
+                    {
+                      "name": "max_delay_ns",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The maximum delay in nanoseconds.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "wait_for_perimeter_event",
+                  "id": "zymkey.Zymkey.wait_for_perimeter_event",
+                  "anchor": "Zymkey-wait-for-perimeter-event",
+                  "protection": "public",
+                  "signature": "def wait_for_perimeter_event(timeout_ms=-1)",
+                  "brief": "Wait for a perimeter breach event to be detected",
+                  "details": "This function is called in order to wait for a perimeter breach\nevent to occur. This function blocks the calling thread unless\ncalled with a timeout of zero.",
+                  "params": [
+                    {
+                      "name": "timeout_ms",
+                      "type": "",
+                      "default": "-1",
+                      "direction": null,
+                      "description": "(input) The maximum amount of time in milliseconds to wait for a perimeter breach\nevent to arrive.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_perimeter_detect_info",
+                  "id": "zymkey.Zymkey.get_perimeter_detect_info",
+                  "anchor": "Zymkey-get-perimeter-detect-info",
+                  "protection": "public",
+                  "signature": "def get_perimeter_detect_info()",
+                  "brief": "Get current perimeter detect info.",
+                  "details": "This function gets the timestamp of the first perimeter detect\nevent for the given channel. The index corresponds to the channel specified in set_perimeter_event_actions.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "The array of timestamps for each channel for the first detected\nevent in epoch seconds"
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "clear_perimeter_detect_info",
+                  "id": "zymkey.Zymkey.clear_perimeter_detect_info",
+                  "anchor": "Zymkey-clear-perimeter-detect-info",
+                  "protection": "public",
+                  "signature": "def clear_perimeter_detect_info()",
+                  "brief": "Clear perimeter detect info.",
+                  "details": "This function clears all perimeter detect info and rearms all\nperimeter detect channels",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_cpu_temp",
+                  "id": "zymkey.Zymkey.get_cpu_temp",
+                  "anchor": "Zymkey-get-cpu-temp",
+                  "protection": "public",
+                  "signature": "def get_cpu_temp()",
+                  "brief": "Get current CPU temperature (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This function gets the current HSM CPU temperature.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "The CPU temperature in celsius as a float"
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "get_aux_temp",
+                  "id": "zymkey.Zymkey.get_aux_temp",
+                  "anchor": "Zymkey-get-aux-temp",
+                  "protection": "public",
+                  "signature": "def get_aux_temp(index=0)",
+                  "brief": "Get current aux temperature (Secure Compute Modules only).",
+                  "details": "THIS FUNCTION IS FOR INTERNAL ZYMBIT USE ONLY.\n\nThis function gets the current aux temperature. (defaults to 0)",
+                  "params": [
+                    {
+                      "name": "index",
+                      "type": "",
+                      "default": "0",
+                      "direction": null,
+                      "description": "(input) The index id of the processor.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "The temperature in celsius as a float"
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_rtc_drift",
+                  "id": "zymkey.Zymkey.get_rtc_drift",
+                  "anchor": "Zymkey-get-rtc-drift",
+                  "protection": "public",
+                  "signature": "def get_rtc_drift()",
+                  "brief": "Get RTC drift (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This function gets the current RTC drift.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "The RTC drift as a float"
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "get_batt_volt",
+                  "id": "zymkey.Zymkey.get_batt_volt",
+                  "anchor": "Zymkey-get-batt-volt",
+                  "protection": "public",
+                  "signature": "def get_batt_volt()",
+                  "brief": "Get current battery voltage (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "details": "This function gets the current battery voltage.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "The battery voltage as a float"
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "get_model_number",
+                  "id": "zymkey.Zymkey.get_model_number",
+                  "anchor": "Zymkey-get-model-number",
+                  "protection": "public",
+                  "signature": "def get_model_number()",
+                  "brief": "Get Zymkey model number",
+                  "details": "This function gets the Zymkey model number.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "The model number as a string."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_firmware_version",
+                  "id": "zymkey.Zymkey.get_firmware_version",
+                  "anchor": "Zymkey-get-firmware-version",
+                  "protection": "public",
+                  "signature": "def get_firmware_version()",
+                  "brief": "Get Zymkey firmware version",
+                  "details": "This function gets the Zymkey firmware version.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "The firmware version as a string."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "get_serial_number",
+                  "id": "zymkey.Zymkey.get_serial_number",
+                  "anchor": "Zymkey-get-serial-number",
+                  "protection": "public",
+                  "signature": "def get_serial_number()",
+                  "brief": "Get Zymkey serial number",
+                  "details": "This function gets the Zymkey serial number.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "The serial number as a string."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                },
+                {
+                  "kind": "method",
+                  "name": "set_battery_voltage_action",
+                  "id": "zymkey.Zymkey.set_battery_voltage_action",
+                  "anchor": "Zymkey-set-battery-voltage-action",
+                  "protection": "public",
+                  "signature": "def set_battery_voltage_action(sleep=False, self_destruct=False)",
+                  "brief": "Set battery voltage action. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function specifies the action to take when the\nbattery voltage falls below the threshold set by\nset_battery_voltage_threshold. If this function is never\ncalled, do nothing is default. There are three actions:\n  * Do nothing\n  * Go to sleep until battery is replaced\n  * Self-destruct\nWith sleep and self_destruct set to False, it removes a\npreviously set sleep or self_destruct action.",
+                  "params": [
+                    {
+                      "name": "sleep",
+                      "type": "",
+                      "default": "False",
+                      "direction": null,
+                      "description": "Set the sleep action.",
+                      "supported": []
+                    },
+                    {
+                      "name": "self_destruct",
+                      "type": "",
+                      "default": "False",
+                      "direction": null,
+                      "description": "Set the self_destruct action.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "set_battery_voltage_threshold",
+                  "id": "zymkey.Zymkey.set_battery_voltage_threshold",
+                  "anchor": "Zymkey-set-battery-voltage-threshold",
+                  "protection": "public",
+                  "signature": "def set_battery_voltage_threshold(threshold)",
+                  "brief": "Sets the battery voltage threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function sets the threshold at which if the\nbattery voltage falls bellow, the action set by\nset_battery_voltage_action will be carried out.\nThe recommended threshold is 2.3V is assumed by default. Threshold\nmust be below 2.5V.",
+                  "params": [
+                    {
+                      "name": "threshold",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The threshold in Volts.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "set_cpu_temp_action",
+                  "id": "zymkey.Zymkey.set_cpu_temp_action",
+                  "anchor": "Zymkey-set-cpu-temp-action",
+                  "protection": "public",
+                  "signature": "def set_cpu_temp_action(self_destruct=False)",
+                  "brief": "Set HSM CPU temperature threshold action. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function specifies the action to take when the\nHSM CPU temperature falls below the threshold set by\nset_cpu_low_temp_threshold, or rises above the threshold\nset by set_cpu_high_temp_threshold. There are two\nactions to apply:\n  * Do nothing\n  * Self-destruct\nTo remove a previously set self-destruct action, call\nthis function with self_destruct=False.",
+                  "params": [
+                    {
+                      "name": "self_destruct",
+                      "type": "",
+                      "default": "False",
+                      "direction": null,
+                      "description": "Set the self_destruct action.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "set_cpu_low_temp_threshold",
+                  "id": "zymkey.Zymkey.set_cpu_low_temp_threshold",
+                  "anchor": "Zymkey-set-cpu-low-temp-threshold",
+                  "protection": "public",
+                  "signature": "def set_cpu_low_temp_threshold(threshold)",
+                  "brief": "Sets the HSM CPU low temperature threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function sets the threshold at which if the\non-board HSM CPU's tempreature falls below, the\naction set by set_cpu_temp_action will be carried out.\nWARNING: You can lock yourself out in dev mode if\nyou set a threshold above the CPU's ambient temperature.\nThe recommended setting is no more than 20C.\nIf this function is never called, -10 degrees celsius is\nassumed.",
+                  "params": [
+                    {
+                      "name": "threshold",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The threshold in celsius.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "set_cpu_high_temp_threshold",
+                  "id": "zymkey.Zymkey.set_cpu_high_temp_threshold",
+                  "anchor": "Zymkey-set-cpu-high-temp-threshold",
+                  "protection": "public",
+                  "signature": "def set_cpu_high_temp_threshold(threshold)",
+                  "brief": "Sets the HSM CPU high temperature threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "details": "This function sets the threshold at which if the\non-board HSM CPU's tempreature rises above, the\naction set by set_cpu_temp_action will be carried out.\nWARNING: You can lock yourself out in dev mode if\nyou set a threshold below the CPU's ambient temperature.\nThe recommended setting is no less than 40C.\nIf this function is never called, 65 degrees celsius is\nassumed.",
+                  "params": [
+                    {
+                      "name": "threshold",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The threshold in celsius.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "ZYMKEY5",
+                    "HSM60",
+                    "HSM64",
+                    "HSM6",
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "set_supervised_boot_policy",
+                  "id": "zymkey.Zymkey.set_supervised_boot_policy",
+                  "anchor": "Zymkey-set-supervised-boot-policy",
+                  "protection": "public",
+                  "signature": "def set_supervised_boot_policy(policy_id: int = 0)",
+                  "brief": "Sets the Supervised boot policy. (Supported Devices: Secure Compute Module)",
+                  "details": "This function sets the action policy to take when\nSupervised boot detects a file change during the boot process.",
+                  "params": [
+                    {
+                      "name": "policy_id",
+                      "type": "int",
+                      "default": "0",
+                      "direction": null,
+                      "description": "The actions to apply to the Supervised boot process:\n- 0 Do Nothing\n- 1 Self-Destruct\n- 2 Hold Chip in Reset",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "add_or_update_supervised_boot_file",
+                  "id": "zymkey.Zymkey.add_or_update_supervised_boot_file",
+                  "anchor": "Zymkey-add-or-update-supervised-boot-file",
+                  "protection": "public",
+                  "signature": "def add_or_update_supervised_boot_file(filepath: str = '', slot: int = 15)",
+                  "brief": "Update file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+                  "details": "This function adds or updates a file in the file manifest to\nbe checked by Supervised during the boot process.",
+                  "params": [
+                    {
+                      "name": "filepath",
+                      "type": "str",
+                      "default": "''",
+                      "direction": null,
+                      "description": "The file to be signed and checked by Supervised boot.",
+                      "supported": []
+                    },
+                    {
+                      "name": "slot",
+                      "type": "int",
+                      "default": "15",
+                      "direction": null,
+                      "description": "The slot to sign the file with.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "remove_supervised_boot_file",
+                  "id": "zymkey.Zymkey.remove_supervised_boot_file",
+                  "anchor": "Zymkey-remove-supervised-boot-file",
+                  "protection": "public",
+                  "signature": "def remove_supervised_boot_file(filepath: str = '')",
+                  "brief": "Remove a file from file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+                  "details": "This function removes a file in the file manifest to\nbe checked by Supervised boot during the boot process.",
+                  "params": [
+                    {
+                      "name": "filepath",
+                      "type": "str",
+                      "default": "''",
+                      "direction": null,
+                      "description": "The file to be removed from the manifest.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "Secure Compute Module"
+                  ]
+                },
+                {
+                  "kind": "method",
+                  "name": "get_supervised_boot_file_manifest",
+                  "id": "zymkey.Zymkey.get_supervised_boot_file_manifest",
+                  "anchor": "Zymkey-get-supervised-boot-file-manifest",
+                  "protection": "public",
+                  "signature": "def get_supervised_boot_file_manifest()",
+                  "brief": "Get the file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+                  "details": "This function gets a list of the files that are checked\nby Supervised boot during the boot process.",
+                  "params": [],
+                  "returns": [
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "0 for success, less than 0 for failure."
+                    },
+                    {
+                      "name": null,
+                      "type": "TYPE",
+                      "description": "File manifest to be checked by Supervised boot."
+                    }
+                  ],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [
+                    "Secure Compute Module"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Classes",
+              "description": "",
+              "items": [
+                {
+                  "kind": "class",
+                  "name": "ZymkeyAccelAxisData",
+                  "id": "zymkey.Zymkey.ZymkeyAccelAxisData",
+                  "anchor": "Zymkey-ZymkeyAccelAxisData",
+                  "protection": "public",
+                  "signature": "class ZymkeyAccelAxisData(g_force, tap_dir)",
+                  "brief": "",
+                  "details": "",
+                  "params": [],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": [],
+                  "bases": [
+                    "object"
+                  ],
+                  "groups": [
+                    {
+                      "title": "Methods",
+                      "description": "",
+                      "items": [
+                        {
+                          "kind": "method",
+                          "name": "__init__",
+                          "id": "zymkey.Zymkey.ZymkeyAccelAxisData.__init__",
+                          "anchor": "Zymkey-ZymkeyAccelAxisData-init",
+                          "protection": "public",
+                          "signature": "def __init__(g_force, tap_dir)",
+                          "brief": "",
+                          "details": "",
+                          "params": [
+                            {
+                              "name": "g_force",
+                              "type": "",
+                              "default": null,
+                              "direction": null,
+                              "description": "",
+                              "supported": []
+                            },
+                            {
+                              "name": "tap_dir",
+                              "type": "",
+                              "default": null,
+                              "direction": null,
+                              "description": "",
+                              "supported": []
+                            }
+                          ],
+                          "returns": [],
+                          "throws": [],
+                          "notes": [],
+                          "supported": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "name": "RecoveryStrategy",
+          "id": "zymkey.RecoveryStrategy",
+          "anchor": "RecoveryStrategy",
+          "protection": "public",
+          "signature": "class RecoveryStrategy(variant='')",
+          "brief": "The RecoveryStrategy class definition.",
+          "details": "This class specifies the recovery strategy used for wallet generation within Python.\nBase class strategy is to do no recovery.",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": [],
+          "bases": [],
+          "groups": [
+            {
+              "title": "Methods",
+              "description": "",
+              "items": [
+                {
+                  "kind": "method",
+                  "name": "__init__",
+                  "id": "zymkey.RecoveryStrategy.__init__",
+                  "anchor": "RecoveryStrategy-init",
+                  "protection": "public",
+                  "signature": "def __init__(variant='')",
+                  "brief": "Initialize an instance of RecoveryStrategy.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "variant",
+                      "type": "",
+                      "default": "''",
+                      "direction": null,
+                      "description": "Variant of the key type. Currently only \"cardano\" for ed25519 is supported.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "name": "RecoveryStrategyBIP39",
+          "id": "zymkey.RecoveryStrategyBIP39",
+          "anchor": "RecoveryStrategyBIP39",
+          "protection": "public",
+          "signature": "class RecoveryStrategyBIP39(variant='', passphrase='')",
+          "brief": "The RecoveryStrategyBIP39 class definition.",
+          "details": "This class specifies the BIP39 recovery strategy used for wallet generation within Python.\nDerived from RecoveryStrategy class.",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": [],
+          "bases": [
+            "RecoveryStrategy"
+          ],
+          "groups": [
+            {
+              "title": "Methods",
+              "description": "",
+              "items": [
+                {
+                  "kind": "method",
+                  "name": "__init__",
+                  "id": "zymkey.RecoveryStrategyBIP39.__init__",
+                  "anchor": "RecoveryStrategyBIP39-init",
+                  "protection": "public",
+                  "signature": "def __init__(variant='', passphrase='')",
+                  "brief": "Initialize an instance of RecoveryStrategyBIP39.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "variant",
+                      "type": "",
+                      "default": "''",
+                      "direction": null,
+                      "description": "Variant of the key type. Currently only \"cardano\" for ed25519 is supported.",
+                      "supported": []
+                    },
+                    {
+                      "name": "passphrase",
+                      "type": "",
+                      "default": "''",
+                      "direction": null,
+                      "description": "Passphrase used for BIP39 generation. Can be empty string. Must be b64 encoded.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "name": "RecoveryStrategySLIP39",
+          "id": "zymkey.RecoveryStrategySLIP39",
+          "anchor": "RecoveryStrategySLIP39",
+          "protection": "public",
+          "signature": "class RecoveryStrategySLIP39(group_count, group_threshold, iteration_exponent, variant='', passphrase='')",
+          "brief": "The RecoveryStrategySLIP39 class definition.",
+          "details": "This class specifies the SLIP39 recovery strategy used for wallet generation within Python.\nDerived from RecoveryStrategy class.",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": [],
+          "bases": [
+            "RecoveryStrategy"
+          ],
+          "groups": [
+            {
+              "title": "Methods",
+              "description": "",
+              "items": [
+                {
+                  "kind": "method",
+                  "name": "__init__",
+                  "id": "zymkey.RecoveryStrategySLIP39.__init__",
+                  "anchor": "RecoveryStrategySLIP39-init",
+                  "protection": "public",
+                  "signature": "def __init__(group_count, group_threshold, iteration_exponent, variant='', passphrase='')",
+                  "brief": "Initialize an instance of RecoveryStrategySLIP39.",
+                  "details": "",
+                  "params": [
+                    {
+                      "name": "group_count",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "Total number of group shares to generate \\[Max: 14 Groups\\].",
+                      "supported": []
+                    },
+                    {
+                      "name": "group_threshold",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "Number of groups needed to restore a master seed with \\[threshold &lt;= group_count\\].",
+                      "supported": []
+                    },
+                    {
+                      "name": "iteration_exponent",
+                      "type": "",
+                      "default": null,
+                      "direction": null,
+                      "description": "The higher the exponent the more PBKDF2 hashing is done. \\[Exponent: 0-5\\]",
+                      "supported": []
+                    },
+                    {
+                      "name": "variant",
+                      "type": "",
+                      "default": "''",
+                      "direction": null,
+                      "description": "Variant of the key type. Currently only \"cardano\" for ed25519 is supported.",
+                      "supported": []
+                    },
+                    {
+                      "name": "passphrase",
+                      "type": "",
+                      "default": "''",
+                      "direction": null,
+                      "description": "Passphrase used for BIP39 generation. Can be empty string. Must be b64 encoded.",
+                      "supported": []
+                    }
+                  ],
+                  "returns": [],
+                  "throws": [],
+                  "notes": [],
+                  "supported": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Attributes",
+      "description": "",
+      "items": [
+        {
+          "kind": "attribute",
+          "name": "client",
+          "id": "zymkey.client",
+          "anchor": "client",
+          "protection": "public",
+          "signature": "client: t.Optional[Zymkey] = Zymkey()",
+          "brief": "",
+          "details": "",
+          "params": [],
+          "returns": [],
+          "throws": [],
+          "notes": [],
+          "supported": [],
+          "type": "t.Optional[Zymkey]",
+          "value": "Zymkey()"
+        }
+      ]
+    }
+  ]
+}
