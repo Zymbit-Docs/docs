@@ -59,8 +59,7 @@ Notable details in `config/_default/config.yaml`:
 All documentation lives under `content/` as Markdown files:
 
 - **`bootware/`** - Versioned by semver directories: 1.0.0, 1.1.0, 1.2.2, 1.3.0, 1.3.2, 2.0.0. `/bootware/` is a landing page, not a redirect: it renders the version dropdown plus quick links to the stable and beta releases. Adding a version directory is not enough on its own - see below.
-- **`api/`** - Auto-generated from XML via the `process-api-update.yml` GitHub Action. Do not edit these files manually.
-- **`api-preview/`** - The replacement API reference, being built: thin pages with `layout: api-reference` and `api: <repo>/<language>`, rendered from `data/api/<repo>/<language>.json` (written by Zymbit-Docs/api-extractor; do not edit by hand) through `layouts/docs/api-reference.html` and `layouts/partials/api/`. Hidden from the sidebar, search, the sitemap and search engines (`toc_hide`, `pagefind_ignore`, `sitemap.disable`, `noindex`) until it replaces `api/`. The templates fail the build on raw HTML in the text or on a JSON field they do not render.
+- **`api/`** - The C, C++ and Python API reference. `c_api.md`, `cpp_api.md` and `python_api.md` are thin pages (`layout: api-reference`, `api: zkapputilslib/<language>`) rendered from `data/api/zkapputilslib/<language>.json` through `layouts/docs/api-reference.html` and `layouts/partials/api/`. The JSON is written by Zymbit-Docs/api-extractor from zkapputilslib's Doxygen comments and docstrings; do not edit it by hand. The templates fail the build on raw HTML in the text or on a JSON field they do not render. `legacy_anchors.json` sends anchors from the old hugoify pages (`#int--zkOpen-1a2b3c4d`) to the new ones in the browser, since a fragment cannot be redirected server-side. `api_docs_intro.md` is zkapputilslib's `mainpage.md`, copied by hand.
 - **`hardware/`** - Product documentation (`sen`, `dev-kits`, `modules`, `components`)
 - **`reference/`** - Technical reference (`binding`, `cad`, `conformity`, `driver-package`, `engineering-notes`, `power-quality`, `product-briefs`, `real-time-clock`, `reserved-pins`, `zymbit-wallet-sdk`, plus `cpu-scaling.md`)
 - **`tutorials/`** - Step-by-step guides
@@ -175,7 +174,7 @@ git subtree push --prefix themes/zymdocsy \
 
 - **Production**: Merging to `main` triggers `deploy-site.yml`, which builds with Hugo 0.151.1 extended and deploys to GitHub Pages (gh-pages branch).
 - **Staging**: Pushing any non-main branch triggers `push-staging.yml`, which mirrors the branch to a separate staging repo.
-- **API docs**: Pushing to an `api-docs-update*` branch triggers `process-api-update.yml`, which processes raw XML, converts via Hugoify, and auto-creates a PR.
+- **API docs**: `data/api/zkapputilslib/*.json` is regenerated with api-extractor and committed in a normal PR. The Sphinx/Breathe/hugoify pipeline and `process-api-update.yml` are retired; a release workflow in the extractor repo will open these PRs automatically.
 
 ## Content standards
 

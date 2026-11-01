@@ -22,7 +22,7 @@
   </p>
   {{ end }}
 
-  {{ with $data.intro }}<div class="api-intro">{{ partial $md . }}</div>{{ end }}
+  {{ with $data.intro }}<div class="api-intro" id="introduction">{{ partial $md . }}</div>{{ end }}
   {{- range $data.notes }}
   <div class="alert alert-info api-note" role="note"><strong>{{ .kind | humanize }}:</strong> {{ partial $md .text }}</div>
   {{- end }}
@@ -35,6 +35,32 @@
     {{ partial "api/item.html" (dict "item" . "lang" $lang "level" 3) }}
     {{- end }}
   </section>
+  {{- end }}
+
+  {{- /*
+      Links into the hugoify pages these replaced used anchors such as
+      #int--zkSetBatteryVoltageAction-f90f5fd1. A fragment never reaches the
+      server, so Hugo aliases cannot redirect it; this maps old anchors to new
+      ones in the browser. The map is data/api/<repo>/legacy_anchors.json, keyed
+      by language. New pages without legacy anchors have no map and no script.
+  */}}
+  {{- $repo := index (split .Params.api "/") 0 -}}
+  {{- with index site.Data.api $repo "legacy_anchors" $lang }}
+  <script>
+    (function () {
+      var map = {{ . }};
+      function follow() {
+        var to = map[decodeURIComponent(location.hash.slice(1))];
+        var el = to && document.getElementById(to);
+        if (el) {
+          history.replaceState(null, "", "#" + to);
+          el.scrollIntoView();
+        }
+      }
+      follow();
+      window.addEventListener("hashchange", follow);
+    })();
+  </script>
   {{- end }}
 </div>
 {{ end }}

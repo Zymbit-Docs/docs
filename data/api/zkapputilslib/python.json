@@ -4,7 +4,7 @@
   "source": {
     "repo": "zkapputilslib",
     "version": "1.2.0-11",
-    "commit": "c9b56b9"
+    "commit": "ec73411"
   },
   "module": "zymkey",
   "brief": "Python interface module to Zymkey Application Utilities Library.",
@@ -644,7 +644,7 @@
                   "anchor": "Zymkey-ecdh",
                   "protection": "public",
                   "signature": "def ecdh(local_slot: int, peer_pubkey: t.Union[t.List[bytes], int], kdf_func_type: str = 'none', salt: t.Optional[t.List[bytes]] = [], info: t.Optional[t.List[bytes]] = [], num_iterations: int = 1, peer_pubkey_slot_is_foreign: bool = True, derived_key_size: bool = 32) -> bytearray",
-                  "brief": "Derive a key or a pre-master secret from an ECDH operation. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Derive a key or a pre-master secret from an ECDH operation.",
                   "details": "",
                   "params": [
                     {
@@ -920,7 +920,7 @@
                   "anchor": "Zymkey-get_slot_alloc_list",
                   "protection": "public",
                   "signature": "def get_slot_alloc_list(foreign: bool = False) -> t.Tuple[list, int]",
-                  "brief": "Get a list of the allocated slots in the key store (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Get a list of the allocated slots in the key store.",
                   "details": "This method gets a list of the allocated slots in the key store.",
                   "params": [
                     {
@@ -967,7 +967,7 @@
                   "anchor": "Zymkey-store_foreign_public_key",
                   "protection": "public",
                   "signature": "def store_foreign_public_key(key_type: str, pubkey: bytearray) -> int",
-                  "brief": "Stores a foreign public key on the Zymkey foreign keyring (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Stores a foreign public key on the Zymkey foreign keyring.",
                   "details": "This method stores a foreign public key onto the Zymkey foreign public keyring.",
                   "params": [
                     {
@@ -1018,7 +1018,7 @@
                   "anchor": "Zymkey-disable_public_key_export",
                   "protection": "public",
                   "signature": "def disable_public_key_export(slot=0, foreign=False)",
-                  "brief": "Disable exporting of a public key at a given slot (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Disable exporting of a public key at a given slot.",
                   "details": "This method permanently disables exporting a public key from a\ngiven slot.",
                   "params": [
                     {
@@ -1062,7 +1062,7 @@
                   "anchor": "Zymkey-gen_key_pair",
                   "protection": "public",
                   "signature": "def gen_key_pair(key_type)",
-                  "brief": "Generate a new key pair (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Generate a new key pair.",
                   "details": "This method generates a new key pair of the specified type.",
                   "params": [
                     {
@@ -1098,7 +1098,7 @@
                   "anchor": "Zymkey-gen_ephemeral_key_pair",
                   "protection": "public",
                   "signature": "def gen_ephemeral_key_pair(key_type)",
-                  "brief": "Generate a new ephemeral key pair (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Generate a new ephemeral key pair.",
                   "details": "This method generates a new ephemeral key pair of the specified\ntype, overwriting the previous ephemeral key pair.",
                   "params": [
                     {
@@ -1134,7 +1134,7 @@
                   "anchor": "Zymkey-remove_key",
                   "protection": "public",
                   "signature": "def remove_key(slot, foreign=False)",
-                  "brief": "Remove a key at the designated slot (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Remove a key at the designated slot.",
                   "details": "This method removes a key at the designated slot in either the\nstandard key store or the foreign public keyring.",
                   "params": [
                     {
@@ -1178,7 +1178,7 @@
                   "anchor": "Zymkey-invalidate_ephemeral_key",
                   "protection": "public",
                   "signature": "def invalidate_ephemeral_key() -> int",
-                  "brief": "Invalidate the ephemeral key (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Invalidate the ephemeral key.",
                   "details": "This method invalidates the ephemeral key, effectively removing\nit from service until a new key is generated.",
                   "params": [],
                   "returns": [
@@ -1211,7 +1211,7 @@
                   "anchor": "Zymkey-gen_wallet_master_seed",
                   "protection": "public",
                   "signature": "def gen_wallet_master_seed(key_type, master_gen_key, wallet_name, recovery_strategy=RecoveryStrategy())",
-                  "brief": "Generates a new master seed for creating a new BIP32 wallet (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Generates a new master seed for creating a new BIP32 wallet.",
                   "details": "This method generates a new master seed for creating a new BIP32\nwallet.",
                   "params": [
                     {
@@ -1271,7 +1271,7 @@
                   "anchor": "Zymkey-set_gen_SLIP39_group_info",
                   "protection": "public",
                   "signature": "def set_gen_SLIP39_group_info(group_index, member_count, member_threshold)",
-                  "brief": "Configures the number of members and threshold for the group shares (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Configures the number of members and threshold for the group shares.",
                   "details": "This method sets the number of members required for a group share once a SLIP39 session\nwas opened via gen_wallet_master_seed().",
                   "params": [
                     {
@@ -1323,7 +1323,7 @@
                   "anchor": "Zymkey-add_gen_SLIP39_member_pwd",
                   "protection": "public",
                   "signature": "def add_gen_SLIP39_member_pwd(passphrase='')",
-                  "brief": "Generates a new mnemonic_str tied to a SLIP39 member (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Generates a new mnemonic_str tied to a SLIP39 member.",
                   "details": "This method generates a new member of a group share. Members can also be\npassphrase protected. Passphrases are not required to be unique. This\nfunction is meant to be called after configuring a group via set_gen_SLIP39_group_info().",
                   "params": [
                     {
@@ -1359,7 +1359,7 @@
                   "anchor": "Zymkey-cancel_SLIP39_session",
                   "protection": "public",
                   "signature": "def cancel_SLIP39_session()",
-                  "brief": "Cancels an active SLIP39 session (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Cancels an active SLIP39 session.",
                   "details": "This method cancels an ongoing SLIP39 session for both master seed generation and recovery.",
                   "params": [],
                   "returns": [
@@ -1386,7 +1386,7 @@
                   "anchor": "Zymkey-gen_oversight_wallet",
                   "protection": "public",
                   "signature": "def gen_oversight_wallet(key_type, pub_key, chain_code, node_addr, wallet_name, variant='')",
-                  "brief": "Generates a supervisory bip32 wallet. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Generates a supervisory bip32 wallet.",
                   "details": "This method generates a new supervisory Bip32 wallet. Meant for\nread-only transactions and supervising history.",
                   "params": [
                     {
@@ -1462,7 +1462,7 @@
                   "anchor": "Zymkey-gen_wallet_child_key",
                   "protection": "public",
                   "signature": "def gen_wallet_child_key(parent_key_slot, index, hardened, return_chain_code=False)",
-                  "brief": "Generates a child key based on a parent key that is in a wallet (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Generates a child key based on a parent key that is in a wallet.",
                   "details": "This method generates a child key based on a parent key that is\nin a wallet.",
                   "params": [
                     {
@@ -1522,7 +1522,7 @@
                   "anchor": "Zymkey-restore_wallet_master_seed",
                   "protection": "public",
                   "signature": "def restore_wallet_master_seed(key_type, master_gen_key, wallet_name, recovery_strategy, mnemonics=None)",
-                  "brief": "Restore a wallet's master seed based on the recovery strategy object (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Restore a wallet's master seed based on the recovery strategy object.",
                   "details": "This method restores a wallet's master seed based on a\nmnemonic string and a master generator key. This method can be\nused in the process of wallet duplication.",
                   "params": [
                     {
@@ -1590,7 +1590,7 @@
                   "anchor": "Zymkey-add_restore_SLIP39_mnemonic",
                   "protection": "public",
                   "signature": "def add_restore_SLIP39_mnemonic(mnemonic_sentence, passphrase='')",
-                  "brief": "Feed a mnemonic string and the passphrase associated with it (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Feed a mnemonic string and the passphrase associated with it.",
                   "details": "This method feeds in mnemonic sentences (shards) into the module.\nMeant to be called after starting a restore_wallet_master_seed() SLIP39 session.\nWill return -1 until the master seed is reconstructed properly.",
                   "params": [
                     {
@@ -1634,7 +1634,7 @@
                   "anchor": "Zymkey-get_wallet_node_addr",
                   "protection": "public",
                   "signature": "def get_wallet_node_addr(slot)",
-                  "brief": "Get a wallet node address from a key slot (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "brief": "Get a wallet node address from a key slot",
                   "details": "This method gets a wallet entry's node address from its key slot\nassignment. The wallet name and master seed slot are also\nreturned.",
                   "params": [
                     {
@@ -1670,7 +1670,7 @@
                   "anchor": "Zymkey-get_wallet_key_slot",
                   "protection": "public",
                   "signature": "def get_wallet_key_slot(node_addr, wallet_name=None, master_seed_slot=None)",
-                  "brief": "Look up a wallet key slot number from a node address (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "brief": "Look up a wallet key slot number from a node address",
                   "details": "This method gets a wallet key slot number from its node address\nand wallet name or master seed key slot. Either the wallet name\nor the master seed slot must be present.",
                   "params": [
                     {
@@ -1963,7 +1963,7 @@
                   "anchor": "Zymkey-set_digital_perimeter_lp_period",
                   "protection": "public",
                   "signature": "def set_digital_perimeter_lp_period(lp_period)",
-                  "brief": "Set the digital perimeter detect low power period (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Set the digital perimeter detect low power period.",
                   "details": "This function sets the digital perimeter detect low power period (microseconds).",
                   "params": [
                     {
@@ -1999,7 +1999,7 @@
                   "anchor": "Zymkey-set_digital_perimeter_lp_max_bits",
                   "protection": "public",
                   "signature": "def set_digital_perimeter_lp_max_bits(max_num_bits)",
-                  "brief": "Set the low power max number of bits (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Set the low power max number of bits.",
                   "details": "This function sets the digital perimeter detect low power max number of bits",
                   "params": [
                     {
@@ -2035,7 +2035,7 @@
                   "anchor": "Zymkey-set_digital_perimeter_delays",
                   "protection": "public",
                   "signature": "def set_digital_perimeter_delays(min_delay_ns, max_delay_ns)",
-                  "brief": "Set the digital perimeter detect delays (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Set the digital perimeter detect delays.",
                   "details": "This function sets the digital perimeter detect delay values.",
                   "params": [
                     {
@@ -2151,7 +2151,7 @@
                   "anchor": "Zymkey-get_cpu_temp",
                   "protection": "public",
                   "signature": "def get_cpu_temp()",
-                  "brief": "Get current CPU temperature (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Get current CPU temperature.",
                   "details": "This function gets the current HSM CPU temperature.",
                   "params": [],
                   "returns": [
@@ -2208,7 +2208,7 @@
                   "anchor": "Zymkey-get_rtc_drift",
                   "protection": "public",
                   "signature": "def get_rtc_drift()",
-                  "brief": "Get RTC drift (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Get RTC drift.",
                   "details": "This function gets the current RTC drift.",
                   "params": [],
                   "returns": [
@@ -2235,7 +2235,7 @@
                   "anchor": "Zymkey-get_batt_volt",
                   "protection": "public",
                   "signature": "def get_batt_volt()",
-                  "brief": "Get current battery voltage (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module).",
+                  "brief": "Get current battery voltage.",
                   "details": "This function gets the current battery voltage.",
                   "params": [],
                   "returns": [
@@ -2325,7 +2325,7 @@
                   "anchor": "Zymkey-set_battery_voltage_action",
                   "protection": "public",
                   "signature": "def set_battery_voltage_action(sleep=False, self_destruct=False)",
-                  "brief": "Set battery voltage action. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "brief": "Set battery voltage action.",
                   "details": "This function specifies the action to take when the\nbattery voltage falls below the threshold set by\nset_battery_voltage_threshold. If this function is never\ncalled, do nothing is default. There are three actions:\n  * Do nothing\n  * Go to sleep until battery is replaced\n  * Self-destruct\nWith sleep and self_destruct set to False, it removes a\npreviously set sleep or self_destruct action.",
                   "params": [
                     {
@@ -2369,7 +2369,7 @@
                   "anchor": "Zymkey-set_battery_voltage_threshold",
                   "protection": "public",
                   "signature": "def set_battery_voltage_threshold(threshold)",
-                  "brief": "Sets the battery voltage threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "brief": "Sets the battery voltage threshold.",
                   "details": "This function sets the threshold at which if the\nbattery voltage falls bellow, the action set by\nset_battery_voltage_action will be carried out.\nThe recommended threshold is 2.3V is assumed by default. Threshold\nmust be below 2.5V.",
                   "params": [
                     {
@@ -2405,7 +2405,7 @@
                   "anchor": "Zymkey-set_cpu_temp_action",
                   "protection": "public",
                   "signature": "def set_cpu_temp_action(self_destruct=False)",
-                  "brief": "Set HSM CPU temperature threshold action. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "brief": "Set HSM CPU temperature threshold action.",
                   "details": "This function specifies the action to take when the\nHSM CPU temperature falls below the threshold set by\nset_cpu_low_temp_threshold, or rises above the threshold\nset by set_cpu_high_temp_threshold. There are two\nactions to apply:\n  * Do nothing\n  * Self-destruct\nTo remove a previously set self-destruct action, call\nthis function with self_destruct=False.",
                   "params": [
                     {
@@ -2441,7 +2441,7 @@
                   "anchor": "Zymkey-set_cpu_low_temp_threshold",
                   "protection": "public",
                   "signature": "def set_cpu_low_temp_threshold(threshold)",
-                  "brief": "Sets the HSM CPU low temperature threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "brief": "Sets the HSM CPU low temperature threshold.",
                   "details": "This function sets the threshold at which if the\non-board HSM CPU's tempreature falls below, the\naction set by set_cpu_temp_action will be carried out.\nWARNING: You can lock yourself out in dev mode if\nyou set a threshold above the CPU's ambient temperature.\nThe recommended setting is no more than 20C.\nIf this function is never called, -10 degrees celsius is\nassumed.",
                   "params": [
                     {
@@ -2477,7 +2477,7 @@
                   "anchor": "Zymkey-set_cpu_high_temp_threshold",
                   "protection": "public",
                   "signature": "def set_cpu_high_temp_threshold(threshold)",
-                  "brief": "Sets the HSM CPU high temperature threshold. (Supported Devices: ZYMKEY5, HSM60, HSM64, HSM6, Secure Compute Module)",
+                  "brief": "Sets the HSM CPU high temperature threshold.",
                   "details": "This function sets the threshold at which if the\non-board HSM CPU's tempreature rises above, the\naction set by set_cpu_temp_action will be carried out.\nWARNING: You can lock yourself out in dev mode if\nyou set a threshold below the CPU's ambient temperature.\nThe recommended setting is no less than 40C.\nIf this function is never called, 65 degrees celsius is\nassumed.",
                   "params": [
                     {
@@ -2513,7 +2513,7 @@
                   "anchor": "Zymkey-set_supervised_boot_policy",
                   "protection": "public",
                   "signature": "def set_supervised_boot_policy(policy_id: int = 0)",
-                  "brief": "Sets the Supervised boot policy. (Supported Devices: Secure Compute Module)",
+                  "brief": "Sets the Supervised boot policy.",
                   "details": "This function sets the action policy to take when\nSupervised boot detects a file change during the boot process.",
                   "params": [
                     {
@@ -2545,7 +2545,7 @@
                   "anchor": "Zymkey-add_or_update_supervised_boot_file",
                   "protection": "public",
                   "signature": "def add_or_update_supervised_boot_file(filepath: str = '', slot: int = 15)",
-                  "brief": "Update file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+                  "brief": "Update file manifest for Supervised boot to check.",
                   "details": "This function adds or updates a file in the file manifest to\nbe checked by Supervised during the boot process.",
                   "params": [
                     {
@@ -2585,7 +2585,7 @@
                   "anchor": "Zymkey-remove_supervised_boot_file",
                   "protection": "public",
                   "signature": "def remove_supervised_boot_file(filepath: str = '')",
-                  "brief": "Remove a file from file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+                  "brief": "Remove a file from file manifest for Supervised boot to check.",
                   "details": "This function removes a file in the file manifest to\nbe checked by Supervised boot during the boot process.",
                   "params": [
                     {
@@ -2617,7 +2617,7 @@
                   "anchor": "Zymkey-get_supervised_boot_file_manifest",
                   "protection": "public",
                   "signature": "def get_supervised_boot_file_manifest()",
-                  "brief": "Get the file manifest for Supervised boot to check. (Supported Devices: Secure Compute Module)",
+                  "brief": "Get the file manifest for Supervised boot to check.",
                   "details": "This function gets a list of the files that are checked\nby Supervised boot during the boot process.",
                   "params": [],
                   "returns": [

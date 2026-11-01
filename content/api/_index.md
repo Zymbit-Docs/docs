@@ -5,6 +5,7 @@ icon: ""
 description: "Zymbit Driver API Documentation"
 aliases:
     - /quickstart/api/
+    - /api-preview/
 date: ""
 lastmod: "2025-10-15"
 draft: false
