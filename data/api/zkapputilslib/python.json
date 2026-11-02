@@ -3,8 +3,8 @@
   "language": "python",
   "source": {
     "repo": "zkapputilslib",
-    "version": "1.2.0-11-18-g36791e3",
-    "commit": "36791e3"
+    "version": "1.2.0-11-36-g44f591b",
+    "commit": "44f591b"
   },
   "module": "zymkey",
   "brief": "Python interface module to Zymkey Application Utilities Library.",
@@ -1340,7 +1340,12 @@
                       "description": "The return code from the Zymkey library, and the member's 24-word recovery phrase\n(mnemonic sentence)."
                     }
                   ],
-                  "throws": [],
+                  "throws": [
+                    {
+                      "type": "AssertionError",
+                      "description": "If `ret` is a bad return code from the Zymkey library function, or\nif the library returned no mnemonic sentence."
+                    }
+                  ],
                   "notes": [],
                   "supported": [
                     "ZYMKEY5",
