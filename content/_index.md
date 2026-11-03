@@ -98,7 +98,7 @@ Zymbit Driver Package 2.x makes Zymbit software install and update like any othe
 
 #### Supported Distributions
 
-Zymbit Driver Package 2.x supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built. If you are using an older distribution, we recommend you stick with the existing legacy packages.
+Zymbit Driver Package 2.x supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built.
 
 | Distribution | Codename | Status |
 | --- | --- | --- |
