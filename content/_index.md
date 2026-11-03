@@ -115,7 +115,7 @@ All packages now come from one common, signed repository, `https://zk-repo.s3.am
 | zkifc | 1.2-38 | 2.0.0-2 | Now includes libzk; replaces the libzk package. |
 | libzk | 1.1-26 | — | Removed; merged into zkifc. |
 | zkapputilslib | 1.1-27 | — | Removed; split into the following four libzkapputils\* packages. |
-| libzkapputils | — | 1.2.1-1 | New. C library.. Needed to run user-built programs which utilize the Zymkey API. |
+| libzkapputils | — | 1.2.1-1 | New. C library. Needed to run user-built programs which utilize the Zymkey API. |
 | libzkapputils-c++ | — | 1.2.1-1 | New. C++ library, replaces zkapputilslib. Needed to run user-built programs which utilize the C++ bindings to the Zymkey API. |
 | libzkapputils-dev | — | 1.2.1-1 | New. C headers. Only necessary on systems being used to build programs with the Zymkey API.&#32; |
 | libzkapputils-c++-dev | — | 1.2.1-1 | New. C++ headers. Only necessary on systems being used to build programs with the C++ bindings to the Zymkey API. |
@@ -133,7 +133,7 @@ All packages now come from one common, signed repository, `https://zk-repo.s3.am
 | zkifc | Supports Ubuntu 26.04, where sysfs GPIO is removed. Includes libzymkey, so the separate libzk package is no longer installed. Service and udev rules now install under `/usr/lib/systemd/system` and `/usr/lib/udev/rules.d`. |
 | libzkapputils, libzkapputils-c++ | Replace zkapputilslib. Libraries are in `/usr/lib/aarch64-linux-gnu` with versioned names: `libzk_app_utils.so.1` and `libzkAppUtilsClassCPP.so.1`. |
 | libzkapputils-dev, libzkapputils-c++-dev | New development packages with headers, pkg-config files (`zkapputils`, `zkapputils-c++`) and CMake packages (`zkAppUtils`, `zkAppUtilsCXX`). |
-| python3-zku | Replaces the `zku` pip package (removes it zku when installed). Example scripts move to `/usr/share/zymkey/examples`. |
+| python3-zku | Replaces the `zku` pip package (removes zku when installed). Example scripts move to `/usr/share/zymkey/examples`. |
 | libzymkeyssl | The OpenSSL 3.x engine is now `/usr/lib/aarch64-linux-gnu/libzymkey_ssl.so`, linked into the OpenSSL engines directory as `libzymkey_ssl.so`. It was previously copied there as `zymkey_ssl.so`. |
 | zkpkcs11 | The module is now `/usr/lib/aarch64-linux-gnu/libzk_pkcs11.so`. Adds `/etc/zk_pkcs11.conf.sample` and a `zk_pkcs11` system group for token access. |
 | zksaapps | Standalone apps used for encryption. Tools install to `/usr/sbin`. |
