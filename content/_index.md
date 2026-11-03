@@ -20,7 +20,7 @@ Recent Updates
 - Release of Zymbit Driver Package 2.0.  This is the first overall update to all of the Zymbit Driver Packages since 2025. Consider it a migration, not a routine update. Major feature changes:
   - Adds support for the production ZYMKEY5 (no Bootware support)
   - Adds support for Ubuntu 26.04 (resolute) (no Bootware support)
-  - Completely re-vamped packaging and installation; no longer uses install_zk_sw.sh script method. Installation is purely apt package based. Running apt upgrade on a device still using zk-sw-repo will not move it to 2.0.
+  - Completely re-vamped packaging and installation; no longer uses install_zk_sw.sh script method. Installation is purely apt package based. Running apt upgrade on a device still using zk-sw-repo will not move it to 2.x.
   - Deprecates support for Ubuntu 22.04 (jammy), Debian 11 (bullseye) and 32-bit ARM. 
 
     Details: [October 2026 Update](#october-2026-details)
@@ -87,10 +87,10 @@ Then follow the [install steps](#install-and-upgrade) below.
 
 #### What's New?
 
-Zymbit Driver Package 2.0 makes Zymbit software install and update like any other package on your system: one signed apt repository, production ZYMKEY5 support, and Ubuntu 26.04 LTS out of the box.
+Zymbit Driver Package 2.x makes Zymbit software install and update like any other package on your system: one signed apt repository, production ZYMKEY5 support, and Ubuntu 26.04 LTS out of the box.
 
 - **Install and update with apt.** Add the Zymbit repository once, and every Zymbit package installs and stays current through standard apt commands, alongside the rest of your system. No more `install_zk_sw.sh` script.
-- **Production-ready ZYMKEY5.** Production ZYMKEY5 adapters now identify as zymkey5, replacing the pre-production hsm6 name. Zymbit Driver Package 2.0 is required for adapters identifying as zymkey5 and is backwards compatible with adapters identifying as hsm6.
+- **Production-ready ZYMKEY5.** Production ZYMKEY5 adapters now identify as zymkey5, replacing the pre-production hsm6 name. Zymbit Driver Package 2.x is required for adapters identifying as zymkey5 and is backwards compatible with adapters identifying as hsm6.
 - **Ready for Ubuntu 26.04 LTS.** zkifc supports the new GPIO character-device interface that replaces sysfs GPIO in Ubuntu 24.04, so you can move your fleet to the latest LTS.
 - **Install only what you need.** The Zymkey app utilities API is split into separate runtime, development and Python packages. Production devices need no longer install development headers and utilities.
 - **Python API as a native package.** python3-zku installs with apt like everything else and automatically replaces the old pip package.&#32;
@@ -98,7 +98,7 @@ Zymbit Driver Package 2.0 makes Zymbit software install and update like any othe
 
 #### Supported Distributions
 
-Zymbit Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built. If you are using an older distribution, we recommend you stick with the existing legacy packages.
+Zymbit Driver Package 2.x supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built. If you are using an older distribution, we recommend you stick with the existing legacy packages.
 
 | Distribution | Codename | Status |
 | --- | --- | --- |
@@ -111,9 +111,9 @@ Zymbit Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (
 
 Ubuntu 22.04 (jammy) and Debian 11 (bullseye) are no longer supported because the packages require glibc 2.36 or newer. Devices on 22.04 should stay on the zk-sw-repo packages or upgrade to Ubuntu 24.04. Devices on bullseye should stay on the zk-sw-repo packages or upgrade to Debian 12 (bookworm).
 
-#### Zymbit Driver Package 2.0 Versions
+#### Zymbit Driver Package 2.x Versions
 
-All packages now come from one signed repository, `https://zk-repo.s3.amazonaws.com/debian/` (suite `stable`), shared by every supported distribution. **Zymbit Driver Package 2.0** names this set of packages as a whole. Each package keeps its own version number, listed below. Previous versions are the newest from the legacy zk-sw-repo repository.
+All packages now come from one signed repository, `https://zk-repo.s3.amazonaws.com/debian/` (suite `stable`), shared by every supported distribution. **Zymbit Driver Package 2.x** names this set of packages as a whole. Each package keeps its own version number, listed below. Previous versions are the newest from the legacy zk-sw-repo repository.
 
 | Package | Previous version | New version | Notes |
 | --- | --- | --- | --- |

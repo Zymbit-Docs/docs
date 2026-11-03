@@ -158,7 +158,7 @@ Steps that appear word for word on several pages are written once, in `assets/sn
 
 ### Zymbit Driver Package install steps
 
-`assets/snippets/driver-install.md` holds the Driver Package 2.0 install steps shown in the "Install the Zymbit Driver Package" section of every module getting-started page (ZYMKEY4, ZYMKEY5, HSM4, HSM6, HSM60). Each page calls:
+`assets/snippets/driver-install.md` holds the Driver Package 2.x install steps shown in the "Install the Zymbit Driver Package" section of every module getting-started page (ZYMKEY4, ZYMKEY5, HSM4, HSM6, HSM60). Each page calls:
 
 ```markdown
 ## Install the Zymbit Driver Package

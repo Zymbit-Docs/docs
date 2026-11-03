@@ -1,5 +1,5 @@
 <!-- markdownlint-disable-next-line MD041 -->
-Log in to your host device and follow these steps to install Zymbit Driver Package 2.0 for your %PRODUCT%. The same steps upgrade a device that was set up with the legacy `install_zk_sw.sh` script.
+Log in to your host device and follow these steps to install Zymbit Driver Package 2.x for your %PRODUCT%. The same steps upgrade a device that was set up with the legacy `install_zk_sw.sh` script.
 
 %REQUIREMENTS%
 
