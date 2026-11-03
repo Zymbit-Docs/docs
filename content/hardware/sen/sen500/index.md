@@ -1,7 +1,7 @@
 ---
-title: Secure Edge Node - SEN 500
-linktitle: SEN 500 
-description: SEN 500 - Enterprise grade compute hardware that is secure and easily customized. Also available as a [Developer Kit](https://store.zymbit.com/products/sen-500-developer-kit-2).
+title: Secure Edge Node - SEN-505
+linktitle: SEN-505 
+description: SEN-505 - Enterprise grade compute hardware that is secure and easily customized. Also available as a [Developer Kit](https://store.zymbit.com/products/sen-500-developer-kit-2).
 aliases:
     - /getting-started/sen500/quickstart/
 draft: false
@@ -14,13 +14,13 @@ layout: single
 
 ## Introduction
 
-The SEN 500 provides all the hardware and software components required to get started implementing your secure application. Inside, the SEN 500 includes a Raspberry PI CM5, the Zymbit Secure Base Board, and the HSM64 security module, detailed below.
+The SEN-505 provides all the hardware and software components required to get started implementing your secure application. Inside, the SEN-505 includes a Raspberry PI CM5, the Zymbit Secure Base Board, and the HSM64 security module, detailed below.
 
 {{< cardpane >}}
-{{< card header="Zymbit SEN 500" >}}
+{{< card header="Zymbit SEN-505" >}}
 {{< figure
     src="sen500.png"
-    alt="SEN 500"
+    alt="SEN-505"
     caption=""
     width=70%
     >}}
@@ -30,16 +30,16 @@ The SEN 500 provides all the hardware and software components required to get st
 
 ## Specifications
 
-[SEN-500 specifications](https://www.zymbit.com/secure-edge-node-500/#specifications).
+[SEN-505 specifications](https://www.zymbit.com/secure-edge-node-500/#specifications).
 
 -----
-## Configure and Setup your SEN 500
+## Configure and Setup your SEN-505
 
 {{< cardpane >}}
-{{< card header="Zymbit SEN 500 I/O ports" >}}
+{{< card header="Zymbit SEN-505 I/O ports" >}}
 {{< figure
     src="sen500_edge_connections.png"
-    alt="SEN 500 I/O connections"
+    alt="SEN-505 I/O connections"
     caption=""
     width=70%
     >}}
@@ -57,7 +57,7 @@ The SEN 500 provides all the hardware and software components required to get st
 
 That is all it takes to get up and running!
 
-## SEN 500 Features
+## SEN-505 Features
 
 ### External I/O Connections
 
@@ -75,7 +75,7 @@ That is all it takes to get up and running!
 
 ### Power Button
 
-On the top of the SEN 500 is a Power Button. This mirrors the functionality of the Pi5 power button. For CM5 based devices like the SEN 500, currently it will power down and put the device to sleep but does not turn the unit back on.
+On the top of the SEN-505 is a Power Button. This mirrors the functionality of the Pi5 power button. For CM5 based devices like the SEN-505, currently it will power down and put the device to sleep but does not turn the unit back on.
 
 ### Status LED Indicators
 
@@ -112,13 +112,13 @@ Examples of limited or error secondary power indications could include a PoE inj
 
 ### Internal I/O Connections
 
-The SEN-500 contains the Zymbit Secure Base Board, which includes an additional USB port, storage options, an M.2 Type M connector, Camera/DSI Display connector, 40 pin GPIO header, external battery, etc.
+The SEN-505 contains the Zymbit Secure Base Board, which includes an additional USB port, storage options, an M.2 Type M connector, Camera/DSI Display connector, 40 pin GPIO header, external battery, etc.
 
 Details of the functionality of the Zymbit [Secure Base Board](../../components/sbb/).
 
-#### Accessing the inside of the SEN 500
+#### Accessing the inside of the SEN-505
 
-To gain access to the SEN 500, power down and remove the six torx screws. Carefully remove the lid. It does not void any warranty to open the unit in order to install Pi HATs, sensors, M.2 hardware, configure as a MSD/rpiboot, or arrange tamper prevention. If needed, remove the four nylon screws to separate the CM5 from the Zymbit HSM. Reverse the process to reassemble and close the unit. 
+To gain access to the SEN-505, power down and remove the six torx screws. Carefully remove the lid. It does not void any warranty to open the unit in order to install Pi HATs, sensors, M.2 hardware, configure as a MSD/rpiboot, or arrange tamper prevention. If needed, remove the four nylon screws to separate the CM5 from the Zymbit HSM. Reverse the process to reassemble and close the unit. 
 
 ## Troubleshooting and FAQ
 
@@ -126,7 +126,7 @@ To gain access to the SEN 500, power down and remove the six torx screws. Carefu
 
 ## Add-on Devices
 
-[SEN-500 Add-on Devices](../device-addons)
+[SEN-505 Add-on Devices](../device-addons)
 
 
 ---

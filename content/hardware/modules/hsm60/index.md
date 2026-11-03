@@ -112,7 +112,7 @@ Your {{% term/i2c %}} bus is now on and ready to talk to the HSM.
 
 ### Install the Zymbit Driver Package
 
-{{< driver-install product="HSM60" >}}
+{{< driver-install product="HSM60" requirements="hsm60" >}}
 
 After your device reboots, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
 

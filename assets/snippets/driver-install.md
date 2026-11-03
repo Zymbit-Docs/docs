@@ -1,5 +1,5 @@
 <!-- markdownlint-disable-next-line MD041 -->
-Log in to your host device and follow these steps to install Zymbit Driver Package 2.0 for your %PRODUCT%. The same steps upgrade a device that was set up with the legacy `install_zk_sw.sh` script.
+Log in to your host device and follow these steps to install Zymbit Driver Package 2.x for your %PRODUCT%. The same steps upgrade a device that was set up with the legacy `install_zk_sw.sh` script.
 
 %REQUIREMENTS%
 
@@ -16,7 +16,7 @@ Log in to your host device and follow these steps to install Zymbit Driver Packa
     sudo apt update
     ```
 
-1. If this device was set up with `install_zk_sw.sh`, back up `/var/lib/zymbit` before continuing.
+1. If this device was set up with `install_zk_sw.sh`, back up `/var/lib/zymbit` before continuing. If it is a deployed device, especially one with an encrypted filesystem, read [Before you upgrade](/reference/driver-package/#before-you-upgrade) first.
 
 1. Install the driver, the encryption tools, and the Python API, then reboot:
 

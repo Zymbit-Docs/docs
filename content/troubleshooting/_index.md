@@ -16,7 +16,7 @@ Before contacting Zymbit with troubleshooting related questions, please read thr
 
 1. Power supply. Most of the problems we see are from a poor power source. Start with a good power supply from the PI foundation or Canakit, not a phone charger. The recommended power for the PI4 is 5V and 3 amps.  For a PI5, the recommended power supply should provide 5V, 5 amps.
 1. (All products except SCM) I2C enabled. Double check that you have enabled the I2C bus. An easy way to check is "ls -l /dev/i2c-1". If /dev/i2c-1 exists, the I2C bus is enabled.
-1. apt update and upgrade. Be sure that your software is up to date. On Driver Package 1.x (installed with `install_zk_sw.sh`), `apt upgrade` does not move you to Driver Package 2.0; see [Installing the Zymbit Driver Package](/reference/driver-package/).
+1. apt update and upgrade. Be sure that your software is up to date. On Driver Package 1.x (installed with `install_zk_sw.sh`), `apt upgrade` does not move you to Driver Package 2.x; see [Installing the Zymbit Driver Package](/reference/driver-package/).
 1. Installation. Install the Zymbit Driver Package as described in [Installing the Zymbit Driver Package](/reference/driver-package/), then reboot. After the reboot, the blue LED on your Zymbit device should blink once every 3 seconds. You must get to this step before proceeding to encryption, etc.
 
 If your issue is not related to any of the above list, check the common issues and FAQ below, then the FAQ for your product. If you still do not see a solution to your problem, reach out on our [Community Forum](https://community.zymbit.com/). Thank you!
@@ -25,20 +25,20 @@ If your issue is not related to any of the above list, check the common issues a
 
 ### Updating the Zymbit Driver Package
 
-On Driver Package 2.0, Zymbit packages update with the rest of your system:
+On Driver Package 2.x, Zymbit packages update with the rest of your system:
 
 ```bash
 sudo apt update
 sudo apt upgrade
 ```
 
-A device set up with the legacy `install_zk_sw.sh` script is on Driver Package 1.x, and `apt upgrade` will not move it to 2.0. To migrate, follow [Installing the Zymbit Driver Package](/reference/driver-package/). Devices on Ubuntu 22.04, Debian 11, or a 32-bit OS cannot run 2.0; see [Driver Package 1.x](/reference/driver-package/legacy/). Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.0.
+A device set up with the legacy `install_zk_sw.sh` script is on Driver Package 1.x, and `apt upgrade` will not move it to 2.x. To migrate, follow [Installing the Zymbit Driver Package](/reference/driver-package/). Devices on Ubuntu 22.04, Debian 11, or a 32-bit OS cannot run 2.x; see [Driver Package 1.x](/reference/driver-package/legacy/). Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.x.
 
-For current and previous package versions, see the [Driver Package 2.0 release notes](/#october-2026-details).
+For current and previous package versions, see the [Driver Package 2.x release notes](/#october-2026-details).
 
 ### Expired GPG key preventing access to the repository
 
-This applies only to devices on Driver Package 1.x, which use the legacy zk-sw-repo repository. On Driver Package 2.0, the signing key is installed by the `zymbit-repo` package.
+This applies only to devices on Driver Package 1.x, which use the legacy zk-sw-repo repository. On Driver Package 2.x, the signing key is installed by the `zymbit-repo` package.
 
 The Zymbit GPG key expired and was renewed on September 30, 2024. New installations should not have any problems. `apt-get update` may complain that the GPG key has expired. To update your local key, do the following:
 
@@ -58,7 +58,7 @@ sudo sed -i 's/^deb https/deb [signed-by=\/usr\/share\/keyrings\/zymbit.gpg] htt
 
 ### Wake pin issues after upgrading to kernel 6.6 or later
 
-On Driver Package 2.0, `apt install zkifc` sets the wake pin for you, so you do not need to set it by hand.
+On Driver Package 2.x, `apt install zkifc` sets the wake pin for you, so you do not need to set it by hand.
 
 On Driver Package 1.x, the installation script sets it for new installations. If you installed Driver Package 1.x and then upgraded the kernel to 6.6 or later, please note the following.
 
@@ -112,7 +112,7 @@ sudo apt-get remove --purge -y unattended-upgrades
 
 ### Running a 32-bit operating system
 
-Driver Package 2.0 supports 64-bit ARM only. On a 32-bit OS, install [Driver Package 1.x](/reference/driver-package/legacy/) and apply the following. Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.0. A production ZYMKEY5 cannot be used on a 32-bit OS.
+Driver Package 2.x supports 64-bit ARM only. On a 32-bit OS, install [Driver Package 1.x](/reference/driver-package/legacy/) and apply the following. Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.x, so they cannot be used on a 32-bit OS.
 
 As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
 
@@ -191,7 +191,7 @@ See [Power Quality]( https://docs.zymbit.com/reference/power-quality/) for more 
 A: See:
 
 * [Latest stable platform and OS support](/#latest-stable-platform-and-os-support) on the home page, for each platform and which operating systems Bootware supports.
-* [Supported distributions](/reference/driver-package/#supported-distributions) for Zymbit Driver Package 2.0.
+* [Supported distributions](/reference/driver-package/#supported-distributions) for Zymbit Driver Package 2.x.
 
 -----
 

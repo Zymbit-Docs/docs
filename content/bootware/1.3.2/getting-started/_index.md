@@ -31,7 +31,7 @@ Step-by-step videos of this Getting-Started are also available.
 ### Latest STABLE Platform and OS Support
 
 
-|                  Pi Platform:     |    SEN-500/CM5    |  SEN-400/CM4           | Pi5                    |   Pi4             |
+|                  Pi Platform:     |    SEN-505/CM5    |  SEN-400/CM4           | Pi5                    |   Pi4             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} | {{< supported >}} &nbsp; |

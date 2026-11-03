@@ -18,10 +18,10 @@
 #   perimeter  Override for /tutorials/perimeter-detect/<...>/ when a product is
 #              covered by a shared page rather than its own.
 #   inherits   Another product key whose tasks this product also supports. The
-#              developer kit is a SEN 500 plus accessories, so it supports whatever
-#              the SEN 500 does; declaring that once means a task added to the SEN
-#              500 later reaches the kit with no second edit. One level only, not
-#              transitive.
+#              SEN 500 Developer Kit inherits from the sen500 key, so it supports
+#              whatever that product does; declaring that once means a task added
+#              to that product later reaches the kit with no second edit. One level
+#              only, not transitive.
 #   components Boards and modules inside this product, as page paths.
 #   also       Extra links worth surfacing, as {path, label}.
 #
@@ -30,7 +30,7 @@
 
 products:
   - key: sen500
-    name: "SEN 500"
+    name: "SEN-505"
     status: current
     hardware: /hardware/sen/sen500
     perimeter: sen

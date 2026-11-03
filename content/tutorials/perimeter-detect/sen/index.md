@@ -1,7 +1,7 @@
 ---
 title : "Perimeter Detect: Secure Edge Nodes"
 linkTitle: "Secure Edge Node"
-description: "Perimeter detect tamper wiring for the Secure Edge Node. Contact Zymbit for SEN 400 and SEN 500 connections."
+description: "Perimeter detect tamper wiring for the Secure Edge Node. Contact Zymbit for SEN 400 and SEN-505 connections."
 date: "2022-05-11"
 lastmod: "2025-10-15"
 draft: false
@@ -11,7 +11,7 @@ weight: -660
 toc: true
 ---
 
-> NOTICE Sept 2025: This page needs updating for the SEN 400 and the SEN 500 (pre-release). The functionality has not changed, but the tamper wiring connections are different. Contact support@zymbit.com if you need to configure tamper detect on your SEN 400 or SEN 500.
+> NOTICE Sept 2025: This page needs updating for the SEN 400 and the SEN-505 (pre-release). The functionality has not changed, but the tamper wiring connections are different. Contact support@zymbit.com if you need to configure tamper detect on your SEN 400 or SEN-505.
 
 ## Scope
 
