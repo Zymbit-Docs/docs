@@ -29,6 +29,8 @@ Ubuntu 22.04 and Debian 11 are not supported because the packages require glibc 
 
 Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.0. A production ZYMKEY5 cannot be used on Ubuntu 22.04, Debian 11, or a 32-bit OS. Pre-production ZYMKEY5 units, which identify as an HSM6, work with both Driver Package 2.0 and 1.x.
 
+Driver Package 2.0 is required for production versions of ZYMKEY5, SEN-505, and HSM60.
+
 ## Before you upgrade
 
 On a device set up with `install_zk_sw.sh`, Driver Package 2.0 is a migration, not a routine update. Running `apt upgrade` will not move the device to 2.0; you must install `zymbit-repo` as described below.
@@ -36,6 +38,12 @@ On a device set up with `install_zk_sw.sh`, Driver Package 2.0 is a migration, n
 * Back up `/var/lib/zymbit`.
 * Keep a copy of `/etc/zk_pkcs11.conf` and your PKCS#11 tokens. The token directory stays at `/var/lib/zymbit/zk_pkcs11/tokens/`, so existing tokens carry over.
 * Plan to rebuild applications built against the old Zymkey API libraries. The new libraries have versioned names.
+
+{{< callout warning >}}
+**Upgrading deployed devices?** Driver Package 2.0 has been tested in upgrade scenarios; however, there is always risk when encrypted in-field devices are being upgraded. Test before deployment and proceed at your own risk. Please contact Zymbit support if in need of assistance.
+{{< /callout >}}
+
+The `zymbit-repo` package is aware of the old driver and will generally behave correctly. However, if the system install has been customized, or the distribution is non-standard, the automatic script may not upgrade properly. Always test and check to make sure the upgrade is working as intended.
 
 ## Add the Zymbit repository
 
