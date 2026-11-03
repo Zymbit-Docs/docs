@@ -26,7 +26,7 @@ Secure Edge Node Developer Kits
 
 | Model            | Pi CPU        | Zymbit Motherboard     | Zymbit HSM              |  Options                |
 |:-----------------|:-------------:|:-----------------------|:------------------------|:------------------------|
-| [SEN-505 Developer Kit](dev-kits/sen500-dev-kit/)           | CM5           | [Secure Base Board](components/sbb/)           | [HSM64](components/hsm64)   | [See included options](https://store.zymbit.com/products/sen-500-developer-kit-2)    |
+| [SEN500 Developer Kit](dev-kits/sen500-dev-kit/)           | CM5           | [Secure Base Board](components/sbb/)           | [HSM64](components/hsm64)   | [See included options](https://store.zymbit.com/products/sen-500-developer-kit-2)    |
 
 ### [Security Modules](modules)
 

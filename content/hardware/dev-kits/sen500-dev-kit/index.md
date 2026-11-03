@@ -1,7 +1,7 @@
 ---
-title: SEN-505 Developer Kit
-linktitle: SEN-505 Dev Kit
-description: SEN-505 - Secure Edge Node 505, Developer Kit with CM5
+title: SEN 500 Developer Kit
+linktitle: SEN 500 Dev Kit
+description: SEN 500 - Secure Edge Node 500, Developer Kit with CM5
 aliases:
     - /getting-started/sen500-dev-kit/quickstart/
     - /quickstart/getting-started/sen500-dev-kit/
@@ -31,10 +31,10 @@ Secure Linux computer engineered for edge applications that require a high stand
 
 
 {{< cardpane >}}
-{{< card header="Zymbit SEN-505 Dev Kit" >}}
+{{< card header="Zymbit SEN 500 Dev Kit" >}}
 {{< figure
     src="sen500_dev-kit-2.png"
-    alt="SEN-505 Dev Kit"
+    alt="SEN 500 Dev Kit"
     caption=""
     width=70%
     >}}
@@ -43,23 +43,23 @@ Secure Linux computer engineered for edge applications that require a high stand
 
 ## Specifications
 
-[SEN-505 Developers Kit](https://www.zymbit.com/secure-edge-node-500/#specifications).
+[SEN-500 Developers Kit](https://www.zymbit.com/secure-edge-node-500/#specifications).
 
 -----
 ## Quickstart
 
 {{< cardpane >}}
-{{< card header="Zymbit SEN-505 Dev Kit I/O ports" >}}
+{{< card header="Zymbit SEN 500 Dev Kit I/O ports" >}}
 {{< figure
     src="sen500_dev_kit_edge_connection.png"
-    alt="SEN-505 Dev Kit I/O connections"
+    alt="SEN 500 Dev Kit I/O connections"
     caption=""
     width=70%
     >}}
 {{< /card >}}
 {{< /cardpane >}}
 
-By default, the SEN-505 Developer Kit comes pre-installed with Raspberry Pi OS Bookworm and the latest Zymbit Driver Package. After completing the following steps, the Developer Kit is ready for use.
+By default, the SEN 500 Developer Kit comes pre-installed with Raspberry Pi OS Bookworm and the latest Zymbit Driver Package. After completing the following steps, the Developer Kit is ready for use.
 
 1. Connect the 12-24V Power Supply up to the front panel barrel connector.
 2. Connect an Cat5e/Cat6 ethernet cable to the gigabit ethernet port.
@@ -71,7 +71,7 @@ By default, the SEN-505 Developer Kit comes pre-installed with Raspberry Pi OS B
 
 That is all it takes to get up and running!
 
-## SEN-505 Features
+## SEN 500 Features
 
 ### External I/O Connections
 
@@ -89,7 +89,7 @@ That is all it takes to get up and running!
 
 ### Power Button
 
-On the top of the SEN-505 is a Power Button. This mirrors the functionality of the Pi5 power button. For CM5 based devices like the SEN-505, currently it will power down and put the device to sleep but does not turn the unit back on.
+On the top of the SEN 500 is a Power Button. This mirrors the functionality of the Pi5 power button. For CM5 based devices like the SEN 500, currently it will power down and put the device to sleep but does not turn the unit back on.
 
 ### Status LED Indicators
 
@@ -126,7 +126,7 @@ Examples of limited or error secondary power indications could include a PoE inj
 
 ### Internal I/O Connections
 
-The SEN-505 contains the Zymbit Secure Base Board, which includes an additional USB port, storage options, an M.2 Type M connector, Camera/DSI Display connector, 40 pin GPIO header, external battery, etc.
+The SEN-500 contains the Zymbit Secure Base Board, which includes an additional USB port, storage options, an M.2 Type M connector, Camera/DSI Display connector, 40 pin GPIO header, external battery, etc.
 
 The included USB female to USB cable can be used for the USB port.
 
@@ -139,7 +139,7 @@ Details of the functionality of the Zymbit [Secure Base Board](../../components/
 
 ## Add-on Devices
 
-[SEN-505 Add-on Devices](../../sen/device-addons)
+[SEN-500 Add-on Devices](../../sen/device-addons)
 
 
 ---

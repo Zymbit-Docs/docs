@@ -136,7 +136,7 @@ To exclude a page from search, set `pagefind_ignore: true` in its front matter.
 
 Both are generated from two data files, so there is nothing to keep in sync by hand:
 
-- `data/products.yaml` - one entry per product: `key` (the URL segment and the default name for convention lookups), `name`, `status` (current / legacy / component), `hardware` (its main page, declared because those paths are irregular), and optionally `refkey`, `perimeter`, `inherits`, `components`, and `also`. `inherits` names another product whose tasks this one also supports, which is how the SEN-505 Developer Kit tracks the SEN-505 without duplicating task keys.
+- `data/products.yaml` - one entry per product: `key` (the URL segment and the default name for convention lookups), `name`, `status` (current / legacy / component), `hardware` (its main page, declared because those paths are irregular), and optionally `refkey`, `perimeter`, `inherits`, `components`, and `also`. `inherits` names another product whose tasks this one also supports, which is how the SEN 500 Developer Kit tracks the SEN-505 without duplicating task keys.
 - `data/tasks.yaml` - one entry per task: `title` phrased as a reader would phrase it, `page`, and the `products` it applies to. The product hubs and the task index both read this, so a task added here appears in both.
 
 Rendered by `layouts/docs/product-hub.html`, `layouts/docs/product-index.html`, and `layouts/docs/task-index.html`, via `layouts/partials/product-links.html`. Content files under `content/products/` carry only a `product:` key and `layout: product-hub`.
