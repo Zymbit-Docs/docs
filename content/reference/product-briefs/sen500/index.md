@@ -1,6 +1,6 @@
 ---
-title: "Secure Edge Node 500"
-linkTitle: "SEN 500"
+title: "Secure Edge Node 505"
+linkTitle: "SEN-505"
 draft: false
 weight: 90
 description: "Enterprise grade secure compute hardware for zero trust environments"
@@ -8,7 +8,7 @@ description: "Enterprise grade secure compute hardware for zero trust environmen
 
 Enterprise grade compute hardware that's secure and easily customized.
 
-![Secure Edge Node 500 by Zymbit - enterprise grade secure compute hardware](zymbit-sen500-secure-edge-node-500-preview-202502001-e1738792292207.jpg)
+![Secure Edge Node 505 by Zymbit - enterprise grade secure compute hardware](zymbit-sen500-secure-edge-node-500-preview-202502001-e1738792292207.jpg)
 
 - Quad-core Cortex-A76, 64-bit SoC @ 2.4GHz
 - Secure compute module, Linux OS
@@ -24,7 +24,7 @@ Enterprise grade compute hardware that's secure and easily customized.
 
 Engineered for a lifetime of reliable operation in zero trust environments.
 
-![Secure Edge Node 500 front and side view](zymbit-secure-edge-node-400-front-side-view-20240501.png)
+![Secure Edge Node 505 front and side view](zymbit-secure-edge-node-400-front-side-view-20240501.png)
 
 ### Secure Compute Module
 
@@ -79,9 +79,9 @@ Engineered for a lifetime of reliable operation in zero trust environments.
 
 ### Tough expandable enclosure -- Standard Type D35
 
-![Secure Edge Node 500 enclosure rear corner view](Rear-Corner-1.png)
+![Secure Edge Node 505 enclosure rear corner view](Rear-Corner-1.png)
 
-![Secure Edge Node 500 exploded view](zymbit-secure-edge-node-400-exploded-view-20240501-e1714617490301.png)
+![Secure Edge Node 505 exploded view](zymbit-secure-edge-node-400-exploded-view-20240501-e1714617490301.png)
 
 - Rugged plastic and metal construction
 - Tamper switch compatible, Integrated heatsink
@@ -92,7 +92,7 @@ Engineered for a lifetime of reliable operation in zero trust environments.
 
 ### Pre-configured the way you want
 
-To simplify your life, the SEN 500 can be shipped with a choice of pre-configured OS, application software and security policies that align with your product development stage.
+To simplify your life, the SEN-505 can be shipped with a choice of pre-configured OS, application software and security policies that align with your product development stage.
 
 #### Develop
 
@@ -156,9 +156,9 @@ To simplify your life, the SEN 500 can be shipped with a choice of pre-configure
 
 Kits for developers and pilot deployments.
 
-![Secure Edge Node 500 prototyping kit](Proto-410-kit-640x480.png)
+![Secure Edge Node 505 prototyping kit](Proto-410-kit-640x480.png)
 
-![Secure Edge Node 500 with XHS security supervisor](ZYMBIT_SEN500-XHS_002_2025.jpg)
+![Secure Edge Node 505 with XHS security supervisor](ZYMBIT_SEN500-XHS_002_2025.jpg)
 
 [Buy Now](https://store.zymbit.com/collections/developer-pilot-kits)
 

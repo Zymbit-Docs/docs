@@ -244,7 +244,7 @@ These are looked up at build time from `key` (or `refkey`). Create the page and 
 
 ### Worked example
 
-Adding a hypothetical SEN 600 that ships with the Secure Base Board, supports the same tasks as the SEN 500, and shares the SEN perimeter detect page:
+Adding a hypothetical SEN 600 that ships with the Secure Base Board, supports the same tasks as the SEN-505, and shares the SEN perimeter detect page:
 
 ```yaml
   - key: sen600

@@ -28,7 +28,7 @@ tasks:
     title: "Detect physical tampering"
     page: /tutorials/perimeter-detect
     products: [zymkey4, zymkey5, hsm4, hsm6, scm, sen500, sen400, send35]
-    note: "Wiring differs per product. The shared SEN page still needs SEN 400 and SEN 500 connections."
+    note: "Wiring differs per product. The shared SEN page still needs SEN 400 and SEN-505 connections."
 
   - key: production-mode
     title: "Lock a device for production"

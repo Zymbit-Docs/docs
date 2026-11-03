@@ -42,7 +42,7 @@ Recent Updates
 
 #### Latest STABLE Platform and OS Support
 
-|                                   |    SEN-500/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
+|                                   |    SEN-505/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
 | Raspberry Pi OS Trixie (64-bit) | {{< partially-supported >}} | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} |

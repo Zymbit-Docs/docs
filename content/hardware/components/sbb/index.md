@@ -1,7 +1,7 @@
 ---
 title: "Secure Base Board"
 linkTitle:  "Secure Base Board - Not available to purchase separately"
-description: "Hardware reference for the Secure Base Board used in the SEN 500 and SEN 400: connector functions and mating parts, the J2 auxiliary connector pinout, tamper detection wiring, LED status codes, power system, and the CM5 features DIP switch."
+description: "Hardware reference for the Secure Base Board used in the SEN-505 and SEN 400: connector functions and mating parts, the J2 auxiliary connector pinout, tamper detection wiring, LED status codes, power system, and the CM5 features DIP switch."
 lastmod: "2025-11-11"
 draft: false
 images: []
@@ -59,10 +59,10 @@ The Secure Base Board I/O is Zymbit's secure motherboard solution for use with Z
     height=300
     >}}
 {{< /card >}}
-{{< card header="SEN 500 Enclosure" >}}
+{{< card header="SEN-505 Enclosure" >}}
 {{< figure
     src="led_sen.jpg"
-    alt="SEN 500 Enclosure LEDs"
+    alt="SEN-505 Enclosure LEDs"
     caption=""
     height=300
     >}}
@@ -521,7 +521,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector. 
 
 The Zymbit Motherboard includes two tamper detection circuits that help safeguard the system from physical tampering. These circuits can function independently or together, depending on how the board is configured.
 
-The first circuit, **Perimeter Loop 1**, comprises four small red switches (SW1–SW4) located on the bottom side of the board. When all switches are closed or pressed down, the circuit loop is completed. If any of the switches are opened — for example, when someone removes or opens an enclosure — the loop is broken, and a tamper event is triggered. Tamper events from this loop can then be detected using the Zymbit API. This type of setup is ideal for detecting unauthorized access to the SEN 500 enclosure.
+The first circuit, **Perimeter Loop 1**, comprises four small red switches (SW1–SW4) located on the bottom side of the board. When all switches are closed or pressed down, the circuit loop is completed. If any of the switches are opened — for example, when someone removes or opens an enclosure — the loop is broken, and a tamper event is triggered. Tamper events from this loop can then be detected using the Zymbit API. This type of setup is ideal for detecting unauthorized access to the SEN-505 enclosure.
 
 The second circuit, **Perimeter Loop 2**, is accessible through the connector labeled “Auxiliary” (J2) on the top side of the board, detailed above. This connector is a 12 pin JST SURS connector ([SM12B-SURS-TF(LF)(SN)](https://www.digikey.com/en/products/detail/jst-sales-america-inc/SM12B-SURS-TF/9920600?s=N4IgTCBcDaIMoFkCMYBCBaOBVASndAKgGIAUAMkQJQlwBylIAugL5A)) and mates with [12SUR-32S](https://www.digikey.com/en/products/detail/jst-sales-america-inc/12SUR-32S/1300329) ([premade cable harnesses](https://www.digikey.com/en/products/filter/rectangular-cable-assemblies/450?s=N4IgTCBcDaIMoFUBKIA0ICMZEoLoF8g)).  By default, this loop is closed using a built-in break-off tab (Tab 1 in the picture below), and it is used to detect when the Zymbit module is removed from the Motherboard. To enable the use of an external tamper circuit, such as a tamper mesh, Tab 1 must be cut. Cutting the tab breaks the internal loop and allows the board to detect events from an external setup. The external circuit will NOT work unless the tab is cut.
 
