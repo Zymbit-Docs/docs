@@ -168,7 +168,7 @@ Steps that appear word for word on several pages are written once, in `assets/sn
 
 `layouts/shortcodes/driver-install.html` reads the snippet, replaces every `%PRODUCT%` with the `product` value, and renders the result as Markdown. A missing snippet fails the build rather than leaving an empty section.
 
-The OS requirements paragraph is a separate snippet, swapped in for `%REQUIREMENTS%`, because it differs by product. By default it is `driver-install-requirements.md`, which sends readers on Ubuntu 22.04, Debian 11, or a 32-bit OS to Driver Package 1.x. That advice is wrong for production ZYMKEY5, which identifies as `zymkey5` and is not recognized by 1.x, so the ZYMKEY5 page passes `requirements="zymkey5"` to use `driver-install-requirements-zymkey5.md` instead:
+The OS requirements paragraph is a separate snippet, swapped in for `%REQUIREMENTS%`, because it differs by product. By default it is `driver-install-requirements.md`, which sends readers on Ubuntu 22.04, Debian 11, or a 32-bit OS to Driver Package 1.x. That advice is wrong for production ZYMKEY5, which identifies as `zymkey5` and is not recognized by 1.x, so the ZYMKEY5 page passes `requirements="zymkey5"` to use `driver-install-requirements-zymkey5.md` instead. Production HSM60 also requires 2.x, so its page passes `requirements="hsm60"`:
 
 ```markdown
 {{< driver-install product="ZYMKEY5" requirements="zymkey5" >}}

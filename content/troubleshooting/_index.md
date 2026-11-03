@@ -112,7 +112,7 @@ sudo apt-get remove --purge -y unattended-upgrades
 
 ### Running a 32-bit operating system
 
-Driver Package 2.x supports 64-bit ARM only. On a 32-bit OS, install [Driver Package 1.x](/reference/driver-package/legacy/) and apply the following. Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.x. A production ZYMKEY5 cannot be used on a 32-bit OS.
+Driver Package 2.x supports 64-bit ARM only. On a 32-bit OS, install [Driver Package 1.x](/reference/driver-package/legacy/) and apply the following. Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.x, so they cannot be used on a 32-bit OS.
 
 As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
 

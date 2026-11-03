@@ -82,7 +82,7 @@ Then follow the [install steps](#install-and-upgrade) below.
 
 **UPGRADING DEPLOYED DEVICES?** Driver Package 2.x has been tested in upgrade scenarios; however, there is always risk when encrypted in-field devices are being upgraded. Test before deployment and proceed at your own risk. Please contact Zymbit support if in need of assistance.
 
-**ZYMKEY5 REQUIRES DRIVER 2.x.** Driver Package 2.x is required for production versions of ZYMKEY5, SEN-505 and HSM60.
+**ZYMKEY5 REQUIRES DRIVER 2.x.** Driver Package 2.x is required for production versions of ZYMKEY5, SEN-505 and HSM60. Earlier units can run on Driver Package 1.x.
 {{< /callout >}}
 
 #### What's New?
