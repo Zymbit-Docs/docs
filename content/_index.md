@@ -111,15 +111,15 @@ All packages now come from one common, signed repository, `https://zk-repo.s3.am
 
 | Package | Previous version | New version | Notes |
 | --- | --- | --- | --- |
-| zymbit-repo | — | 1.0-1 | New. Configures the APT source and installs Zymbit GPG signing key. |
+| zymbit-repo | — | 2.0-1 | New. Configures the APT source and installs Zymbit GPG signing key. |
 | zkifc | 1.2-38 | 2.0.0-2 | Now includes libzk; replaces the libzk package. |
 | libzk | 1.1-26 | — | Removed; merged into zkifc. |
 | zkapputilslib | 1.1-27 | — | Removed; split into the following four libzkapputils\* packages. |
-| libzkapputils | — | 1.2.0-11 | New. C library.. Needed to run user-built programs which utilize the Zymkey API. |
-| libzkapputils-c++ | — | 1.2.0-11 | New. C++ library, replaces zkapputilslib. Needed to run user-built programs which utilize the C++ bindings to the Zymkey API. |
-| libzkapputils-dev | — | 1.2.0-11 | New. C headers. Only necessary on systems being used to build programs with the Zymkey API.&#32; |
-| libzkapputils-c++-dev | — | 1.2.0-11 | New. C++ headers. Only necessary on systems being used to build programs with the C++ bindings to the Zymkey API. |
-| python3-zku | — | 1.2.0-11 | New. Python bindings to the Zymkey API. Replaces the pip zku package. |
+| libzkapputils | — | 1.2.1-1 | New. C library.. Needed to run user-built programs which utilize the Zymkey API. |
+| libzkapputils-c++ | — | 1.2.1-1 | New. C++ library, replaces zkapputilslib. Needed to run user-built programs which utilize the C++ bindings to the Zymkey API. |
+| libzkapputils-dev | — | 1.2.1-1 | New. C headers. Only necessary on systems being used to build programs with the Zymkey API.&#32; |
+| libzkapputils-c++-dev | — | 1.2.1-1 | New. C++ headers. Only necessary on systems being used to build programs with the C++ bindings to the Zymkey API. |
+| python3-zku | — | 1.2.1-1 | New. Python bindings to the Zymkey API. Replaces the pip zku package. |
 | libzymkeyssl | 1.0-13 | 2.0.0-2 | OpenSSL engine 3.x support only. OpenSSL 4.x not supported. |
 | zkbootrtc | 1.1-16 | 1.1.17-6 | Zymbit real-time clock synchronization service. |
 | zkpkcs11 | 1.0-4 | 1.3.0-7 | PKCS#11 softhsm-util style utility using the HSM for additional security. |
@@ -143,7 +143,7 @@ All packages now come from one common, signed repository, `https://zk-repo.s3.am
 
 Installing the `zymbit-repo` package switches a device to the new repository; after that, every Zymbit package installs and updates through APT. This works the same for new installs and for devices already using zk-sw-repo.
 
-1. Pull down the installation package, `zymbit-repo`. The `-J` option tells `curl` to automatically save the file under the version name reported by the download server; e.g.: `zymbit-repo_1.0-1_all.deb`:
+1. Pull down the installation package, `zymbit-repo`. The `-J` option tells `curl` to automatically save the file under the version name reported by the download server; e.g.: `zymbit-repo_2.0-1_all.deb`:
 
    ```bash
    curl -fsSLOJ https://zk-repo.s3.amazonaws.com/zymbit-repo.deb

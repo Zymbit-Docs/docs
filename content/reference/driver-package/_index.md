@@ -39,7 +39,7 @@ On a device set up with `install_zk_sw.sh`, Driver Package 2.0 is a migration, n
 
 ## Add the Zymbit repository
 
-1. Download the repository package. The `-J` option saves the file under the versioned name reported by the server, for example `zymbit-repo_1.0-1_all.deb`:
+1. Download the repository package. The `-J` option saves the file under the versioned name reported by the server, for example `zymbit-repo_2.0-1_all.deb`:
 
     ```bash
     curl -fsSLOJ https://zk-repo.s3.amazonaws.com/zymbit-repo.deb

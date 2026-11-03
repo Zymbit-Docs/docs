@@ -3,7 +3,7 @@ Log in to your host device and follow these steps to install Zymbit Driver Packa
 
 %REQUIREMENTS%
 
-1. Download the Zymbit repository package. The file is saved under its versioned name, for example `zymbit-repo_1.0-1_all.deb`:
+1. Download the Zymbit repository package. The file is saved under its versioned name, for example `zymbit-repo_2.0-1_all.deb`:
 
     ```bash
     curl -fsSLOJ https://zk-repo.s3.amazonaws.com/zymbit-repo.deb
