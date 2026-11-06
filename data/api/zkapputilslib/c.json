@@ -3,8 +3,8 @@
   "language": "c",
   "source": {
     "repo": "zkapputilslib",
-    "version": "1.2.1-1",
-    "commit": "56b075d"
+    "version": "1.2.2-1",
+    "commit": "a547582"
   },
   "header": "zk_app_utils.h",
   "brief": "C interface to Zymkey Application Utilities Library.",
@@ -2290,7 +2290,7 @@
           "returns": [
             {
               "type": "int",
-              "description": "0 if successful on opening a SLIP39 session, less than 0 for failure."
+              "description": "0 if successful on opening a SLIP39 session, less than 0 or if more data is required, or, on the final call, for failure."
             }
           ],
           "throws": [],
