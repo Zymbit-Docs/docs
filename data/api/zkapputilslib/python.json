@@ -3,8 +3,8 @@
   "language": "python",
   "source": {
     "repo": "zkapputilslib",
-    "version": "1.2.1-1",
-    "commit": "56b075d"
+    "version": "1.2.2-1",
+    "commit": "a547582"
   },
   "module": "zymkey",
   "brief": "Python interface module to Zymkey Application Utilities Library.",
@@ -1343,7 +1343,7 @@
                   "throws": [
                     {
                       "type": "AssertionError",
-                      "description": "If `ret` is a bad return code from the Zymkey library function, or\nif the library returned no mnemonic sentence."
+                      "description": "If the library returned no mnemonic sentence."
                     }
                   ],
                   "notes": [],
