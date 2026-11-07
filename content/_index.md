@@ -18,49 +18,45 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 Recent Updates
 #### November 2026:
 - Release of Zymbit Driver Package 2.0.  This is the first overall update to all of the Zymbit Driver Packages since 2025. Consider it a migration, not a routine update. Major feature changes:
-  - Adds support for the production ZYMKEY5 (no Bootware support)
-  - Adds support for Ubuntu 26.04 (resolute) (no Bootware support)
+  - Adds support for the production ZYMKEY5
+  - Adds support for Ubuntu 26.04 (resolute)
   - Completely re-vamped packaging and installation; no longer uses install_zk_sw.sh script method. Installation is purely apt package based. Running apt upgrade on a device still using zk-sw-repo will not move it to 2.x.
   - Deprecates support for Ubuntu 22.04 (jammy), Debian 11 (bullseye) and 32-bit ARM. 
 
     Details: [November 2026 Update](#november-2026-details)
 
 #### June/July 2026:
-- Added trixie support for Zymbit Driver Package (not Bootware)
-- Minor update to Bootware 1.3.2 (stable)
-  - 1.3.2-4: **Issue #211** Add [ability to set wake_pin](bootware/1.3.2/features/wake_pin) for Bootware via zbconfig.
+- Added trixie support for Zymbit Driver Package
 #### February 2026:
-- Release of Bootware 2.0 Beta - limited platform support (Pi5 only), not for production use.
-  - Integration with Pi's Secure Boot
-  - Full boot artifact isolation
-  - Bootware bug fixes
 - Update to Zymbit Driver Package
   - PKCS11 bug fix for 64-bit OS builds
 
 {{% /callout %}}
 
 
-#### Latest STABLE Platform and OS Support
+#### Zymbit Driver Package platform and OS support
 
-|                                   |    SEN-505/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             | 
+|                                   |    SEN-505/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
-| Raspberry Pi OS Trixie (64-bit) | {{< partially-supported >}} | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} &nbsp; | {{< partially-supported >}} |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported >}} | {{< supported >}} &nbsp; | {{< supported >}} &nbsp; | {{< supported >}} |
-| Raspberry Pi OS Bullseye (64-bit) |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
-| Ubuntu 26.04 LTS Resolute (64-bit) |{{< partially-supported >}}  | {{< partially-supported >}} &nbsp;     | {{< partially-supported >}} &nbsp;     | {{< partially-supported >}} |
-| Ubuntu 24.04 LTS Noble (64-bit) |{{< supported >}}  | {{< supported >}} &nbsp;     | {{< supported >}} &nbsp;     | {{< supported >}} |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< supported >}} [^1] | {{< supported >}} [^1] |                   |
+| Raspberry Pi OS Trixie (64-bit) | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} |
+| Raspberry Pi OS Bullseye (64-bit) |                   | {{< partially-supported label="Driver Package 1.x (legacy) only" >}} [^1] | {{< partially-supported label="Driver Package 1.x (legacy) only" >}} [^1] |                   |
+| Ubuntu 26.04 LTS Resolute (64-bit) | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} |
+| Ubuntu 24.04 LTS Noble (64-bit) | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< partially-supported label="Driver Package 1.x (legacy) only" >}} [^1] | {{< partially-supported label="Driver Package 1.x (legacy) only" >}} [^1] |                   |
 
-{{< supported >}} Full Bootware 1.3.2 Support
+{{< supported label="Zymbit Driver Package 2.x" >}} [Zymbit Driver Package 2.x](/reference/driver-package/)
 
-{{< partially-supported >}} Bootware Not Supported
+{{< partially-supported label="Driver Package 1.x (legacy) only" >}} [Driver Package 1.x (legacy)](/reference/driver-package/legacy/) only
 
-> NOTICE: Changes from the Pi foundation to the Pi5/CM5 firmware are incompatible with Bootware. Symptom is Bootware Updates cannot access USB Endpoints to get images. You won't see the problem with the 11/19 release. The 11/19 release can be downloaded from here: [Pi5 Raspberry Pi OS Lite 64-bit 2024-11-19](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)
+32-bit operating systems are supported by Driver Package 1.x only. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>.
 
-Contact [support](support@zymbit.com) for PiZero 2W.
+Contact <support@zymbit.com> for PiZero 2W.
 
-[^1]: For Bootware to use Wi-Fi to retrieve images from remote endpoints on Pi4/CM4 running either Ubuntu 22.04 (jammy) or Bullseye, you must use the latest dtb file, available [here:](//bootware/1.3.2/troubleshooting/pi4-wifi).
+For Bootware support, see [Bootware](/bootware/).
+
+[^1]: Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.x and cannot be used on Raspberry Pi OS Bullseye or Ubuntu 22.04.
 
 -----
 ### November 2026 Details
