@@ -26,7 +26,7 @@ Pins 1, 3, and 5 carry the perimeter tamper loops. To wire and test them, see [P
 {{< cardpane >}}
 {{< card header="ZYMKEY5 Auxiliary Connector Pinout" >}}
 {{< figure
-    src="aux_pinout.png"
+    src="/images/shared/aux_pinout.png"
     alt="ZYMKEY5 auxiliary connector pinout"
     caption=""
     >}}
@@ -76,7 +76,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector. 
 {{< cardpane >}}
 {{< card header="Breakout Board Pin Assignment" >}}
 {{< figure
-    src="bob_pinout.jpg"
+    src="/images/shared/bob_pinout.jpg"
     alt="Breakout Board Pin Assignment"
     caption=""
     >}}
@@ -84,7 +84,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector. 
 
 {{< card header="Breakout Board and Cable" >}}
 {{< figure
-    src="bob_cable1.jpg"
+    src="/images/shared/bob_cable1.jpg"
     alt="Breakout Board and Cable"
     caption=""
     >}}
@@ -96,7 +96,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector. 
 {{< cardpane >}}
 {{< card header="Example use to drive LED" >}}
 {{< figure
-    src="led.png"
+    src="/images/shared/led.png"
     alt="ZYMKEY5 LED example circuit"
     width=50%
     caption=""
@@ -124,7 +124,7 @@ Same as Zymkey4.
 {{< cardpane >}}
 {{< card header="ZYMKEY5 GPIO Pinout" >}}
 {{< figure
-    src="ZK4-pinout.png"
+    src="/images/shared/ZK4-pinout.png"
     alt="ZYMKEY5 GPIO Pinout"
     width=50%
     caption=""

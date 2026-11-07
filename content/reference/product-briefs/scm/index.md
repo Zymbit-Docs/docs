@@ -172,7 +172,7 @@ To simplify your life, the SCM can be shipped with a choice of pre-configured OS
 
 ### Manufacturing tools and support
 
-![Zymbit secure compute manufacturing tools](IMG_7423_cropped_square_1000x1000.png)
+![Zymbit secure compute manufacturing tools](IMG_7423_cropped_square_1000x1000.jpg)
 
 Zymbit manufacturing tools and services help you transition your SCM based design to volume manufacturing quickly and securely.
 

@@ -26,7 +26,7 @@ The SEN D35 and D35 Dev Kit provides all the hardware and software components re
 {{< cardpane >}}
 {{< card header="Contents of SEN D35 and D35 Dev Kit" >}}
 {{< figure
-    src="scm-dev-kit2.png"
+    src="/images/shared/scm-dev-kit2.png"
     alt="D35 and D35 Dev Kit"
     caption=""
     >}}

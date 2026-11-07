@@ -21,7 +21,7 @@ In this Getting Started guide we describe how to install your HSM to a Raspberry
 {{< cardpane >}}
 {{< card header="HSM4 Hardware" >}}
 {{< figure
-    src="HSM-install-to-hat.png"
+    src="/images/shared/HSM-install-to-hat.png"
     alt="HSM4 to HAT hardware"
     caption="Diagram of HSM placement on PiZero HAT"
     >}}
@@ -62,19 +62,19 @@ To maintain the real-time clock (RTC) and tamper detection features in the event
 
 **IMPORTANT:** Note the correct polarity with **+ve  facing upwards !!**
 
-![HSM4 Battery Installation](HSM-battery-install.jpg)
+![HSM4 Battery Installation](/images/shared/HSM-battery-install.jpg)
 
 ##### **Optional Battery Connector (Alternative)**
 **Caution**: Ensure you select the right connector type-- Molex 51021-0200-B (1.25mm Pitch). You can purchase the battery [here](https://www.amazon.com/CR2032-Battery-51021-0200-B-1-25mm-Connector/dp/B07TS54R42/ref=b2b_nav_d_bia_2/133-6806428-1529144?_encoding=UTF8&pd_rd_i=B07TS54R42&pd_rd_r=d30b0d19-eeab-4b5c-a2ee-0ceef542a1a2&pd_rd_w=ZXBat&pd_rd_wg=U87Gu&pf_rd_p=4a93c781-cfc8-46bb-85fa-dc304a3c96a9&pf_rd_r=91SXE6T1J2V2ZYD7C6FD&psc=1&refRID=91SXE6T1J2V2ZYD7C6FD).
 
 Battery should look like this:
-![HSM-battery-connector](HSM-battery-connector.png)
+![HSM-battery-connector](/images/shared/HSM-battery-connector.png)
 
 Mating component specifications:
-![HSM-Molex-specs](HSM-molex-specs.png)
+![HSM-Molex-specs](/images/shared/HSM-molex-specs.png)
 
 Plug wired CR2032 battery into optional battery connector, located below.
-![Optional Battery Connector Location](HSM-battery-plugin.png)
+![Optional Battery Connector Location](/images/shared/HSM-battery-plugin.png)
 
 
 ----------
@@ -99,8 +99,8 @@ Power off your Raspberry Pi to ensure that neither the SBC or the PiHAT are dama
 Follow the below pictures to position the PiHAT onto your SBC. The HSM and battery should be facing the Raspberry Pi and concealed from view.
 
 <p>
-<img src="HSM-install-hat-1.png" alt="Install PiHAT onto RPi - Open" width="50%">
-<img src="HSM-install-hat-2.png" alt="Install PiHAT onto RPi - Closed" width="50%">
+<img src="/images/shared/HSM-install-hat-1.png" alt="Install PiHAT onto RPi - Open" width="50%">
+<img src="/images/shared/HSM-install-hat-2.png" alt="Install PiHAT onto RPi - Closed" width="50%">
 </p>
 
 
@@ -114,7 +114,7 @@ The default configuration uses GPIO4. This can be reconfigured to use another GP
 
 Power up the Pi and you will see a blue LED blinking rapidly and consistently (5 blinks per second). This indicates the HSM is operational but not configured.
 
-<img src="HSM4-LED-5times-per-second.gif" alt="HSM4-LED-5times-per-second" width="25%">
+<img src="/images/shared/HSM4-LED-5times-per-second.gif" alt="HSM4-LED-5times-per-second" width="25%">
 
 If the blue LED blinks erratically, or not at all, then there is an installation error and you should check your connections.
 
