@@ -18,6 +18,9 @@ This documentation is generated using Hugo, which uses Markdown as its raw conte
     - **ALWAYS** specify the language used within a code block by putting the language name following the opening fence, e.g. ` ```yaml`.
 * **ALWAYS** use inline links, e.g. `visit some [page](link.to.page)`.
 * **NEVER** hard-wrap text. Allow long sentences/paragraphs to soft wrap.
+* Images and downloads:
+    - **ALWAYS** resize images to 2400 px or less on the longest side, and save photos as JPEG.
+    - **NEVER** commit CAD models or other large downloads; attach them to the `cad-files` release. See [Images and large files](./README.md#images-and-large-files).
 
 ## Page structure
 
