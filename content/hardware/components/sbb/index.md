@@ -450,7 +450,7 @@ The pinout for J2:
 {{< cardpane >}}
 {{< card header="J2 Pinout" >}}
 {{< figure
-    src="/images/shared/aux_pinout.png"
+    src="../../../images/shared/aux_pinout.png"
     alt="J2 connector pinout"
     caption=""
     >}}
@@ -501,7 +501,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector. 
 {{< cardpane >}}
 {{< card header="Breakout Board Pin Assignment" >}}
 {{< figure
-    src="/images/shared/bob_pinout.jpg"
+    src="../../../images/shared/bob_pinout.jpg"
     alt="Breakout Board Pin Assignment"
     caption=""
     >}}
@@ -509,7 +509,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector. 
 
 {{< card header="Breakout Board and Cable" >}}
 {{< figure
-    src="/images/shared/bob_cable1.jpg"
+    src="../../../images/shared/bob_cable1.jpg"
     alt="Breakout Board and Cable"
     caption=""
     >}}
@@ -557,7 +557,7 @@ Perimeter 0 is the transmit, and the associated perimeters 1 and 2 are the recei
 {{< cardpane >}}
 {{< card header="Example use to drive LED" >}}
 {{< figure
-    src="/images/shared/led.png"
+    src="../../../images/shared/led.png"
     alt="LED example circuit"
     width=50%
     caption=""

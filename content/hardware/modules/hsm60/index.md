@@ -154,7 +154,7 @@ This connector is a 12 pin JST SURS connector ([SM12B-SURS-TF(LF)(SN)](https://w
 {{< cardpane >}}
 {{< card header="HSM60 Auxiliary Connector Pinout" >}}
 {{< figure
-    src="/images/shared/aux_pinout.png"
+    src="../../../images/shared/aux_pinout.png"
     alt="HSM60 auxiliary connector pinout"
     caption=""
     >}}
@@ -204,7 +204,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector (
 {{< cardpane >}}
 {{< card header="Breakout Board Pin Assignment" >}}
 {{< figure
-    src="/images/shared/bob_pinout.jpg"
+    src="../../../images/shared/bob_pinout.jpg"
     alt="Breakout Board Pin Assignment"
     caption=""
     >}}
@@ -212,7 +212,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector (
 
 {{< card header="Breakout Board and Cable" >}}
 {{< figure
-    src="/images/shared/bob_cable1.jpg"
+    src="../../../images/shared/bob_cable1.jpg"
     alt="Breakout Board and Cable"
     caption=""
     >}}
@@ -224,7 +224,7 @@ Zymbit makes a breakout cable that exposes the pins of the Auxiliary connector (
 {{< cardpane >}}
 {{< card header="Example use to drive LED" >}}
 {{< figure
-    src="/images/shared/led.png"
+    src="../../../images/shared/led.png"
     alt="HSM60 LED example circuit"
     width=50%
     caption=""

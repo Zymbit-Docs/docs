@@ -22,4 +22,4 @@ weight: 20
 
 ## GPIO Pinout
 
-![Zymkey GPIO Pinout](/images/shared/ZK4-pinout.png)
+![Zymkey GPIO Pinout](../../../images/shared/ZK4-pinout.png)

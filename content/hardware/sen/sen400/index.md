@@ -15,7 +15,7 @@ toc: true
 
 -----
 
-<img src="/images/shared/sen400.png" alt="SEN 400" width="700"/>
+<img src="../../../images/shared/sen400.png" alt="SEN 400" width="700"/>
 
 The SEN 400 Prototype Kit provides all the hardware and software components required to start implementing your application in a secure environment. 
 
