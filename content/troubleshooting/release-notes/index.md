@@ -10,7 +10,7 @@ weight: 90
 toc: true
 ---
 
-Release notes for Zymbit Driver Package and Bootware releases before October 2026, newest first. The latest release notes are on the [home page](/#october-2026-details).
+Release notes for Zymbit Driver Package and Bootware releases before November 2026, newest first. The latest release notes are on the [home page](/#november-2026-details).
 
 ## February 2026
 

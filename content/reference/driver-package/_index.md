@@ -3,7 +3,7 @@ title: Installing the Zymbit Driver Package
 linkTitle: Zymbit Driver Package
 description: "Install or upgrade to Zymbit Driver Package 2.x with apt, and choose the packages your device needs."
 date: "2026-10-29"
-lastmod: "2026-10-29"
+lastmod: "2026-11-06"
 draft: false
 images: []
 weight: 15
@@ -14,7 +14,7 @@ Zymbit Driver Package 2.x installs and updates through `apt` like any other pack
 
 ## Supported distributions
 
-Zymbit Driver Package 2.x supports 64-bit ARM (arm64/aarch64) only.
+Zymbit Driver Package 2.x supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built as standard. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>; case-by-case support may be available.
 
 | Distribution | Codename | Driver Package 2.x |
 | --- | --- | --- |
@@ -27,7 +27,7 @@ Zymbit Driver Package 2.x supports 64-bit ARM (arm64/aarch64) only.
 
 Ubuntu 22.04 and Debian 11 are not supported because the packages require glibc 2.36 or newer. Devices on those releases, or on a 32-bit OS, should stay on the [Driver Package 1.x packages](legacy/) or upgrade the OS.
 
-Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.x, so they cannot be used on Ubuntu 22.04, Debian 11, or a 32-bit OS. Earlier units of these products work with both Driver Package 2.x and 1.x.
+Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.x, so they cannot be used on Ubuntu 22.04, Debian 11, or a 32-bit OS. Earlier units of these products work with both Driver Package 2.x and 1.x. Driver Package 1.x receives no regular security updates; they are planned only if a critical or severe issue is discovered.
 
 Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize. Pre-production ZYMKEY5 units identify as an HSM6.
 
@@ -40,10 +40,10 @@ On a device set up with `install_zk_sw.sh`, Driver Package 2.x is a migration, n
 * Plan to rebuild applications built against the old Zymkey API libraries. The new libraries have versioned names.
 
 {{< callout warning >}}
-**Upgrading deployed devices?** Driver Package 2.x has been tested in upgrade scenarios; however, there is always risk when encrypted in-field devices are being upgraded. Test before deployment and proceed at your own risk. Please contact Zymbit support if in need of assistance.
+**Upgrading deployed devices?** Driver Package 2.x has been tested in upgrade scenarios; however, there is always risk when encrypted in-field devices are being upgraded. Test before deployment and proceed at your own risk. Please contact Zymbit support at <support@zymbit.com> if you need assistance.
 {{< /callout >}}
 
-The `zymbit-repo` package is aware of the old driver and will generally behave correctly. However, if the system install has been customized, or the distribution is non-standard, the automatic script may not upgrade properly. Always test and check to make sure the upgrade is working as intended.
+The `zymbit-repo` package is aware of the old driver and will generally behave correctly. However, if the system install has been customized, or the distribution is non-standard, the standard procedure may not upgrade properly. Always test and check to make sure the upgrade is working as intended.
 
 ## Add the Zymbit repository
 
@@ -110,4 +110,4 @@ sudo apt install --no-install-recommends libzkapputils-dev
 
 The new packages replace the old ones: `apt` removes `libzk` and `zkapputilslib` as part of the install, and `python3-zku` removes the `zku` package installed with `pip`. Example scripts are in `/usr/share/zymkey/examples`.
 
-For the full list of package changes and known issues, see the [October 2026 release notes](/#october-2026-details).
+For the full list of package changes and known issues, see the [Driver Package 2.x release notes](/#november-2026-details).
