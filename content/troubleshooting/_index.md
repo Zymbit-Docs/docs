@@ -34,7 +34,7 @@ sudo apt upgrade
 
 A device set up with the legacy `install_zk_sw.sh` script is on Driver Package 1.x, and `apt upgrade` will not move it to 2.x. To migrate, follow [Installing the Zymbit Driver Package](/reference/driver-package/). Devices on Ubuntu 22.04, Debian 11, or a 32-bit OS cannot run 2.x; see [Driver Package 1.x](/reference/driver-package/legacy/). Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.x does not recognize, so they require Driver Package 2.x.
 
-For current and previous package versions, see the [Driver Package 2.x release notes](/#october-2026-details).
+For current and previous package versions, see the [Driver Package 2.x release notes](/#november-2026-details).
 
 ### Expired GPG key preventing access to the repository
 
@@ -112,7 +112,7 @@ sudo apt-get remove --purge -y unattended-upgrades
 
 ### Running a 32-bit operating system
 
-Driver Package 2.x supports 64-bit ARM only. On a 32-bit OS, install [Driver Package 1.x](/reference/driver-package/legacy/) and apply the following. Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.x, so they cannot be used on a 32-bit OS.
+Driver Package 2.x supports 64-bit ARM only. On a 32-bit OS, install [Driver Package 1.x](/reference/driver-package/legacy/) and apply the following. Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.x, so they cannot be used on a 32-bit OS. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>; case-by-case support may be available.
 
 As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
 

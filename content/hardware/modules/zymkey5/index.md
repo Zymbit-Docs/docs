@@ -6,7 +6,7 @@ aliases:
     - /quickstart/getting-started/zymkey5/
     - /getting-started/zymkey5/quickstart/
 date: ""
-lastmod: "2026-10-29"
+lastmod: "2026-11-06"
 draft: false
 images: []
 weight: 20
@@ -91,7 +91,7 @@ Power off your Raspberry Pi to ensure that neither the Pi or the ZYMKEY5 are dam
 #### Attach hardware
 
 Press down firmly on the ZYMKEY5 to connect it to the GPIO pins of the Raspberry Pi. The ZYMKEY5 should fit relatively snug and maintain a tight interference fit around the pins.
-Hold the ZYMKEY5 with the LED and battery holder facing upward. Then, carefully align the ZYMKEY5's connector with the first 10 GPIO pins of the Raspberry Pi. 
+Hold the ZYMKEY5 with the LED and battery connector facing upward. Then, carefully align the ZYMKEY5's connector with the first 10 GPIO pins of the Raspberry Pi. 
 
 ![Alignment of the ZYMKEY5 on the Raspberry Pi GPIO header](zk5-hw-install.png)
 

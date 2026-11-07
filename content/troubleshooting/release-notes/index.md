@@ -1,16 +1,22 @@
 ---
 title: "Release notes"
 linkTitle: "Release notes"
-description: "Past Zymbit Driver Package and Bootware release notes, from October 2023 to February 2026."
+description: "Past Zymbit Driver Package and Bootware release notes, from October 2023 to July 2026."
 date: "2026-10-31"
-lastmod: "2026-10-31"
+lastmod: "2026-11-06"
 draft: false
 images: []
 weight: 90
 toc: true
 ---
 
-Release notes for Zymbit Driver Package and Bootware releases before October 2026, newest first. The latest release notes are on the [home page](/#october-2026-details).
+Release notes for Zymbit Driver Package and Bootware releases before November 2026, newest first. The latest release notes are on the [home page](/#november-2026-details).
+
+## June/July 2026
+
+* Added trixie support for Zymbit Driver Package (not Bootware)
+* Minor update to Bootware 1.3.2 (stable)
+    - 1.3.2-4: **Issue #211** Add [ability to set wake_pin](/bootware/1.3.2/features/wake_pin/) for Bootware via zbconfig.
 
 ## February 2026
 
