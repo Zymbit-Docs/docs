@@ -38,7 +38,7 @@ Recent Updates
 
 |                                   |    SEN-505/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
-|                  **Zymbit HSMs:** | **Zymkey,HSM60**  | **Zymkey,HSM60,SCM**   | **Zymkey**             | **Zymkey**        |
+|                  **Zymbit HSMs:** | **ZYMKEY5/4, HSM60**| **ZYMKEY5/4, HSM60, SCM**| **ZYMKEY5/4**         | **ZYMKEY5/4**     |
 | Raspberry Pi OS Trixie (64-bit) | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} |
 | Raspberry Pi OS Bookworm (64-bit) | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} |
 | Raspberry Pi OS Bullseye (64-bit) |                   | {{< partially-supported label="Driver Package 1.x (legacy) only" >}} [^1] | {{< partially-supported label="Driver Package 1.x (legacy) only" >}} [^1] |                   |
