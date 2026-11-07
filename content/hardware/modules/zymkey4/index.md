@@ -34,7 +34,7 @@ The ZYMKEY4 occupies 10 pins on the GPIO header. It can also be used with other 
 {{< /card >}}
 {{< card header="ZYMKEY4 Pinout" >}}
 {{< figure
-    src="ZK4-pinout.png"
+    src="../../../images/shared/ZK4-pinout.png"
     alt="Diagram of the ZYMKEY4 pinout"
     caption="The pinout of the header of the ZYMKEY4. ZYMKEY4 requires exclusive access to `GPIO4`, which can be remapped to another GPIO pin. It also share the {{% term/i2c %}} bus with the default address of `0x30`."
     >}}
@@ -105,7 +105,7 @@ The default configuration uses GPIO4. This can be reconfigured to use another GP
 
 After you have connected the hardware and are sure that the pins are properly aligned, power up your Raspberry Pi. You should see a blue LED blinking rapidly and consistently (5 blinks per second). This confirms that your ZYMKEY4 is operation but unconfigured.
 
-![ZYMKEY4 LED 5 per sec](ZK-LED-power.gif)
+![ZYMKEY4 LED 5 per sec](../../../images/shared/ZK-LED-power.gif)
 
 If the blue LED blinks erractically, or not at all, then there is an installation error and you should check the connections.
 

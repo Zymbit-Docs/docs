@@ -24,7 +24,7 @@ Enterprise grade compute hardware that's secure and easily customized.
 
 Engineered for a lifetime of reliable operation in zero trust environments.
 
-![Secure Edge Node 505 front and side view](zymbit-secure-edge-node-400-front-side-view-20240501.png)
+![Secure Edge Node 505 front and side view](../../../images/shared/sen400.png)
 
 ### Secure Compute Module
 
