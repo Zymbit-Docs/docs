@@ -172,7 +172,7 @@ git subtree push --prefix themes/zymdocsy \
 
 ## Deployment
 
-- **Production**: Merging to `main` triggers `deploy-site.yml`, which builds with Hugo 0.151.1 extended and deploys to GitHub Pages (gh-pages branch).
+- **Production**: Merging to `main` triggers `deploy-site.yml`, which builds with Hugo 0.151.1 extended and deploys to GitHub Pages from a workflow artifact, not the gh-pages branch. It runs as two jobs, `build` then `deploy`. Pages sometimes stalls at "syncing_files" until the deploy times out. When that happens, re-run only the failed `deploy` job (`gh run rerun <run-id> --failed`), which reuses the uploaded artifact. Changes under `.github/` do not trigger a deploy; start one with `gh workflow run deploy-site.yml --ref main`.
 - **Staging**: Pushing any non-main branch triggers `push-staging.yml`, which mirrors the branch to a separate staging repo.
 - **API docs**: a zkapputilslib release tag runs api-extractor's reusable workflow, which opens a PR here from `api-update/zkapputilslib` (authored by the Zymbit Docs Publisher app) updating `data/api/zkapputilslib/*.json` and `api_docs_intro.md`. `check-pr.yml` builds every PR before merge. The Sphinx/Breathe/hugoify pipeline and `process-api-update.yml` are retired.
 
