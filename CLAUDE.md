@@ -58,7 +58,7 @@ Notable details in `config/_default/config.yaml`:
 
 All documentation lives under `content/` as Markdown files:
 
-- **`bootware/`** - Versioned by semver directories: 1.0.0, 1.1.0, 1.2.2, 1.3.0, 1.3.2, 2.0.0. `/bootware/` is a landing page, not a redirect: it renders the version dropdown plus quick links to the stable and beta releases. Adding a version directory is not enough on its own - see below.
+- **`bootware/`** - Versioned by semver directories: 1.3.0, 1.3.2, 2.0.0. 1.0.0, 1.1.0 and 1.2.2 were retired in November 2026: their version roots redirect to `/bootware/` through aliases in `content/bootware/_index.md`, and the last site that contained them is tagged `v20261106`. `/bootware/` is a landing page, not a redirect: it renders the version dropdown plus quick links to the stable and beta releases. Adding a version directory is not enough on its own - see below.
 - **`api/`** - The C, C++ and Python API reference. `c_api.md`, `cpp_api.md` and `python_api.md` are thin pages (`layout: api-reference`, `api: zkapputilslib/<language>`) rendered from `data/api/zkapputilslib/<language>.json` through `layouts/docs/api-reference.html` and `layouts/partials/api/`. The JSON is written by Zymbit-Docs/api-extractor from zkapputilslib's Doxygen comments and docstrings; do not edit it by hand. The templates fail the build on raw HTML in the text or on a JSON field they do not render. `legacy_anchors.json` sends anchors from the old hugoify pages (`#int--zkOpen-1a2b3c4d`) to the new ones in the browser, since a fragment cannot be redirected server-side. `api_docs_intro.md` is zkapputilslib's `mainpage.md`, copied by the publish workflow. How updates arrive and how to review them is in [README.md](README.md#api-reference).
 - **`hardware/`** - Product documentation (`sen`, `dev-kits`, `modules`, `components`)
 - **`reference/`** - Technical reference (`binding`, `cad`, `conformity`, `driver-package`, `engineering-notes`, `power-quality`, `product-briefs`, `real-time-clock`, `reserved-pins`, `zymbit-wallet-sdk`, plus `cpu-scaling.md`)
@@ -128,6 +128,8 @@ Four things are driven by separate mechanisms, and three of them are manual:
 1. `hide_summary: true` in a version's `_index.md` keeps it out of the quick-links list on `/bootware/`. Today only 1.3.2 and 2.0.0 lack it, which is why that list resolves to exactly stable and beta - so on promotion, add it to the newly superseded version.
 1. The beta is derived, not declared: it is the highest version ranked above stable. Nothing to update.
 
+To retire a version, delete its directory, remove it from `params.versions`, and add its root (`/bootware/<version>/`) to the `aliases` in `content/bootware/_index.md` so old links land on the landing page. Tag and release the site first if you want a snapshot that still contains it. Deeper pages under a retired version 404.
+
 To exclude a page from search, set `pagefind_ignore: true` in its front matter.
 
 ## Product hubs and the task index
@@ -173,8 +175,20 @@ git subtree push --prefix themes/zymdocsy \
 ## Deployment
 
 - **Production**: Merging to `main` triggers `deploy-site.yml`, which builds with Hugo 0.151.1 extended and deploys to GitHub Pages from a workflow artifact, not the gh-pages branch. It runs as two jobs, `build` then `deploy`. Pages sometimes stalls at "syncing_files" until the deploy times out. When that happens, re-run only the failed `deploy` job (`gh run rerun <run-id> --failed`), which reuses the uploaded artifact. Changes under `.github/` do not trigger a deploy; start one with `gh workflow run deploy-site.yml --ref main`.
-- **Staging**: Pushing any non-main branch triggers `push-staging.yml`, which mirrors the branch to a separate staging repo.
+- **Staging**: Pushing any non-main branch triggers `push-staging.yml`, which mirrors the branch to the `Zymbit-Docs/docs-staging` repo. Each branch is served at `https://zymbit-docs.github.io/docs-staging/branch/<branch>/`. Because that is a sub-path, a root-relative `src="/..."` that works on docs.zymbit.com 404s on staging; Hugo does not rewrite raw `src` values. Staging is where that class of mistake shows up.
+- **Site snapshots**: releases tagged `vYYYYMMDD` (for example `v20261106`) mark versions of the site worth returning to, such as the last one before content was removed.
 - **API docs**: a zkapputilslib release tag runs api-extractor's reusable workflow, which opens a PR here from `api-update/zkapputilslib` (authored by the Zymbit Docs Publisher app) updating `data/api/zkapputilslib/*.json` and `api_docs_intro.md`. `check-pr.yml` builds every PR before merge. The Sphinx/Breathe/hugoify pipeline and `process-api-update.yml` are retired.
+
+## Images and large files
+
+The Pages deploy uploads the whole built site, and Pages has stalled on large uploads. Keep the site small:
+
+- **Large downloads** (CAD models, archives) go on the `cad-files` GitHub release, not in the repo, and pages link to `https://github.com/Zymbit-Docs/docs/releases/download/cad-files/<file>`. Replace a file with `gh release upload cad-files <file> --clobber`; its link stays the same.
+- **Every file in a page bundle is published**, used or not (Hugo's default `publishResources`). Delete images a page stops using; a stray image still ships in every deploy.
+- **An image used on several pages** lives once in `static/images/shared/`. Reference it with a page-relative path (`../../../images/shared/<file>`, one `../` per URL segment of the page) so it resolves both at docs.zymbit.com and under staging's sub-path. The image render hook and the theme's `figure` shortcode both fall back to the given `src` when it is not a page resource.
+- **Size**: keep the longest side at or under 2400 px (pages display at 1200 px). Save photos as JPEG; keep PNG for screenshots, diagrams, and images with transparency. Phone photos carry an EXIF orientation tag; apply it to the pixels when re-saving.
+
+The procedure is in [README.md](README.md#images-and-large-files).
 
 ## Content standards
 

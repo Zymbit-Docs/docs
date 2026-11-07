@@ -64,7 +64,15 @@ If a change appears under `npm start` but not here, the page probably has `draft
 npm run build:preview:all
 ```
 
+`build:preview` builds once and then serves the result; it does not pick up later edits. To refresh it without restarting, run this in another terminal and the browser reloads:
+
+```bash
+npm run build -- -b http://localhost:1313/
+```
+
 **Staging cannot substitute for this.** Pushing a non-`main` branch mirrors it to the staging repo, but `push-staging.yml` strips `.github` and substitutes the staging repo's own workflows, so the Pagefind step never runs there and search will look broken on staging regardless of the branch. Review locally.
+
+Staging is still worth a look for one thing local builds miss. Each branch is served under a sub-path, `https://zymbit-docs.github.io/docs-staging/branch/<branch>/`, so a link or image written with a root-relative path (`/images/...`) works locally and on docs.zymbit.com but breaks on staging. See [Images and large files](#images-and-large-files).
 
 ### Building without serving
 
@@ -276,6 +284,58 @@ Phrase `title` the way a reader would describe the problem, not the way the docs
 If per-product versions of the page exist at `<page>/<key>/`, each hub links its own automatically.
 
 > **NOTE:** The `products` lists were originally seeded from which products each tutorial happens to name in its own text, which is evidence of coverage rather than knowledge of support. Several are still unreviewed. Adding a key is a claim that the task is supported on that product, so add from product knowledge rather than from what the prose says.
+
+## Images and large files
+
+Every file in a page's folder is copied into the built site, and the whole site is uploaded on every deploy. Large or unused files make that upload slower and have caused deploys to stall.
+
+### Large downloads
+
+CAD models and other large downloads are attached to the [`cad-files`](https://github.com/Zymbit-Docs/docs/releases/tag/cad-files) release instead of being stored in the repo.
+
+1. Upload the file:
+
+    ```bash
+    gh release upload cad-files <file>
+    ```
+
+1. Link to it from the page:
+
+    ```markdown
+    [SCM 3D model](https://github.com/Zymbit-Docs/docs/releases/download/cad-files/<file>) (11 MB)
+    ```
+
+To replace a file and keep its link, upload it again with `--clobber`.
+
+### Images
+
+* **Size.** Keep the longest side at or under 2400 px; pages display images at 1200 px. Save photos as JPEG and keep PNG for screenshots, diagrams, and anything with transparency. A phone photo straight off the camera is often 3 to 11 MB and should be well under 1 MB once resized.
+* **Delete what you stop using.** An image left in a page folder still ships with every deploy even if no page shows it.
+* **One copy of shared images.** An image used on more than one page goes in `static/images/shared/`. Reference it with a path relative to the page, one `../` per segment of the page's URL. From `/hardware/modules/hsm4/`:
+
+    ```markdown
+    ![HSM battery connector](../../../images/shared/HSM-battery-connector.png)
+    ```
+
+    A root-relative path (`/images/shared/...`) works on docs.zymbit.com but breaks on staging, which serves each branch under a sub-path.
+
+## Publishing
+
+Merging to `main` runs `deploy-site.yml`, which builds the site in a `build` job and publishes it to GitHub Pages in a separate `deploy` job. Changes only under `.github/` do not deploy.
+
+GitHub Pages occasionally stalls while publishing, and the `deploy` job fails after 10 minutes with `Timeout reached, aborting!`. Re-run only the failed job, which reuses the site the `build` job already uploaded:
+
+```bash
+gh run rerun <run-id> --failed
+```
+
+To deploy without a merge, run the workflow by hand:
+
+```bash
+gh workflow run deploy-site.yml --ref main
+```
+
+Releases tagged `vYYYYMMDD` mark snapshots of the site. Tag one before removing content you may want back, as `v20261106` was before the oldest Bootware versions were retired.
 
 ## Theme development
 
