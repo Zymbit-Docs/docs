@@ -63,7 +63,7 @@ For Bootware support, see [Bootware](/bootware/).
 -----
 
 
-#### Zymbit Driver Package 2.0.x Release Notes
+#### Zymbit Driver Package 2.0 release notes
 
 {{< callout warning >}}
 **Upgrading from the 1.x Zymbit Driver to Zymbit Driver Package 2.x is a migration, not a routine update.** It moves devices from the heterogeneous, distribution-specific legacy APT repositories to a common new APT repository, renames and splits several packages, and drops Ubuntu 22.04, Debian 11 and 32-bit ARM. Running `apt upgrade` on a device still using zk-sw-repo will not move it to 2.x.
@@ -81,9 +81,9 @@ Then follow the [install steps](#install-and-upgrade) below.
 **ZYMKEY5 REQUIRES DRIVER 2.x.** Driver Package 2.x is required for production versions of ZYMKEY5, SEN-505 and HSM60. Earlier units may continue to run on Driver Package 1.x; however, no regular security updates are planned for 1.x unless a critical or severe issue is discovered.
 {{< /callout >}}
 
-#### What's New?
+#### What's new
 
-Zymbit Driver Package 2.x includes the following:
+Zymbit Driver Package 2.0 includes the following:
 
 - **Install and update with apt.** Add the Zymbit repository once, and every Zymbit package installs and stays current through standard apt commands, alongside the rest of your system. No more `install_zk_sw.sh` script.
 - **Production-ready ZYMKEY5.** Production ZYMKEY5 modules now identify as zymkey5, replacing the pre-production hsm6 name. Zymbit Driver Package 2.x is required for modules identifying as zymkey5 and is backwards compatible with modules identifying as hsm6.
@@ -104,7 +104,7 @@ In many cases, ZYMKEY5 is a drop-in upgrade for existing ZYMKEY4 designs. Howeve
 - **ZYMKEY5 uses the new 12-pin I/O connector** ([SM12B-SURS-TF](https://octopart.com/part/jst/SM12B-SURS-TF%28LF%29%28SN%29) on the PCB), which is now standard on all Zymbit products. It replaces the older mini-USB connector for the perimeter loops and adds lines including the LED outputs and the bulk battery monitor. Zymbit is beta testing the additional I/O features; please contact us if your application can benefit. Zymbit now offers a breakout cable and boards to aid with hardware integration.
 - **ZYMKEY5 does not use the breakable tab for production mode.** This is now done via a software command; see the [production mode](/tutorials/production-mode/#activate-production-mode) doc page.
 
-#### Supported Distributions
+#### Supported distributions
 
 Zymbit Driver Package 2.x supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built as standard, due to incompatibilities with older versions of system libraries. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>; case-by-case support may be available.
 
@@ -119,7 +119,7 @@ Zymbit Driver Package 2.x supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (
 
 Ubuntu 22.04 (jammy) and Debian 11 (bullseye) are no longer supported because the packages require glibc 2.36 or newer. Devices on 22.04 should stay on the zk-sw-repo packages or upgrade to Ubuntu 24.04. Devices on bullseye should stay on the zk-sw-repo packages or upgrade to Debian 12 (bookworm).
 
-#### Zymbit Driver Package 2.x Versions
+#### Zymbit Driver Package 2.0 package versions
 
 All packages now come from one signed repository, `https://zk-repo.s3.amazonaws.com/debian/` (suite `stable`), shared by every supported distribution. **Zymbit Driver Package 2.x** names this set of packages as a whole. Each package keeps its own version number, listed below. Previous versions are the newest from the legacy zk-sw-repo repository.
 
@@ -139,7 +139,7 @@ All packages now come from one signed repository, `https://zk-repo.s3.amazonaws.
 | zkpkcs11 | 1.0-4 | 1.3.0-7 | PKCS#11 softhsm-util style utility using the HSM for additional security. |
 | zksaapps | 1.0-18 | 2.0.0-2 | Standalone apps used for LUKS encryption process |
 
-#### What's new
+#### Package changes
 
 | Package | Changes |
 | --- | --- |
@@ -153,7 +153,7 @@ All packages now come from one signed repository, `https://zk-repo.s3.amazonaws.
 | zksaapps | Standalone apps used for encryption. Tools install to `/usr/sbin`. |
 | zkbootrtc | Real time Clock sync service. Service installs under `/usr/lib/systemd/system`. |
 
-#### Install and Upgrade
+#### Install and upgrade
 
 Installing the [`zymbit-repo` package](https://zk-repo.s3.amazonaws.com/zymbit-repo.deb) switches a device to the new repository; after that, every Zymbit package installs and updates through APT.
 
