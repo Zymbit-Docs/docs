@@ -13,7 +13,7 @@ weight: 200
 
 ## 3D Step Model
 
-[Developer Kit 2 Assembly 3D model](Z350-01-012-defeatured_nocase_SCMrevA.stp)
+[Developer Kit 2 Assembly 3D model](https://github.com/Zymbit-Docs/docs/releases/download/cad-files/Z350-01-012-defeatured_nocase_SCMrevA.stp) (67 MB)
 
 
 

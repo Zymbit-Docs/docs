@@ -22,7 +22,7 @@ weight: 40
 ---
 ## 3D Step Model
 
-[HSM4 Can Assembly REV D 1.1.4 STEP](hsm-can-rev-d-1.1.4-hsm4.STEP) (1.1 MB)
+[HSM4 Can Assembly REV D 1.1.4 STEP](https://github.com/Zymbit-Docs/docs/releases/download/cad-files/hsm-can-rev-d-1.1.4-hsm4.STEP) (1.1 MB)
 
 ---
 
