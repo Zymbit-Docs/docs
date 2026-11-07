@@ -16,23 +16,27 @@ Welcome to Zymbit’s Documentation Site! Here, you will find all the resources 
 
 {{% callout note %}}
 Recent Updates
-#### November 2026:
-- Release of Zymbit Driver Package 2.0.  This is the first overall update to all of the Zymbit Driver Packages since 2025. Consider it a migration, not a routine update. Major feature changes:
-  - Adds support for the production ZYMKEY5
-  - Adds support for Ubuntu 26.04 (resolute)
-  - Completely re-vamped packaging and installation; no longer uses install_zk_sw.sh script method. Installation is purely apt package based. Running apt upgrade on a device still using zk-sw-repo will not move it to 2.x.
-  - Deprecates support for Ubuntu 22.04 (jammy), Debian 11 (bullseye) and 32-bit ARM. 
+
+#### November 2026
+
+* Release of Zymbit Driver Package 2.0.  This is the first overall update to all of the Zymbit Driver Packages since 2025. Consider it a migration, not a routine update. Major feature changes:
+    - Adds support for the production ZYMKEY5
+    - Adds support for Ubuntu 26.04 (resolute)
+    - Completely re-vamped packaging and installation; no longer uses install_zk_sw.sh script method. Installation is purely apt package based. Running apt upgrade on a device still using zk-sw-repo will not move it to 2.x.
+    - Deprecates support for Ubuntu 22.04 (jammy), Debian 11 (bullseye) and 32-bit ARM.
 
     Details: [November 2026 Update](#november-2026-details)
 
-#### June/July 2026:
-- Added trixie support for Zymbit Driver Package
-#### February 2026:
-- Update to Zymbit Driver Package
-  - PKCS11 bug fix for 64-bit OS builds
+#### June/July 2026
+
+* Added trixie support for Zymbit Driver Package
+
+#### February 2026
+
+* Update to Zymbit Driver Package
+    - PKCS11 bug fix for 64-bit OS builds
 
 {{% /callout %}}
-
 
 #### Zymbit Driver Package platform and OS support
 
@@ -59,9 +63,10 @@ For Bootware support, see [Bootware](/bootware/).
 [^1]: Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.x and cannot be used on Raspberry Pi OS Bullseye or Ubuntu 22.04.
 
 -----
-### November 2026 Details
------
 
+### November 2026 details
+
+-----
 
 #### Zymbit Driver Package 2.0 release notes
 
@@ -70,9 +75,9 @@ For Bootware support, see [Bootware](/bootware/).
 
 Before you upgrade a device:
 
-- Check that it runs a [supported distribution](#supported-distributions).
-- On devices set up with `install_zk_sw.sh`, back up `/var/lib/zymbit`.
-- Plan to rebuild applications built against the old Zymkey API libraries.
+* Check that it runs a [supported distribution](#supported-distributions).
+* On devices set up with `install_zk_sw.sh`, back up `/var/lib/zymbit`.
+* Plan to rebuild applications built against the old Zymkey API libraries.
 
 Then follow the [install steps](#install-and-upgrade) below.
 
@@ -85,12 +90,12 @@ Then follow the [install steps](#install-and-upgrade) below.
 
 Zymbit Driver Package 2.0 includes the following:
 
-- **Install and update with apt.** Add the Zymbit repository once, and every Zymbit package installs and stays current through standard apt commands, alongside the rest of your system. No more `install_zk_sw.sh` script.
-- **Production-ready ZYMKEY5.** Production ZYMKEY5 modules now identify as zymkey5, replacing the pre-production hsm6 name. Zymbit Driver Package 2.x is required for modules identifying as zymkey5 and is backwards compatible with modules identifying as hsm6.
-- **Ready for Ubuntu 26.04 LTS.** Adds support for Ubuntu 26.04 LTS, so you can move your fleet to the latest LTS.
-- **Install only what you need.** The Zymkey app utilities API is split into separate runtime, development and Python packages. Production devices need no longer install development headers and utilities.
-- **Python API as a native package.** python3-zku installs with apt like everything else and automatically replaces the old pip package.
-- **Build your apps the standard way.** Native libraries now install to standard multiarch-aware locations with versioned names, and ship with pkg-config and CMake helpers. Applications built against the old libraries need a rebuild; see [Known issues](#known-issues).
+* **Install and update with apt.** Add the Zymbit repository once, and every Zymbit package installs and stays current through standard apt commands, alongside the rest of your system. No more `install_zk_sw.sh` script.
+* **Production-ready ZYMKEY5.** Production ZYMKEY5 modules now identify as zymkey5, replacing the pre-production hsm6 name. Zymbit Driver Package 2.x is required for modules identifying as zymkey5 and is backwards compatible with modules identifying as hsm6.
+* **Ready for Ubuntu 26.04 LTS.** Adds support for Ubuntu 26.04 LTS, so you can move your fleet to the latest LTS.
+* **Install only what you need.** The Zymkey app utilities API is split into separate runtime, development and Python packages. Production devices need no longer install development headers and utilities.
+* **Python API as a native package.** python3-zku installs with apt like everything else and automatically replaces the old pip package.
+* **Build your apps the standard way.** Native libraries now install to standard multiarch-aware locations with versioned names, and ship with pkg-config and CMake helpers. Applications built against the old libraries need a rebuild; see [Known issues](#known-issues).
 
 #### Moving from ZYMKEY4 to ZYMKEY5
 
@@ -98,11 +103,11 @@ ZYMKEY5 is a significant upgrade to the cryptographic and physical protection ca
 
 In many cases, ZYMKEY5 is a drop-in upgrade for existing ZYMKEY4 designs. However, there are a few differences to keep in mind:
 
-- **ZYMKEY5 includes the full hardware wallet.** BIP32, SLIP39 and 500+ key slots are supported. Hardware protection features include 2 cryptographically encoded perimeter loops, accurate coin cell battery measurement and temperature monitoring. ZYMKEY5 features are now aligned with the HSM series products and the Secure Edge Nodes. All software APIs supported on ZYMKEY4 are supported on ZYMKEY5.
-- **ZYMKEY5 no longer has the built-in battery holder.** Instead, there is a standard Pi 5 battery connector ([SM02B-SRSS-TB](https://octopart.com/part/jst/SM02B-SRSS-TB%28LF%29%28SN%29) on the PCB), so an external battery of suitable size and capacity may be used. Rechargeable battery support is available for OEM customers. Do not use a standard Pi rechargeable battery on a standard ZYMKEY5. Zymbit recommends 2032 lithium coin cells with suitable connectors and wiring. The ZYMKEY5 Developer Kit includes the battery holder.
-- **ZYMKEY5 does not have the accelerometer.** For applications requiring an accelerometer, please use a suitable, generally available I2C module. The accelerometer was removed because it consumes too much power to be usable while running on the coin cell battery, and cannot maintain a consistent speed while ZYMKEY5 is busy with a longer compute task. Other Zymbit modules and nodes retain the accelerometer (HSM60, SEN-505).
-- **ZYMKEY5 uses the new 12-pin I/O connector** ([SM12B-SURS-TF](https://octopart.com/part/jst/SM12B-SURS-TF%28LF%29%28SN%29) on the PCB), which is now standard on all Zymbit products. It replaces the older mini-USB connector for the perimeter loops and adds lines including the LED outputs and the bulk battery monitor. Zymbit is beta testing the additional I/O features; please contact us if your application can benefit. Zymbit now offers a breakout cable and boards to aid with hardware integration.
-- **ZYMKEY5 does not use the breakable tab for production mode.** This is now done via a software command; see the [production mode](/tutorials/production-mode/#activate-production-mode) doc page.
+* **ZYMKEY5 includes the full hardware wallet.** BIP32, SLIP39 and 500+ key slots are supported. Hardware protection features include 2 cryptographically encoded perimeter loops, accurate coin cell battery measurement and temperature monitoring. ZYMKEY5 features are now aligned with the HSM series products and the Secure Edge Nodes. All software APIs supported on ZYMKEY4 are supported on ZYMKEY5.
+* **ZYMKEY5 no longer has the built-in battery holder.** Instead, there is a standard Pi 5 battery connector ([SM02B-SRSS-TB](https://octopart.com/part/jst/SM02B-SRSS-TB%28LF%29%28SN%29) on the PCB), so an external battery of suitable size and capacity may be used. Rechargeable battery support is available for OEM customers. Do not use a standard Pi rechargeable battery on a standard ZYMKEY5. Zymbit recommends 2032 lithium coin cells with suitable connectors and wiring. The ZYMKEY5 Developer Kit includes the battery holder.
+* **ZYMKEY5 does not have the accelerometer.** For applications requiring an accelerometer, please use a suitable, generally available I2C module. The accelerometer was removed because it consumes too much power to be usable while running on the coin cell battery, and cannot maintain a consistent speed while ZYMKEY5 is busy with a longer compute task. Other Zymbit modules and nodes retain the accelerometer (HSM60, SEN-505).
+* **ZYMKEY5 uses the new 12-pin I/O connector** ([SM12B-SURS-TF](https://octopart.com/part/jst/SM12B-SURS-TF%28LF%29%28SN%29) on the PCB), which is now standard on all Zymbit products. It replaces the older mini-USB connector for the perimeter loops and adds lines including the LED outputs and the bulk battery monitor. Zymbit is beta testing the additional I/O features; please contact us if your application can benefit. Zymbit now offers a breakout cable and boards to aid with hardware integration.
+* **ZYMKEY5 does not use the breakable tab for production mode.** This is now done via a software command; see the [production mode](/tutorials/production-mode/#activate-production-mode) doc page.
 
 #### Supported distributions
 
@@ -166,7 +171,8 @@ Always test and check to make sure the upgrade is working as intended. See above
    ```bash
    curl -fsSLOJ https://zk-repo.s3.amazonaws.com/zymbit-repo.deb
    ```
-2. Install the repository package. This will configure APT sources and import Zymbit's GPG signing key. By default, it installs without asking anything and leaves beta updates off. Removing this package later will remove Zymbit's repository from APT and clear the GPG key from the system's trusted keyring but will leave behind any other Zymbit packages that have been installed on the system. Those must be removed explicitly.
+
+1. Install the repository package. This will configure APT sources and import Zymbit's GPG signing key. By default, it installs without asking anything and leaves beta updates off. Removing this package later will remove Zymbit's repository from APT and clear the GPG key from the system's trusted keyring but will leave behind any other Zymbit packages that have been installed on the system. Those must be removed explicitly.
 
    ```bash
    sudo apt install ./zymbit-repo_*_all.deb
@@ -187,41 +193,47 @@ Always test and check to make sure the upgrade is working as intended. See above
    To change the answer later, run `sudo dpkg-reconfigure zymbit-repo`, which always asks.
 
    This adds `/etc/apt/sources.list.d/zymbit.sources` and the Zymbit signing key, and removes the old zk-sw-repo entry from `/etc/apt/sources.list.d/zymbit.list`.
-3. Refresh the package lists:
+1. Refresh the package lists:
 
    ```bash
    sudo apt update
    ```
-4. In order to communicate with the Zymkey, the host's I2C interface must be enabled. On Ubuntu, this is the case out of the box. On Debian (Raspberry Pi OS), this can be done via the following command:
+
+1. In order to communicate with the Zymkey, the host's I2C interface must be enabled. On Ubuntu, this is the case out of the box. On Debian (Raspberry Pi OS), this can be done via the following command:
 
    ```bash
    sudo raspi-config nonint do_i2c 0
    sudo reboot
    ```
-5. Install the packages needed for the intended use case. Necessary dependencies from Zymbit and the OS distribution will be automatically installed. On a device previously configured via the legacy `install_zk_sw.sh`, backup `/var/lib/zymbit` before proceeding. New devices, or devices that do not have this file, do not need to take any action.&#32;
+
+1. Install the packages needed for the intended use case. Necessary dependencies from Zymbit and the OS distribution will be automatically installed. On a device previously configured via the legacy `install_zk_sw.sh`, backup `/var/lib/zymbit` before proceeding. New devices, or devices that do not have this file, do not need to take any action.&#32;
    1. For base functionality of the Zymkey, including disk encryption, install the following packages, then reboot.&#32;
 
       ```bash
       sudo apt install zkifc zksaapps
       ```
-   2. To use the Zymkey's OpenSSL engine backend and SoftHSM, run
+
+   1. To use the Zymkey's OpenSSL engine backend and SoftHSM, run
 
       ```bash
       sudo apt install zkifc libzymkeyssl zkpkcs11
       ```
-   3. &#32;To use the python bindings, run
+
+   1. &#32;To use the python bindings, run
 
       ```bash
       sudo apt install zkifc python3-zku
       ```
-   4. To run programs linked against Zymbit's zkapputils library, run
+
+   1. To run programs linked against Zymbit's zkapputils library, run
 
       ```bash
       sudo apt install zkifc libzkapputils
       # OPTIONAL: to make use of the C++ API, run
       # sudo apt install zkifc libzkapputils-c++
       ```
-   5. &#32;To build programs using libzkapputils, install the `-dev` variants of the above `libzkapputils` packages. Container and/or cross-compilation environments will likely need to skip the automatic installation of `zkifc`, which fails without access to a Pi's hardware I2C bus.
+
+   1. &#32;To build programs using libzkapputils, install the `-dev` variants of the above `libzkapputils` packages. Container and/or cross-compilation environments will likely need to skip the automatic installation of `zkifc`, which fails without access to a Pi's hardware I2C bus.
 
       ```bash
       sudo apt install zkifc libzkapputils[-c++]-dev
@@ -233,13 +245,14 @@ The new packages replace the old ones themselves: when applicable, `apt` removes
 
 #### Known issues
 
-- **Applications built against zkapputilslib must be rebuilt.** The old libraries had unversioned names (`libzk_app_utils.so`, `libzkAppUtilsClassCPP.so`). Rebuild against the new packages. See the [C](/api/c_api/) and [C++](/api/cpp_api/) API docs for instructions on using the CMake and pkg-config helpers.
-- **Update PKCS#11 configurations that name old paths.** Configurations that load the PKCS#11 module from `/usr/lib/libzk_pkcs11.so` must point to the new names in `/usr/lib/aarch64-linux-gnu/libzk_pkcs11.so`. (`zk_pkcs11-util` does this automatically.)
-- **Back up your PKCS#11 configuration before upgrading.** The token directory stays at `/var/lib/zymbit/zk_pkcs11/tokens/`, so existing tokens carry over. As a precaution, keep a copy of `/etc/zk_pkcs11.conf` and your tokens before upgrading.
-- **libzymkeyssl.** Only supports OpenSSL ENGINE using the EC\_KEY\_METHOD interface; runs on OpenSSL 3.0 through 3.x. Not supported on OpenSSL 4.0. Support for 3.5 LTS runs to 2030.
+* **Applications built against zkapputilslib must be rebuilt.** The old libraries had unversioned names (`libzk_app_utils.so`, `libzkAppUtilsClassCPP.so`). Rebuild against the new packages. See the [C](/api/c_api/) and [C++](/api/cpp_api/) API docs for instructions on using the CMake and pkg-config helpers.
+* **Update PKCS#11 configurations that name old paths.** Configurations that load the PKCS#11 module from `/usr/lib/libzk_pkcs11.so` must point to the new names in `/usr/lib/aarch64-linux-gnu/libzk_pkcs11.so`. (`zk_pkcs11-util` does this automatically.)
+* **Back up your PKCS#11 configuration before upgrading.** The token directory stays at `/var/lib/zymbit/zk_pkcs11/tokens/`, so existing tokens carry over. As a precaution, keep a copy of `/etc/zk_pkcs11.conf` and your tokens before upgrading.
+* **libzymkeyssl.** Only supports OpenSSL ENGINE using the EC\_KEY\_METHOD interface; runs on OpenSSL 3.0 through 3.x. Not supported on OpenSSL 4.0. Support for 3.5 LTS runs to 2030.
 
 -----
-#### Previous release notes are in [Troubleshooting](troubleshooting/release-notes/).
+
+#### Previous release notes are in [Troubleshooting](troubleshooting/release-notes/)
+
 -----
 <br>
-
