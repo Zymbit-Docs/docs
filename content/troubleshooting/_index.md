@@ -16,8 +16,8 @@ Before contacting Zymbit with troubleshooting related questions, please read thr
 
 1. Power supply. Most of the problems we see are from a poor power source. Start with a good power supply from the PI foundation or Canakit, not a phone charger. The recommended power for the PI4 is 5V and 3 amps.  For a PI5, the recommended power supply should provide 5V, 5 amps.
 1. (All products except SCM) I2C enabled. Double check that you have enabled the I2C bus. An easy way to check is "ls -l /dev/i2c-1". If /dev/i2c-1 exists, the I2C bus is enabled.
-1. apt update and upgrade. Be sure that your software is up to date. On Driver Package 1.0 (installed with `install_zk_sw.sh`), `apt upgrade` does not move you to Driver Package 2.0; see [Installing the Zymbit Driver Package](/reference/driver-package/).
-1. Installation. Install the Zymbit Driver Package as described in [Installing the Zymbit Driver Package](/reference/driver-package/), then reboot. After the reboot, the blue LED on your Zymbit device should blink once every 3 seconds. You must get to this step before proceeding to encryption, etc.
+1. apt update and upgrade. Be sure that your software is up to date. On Driver Package 1.0 (installed with `install_zk_sw.sh`), `apt upgrade` does not move you to Driver Package 2.0; see [Installing the Zymbit Driver Package 2.0](/driver-package/2.0).
+1. Installation. Install the Zymbit Driver Package as described in [Installing the Zymbit Driver Package](/driver-package/2.0), then reboot. After the reboot, the blue LED on your Zymbit device should blink once every 3 seconds. You must get to this step before proceeding to encryption, etc.
 
 If your issue is not related to any of the above list, check the common issues and FAQ below, then the FAQ for your product. If you still do not see a solution to your problem, reach out on our [Community Forum](https://community.zymbit.com/). Thank you!
 
@@ -32,7 +32,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-A device set up with the legacy `install_zk_sw.sh` script is on Driver Package 1.0, and `apt upgrade` will not move it to 2.0. To migrate, follow [Installing the Zymbit Driver Package](/reference/driver-package/). Devices on Ubuntu 22.04, Debian 11, or a 32-bit OS cannot run 2.0; see [Driver Package 1.0](/reference/driver-package/legacy/). Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.0 does not recognize, so they require Driver Package 2.0.
+A device set up with the legacy `install_zk_sw.sh` script is on Driver Package 1.0, and `apt upgrade` will not move it to 2.0. To migrate, follow [Installing the Zymbit Driver Package](/driver-package/2.0). Devices on Ubuntu 22.04, Debian 11, or a 32-bit OS cannot run 2.0; see [Driver Package 1.0](/driver-package/1.0/). Production ZYMKEY5 units identify as `zymkey5`, which Driver Package 1.0 does not recognize, so they require Driver Package 2.0.
 
 For current and previous package versions, see the [Driver Package 2.0 release notes](/#november-2026-details).
 
@@ -112,7 +112,7 @@ sudo apt-get remove --purge -y unattended-upgrades
 
 ### Running a 32-bit operating system
 
-Driver Package 2.0 supports 64-bit ARM only. On a 32-bit OS, install [Driver Package 1.0](/reference/driver-package/legacy/) and apply the following. Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.0, so they cannot be used on a 32-bit OS. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>; case-by-case support may be available.
+Driver Package 2.0 supports 64-bit ARM only. On a 32-bit OS, install [Driver Package 1.0](/driver-package/1.0/) and apply the following. Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.0, so they cannot be used on a 32-bit OS. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>; case-by-case support may be available.
 
 As of March 2023, Raspberry PI OS 32-bit images install the 64-bit kernel along with the 32-bit root filesystem. This does not allow our installation script to work. In order to properly install on an 32-bit system, edit `/boot/config.txt` and add the following line to the bottom of the file, then reboot.
 
@@ -191,7 +191,7 @@ See [Power Quality]( https://docs.zymbit.com/reference/power-quality/) for more 
 A: See:
 
 * [Latest stable platform and OS support](/#latest-stable-platform-and-os-support) on the home page, for each platform and which operating systems Bootware supports.
-* [Supported distributions](/reference/driver-package/#supported-distributions) for Zymbit Driver Package 2.0.
+* [Supported distributions](/driver-package/2.0/distro_support) for Zymbit Driver Package 2.0.
 
 -----
 

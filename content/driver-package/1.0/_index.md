@@ -1,7 +1,7 @@
 ---
-title: Installing Zymbit Driver Package 1.0
+title: Install Zymbit Driver Package 1.0
 linkTitle: Driver Package 1.0
-description: "Install the legacy Zymbit Driver Package on Ubuntu 22.04, Debian 11, or a 32-bit OS, which Driver Package 2.0 does not support."
+description: "Install the legacy Zymbit Driver Package 1.0 on Ubuntu 22.04, Debian 11, or a 32-bit OS, which Driver Package 2.0 does not support."
 date: "2026-10-29"
 lastmod: "2026-11-06"
 draft: false

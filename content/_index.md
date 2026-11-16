@@ -50,9 +50,9 @@ Recent Updates
 | Ubuntu 24.04 LTS Noble (64-bit) | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} |
 | Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< partially-supported label="Driver Package 1.0 (legacy) only" >}} [^1] | {{< partially-supported label="Driver Package 1.0 (legacy) only" >}} [^1] |                   |
 
-{{< supported label="Zymbit Driver Package 2.0" >}} [Zymbit Driver Package 2.0](/reference/driver-package/)
+{{< supported label="Zymbit Driver Package 2.0" >}} [Zymbit Driver Package 2.0](/driver-package/2.0)
 
-{{< partially-supported label="Driver Package 1.0 (legacy) only" >}} [Driver Package 1.0 (legacy)](/reference/driver-package/legacy/) only
+{{< partially-supported label="Driver Package 1.0 (legacy) only" >}} [Driver Package 1.0 (legacy)](/driver-package/1.0/) only
 
 32-bit operating systems are supported by Driver Package 1.0 only. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>.
 
@@ -73,13 +73,9 @@ For Bootware support, see [Bootware](/bootware/).
 {{< callout warning >}}
 **Upgrading from the 1.0 Zymbit Driver to Zymbit Driver Package 2.0 is a migration, not a routine update.** It moves devices from the heterogeneous, distribution-specific legacy APT repositories to a common new APT repository, renames and splits several packages, and drops Ubuntu 22.04, Debian 11 and 32-bit ARM. Running `apt upgrade` on a device still using zk-sw-repo will not move it to 2.0.
 
-Before you upgrade a device:
+Before you upgrade a device from 1.0, check that it runs a [supported distribution](/driver-package/2.0/distro_support), then review the [pre-upgrade checklist](/driver-package/2.0/pre_upgrade).
 
-* Check that it runs a [supported distribution](#supported-distributions).
-* On devices set up with `install_zk_sw.sh`, back up `/var/lib/zymbit`.
-* Plan to rebuild applications built against the old Zymkey API libraries.
-
-Then follow the [install steps](#install-and-upgrade) below.
+Then, follow the [installation steps](/driver-package/2.0).
 
 **UPGRADING DEPLOYED DEVICES?** Driver Package 2.0 has been tested in upgrade scenarios; however, there is always risk when encrypted in-field devices are being upgraded. Test before deployment and proceed at your own risk. Please contact Zymbit support at <support@zymbit.com> if you need assistance.
 
@@ -109,20 +105,8 @@ In many cases, ZYMKEY5 is a drop-in upgrade for existing ZYMKEY4 designs. Howeve
 * **ZYMKEY5 uses the new 12-pin I/O connector** ([SM12B-SURS-TF](https://octopart.com/part/jst/SM12B-SURS-TF%28LF%29%28SN%29) on the PCB), which is now standard on all Zymbit products. It replaces the older mini-USB connector for the perimeter loops and adds lines including the LED outputs and the bulk battery monitor. Zymbit is beta testing the additional I/O features; please contact us if your application can benefit. Zymbit now offers a breakout cable and boards to aid with hardware integration.
 * **ZYMKEY5 does not use the breakable tab for production mode.** This is now done via a software command; see the [production mode](/tutorials/production-mode/#activate-production-mode) doc page.
 
-#### Supported distributions
-
-Zymbit Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built as standard, due to incompatibilities with older versions of system libraries. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>; case-by-case support may be available.
-
-| Distribution | Codename | Status |
-| --- | --- | --- |
-| Ubuntu 26.04 LTS | resolute | New |
-| Ubuntu 24.04 LTS | noble | Supported |
-| Ubuntu 22.04 LTS | jammy | Dropped |
-| Debian 13 | trixie | Supported |
-| Debian 12 | bookworm | Supported |
-| Debian 11 | bullseye | Dropped |
-
-Ubuntu 22.04 (jammy) and Debian 11 (bullseye) are no longer supported because the packages require glibc 2.36 or newer. Devices on 22.04 should stay on the zk-sw-repo packages or upgrade to Ubuntu 24.04. Devices on bullseye should stay on the zk-sw-repo packages or upgrade to Debian 12 (bookworm).
+#### Installation
+See [Install Zymbit Driver Package 2.0](/driver-package/2.0)
 
 #### Zymbit Driver Package 2.0 package versions
 
@@ -157,91 +141,6 @@ All packages now come from one signed repository, `https://zk-repo.s3.amazonaws.
 | zkpkcs11 | The module is now `/usr/lib/aarch64-linux-gnu/libzk_pkcs11.so`. Adds `/etc/zk_pkcs11.conf.sample` and a `zk_pkcs11` system group for token access. |
 | zksaapps | Standalone apps used for encryption. Tools install to `/usr/sbin`. |
 | zkbootrtc | Real time Clock sync service. Service installs under `/usr/lib/systemd/system`. |
-
-#### Install and upgrade
-
-Installing the [`zymbit-repo` package](https://zk-repo.s3.amazonaws.com/zymbit-repo.deb) switches a device to the new repository; after that, every Zymbit package installs and updates through APT.
-
-This process works the same for new installs and for devices already using zk-sw-repo. The new installer package is aware of the old driver and will generally behave correctly. However, if the system install has been customized, or the distribution is non-standard, the standard procedure may not upgrade properly.
-
-Always test and check to make sure the upgrade is working as intended. See above for how to back up and preserve critical system information to avoid LUKS key loss.
-
-1. Pull down the installation package, `zymbit-repo`. The `-J` option tells `curl` to automatically save the file under the version name reported by the download server; e.g.: `zymbit-repo_2.0-1_all.deb`:
-
-   ```bash
-   curl -fsSLOJ https://zk-repo.s3.amazonaws.com/zymbit-repo.deb
-   ```
-
-1. Install the repository package. This will configure APT sources and import Zymbit's GPG signing key. By default, it installs without asking anything and leaves beta updates off. Removing this package later will remove Zymbit's repository from APT and clear the GPG key from the system's trusted keyring but will leave behind any other Zymbit packages that have been installed on the system. Those must be removed explicitly.
-
-   ```bash
-   sudo apt install ./zymbit-repo_*_all.deb
-   ```
-
-   The beta-updates question is asked only at debconf priority medium or lower. To be asked, install with:
-
-   ```bash
-   sudo DEBIAN_PRIORITY=medium apt install ./zymbit-repo_*_all.deb
-   ```
-
-   To opt in without a prompt, for example in unattended installs, set the answer before installing:
-
-   ```bash
-   sudo debconf-set-selections <<< "zymbit-repo zymbit-repo/enable-beta-updates boolean true"
-   ```
-
-   To change the answer later, run `sudo dpkg-reconfigure zymbit-repo`, which always asks.
-
-   This adds `/etc/apt/sources.list.d/zymbit.sources` and the Zymbit signing key, and removes the old zk-sw-repo entry from `/etc/apt/sources.list.d/zymbit.list`.
-1. Refresh the package lists:
-
-   ```bash
-   sudo apt update
-   ```
-
-1. In order to communicate with the Zymkey, the host's I2C interface must be enabled. On Ubuntu, this is the case out of the box. On Debian (Raspberry Pi OS), this can be done via the following command:
-
-   ```bash
-   sudo raspi-config nonint do_i2c 0
-   sudo reboot
-   ```
-
-1. Install the packages needed for the intended use case. Necessary dependencies from Zymbit and the OS distribution will be automatically installed. On a device previously configured via the legacy `install_zk_sw.sh`, backup `/var/lib/zymbit` before proceeding. New devices, or devices that do not have this file, do not need to take any action.&#32;
-   1. For base functionality of the Zymkey, including disk encryption, install the following packages, then reboot.&#32;
-
-      ```bash
-      sudo apt install zkifc zksaapps
-      ```
-
-   1. To use the Zymkey's OpenSSL engine backend and SoftHSM, run
-
-      ```bash
-      sudo apt install zkifc libzymkeyssl zkpkcs11
-      ```
-
-   1. &#32;To use the python bindings, run
-
-      ```bash
-      sudo apt install zkifc python3-zku
-      ```
-
-   1. To run programs linked against Zymbit's zkapputils library, run
-
-      ```bash
-      sudo apt install zkifc libzkapputils
-      # OPTIONAL: to make use of the C++ API, run
-      # sudo apt install zkifc libzkapputils-c++
-      ```
-
-   1. &#32;To build programs using libzkapputils, install the `-dev` variants of the above `libzkapputils` packages. Container and/or cross-compilation environments will likely need to skip the automatic installation of `zkifc`, which fails without access to a Pi's hardware I2C bus.
-
-      ```bash
-      sudo apt install zkifc libzkapputils[-c++]-dev
-      # to skip zkifc installation, run
-      sudo apt install --no-install-recommends libzkapputils[-c++]-dev
-      ```
-
-The new packages replace the old ones themselves: when applicable, `apt` removes `libzk` and `zkapputilslib` as part of the install and `python3-zku` removes the `zku` package installed with `pip`.
 
 #### Known issues
 
