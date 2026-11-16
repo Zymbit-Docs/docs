@@ -166,33 +166,13 @@ Steps that appear word for word on several pages are written once, in `assets/sn
 
 ### Zymbit Driver Package install steps
 
-`assets/snippets/driver-install.md` holds the Driver Package 2.x install steps shown in the "Install the Zymbit Driver Package" section of every module getting-started page (ZYMKEY4, ZYMKEY5, HSM4, HSM6, HSM60). Each page calls:
-
-```markdown
-## Install the Zymbit Driver Package
-
-{{< driver-install product="ZYMKEY5" >}}
-```
-
-`layouts/shortcodes/driver-install.html` reads the snippet, replaces every `%PRODUCT%` with the `product` value, and renders the result as Markdown. A missing snippet fails the build rather than leaving an empty section.
-
-The OS requirements paragraph is a separate snippet, swapped in for `%REQUIREMENTS%`, because it differs by product. By default it is `driver-install-requirements.md`, which sends readers on Ubuntu 22.04, Debian 11, or a 32-bit OS to Driver Package 1.x. That advice is wrong for production ZYMKEY5, which identifies as `zymkey5` and is not recognized by 1.x, so the ZYMKEY5 page passes `requirements="zymkey5"` to use `driver-install-requirements-zymkey5.md` instead. Production HSM60 also requires 2.x, so its page passes `requirements="hsm60"`:
-
-```markdown
-{{< driver-install product="ZYMKEY5" requirements="zymkey5" >}}
-```
-
-A product that needs different requirements gets its own `driver-install-requirements-<name>.md` and passes `requirements="<name>"`.
-
-The snippet is the short version for getting started. The full install and upgrade reference, with every package option, lives at `content/reference/driver-package/_index.md`, and the legacy `install_zk_sw.sh` method for Ubuntu 22.04, Debian 11, and 32-bit systems at `content/reference/driver-package/legacy.md`. When the install changes, check all three.
+See `content/driver-package/2.0/_index.md`.
 
 ### Writing a snippet
 
 * Keep the section heading in the page and put only the body in the snippet. Headings rendered by a shortcode do not appear in the page's table of contents.
 * Use root-relative links (`/reference/driver-package/`). A relative link would resolve against whichever page includes the snippet.
 * Snippets are linted with everything else by `npm run lint`. A snippet does not start with a heading, so it opens with `<!-- markdownlint-disable-next-line MD041 -->`. The comment passes through to the page's HTML, where it is invisible.
-
-To add another snippet, put the Markdown in `assets/snippets/` and copy `driver-install.html` as the shortcode, changing the file name it reads and the parameters it substitutes.
 
 ## Adding a product or a task
 
