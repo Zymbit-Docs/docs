@@ -2,7 +2,7 @@
 title: "ZYMKEY4 FAQ & Troubleshooting"
 linkTitle: "ZYMKEY4 FAQ & Troubleshooting"
 description: "ZYMKEY4 FAQ & Troubleshooting"
-lastmod: "2026-10-31"
+lastmod: "2026-11-16"
 draft: false
 images: []
 weight: 20
@@ -389,7 +389,7 @@ A: For Zymkey and HSMs, kernel drivers and libraries for all of the devices are 
 
 <br>
 
-A: See [Expired GPG key preventing access to the repository](/troubleshooting/#expired-gpg-key-preventing-access-to-the-repository) in the general troubleshooting page. It applies only to devices on Driver Package 1.x.
+A: See [Expired GPG key preventing access to the repository](/troubleshooting/#expired-gpg-key-preventing-access-to-the-repository) in the general troubleshooting page. It applies only to devices on Driver Package 1.0.
 
 -----
 

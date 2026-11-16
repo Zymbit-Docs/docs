@@ -22,7 +22,7 @@ Recent Updates
 * Release of Zymbit Driver Package 2.0.  This is the first overall update to all of the Zymbit Driver Packages since 2025. Consider it a migration, not a routine update. Major feature changes:
     - Adds support for the production ZYMKEY5
     - Adds support for Ubuntu 26.04 (resolute)
-    - Completely re-vamped packaging and installation; no longer uses install_zk_sw.sh script method. Installation is purely apt package based. Running apt upgrade on a device still using zk-sw-repo will not move it to 2.x.
+    - Completely re-vamped packaging and installation; no longer uses install_zk_sw.sh script method. Installation is purely apt package based. Running apt upgrade on a device still using zk-sw-repo will not move it to 2.0.
     - Deprecates support for Ubuntu 22.04 (jammy), Debian 11 (bullseye) and 32-bit ARM.
 
     Details: [November 2026 Update](#november-2026-details)
@@ -43,24 +43,24 @@ Recent Updates
 |                                   |    SEN-505/CM5    |  SEN-400/CM4           | Pi4                    |   Pi5             |
 |:----------------------------------|:-----------------:|:----------------------:|:----------------------:|:-----------------:|
 |                  **Zymbit HSMs:** | **ZYMKEY5/4, HSM60**| **ZYMKEY5/4, HSM60, SCM**| **ZYMKEY5/4**         | **ZYMKEY5/4**     |
-| Raspberry Pi OS Trixie (64-bit) | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} |
-| Raspberry Pi OS Bookworm (64-bit) | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} |
-| Raspberry Pi OS Bullseye (64-bit) |                   | {{< partially-supported label="Driver Package 1.x (legacy) only" >}} [^1] | {{< partially-supported label="Driver Package 1.x (legacy) only" >}} [^1] |                   |
-| Ubuntu 26.04 LTS Resolute (64-bit) | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} |
-| Ubuntu 24.04 LTS Noble (64-bit) | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} | {{< supported label="Zymbit Driver Package 2.x" >}} |
-| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< partially-supported label="Driver Package 1.x (legacy) only" >}} [^1] | {{< partially-supported label="Driver Package 1.x (legacy) only" >}} [^1] |                   |
+| Raspberry Pi OS Trixie (64-bit) | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} |
+| Raspberry Pi OS Bookworm (64-bit) | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} |
+| Raspberry Pi OS Bullseye (64-bit) |                   | {{< partially-supported label="Driver Package 1.0 (legacy) only" >}} [^1] | {{< partially-supported label="Driver Package 1.0 (legacy) only" >}} [^1] |                   |
+| Ubuntu 26.04 LTS Resolute (64-bit) | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} |
+| Ubuntu 24.04 LTS Noble (64-bit) | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} | {{< supported label="Zymbit Driver Package 2.0" >}} |
+| Ubuntu 22.04 LTS Jammy (64-bit)   |                   | {{< partially-supported label="Driver Package 1.0 (legacy) only" >}} [^1] | {{< partially-supported label="Driver Package 1.0 (legacy) only" >}} [^1] |                   |
 
-{{< supported label="Zymbit Driver Package 2.x" >}} [Zymbit Driver Package 2.x](/reference/driver-package/)
+{{< supported label="Zymbit Driver Package 2.0" >}} [Zymbit Driver Package 2.0](/reference/driver-package/)
 
-{{< partially-supported label="Driver Package 1.x (legacy) only" >}} [Driver Package 1.x (legacy)](/reference/driver-package/legacy/) only
+{{< partially-supported label="Driver Package 1.0 (legacy) only" >}} [Driver Package 1.0 (legacy)](/reference/driver-package/legacy/) only
 
-32-bit operating systems are supported by Driver Package 1.x only. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>.
+32-bit operating systems are supported by Driver Package 1.0 only. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>.
 
 Contact <support@zymbit.com> for PiZero 2W.
 
 For Bootware support, see [Bootware](/bootware/).
 
-[^1]: Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.x and cannot be used on Raspberry Pi OS Bullseye or Ubuntu 22.04.
+[^1]: Production ZYMKEY5, HSM60, and SEN-505 units require Driver Package 2.0 and cannot be used on Raspberry Pi OS Bullseye or Ubuntu 22.04.
 
 -----
 
@@ -71,7 +71,7 @@ For Bootware support, see [Bootware](/bootware/).
 #### Zymbit Driver Package 2.0 release notes
 
 {{< callout warning >}}
-**Upgrading from the 1.x Zymbit Driver to Zymbit Driver Package 2.x is a migration, not a routine update.** It moves devices from the heterogeneous, distribution-specific legacy APT repositories to a common new APT repository, renames and splits several packages, and drops Ubuntu 22.04, Debian 11 and 32-bit ARM. Running `apt upgrade` on a device still using zk-sw-repo will not move it to 2.x.
+**Upgrading from the 1.0 Zymbit Driver to Zymbit Driver Package 2.0 is a migration, not a routine update.** It moves devices from the heterogeneous, distribution-specific legacy APT repositories to a common new APT repository, renames and splits several packages, and drops Ubuntu 22.04, Debian 11 and 32-bit ARM. Running `apt upgrade` on a device still using zk-sw-repo will not move it to 2.0.
 
 Before you upgrade a device:
 
@@ -81,9 +81,9 @@ Before you upgrade a device:
 
 Then follow the [install steps](#install-and-upgrade) below.
 
-**UPGRADING DEPLOYED DEVICES?** Driver Package 2.x has been tested in upgrade scenarios; however, there is always risk when encrypted in-field devices are being upgraded. Test before deployment and proceed at your own risk. Please contact Zymbit support at <support@zymbit.com> if you need assistance.
+**UPGRADING DEPLOYED DEVICES?** Driver Package 2.0 has been tested in upgrade scenarios; however, there is always risk when encrypted in-field devices are being upgraded. Test before deployment and proceed at your own risk. Please contact Zymbit support at <support@zymbit.com> if you need assistance.
 
-**ZYMKEY5 REQUIRES DRIVER 2.x.** Driver Package 2.x is required for production versions of ZYMKEY5, SEN-505 and HSM60. Earlier units may continue to run on Driver Package 1.x; however, no regular security updates are planned for 1.x unless a critical or severe issue is discovered.
+**ZYMKEY5 REQUIRES DRIVER 2.0.** Driver Package 2.0 is required for production versions of ZYMKEY5, SEN-505 and HSM60. Earlier units may continue to run on Driver Package 1.0; however, no regular security updates are planned for 1.0 unless a critical or severe issue is discovered.
 {{< /callout >}}
 
 #### What's new
@@ -91,7 +91,7 @@ Then follow the [install steps](#install-and-upgrade) below.
 Zymbit Driver Package 2.0 includes the following:
 
 * **Install and update with apt.** Add the Zymbit repository once, and every Zymbit package installs and stays current through standard apt commands, alongside the rest of your system. No more `install_zk_sw.sh` script.
-* **Production-ready ZYMKEY5.** Production ZYMKEY5 modules now identify as zymkey5, replacing the pre-production hsm6 name. Zymbit Driver Package 2.x is required for modules identifying as zymkey5 and is backwards compatible with modules identifying as hsm6.
+* **Production-ready ZYMKEY5.** Production ZYMKEY5 modules now identify as zymkey5, replacing the pre-production hsm6 name. Zymbit Driver Package 2.0 is required for modules identifying as zymkey5 and is backwards compatible with modules identifying as hsm6.
 * **Ready for Ubuntu 26.04 LTS.** Adds support for Ubuntu 26.04 LTS, so you can move your fleet to the latest LTS.
 * **Install only what you need.** The Zymkey app utilities API is split into separate runtime, development and Python packages. Production devices need no longer install development headers and utilities.
 * **Python API as a native package.** python3-zku installs with apt like everything else and automatically replaces the old pip package.
@@ -111,7 +111,7 @@ In many cases, ZYMKEY5 is a drop-in upgrade for existing ZYMKEY4 designs. Howeve
 
 #### Supported distributions
 
-Zymbit Driver Package 2.x supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built as standard, due to incompatibilities with older versions of system libraries. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>; case-by-case support may be available.
+Zymbit Driver Package 2.0 supports 64-bit ARM (arm64/aarch64) only. 32-bit ARM (armhf) packages are no longer built as standard, due to incompatibilities with older versions of system libraries. If you have a 32-bit requirement, contact Zymbit support at <support@zymbit.com>; case-by-case support may be available.
 
 | Distribution | Codename | Status |
 | --- | --- | --- |
@@ -126,7 +126,7 @@ Ubuntu 22.04 (jammy) and Debian 11 (bullseye) are no longer supported because th
 
 #### Zymbit Driver Package 2.0 package versions
 
-All packages now come from one signed repository, `https://zk-repo.s3.amazonaws.com/debian/` (suite `stable`), shared by every supported distribution. **Zymbit Driver Package 2.x** names this set of packages as a whole. Each package keeps its own version number, listed below. Previous versions are the newest from the legacy zk-sw-repo repository.
+All packages now come from one signed repository, `https://zk-repo.s3.amazonaws.com/debian/` (suite `stable`), shared by every supported distribution. **Zymbit Driver Package 2.0** names this set of packages as a whole. Each package keeps its own version number, listed below. Previous versions are the newest from the legacy zk-sw-repo repository.
 
 | Package | Previous version | New version | Notes |
 | --- | --- | --- | --- |
