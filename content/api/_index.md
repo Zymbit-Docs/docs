@@ -1,8 +1,8 @@
 ---
 title: "API Documentation"
-linkTitle: "Zymbit Driver API"
+linkTitle: "Developer API"
 icon: ""
-description: "Zymbit Driver API Documentation"
+description: "Zymkey Application Utilities Documentation"
 aliases:
     - /quickstart/api/
     - /api-preview/
@@ -28,6 +28,10 @@ In addition, the Zymkey App Utils library provides interfaces for administrative
 * Control of the LED
 * Setting the i2c address (i2c units only)
 * Setting the tap detection sensitivity
+
+Developers using Driver Package 2.0 should install the `libzkapputils-dev`, `libzkapputils-c++-dev`, and/or `python3-zku` packages in order to use the library. See [Install Zymbit Driver 2.0 packages](/driver-package/2.0/). 
+
+Developers using Driver Package 1.0 should [install the `zkapputilslib` package](/driver-package/1.0/).
 
 ## A Note About Files
 

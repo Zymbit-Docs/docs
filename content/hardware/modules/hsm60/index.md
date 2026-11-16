@@ -112,9 +112,9 @@ Your {{% term/i2c %}} bus is now on and ready to talk to the HSM.
 
 ### Install the Zymbit Driver Package
 
-{{< driver-install product="HSM60" requirements="hsm60" >}}
+Log into your device and follow the [installation instructions for Driver Package 2.0](/driver-package/2.0/). Production HSM60 units are not supported by the legacy Driver Package 1.0.
 
-After your device reboots, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
+After your device reboots following the installation, the Pi will perform an operation that will temporarily bind the HSM to your SBC. Once the HSM is bound to the SBC, the HSM's blue LED should blink slowly--once every 3 seconds--to indicate that the binding is complete.
 
 {{< resource_link "reference/binding" >}}
 In production mode, HSM generates a unique Device ID by measuring certain attributes of the specific host and the HSM itself to permanently associate the two.

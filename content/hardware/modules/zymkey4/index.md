@@ -129,7 +129,7 @@ The default I2C address for ZYMKEY4 is 0x30. If this conflicts with another devi
 
 ## Install the Zymbit Driver Package
 
-{{< driver-install product="ZYMKEY4" >}}
+Log in to your host device and follow the [installation steps for Zymbit Driver Package 2.0](/driver-package/2.0/). The same steps upgrade a device that was set up with the legacy `install_zk_sw.sh` script. Zymbit Driver Package 2.0 requires a 64-bit OS: Raspberry Pi OS (Debian 12 bookworm or Debian 13 trixie), or Ubuntu 24.04 or 26.04. On Ubuntu 22.04, Debian 11, or a 32-bit OS, use the [Driver Package 1.0 instructions](/driver-package/1.0/) instead.
 
 ## Test the installation
 

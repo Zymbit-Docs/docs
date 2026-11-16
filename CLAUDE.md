@@ -72,7 +72,6 @@ Archetypes for `npm run create` live in `archetypes/`: `default.md`, `docs.md`.
 Located in `layouts/shortcodes/`:
 
 - `bootware_version_notice` - Banner warning when viewing an outdated Bootware version
-- `driver-install` - Zymbit Driver Package install steps shared by every module getting-started page. The steps live in `assets/snippets/driver-install.md`; edit them there, not in the product pages
 - `resource_link` - Linked resource card that extracts page title and description
 - `supported` / `partially-supported` - Hardware and OS support status badges
 - `youtube` - YouTube video embeds
@@ -83,7 +82,6 @@ Use `supported` / `partially-supported` for OS support status rather than writin
 
 `assets/` holds `scss/` (style overrides) and `snippets/` (Markdown fragments rendered into pages by a shortcode). When the same steps appear on several pages, write them once in `assets/snippets/` rather than copying them; the five module install sections had already drifted apart before they were consolidated.
 
-- `assets/snippets/driver-install.md` is the short Driver Package 2.x install, rendered by `driver-install` with `%PRODUCT%` replaced. Its OS requirements paragraph comes from `driver-install-requirements.md`, or `driver-install-requirements-<name>.md` when the page passes `requirements="<name>"`. Production ZYMKEY5 uses its own (`requirements="zymkey5"`) because Driver Package 1.x does not recognize it, so the default advice to fall back to 1.x is wrong there. Production HSM60 uses `requirements="hsm60"` because it also requires 2.x. The full reference is `content/reference/driver-package/_index.md` and the 1.x method is `content/reference/driver-package/legacy.md`; an install change usually touches all three.
 - Keep the section heading in the page, not the snippet: headings rendered from a `{{< >}}` shortcode stay out of the table of contents.
 - Links in a snippet must be root-relative, since it renders inside other pages.
 - `npm run lint` covers `assets/**/*.md`. Snippets open with `<!-- markdownlint-disable-next-line MD041 -->` because they have no heading.
