@@ -245,6 +245,69 @@ The examples above are designed to help you get up and running with single and l
 If you require support in developing a high volume manufacturing encryption workflow then please [contact us](https://www.zymbit.com/contact-us/) to discuss our OEM engineering services.
 
 ----------
+### Notes on encrypted root and kernel security updates
+
+`mk_encr_sd_rfs.sh` 2.0.1 (released 11/19/2026) fixes a kernel-update bug. With any earlier version, back to the first release in 2021, a board's encrypted root fails to unlock after its next kernel update on every noble board, on Pi4 with bookworm, and on Pi5/CM5 with trixie. 2.0.1 passed a kernel update, a reboot and a power cut on every board and OS tested. Boards already encrypted with any earlier version keep the old hook and need `fix_encr_initrd.sh`.
+
+- **Ubuntu noble:** broken on every board in every version before 2.0.1. Fixed in 2.0.1.
+- **Ubuntu resolute:** kernel updates pass with 2.0.1 (dracut path).
+- **Raspberry Pi OS:** every version before 2.0.1 breaks Pi4 on bookworm and Pi5/CM5 on trixie. Fixed in 2.0.1.
+- **Boards already in the field:** run `fix_encr_initrd.sh` once, before the next kernel update or before rebooting after one.  File can be downloaded from our repo:\
+
+
+  ```bash
+  curl -fsSLOJ https://zk-repo.s3.amazonaws.com/fix_encr_initrd.sh
+  chmod +x fix_encr_initrd.sh
+  sudo ./fix_encr_initrd.sh
+  ```
+- **Release upgrade noble → resolute on an encrypted root:** the board does not boot afterwards. You need to install fresh resolute first and encrypt it instead.
+
+#### What goes wrong
+
+On Ubuntu, the hook the script installs refuses to rebuild the initrd whenever the kernel's ABI number changes, which happens on every security kernel update. The hook is `/usr/sbin/update_encr_initrd`, called from `/etc/kernel/postinst.d/initramfs-tools`.
+
+1. A kernel package installs, e.g. `6.8.0-1064-raspi` → `6.8.0-1065-raspi`. On Ubuntu, unattended-upgrades does this automatically and does not reboot.
+2. The hook compares field 2 of the version (`1065`) with the running kernel's (`1064`). They differ, so it prints "Aborting update-initramfs…" and exits 0. Apt treats that as success.
+3. The hook has already mounted the boot partition at `/mnt/tmpboot` and leaves it mounted.
+4. flash-kernel installs the new `vmlinuz` and moves the old `initrd.img` to `initrd.img.bak`. That leaves no initrd that can unlock the root.
+5. The next reboot or power loss hangs before the encrypted root is unlocked.
+
+The field-2 check was written for Raspberry Pi OS. There field 2 is now always `rpi` (`6.12.47+rpt-rpi-2712`). On Ubuntu that field is the ABI number, so the steps above follow.
+
+**On Raspberry Pi OS the same check fails the other way.** Field 2 is `rpi` for both kernel flavours, so a kernel update rebuilds the initrd for `-rpi-v8` (Pi4) and `-rpi-2712` (Pi5/CM5) into the same `/boot/firmware/initrd.img`. The flavour apt configures last wins:
+
+- bookworm configures v8, then 2712: a Pi4 is left with the Pi5 initrd and cannot unlock (run 743); Pi5 and CM5 survive (753).
+- trixie configures 2712, then v8: Pi5 (754) and CM5 (763) are left with the Pi4 initrd and stop at the `(initramfs)` prompt; a Pi4 survives (749).
+
+**The fix** compares the kernel flavour, the last field (`raspi`, `2712`, `v8`), and adds an exit trap that unmounts `/mnt/tmpboot`. Any kernel or header update of the running flavor now rebuilds the initrd, whatever its ABI number. Header-only packages run `/etc/kernel/header_postinst.d`, not this hook, so they never touched the initrd.
+
+```sh
+if [ "${version##*-}" != "${kv##*-}" ]; then
+  echo "Skipping initrd for ${version}: not the running kernel's flavour (${kv##*-})."
+  exit 0
+fi
+```
+
+#### New customers
+
+New installs should start on the OS release they will stay on and be encrypted with `mk_encr_fd_rfs.sh` 2.0.1, the fixed script, published 2026-11-19.&#32;
+
+1. **Pick the release up front.** Resolute is the safest Ubuntu choice: dracut handles kernel updates, and the A/B boot falls back to the previous kernel on a failed boot. Noble is fine with the fixed script. Bookworm or trixie are fine with the fixed 2.0.1 script.
+2. **Encrypt with the fixed script** (`mk_encr_sd_rfs.sh` 2.0.1 or later). Don't use any earlier version for new boards on any OS.
+3. **Keep security updates on.** Leave unattended-upgrades enabled with automatic reboot off. Reboot during maintenance windows.
+4. **Test the first kernel update on one board** before rolling it to a fleet: update, reboot, confirm the root unlocks, then power-cycle and confirm again.
+5. **Plan release changes as reinstalls**, not `do-release-upgrade`.
+
+#### Release upgrade noble → resolute: not supported on an encrypted root
+
+We suggest starting with a fresh installation of resolute, followed by encryption.
+
+- **The new initrd can't unlock the root.** Resolute builds its initrd in `new/` with dracut, without the Zymbit unlock module, so the boot hangs waiting for the root.
+- **It only partly recovers after a power cycle.** The A/B boot marks `new/` bad and falls back to `current/`. That runs the noble kernel on resolute userspace, which is not a supported state.
+- **The Zymbit apt repo is turned off.** The upgrader disables `zymbit.sources`, so Zymbit packages stop updating.
+- **The old hook remains.** The noble initramfs-tools hook stays in `/etc/kernel/postinst.d`.
+
+----------
 ### REFERENCES
 
 * [LUKS features - the de-facto standard in Linux Kernel.](https://wiki.archlinux.org/index.php/disk_encryption#Comparison_table)
@@ -257,5 +320,6 @@ If you require support in developing a high volume manufacturing encryption work
 * [GitLab - LUKS and Cryptsetup - open-source disk encryption](https://gitlab.com/cryptsetup/cryptsetup)
 
 ## Troubleshooting
+
 [Troubleshooting](https://docs.zymbit.com/troubleshooting/)  
 [Community](https://community.zymbit.com/)
