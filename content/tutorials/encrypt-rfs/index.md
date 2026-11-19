@@ -245,7 +245,7 @@ The examples above are designed to help you get up and running with single and l
 If you require support in developing a high volume manufacturing encryption workflow then please [contact us](https://www.zymbit.com/contact-us/) to discuss our OEM engineering services.
 
 ----------
-### Notes on encrypted root and kernel security updates
+## Notes on encrypted root and kernel security updates
 
 `mk_encr_sd_rfs.sh` 2.0.1 (released 11/19/2026) fixes a kernel-update bug. With any earlier version, back to the first release in 2021, a board's encrypted root fails to unlock after its next kernel update on every noble board, on Pi4 with bookworm, and on Pi5/CM5 with trixie. 2.0.1 passed a kernel update, a reboot and a power cut on every board and OS tested. Boards already encrypted with any earlier version keep the old hook and need `fix_encr_initrd.sh`.
 
